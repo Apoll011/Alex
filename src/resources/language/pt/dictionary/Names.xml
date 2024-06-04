@@ -1,0 +1,1750 @@
+<?xml version="1.0"?>
+<dic>
+ <head>Names</head>
+
+<entry id="abdala" name="1">
+<form>
+<orth>Abdala</orth>
+</form>
+<sense><def>Pai de Mafoma.
+(Ár. _Abd-allah_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="abdelcáder" name="1">
+<form>
+<orth>Abdelcáder</orth>
+</form>
+<sense><def>Guerreiro marroquino.
+(Ár. _Abd-el-kádir_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="abdelcádir" name="1">
+<form>
+<orth>Abdelcádir</orth>
+</form>
+<sense><def>Guerreiro marroquino.
+(Ár. _Abd-el-kádir_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="achêmenes" name="1">
+<form>
+<orth>Achêmenes</orth>
+<phon extent="part">quê</phon>
+</form>
+<sense><def>Primeiro Rei da Pérsia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Archaémenes_[1])</etym>
+</entry>
+
+
+<entry id="adónide" name="1">
+<form>
+<orth>Adónide</orth>
+</form>
+<sense><def>Formoso príncipe mythológico.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Adónis_)</etym>
+</entry>
+
+
+<entry id="adónis:2" n="2" name="1" type="hom">
+<form>
+<orth>Adónis</orth>
+</form>
+<sense><def>Formoso príncipe mythológico.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Adónis_)</etym>
+</entry>
+
+
+<entry id="agáthias" name="1">
+<form>
+<orth>Agáthias</orth>
+</form>
+<sense><def>Historiador grego.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Agáthias_)</etym>
+</entry>
+
+
+<entry id="agáthodes" name="1">
+<form>
+<orth>Agáthodes</orth>
+</form>
+<sense><def>(não Agatódes)
+Antigo Rei da Sicília.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Agáthodes_)</etym>
+</entry>
+
+
+<entry id="agátias" name="1">
+<form>
+<orth>Agátias</orth>
+</form>
+<sense><def>Historiador grego.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Agáthias_)</etym>
+</entry>
+
+
+<entry id="agátodes" name="1">
+<form>
+<orth>Agátodes</orth>
+</form>
+<sense><def>(não Agatódes)
+Antigo Rei da Sicília.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Agáthodes_)</etym>
+</entry>
+
+
+<entry id="ágave" name="1">
+<form>
+<orth>Ágave</orth>
+</form>
+<sense><def>Nome de vários personagens mythológicos.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Ágave_)</etym>
+</entry>
+
+
+<entry id="aires:2" n="2" name="1" type="hom">
+<form>
+<orth>Aires</orth>
+</form>
+<sense><def>(não Ayres)
+Nome de homem.
+(Do nome medieval _Árias_ &lt; _Airas_ &lt; _Aires_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="alcâmenes" name="1">
+<form>
+<orth>Alcâmenes</orth>
+</form>
+<sense><def>Estatuário grego.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Alcâmenes_)</etym>
+</entry>
+
+
+<entry id="alfieri" name="1">
+<form>
+<orth>Alfieri</orth>
+<phon extent="part">é</phon>
+</form>
+<sense><def>Célebre poéta italiano do séc. XVIII.
+</def>
+</sense>
+</entry>
+
+
+<entry id="amásis" name="1">
+<form>
+<orth>Amásis</orth>
+</form>
+<sense><def>Antigo Rei do Egýpto.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Amásis_)</etym>
+</entry>
+
+
+<entry id="amenótep" name="1">
+<form>
+<orth>Amenótep</orth>
+</form>
+<sense><def>Nome de vários Reis do antigo Egýpto.
+</def>
+</sense>
+</entry>
+
+
+<entry id="amphílocho" name="1">
+<form>
+<orth>Amphílocho</orth>
+<phon extent="part">co</phon>
+</form>
+<sense><def>Escritor atheniense.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Amphílochus_)</etym>
+</entry>
+
+
+<entry id="anábasis" name="1">
+<form>
+<orth>Anábasis</orth>
+</form>
+<sense><def>Obra de Xenophonte.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Anábasis_)</etym>
+</entry>
+
+
+<entry id="anaxímenes" name="1">
+<form>
+<orth>Anaxímenes</orth>
+<phon extent="part">csi</phon>
+</form>
+<sense><def>Philosopho de Mileto.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Anaxímenes_)</etym>
+</entry>
+
+
+<entry id="ândersen" name="1">
+<form>
+<orth>Ândersen</orth>
+</form>
+<sense><def>Famoso poéta dinamarquês.
+</def>
+</sense>
+</entry>
+
+
+<entry id="andrómaca" name="1">
+<form>
+<orth>Andrómaca</orth>
+</form>
+<sense><def>Mulhér de Heitor, filho de Príamo, Rei de Tróia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Andrómacha_)</etym>
+</entry>
+
+
+<entry id="andrómacha" name="1">
+<form>
+<orth>Andrómacha</orth>
+<phon extent="part">ca</phon>
+</form>
+<sense><def>Mulhér de Heitor, filho de Príamo, Rei de Tróia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Andrómacha_)</etym>
+</entry>
+
+
+<entry id="andronico" name="1">
+<form>
+<orth>Andronico</orth>
+<phon extent="part">ní</phon>
+</form>
+<sense><def>Poéta latino.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Andronicus_)</etym>
+</entry>
+
+
+<entry id="anfíloco:2" n="2" name="1" type="hom">
+<form>
+<orth>Anfíloco</orth>
+</form>
+<sense><def>Escritor atheniense.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Amphílochus_)</etym>
+</entry>
+
+
+<entry id="aquêmenes" name="1">
+<form>
+<orth>Aquêmenes</orth>
+</form>
+<sense><def>Primeiro Rei da Pérsia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Archaémenes_)</etym>
+</entry>
+
+
+<entry id="antero" name="1">
+<form>
+<orth>Antero</orth>
+</form>
+<sense><def>(e não Anthero)
+Nome de homem.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Anterus_. Cf. Roquete, _Diccion. Port. Fr._)</etym>
+</entry>
+
+
+<entry id="antíocho" name="1">
+<form>
+<orth>Antíocho</orth>
+<phon extent="part">co</phon>
+</form>
+<sense><def>(e não Antiôco)
+Nome de vários Reis da Sýria.
+</def>
+</sense>
+</entry>
+
+
+<entry id="antíoco" name="1">
+<form>
+<orth>Antíoco</orth>
+</form>
+<sense><def>(e não Antiôco)
+Nome de vários Reis da Sýria.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ântipas" name="1">
+<form>
+<orth>Ântipas</orth>
+</form>
+<sense><def>(e não Antípas)
+Cognome daquelle Herodes, tetrarcha da Galileia, que, apaixonado pela filha de Herodíades, autorizou a decapitação de San-João Baptista.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Ântipas_)</etym>
+</entry>
+
+
+<entry id="antípater" name="1">
+<form>
+<orth>Antípater</orth>
+</form>
+<sense><def>General de Alexandre Magno.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Antípater_)</etym>
+</entry>
+
+
+<entry id="appollodoro" name="1">
+<form>
+<orth>Appollodoro</orth>
+</form>
+<sense><def>(_dó_ e não _ló_)
+Gramático atheniense.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Appollodórus_)</etym>
+</entry>
+
+
+<entry id="apolodoro" name="1">
+<form>
+<orth>Apolodoro</orth>
+</form>
+<sense><def>(_dó_ e não _ló_)
+Gramático atheniense.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Appollodórus_)</etym>
+</entry>
+
+
+<entry id="apuleio" name="1">
+<form>
+<orth>Apuleio</orth>
+</form>
+<sense><def>Escritor latino.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Apuleius_)</etym>
+</entry>
+
+
+<entry id="archílocho" name="1">
+<form>
+<orth>Archílocho</orth>
+<phon extent="part">ar-quí-lo-co</phon>
+</form>
+<sense><def>Antigo poeta grego.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Archílocus_)</etym>
+</entry>
+
+
+<entry id="argensola" name="1">
+<form>
+<orth>Argensola</orth>
+<phon extent="part">só</phon>
+</form>
+<sense><def>Nome de dois antigos literatos espanhóis.
+</def>
+</sense>
+</entry>
+
+
+<entry id="argo" name="1">
+<form>
+<orth>Argo</orth>
+</form>
+<sense><def>Indivíduo que, segundo a Mythologia, tinha cem olhos.
+Nome do navio, em que os Gregos foram á conquista do Vello-de-Oiro.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Argos_)</etym>
+</entry>
+
+
+<entry id="argos" name="1">
+<form>
+<orth>Argos</orth>
+</form>
+<sense><def>Indivíduo que, segundo a Mythologia, tinha cem olhos.
+Nome do navio, em que os Gregos foram á conquista do Vello-de-Oiro.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Argos_)</etym>
+</entry>
+
+
+<entry id="aristobulo" name="1">
+<form>
+<orth>Aristobulo</orth>
+</form>
+<sense><def>(não Aristóbulo)
+Nome de dois Reis da Judeia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aristobúlus_)</etym>
+</entry>
+
+
+<entry id="aristogíton" name="1">
+<form>
+<orth>Aristogíton</orth>
+</form>
+<sense><def>Antigo conspirador atheniense.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aristogíton_)</etym>
+</entry>
+
+
+<entry id="aristómenes" name="1">
+<form>
+<orth>Aristómenes</orth>
+</form>
+<sense><def>Escritor grego.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aristómenes_)</etym>
+</entry>
+
+
+<entry id="aristonico" name="1">
+<form>
+<orth>Aristonico</orth>
+<phon extent="part">ní</phon>
+</form>
+<sense><def>Principe persa.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aristonícus_)</etym>
+</entry>
+
+
+<entry id="arquíloco" name="1">
+<form>
+<orth>Arquíloco</orth>
+</form>
+<sense><def>Antigo poeta grego.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Archílocus_)</etym>
+</entry>
+
+
+<entry id="arsínoe" name="1">
+<form>
+<orth>Arsínoe</orth>
+</form>
+<sense><def>Uma das filhas de Atlante, segundo a Mythologia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Arsínoe_)</etym>
+</entry>
+
+
+<entry id="astíages" name="1">
+<form>
+<orth>Astíages</orth>
+</form>
+<sense><def>Rei da Média, avô de Cyro.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Astýages_)</etym>
+</entry>
+
+
+<entry id="astýages" name="1">
+<form>
+<orth>Astýages</orth>
+</form>
+<sense><def>Rei da Média, avô de Cyro.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Astýages_)</etym>
+</entry>
+
+
+<entry id="átropos:2" n="2" name="1" type="hom">
+<form>
+<orth>Átropos</orth>
+</form>
+<sense><def>Personagem mythológica, uma das Parcas.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Átropos_)</etym>
+</entry>
+
+
+<entry id="averróes" name="1">
+<form>
+<orth>Averróes</orth>
+</form>
+<sense><def>(não Avérroes, como alguns mandam lêr)
+Philósopho árabe, nascido em Córdova.--_Avérroes_ seria latinização injustificável de um nome árabe, cuja prosódia não é preciso alterar.
+</def>
+</sense>
+</entry>
+
+
+<entry id="baedeker" name="1">
+<form>
+<orth>Baedeker</orth>
+<phon extent="part">bédequer</phon>
+</form>
+<sense><def>Autor de um famoso guia de viajantes.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bagôas" name="1">
+<form>
+<orth>Bagôas</orth>
+</form>
+<sense><def>Nome de vários persas.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Bagôas_)</etym>
+</entry>
+
+
+<entry id="beccaria" name="1">
+<form>
+<orth>Beccaria</orth>
+<phon extent="part">cari</phon>
+</form>
+<sense><def>Célebre publicista italiano.
+</def>
+</sense>
+</entry>
+
+
+<entry id="beresford" name="1">
+<form>
+<orth>Beresford</orth>
+<phon extent="part">bé</phon>
+</form>
+<sense><def>General inglês, generalíssimo do exército de Portugal em 1809.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bismarck" name="1">
+<form>
+<orth>Bismarck</orth>
+</form>
+<sense><def>(Bismarque, não Bismárque)
+Estadista prussiano.
+</def>
+</sense>
+</entry>
+
+
+<entry id="brígida" name="1">
+<form>
+<orth>Brígida</orth>
+</form>
+<sense><def>(e não Brízida, como escreveu Garrett)
+Nome de mulhér.
+</def>
+</sense>
+<etym orig="Lat">(Lat. eccles. _Brígita_)</etym>
+</entry>
+
+
+<entry id="brás" name="1">
+<form>
+<orth>Brás</orth>
+</form>
+<sense><def>(não Braz)
+Nome de homem.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Blásius_)</etym>
+</entry>
+
+
+<entry id="canova" name="1">
+<form>
+<orth>Canova</orth>
+<phon extent="part">nó</phon>
+</form>
+<sense><def>Célebre escultor italiano.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cânovas" name="1">
+<form>
+<orth>Cânovas</orth>
+</form>
+<sense><def>Nome de um finado estadista espanhol.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ciaxares" name="1">
+<form>
+<orth>Ciaxares</orth>
+</form>
+<sense><def>(não Ciáxares)
+Rei dos Médos.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Cyaxáres_)</etym>
+</entry>
+
+
+<entry id="cleopatra" name="1">
+<form>
+<orth>Cleopatra</orth>
+<phon extent="part">pá</phon>
+</form>
+<sense><def>Raínha do Egypto, no séc. I antes de Christo.--_Cleópatra_ é pronúncia usual, mas errónea.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Cleopátra_)</etym>
+</entry>
+
+
+<entry id="cyaxares" name="1">
+<form>
+<orth>Cyaxares</orth>
+</form>
+<sense><def>(não Ciáxares)
+Rei dos Médos.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Cyaxáres_)</etym>
+</entry>
+
+
+<entry id="dalila" name="1">
+<form>
+<orth>Dalila</orth>
+</form>
+<sense><def>(não Dálila)
+Mulhér hebreia, amante de Sansão.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Dalíla_)</etym>
+</entry>
+
+
+<entry id="dâmocles" name="1">
+<form>
+<orth>Dâmocles</orth>
+</form>
+<sense><def>(não Damócles)
+Cortesão de Dionýsio, tyranno de Syracusa.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Dâmocles_)</etym>
+</entry>
+
+
+<entry id="debora" name="1">
+<form>
+<orth>Debora</orth>
+<phon extent="part">bó</phon>
+</form>
+<sense><def>(e não Débora)
+Prophetisa, que governou os Hebreus 40 annos, e a quem se attribue o célebre cantico, que se lê na _Bíblia_, (_Juízes_, cap. V).
+</def>
+</sense>
+</entry>
+
+
+<entry id="demódoco" name="1">
+<form>
+<orth>Demódoco</orth>
+</form>
+<sense><def>Célebre tangedor de lyra.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Demódocus_)</etym>
+</entry>
+
+
+<entry id="desdêmona" name="1">
+<form>
+<orth>Desdêmona</orth>
+</form>
+<sense><def>Personagem de uma tragédia de Shakespeare.--Os Ingleses dizem _Desdemóna_; mas o nome é italiano, e os Italianos dizem _Desdêmona_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="dinora" name="1">
+<form>
+<orth>Dinora</orth>
+</form>
+<sense><def>(não Dinorah)
+Nome de mulhér.
+</def>
+</sense>
+</entry>
+
+
+<entry id="dioníso" name="1">
+<form>
+<orth>Dioníso</orth>
+</form>
+<sense><def>(não Diónyso)
+Nome, que os Gregos davam a Baccho.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Dionýsus_)</etym>
+</entry>
+
+
+<entry id="dionýso" name="1">
+<form>
+<orth>Dionýso</orth>
+</form>
+<sense><def>(não Diónyso)
+Nome, que os Gregos davam a Baccho.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Dionýsus_)</etym>
+</entry>
+
+
+<entry id="édipo:2" n="2" name="1" type="hom">
+<form>
+<orth>Édipo</orth>
+</form>
+<sense><def>(e não Edípo)
+Personagem mythológico, que decifrou o enigma da Esphynge.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Oédipus_)</etym>
+</entry>
+
+
+<entry id="elói" name="1">
+<form>
+<orth>Elói</orth>
+</form>
+<sense><def>(e não Elóy)
+Nome de homem.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Elogius_. Cf. Roquete, _Diccion. Port. Fr._)</etym>
+</entry>
+
+
+<entry id="empédocles" name="1">
+<form>
+<orth>Empédocles</orth>
+</form>
+<sense><def>Philosopho antigo.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Empédocles_)</etym>
+</entry>
+
+
+<entry id="encélado:2" n="2" name="1" type="hom">
+<form>
+<orth>Encélado</orth>
+</form>
+<sense><def>Gigante que, segundo a Mythologia, foi aprisionado por Júpiter.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Encéladus_)</etym>
+</entry>
+
+
+<entry id="éolo:2" n="2" name="1" type="hom">
+<form>
+<orth>Éolo</orth>
+</form>
+<sense><def>Deus dos ventos, segundo a Mythologia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aéolus_)</etym>
+</entry>
+
+
+<entry id="érebo:2" n="2" name="1" type="hom">
+<form>
+<orth>Érebo</orth>
+</form>
+<sense><def>Divindade infernal, segundo a Mythologia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Érebus_)</etym>
+</entry>
+
+
+<entry id="eróstrato" name="1">
+<form>
+<orth>Eróstrato</orth>
+</form>
+<sense><def>Incendiário do templo de Diana em Épheso.
+</def>
+</sense>
+</entry>
+
+
+<entry id="éschilo" name="1">
+<form>
+<orth>Éschilo</orth>
+<phon extent="part">qui</phon>
+</form>
+<sense><def>Poéta trágico da Grécia antiga.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aéschilus_)</etym>
+</entry>
+
+
+<entry id="éschines" name="1">
+<form>
+<orth>Éschines</orth>
+<phon extent="part">qui</phon>
+</form>
+<sense><def>Orador atheniense, rival de Demósthenes.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aéschines_)</etym>
+</entry>
+
+
+<entry id="espártaco" name="1">
+<form>
+<orth>Espártaco</orth>
+</form>
+<sense><def>Gladiador thrácio, chefe de uma revolta na antiga Roma.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Spártacus_)</etym>
+</entry>
+
+
+<entry id="ésquilo" name="1">
+<form>
+<orth>Ésquilo</orth>
+</form>
+<sense><def>Poéta trágico da Grécia antiga.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aéschilus_)</etym>
+</entry>
+
+
+<entry id="ésquines" name="1">
+<form>
+<orth>Ésquines</orth>
+</form>
+<sense><def>Orador atheniense, rival de Demósthenes.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aéschines_)</etym>
+</entry>
+
+
+<entry id="estrabão:2" n="2" name="1" type="hom">
+<form>
+<orth>Estrabão</orth>
+</form>
+<sense><def>(e não Strabão)
+Notável geógrapho latino.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Strabo_)</etym>
+</entry>
+
+
+<entry id="etéocles" name="1">
+<form>
+<orth>Etéocles</orth>
+</form>
+<sense><def>(e não Eteócles)
+Filho de Édipo.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Etéocles_)</etym>
+</entry>
+
+
+<entry id="eurípides" name="1">
+<form>
+<orth>Eurípides</orth>
+</form>
+<sense><def>Grande poéta trágico da Grécia antiga.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Eurípides_)</etym>
+</entry>
+
+
+<entry id="gengiscão" name="1">
+<form>
+<orth>Gengiscão</orth>
+</form>
+<sense><def>(e não Gengis-khan e, ainda menos, Gengiskan)
+Célebre príncipe mongol, que no século dominou territórios, que se estendiam do Mar-Negro ao Mar da China.
+</def>
+</sense>
+</entry>
+
+
+<entry id="eduviges" name="1">
+<form>
+<orth>Eduviges</orth>
+</form>
+<sense><def>(e não Hedwiges)
+Nome de mulhér. Cf. Roquete, _Diccion. Port. Fr._
+</def>
+</sense>
+</entry>
+
+
+<entry id="hécate" name="1">
+<form>
+<orth>Hécate</orth>
+</form>
+<sense><def>Outro nome da deusa Diana.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Hécate_)</etym>
+</entry>
+
+
+<entry id="heduviges" name="1">
+<form>
+<orth>Heduviges</orth>
+</form>
+<sense><def>(e não Hedwiges)
+Nome de mulhér. Cf. Roquete, _Diccion. Port. Fr._
+</def>
+</sense>
+</entry>
+
+
+<entry id="heliogábalo" name="1">
+<form>
+<orth>Heliogábalo</orth>
+</form>
+<sense><def>(e não Heliogabálo)
+Imperador romano.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Heliogábalus_)</etym>
+</entry>
+
+
+<entry id="heródoto" name="1">
+<form>
+<orth>Heródoto</orth>
+</form>
+<sense><def>Célebre historiador grego.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Heródotus_)</etym>
+</entry>
+
+
+<entry id="hípias" name="1">
+<form>
+<orth>Hípias</orth>
+</form>
+<sense><def>(e não Hipías)
+Filho de Pisístrato.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Híppias_)</etym>
+</entry>
+
+
+<entry id="híppias" name="1">
+<form>
+<orth>Híppias</orth>
+</form>
+<sense><def>(e não Hipías)
+Filho de Pisístrato.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Híppias_)</etym>
+</entry>
+
+
+<entry id="hortênsia:2" n="2" name="1" type="hom">
+<form>
+<orth>Hortênsia</orth>
+</form>
+<sense><def>(e nunca Hortense e, ainda menos, Hortence)
+Nome de mulhér.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Hortensia_)</etym>
+</entry>
+
+
+<entry id="ifigênia" name="1">
+<form>
+<orth>Ifigênia</orth>
+</form>
+<sense><def>(e não Ephigênia)
+Nome de mulhér.--_Ifigênia_ é a pronúncia usual, mas a exacta seria _Ifigenía_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Ifigenia_, do gr. _Iphigeneia_)</etym>
+</entry>
+
+
+<entry id="ínacho" name="1">
+<form>
+<orth>Ínacho</orth>
+<phon extent="part">co</phon>
+</form>
+<sense><def>Primeiro Rei de Argos.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Ínachus_)</etym>
+</entry>
+
+
+<entry id="ínaco" name="1">
+<form>
+<orth>Ínaco</orth>
+</form>
+<sense><def>Primeiro Rei de Argos.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Ínachus_)</etym>
+</entry>
+
+
+<entry id="inês" name="1">
+<form>
+<orth>Inês</orth>
+</form>
+<sense><def>(e não Ignêz)
+Nome de mulhér.
+</def>
+</sense>
+<etym ori="lat">(Do lat. _Agnes_)</etym>
+</entry>
+
+
+<entry id="iphigênia" name="1">
+<form>
+<orth>Iphigênia</orth>
+</form>
+<sense><def>(e não Ephigênia)
+Nome de mulhér.--_Ifigênia_ é a pronúncia usual, mas a exacta seria _Ifigenía_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Ifigenia_, do gr. _Iphigeneia_)</etym>
+</entry>
+
+
+<entry id="isócrates" name="1">
+<form>
+<orth>Isócrates</orth>
+</form>
+<sense><def>Rhetórico atheniense.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Isócrates_)</etym>
+</entry>
+
+
+<entry id="jaime" name="1">
+<form>
+<orth>Jaime</orth>
+</form>
+<sense><def>(e não Jayme)
+Nome de homem.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Jame_, ingl. _James_)</etym>
+</entry>
+
+
+<entry id="karénina" name="1">
+<form>
+<orth>Karénina</orth>
+</form>
+<sense><def>(e não Karenína)
+Heroina de um romance de Tolstoi.
+</def>
+</sense>
+</entry>
+
+
+<entry id="láchese" name="1">
+<form>
+<orth>Láchese</orth>
+<phon extent="part">que</phon>
+</form>
+<sense><def>Uma das três Parcas.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Lachesis_)</etym>
+</entry>
+
+
+<entry id="láchesis" name="1">
+<form>
+<orth>Láchesis</orth>
+<phon extent="part">que</phon>
+</form>
+<sense><def><ref>(V. <term>Láchese</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="lâmpsaco" name="1">
+<form>
+<orth>Lâmpsaco</orth>
+</form>
+<sense><def>Antiga cidade da Mysia, sôbre o Hellesponto.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Lâmpsacum_)</etym>
+</entry>
+
+
+<entry id="laódice" name="1">
+<form>
+<orth>Laódice</orth>
+</form>
+<sense><def>Nome de várias mulhéres célebres, na antiguidade.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Laódice_)</etym>
+</entry>
+
+
+<entry id="láquese" name="1">
+<form>
+<orth>Láquese</orth>
+</form>
+<sense><def>Uma das três Parcas.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Lachesis_)</etym>
+</entry>
+
+
+<entry id="leónidas" name="1">
+<form>
+<orth>Leónidas</orth>
+</form>
+<sense><def>Celebre general lacedemónio, que foi morto nas Thermópylas.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Leónidas_)</etym>
+</entry>
+
+
+<entry id="longímano:2" n="2" name="1" type="hom">
+<form>
+<orth>Longímano</orth>
+</form>
+<sense><def>(e não Longimâno)
+Sobrenome de Artaxerxer, Rei da Pérsia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Longímanus_)</etym>
+</entry>
+
+
+<entry id="luís:2" n="2" name="1" type="hom">
+<form>
+<orth>Luís</orth>
+</form>
+<sense><def>(e não Luiz)
+Nome de homem.
+(B. lat. _Aloisius_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="médicis" name="1">
+<form>
+<orth>Médicis</orth>
+</form>
+<sense><def>Appellido de uma nobre e célebre família florentina.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mégara" name="1">
+<form>
+<orth>Mégara</orth>
+</form>
+<sense><def>Antiga cidade grega.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Mégora_)</etym>
+</entry>
+
+
+<entry id="mendelssohn" name="1">
+<form>
+<orth>Mendelssohn</orth>
+</form>
+<sense><def>(_Mên..._, e não Mendélssohn)
+Compositor alemão, filho de um philósopho que tinha o mesmo appellido.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mirandola" name="1">
+<form>
+<orth>Mirandola</orth>
+</form>
+<sense><def>(Mirândola, e não Mirandóla)
+João Pico de la Mirandola é o nome do famoso polýgrapho italiano, que aos déz annos já occupava lugar entre os melhóres oradores e poétas do seu tempo, e aos 25 annos defendia em Roma a conhecida these _De omni scibili_, sôbre a qual apresentou 900 proposições.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mithridates" name="1">
+<form>
+<orth>Mithridates</orth>
+</form>
+<sense><def>(_dá_, e não Mithrídates)
+Nome, de um célebre Rei do Ponto, e de vários Reis da Ásia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Mithridátes_)</etym>
+</entry>
+
+
+<entry id="mitridates" name="1">
+<form>
+<orth>Mitridates</orth>
+</form>
+<sense><def>(_dá_, e não Mithrídates)
+Nome, de um célebre Rei do Ponto, e de vários Reis da Ásia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Mithridátes_)</etym>
+</entry>
+
+
+<entry id="nêmese" name="1">
+<form>
+<orth>Nêmese</orth>
+</form>
+<sense><def>Deusa vingadora dos crimes, segundo a Mythologia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Nêmesis_)</etym>
+</entry>
+
+
+<entry id="néocles" name="1">
+<form>
+<orth>Néocles</orth>
+</form>
+<sense><def>Pai de Temístocles.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Néocles_)</etym>
+</entry>
+
+
+<entry id="neoptólemo" name="1">
+<form>
+<orth>Neoptólemo</orth>
+</form>
+<sense><def>Filho do herói grego Achilles.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Neoptólemus_)</etym>
+</entry>
+
+
+<entry id="nictímene" name="1">
+<form>
+<orth>Nictímene</orth>
+</form>
+<sense><def>Personagem mythológica.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Nyctímene_)</etym>
+</entry>
+
+
+<entry id="níobe" name="1">
+<form>
+<orth>Níobe</orth>
+</form>
+<sense><def>(e não Nióbe)
+Personagem mythológica, filha de Tântalo.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Níobe_)</etym>
+</entry>
+
+
+<entry id="nyctímene" name="1">
+<form>
+<orth>Nyctímene</orth>
+</form>
+<sense><def>Personagem mythológica.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Nyctímene_)</etym>
+</entry>
+
+
+<entry id="ômphale" name="1">
+<form>
+<orth>Ômphale</orth>
+</form>
+<sense><def>(e não Onfále)
+Segundo a Mythologia, mulhér de Hércules, o qual fiava na roca, para lhe agradar.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Omphale_)</etym>
+</entry>
+
+
+<entry id="ônfale" name="1">
+<form>
+<orth>Ônfale</orth>
+</form>
+<sense><def>(e não Onfále)
+Segundo a Mythologia, mulhér de Hércules, o qual fiava na roca, para lhe agradar.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Omphale_)</etym>
+</entry>
+
+
+<entry id="pátroclo" name="1">
+<form>
+<orth>Pátroclo</orth>
+</form>
+<sense><def>Herói da guerra de Tróia, morto por Heitor.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Pátroclus_)</etym>
+</entry>
+
+
+<entry id="péricles" name="1">
+<form>
+<orth>Péricles</orth>
+</form>
+<sense><def>Célebre general e orador atheniense.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Péricles_)</etym>
+</entry>
+
+
+<entry id="perséfona" name="1">
+<form>
+<orth>Perséfona</orth>
+</form>
+<sense><def>Outro nome da deusa Prosérpina.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Perséphona_)</etym>
+</entry>
+
+
+<entry id="perséphona" name="1">
+<form>
+<orth>Perséphona</orth>
+</form>
+<sense><def>Outro nome da deusa Prosérpina.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Perséphona_)</etym>
+</entry>
+
+
+<entry id="pisístrolo" name="1">
+<form>
+<orth>Pisístrolo</orth>
+</form>
+<sense><def>Tyranno de Athenas, no séc. VI antes de Christo.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Pisistratus_)</etym>
+</entry>
+
+
+<entry id="praxíteles" name="1">
+<form>
+<orth>Praxíteles</orth>
+</form>
+<sense><def>Célebre escultor da Grécia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Praxíteles_)</etym>
+</entry>
+
+
+<entry id="prosérpina" name="1">
+<form>
+<orth>Prosérpina</orth>
+</form>
+<sense><def>Mulhér de Plutão, deus dos Infernos, segundo a Mythologia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Prosérpina_)</etym>
+</entry>
+
+
+<entry id="reinaldo" name="1">
+<form>
+<orth>Reinaldo</orth>
+</form>
+<sense><def>(e não Reynaldo)
+Nome de homem.
+(B. lat. _Rainaldus_. Cf. Du-Cange, _Gloss._, vb. _chella_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="rhódope" name="1">
+<form>
+<orth>Rhódope</orth>
+</form>
+<sense><def>Famosa cortesan da Thrácia, em tempo de Esopo.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Rhódope_)</etym>
+</entry>
+
+
+<entry id="ródope" name="1">
+<form>
+<orth>Ródope</orth>
+</form>
+<sense><def>Famosa cortesan da Thrácia, em tempo de Esopo.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Rhódope_)</etym>
+</entry>
+
+
+<entry id="sara" name="1">
+<form>
+<orth>Sara</orth>
+</form>
+<sense><def>(e não Sarah)
+Personagem bíblica, mulhér de Abrahão.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sardanapalo" name="1">
+<form>
+<orth>Sardanapalo</orth>
+</form>
+<sense><def>(_pá_, e não _ná_)
+Rei da Assýria.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Sardanapálus_)</etym>
+</entry>
+
+
+<entry id="sátiro:2" n="2" name="1" type="hom">
+<form>
+<orth>Sátiro</orth>
+</form>
+<sense><def>(e jámais Satýro, ou Satíro, como assinam indivíduos da nossa terra)
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Sátyrus_)</etym>
+</entry>
+
+
+<entry id="sátyro:2" n="2" name="1" type="hom">
+<form>
+<orth>Sátyro</orth>
+</form>
+<sense><def>(e jámais Satýro, ou Satíro, como assinam indivíduos da nossa terra)
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Sátyrus_)</etym>
+</entry>
+
+
+<entry id="savonarola" name="1">
+<form>
+<orth>Savonarola</orth>
+</form>
+<sense><def>(_naró_, e não Savonárola)
+Célebre prègador dominicano, que foi accusado de heresia e queimado vivo em 1498.
+(N. it.)
+</def>
+</sense>
+</entry>
+
+
+<entry id="sêneca" name="1">
+<form>
+<orth>Sêneca</orth>
+</form>
+<sense><def>Philosópho, preceptor de Nero, e filho de um rhetórico do mesmo nome.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Sêneca_)</etym>
+</entry>
+
+
+<entry id="sísifo" name="1">
+<form>
+<orth>Sísifo</orth>
+</form>
+<sense><def>Personagem mythológica.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Sisyphus_)</etym>
+</entry>
+
+
+<entry id="sísypho" name="1">
+<form>
+<orth>Sísypho</orth>
+</form>
+<sense><def>Personagem mythológica.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Sisyphus_)</etym>
+</entry>
+
+
+<entry id="sófocles" name="1">
+<form>
+<orth>Sófocles</orth>
+</form>
+<sense><def>Grande poéta trágico da Grécia antiga.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Sóphocles_)</etym>
+</entry>
+
+
+<entry id="sóphocles" name="1">
+<form>
+<orth>Sóphocles</orth>
+</form>
+<sense><def>Grande poéta trágico da Grécia antiga.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Sóphocles_)</etym>
+</entry>
+
+
+<entry id="tamerlão" name="1">
+<form>
+<orth>Tamerlão</orth>
+</form>
+<sense><def>(e não Tarmelan)
+Célebre conquistador tártaro do séc. XIV.
+</def>
+</sense>
+</entry>
+
+
+<entry id="temístocles" name="1">
+<form>
+<orth>Temístocles</orth>
+</form>
+<sense><def>Antigo general atheniense, vencedor dos Persas.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Themístocles_)</etym>
+</entry>
+
+
+<entry id="temudo:2" n="2" name="1" type="hom">
+<form>
+<orth>Temudo</orth>
+</form>
+<sense><def>(e não Themudo)
+Appellido português.
+</def>
+</sense>
+<etym>(De _temudo_, particípio ant. de _temer_)</etym>
+</entry>
+
+
+<entry id="teresa:2" n="2" name="1" type="hom">
+<form>
+<orth>Teresa</orth>
+</form>
+<sense><def>(e não Theresa nem Thereza)
+Nome de mulhér.
+(Na Idade-Média, _Tareja_, _Taresia_, _Teresa_, etc.)
+</def>
+</sense>
+</entry>
+
+
+<entry id="themístocles" name="1">
+<form>
+<orth>Themístocles</orth>
+</form>
+<sense><def>Antigo general atheniense, vencedor dos Persas.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Themístocles_)</etym>
+</entry>
+
+
+<entry id="thomás" name="1">
+<form>
+<orth>Thomás</orth>
+</form>
+<sense><def>(e não Thomaz)
+Nome de homem.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Thomas_)</etym>
+</entry>
+
+
+<entry id="tiago" name="1">
+<form>
+<orth>Tiago</orth>
+</form>
+<sense><def>Nome de homem.--_Thiago_ é êrro crasso.
+</def>
+</sense>
+<etym>(De _Santo Iago_ &lt; _Sant'Iago_ &lt; _San-Tiago_ &lt; _Tiago_)</etym>
+</entry>
+
+
+<entry id="tisífone" name="1">
+<form>
+<orth>Tisífone</orth>
+</form>
+<sense><def>Figura mythológica, uma das Fúrias.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Tisíphone_)</etym>
+</entry>
+
+
+<entry id="tisíphone" name="1">
+<form>
+<orth>Tisíphone</orth>
+</form>
+<sense><def>Figura mythológica, uma das Fúrias.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Tisíphone_)</etym>
+</entry>
+
+
+<entry id="triptólemo:2" n="2" name="1" type="hom">
+<form>
+<orth>Triptólemo</orth>
+</form>
+<sense><def>Inventor da Agricultura, segundo a Mythologia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Triptólemus_)</etym>
+</entry>
+
+
+<entry id="tomás" name="1">
+<form>
+<orth>Tomás</orth>
+</form>
+<sense><def>(e não Thomaz)
+Nome de homem.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Thomas_)</etym>
+</entry>
+
+
+<entry id="zópiro" name="1">
+<form>
+<orth>Zópiro</orth>
+</form>
+<sense><def>Nome de um persa, que se mutilou, para entregar Babylónia a Dario.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Zópyrus_)</etym>
+</entry>
+
+
+<entry id="zópyro" name="1">
+<form>
+<orth>Zópyro</orth>
+</form>
+<sense><def>Nome de um persa, que se mutilou, para entregar Babylónia a Dario.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Zópyrus_)</etym>
+</entry>
+
+</dic>

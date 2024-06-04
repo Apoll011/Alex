@@ -1,0 +1,8287 @@
+<?xml version="1.0"?>
+<dic>
+ <head>Geo</head>
+
+<entry id="abássia" geo="1">
+<form>
+<orth>Abássia</orth>
+</form>
+<sense>
+<gramGrp>f.</gramGrp>
+<usg type="style">Ant.</usg>
+<def>
+O mesmo que _Abyssínia_. Cf. _Lusíadas_, X, 50; Barros, _Déc._, (_passim_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="abdera" geo="1">
+<form>
+<orth>Abdera</orth>
+<phon extent="part">dé</phon>
+</form>
+<sense><def>Cidade thrácia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Abdéra_)</etym>
+</entry>
+
+
+<entry id="abido" geo="1">
+<form>
+<orth>Abido</orth>
+</form>
+<sense><def>Antiga cidade egípcia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Abýdos_)</etym>
+</entry>
+
+
+<entry id="abidos" geo="1">
+<form>
+<orth>Abidos</orth>
+</form>
+<sense><def>(não Ábidos)
+Antiga cidade egýpcia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Abýdos_)</etym>
+</entry>
+
+
+<entry id="ábila" geo="1">
+<form>
+<orth>Ábila</orth>
+</form>
+<sense><def>Antigo nome de Ceuta.
+</def>
+</sense>
+</entry>
+
+
+<entry id="abranches" geo="1">
+<form>
+<orth>Abranches</orth>
+</form>
+<sense><def>(e não Avranches),
+Cidade francesa. Cf. _Lusíadas_, IV, 25.
+</def>
+</sense>
+</entry>
+
+
+<entry id="abydo" geo="1">
+<form>
+<orth>Abydo</orth>
+</form>
+<sense><def>Antiga cidade egýpcia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Abýdos_)</etym>
+</entry>
+
+
+<entry id="abydos" geo="1">
+<form>
+<orth>Abydos</orth>
+</form>
+<sense><def>Antiga cidade egýpcia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Abýdos_)</etym>
+</entry>
+
+
+<entry id="ábyla" geo="1">
+<form>
+<orth>Ábyla</orth>
+</form>
+<sense><def>Antigo nome de Ceuta.
+</def>
+</sense>
+</entry>
+
+
+<entry id="abyssínia" geo="1">
+<form>
+<orth>Abyssínia</orth>
+</form>
+<sense><def>Grande região da África Oriental, conhecida também em português pelo nome de _Abássia_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="aceiceira" geo="1">
+<form>
+<orth>Aceiceira</orth>
+</form>
+<sense><def>Povoação do districto de Santarém.
+Dantes, predominava a fórma _Aceiceira_. Cf. L. Cardoso, _Diccion. Geogr._
+O mesmo ou melhór que _Asseiceira_.
+<ref>(V. <term>Asseiceira</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="achém" geo="1">
+<form>
+<orth>Achém</orth>
+</form>
+<sense><def>(não Achim)
+Antigo reino, na ilha de Samatra. Cf. Fr. José do Sacramento, _Chrón. dos Carmelitas Descalços_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="achemênia" geo="1">
+<form>
+<orth>Achemênia</orth>
+<phon extent="part">que</phon>
+</form>
+<sense><def>Nome, dado por poétas á Pérsia. Cf. _Lusíadas_, IX, 60.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Achaemênia_)</etym>
+</entry>
+
+
+<entry id="ádem" geo="1">
+<form>
+<orth>Ádem</orth>
+</form>
+<sense><def>(e não Aden)
+Cidade e pôrto da Arábia. Cf. _Hist. dos Port. no Malabar_, p. 95; Barros, _Déc._ II, liv. III, cap. 3; _Lusíadas_, X, 99.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ádige" geo="1">
+<form>
+<orth>Ádige</orth>
+</form>
+<sense><def>Rio da Itália.
+</def>
+</sense>
+<etym ori="lat">(Do lat. _Áthesis_)</etym>
+</entry>
+
+
+<entry id="ádria" geo="1">
+<form>
+<orth>Ádria</orth>
+</form>
+<sense><def>Antiga cidade da Itália.
+</def>
+</sense>
+</entry>
+
+
+<entry id="afaganistão" geo="1">
+<form>
+<orth>Afaganistão</orth>
+</form>
+<sense><def>Região da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="afeganistão" geo="1">
+<form>
+<orth>Afeganistão</orth>
+</form>
+<sense><def>Região da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="afghanistan" geo="1" chaveta="1">
+<form>
+<orth>Afghanistan</orth>
+</form>
+<sense><def>Fórma bárbara de _Afeganistão_.
+<ref>(V. <term>Afeganistão</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="ainão" geo="1">
+<form>
+<orth>Ainão</orth>
+</form>
+<sense><def>Ilha do mar da China. Cf. _Lusíadas_, X, 129; M. Godinho, _Caminho da Índia_.
+(Fórmas estranhas, _Hai-Nan_, _Hainan_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="aires:1" n="1" geo="1" type="hom">
+<form>
+<orth>Aires</orth>
+</form>
+<sense><def>(e não Ayres)
+Povo do concelho de Marvão.
+</def>
+</sense>
+</entry>
+
+
+<entry id="aisne" geo="1">
+<form>
+<orth>Aisne</orth>
+<phon extent="part">éne</phon>
+</form>
+<sense><def>Departamento francês.
+</def>
+</sense>
+</entry>
+
+
+<entry id="aix" geo="1">
+<form>
+<orth>Aix</orth>
+<phon extent="part">éss</phon>
+</form>
+<sense><def>Cidade francesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="alanquer" geo="1">
+<form>
+<orth>Alanquer</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Alenquer_. Cf. R. Pina, _Affonso V_, c. XXXI; _Lusíadas_, III, 61.
+</def>
+</sense>
+</entry>
+
+
+<entry id="alão-quer" geo="1">
+<form>
+<orth>Alão-quer</orth>
+</form>
+<sense><def>(outra fórma de _Alanquer_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="albion" geo="1">
+<form>
+<orth>Albion</orth>
+<phon extent="part">álbion</phon>
+</form>
+<sense><def>Nome indígena da Gran-Bretanha.
+</def>
+</sense>
+</entry>
+
+
+<entry id="alcouchete" geo="1">
+<form>
+<orth>Alcouchete</orth>
+</form>
+<sense><def>(outra fórma de _Alcochete_, villa de Portugal). Cf. _Peregrinação_, XCI.
+</def>
+</sense>
+</entry>
+
+
+<entry id="alemanha" geo="1">
+<form>
+<orth>Alemanha</orth>
+</form>
+<sense><def>(e não Allemanha)
+Nação europeia. Cf. _Lusíadas_, III, 11; VI, 69.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Alemannia_)</etym>
+</entry>
+
+
+<entry id="alemquer" geo="1">
+<form>
+<orth>Alemquer</orth>
+</form>
+<sense><def>Orthogr. usual, mas injustificável.
+<ref>(V. <term>Alenquer</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="alemtejo" geo="1">
+<form>
+<orth>Alemtejo</orth>
+</form>
+<sense><def>Orthogr. moderna e menos aceitável que _Alentejo_.
+<ref>(V. <term>Alentejo</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="alemtém" geo="1">
+<form>
+<orth>Alemtém</orth>
+</form>
+<sense><def>Fórma usada, mas injustificável, em vez de _Alentém_. Cf. L. Cardoso, _Diccion. Geogr._
+</def>
+</sense>
+</entry>
+
+
+<entry id="alencastro" geo="1">
+<form>
+<orth>Alencastro</orth>
+</form>
+<sense><def>Cidade inglesa. Cf. _Lusíadas_, VI, 46.
+</def>
+</sense>
+<etym orig="Ingl">(Ingl. _Lancaster_)</etym>
+</entry>
+
+
+<entry id="aquemênia" geo="1">
+<form>
+<orth>Aquemênia</orth>
+</form>
+<sense><def>Nome, dado por poétas á Pérsia. Cf. _Lusíadas_, IX, 60.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Achaemênia_)</etym>
+</entry>
+
+
+<entry id="alenquer" geo="1">
+<form>
+<orth>Alenquer</orth>
+</form>
+<sense><def>Villa do districto de Lisbôa.--Modernamente, por uma falsa comprehensão da composição da palavra, e pela errada pronúncia dos que a imaginam composta de _àlém_ e _quer_, escreve-se, geral e insensatamente, _Alemquer_. Na formação da palavra não entra o adv. _àlém_: é palavra de origem árabe e aínda no século XVI se escrevia _Alanquer_. Cf. L. Cardoso, _Diccion. Geogr._; Barros, _Déc._ I, liv. III, cap. 9; Figueiredo, _Lições Práticas_, vol. I.
+</def>
+</sense>
+</entry>
+
+
+<entry id="alentejo" geo="1">
+<form>
+<orth>Alentejo</orth>
+</form>
+<sense><def>Uma das províncias de Portugal.--A antiga escrita portuguesa da palavra, o valor comparativo das duas líquidas _m_ e _n_, a pronúncia vulgar da palavra como simples, etc., tudo aconselha a preferência de _Alentejo_ a _Alemtejo_. Cf. L. Cardoso, _Diccion. Geogr._; Couto, _Déc._ IV, liv. VII, cap. 14.
+</def>
+</sense>
+</entry>
+
+
+<entry id="alentém" geo="1">
+<form>
+<orth>Alentém</orth>
+</form>
+<sense><def>Aldeia do concelho de Guimarães.
+</def>
+</sense>
+</entry>
+
+
+<entry id="alexandría" geo="1">
+<form>
+<orth>Alexandría</orth>
+</form>
+<sense><def>Cidade do Egypto.--_Alexândria_ é prosódia italiana e inglesa, errónea.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Alexandría_)</etym>
+</entry>
+
+
+<entry id="alger" geo="1">
+<form>
+<orth>Alger</orth>
+</form>
+<sense><def>(Fórma afrancesada, em vez de _Argel_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="algéria" geo="1">
+<form>
+<orth>Algéria</orth>
+</form>
+<sense><def>(Fórma afrancesada, em vez de _Argélia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="alijó" geo="1">
+<form>
+<orth>Alijó</orth>
+</form>
+<sense>
+<gramGrp>m.</gramGrp>
+<def>
+Villa trasmontana.
+Fórma archaica, _Legioo_. Cf. _Portug. Monum. Hist._, p. 605.
+</def>
+</sense>
+</entry>
+
+
+<entry id="allegany" geo="1">
+<form>
+<orth>Allegany</orth>
+<phon extent="part">áleganei</phon>
+</form>
+<sense><def>Cordilheira da América do Norte.
+</def>
+</sense>
+</entry>
+
+
+<entry id="allemanha" geo="1">
+<form>
+<orth>Allemanha</orth>
+</form>
+<sense><def>(Fórma usual, mas inexacta, em vez _Alemanha_. V. _Alemanha_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="almodóvar" geo="1">
+<form>
+<orth>Almodóvar</orth>
+</form>
+<sense><def>Villa de Portugal.
+</def>
+</sense>
+</entry>
+
+
+<entry id="altenbourg" geo="1" chaveta="1">
+<form>
+<orth>Altenbourg</orth>
+</form>
+<sense><def><ref>(V. <term>Altenburgo</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="altenburgo" geo="1">
+<form>
+<orth>Altenburgo</orth>
+</form>
+<sense><def>Cidade aleman.
+</def>
+</sense>
+</entry>
+
+
+<entry id="áltona" geo="1">
+<form>
+<orth>Áltona</orth>
+</form>
+<sense><def>Cidade aleman.
+</def>
+</sense>
+</entry>
+
+
+<entry id="amacuça" geo="1">
+<form>
+<orth>Amacuça</orth>
+</form>
+<sense><def>Ilha do Japão.
+</def>
+</sense>
+</entry>
+
+
+<entry id="amakoussa" geo="1" chaveta="1">
+<form>
+<orth>Amakoussa</orth>
+</form>
+<sense><def><ref>(V. <term>Amacuça</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="amsterdám" geo="1" chaveta="1">
+<form>
+<orth>Amsterdám</orth>
+</form>
+<sense><def><ref>(V. <term>Amsterdão</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="amsterdão" geo="1">
+<form>
+<orth>Amsterdão</orth>
+</form>
+<sense><def>Cidade da Holanda.
+</def>
+</sense>
+</entry>
+
+
+<entry id="aname:2" n="2" geo="1" type="hom">
+<form>
+<orth>Aname</orth>
+</form>
+<sense><def>Estado da Índia transgangética. Cf. G. Viana, _Apostilas_, vb. _bonzo_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="anciães" geo="1">
+<form>
+<orth>Anciães</orth>
+</form>
+<sense><def><ref>(V. <term>Ansiães</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="ancóna" geo="1" ast="1">
+<form>
+<orth>Ancóna</orth>
+</form>
+<sense><def>Cidade italiana.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Ancóna_)</etym>
+</entry>
+
+
+<entry id="andaluzia" geo="1">
+<form>
+<orth>Andaluzia</orth>
+</form>
+<sense><def>(e não Andalusia)
+Região meridional da Espanha.
+Em latim bárbaro _Vandalitia_, do nome dos _Vândalos_, que alli habitaram.
+(Cp. ár. _andalos_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="anderney" geo="1" chaveta="1">
+<form>
+<orth>Anderney</orth>
+</form>
+<sense><def>Ilhota inglesa, que os Franceses e os francesistas chamam _Aurigny_.
+(Cp. _Aurigny_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="angoleima" geo="1">
+<form>
+<orth>Angoleima</orth>
+</form>
+<sense><def>Cidade francesa. Cf. Castro, _Paráfrase_, 45.
+</def>
+</sense>
+</entry>
+
+
+<entry id="angolema" geo="1">
+<form>
+<orth>Angolema</orth>
+</form>
+<sense><def>O mesmo que _Angoleima_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="angora" geo="1">
+<form>
+<orth>Angora</orth>
+<phon extent="part">Angóra</phon>
+</form>
+<sense><def>(não _Ângora_)
+Cidade da Turquia Asiática.
+</def>
+</sense>
+<etym ori="lat">(Do lat. _Ancyra_)</etym>
+</entry>
+
+
+<entry id="angoulême" geo="1" chaveta="1">
+<form>
+<orth>Angoulême</orth>
+</form>
+<sense><def>(v. _Angoleima_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="annám" geo="1">
+<form>
+<orth>Annám</orth>
+</form>
+<sense><def>(v. _Aname_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="annão" geo="1">
+<form>
+<orth>Annão</orth>
+</form>
+<sense><def>(v. _Aname_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="ansiães" geo="1">
+<form>
+<orth>Ansiães</orth>
+</form>
+<sense><def>Povoação trasmontana.
+É fórma preferível á hoje usada, _Anciães_.
+No lat. medieval _Ansianes_, (séc. XI e XII).
+</def>
+</sense>
+</entry>
+
+
+<entry id="antívari" geo="1">
+<form>
+<orth>Antívari</orth>
+</form>
+<sense><def>Cidade da Albânia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="antínoe" geo="1" ast="1">
+<form>
+<orth>Antínoe</orth>
+</form>
+<sense><def>Antiga cidade do Egypto.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Antínoe_)</etym>
+</entry>
+
+
+<entry id="antínoi" geo="1" ast="1">
+<form>
+<orth>Antínoi</orth>
+</form>
+<sense><def>Antiga cidade do Egypto.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Antínoe_)</etym>
+</entry>
+
+
+<entry id="antuérpia" geo="1">
+<form>
+<orth>Antuérpia</orth>
+</form>
+<sense><def>Cidade da Holanda, que, em português, algumas vezes se tem chamado _Anveres_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="anveres" geo="1">
+<form>
+<orth>Anveres</orth>
+</form>
+<sense><def>(v. _Antuérpia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="aónia" geo="1">
+<form>
+<orth>Aónia</orth>
+</form>
+<sense><def>Designação poética da Beócia. Cf. _Lusíadas_, V, 87.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aónia_)</etym>
+</entry>
+
+
+<entry id="aracan" geo="1" chaveta="1">
+<form>
+<orth>Aracan</orth>
+</form>
+<sense><def>(v. _Arracão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="árcole" geo="1">
+<form>
+<orth>Árcole</orth>
+</form>
+<sense><def>(não _Arcóle_)
+Cidade italiana.
+</def>
+</sense>
+</entry>
+
+
+<entry id="argel:2" n="2" geo="1" type="hom">
+<form>
+<orth>Argel</orth>
+</form>
+<sense><def>Cidade capital da Argélia. Cf. _Eufrosina_, 223.
+</def>
+</sense>
+<etym ori="ár">(Do ár. _aljezair_)</etym>
+</entry>
+
+
+<entry id="argélia" geo="1">
+<form>
+<orth>Argélia</orth>
+</form>
+<sense><def>Colónia francesa da África setentrional.
+</def>
+</sense>
+</entry>
+
+
+<entry id="arkiko" geo="1" chaveta="1">
+<form>
+<orth>Arkiko</orth>
+</form>
+<sense><def>(v. _Arquico_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="ládoga" geo="1">
+<form>
+<orth>Ládoga</orth>
+</form>
+<sense><def>Lago da Rússia.--A pronúncia usual _Ladóga_ é errónea.
+</def>
+</sense>
+</entry>
+
+
+<entry id="lancaster" geo="1" chaveta="1">
+<form>
+<orth>Lancaster</orth>
+</form>
+<sense><def>(v. _Alencastro_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="languedoc" geo="1" chaveta="1">
+<form>
+<orth>Languedoc</orth>
+</form>
+<sense><def>(v. _Linguedoque_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="lápia" geo="1">
+<form>
+<orth>Lápia</orth>
+</form>
+<sense>
+<gramGrp>f.</gramGrp>
+<def>
+O mesmo que _Lapónia_. Cf. _Lusíadas_, III, 10.
+</def>
+</sense>
+</entry>
+
+
+<entry id="lapónia" geo="1">
+<form>
+<orth>Lapónia</orth>
+</form>
+<sense><def>Região setentrional da Escandinávia.
+(Cp. _Lápia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="lar:2" n="2" geo="1" chaveta="1" type="hom">
+<form>
+<orth>Lar</orth>
+</form>
+<sense><def>(v. _Lara_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="lara" geo="1">
+<form>
+<orth>Lara</orth>
+</form>
+<sense><def>Cidade da Pérsia. Cf. _Lusíadas_, X, 104.
+(Em livros nossos de geographia, vemos _Lar_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="leão:2" n="2" geo="1" type="hom">
+<form>
+<orth>Leão</orth>
+</form>
+<sense><def>Cidade e antigo reino christão da Espanha.
+(Cast. _León_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="leipzig" geo="1" chaveta="1">
+<form>
+<orth>Leipzig</orth>
+</form>
+<sense><def>(v. _Lípsia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="leipsick" geo="1" chaveta="1">
+<form>
+<orth>Leipsick</orth>
+</form>
+<sense><def>(v. _Lípsia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="léquias" geo="1">
+<form>
+<orth>Léquias</orth>
+</form>
+<sense><def>Ilhas do mar da China.
+</def>
+</sense>
+</entry>
+
+
+<entry id="leuctras" geo="1">
+<form>
+<orth>Leuctras</orth>
+</form>
+<sense><def>Lugar onde, na Beócia, o thebano Epaminondas derrotou os Espartanos.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Leuctra_ e _Leuctrae_)</etym>
+</entry>
+
+
+<entry id="leuctres" geo="1" chaveta="1">
+<form>
+<orth>Leuctres</orth>
+</form>
+<sense><def>Fórma francesa, perfilhada por alguns entre nós, em vez de _Leuctras_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="lieu-rieu" geo="1" chaveta="1">
+<form>
+<orth>Lieu-Rieu</orth>
+</form>
+<sense><def>(v. _Léquias_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="linguedoque" geo="1">
+<form>
+<orth>Linguedoque</orth>
+</form>
+<sense><def>Região francesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="liorne" geo="1">
+<form>
+<orth>Liorne</orth>
+</form>
+<sense><def>Cidade italiana. Cf. R. Pina, _Aff. V_, c. CXXXII.
+</def>
+</sense>
+</entry>
+
+
+<entry id="lípara" geo="1">
+<form>
+<orth>Lípara</orth>
+</form>
+<sense><def>Ilha do Mar Tyrrheno.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Lípara_)</etym>
+</entry>
+
+
+<entry id="lípari" geo="1">
+<form>
+<orth>Lípari</orth>
+</form>
+<sense><def>Ilha do Mar Tyrrheno.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Lípara_)</etym>
+</entry>
+
+
+<entry id="lípsia" geo="1">
+<form>
+<orth>Lípsia</orth>
+</form>
+<sense><def>Cidade aleman, no reino de Saxe, designada no estrangeiro, e até entre nós, por _Leipsick_ ou _Leipzig_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="lisbôa:2" n="2" geo="1" type="hom">
+<form>
+<orth>Lisbôa</orth>
+</form>
+<sense><def>Cidade capital de Portugal.
+Fórma antiga, _Lixboa_. Cf. _Inéd. da Hist. Port._, I, 585.
+</def>
+</sense>
+</entry>
+
+
+<entry id="livorno" geo="1" chaveta="1">
+<form>
+<orth>Livorno</orth>
+</form>
+<sense><def>Nome italiano de _Liorne_.
+<ref>(V. <term>Liorne</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="lousã:2" n="2" geo="1" type="hom">
+<form>
+<orth>Lousã</orth>
+</form>
+<sense><def>Villa de Portugal. Cf. _Inéd. da Hist. Port._, I, 385.
+</def>
+</sense>
+</entry>
+
+
+<entry id="lousan" geo="1">
+<form>
+<orth>Lousan</orth>
+</form>
+<sense><def>Villa de Portugal. Cf. _Inéd. da Hist. Port._, I, 385.
+</def>
+</sense>
+</entry>
+
+
+<entry id="louvain" geo="1" chaveta="1">
+<form>
+<orth>Louvain</orth>
+</form>
+<sense><def>(v. _Lovaina_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="louzã" geo="1">
+<form>
+<orth>Louzã</orth>
+</form>
+<sense><def>(v. _Lousan_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="lovaina" geo="1">
+<form>
+<orth>Lovaina</orth>
+</form>
+<sense><def>Cidade da Bélgica.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Louvain_)</etym>
+</entry>
+
+
+<entry id="lovânia" geo="1">
+<form>
+<orth>Lovânia</orth>
+</form>
+<sense><def>Outra fórma de _Lovaina_, e preferível a esta. Cf. Rev. _Instituto_, XLVIII, 61.
+</def>
+</sense>
+</entry>
+
+
+<entry id="lovão" geo="1">
+<form>
+<orth>Lovão</orth>
+</form>
+<sense><def>Fórma antiga de _Lovaina_ e talvez preferível.
+</def>
+</sense>
+</entry>
+
+
+<entry id="luca" geo="1">
+<form>
+<orth>Luca</orth>
+</form>
+<sense><def>Cidade da Itália.--Os francesistas só a conhecem por _Lucques_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="lucena" geo="1">
+<form>
+<orth>Lucena</orth>
+</form>
+<sense><def>Cidade alleman.
+(B. lat. _Lucena_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="lucques" geo="1" chaveta="1">
+<form>
+<orth>Lucques</orth>
+</form>
+<sense><def>Designação francesa de _Luca_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="lutzen" geo="1" chaveta="1">
+<form>
+<orth>Lutzen</orth>
+</form>
+<sense><def>(v. _Lucena_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="macáçar:2" n="2" geo="1" type="hom">
+<form>
+<orth>Macáçar</orth>
+</form>
+<sense><def>(e não Macassar)
+Antiga cidade da ilha de Celebrés. Cf. Barros, _Déc._ IV, liv. I, cap. 18.
+</def>
+</sense>
+</entry>
+
+
+<entry id="macassar" geo="1">
+<form>
+<orth>Macassar</orth>
+</form>
+<sense><def>(v. _Macáçar_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="macau" geo="1">
+<form>
+<orth>Macau</orth>
+</form>
+<sense><def>Possessão portuguesa a léste da China.--A orthogr. _Macao_ deve rejeitar-se. Cp. _Manaus_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="maçuá" geo="1">
+<form>
+<orth>Maçuá</orth>
+</form>
+<sense><def>Villa e pôrto da Abyssínia, a que os francesistas chamam _Massuhá_. Cf. Filinto, _Vida de D. Man._, III, 270; _Not. para a Hist. e Geogr._, II, 244; Barros, _Déc._ III. liv. X, cap. 1; _Lusíadas_, X, 22.
+</def>
+</sense>
+</entry>
+
+
+<entry id="madagáscar" geo="1">
+<form>
+<orth>Madagáscar</orth>
+</form>
+<sense><def>(e não Madagascár)
+Grande ilha do Oceano Índico, também conhecida por ilha de _San-Lourenço_.--A pronúncia, hoje usual, ainda é _Madagascár_; mas, que tal pronúncia é inexacta, provam-no os _Lusíadas_, (X, 137), porque se lêssemos _Madagascár_, o respectivo verso ficaria errado ou, pelo menos, defeituosissimo. Mas, dado que esta razão seja discutível, temos que o voc. é malaio e, nesta língua, não há, em regra, palavras oxýtonas; além de que, se a palavra fôsse realmente oxýtona ou aguda, os antigos dobrariam a última vogal, como fizeram em _caa_, _see_, _atee_ etc., por _cá_, _sé_, _até_, etc., para preencher de alguma fórma a falta de accentos.
+</def>
+</sense>
+</entry>
+
+
+<entry id="madras" geo="1" chaveta="1">
+<form>
+<orth>Madras</orth>
+<phon extent="part">madrás</phon>
+</form>
+<sense><def>Nome francês de _Madrasta_, usado ás vezes por francesistas irresponsáveis.
+</def>
+</sense>
+</entry>
+
+
+<entry id="madrasta:2" n="2" geo="1" type="hom">
+<form>
+<orth>Madrasta</orth>
+</form>
+<sense><def>Cidade da Índia inglesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="madril" geo="1">
+<form>
+<orth>Madril</orth>
+</form>
+<sense><def>O mesmo que _Madrid_, capital da Espanha. Daqui o derivado _madrileno_.
+</def>
+</sense>
+<sense>
+<gramGrp>Loc.</gramGrp>
+<usg type="style">pop.</usg>
+<def>
+_Vai para os quintos de Madril_. Cf. R. Pina, _Aff. V_, c. CCXI.
+</def>
+</sense>
+</entry>
+
+
+<entry id="magadoxo" geo="1">
+<form>
+<orth>Magadoxo</orth>
+</form>
+<sense><def>Antigo reino da costa oriental da África.--Alguns escrevem _Mogadoxo_, e Barros _Magadaxo_. Qualquer destas duas fórmas parece inexacta, sendo talvez a de Barros uma adulteração typográphica, mas repetida.
+</def>
+</sense>
+</entry>
+
+
+<entry id="maiçor" geo="1">
+<form>
+<orth>Maiçor</orth>
+</form>
+<sense><def>Legítima e antiga designação portuguesa da cidade indiana, que os modernos geralmente só conhecem pelo nome francês de _Maïssour_ ou pelo nome inglês de _Mysore_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="maïssour" geo="1" chaveta="1">
+<form>
+<orth>Maïssour</orth>
+</form>
+<sense><def>(v. _Maiçôr_)
+</def>
+</sense>
+<etym>(T. fr.)</etym>
+</entry>
+
+
+<entry id="malaca:2" n="2" geo="1" type="hom">
+<form>
+<orth>Malaca</orth>
+</form>
+<sense><def>Grande península da Ásia meridional.
+(Cp. _Áurea-Chersoneso_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="maluco:2" n="2" geo="1" type="hom">
+<form>
+<orth>Maluco</orth>
+</form>
+<sense><def>Antiga designação genérica do archipélago, que hoje chamamos das _Molucas_. Se bem que os Ingleses só possuíram estas ilhas por cinco annos, é possível que o nome de _Molucas_ seja corruptela inglesa do portuguesíssimo _Maluco_, como _Sumatra_ o foi de _Samatra_ ou _Çamatra_. Esta supposição é reforçada pelo facto de que M. Severim de Faria, no _Índice_ das _Décadas_ de Couto, ainda dá o nome de _Malucas_ ás ilhas de _Maluco_. Cf. _Lusíadas_, IX, 14; Barros, _Dec._, (_passim_).
+</def>
+</sense>
+</entry>
+
+
+<entry id="manaus:2" n="2" geo="1" type="hom">
+<form>
+<orth>Manaus</orth>
+</form>
+<sense><def>Cidade do Brasil. A primeira fórma é preferível, pela desnecessidade ou inconveniência do ditongo _ao_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="manáos:2" n="2" geo="1" type="hom">
+<form>
+<orth>Manáos</orth>
+</form>
+<sense><def>Cidade do Brasil. A primeira fórma é preferível, pela desnecessidade ou inconveniência do ditongo _ao_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="manchester" geo="1">
+<form>
+<orth>Manchester</orth>
+</form>
+<sense><def>(_Mânchester_, não _Manchéster_)
+Cidade inglesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="manchúria" geo="1">
+<form>
+<orth>Manchúria</orth>
+</form>
+<sense><def>Região da Ásia Central.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mandchourie" geo="1" chaveta="1">
+<form>
+<orth>Mandchourie</orth>
+</form>
+<sense><def>(v. _Manchúria_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="mandovi" geo="1">
+<form>
+<orth>Mandovi</orth>
+</form>
+<sense><def>Rio da Índia Portuguesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mandovim:2" n="2" geo="1" type="hom">
+<form>
+<orth>Mandovim</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Mandovi_. Cf. _Peregrinação_, XXV.
+</def>
+</sense>
+</entry>
+
+
+<entry id="manjúria" geo="1">
+<form>
+<orth>Manjúria</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Manchúria_: <cit type="example"><quote>«_não é Mandchuria, mas sim Manjúria; aquelle_ dch _está pelo_ dsch _alemão, expediente de que se servem para expressar o valor de_ dj ou j»</quote></cit>. G. Viana, _Apostilas_, vb. _russo_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="manila" geo="1">
+<form>
+<orth>Manila</orth>
+</form>
+<sense><def>(e não Manilha)
+Cidade das Filippinas.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mar-do-archipélago" geo="1">
+<form>
+<orth>Mar-do-Archipélago</orth>
+</form>
+<sense><def>Parte do Mediterrâneo, entre a Grécia, Turquia e Ásia-Menor.
+(Antigamente, _Mar-Egeu_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="mar-egeu" geo="1">
+<form>
+<orth>Mar-Egeu</orth>
+</form>
+<sense><def>O mesmo que _Mar-do-Archipélago_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="marrakesch" geo="1">
+<form>
+<orth>Marrakesch</orth>
+</form>
+<sense><def>Fórma bárbara, aventada recentemente, em vez de _Marrocos_, cidade.
+<ref>(V. <term>Marrocos</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="marrocos" geo="1">
+<form>
+<orth>Marrocos</orth>
+</form>
+<sense><def>Nação da África setentrional.
+Nome da capital da mesma nação.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mar-roxo" geo="1">
+<form>
+<orth>Mar-Roxo</orth>
+</form>
+<sense><def>Designação antiga do _Mar-Vermelho_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="martiníca" geo="1">
+<form>
+<orth>Martiníca</orth>
+</form>
+<sense><def>Uma das pequenas Antilhas.
+</def>
+</sense>
+</entry>
+
+
+<entry id="martinique" geo="1" chaveta="1">
+<form>
+<orth>Martinique</orth>
+</form>
+<sense><def><ref>(V. <term>Martiníca</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="mar-vermelho" geo="1">
+<form>
+<orth>Mar-Vermelho</orth>
+</form>
+<sense><def>Mar entre a Arábia e o Egypto.
+Cp. _Mar-Roxo_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="massouah" geo="1" chaveta="1">
+<form>
+<orth>Massouah</orth>
+</form>
+<sense><def>Nome francês de _Maçuá_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mato-grosso" geo="1">
+<form>
+<orth>Mato-Grosso</orth>
+</form>
+<sense><def>(e não Matto-Grosso)
+Região do Brasil.
+</def>
+</sense>
+</entry>
+
+
+<entry id="matozinhos" geo="1">
+<form>
+<orth>Matozinhos</orth>
+</form>
+<sense><def>(e não Mattosinhos ou Mattozinhos)
+Povoação nas vizinhanças do Pôrto.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mayença" geo="1">
+<form>
+<orth>Mayença</orth>
+</form>
+<sense><def>Nome afrancesado de _Mogúncia_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mecom" geo="1">
+<form>
+<orth>Mecom</orth>
+</form>
+<sense><def>Rio da Indo-China. Cf. _Lusíadas_, X, 127.
+(Fórmas estranhas, _Mekon_, _Mekong_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="meioterrâneo" geo="1">
+<form>
+<orth>Meioterrâneo</orth>
+</form>
+<sense><def>Fórma antiga de _Mediterrâneo_. Cf. Tenreiro, XXXI e LI.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mei-nan" geo="1" chaveta="1">
+<form>
+<orth>Mei-Nan</orth>
+</form>
+<sense><def>(v. _Menão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="mejám-frio" geo="1">
+<form>
+<orth>Mejám-Frio</orth>
+</form>
+<sense><def>Nome antigo de _Mesão-Frio_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mekon" geo="1" chaveta="1">
+<form>
+<orth>Mekon</orth>
+</form>
+<sense><def>(v. _Mecom_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="mekong" geo="1" chaveta="1">
+<form>
+<orth>Mekong</orth>
+</form>
+<sense><def>(v. _Mecom_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="mekran" geo="1" chaveta="1">
+<form>
+<orth>Mekran</orth>
+</form>
+<sense><def>(v. _Gedrosía_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="melilha" geo="1">
+<form>
+<orth>Melilha</orth>
+</form>
+<sense><def>Cidade e pôrto da África setentrional.
+Chamam-lhe também _Melilla_, mas esta fórma é castelhana. Cf. _Jornada de África_, XI.
+</def>
+</sense>
+</entry>
+
+
+<entry id="melilla" geo="1" chaveta="1">
+<form>
+<orth>Melilla</orth>
+</form>
+<sense><def>Fórma cast. de _Melilha_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="menan" geo="1" chaveta="1">
+<form>
+<orth>Menan</orth>
+</form>
+<sense><def>(v. _Menão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="menão" geo="1">
+<form>
+<orth>Menão</orth>
+</form>
+<sense><def>Rio de Sião. Cf. _Lusíadas_, X, 125.--Os estrangeiros e os Portugueses estrangeirados chamam-lhe _Mei-Nan_, _Menan_, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mesão-frio" geo="1">
+<form>
+<orth>Mesão-Frio</orth>
+</form>
+<sense><def>Villa de Portugal.
+</def>
+</sense>
+</entry>
+
+
+<entry id="meuse" geo="1" chaveta="1">
+<form>
+<orth>Meuse</orth>
+</form>
+<sense><def>Nome francês do _Mosa_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="milas" geo="1">
+<form>
+<orth>Milas</orth>
+</form>
+<sense><def>Antiga cidade e pôrto, na costa setentrional da Sicília.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Mylae_)</etym>
+</entry>
+
+
+<entry id="minturnas" geo="1">
+<form>
+<orth>Minturnas</orth>
+</form>
+<sense><def>Antiga cidade do Lácio.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Minturnae_)</etym>
+</entry>
+
+
+<entry id="minturnes" geo="1" chaveta="1">
+<form>
+<orth>Minturnes</orth>
+</form>
+<sense><def>Fórma francesa, perfilhada em livros portugueses, em vez de _Minturnas_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="moçandão" geo="1">
+<form>
+<orth>Moçandão</orth>
+</form>
+<sense><def>Cabo da Arábia, á entrada do Gôlfo-Pérsico. Cf. _Lusíadas_, X, 102.
+(Nos mappas, _Muscandon_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="mogadoiro" geo="1">
+<form>
+<orth>Mogadoiro</orth>
+</form>
+<sense><def>Villa trasmontana.--Nos documentos antigos lê-se _Mugadoyro_. Cf. _Portug. Mon. Hist._, 725. <cit type="example"><quote>«_Pero Lourenço de Tavora, senhor de Mogadoiro..._»</quote></cit> João de Barros.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mogadouro" geo="1">
+<form>
+<orth>Mogadouro</orth>
+</form>
+<sense><def>Villa trasmontana.--Nos documentos antigos lê-se _Mugadoyro_. Cf. _Portug. Mon. Hist._, 725. <cit type="example"><quote>«_Pero Lourenço de Tavora, senhor de Mogadouro..._»</quote></cit> João de Barros.
+</def>
+</sense>
+</entry>
+
+
+<entry id="moghostan" geo="1" chaveta="1">
+<form>
+<orth>Moghostan</orth>
+</form>
+<sense><def>(v. _Mogostão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="mogostão" geo="1">
+<form>
+<orth>Mogostão</orth>
+</form>
+<sense><def>Região da Pérsia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mogúncia" geo="1">
+<form>
+<orth>Mogúncia</orth>
+</form>
+<sense><def>Cidade aleman.
+</def>
+</sense>
+</entry>
+
+
+<entry id="molucas" geo="1">
+<form>
+<orth>Molucas</orth>
+</form>
+<sense><def>Archipélago da Oceania, conhecido outrora por _ilhas de Maluco_.
+(Cp. _Maluco_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="mombaí" geo="1">
+<form>
+<orth>Mombaí</orth>
+</form>
+<sense>
+<usg type="style">ant.</usg>
+<def>
+O mesmo que _Bombaim_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mompilher" geo="1">
+<form>
+<orth>Mompilher</orth>
+</form>
+<sense><def>Nome português antigo de uma cidade francesa, _Montpellier_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mónaco:2" n="2" geo="1" type="hom">
+<form>
+<orth>Mónaco</orth>
+</form>
+<sense><def>(e não Monáco)
+Cidade e principado sôbre o Mediterrâneo.
+</def>
+</sense>
+</entry>
+
+
+<entry id="monção:2" n="2" geo="1" type="hom">
+<form>
+<orth>Monção</orth>
+</form>
+<sense><def>Villa do Minho.--A fórma antiga _Monzon_ condemna claramente a fórma _Monsão_. Cf. _Portug. Monum. Hist._, 696; G. Vicente, _Maria Parda_.
+</def>
+</sense>
+<etym>(De um lat. hypoth. _Montianus_, do lat. _mons_)</etym>
+</entry>
+
+
+<entry id="monomotapa" geo="1">
+<form>
+<orth>Monomotapa</orth>
+</form>
+<sense><def>Antigo império da África Oriental, também conhecido por _Benomotapa_.
+(Cp. _Benomotapa_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="monsão" geo="1">
+<form>
+<orth>Monsão</orth>
+</form>
+<sense><def>Fórma usual, mas inexacta, em vez de _Monção_.
+<ref>(V. <term>Monção</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="monte-estoril" geo="1">
+<form>
+<orth>Monte-Estoril</orth>
+</form>
+<sense><def>(Mont'Estoril é fórma affectada, sem justificação séria)
+O mesmo que _Montestoril_.
+Povoação á beira do mar, nas vizinhanças de Cascaes.
+</def>
+</sense>
+</entry>
+
+
+<entry id="montemór-o-novo" geo="1">
+<form>
+<orth>Montemór-o-Novo</orth>
+</form>
+<sense><def>Villa do Alentejo.
+</def>
+</sense>
+</entry>
+
+
+<entry id="montemór-o-velho" geo="1">
+<form>
+<orth>Montemór-o-Velho</orth>
+</form>
+<sense><def>Villa do districto de Coímbra.
+</def>
+</sense>
+</entry>
+
+
+<entry id="montestoril" geo="1">
+<form>
+<orth>Montestoril</orth>
+</form>
+<sense><def>(Mont'Estoril é fórma affectada, sem justificação séria)
+Povoação á beira do mar, nas vizinhanças de Cascaes.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mosa:2" n="2" geo="1" type="hom">
+<form>
+<orth>Mosa</orth>
+</form>
+<sense><def>Rio da França, da Bélgica e da Hollanda.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Mosa_)</etym>
+</entry>
+
+
+<entry id="moscou:2" n="2" geo="1" type="hom">
+<form>
+<orth>Moscou</orth>
+</form>
+<sense><def>(e não Moscow)
+Grande cidade da Rússia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="moscóvia:2" n="2" geo="1" type="hom">
+<form>
+<orth>Moscóvia</orth>
+</form>
+<sense><def>Antiga designação portuguesa da cidade, que geralmente se chama _Moscou_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mossuate" geo="1">
+<form>
+<orth>Mossuate</orth>
+</form>
+<sense><def>Designação portuguesa de _Swazilândia_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="murça" geo="1">
+<form>
+<orth>Murça</orth>
+</form>
+<sense><def>Villa trasmontana.--Parece que a orthogr. exacta sería _Mursa_. Pelo menos, os _Portug. Monum. Hist._, 600, chamam-lhe _Musa_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="muscandon" geo="1" chaveta="1">
+<form>
+<orth>Muscandon</orth>
+</form>
+<sense><def>(v. _Moçandão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="muscó" geo="1">
+<form>
+<orth>Muscó</orth>
+</form>
+<sense><def>Fórma antiga de _Moscou_. Cf. _Peregrinação_, CXXVI.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mylas" geo="1">
+<form>
+<orth>Mylas</orth>
+</form>
+<sense><def>Antiga cidade e pôrto, na costa setentrional da Sicília.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Mylae_)</etym>
+</entry>
+
+
+<entry id="myles" geo="1" chaveta="1">
+<form>
+<orth>Myles</orth>
+</form>
+<sense><def>Fórma francesa, adoptada em livros portugueses, em vez de _Mylas_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="mysore" geo="1" chaveta="1">
+<form>
+<orth>Mysore</orth>
+</form>
+<sense><def>(v. _Maiçôr_)
+</def>
+</sense>
+<etym>(T. ingl.)</etym>
+</entry>
+
+
+<entry id="nagasaki" geo="1" chaveta="1">
+<form>
+<orth>Nagasaki</orth>
+</form>
+<sense><def>(v. _Nangasaque_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="nankin" geo="1" chaveta="1">
+<form>
+<orth>Nankin</orth>
+</form>
+<sense><def>Fórma estranha, em vez de _Nanquim_.
+<ref>(V. <term>Nanquim</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="nangasaki" geo="1" chaveta="1">
+<form>
+<orth>Nangasaki</orth>
+</form>
+<sense><def>(v. _Nangasaque_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="nangasaque" geo="1">
+<form>
+<orth>Nangasaque</orth>
+</form>
+<sense><def>Cidade do Japão. Cf. _Peregrinação_, Lucena, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="nanquim:2" n="2" geo="1" type="hom">
+<form>
+<orth>Nanquim</orth>
+</form>
+<sense><def>Cidade da China.--_Nankin_ não é fórma portuguesa. Cf. Barros, _Déc._ II, liv. X, cap. 1.
+</def>
+</sense>
+</entry>
+
+
+<entry id="new-york" geo="1" chaveta="1">
+<form>
+<orth>New-York</orth>
+</form>
+<sense><def>(v. _Nova-York_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="niágara" geo="1">
+<form>
+<orth>Niágara</orth>
+</form>
+<sense><def>(e não Niagára)
+Rio, que une o lago Erié ao Outário.
+</def>
+</sense>
+</entry>
+
+
+<entry id="niassa" geo="1">
+<form>
+<orth>Niassa</orth>
+</form>
+<sense><def>Lago e região da África Oriental.
+</def>
+</sense>
+</entry>
+
+
+<entry id="nova-york" geo="1">
+<form>
+<orth>Nova-York</orth>
+</form>
+<sense><def>Cidade americana.
+</def>
+</sense>
+<etym orig="Ingl">(Ingl. _New-York_)</etym>
+</entry>
+
+
+<entry id="nyassa" geo="1">
+<form>
+<orth>Nyassa</orth>
+</form>
+<sense><def>Fórma injustificável, em vez de _Niassa_.
+<ref>(V. <term>Niassa</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="oceânia" geo="1">
+<form>
+<orth>Oceânia</orth>
+</form>
+<sense><def>Uma das cinco partes do mundo.--A pronúncia _Oceânia_ é a preferida pelos glottólogos.
+</def>
+</sense>
+</entry>
+
+
+<entry id="oceanía" geo="1">
+<form>
+<orth>Oceanía</orth>
+</form>
+<sense><def>Uma das cinco partes do mundo.--A pronúncia _Oceânia_ é a preferida pelos glottólogos.
+</def>
+</sense>
+</entry>
+
+
+<entry id="odemira" geo="1">
+<form>
+<orth>Odemira</orth>
+</form>
+<sense><def>Villa do Alentejo.
+A fórma archaica era _Udemira_. Cf. _Port. Mon. Hist._, 664.
+</def>
+</sense>
+</entry>
+
+
+<entry id="odiana" geo="1">
+<form>
+<orth>Odiana</orth>
+</form>
+<sense><def>Nome antigo do rio _Guadiana_. Cf. _Inéd. da Hist. Port._, I, 395.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ofir" geo="1">
+<form>
+<orth>Ofir</orth>
+</form>
+<sense><def>O mesmo que _Dófar_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="onéga" geo="1">
+<form>
+<orth>Onéga</orth>
+</form>
+<sense><def>Lago da Rússia.--A pronúncia usual _Ónega_ é errónea.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ophir" geo="1">
+<form>
+<orth>Ophir</orth>
+</form>
+<sense><def>O mesmo que _Dófar_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="oran" geo="1">
+<form>
+<orth>Oran</orth>
+</form>
+<sense><def>Cidade da Argélia, conhecida pelos nossos chronistas com o nome de _Ourão_ e _Orão_. Cf. _Jornada de África_, XI.
+</def>
+</sense>
+</entry>
+
+
+<entry id="orão" geo="1">
+<form>
+<orth>Orão</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Oran_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="orissa" geo="1" chaveta="1">
+<form>
+<orth>Orissa</orth>
+</form>
+<sense><def>(v. _Orixa_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="orixa" geo="1">
+<form>
+<orth>Orixa</orth>
+</form>
+<sense><def>(e não Orissa)
+Região da Índia. Cf. _Lusíadas_, X, 120.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ormuz" geo="1">
+<form>
+<orth>Ormuz</orth>
+</form>
+<sense><def>(v. _Hormuz_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="ourão" geo="1">
+<form>
+<orth>Ourão</orth>
+</form>
+<sense><def>Nome português e antigo de _Oran_. Cf. Barros, _Déc._ I, liv. III, cap. 8.
+</def>
+</sense>
+</entry>
+
+
+<entry id="oxford" geo="1" chaveta="1">
+<form>
+<orth>Oxford</orth>
+</form>
+<sense><def>(v. _Oxónia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="oxónia" geo="1">
+<form>
+<orth>Oxónia</orth>
+</form>
+<sense><def>Designação portuguesa de _Oxford_, cidade inglesa. Cf. _Peregrinação_, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="pahang" geo="1" chaveta="1">
+<form>
+<orth>Pahang</orth>
+</form>
+<sense><def>(v. _Pam_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="pam" geo="1">
+<form>
+<orth>Pam</orth>
+</form>
+<sense><def>(e não Pahang)
+Cidade de Malaca. Cf. _Lusíadas_, X, 125; Barros, _Déc._, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="panane" geo="1">
+<form>
+<orth>Panane</orth>
+</form>
+<sense><def>Rio da Índia. Cf. _Lusíadas_, X, 55.--Os Ingleses e os nossos geógraphos inconscientes dizem _Ponani_ ou _Ponany_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="paraguai" geo="1">
+<form>
+<orth>Paraguai</orth>
+</form>
+<sense><def>Nação hispano-americana.
+</def>
+</sense>
+</entry>
+
+
+<entry id="paraguay" geo="1">
+<form>
+<orth>Paraguay</orth>
+</form>
+<sense><def>(v. _Paraguai_, que é a fórma exacta).
+</def>
+</sense>
+</entry>
+
+
+<entry id="parahiba" geo="1">
+<form>
+<orth>Parahiba</orth>
+</form>
+<sense><def>Cidade e região do Brasil.
+</def>
+</sense>
+</entry>
+
+
+<entry id="parahyba" geo="1">
+<form>
+<orth>Parahyba</orth>
+</form>
+<sense><def>(v. _Parahiba_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="paraíba:2" n="2" geo="1" type="hom">
+<form>
+<orth>Paraíba</orth>
+</form>
+<sense><def>Cidade e região do Brasil.
+</def>
+</sense>
+</entry>
+
+
+<entry id="paris" geo="1">
+<form>
+<orth>Paris</orth>
+</form>
+<sense><def>(e não Pariz)
+Cidade capital da França.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Paris_, do lat. _Parisii_)</etym>
+</entry>
+
+
+<entry id="pariz" geo="1">
+<form>
+<orth>Pariz</orth>
+</form>
+<sense><def>Fórma incorrecta de _Paris_.
+<ref>(V. <term>Paris</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="parnasso" geo="1">
+<form>
+<orth>Parnasso</orth>
+</form>
+<sense><def>Nome clássico da montanha grega, que hoje chamam _Liakura_ ou, em português, _Liacura_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="pedrogam" geo="1">
+<form>
+<orth>Pedrogam</orth>
+</form>
+<sense><def>Nome de várias povoações portuguesas.--Em lat. bárbaro, dizia-se _Petrógonum_. Cf. _Port. Mon. Hist._, 351.
+</def>
+</sense>
+</entry>
+
+
+<entry id="pedrógão" geo="1">
+<form>
+<orth>Pedrógão</orth>
+</form>
+<sense><def>Nome de várias povoações portuguesas.--Em lat. bárbaro, dizia-se _Petrógonum_. Cf. _Port. Mon. Hist._, 351.
+</def>
+</sense>
+</entry>
+
+
+<entry id="penedono" geo="1">
+<form>
+<orth>Penedono</orth>
+</form>
+<sense><def>Villa da Beira-Alta.--A fórma antiga é _Penedo Dono_. Cf. _Port. Mon. Hist._, 498.
+</def>
+</sense>
+</entry>
+
+
+<entry id="pekin" geo="1" chaveta="1">
+<form>
+<orth>Pekin</orth>
+</form>
+<sense><def>Fórma estranha, em vez de _Pequim_.
+<ref>(V. <term>Pequim</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="pequi:2" n="2" geo="1" type="hom">
+<form>
+<orth>Pequi</orth>
+</form>
+<sense><def>Outra fórma de _Pequim_^2. Cf. _Peregrinação_, CV.
+</def>
+</sense>
+</entry>
+
+
+<entry id="pequim:2" n="2" geo="1" type="hom">
+<form>
+<orth>Pequim</orth>
+</form>
+<sense><def>Cidade capital da China.--_Pekin_ é fórma estranha. Cf. Barros, _Déc._ III, liv. VI, cap. 1.
+</def>
+</sense>
+</entry>
+
+
+<entry id="pérgamo" geo="1">
+<form>
+<orth>Pérgamo</orth>
+</form>
+<sense><def>Nome, por que também foi conhecida a cidade de _Tróia_ ou, antes, a sua cidadella.
+Cidade de Creta.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Pérgamos_)</etym>
+</entry>
+
+
+<entry id="pérsia" geo="1">
+<form>
+<orth>Pérsia</orth>
+</form>
+<sense><def>Grande região da Ásia central.
+(Cp. _Achemênia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="perúgia" geo="1" chaveta="1">
+<form>
+<orth>Perúgia</orth>
+</form>
+<sense><def>Nome italiano de _Perúsia_.
+<ref>(V. <term>Perúsia</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="perúsia" geo="1">
+<form>
+<orth>Perúsia</orth>
+</form>
+<sense><def>(e não Perúgia)
+Cidade da Itália. Cf. _Ethiópia Or._, II, 39.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Perusia_)</etym>
+</entry>
+
+
+<entry id="perúsio" geo="1">
+<form>
+<orth>Perúsio</orth>
+</form>
+<sense><def>(e não Perúgia)
+Cidade da Itália. Cf. _Ethiópia Or._, II, 39.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Perusia_)</etym>
+</entry>
+
+
+<entry id="pêso-da-régua" geo="1">
+<form>
+<orth>Pêso-da-Régua</orth>
+</form>
+<sense><def>O mesmo que _Régua_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="petersburgo" geo="1">
+<form>
+<orth>Petersburgo</orth>
+</form>
+<sense><def>Cidade capital da Rússia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="piauhy" geo="1">
+<form>
+<orth>Piauhy</orth>
+</form>
+<sense><def>(v. _Piauí_, que é a fórma exacta)
+</def>
+</sense>
+</entry>
+
+
+<entry id="piauí" geo="1">
+<form>
+<orth>Piauí</orth>
+</form>
+<sense><def>Cidade e região do Brasil.
+</def>
+</sense>
+</entry>
+
+
+<entry id="placença:2" n="2" geo="1" type="hom">
+<form>
+<orth>Placença</orth>
+</form>
+<sense><def>Cidade da Itália.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Placentia_, it. _Piacenza_)</etym>
+</entry>
+
+
+<entry id="placência:2" n="2" geo="1" type="hom">
+<form>
+<orth>Placência</orth>
+</form>
+<sense><def>Cidade da Espanha.
+</def>
+</sense>
+</entry>
+
+
+<entry id="placência:1" n="1" geo="1" type="hom">
+<form>
+<orth>Placência</orth>
+</form>
+<sense><def>Cidade da Itália.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Placentia_, it. _Piacenza_)</etym>
+</entry>
+
+
+<entry id="plateia:2" n="2" geo="1" type="hom">
+<form>
+<orth>Plateia</orth>
+</form>
+<sense><def>(v. _Plateias_^2)
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Plataea_)</etym>
+</entry>
+
+
+<entry id="plateias" geo="1">
+<form>
+<orth>Plateias</orth>
+</form>
+<sense><def>Cidade da Beócia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Plataea_)</etym>
+</entry>
+
+
+<entry id="pompeia" geo="1">
+<form>
+<orth>Pompeia</orth>
+</form>
+<sense><def>Designação vulgar, mas inexacta, de _Pompeios_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="pompeios" geo="1">
+<form>
+<orth>Pompeios</orth>
+</form>
+<sense><def>Antiga cidade italiana, uma das que no ano 79 foram arruinadas e cobertas pela lava do Vesúvio.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Pompeii_)</etym>
+</entry>
+
+
+<entry id="ponani" geo="1" chaveta="1">
+<form>
+<orth>Ponani</orth>
+</form>
+<sense><def>(v. _Panane_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="ponany" geo="1" chaveta="1">
+<form>
+<orth>Ponany</orth>
+</form>
+<sense><def>(v. _Panane_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="pontével" geo="1">
+<form>
+<orth>Pontével</orth>
+</form>
+<sense><def>Povoação portuguesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="pôrto" geo="1">
+<form>
+<orth>Pôrto</orth>
+</form>
+<sense><def>Cidade de Portugal.
+</def>
+</sense>
+</entry>
+
+
+<entry id="prasso" geo="1">
+<form>
+<orth>Prasso</orth>
+</form>
+<sense><def>Nome antigo do _Cabo-Delgado_. Cf. _Lusíadas_, I, 43.
+</def>
+</sense>
+</entry>
+
+
+<entry id="quedá" geo="1">
+<form>
+<orth>Quedá</orth>
+</form>
+<sense><def>Rio de Malaca. Cf. _Lusíadas_, X, 123.--Os nossos geógraphos estrangeirados dizem _Kedah_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="quíloa" geo="1">
+<form>
+<orth>Quíloa</orth>
+</form>
+<sense><def>(e não Quilôa)
+Cidade na costa oriental da África, ao sul de Zanzibar.--Prova-se com os _Lusíadas_ que a verdadeira pronúncia é _Quíloa_; confirma-a a moderna fórma inglesa, _Kilwa_; e os próprios Moiros da costa africana também pronunciam _Quíloa_ ou _Kílua_. <cit type="example"><quote>«_De Quíloa, de Mombaça e de Sofala..._»</quote></cit> _Lusíadas_, I, 54. <cit type="example"><quote>«_A destruída Quíloa com Mombaça._»</quote></cit> _Ib._, V, 45.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ras-al-hadd" geo="1" chaveta="1">
+<form>
+<orth>Ras-al-Hadd</orth>
+</form>
+<sense><def>(v. _Roçalgate_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="régua:2" n="2" geo="1" type="hom">
+<form>
+<orth>Régua</orth>
+</form>
+<sense><def>(melhór que Régoa)
+Villa trasmontana, na margem direita do Doiro.
+</def>
+</sense>
+</entry>
+
+
+<entry id="rèsende" geo="1">
+<form>
+<orth>Rèsende</orth>
+</form>
+<sense><def>(e não Resende)
+Villa da Beira-Alta.
+</def>
+</sense>
+<etym orig="Lat">(Lat. bárbaro _Ranusendi_)</etym>
+</entry>
+
+
+<entry id="resende" geo="1">
+<form>
+<orth>Resende</orth>
+</form>
+<sense><def>(v. _Rèsende_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="rife:2" n="2" geo="1" type="hom">
+<form>
+<orth>Rife</orth>
+</form>
+<sense><def>Região montanhosa de Marrocos.
+</def>
+</sense>
+</entry>
+
+
+<entry id="riff" geo="1" chaveta="1">
+<form>
+<orth>Riff</orth>
+</form>
+<sense><def>(v. _Rife_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="rívoli" geo="1">
+<form>
+<orth>Rívoli</orth>
+</form>
+<sense><def>(e não _Rivóli_),
+Cidade italiana.
+</def>
+</sense>
+<etym ori="lat">(Do lat. _Ripula_)</etym>
+</entry>
+
+
+<entry id="roçalgate" geo="1">
+<form>
+<orth>Roçalgate</orth>
+</form>
+<sense><def>Cabo da Arábia, sôbre o mar das Índias. Cf. _Lusíadas_, X, 101.--Nos mappas, _Ras-al-Hadd_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="românia:2" n="2" geo="1" type="hom">
+<form>
+<orth>România</orth>
+</form>
+<sense><def>(v. _Romênia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="romênia" geo="1">
+<form>
+<orth>Romênia</orth>
+</form>
+<sense><def>Nação europeia, entre a Áustria, a Rússia, a Sérvia e a Bulgária.
+Outros lhes chamam _România_ ou _Rumânia_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="roterdão" geo="1">
+<form>
+<orth>Roterdão</orth>
+</form>
+<sense><def>Cidade da Hollanda.
+</def>
+</sense>
+</entry>
+
+
+<entry id="rotterdám" geo="1" chaveta="1">
+<form>
+<orth>Rotterdám</orth>
+</form>
+<sense><def>(v. _Roterdão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="ruão" geo="1">
+<form>
+<orth>Ruão</orth>
+</form>
+<sense><def>Cidade da França.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Rouen_)</etym>
+</entry>
+
+
+<entry id="rubicão:2" n="2" geo="1" type="hom">
+<form>
+<orth>Rubicão</orth>
+</form>
+<sense><def>Pequena ribeira, que separava a Itália da Gállia Cisalpina, e que ficou célebre desde a invasão da Itália por Aníbal.
+</def>
+</sense>
+</entry>
+
+
+<entry id="rubicon" geo="1" chaveta="1">
+<form>
+<orth>Rubicon</orth>
+</form>
+<sense><def>(v. _Rubicão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="rumânia" geo="1">
+<form>
+<orth>Rumânia</orth>
+</form>
+<sense><def>(v. _Romênia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="safim" geo="1">
+<form>
+<orth>Safim</orth>
+</form>
+<sense><def>(v. _Çafim_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="sahará" geo="1">
+<form>
+<orth>Sahará</orth>
+</form>
+<sense><def>Grande região da África, ao sul de Marrocos, Argélia e Tunes.
+</def>
+</sense>
+</entry>
+
+
+<entry id="saint-omer" geo="1" chaveta="1">
+<form>
+<orth>Saint-Omer</orth>
+</form>
+<sense><def>(v. _Santomer_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="salcête" geo="1">
+<form>
+<orth>Salcête</orth>
+</form>
+<sense><def>Fórma antiga e talvez exacta, em vez de _Salsête_, villa da Índia Portuguesa. Cf. _Boletim da Socied. de Geogr._, XVI, 10.
+</def>
+</sense>
+</entry>
+
+
+<entry id="saloníca" geo="1">
+<form>
+<orth>Saloníca</orth>
+</form>
+<sense><def>(não _Salónica_)
+Cidade da Romélia.
+(Cp. lat. _Thessalonica_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="salsête" geo="1">
+<form>
+<orth>Salsête</orth>
+</form>
+<sense><def>(v. _Salcête_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="samatra:2" n="2" geo="1" type="hom">
+<form>
+<orth>Samatra</orth>
+</form>
+<sense><def>Grande ilha da Oceânia.--Assim lhe chamaram sempre e assim escreveram os nossos antigos escritores.
+_Sumatra_ é fórma moderna e errónea, transplantação inconsciente do inglês _Sumatra_, (que se lê _Samatra_). Cf. Filinto, _Vida de D. Man._, II, 255; Barros, _Décadas_; D. Lopes, _Hist. dos Port. no Malabar_, 72; _Lusíadas_, X, 124; _Peregrinação_, I, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="samora" geo="1">
+<form>
+<orth>Samora</orth>
+</form>
+<sense><def>(v. _Çamora_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="sanchoão" geo="1">
+<form>
+<orth>Sanchoão</orth>
+</form>
+<sense><def>Cidade chinesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="santiago:2" n="2" geo="1" type="hom">
+<form>
+<orth>Santiago</orth>
+</form>
+<sense><def>Nome exacto de várias povoações portuguesas. Cf. Barros, _Déc._ I, liv. III, cap. 9; Couto, _Déc._ IV, liv. III, cap. 3.
+(Cp. [[S. Thiago]])
+</def>
+</sense>
+</entry>
+
+
+<entry id="sant'iago" geo="1">
+<form>
+<orth>Sant'Iago</orth>
+</form>
+<sense><def>Nome exacto de várias povoações portuguesas. Cf. Barros, _Déc._ I, liv. III, cap. 9; Couto, _Déc._ IV, liv. III, cap. 3.
+(Cp. [[S. Thiago]])
+</def>
+</sense>
+</entry>
+
+
+<entry id="santomer" geo="1">
+<form>
+<orth>Santomer</orth>
+</form>
+<sense><def>Cidade dos Países-Baixos. Cf. Viterbo. _Elucidário_, vb. _Santaomé_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sarabat" geo="1" chaveta="1">
+<form>
+<orth>Sarabat</orth>
+</form>
+<sense><def>(v. _Hérmo_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="saragoça:2" n="2" geo="1" type="hom">
+<form>
+<orth>Saragoça</orth>
+</form>
+<sense><def>Escrita incorrecta, em vez de _Çaragoça_.
+<ref>(V. <term>Çaragoça</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="satari" geo="1">
+<form>
+<orth>Satari</orth>
+</form>
+<sense><def>(e não Satary)
+Região da Índia Portuguesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="saxe" geo="1" chaveta="1">
+<form>
+<orth>Saxe</orth>
+</form>
+<sense><def>(v. _Saxónia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="saxónia" geo="1">
+<form>
+<orth>Saxónia</orth>
+</form>
+<sense><def>Um dos Estados alemães.
+</def>
+</sense>
+</entry>
+
+
+<entry id="scalabicastro" geo="1">
+<form>
+<orth>Scalabicastro</orth>
+</form>
+<sense><def>Nome antigo de Santarém. Cf. _Lusíadas_, III, 55.
+</def>
+</sense>
+</entry>
+
+
+<entry id="scandinávia" geo="1">
+<form>
+<orth>Scandinávia</orth>
+</form>
+<sense><def>(v. _Escandinávia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="shang-tschuan" geo="1" chaveta="1">
+<form>
+<orth>Shang-tschuan</orth>
+</form>
+<sense><def>(v. _Sanchoão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="schindy" geo="1" chaveta="1">
+<form>
+<orth>Schindy</orth>
+</form>
+<sense><def>(v. _Ulcinde_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="scútari" geo="1">
+<form>
+<orth>Scútari</orth>
+</form>
+<sense><def>Cidade da Turquia Asiática, sôbre o Bósphoro.
+</def>
+</sense>
+</entry>
+
+
+<entry id="seia" geo="1">
+<form>
+<orth>Seia</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Ceia_.
+(B. lat. _Sena_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="senegal" geo="1">
+<form>
+<orth>Senegal</orth>
+</form>
+<sense><def>Nome de um rio e de uma região da África Occidental.--Barros, _Déc._, chamou-lhe _Çanagal_ ou _Çanegá_, que era talvez a fórma exacta.
+</def>
+</sense>
+</entry>
+
+
+<entry id="serra-cáspia" geo="1">
+<form>
+<orth>Serra-Cáspia</orth>
+</form>
+<sense><def>Montanha do Cáucaso. Cf. _Lusíadas_, III, 23.
+(Nos mappas de hoje, _Elburz_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="setúbal:2" n="2" geo="1" type="hom">
+<form>
+<orth>Setúbal</orth>
+</form>
+<sense><def>Cidade do districto de Lisbôa.--É desconhecida a origem da palavra. Em documentos antigos, há _Setuval_, _Setuvel_ e, raramente, _Cetuval_. Cf. _Portug. Monum. Hist._, 634; _Hist. Insul._, I, 36. Circunstância curiosa: os Franceses dizem e escrevem _Saint-Ubes_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="setúval" geo="1">
+<form>
+<orth>Setúval</orth>
+</form>
+<sense><def>Fórma antiga de _Setúbal_. Cf. _Peregrinação_, CXCIII.
+</def>
+</sense>
+</entry>
+
+
+<entry id="shanghae" geo="1" chaveta="1">
+<form>
+<orth>Shanghae</orth>
+</form>
+<sense><def>(v. _Xangai_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="san-thiago" geo="1">
+<form>
+<orth>San-Thiago</orth>
+</form>
+<sense><def>Orthographia usual, mas disparatada, em vez de _Santiago_ ou _Sant'Iago_.
+_Thiago_ é palavra moderna e mal escrita, ou mal deduzida da leitura da expressão _Santo Iago_. Admittida embora, é evidente que não deveria escrever-se com _h_. Mas _Tiago_, santo, êsse é que nunca existiu nem podemos inventá-lo. O lat. da _Vulgata_ chama-lhe _Iacobus_, que, em port. e cast. deu _Iago_: _Santo Iago_ ou _Sant'Iago_, ou _Santiago_. Qualquer destas fórmas é legítima. Cf. Filinto, _Vida de D. Man._, I, 143.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sernache" geo="1">
+<form>
+<orth>Sernache</orth>
+</form>
+<sense><def>Nome de duas povoações portuguesas.
+Parece que a fórma _Cernache_ é a mais exacta; é pelo menos a mais antiga. Cf. L. Cardoso, _Diccion. Geogr._
+(v. _Cernache_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="sernancelhe" geo="1">
+<form>
+<orth>Sernancelhe</orth>
+<phon extent="part">cê</phon>
+</form>
+<sense><def>Villa da Beira-Alta.
+Tem-se usado as duas variantes; _Cernancêlhe_ porém é mais antiga e talvez mais exacta.
+</def>
+</sense>
+</entry>
+
+
+<entry id="shiraz" geo="1" chaveta="1">
+<form>
+<orth>Shiraz</orth>
+</form>
+<sense><def>Fórma inglesada, indiscretamente usada por alguns, em vez de _Xiraz_.
+<ref>(V. <term>Xiraz</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="siame:2" n="2" geo="1" type="hom">
+<form>
+<orth>Siame</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Sião_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sião" geo="1">
+<form>
+<orth>Sião</orth>
+</form>
+<sense><def>Um dos Estados da Indo-China.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sikok" geo="1" chaveta="1">
+<form>
+<orth>Sikok</orth>
+</form>
+<sense><def>Fórma bárbara de _Xicôco_.
+<ref>(V. <term>Xicôco</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="sikokf" geo="1" chaveta="1">
+<form>
+<orth>Sikokf</orth>
+</form>
+<sense><def>Fórma bárbara de _Xicôco_.
+<ref>(V. <term>Xicôco</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="sincapura" geo="1">
+<form>
+<orth>Sincapura</orth>
+</form>
+<sense><def>Outra fórma de _Singapura_. Cf. _Conquista do Pegu_, I.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sinfães" geo="1">
+<form>
+<orth>Sinfães</orth>
+</form>
+<sense><def>Orthogr. hoje usual, mas inexacta, em vez de _Cinfães_.
+<ref>(V. <term>Cinfães</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="singapura" geo="1">
+<form>
+<orth>Singapura</orth>
+</form>
+<sense><def>Cidade e ilha da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sintra" geo="1">
+<form>
+<orth>Sintra</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Cintra_. Cf. R. Pina, _Aff. V_, c. LI e XXXIV.
+Villa do districto de Lisbôa.--Antigamente, pelo menos até o século XVII, só se usou a fórma _Sintra_ e ás vezes _Sintria_ ou _Syntria_, o que é poderoso argumento contra a fórma moderna _Cintra_, visto que o _C_ e _S_ iniciaes se não confundiam na pronúncia como hoje.
+Cp. _Ceia_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="socotorá" geo="1">
+<form>
+<orth>Socotorá</orth>
+</form>
+<sense><def>Ilha do mar das Índias.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sofala" geo="1">
+<form>
+<orth>Sofala</orth>
+</form>
+<sense><def>Região da costa occidental da África.--Usaram-se dantes as duas fórmas, mas prevalecia a segunda, que é talvez a mais exacta.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sófia" geo="1">
+<form>
+<orth>Sófia</orth>
+</form>
+<sense><def>Capital da Bulgária.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Sóphia_)</etym>
+</entry>
+
+
+<entry id="soisa" geo="1">
+<form>
+<orth>Soisa</orth>
+</form>
+<sense><def>(e não Souza),
+Rio de Portugal.
+</def>
+</sense>
+<etym orig="Lat">(Lat. bárbaro _Sausa_, _Sause_, _Saussa_)</etym>
+</entry>
+
+
+<entry id="soitomaior" geo="1">
+<form>
+<orth>Soitomaior</orth>
+</form>
+<sense><def>Povoação do districto de Villa-Real.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sonda:2" n="2" geo="1" type="hom">
+<form>
+<orth>Sonda</orth>
+</form>
+<sense><def>Fórma afrancesada de _Sunda_.
+<ref>(V. <term>Sunda</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="sóphia" geo="1">
+<form>
+<orth>Sóphia</orth>
+</form>
+<sense><def>Capital da Bulgária.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Sóphia_)</etym>
+</entry>
+
+
+<entry id="souakim" geo="1" chaveta="1">
+<form>
+<orth>Souakim</orth>
+</form>
+<sense><def>Fórma estranha de _Suaquém_.
+<ref>(V. <term>Suaquém</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="sousa:2" n="2" geo="1" type="hom">
+<form>
+<orth>Sousa</orth>
+</form>
+<sense><def>(e não Souza)
+Rio de Portugal.
+</def>
+</sense>
+<etym orig="Lat">(Lat. bárbaro _Sausa_, _Sause_, _Saussa_)</etym>
+</entry>
+
+
+<entry id="soutomaior" geo="1">
+<form>
+<orth>Soutomaior</orth>
+</form>
+<sense><def>Povoação do districto de Villa-Real.
+</def>
+</sense>
+</entry>
+
+
+<entry id="souza" geo="1">
+<form>
+<orth>Souza</orth>
+</form>
+<sense><def>(v. _Sousa_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="s. petersburgo" geo="1">
+<form>
+<orth>S. Petersburgo</orth>
+</form>
+<sense><def>(v. _Petersburgo_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="sporades" geo="1">
+<form>
+<orth>Sporades</orth>
+</form>
+<sense><def>(v. _Espórades_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="s. thiago" geo="1">
+<form>
+<orth>S. Thiago</orth>
+</form>
+<sense><def>Orthographia usual, mas disparatada, em vez de _Santiago_ ou _Sant'Iago_.
+_Thiago_ é palavra moderna e mal escrita, ou mal deduzida da leitura da expressão _Santo Iago_. Admittida embora, é evidente que não deveria escrever-se com _h_. Mas _Tiago_, santo, êsse é que nunca existiu nem podemos inventá-lo. O lat. da _Vulgata_ chama-lhe _Iacobus_, que, em port. e cast. deu _Iago_: _Santo Iago_ ou _Sant'Iago_, ou _Santiago_. Qualquer destas fórmas é legítima. Cf. Filinto, _Vida de D. Man._, I, 143.
+</def>
+</sense>
+</entry>
+
+
+<entry id="çurrate" geo="1">
+<form>
+<orth>Çurrate</orth>
+</form>
+<sense><def>O mesmo que _Surate_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="stockholmo" geo="1">
+<form>
+<orth>Stockholmo</orth>
+</form>
+<sense><def>Capital da Suécia.
+A fórma portuguesa é _Estocolmo_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="strasbourg" geo="1" chaveta="1">
+<form>
+<orth>Strasbourg</orth>
+</form>
+<sense><def>(v. _Estrasburgo_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="stuttgard" geo="1" chaveta="1">
+<form>
+<orth>Stuttgard</orth>
+</form>
+<sense><def>(v. _Estugarda_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="suanquém" geo="1">
+<form>
+<orth>Suanquém</orth>
+</form>
+<sense><def>O mesmo que _Suaquém_. Cf. _Lusíadas_, X, 97.
+</def>
+</sense>
+</entry>
+
+
+<entry id="suaquém" geo="1">
+<form>
+<orth>Suaquém</orth>
+</form>
+<sense><def>Cidade da Núbia, sôbre o Mar-Roxo.--Os escritores menos escrupulosos dizem _Suakin_ ou _Souakin_, á francesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sucre" geo="1">
+<form>
+<orth>Sucre</orth>
+</form>
+<sense><def>Cidade americana, a que em compêndios de Geographia se dá o extraordinário nome de _Assucar_.
+(Do nome de José Sucre, primeiro presidente da républica da Bolívia).
+</def>
+</sense>
+</entry>
+
+
+<entry id="sués" geo="1">
+<form>
+<orth>Sués</orth>
+</form>
+<sense><def>Outra fórma de _Suez_. Cf. _Peregrinação_, XI.
+</def>
+</sense>
+</entry>
+
+
+<entry id="suez" geo="1">
+<form>
+<orth>Suez</orth>
+</form>
+<sense><def>Pequena cidade egýpcia sôbre o canal do mesmo nome.--_Suez_ é a orthogr. usual; mas a or. do nome e a prática de antigos escritores nossos mostram-nos outra fórma, _Çuez_. Cf. _Not. para a Hist. e Geogr._, II, 246.
+</def>
+</sense>
+</entry>
+
+
+<entry id="suíça:2" n="2" geo="1" type="hom">
+<form>
+<orth>Suíça</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Suíssa_^2.
+Nação europeia, entre a Alemanha, a França e a Itália.--A fórma, mais geralmente adoptada hoje, é _Suíssa_. Entretanto, as tradições da nossa língua e o estudo comparativo do alemão _Schweiz_, do cast. _Suiza_ e do italiano _Svizzera_, levam os philólogos a praticar e aconselhar a fórma _Suíça_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="suíssa:2" n="2" geo="1" type="hom">
+<form>
+<orth>Suíssa</orth>
+</form>
+<sense><def>Nação europeia, entre a Alemanha, a França e a Itália.--A fórma, mais geralmente adoptada hoje, é _Suíssa_. Entretanto, as tradições da nossa língua e o estudo comparativo do alemão _Schweiz_, do cast. _Suiza_ e do italiano _Svizzera_, levam os philólogos a praticar e aconselhar a fórma _Suíça_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sumatra:2" n="2" geo="1" type="hom">
+<form>
+<orth>Sumatra</orth>
+</form>
+<sense><def>Fórma inglesada e inadmissível, em vez de _Samatra_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="sunda" geo="1">
+<form>
+<orth>Sunda</orth>
+</form>
+<sense><def>(e não Sonda)
+Grande archipélago da Oceânia. Cf. Barros, e Couto, _Décadas_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="surate" geo="1">
+<form>
+<orth>Surate</orth>
+</form>
+<sense><def>Cidade da Índia Inglesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="surrate:2" n="2" geo="1" type="hom">
+<form>
+<orth>Surrate</orth>
+</form>
+<sense><def>O mesmo que _Surate_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="taígeto" geo="1">
+<form>
+<orth>Taígeto</orth>
+</form>
+<sense><def>(e não _tai-gé-to_)
+Nome antigo de uma escarpada montanha da Grécia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Taýgetus_)</etym>
+</entry>
+
+
+<entry id="tâmisa" geo="1">
+<form>
+<orth>Tâmisa</orth>
+</form>
+<sense><def>(e não Tamísa)
+Grande rio da Inglaterra.
+</def>
+</sense>
+<etym ori="lat">(Do lat. _Tâmesis_)</etym>
+</entry>
+
+
+<entry id="tânagra" geo="1">
+<form>
+<orth>Tânagra</orth>
+</form>
+<sense><def>(e não Tanágra)
+Antiga cidade grega.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Tânagra_)</etym>
+</entry>
+
+
+<entry id="tanarife" geo="1">
+<form>
+<orth>Tanarife</orth>
+</form>
+<sense><def>Fórma portuguesa antiga de _Tenerife_. Cf. Barros, _Déc._ I, liv. I, cap. 12.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tanganhica" geo="1">
+<form>
+<orth>Tanganhica</orth>
+</form>
+<sense><def>Um dos grandes lagos da África oriental, que, nalguns livros nossos, apparece sob a fórma bárbara de _Tanganyika_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tanganyika" geo="1">
+<form>
+<orth>Tanganyika</orth>
+</form>
+<sense><def><ref>(V. <term>Tanganhica</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="tânger" geo="1">
+<form>
+<orth>Tânger</orth>
+</form>
+<sense><def>Cidade marroquina.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tângere" geo="1">
+<form>
+<orth>Tângere</orth>
+</form>
+<sense><def>O mesmo ou melhor que _Tânger_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tartesso" geo="1">
+<form>
+<orth>Tartesso</orth>
+</form>
+<sense><def>Outro nome antigo do Guadalquivir.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tavila" geo="1">
+<form>
+<orth>Tavila</orth>
+</form>
+<sense><def>O mesmo que _Tavira_, cidade do Algarve. Cf. _Lusíadas_, VIII, 25; _Inéd. da Hist. Port._, I, 517.
+</def>
+</sense>
+</entry>
+
+
+<entry id="taýgeto" geo="1">
+<form>
+<orth>Taýgeto</orth>
+</form>
+<sense><def>(e não _tai-gé-to_)
+Nome antigo de uma escarpada montanha da Grécia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Taýgetus_)</etym>
+</entry>
+
+
+<entry id="tchad" geo="1">
+<form>
+<orth>Tchad</orth>
+</form>
+<sense><def>(v. _Chad_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="tênedo" geo="1">
+<form>
+<orth>Tênedo</orth>
+</form>
+<sense><def>Ilhota, fronteira a Tróia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Tênedos_)</etym>
+</entry>
+
+
+<entry id="tenerife" geo="1">
+<form>
+<orth>Tenerife</orth>
+</form>
+<sense><def>Uma das ilhas Canárias.
+Fórma antiga, _Tanarife_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tetouan" geo="1" chaveta="1">
+<form>
+<orth>Tetouan</orth>
+</form>
+<sense><def>(v. _Tetuão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="tetuão" geo="1">
+<form>
+<orth>Tetuão</orth>
+</form>
+<sense><def>Cidade marroquina.
+</def>
+</sense>
+</entry>
+
+
+<entry id="theáki" geo="1" chaveta="1">
+<form>
+<orth>Theáki</orth>
+</form>
+<sense><def>(v. _Íthaca_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="thibet" geo="1" chaveta="1">
+<form>
+<orth>Thibet</orth>
+</form>
+<sense><def>(v. _Tibete_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="thomar" geo="1">
+<form>
+<orth>Thomar</orth>
+</form>
+<sense><def>É assim que se escreve hoje geralmente o nome de uma cidade portuguesa, talvez com o único fundamento, ou, antes, pretexto pueril, de se não confundir com o verbo _tomar_, da mesma fórma que muitos ingênuos assinam _Motta_, _Mattos_, _Matta_, _Themudo_, adulterando voluntariamente o seu nome com letras estranhas a êlle, para que êste deixe de sêr o que realmente é.
+Os documentos antigos trazem _Tomar_; e, desconhecida como é a origem, não há razão séria para a inclusão de uma letra que nada importa á pronúncia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tiberíade" geo="1">
+<form>
+<orth>Tiberíade</orth>
+</form>
+<sense><def>Antiga cidade da Galileia.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Tiberias_, _Tiberiadis_)</etym>
+</entry>
+
+
+<entry id="tibérias" geo="1">
+<form>
+<orth>Tibérias</orth>
+</form>
+<sense><def>(v. _Tiberíade_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="tibete" geo="1">
+<form>
+<orth>Tibete</orth>
+</form>
+<sense><def>Grande região da Ásia central.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tíbur" geo="1">
+<form>
+<orth>Tíbur</orth>
+</form>
+<sense><def>(e não Tibúr)
+Antiga cidade italiana, hoje Tívoli.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Tibur_)</etym>
+</entry>
+
+
+<entry id="tidor" geo="1">
+<form>
+<orth>Tidor</orth>
+</form>
+<sense><def>Ilha do archipélago das Molucas. Cf. Barros, _Déc._, (_passim_).
+</def>
+</sense>
+</entry>
+
+
+<entry id="tidore" geo="1">
+<form>
+<orth>Tidore</orth>
+</form>
+<sense><def>Ilha do archipélago das Molucas. Cf. Barros, _Déc._, (_passim_).
+</def>
+</sense>
+</entry>
+
+
+<entry id="tinge" geo="1">
+<form>
+<orth>Tinge</orth>
+</form>
+<sense><def>Nome antigo da Tângere. Cf. _Lusíadas_, III, 77.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Tinge_, _Tingi_, _Tingis_)</etym>
+</entry>
+
+
+<entry id="tiracol" geo="1">
+<form>
+<orth>Tiracol</orth>
+</form>
+<sense><def>Fórma moderna de _Tiracole_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tiracole" geo="1">
+<form>
+<orth>Tiracole</orth>
+</form>
+<sense><def>Povoação da Índia Portuguesa. Cf. _Déc._ IV, liv. VII, cap. 21.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tokio" geo="1">
+<form>
+<orth>Tokio</orth>
+</form>
+<sense><def>(v. _Toquió_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="to-kio" geo="1">
+<form>
+<orth>To-kio</orth>
+</form>
+<sense><def>(v. _Toquió_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="tomar:2" n="2" geo="1" type="hom">
+<form>
+<orth>Tomar</orth>
+</form>
+<sense><def>Fórma racional e antiga, em vez de _Thomar_. Cf. _Inéd. da Hist. Port._, I, 199.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tombuctu" geo="1">
+<form>
+<orth>Tombuctu</orth>
+</form>
+<sense><def>Cidade ao sul do Sahará, conhecida dos nossos escritores antigos por _Tungubutu_.
+<ref>(V. <term>Tungubutu</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="tonkin" geo="1" chaveta="1">
+<form>
+<orth>Tonkin</orth>
+</form>
+<sense><def>Fórma estranha de _Tonquim_.
+(V. _Tonquim_^2)
+</def>
+</sense>
+</entry>
+
+
+<entry id="tonquim:2" n="2" geo="1" type="hom">
+<form>
+<orth>Tonquim</orth>
+</form>
+<sense>
+<gramGrp>m.</gramGrp>
+<def>
+Região da Índia transgangética, outrora reino independente.
+</def>
+</sense>
+</entry>
+
+
+<entry id="toquió" geo="1">
+<form>
+<orth>Toquió</orth>
+</form>
+<sense><def>Moderna capital do Japão.--Também se diz _Tóquio_, mas os entendidos preferem _Toquió_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="trápani" geo="1">
+<form>
+<orth>Trápani</orth>
+</form>
+<sense><def>(e não Trapâni nem Trapaní)
+Pôrto da Sicília.
+</def>
+</sense>
+<etym ori="lat">(Do lat. _Drépanum_)</etym>
+</entry>
+
+
+<entry id="trás-os-montes" geo="1">
+<form>
+<orth>Trás-os-Montes</orth>
+</form>
+<sense><def>(e não Traz-os-Montes)
+Província de Portugal.
+</def>
+</sense>
+</entry>
+
+
+<entry id="traz-os-montes" geo="1">
+<form>
+<orth>Traz-os-Montes</orth>
+</form>
+<sense><def>Escrita errónea, e muito vulgar, em vez de _Trás-os-Montes_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tróia:2" n="2" geo="1" type="hom">
+<form>
+<orth>Tróia</orth>
+</form>
+<sense><def>Antiga cidade e reino da Asia Occidental, também designada, especialmente entre os poétas, por _Dardânia_, _Pérgano_ e _Ílio_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tsiampá" geo="1" chaveta="1">
+<form>
+<orth>Tsiampá</orth>
+</form>
+<sense><def>(v. _Champá_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="túbinga" geo="1">
+<form>
+<orth>Túbinga</orth>
+</form>
+<sense><def>Cidade aleman.
+</def>
+</sense>
+</entry>
+
+
+<entry id="túbingue" geo="1" chaveta="1">
+<form>
+<orth>Túbingue</orth>
+</form>
+<sense><def>(v. _Tubinga_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="tunes" geo="1">
+<form>
+<orth>Tunes</orth>
+</form>
+<sense><def>Cidade e região da África setentrional.--Melhór que _Túnis_. Cf. Filinto, _Vida de D. Man._, I, 82; Barros, _Déc._ I, liv. III, cap. 8.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tungubutu" geo="1">
+<form>
+<orth>Tungubutu</orth>
+</form>
+<sense>
+<gramGrp>m.</gramGrp>
+<def>
+O mesmo ou melhór que _Tombuctu_. Cf. Barros, _Déc._ I, liv. III, cap. 8.
+</def>
+</sense>
+</entry>
+
+
+<entry id="túnis" geo="1">
+<form>
+<orth>Túnis</orth>
+</form>
+<sense><def>(v. _Tunes_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="turkestan" geo="1" chaveta="1">
+<form>
+<orth>Turkestan</orth>
+</form>
+<sense><def>Fórma bárbara de _Turquestão_.
+<ref>(V. <term>Turquestão</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="turquestão" geo="1">
+<form>
+<orth>Turquestão</orth>
+</form>
+<sense><def>Região da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="tutuão" geo="1">
+<form>
+<orth>Tutuão</orth>
+</form>
+<sense><def>Outra fórma de _Tetuão_, Cf. _Lusíadas_, IV, 34.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ulcinde" geo="1">
+<form>
+<orth>Ulcinde</orth>
+</form>
+<sense><def>Região da Índia. Cf. _Lusíadas_, X, 106.
+(Nos geógraphos ingleses, _Shindy_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="uraes" geo="1">
+<form>
+<orth>Uraes</orth>
+</form>
+<sense><def>(v. _Urales_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="urales" geo="1">
+<form>
+<orth>Urales</orth>
+</form>
+<sense><def>Montes da Rússia, que separam a Europa da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="uruguai" geo="1">
+<form>
+<orth>Uruguai</orth>
+</form>
+<sense><def>Nação hispano-americana.
+</def>
+</sense>
+</entry>
+
+
+<entry id="uruguay" geo="1">
+<form>
+<orth>Uruguay</orth>
+</form>
+<sense><def>(v. _Uruguai_, que é fórma exacta)
+</def>
+</sense>
+</entry>
+
+
+<entry id="valdevez" geo="1">
+<form>
+<orth>Valdevez</orth>
+</form>
+<sense><def>Fórma usual do nome de uma villa do Minho.--Em documentos antigos, lê-se _Valdeveis_, o que parece justificar outra fórma, _Valdevês_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="valpaços" geo="1">
+<form>
+<orth>Valpaços</orth>
+</form>
+<sense><def>Villa de Portugal.
+</def>
+</sense>
+</entry>
+
+
+<entry id="valpassos" geo="1">
+<form>
+<orth>Valpassos</orth>
+</form>
+<sense><def>(Fórma errónea. V. _Valpaços_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="vardar" geo="1">
+<form>
+<orth>Vardar</orth>
+</form>
+<sense><def>Rio da Macedónia.
+(Cp. _Áxio_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="vêneto" geo="1">
+<form>
+<orth>Vêneto</orth>
+</form>
+<sense><def>(e não Venêto)
+Antiga região da Itália.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Vênetum_)</etym>
+</entry>
+
+
+<entry id="versailles" geo="1" chaveta="1">
+<form>
+<orth>Versailles</orth>
+</form>
+<sense><def>(v. _Versalhes_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="versalhes" geo="1">
+<form>
+<orth>Versalhes</orth>
+</form>
+<sense><def>Cidade de França.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Versailles_)</etym>
+</entry>
+
+
+<entry id="viana" geo="1">
+<form>
+<orth>Viana</orth>
+</form>
+<sense><def>Cidade do Minho; villa do Alentejo.
+</def>
+</sense>
+</entry>
+
+
+<entry id="vianna" geo="1">
+<form>
+<orth>Vianna</orth>
+</form>
+<sense><def>Cidade do Minho; villa do Alentejo.
+Antigamente, _Viana_. Cf. _Port. Mon. Hist._, 690.
+</def>
+</sense>
+</entry>
+
+
+<entry id="viseu" geo="1">
+<form>
+<orth>Viseu</orth>
+</form>
+<sense><def>(e não Vizeu)
+Cidade da Beira-Alta.--_Vizeu_ é fórma affectada e sem justificação.
+Um erudito acadêmico, Oliveira Berardo, se bem me recordo, fala de um antigo lat. _Visonium_; mas ainda que êsse lat. bárbaro seja hypothético, o exemplo dos nossos mestres antigos e a característica pronúncia beirôa, não deixa dúvidas sôbre a correcta escrita da palavra.
+</def>
+</sense>
+</entry>
+
+
+<entry id="vizeu" geo="1">
+<form>
+<orth>Vizeu</orth>
+</form>
+<sense><def>Fórma moderna, mas injustificável, de _Viseu_.
+<ref>(V. <term>Viseu</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="vosges" geo="1" chaveta="1">
+<form>
+<orth>Vosges</orth>
+</form>
+<sense><def>Nome francês dos _Vosgos_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="vosgos" geo="1">
+<form>
+<orth>Vosgos</orth>
+</form>
+<sense><def>(e não Vosges)
+Montes de França.
+</def>
+</sense>
+<etym ori="lat">(Do lat. _Vosegus_)</etym>
+</entry>
+
+
+<entry id="w:2" n="2" geo="1" type="hom">
+<form>
+<orth>W</orth>
+</form>
+<sense><def>Esta letra não se emprega em palavras portuguesas, mas só em nomes estrangeiros que ainda não estejam aportuguesados, como _Washington_, _Waterloo_, _Weimar_, _Westminster_, _Windor_, _Worms_, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="xangai" geo="1">
+<form>
+<orth>Xangai</orth>
+</form>
+<sense><def>(e não Shanghae, nem Changhai, como se tem escrito)
+Cidade e pôrto da China.
+_Xangai_ é a boa e antiga escrita portuguesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="xicôco" geo="1">
+<form>
+<orth>Xicôco</orth>
+</form>
+<sense><def>Nome português e antigo de uma das grandes ilhas do Japão.
+Os Franceses e Ingleses chamam-lhe _Si-kok_, os Hollandeses _Sikokf_, e vêem-se êstes barbarismos em livros e mappas portugueses.
+</def>
+</sense>
+</entry>
+
+
+<entry id="xira, villa franca de" geo="1">
+<form>
+<orth>Xira, Villa Franca de</orth>
+</form>
+<sense><def>Villa do districto de Lisbôa.
+Em documentos antigos, lê-se _Cira_. Cf. _Portug. Monum. Hist._, p. 562.
+</def>
+</sense>
+</entry>
+
+
+<entry id="xirás" geo="1">
+<form>
+<orth>Xirás</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Xiraz_. Cf. Tenreiro, IV.
+</def>
+</sense>
+</entry>
+
+
+<entry id="xiraz:2" n="2" geo="1" type="hom">
+<form>
+<orth>Xiraz</orth>
+</form>
+<sense><def>Cidade da Pérsia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="xire" geo="1">
+<form>
+<orth>Xire</orth>
+</form>
+<sense><def>(e não Chire)
+Rio de Moçambique.
+</def>
+</sense>
+</entry>
+
+
+<entry id="xobregas" geo="1">
+<form>
+<orth>Xobregas</orth>
+</form>
+<sense><def>Fórma antiga de _Xabregas_, antigo mosteiro de Lisbôa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="y:2" n="2" geo="1" type="hom">
+<form>
+<orth>Y</orth>
+</form>
+<sense><def>Como inicial, não se emprega em português, mas só nos nomes estrangeiros, que ainda não foram aportuguesados por quem o possa fazer, como _Yvetot_, _York_, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="yokoama" geo="1" chaveta="1">
+<form>
+<orth>Yokoama</orth>
+</form>
+<sense><def>(v. _Iocoama_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="yolof" geo="1" chaveta="1">
+<form>
+<orth>Yolof</orth>
+</form>
+<sense><def>(v. _Jalofo_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="yucatan" geo="1" chaveta="1">
+<form>
+<orth>Yucatan</orth>
+</form>
+<sense><def>(v. _Iucatão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="zambeze" geo="1">
+<form>
+<orth>Zambeze</orth>
+</form>
+<sense><def>Rio africano, a que os descobridores Portugueses chamaram rio dos _Bons-Sinaes_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="zanguebar" geo="1">
+<form>
+<orth>Zanguebar</orth>
+</form>
+<sense><def>Não se confunda com Zanzibar, como succede em livros de Geographia: _Zanguebar_ é a grande região, que se estende sôbre a costa oriental da África, desde o país dos Somális até Moçambique, compreendendo vários Estados, como _Zanzibar_^2, Quíloa, Magadoxo, Melinde, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="zanzibar:2" n="2" geo="1" type="hom">
+<form>
+<orth>Zanzibar</orth>
+</form>
+<sense><def>Ilha do mar das Índias, na costa de Zanguebar; cidade da mesma ilha, capital de um sultanado; o Estado, governado por um sultão, e que compreende, além daquella ilha, uma parte da costa de Zanguebar.
+</def>
+</sense>
+</entry>
+
+
+<entry id="zara" geo="1">
+<form>
+<orth>Zara</orth>
+</form>
+<sense><def>Outra fórma de _Çahará_.
+_Zára_, pela sua accentuação tónica, deixa suppor a legitimidade prosódica de _Çáhara_ ou _Çahára_. Cf. Barros, _Déc._ I, liv. I, cap. 13.
+</def>
+</sense>
+</entry>
+
+
+<entry id="zelanda" geo="1">
+<form>
+<orth>Zelanda</orth>
+</form>
+<sense><def>O mesmo que _Zelândia_. Cf. _Lusíadas_, VII, 61.
+</def>
+</sense>
+</entry>
+
+
+<entry id="zelândia" geo="1">
+<form>
+<orth>Zelândia</orth>
+</form>
+<sense><def>Província da Holanda.
+(Cp. _Zelanda_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="arómata" geo="1">
+<form>
+<orth>Arómata</orth>
+</form>
+<sense><def>(outro nome do cabo Gurdafui). Cf. _Lusíadas_, X, 97.
+</def>
+</sense>
+</entry>
+
+
+<entry id="arquico" geo="1">
+<form>
+<orth>Arquico</orth>
+</form>
+<sense><def>Pôrto nas vizinhanças de Maçuá, designado nos mappas modernos por _Arkiko_. Cf. _Lusíadas_, X, 52.
+</def>
+</sense>
+</entry>
+
+
+<entry id="arracão" geo="1">
+<form>
+<orth>Arracão</orth>
+</form>
+<sense><def>Nome de um antigo reino da Índia. Cf. _Lusíadas_, X, 122.
+(_Aracan_ é fórma hodierna, mas estranha).
+</def>
+</sense>
+</entry>
+
+
+<entry id="arraiolos" geo="1">
+<form>
+<orth>Arraiolos</orth>
+</form>
+<sense><def>(não _Arrayollos_)
+Villa de Portugal.
+</def>
+</sense>
+</entry>
+
+
+<entry id="arroios:2" n="2" geo="1" type="hom">
+<form>
+<orth>Arroios</orth>
+</form>
+<sense><def>(e não Arroyos)
+Nome de uma freguesia de Lisbôa.
+Cp. _arroio_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="arroyos" geo="1">
+<form>
+<orth>Arroyos</orth>
+</form>
+<sense><def>Escrita tradicional, mas injustificável, em vez de _Arroios_.
+<ref>(V. <term>Arroios</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="arsinário, cabo" geo="1">
+<form>
+<orth>Arsinário, cabo</orth>
+</form>
+<sense><def>Designação antiga do Cabo-Vêrde. Cf. _Lusíadas_, V, 7.
+</def>
+</sense>
+</entry>
+
+
+<entry id="artabro" geo="1">
+<form>
+<orth>Artabro</orth>
+</form>
+<sense><def>Designação antiga do cabo Finisterra. Cf. _Lusíadas_, IV, 28.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Artabrus_)</etym>
+</entry>
+
+
+<entry id="arundel" geo="1">
+<form>
+<orth>Arundel</orth>
+<phon extent="part">árandel</phon>
+</form>
+<sense><def>Cidade inglesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="arzila:2" n="2" geo="1" type="hom">
+<form>
+<orth>Arzila</orth>
+</form>
+<sense><def>(melhór escrita que Arzilla)
+Cidade africana. Cf. Filinto, _D. Man._, I, 260 e 340.
+</def>
+</sense>
+</entry>
+
+
+<entry id="assaboro" geo="1">
+<form>
+<orth>Assaboro</orth>
+</form>
+<sense><def>Designação antiga do _Moçandão_. Cf. _Lusíadas_, X, 102.
+(Cp. _Moçandão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="asseiceira" geo="1">
+<form>
+<orth>Asseiceira</orth>
+</form>
+<sense><def>Povoação do districto de Santarém.
+Dantes, predominava a fórma _Aceiceira_. Cf. L. Cardoso, _Diccion. Geogr._
+</def>
+</sense>
+</entry>
+
+
+<entry id="assúcar" geo="1">
+<form>
+<orth>Assúcar</orth>
+</form>
+<sense><def>É assim que, nalguns livros de Geographia, e por uma confusão facilmente explicável, se nomeia a cidade de _Sucre_, na Bolívia.
+<ref>(V. <term>Sucre</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="atlante:2" n="2" geo="1" type="hom">
+<form>
+<orth>Atlante</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Atlas_. Cf. _Lusíadas_, III, 73.
+</def>
+</sense>
+</entry>
+
+
+<entry id="atlas:2" n="2" geo="1" type="hom">
+<form>
+<orth>Atlas</orth>
+</form>
+<sense><def>Grande montanha da África setentrional, que em português se chama _Atlante_.
+(Cp. _Atlante_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="áurea-chersosoneso" geo="1">
+<form>
+<orth>Áurea-Chersosoneso</orth>
+<phon extent="part">quer</phon>
+</form>
+<sense><def>O mesmo que _Malaca_. Cf. _Lusíadas_, II, 54.
+</def>
+</sense>
+</entry>
+
+
+<entry id="aurigny" geo="1" chaveta="1">
+<form>
+<orth>Aurigny</orth>
+<phon extent="part">orinhi</phon>
+</form>
+<sense><def>Nome francês de uma ilhota do mar da Mancha, pertencente aos Ingleses, e que êlles chamam _Anderney_. É êste o nome que lhe devemos dar, á falta de nome português.
+</def>
+</sense>
+</entry>
+
+
+<entry id="austerlitz" geo="1">
+<form>
+<orth>Austerlitz</orth>
+<phon extent="part">áusterliz</phon>
+</form>
+<sense><def>Cidade austríaca.
+</def>
+</sense>
+</entry>
+
+
+<entry id="avis" geo="1">
+<form>
+<orth>Avis</orth>
+</form>
+<sense><def>(e não Aviz)
+Villa do Alentejo.--Não encontro justificação para o _z_ final. Em português antigo, a palavra não tem _z_. Cf. _Port. Mon. Hist._, 595; Car. Michaëlis, _Uma obra do Condestável_, 2.
+</def>
+</sense>
+</entry>
+
+
+<entry id="avranches" geo="1">
+<form>
+<orth>Avranches</orth>
+</form>
+<sense><def>(v. _Abranches_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="áxio" geo="1">
+<form>
+<orth>Áxio</orth>
+<phon extent="part">csi</phon>
+</form>
+<sense><def>Nome antigo do Vardar. Cf. _Lusíadas_, III, 13.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Áxius_)</etym>
+</entry>
+
+
+<entry id="ayres" geo="1">
+<form>
+<orth>Ayres</orth>
+</form>
+<sense><def>Fórma inexacta de _Aires_.
+Advirta-se que Barros, não obstante sêr de uma época em que dominava a fórma ditongal _ay_, _ey_, _oy..._, escreveu _Aires_. Cf. _Dec._, (_passim_).
+</def>
+</sense>
+</entry>
+
+
+<entry id="babelmândeb" geo="1">
+<form>
+<orth>Babelmândeb</orth>
+</form>
+<sense><def>(não Babelmandéb)
+Estreito de mar, entre a Arábia e a Abyssínia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="baçaim" geo="1">
+<form>
+<orth>Baçaim</orth>
+</form>
+<sense><def>Cidade marítima da Índia. Cf. _Lusíadas_, X, 61.
+(Em livros modernos, _Bassein_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bachão" geo="1">
+<form>
+<orth>Bachão</orth>
+</form>
+<sense><def>Uma das Molucas.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bactro" geo="1">
+<form>
+<orth>Bactro</orth>
+</form>
+<sense><def>Rio do Turquestão. Cf. _Lusíadas_, II, 53.
+(Nos mappas de hoje, _Balkh_, ou _Balkh-Déria_)
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Bactrus_)</etym>
+</entry>
+
+
+<entry id="baffin" geo="1">
+<form>
+<orth>Baffin</orth>
+<phon extent="part">báfin'</phon>
+</form>
+<sense><def>Gôlfo na América do Norte.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bagdad" geo="1">
+<form>
+<orth>Bagdad</orth>
+</form>
+<sense><def>Designação usual da cidade, que em português se chama _Bagodad_.
+<ref>(V. <term>Bagodad</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="bagodá" geo="1">
+<form>
+<orth>Bagodá</orth>
+</form>
+<sense><def>Designação usual da cidade, que em português se chama _Bagodad_.
+<ref>(V. <term>Bagodad</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="bagodad" geo="1">
+<form>
+<orth>Bagodad</orth>
+</form>
+<sense><def>Designação portuguesa e antiga da cidade da Turquia asiática, conhecida hoje geralmente por _Bagdad_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bahrém" geo="1" chaveta="1">
+<form>
+<orth>Bahrém</orth>
+</form>
+<sense><def>(v. _Barèm_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="balça:2" n="2" geo="1" type="hom">
+<form>
+<orth>Balça</orth>
+</form>
+<sense><def>Nome de várias povoações portuguesas.
+_Balsa_ usa-se hoje, mas não se usava nem é fórma justificável. Cf. L. Cardoso, _Diccion. Geogr._
+</def>
+</sense>
+</entry>
+
+
+<entry id="balcans" geo="1">
+<form>
+<orth>Balcans</orth>
+</form>
+<sense><def>Melhór orthogr. que _Balkans_.
+(Cp. _Balkans_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bâle" geo="1" chaveta="1">
+<form>
+<orth>Bâle</orth>
+</form>
+<sense><def>Nome francês da cidade de Basileia, disparatadamente usado ás vezes entre nós.
+</def>
+</sense>
+</entry>
+
+
+<entry id="balkans" geo="1" chaveta="1">
+<form>
+<orth>Balkans</orth>
+</form>
+<sense><def>Designação generalizada da grande montanha que vai do Adriático ao Mar-Negro.
+Não se restabelecendo o nome clássico de _Hemo_, será preferível escrevermos _Balcans_.
+(Cp. _Hemo_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="balkh" geo="1" chaveta="1">
+<form>
+<orth>Balkh</orth>
+</form>
+<sense><def>(v. _Bactro_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="balochistão" geo="1">
+<form>
+<orth>Balochistão</orth>
+</form>
+<sense><def>Fórma talvez mais portuguesa que _Beluchistão_, visto que os _Baloches_, segundo Barros, são os habitantes da respectiva região. Cf. _Déc._, III, liv. VII, cap. 2.
+</def>
+</sense>
+</entry>
+
+
+<entry id="balsa" geo="1">
+<form>
+<orth>Balsa</orth>
+</form>
+<sense><def>(v. _Balça_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="baltimore" geo="1">
+<form>
+<orth>Baltimore</orth>
+<phon extent="part">Báltimor</phon>
+</form>
+<sense><def>Cidade americana.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bantam" geo="1">
+<form>
+<orth>Bantam</orth>
+</form>
+<sense><def>Cidade de Java.
+</def>
+</sense>
+</entry>
+
+
+<entry id="barborá" geo="1">
+<form>
+<orth>Barborá</orth>
+</form>
+<sense><def>Cidade ao sul do gôlfo de Ádem. Cf. _Lusíadas_, X, 50.
+(Designação moderna, _Berberá_. Alguns diccion. geográphicos portugueses dizem _Berbera_, como em francês)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bardés" geo="1">
+<form>
+<orth>Bardés</orth>
+</form>
+<sense><def>Província da Índia portuguesa. Cf. _Peregrinação_, VIII.
+</def>
+</sense>
+</entry>
+
+
+<entry id="barém" geo="1">
+<form>
+<orth>Barém</orth>
+</form>
+<sense><def>Região da Arábia. Cf. _Lusíadas_, X, 41.
+(Em livros e mappas nossos, _Bahrem_ e até _Bahrein_!)
+</def>
+</sense>
+</entry>
+
+
+<entry id="baroce:2" n="2" geo="1" type="hom">
+<form>
+<orth>Baroce</orth>
+</form>
+<sense><def>Região da África austro-central.
+</def>
+</sense>
+</entry>
+
+
+<entry id="barotze" geo="1">
+<form>
+<orth>Barotze</orth>
+</form>
+<sense><def>(Orthogr. bárbara, em vez de _Baroce_. V. _Baroce_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="baroze" geo="1">
+<form>
+<orth>Baroze</orth>
+</form>
+<sense><def>(v. _Baroce_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="basileia" geo="1">
+<form>
+<orth>Basileia</orth>
+</form>
+<sense><def>Cidade e cantão da Suíça.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Basilea_)</etym>
+</entry>
+
+
+<entry id="bassein" chaveta="1">
+<form>
+<orth>Bassein</orth>
+</form>
+<sense><def>(v. _Baçaim_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="batecalá" geo="1">
+<form>
+<orth>Batecalá</orth>
+</form>
+<sense><def>Cidade da Índia. Cf. _Lusíadas_, X, 66.
+(Chamam-lhe hoje _Batkul_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="baticalá" geo="1">
+<form>
+<orth>Baticalá</orth>
+</form>
+<sense><def>Cidade da Índia. Cf. _Lusíadas_, X, 66.
+(Chamam-lhe hoje _Batkul_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="batjan" geo="1" chaveta="1">
+<form>
+<orth>Batjan</orth>
+</form>
+<sense><def>(v. _Bachão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="batkul" geo="1" chaveta="1">
+<form>
+<orth>Batkul</orth>
+</form>
+<sense><def>(v. _Baticalá_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bélgia" geo="1">
+<form>
+<orth>Bélgia</orth>
+</form>
+<sense><def>Fórma des. de _Bélgica_. Cf. Filinto, _D. Man._, I, 342.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bélgica" geo="1">
+<form>
+<orth>Bélgica</orth>
+</form>
+<sense><def>Nação europeia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bella-ilha" geo="1">
+<form>
+<orth>Bella-Ilha</orth>
+</form>
+<sense><def>Nome português de uma ilha da França, sôbre o Atlântico.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Belle-Isle_)</etym>
+</entry>
+
+
+<entry id="belle-isle" geo="1" chaveta="1">
+<form>
+<orth>Belle-Isle</orth>
+</form>
+<sense><def>Nome francês de _Bella-Ilha_.
+<ref>(V. <term>Bella-Ilha</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="beluchistan" geo="1">
+<form>
+<orth>Beluchistan</orth>
+</form>
+<sense><def>Fórma bárbara de _Beluchistão_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="beluchistão" geo="1">
+<form>
+<orth>Beluchistão</orth>
+</form>
+<sense><def>Região da Ásia.
+<ref>(V. <term>Balochistão</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="beja:2" n="2" geo="1" type="hom">
+<form>
+<orth>Beja</orth>
+</form>
+<sense><def>Cidade do Alentejo.
+Em documentos antigos, lê-se _Begia_. Cf. _Port. Mon. Hist._, 640.
+</def>
+</sense>
+</entry>
+
+
+<entry id="benares" geo="1">
+<form>
+<orth>Benares</orth>
+</form>
+<sense><def>(não Benarés)
+Grande cidade indiana.
+</def>
+</sense>
+</entry>
+
+
+<entry id="benguela" geo="1">
+<form>
+<orth>Benguela</orth>
+</form>
+<sense><def>(e não Benguella)
+Cidade de Angola.
+Na representação escrita do quimbundo, a que pertence aquelle termo, não há duplicação de consoantes.
+</def>
+</sense>
+</entry>
+
+
+<entry id="benomotapa" geo="1">
+<form>
+<orth>Benomotapa</orth>
+</form>
+<sense><def>(Outra fórma de _Monomotapa_). Cf. _Lusíadas_, X, 93.
+</def>
+</sense>
+</entry>
+
+
+<entry id="beócia" geo="1">
+<form>
+<orth>Beócia</orth>
+</form>
+<sense><def>Região da Grécia.
+(Cp. _Aónia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="berberá" geo="1">
+<form>
+<orth>Berberá</orth>
+</form>
+<sense><def>(v. _Barborá_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="berna" geo="1">
+<form>
+<orth>Berna</orth>
+</form>
+<sense><def>(e não Berne)
+Cidade da Suíça.
+</def>
+</sense>
+</entry>
+
+
+<entry id="berne" geo="1" chaveta="1">
+<form>
+<orth>Berne</orth>
+</form>
+<sense><def>Fórma afrancesada, que muitos entre nós empregam, em vez de _Berna_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bétis" geo="1">
+<form>
+<orth>Bétis</orth>
+</form>
+<sense><def>Designação antiga de Guadalquivir.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bidassôa" geo="1">
+<form>
+<orth>Bidassôa</orth>
+</form>
+<sense><def>Rio de Navarra.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bié" geo="1">
+<form>
+<orth>Bié</orth>
+</form>
+<sense><def>Região da África meridional.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bihé" geo="1">
+<form>
+<orth>Bihé</orth>
+</form>
+<sense><def>(v. _Bié_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bijagós" geo="1">
+<form>
+<orth>Bijagós</orth>
+</form>
+<sense><def>(v. _Bissagos_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bijagoz" geo="1">
+<form>
+<orth>Bijagoz</orth>
+</form>
+<sense><def>(v. _Bissagos_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bintang" geo="1" chaveta="1">
+<form>
+<orth>Bintang</orth>
+</form>
+<sense><def>(v. _Bintão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bintão" geo="1" ast="1">
+<form>
+<orth>Bintão</orth>
+</form>
+<sense><def>Pôrto e ilha, ao sul de Singapura. Cf. _Lusíadas_, X, 57.
+(Nos modernos livros de Geographia, _Bintang_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bisnaga" geo="1">
+<form>
+<orth>Bisnaga</orth>
+</form>
+<sense><def>(e não Bisnagá, como escreveram alguns)
+Região da Índia. Cf. David Lopes, _Chrón. dos Reis de Bisnaga_, p. XXVII.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bissagos" geo="1">
+<form>
+<orth>Bissagos</orth>
+</form>
+<sense><def>Archipélago na costa da Guiné.
+Cp. _Dórcadas_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bombaim" geo="1">
+<form>
+<orth>Bombaim</orth>
+</form>
+<sense><def>Cidade da Índia inglesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bombay" geo="1" chaveta="1">
+<form>
+<orth>Bombay</orth>
+</form>
+<sense><def>Fórma estranha, em vez de _Bombaim_.
+<ref>(V. <term>Bombaim</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="bona:2" n="2" geo="1" type="hom">
+<form>
+<orth>Bona</orth>
+</form>
+<sense><def>Cidade da Prússia, á beira do Rheno.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bonn" geo="1" chaveta="1">
+<form>
+<orth>Bonn</orth>
+</form>
+<sense><def>(v. _Bona_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bons-sinaes, rio dos" geo="1">
+<form>
+<orth>Bons-Sinaes, Rio dos</orth>
+</form>
+<sense><def>Nome, que os Portugueses deram primitivamente ao Zambeze. Cf. _Lusíadas_, V, 78.
+</def>
+</sense>
+</entry>
+
+
+<entry id="borbão" geo="1">
+<form>
+<orth>Borbão</orth>
+</form>
+<sense><def>Ilha do Oceano Índico. Cf. Garcia de Resende, _Miscellânea_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="bordeaux" geo="1" chaveta="1">
+<form>
+<orth>Bordeaux</orth>
+</form>
+<sense><def>(v. _Bordéus_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bordéus:2" n="2" geo="1" type="hom">
+<form>
+<orth>Bordéus</orth>
+</form>
+<sense><def>Cidade da França.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Bordeaux_)</etym>
+</entry>
+
+
+<entry id="borístenes" geo="1">
+<form>
+<orth>Borístenes</orth>
+</form>
+<sense><def>Grande rio da Rússia, mais conhecido hoje por _Dniepre_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Borýsthenes_)</etym>
+</entry>
+
+
+<entry id="borýsthenes" geo="1">
+<form>
+<orth>Borýsthenes</orth>
+</form>
+<sense><def>Grande rio da Rússia, mais conhecido hoje por _Dniepre_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Borýsthenes_)</etym>
+</entry>
+
+
+<entry id="bósforo" geo="1">
+<form>
+<orth>Bósforo</orth>
+</form>
+<sense><def>(v. _Bósporo_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bósphoro" geo="1">
+<form>
+<orth>Bósphoro</orth>
+</form>
+<sense><def>(v. _Bósporo_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bósporo" geo="1">
+<form>
+<orth>Bósporo</orth>
+</form>
+<sense><def>Nome do estreito, também conhecido por _estreito de Constantinopla_; e nome do estreito, que liga o Mar-Negro ao de Azof.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Bosporos_, gr. _Bosporos_)</etym>
+</entry>
+
+
+<entry id="bourbon" geo="1">
+<form>
+<orth>Bourbon</orth>
+</form>
+<sense><def>(v. _Borbão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="brasil:2" n="2" geo="1" type="hom">
+<form>
+<orth>Brasil</orth>
+</form>
+<sense><def>(e não Brazil)
+Nação da América do Sul.
+(Do nome do pau _brasil_, que, segundo a opinião mais segura, deriva de _brasa_, que se não deve escrever com _z_). Cf. _Peregrinação_, XXXVII; _Lusíadas_, X, 63.
+</def>
+</sense>
+</entry>
+
+
+<entry id="brazil" geo="1">
+<form>
+<orth>Brazil</orth>
+</form>
+<sense><def>(Fórma incorrecta, em vez de _Brasil_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="brindes" geo="1">
+<form>
+<orth>Brindes</orth>
+</form>
+<sense><def>(e não Bríndisi)
+Cidade da Itália, sôbre o Adriático.
+</def>
+</sense>
+<etym orig="It">(It. _Brindisi_, do lat. _Brundisium_)</etym>
+</entry>
+
+
+<entry id="bríndisi" geo="1" chaveta="1">
+<form>
+<orth>Bríndisi</orth>
+</form>
+<sense><def>(v. _Brindes_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="bronsuíque" geo="1">
+<form>
+<orth>Bronsuíque</orth>
+</form>
+<sense><def>Cidade aleman.
+</def>
+</sense>
+</entry>
+
+
+<entry id="brunswick" geo="1" chaveta="1">
+<form>
+<orth>Brunswick</orth>
+</form>
+<sense><def>(v. _Bronsuíque_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="buçaco" geo="1">
+<form>
+<orth>Buçaco</orth>
+</form>
+<sense><def>Serra de Portugal.
+A orthogr. antiga e exacta é _Buçaco_.
+</def>
+</sense>
+<etym ori="b">(Do b. lat. _Buzaccum_)</etym>
+</entry>
+
+
+<entry id="bucara" geo="1">
+<form>
+<orth>Bucara</orth>
+<phon extent="part">bu-cá-ra</phon>
+</form>
+<sense><def>Cidade asiática.
+(Cp. fr. _Boukhara_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="buenos-aires" geo="1">
+<form>
+<orth>Buenos-Aires</orth>
+</form>
+<sense><def>Capital da República Argentina.
+</def>
+</sense>
+</entry>
+
+
+<entry id="buenos-ayres" geo="1">
+<form>
+<orth>Buenos-Ayres</orth>
+</form>
+<sense><def>Fórma incorrecta de _Buenos-Aires_.
+<ref>(V. <term>Buenos-Aires</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="bussaco" geo="1">
+<form>
+<orth>Bussaco</orth>
+</form>
+<sense><def>(v. _Buçaco_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="butan:2" n="2" geo="1" type="hom">
+<form>
+<orth>Butan</orth>
+</form>
+<sense><def>Fórma bárbara de _Butão_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="butão" geo="1">
+<form>
+<orth>Butão</orth>
+</form>
+<sense><def>Região da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="byzâncio:2" n="2" geo="1" type="hom">
+<form>
+<orth>Byzâncio</orth>
+</form>
+<sense><def>(e não Bysâncio, como alguns escrevem)
+Designação antiga da cidade que hoje se chama Constantinopla.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Byzantium_)</etym>
+</entry>
+
+
+<entry id="cabo-verde:2" n="2" geo="1" type="hom">
+<form>
+<orth>Cabo-Verde</orth>
+</form>
+<sense><def>Cabo da costa occidental da África, conhecido antigamente por _Arsinário_.
+(Cp. _Arsinário_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="cabul:2" n="2" geo="1" type="hom">
+<form>
+<orth>Cabul</orth>
+</form>
+<sense><def>(e não Kabul)
+Rio da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cachó" geo="1">
+<form>
+<orth>Cachó</orth>
+</form>
+<sense><def>Designação antiga da Cochinchina. Cf. _Conquista do Pegu_, I.
+</def>
+</sense>
+</entry>
+
+
+<entry id="çafim" geo="1">
+<form>
+<orth>Çafim</orth>
+</form>
+<sense><def>Antiga cidade berbére. Cf. Filinto, _Vida de D. Man._, II, p. 7.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cagliari" geo="1" chaveta="1">
+<form>
+<orth>Cagliari</orth>
+</form>
+<sense><def>(v. _Cálari_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="çahará" geo="1">
+<form>
+<orth>Çahará</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Sahará_. Cf. Barros, _Déc._ I, liv. I, cap. 2.
+Grande região da África, ao sul de Marrocos, Argélia e Tunes.
+</def>
+</sense>
+</entry>
+
+
+<entry id="çáhara" geo="1">
+<form>
+<orth>Çáhara</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Sahará_. Cf. Barros, _Déc._ I, liv. I, cap. 2.
+Grande região da África, ao sul de Marrocos, Argélia e Tunes.
+</def>
+</sense>
+</entry>
+
+
+<entry id="calaiate" geo="1">
+<form>
+<orth>Calaiate</orth>
+</form>
+<sense><def>Região da Arábia. Cf. _Lusíadas_, X, 41.
+(Em livros modernos, _Kallat_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="cálari" geo="1">
+<form>
+<orth>Cálari</orth>
+</form>
+<sense><def>Cidade principal da Sardenha.
+</def>
+</sense>
+<etym orig="It">(It. _Cagliari_)</etym>
+</entry>
+
+
+<entry id="calecu" geo="1">
+<form>
+<orth>Calecu</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Calecut_: <cit type="example"><quote>«_Ricos em Calecu..._»</quote></cit> _Lusíadas_, IX, 10. Cf. G. Vicente, _Auto da Índia_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="calecut" geo="1">
+<form>
+<orth>Calecut</orth>
+</form>
+<sense><def>Cidade da costa occidental da Índia. Cf. Filinto, _Vida de D. Man._, I, p. 253.
+</def>
+</sense>
+</entry>
+
+
+<entry id="calecute" geo="1">
+<form>
+<orth>Calecute</orth>
+</form>
+<sense><def>Fórma preferível a _Calecut_. Cp. _Calecut_. Cf. _Hist. dos Port. no Malabar_, p. 91.
+</def>
+</sense>
+</entry>
+
+
+<entry id="calicut" geo="1">
+<form>
+<orth>Calicut</orth>
+</form>
+<sense><def>(v. _Calecut_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="çamatra" geo="1">
+<form>
+<orth>Çamatra</orth>
+</form>
+<sense><def>Outra fórma, talvez a mais exacta, de _Samatra_. Cf. _Not. para a Hist. e Geogr._, II, p. 375; Barros, _Déc._ III, liv. V, cap. 1; Couto, _Déc._ IV, liv. III, cap. 1.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cambodja" geo="1">
+<form>
+<orth>Cambodja</orth>
+</form>
+<sense><def>Fórma bárbara de _Camboja_.
+<ref>(V. <term>Camboja</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="camboja" geo="1">
+<form>
+<orth>Camboja</orth>
+</form>
+<sense><def>Rio e região da Ásia meridional.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cambraia:2" n="2" geo="1" type="hom">
+<form>
+<orth>Cambraia</orth>
+</form>
+<sense><def>Cidade da França.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Cambray_)</etym>
+</entry>
+
+
+<entry id="cambray" geo="1" chaveta="1">
+<form>
+<orth>Cambray</orth>
+</form>
+<sense><def>(v. _Cambraia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="camchatca" geo="1">
+<form>
+<orth>Camchatca</orth>
+</form>
+<sense><def>Grande península da Sibéria oriental.--A fórma _Kamtchatka_, usada por geógraphos, não se justifica em português.
+</def>
+</sense>
+</entry>
+
+
+<entry id="çamora" geo="1">
+<form>
+<orth>Çamora</orth>
+</form>
+<sense><def>(e não Samora)
+Cidade da Espanha. Cf. R. Pina, _Aff. V_, c. CLXXX.
+(Cast. _Zamora_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="çamora-correia" geo="1">
+<form>
+<orth>Çamora-Correia</orth>
+</form>
+<sense><def>Villa do districto de Santarém.
+(Usa-se _Samora-Correia_, incorrectamente. Cp. _Çamora_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="canaan" geo="1">
+<form>
+<orth>Canaan</orth>
+</form>
+<sense><def>(e não Chanaan)
+Designação antiga daquella parte da Palestina, que ficava a Oéste do Jordão.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Canaan_)</etym>
+</entry>
+
+
+<entry id="çanagá" geo="1">
+<form>
+<orth>Çanagá</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Senegal_. Cf. Barros, _Déc._, (_passim_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="çanagal" geo="1">
+<form>
+<orth>Çanagal</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Senegal_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="candahar" geo="1">
+<form>
+<orth>Candahar</orth>
+</form>
+<sense><def>Cidade do Afeganistão, conhecida dos chronistas portugueses por _Candar_.
+<ref>(V. <term>Candar</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="candar" geo="1">
+<form>
+<orth>Candar</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Candahar_. Cf. Barros, _Déc._ IV, liv. IV, cap. 1.
+</def>
+</sense>
+</entry>
+
+
+<entry id="canosa" geo="1">
+<form>
+<orth>Canosa</orth>
+</form>
+<sense><def>Cidade italiana, antigamente _Canúsio_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cantorbery" geo="1" chaveta="1">
+<form>
+<orth>Cantorbery</orth>
+</form>
+<sense><def>(v. _Cantuária_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="cantuária" geo="1">
+<form>
+<orth>Cantuária</orth>
+</form>
+<sense>
+<gramGrp>f.</gramGrp>
+<def>
+Cidade inglesa, antiga capital do reino de Kent.
+(Em ingl. _Cantorbery_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="canúsio" geo="1">
+<form>
+<orth>Canúsio</orth>
+</form>
+<sense><def>Nome antigo de _Canosa_. Cf. _Lusíadas_, IV, 20.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Canusium_)</etym>
+</entry>
+
+
+<entry id="çaragôça" geo="1">
+<form>
+<orth>Çaragôça</orth>
+</form>
+<sense>
+<gramGrp>f.</gramGrp>
+<def>
+Cidade da Espanha.
+Bôa e antiga orthogr. Cf. _Eufrosina_, act. I, sc. 2; Filinto, _Vida de D. Man._, I, p. 61.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cária" geo="1">
+<form>
+<orth>Cária</orth>
+</form>
+<sense><def>Província da Ásia-Menor.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Cária_)</etym>
+</entry>
+
+
+<entry id="carmânia" geo="1">
+<form>
+<orth>Carmânia</orth>
+</form>
+<sense><def>Antiga província da Pérsia. Cf. _Lusíadas_, IV, 65.
+(Nos livros modernos, _Kerman_)
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Carmania_)</etym>
+</entry>
+
+
+<entry id="carnac" geo="1">
+<form>
+<orth>Carnac</orth>
+</form>
+<sense><def>(e não Karnak)
+Aldeia egýpcia, situada onde foi Thebas. Cf. Freund, vb. _Thebae_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cárpathos" geo="1">
+<form>
+<orth>Cárpathos</orth>
+</form>
+<sense><def>Cadeia de montanhas, ao norte da Hungria.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cárpatos" geo="1">
+<form>
+<orth>Cárpatos</orth>
+</form>
+<sense><def>Cadeia de montanhas, ao norte da Hungria.
+</def>
+</sense>
+</entry>
+
+
+<entry id="carpella" geo="1">
+<form>
+<orth>Carpella</orth>
+</form>
+<sense><def>Cabo da Carmânia, o mesmo que _Jasque_. Cf. _Lusíadas_, X. 105.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cartum" geo="1">
+<form>
+<orth>Cartum</orth>
+</form>
+<sense><def>Capital do Sudão egýpcio.
+</def>
+</sense>
+</entry>
+
+
+<entry id="casével" geo="1">
+<form>
+<orth>Casével</orth>
+</form>
+<sense><def>Povoação portuguesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="castello-branco" geo="1">
+<form>
+<orth>Castello-Branco</orth>
+</form>
+<sense><def>Cidade da Beira-Baixa.
+Em documentos antigos lê-se _Castelbranco_. Cf. _Port. Mon. Hist._, 566.
+</def>
+</sense>
+</entry>
+
+
+<entry id="catgão" geo="1">
+<form>
+<orth>Catgão</orth>
+</form>
+<sense><def>Cidade da Índia. Cf. _Lusíadas_, X, 121.
+(Nos mappas modernos, _Chitagong_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="cauchinchina" geo="1">
+<form>
+<orth>Cauchinchina</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Cochinchina_. Cf. _Lusíadas_, X, 129.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cebta" geo="1">
+<form>
+<orth>Cebta</orth>
+</form>
+<sense><def>O mesmo que _Ceita_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ceia:2" n="2" geo="1" type="hom">
+<form>
+<orth>Ceia</orth>
+</form>
+<sense><def>Hoje, fórma usual que se dá ao nome de uma villa da Beira-Baixa.
+O lat. bárbaro dizia _Sena_ e os nossos escritores antigos escreviam _Seia_. Cf. Herculano, _Hist. de Port._ O _S_ não soava como _C_, e portanto devemos suppor que escrita exacta é _Seia_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ceilám" geo="1">
+<form>
+<orth>Ceilám</orth>
+</form>
+<sense><def>(outra fórma de _Ceilão_). Cf. _Not. para a Hist. e Geogr._, II, 353.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ceilão" geo="1">
+<form>
+<orth>Ceilão</orth>
+</form>
+<sense><def>(e não Ceylão)
+Grande ilha do mar das Índias. Cf. _Hist. dos Port. no Malabar_, 112; _Not. para a Hist. e Geogr._, tomo V; _Lusíadas_, X, 107.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ceita:2" n="2" geo="1" type="hom">
+<form>
+<orth>Ceita</orth>
+</form>
+<sense><def>Antiga designação portuguesa de _Ceuta_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cepta" geo="1">
+<form>
+<orth>Cepta</orth>
+</form>
+<sense><def>Fórma antiga de _Ceuta_. Cf. Barros, _Déc._; R. Pina, _João II_; Azurara, _Chrón. de D. Pedro_; etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cérigo" geo="1">
+<form>
+<orth>Cérigo</orth>
+</form>
+<sense><def>Ilha do Mediterráneo, ao Sul da Grécia, antigamente _Cythera_.
+(Cp. _Cythera_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="cernache" geo="1">
+<form>
+<orth>Cernache</orth>
+</form>
+<sense><def>Nome de duas povoações portuguesas.
+Parece que a fórma _Cernache_ é a mais exacta; é pelo menos a mais antiga. Cf. L. Cardoso, _Diccion. Geogr._
+</def>
+</sense>
+</entry>
+
+
+<entry id="cernancelhe" geo="1">
+<form>
+<orth>Cernancelhe</orth>
+<phon extent="part">cê</phon>
+</form>
+<sense><def>Villa da Beira-Alta.
+Tem-se usado as duas variantes; _Cernancêlhe_ porém é mais antiga e talvez mais exacta.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ceuta" geo="1">
+<form>
+<orth>Ceuta</orth>
+</form>
+<sense><def>Promontório e cidade forte na costa setentrional da África.
+Fórma antiga, _Cepta_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cevennas" geo="1">
+<form>
+<orth>Cevennas</orth>
+</form>
+<sense><def>(e não Cevennes)
+Montes de França.
+</def>
+</sense>
+<etym ori="lat">(Do lat. _Cevenna_ ou _Cebenna_)</etym>
+</entry>
+
+
+<entry id="cevennes" geo="1" chaveta="1">
+<form>
+<orth>Cevennes</orth>
+</form>
+<sense><def>Nome francês dos _Cevennas_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="chad" geo="1">
+<form>
+<orth>Chad</orth>
+</form>
+<sense><def>Grande lago da África.--A orthogr. _Tchad_, usada por geógraphos, não se justifica em português.
+</def>
+</sense>
+</entry>
+
+
+<entry id="champá" geo="1">
+<form>
+<orth>Champá</orth>
+</form>
+<sense><def>Costa da Arábia, a Sudoéste. Cf. _Lusíadas_, X, 129.
+(Em livros modernos, _Tsiampá_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="champanha:2" n="2" geo="1" type="hom">
+<form>
+<orth>Champanha</orth>
+</form>
+<sense><def>Região do norte da França.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Champagne_)</etym>
+</entry>
+
+
+<entry id="changhai" geo="1">
+<form>
+<orth>Changhai</orth>
+</form>
+<sense><def>(v. _Xangai_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="chatigão" geo="1">
+<form>
+<orth>Chatigão</orth>
+</form>
+<sense><def>O mesmo que _Catigão_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="chaves" geo="1">
+<form>
+<orth>Chaves</orth>
+</form>
+<sense><def>Villa trasmontana.--A fórma archaica era _Chávias_. Cf. _Portug. Monum. Hist._, 686. A terminação _as_ harmonizava-se mais com a etym. _flávias_ (águas).
+</def>
+</sense>
+</entry>
+
+
+<entry id="cherbourg" geo="1" chaveta="1">
+<form>
+<orth>Cherbourg</orth>
+</form>
+<sense><def>(v. _Cherburgo_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="cherburgo" geo="1">
+<form>
+<orth>Cherburgo</orth>
+</form>
+<sense><def>Cidade e pôrto da França.
+</def>
+</sense>
+</entry>
+
+
+<entry id="chile:2" n="2" geo="1" type="hom">
+<form>
+<orth>Chile</orth>
+</form>
+<sense><def>Nação hispano-americana.
+</def>
+</sense>
+</entry>
+
+
+<entry id="chíli" geo="1">
+<form>
+<orth>Chíli</orth>
+</form>
+<sense><def>(v. _Chile_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="chiraz" geo="1">
+<form>
+<orth>Chiraz</orth>
+</form>
+<sense><def>Fórma afrancesada, indiscretamente usada por alguns, em vez de _Xiraz_.
+<ref>(V. <term>Xiraz</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="chire" geo="1">
+<form>
+<orth>Chire</orth>
+</form>
+<sense><def>(v. _Xire_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="chittagong" geo="1" chaveta="1">
+<form>
+<orth>Chittagong</orth>
+</form>
+<sense><def>(v. _Catigão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="choramândel" geo="1">
+<form>
+<orth>Choramândel</orth>
+</form>
+<sense><def>Costa oriental da Índia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="coramândel" geo="1">
+<form>
+<orth>Coramândel</orth>
+</form>
+<sense><def>Costa oriental da Índia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="chypre" geo="1">
+<form>
+<orth>Chypre</orth>
+</form>
+<sense><def>Ilha do Mediterrâneo.
+A fórma, hoje usual, é _Chypre_, á francesa; mas a fórma exacta, em português, é _Cypro_ ou _Cipro_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Cyprus_)</etym>
+</entry>
+
+
+<entry id="cinfães" geo="1">
+<form>
+<orth>Cinfães</orth>
+</form>
+<sense><def>(e não Sinfães)
+Villa da Beira-Alta.
+Em documentos do séc. XI, _Cinfanes_ e _Cimphanes_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cingapura" geo="1">
+<form>
+<orth>Cingapura</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Singapura_. Cf. Barros, _Déc._ II, liv. VI, cap. 1; _Lusíadas_, X, 125.
+Cidade e ilha da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cintra" geo="1">
+<form>
+<orth>Cintra</orth>
+</form>
+<sense><def>Villa do districto de Lisbôa.--Antigamente, pelo menos até o século XVII, só se usou a fórma _Sintra_ e ás vezes _Sintria_ ou _Syntria_, o que é poderoso argumento contra a fórma moderna _Cintra_, visto que o _C_ e _S_ iniciaes se não confundiam na pronúncia como hoje.
+Cp. _Ceia_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="clarença" geo="1">
+<form>
+<orth>Clarença</orth>
+</form>
+<sense><def>Cidade da Moreia.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Clarence_)</etym>
+</entry>
+
+
+<entry id="coblença" geo="1">
+<form>
+<orth>Coblença</orth>
+</form>
+<sense><def>Cidade da Prússia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="coblentz" geo="1" chaveta="1">
+<form>
+<orth>Coblentz</orth>
+</form>
+<sense><def>(v. _Coblença_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="cochinchina:2" n="2" geo="1" type="hom">
+<form>
+<orth>Cochinchina</orth>
+</form>
+<sense><def>Região asiática, na península Indo-China.
+(Cp. _Cauchinchina_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="çocotorá" geo="1">
+<form>
+<orth>Çocotorá</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Socotorá_. Cf. _Not. para a Hist. e Geogr._, tomo II, (_Livro de Duarte Barbosa_).
+Ilha do mar das Índias.
+</def>
+</sense>
+</entry>
+
+
+<entry id="çofala" geo="1">
+<form>
+<orth>Çofala</orth>
+</form>
+<sense><def>Região da costa occidental da África.--Usaram-se dantes as duas fórmas, mas prevalecia a segunda, que é talvez a mais exacta.
+O mesmo ou melhór que _Sofala_. Cf. _Not. para a Hist. e Geogr._, II., 162 e 233; Filinto, _Vida de D. Man._, I, 379; Barros, _Déc._ I, liv. IV, cap. 3.
+</def>
+</sense>
+</entry>
+
+
+<entry id="colombo" geo="1">
+<form>
+<orth>Colombo</orth>
+</form>
+<sense><def>Fórma errada, algures usada em vez de _Columbo_.
+<ref>(V. <term>Columbo</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="columbo" geo="1">
+<form>
+<orth>Columbo</orth>
+</form>
+<sense><def>(e não Colombo)
+Cidade de Ceilão. Cf. Couto, _Déc._, (_passim_); _Lusíadas_, X, 51.
+</def>
+</sense>
+</entry>
+
+
+<entry id="comori" geo="1">
+<form>
+<orth>Comori</orth>
+</form>
+<sense><def>O mesmo que _Comorim_. Cf. _Lusíadas_, X, 107.
+</def>
+</sense>
+</entry>
+
+
+<entry id="comorim" geo="1">
+<form>
+<orth>Comorim</orth>
+</form>
+<sense><def>(v. _Cori_). Cf. _Lusíadas_, X, 65.
+</def>
+</sense>
+</entry>
+
+
+<entry id="conca:2" n="2" geo="1" type="hom">
+<form>
+<orth>Conca</orth>
+</form>
+<sense><def>Serra ou serras da Espanha: <cit type="example"><quote>«_...o Tejo..., que das serras de Conca vem manando..._»</quote></cit> _Lusíadas_, IV, 10.
+(Cast. _Cuenca_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="conisberga" geo="1">
+<form>
+<orth>Conisberga</orth>
+</form>
+<sense><def>Cidade da Prússia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="constantinopla" geo="1">
+<form>
+<orth>Constantinopla</orth>
+</form>
+<sense><def>Capital da Turquia.
+Os antigos escreviam _Constantinópola_, que é orthogr. mais exacta. Cf. Couto, _Déc._ IV, liv. VIII, cap. 9.
+</def>
+</sense>
+</entry>
+
+
+<entry id="constantinópola" geo="1">
+<form>
+<orth>Constantinópola</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Constantinopla_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="coraçan" geo="1">
+<form>
+<orth>Coraçan</orth>
+</form>
+<sense><def>(e não Khorassan)
+Região da Pérsia.--Podia, e deveria, escrever-se _Coração_, mas esta escrita sería um tanto prejudicada pela homophonia do substantivo commum, _coração_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="coraçone" geo="1">
+<form>
+<orth>Coraçone</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Coraçan_. Cf. _Peregrinação_, CXXIV.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cori:2" n="2" geo="1" type="hom">
+<form>
+<orth>Cori</orth>
+</form>
+<sense><def>Cabo meridional do Indostão, conhecido geralmente por _Comorim_. Cf. _Lusíadas_, X, 107.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cornouailles" geo="1" chaveta="1">
+<form>
+<orth>Cornouailles</orth>
+</form>
+<sense><def>Fórma francesa de _Cornualha_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cornualha" geo="1">
+<form>
+<orth>Cornualha</orth>
+</form>
+<sense><def>Condado da Inglaterra.
+</def>
+</sense>
+<etym orig="Ingl">(Ingl. _Cornwall_)</etym>
+</entry>
+
+
+<entry id="coromandel" geo="1">
+<form>
+<orth>Coromandel</orth>
+</form>
+<sense><def>(v. _Choramândel_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="coulão" geo="1">
+<form>
+<orth>Coulão</orth>
+</form>
+<sense><def>Cidade marítima do Malabar. Cf. _Lusíadas_, VII, 35.
+(Em livros modernos _Culan_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="covilhã" geo="1">
+<form>
+<orth>Covilhã</orth>
+</form>
+<sense><def>Cidade da Beira-Baixa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="covilhan" geo="1">
+<form>
+<orth>Covilhan</orth>
+</form>
+<sense><def>Cidade da Beira-Baixa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="crato:2" n="2" geo="1" type="hom">
+<form>
+<orth>Crato</orth>
+</form>
+<sense><def>Villa do Alentejo.
+Fórma archaica, _Ocrate_. Cf. _Portug. Monum. Hist._, 624.
+</def>
+</sense>
+</entry>
+
+
+<entry id="çuaquém" geo="1">
+<form>
+<orth>Çuaquém</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Suaquém_. Cf. _Lusíadas_, X, 97.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cuenca" geo="1" chaveta="1">
+<form>
+<orth>Cuenca</orth>
+</form>
+<sense><def>(v. _Conca_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="çuez" geo="1">
+<form>
+<orth>Çuez</orth>
+</form>
+<sense><def>(Cp. _Suez_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="cuiabá" geo="1">
+<form>
+<orth>Cuiabá</orth>
+</form>
+<sense><def>Cidade de Mato-Grosso, no Brasil.
+(Fórma usual, mas injustificável, _Cuyabá_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="culan" geo="1" chaveta="1">
+<form>
+<orth>Culan</orth>
+</form>
+<sense><def>(v. _Coulão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="çunda" geo="1">
+<form>
+<orth>Çunda</orth>
+</form>
+<sense><def>Outra fórma de _Sunda_. Cf. _Not. para a Hist. e Geogr._, II, p. 375.
+</def>
+</sense>
+</entry>
+
+
+<entry id="çurate" geo="1">
+<form>
+<orth>Çurate</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Surate_. Cf. _Not. para a Hist. e Geogr._, II, p. 280.
+Cidade da Índia Inglesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cutch" geo="1" chaveta="1">
+<form>
+<orth>Cutch</orth>
+</form>
+<sense><def>(v. _Jaquete_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="cypro" geo="1">
+<form>
+<orth>Cypro</orth>
+</form>
+<sense><def>O mesmo ou melhór que Chipre_. Cf. Lusíadas_, V, 5; X, 48.
+Ilha do Mediterrâneo.
+A fórma, hoje usual, é _Chypre_, á francesa; mas a fórma exacta, em português, é _Cypro_ ou _Cipro_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Cyprus_)</etym>
+</entry>
+
+
+<entry id="cipro" geo="1">
+<form>
+<orth>Cipro</orth>
+</form>
+<sense><def>O mesmo ou melhór que Chipre_. Cf. Lusíadas_, V, 5; X, 48.
+Ilha do Mediterrâneo.
+A fórma, hoje usual, é _Chypre_, á francesa; mas a fórma exacta, em português, é _Cypro_ ou _Cipro_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Cyprus_)</etym>
+</entry>
+
+
+<entry id="cuyabá" geo="1">
+<form>
+<orth>Cuyabá</orth>
+</form>
+<sense><def>(v. _Cuiabá_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="cythera" geo="1">
+<form>
+<orth>Cythera</orth>
+</form>
+<sense><def>O mesmo que _Cérigo_. Cf. _Lusíadas_, I, 100.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cyzica" geo="1">
+<form>
+<orth>Cyzica</orth>
+</form>
+<sense><def>Fórma disparatada, mal traduzida do fr. _Cyzique_, e que apparece em livros nossos, em vez de Cýzico.
+</def>
+</sense>
+</entry>
+
+
+<entry id="cýzico" geo="1">
+<form>
+<orth>Cýzico</orth>
+</form>
+<sense><def>Antiga e célebre cidade da Ásia-Menor.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Cyzicum_)</etym>
+</entry>
+
+
+<entry id="dahomé" geo="1">
+<form>
+<orth>Dahomé</orth>
+</form>
+<sense><def>(e não Dahomey)
+Região da Nigrícia marítima, sôbre a costa dos Escravos.
+</def>
+</sense>
+</entry>
+
+
+<entry id="dardânia" geo="1">
+<form>
+<orth>Dardânia</orth>
+</form>
+<sense><def>O mesmo que _Tróia_. Cf. _Lusíadas_, III, 57.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Dardânia_)</etym>
+</entry>
+
+
+<entry id="decám" geo="1">
+<form>
+<orth>Decám</orth>
+</form>
+<sense><def>(e não Dekan)
+A parte meridional da Índia, aquém do Ganges. Cf. _Hist. dos Port. no Malabar_, 95 e 98.
+</def>
+</sense>
+</entry>
+
+
+<entry id="decan" geo="1">
+<form>
+<orth>Decan</orth>
+</form>
+<sense><def>(e não Dekan)
+A parte meridional da Índia, aquém do Ganges. Cf. _Hist. dos Port. no Malabar_, 95 e 98.
+</def>
+</sense>
+</entry>
+
+
+<entry id="decão" geo="1">
+<form>
+<orth>Decão</orth>
+</form>
+<sense><def>(e não Dekan)
+A parte meridional da Índia, aquém do Ganges. Cf. _Hist. dos Port. no Malabar_, 95 e 98.
+</def>
+</sense>
+</entry>
+
+
+<entry id="delhi" geo="1">
+<form>
+<orth>Delhi</orth>
+</form>
+<sense><def>(v. _Deli_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="deli" geo="1">
+<form>
+<orth>Deli</orth>
+</form>
+<sense><def>(e não Delhi)
+Grande cidade do Indostão. Cf. D. Lopes, _Chrón. dos Reis de Bisnaga_, p. XXI; Barros, _Déc._ I, liv. IV, cap. 7.
+</def>
+</sense>
+</entry>
+
+
+<entry id="dio:2" n="2" geo="1" type="hom">
+<form>
+<orth>Dio</orth>
+</form>
+<sense><def>Ilha do mar das Índias, como uma cidade do mesmo nome. Cf. Filinto, _Vida de D. Man._, II, 117; _Déc._ II, liv. II, cap. 9; _Lusíadas_, II, 50; X, 35, 60, 61, 62, 64 e 67.
+</def>
+</sense>
+</entry>
+
+
+<entry id="diu" geo="1">
+<form>
+<orth>Diu</orth>
+</form>
+<sense><def>(v. _Dio_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="djask" geo="1" chaveta="1">
+<form>
+<orth>Djask</orth>
+</form>
+<sense><def>(v. _Jasque_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="djeddah" geo="1" chaveta="1">
+<form>
+<orth>Djeddah</orth>
+</form>
+<sense><def>(v. _Gidá_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="djelum" geo="1" chaveta="1">
+<form>
+<orth>Djelum</orth>
+</form>
+<sense><def>(v. _Hydaspes_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="dniéper" geo="1" chaveta="1">
+<form>
+<orth>Dniéper</orth>
+</form>
+<sense><def>(v. _Borýsthenes_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="dniepre" geo="1" chaveta="1">
+<form>
+<orth>Dniepre</orth>
+</form>
+<sense><def>(v. _Borýsthenes_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="dófar" geo="1">
+<form>
+<orth>Dófar</orth>
+</form>
+<sense><def>Cidade e pôrto da Arábia. Cf. _Lusíadas_, X, 101; Barros, _Déc_, (_passim_).
+(Em livros modernos, _Doufar_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="doiro" geo="1">
+<form>
+<orth>Doiro</orth>
+</form>
+<sense><def>Rio, que nasce em Espanha e atravessa Portugal, banhando o Pôrto.
+Melhor orthogr. que _Douro_: <cit type="example"><quote>«_...e desy pela agoa de Doyro a enfesto._»</quote></cit> D. Dinis, _Foral de Miranda_.
+Cp. ant. _Durio_, lat. _Durius_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="dórcadas" geo="1">
+<form>
+<orth>Dórcadas</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Bissagos_. Cf. _Lusíadas_, V, 11.
+</def>
+</sense>
+</entry>
+
+
+<entry id="douro" geo="1">
+<form>
+<orth>Douro</orth>
+</form>
+<sense><def>(v. _Doiro_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="dresda" geo="1">
+<form>
+<orth>Dresda</orth>
+</form>
+<sense><def>Cidade aleman, capital do reino de Saxe.
+</def>
+</sense>
+</entry>
+
+
+<entry id="dresde" geo="1" chaveta="1">
+<form>
+<orth>Dresde</orth>
+</form>
+<sense><def>(v. _Dresda_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="edelberga" geo="1">
+<form>
+<orth>Edelberga</orth>
+</form>
+<sense><def>Cidade aleman.
+</def>
+</sense>
+</entry>
+
+
+<entry id="edimburgo" geo="1">
+<form>
+<orth>Edimburgo</orth>
+</form>
+<sense><def>Cidade da Escócia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="éfeso" geo="1">
+<form>
+<orth>Éfeso</orth>
+</form>
+<sense><def>Cidade jónica.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Éphesus_)</etym>
+</entry>
+
+
+<entry id="egades" geo="1">
+<form>
+<orth>Egades</orth>
+<phon extent="part">gá</phon>
+</form>
+<sense><def>Archipélago, junto da Sicília.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Aegátes_)</etym>
+</entry>
+
+
+<entry id="eiriceira" geo="1">
+<form>
+<orth>Eiriceira</orth>
+</form>
+<sense><def>Fórma ant. e, ainda hoje, pronúncia pop., de _Ericeira_, villa de Portugal.
+</def>
+</sense>
+</entry>
+
+
+<entry id="elburz" geo="1" chaveta="1">
+<form>
+<orth>Elburz</orth>
+</form>
+<sense><def>(v. _Serra-Cáspia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="emódio" geo="1">
+<form>
+<orth>Emódio</orth>
+</form>
+<sense><def>O mesmo que _Himalaia_. Cf. _Lusíadas_, XII, 17.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Emodus_)</etym>
+</entry>
+
+
+<entry id="emodo" geo="1">
+<form>
+<orth>Emodo</orth>
+</form>
+<sense><def>O mesmo que _Himalaia_. Cf. _Lusíadas_, XII, 17.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Emodus_)</etym>
+</entry>
+
+
+<entry id="enxobregas" geo="1">
+<form>
+<orth>Enxobregas</orth>
+</form>
+<sense><def>Fórma antiga de _Xabregas_, antigo mosteiro de Lisbôa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="épheso" geo="1">
+<form>
+<orth>Épheso</orth>
+</form>
+<sense><def>Cidade jónica.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Éphesus_)</etym>
+</entry>
+
+
+<entry id="erythreu" geo="1">
+<form>
+<orth>Erythreu</orth>
+</form>
+<sense><def>Designação antiga do Oceano Índico.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Erythraeus_)</etym>
+</entry>
+
+
+<entry id="eritreu" geo="1">
+<form>
+<orth>Eritreu</orth>
+</form>
+<sense><def>Designação antiga do Oceano Índico.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Erythraeus_)</etym>
+</entry>
+
+
+<entry id="erzgebirge" geo="1" chaveta="1">
+<form>
+<orth>Erzgebirge</orth>
+</form>
+<sense><def>(v. _Hércina_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="escalda:2" n="2" geo="1" type="hom">
+<form>
+<orth>Escalda</orth>
+</form>
+<sense><def>(e não Escaut)
+Rio da França, Bélgica e Holanda.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Escaut_)</etym>
+</entry>
+
+
+<entry id="escandinávia" geo="1">
+<form>
+<orth>Escandinávia</orth>
+</form>
+<sense><def>(e não Scandinávia)
+Península europeia, que compreende a Suécia e a Noruega. Cf. _Lusíadas_, III, 10.
+</def>
+</sense>
+</entry>
+
+
+<entry id="escaut" geo="1" chaveta="1">
+<form>
+<orth>Escaut</orth>
+<phon extent="part">escô</phon>
+</form>
+<sense><def>Nome francês do _Escalda_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="exobrega" geo="1">
+<form>
+<orth>Exobrega</orth>
+</form>
+<sense><def>Fórma antiga de _Xabregas_, antigo mosteiro de Lisbôa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="escócia:2" n="2" geo="1" type="hom">
+<form>
+<orth>Escócia</orth>
+</form>
+<sense><def>Grande região ao Norte da Gran-Bretanha.--Em português tem-se escrito _Escóssia_, de acôrdo com a orthogr. francesa. Entretanto, as tradições da nossa língua e a anályse do termo inglês, (_Scotland_), além da latinização _Scotia_, justificam a fórma _Escócia_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="escóssia" geo="1">
+<form>
+<orth>Escóssia</orth>
+</form>
+<sense><def>(v. _Escócia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="eslinga:2" n="2" geo="1" type="hom">
+<form>
+<orth>Eslinga</orth>
+</form>
+<sense><def>Cidade austríaca.
+</def>
+</sense>
+</entry>
+
+
+<entry id="espanha" geo="1">
+<form>
+<orth>Espanha</orth>
+</form>
+<sense><def>Fórma exacta e etymológica, em vez de _Hespanha_. Cf. _Inéd. da Hist. Port._, I, 352.
+</def>
+</sense>
+<etym ori="b">(Do b. lat. _Spania_)</etym>
+</entry>
+
+
+<entry id="espórades" geo="1">
+<form>
+<orth>Espórades</orth>
+</form>
+<sense><def>(e não Spórades e, ainda menos, Spóradas)
+Grupo de ilhas do archipélago das Cýclades.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Spórades_)</etym>
+</entry>
+
+
+<entry id="essling" geo="1" chaveta="1">
+<form>
+<orth>Essling</orth>
+</form>
+<sense><def>(v. _Eslinga_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="estocolmo" geo="1">
+<form>
+<orth>Estocolmo</orth>
+</form>
+<sense><def>Fórma preferível a _Stockolmo_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="estrasburgo" geo="1">
+<form>
+<orth>Estrasburgo</orth>
+</form>
+<sense><def>Cidade da Alsácia-Lorena.
+</def>
+</sense>
+</entry>
+
+
+<entry id="estremôs" geo="1">
+<form>
+<orth>Estremôs</orth>
+</form>
+<sense><def>Outra fórma de _Extremôz_. Cf. Madureira Feijó, _Orthogr._, p. 14, (2.^a ed.).
+</def>
+</sense>
+</entry>
+
+
+<entry id="estremôz" geo="1">
+<form>
+<orth>Estremôz</orth>
+</form>
+<sense><def>Villa do Alentejo.--A fórma _Estremôs_, se pudesse justificar-se uma aventada etym. lat. _extra muros_, seria a preferível; mas o _z_ final já apparece em documentos antigos. No _Port. Monum. Hist._, 679, lê-se _Stremoz_.
+(Talvez do mesmo t. ár., que originou _tremoço_, cast. _altramuz_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="estugarda" geo="1">
+<form>
+<orth>Estugarda</orth>
+</form>
+<sense><def>Cidade aleman. Cf. Vasc. Abreu, _Contos da Índia_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="eufrate" geo="1">
+<form>
+<orth>Eufrate</orth>
+</form>
+<sense><def>O mesmo que _Euphrates_. Cf. Filinto, _Vida de D. Man._, III. p. 84.
+</def>
+</sense>
+</entry>
+
+
+<entry id="eufrates" geo="1">
+<form>
+<orth>Eufrates</orth>
+</form>
+<sense><def>Rio da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="euphrates" geo="1">
+<form>
+<orth>Euphrates</orth>
+</form>
+<sense><def>Rio da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="euxino" geo="1">
+<form>
+<orth>Euxino</orth>
+<phon extent="part">csi</phon>
+</form>
+<sense><def>Designação antiga do _Mar-Negro_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="faial" geo="1">
+<form>
+<orth>Faial</orth>
+</form>
+<sense><def>Uma das ilhas dos Açôres.--A orthogr. _Fayal_ representa uma tradição insustentável: hoje não se escreve, nem se deve escrever, _faya_. _Fayal_ está no mesmo caso.
+</def>
+</sense>
+</entry>
+
+
+<entry id="fartak" geo="1" chaveta="1">
+<form>
+<orth>Fartak</orth>
+</form>
+<sense><def>(v. _Fartaque_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="fartaque" geo="1">
+<form>
+<orth>Fartaque</orth>
+</form>
+<sense><def>Cidade e pôrto da Arábia. Cf. _Lusíadas_, X, 100; Barros, _Déc._, etc.
+(Em livros modernos, estrangeiros e nossos, _Fartak_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="fayal" geo="1">
+<form>
+<orth>Fayal</orth>
+</form>
+<sense><def>(v. _Faial_, que é a orthogr. correcta).
+</def>
+</sense>
+</entry>
+
+
+<entry id="filipinas" geo="1">
+<form>
+<orth>Filipinas</orth>
+</form>
+<sense><def>Archipélago da Oceânia.
+_Philippinas_ é fórma desusada e pretensiosa, como é _Philippe_, em vez de _Filippe_ ou _Filipe_ ou _Felipe_, visto que o grupo _ph_ só é mantido, e ainda mal, em termos eruditos.
+</def>
+</sense>
+</entry>
+
+
+<entry id="filippinas" geo="1">
+<form>
+<orth>Filippinas</orth>
+</form>
+<sense><def>Archipélago da Oceânia.
+_Philippinas_ é fórma desusada e pretensiosa, como é _Philippe_, em vez de _Filippe_ ou _Filipe_ ou _Felipe_, visto que o grupo _ph_ só é mantido, e ainda mal, em termos eruditos.
+</def>
+</sense>
+</entry>
+
+
+<entry id="finisterra:2" n="2" geo="1" type="hom">
+<form>
+<orth>Finisterra</orth>
+</form>
+<sense><def>Cabo occidental da Espanha, conhecido dantes por _Artabro_.
+(Cp. _Artabro_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="flandes" geo="1">
+<form>
+<orth>Flandes</orth>
+</form>
+<sense><def>O mesmo que _Flandres_. Cf. D. Franc. Manuel, _Carta de Guia_, 101.
+</def>
+</sense>
+</entry>
+
+
+<entry id="flandres" geo="1">
+<form>
+<orth>Flandres</orth>
+</form>
+<sense><def>Antigo condado, que comprehende hoje duas províncias da Bélgica.
+(Cp. _Frandes_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="florída" geo="1">
+<form>
+<orth>Florída</orth>
+</form>
+<sense><def>Península da América do Norte.--Entre nós, chamam-lhe geralmente _Flórida_, o que é êrro.
+_Florída_ lhe chamou o descobridor espanhol, e _Florída_ dizem os Espanhóes, e assim devemos dizer.
+</def>
+</sense>
+</entry>
+
+
+<entry id="fóia:2" n="2" geo="1" type="hom">
+<form>
+<orth>Fóia</orth>
+</form>
+<sense><def>(e não _Foya_, como se usa)
+Localidade ou parte da serra de Monchique.--Hoje, o _y_, em palavras portuguesas, só póde têr por pretexto a origem grega. _Fóia_ não é voc. grego.
+</def>
+</sense>
+</entry>
+
+
+<entry id="fortunadas" geo="1">
+<form>
+<orth>Fortunadas</orth>
+</form>
+<sense><def>Designação antiga das ilhas Canárias. Cf. _Lusíadas_, V, 8.
+</def>
+</sense>
+</entry>
+
+
+<entry id="frandes" geo="1">
+<form>
+<orth>Frandes</orth>
+</form>
+<sense><def>O mesmo que _Flandres_. Cf. _Lusíadas_, VI, 56.
+</def>
+</sense>
+</entry>
+
+
+<entry id="gadrafu" geo="1">
+<form>
+<orth>Gadrafu</orth>
+</form>
+<sense><def>Outra fórma de _Guardafui_, que se vê em Barros, _Déc._ I, liv. V, cap. 9.
+</def>
+</sense>
+</entry>
+
+
+<entry id="galícia" geo="1">
+<form>
+<orth>Galícia</orth>
+</form>
+<sense><def>Parte da monarchia austríaca.
+</def>
+</sense>
+</entry>
+
+
+<entry id="galiza" geo="1">
+<form>
+<orth>Galiza</orth>
+</form>
+<sense><def>Grande região a Noroéste da península hispânica.
+</def>
+</sense>
+</entry>
+
+
+<entry id="galliza" geo="1">
+<form>
+<orth>Galliza</orth>
+</form>
+<sense><def>Grande região a Noroéste da península hispânica.
+</def>
+</sense>
+</entry>
+
+
+<entry id="garonna" geo="1">
+<form>
+<orth>Garonna</orth>
+</form>
+<sense><def>(e não Garonne)
+Rio da França.
+</def>
+</sense>
+<etym orig="Fr">(Fr. _Garonne_)</etym>
+</entry>
+
+
+<entry id="garumna" geo="1">
+<form>
+<orth>Garumna</orth>
+</form>
+<sense><def>Nome antigo do _Garonna_. Cf. _Lusíadas_, III, 16.
+</def>
+</sense>
+</entry>
+
+
+<entry id="gasconha" geo="1">
+<form>
+<orth>Gasconha</orth>
+</form>
+<sense><def>(v. _Gascunha_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="gascunha" geo="1">
+<form>
+<orth>Gascunha</orth>
+</form>
+<sense><def>Região da França, limitada pela Espanha, Atlântico, etc.--Á francesa, chamam-lhe _Gasconha_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="gedrosía" geo="1">
+<form>
+<orth>Gedrosía</orth>
+</form>
+<sense><def>Região do Balochistão. Cf. _Lusíadas_, IV, 65.
+(Em livros de hoje, _Mekran_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="genebra:2" n="2" geo="1" type="hom">
+<form>
+<orth>Genebra</orth>
+</form>
+<sense><def>Cidade da Suíça.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Geneva_)</etym>
+</entry>
+
+
+<entry id="gênes" geo="1" chaveta="1">
+<form>
+<orth>Gênes</orth>
+</form>
+<sense><def>Nome francês de _Gênova_, insensatamente usado ás vezes em escritos portugueses.
+</def>
+</sense>
+</entry>
+
+
+<entry id="genève" geo="1" chaveta="1">
+<form>
+<orth>Genève</orth>
+</form>
+<sense><def>Fórma francesa de _Genebra_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="gênova" geo="1">
+<form>
+<orth>Gênova</orth>
+</form>
+<sense><def>Cidade da Itália.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Genua_)</etym>
+</entry>
+
+
+<entry id="germânia" geo="1">
+<form>
+<orth>Germânia</orth>
+</form>
+<sense><def>Designação antiga da _Alemanha_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Germania_)</etym>
+</entry>
+
+
+<entry id="gerum" geo="1">
+<form>
+<orth>Gerum</orth>
+</form>
+<sense><def>Outro nome de _Hormuz_. Cf. _Lusíadas_, X, 41.
+</def>
+</sense>
+</entry>
+
+
+<entry id="gibraltár" geo="1">
+<form>
+<orth>Gibraltár</orth>
+</form>
+<sense><def>Praça forte, pertencente aos Ingleses, situada ao sul da Andaluzia.
+Estreito, que liga o Atlântico ao Mediterrâneo.--A pronúncia _Gibráltar_, até hoje muito em voga nas escolas, é inglesada.
+A formação da palavra, cujo segundo elemento, _Tarik_, tem _a_ longo, e a própria pronúncia dos Espanhóes justificam _Gibraltár_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="gidá" geo="1">
+<form>
+<orth>Gidá</orth>
+</form>
+<sense><def>Pôrto da Arábia, junto a Meca. Cf. _Lusíadas_, IX, 3.
+(Nome estranho ao português, _Djeddah_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="goiás" geo="1">
+<form>
+<orth>Goiás</orth>
+</form>
+<sense><def>Região do Brasil.--A fórma _Goyaz_ é usada, mas injustificável.
+</def>
+</sense>
+</entry>
+
+
+<entry id="goiaz" geo="1">
+<form>
+<orth>Goiaz</orth>
+</form>
+<sense><def>Região do Brasil.--A fórma _Goyaz_ é usada, mas injustificável.
+</def>
+</sense>
+</entry>
+
+
+<entry id="golegã" geo="1">
+<form>
+<orth>Golegã</orth>
+</form>
+<sense><def>Villa do districto de Santarém.
+</def>
+</sense>
+</entry>
+
+
+<entry id="golegan" geo="1">
+<form>
+<orth>Golegan</orth>
+</form>
+<sense><def>Villa do districto de Santarém.
+</def>
+</sense>
+</entry>
+
+
+<entry id="goleta" geo="1">
+<form>
+<orth>Goleta</orth>
+<phon extent="part">lê</phon>
+</form>
+<sense><def>Cidade de Tunes.
+</def>
+</sense>
+</entry>
+
+
+<entry id="goulette" geo="1" chaveta="1">
+<form>
+<orth>Goulette</orth>
+</form>
+<sense><def>(v. _Goleta_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="gouvéa" geo="1">
+<form>
+<orth>Gouvéa</orth>
+</form>
+<sense><def>Villa da Beira-Baixa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="gouveia" geo="1">
+<form>
+<orth>Gouveia</orth>
+</form>
+<sense><def>Villa da Beira-Baixa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="goyaz" geo="1">
+<form>
+<orth>Goyaz</orth>
+</form>
+<sense><def>(v. _Goiaz_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="grândola" geo="1">
+<form>
+<orth>Grândola</orth>
+</form>
+<sense><def>Villa de Portugal.
+</def>
+</sense>
+</entry>
+
+
+<entry id="granobra" geo="1">
+<form>
+<orth>Granobra</orth>
+</form>
+<sense><def>Cidade francesa. Cf. R. Pina, _Aff. V_, c. CXCVII.
+</def>
+</sense>
+</entry>
+
+
+<entry id="grenoble" geo="1" chaveta="1">
+<form>
+<orth>Grenoble</orth>
+</form>
+<sense><def>(v. _Granobra_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="guadalquivir" geo="1">
+<form>
+<orth>Guadalquivir</orth>
+</form>
+<sense><def>Rio da Andaluzia, conhecido dantes por _Bétis_. Cf. _Lusíadas_, III, 19.
+</def>
+</sense>
+</entry>
+
+
+<entry id="guardafui" geo="1">
+<form>
+<orth>Guardafui</orth>
+</form>
+<sense><def>Cabo na costa Oriental da África. Barros, _Déc._ I, liv. VII, cap. 2, diz _Guardafu_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="guiana" geo="1">
+<form>
+<orth>Guiana</orth>
+</form>
+<sense><def>Região da América meridional.--_Guyana_ é fórma injustificável.
+</def>
+</sense>
+</entry>
+
+
+<entry id="guimarães" geo="1">
+<form>
+<orth>Guimarães</orth>
+</form>
+<sense><def>Cidade do Minho.
+Há mais duas fórmas: _Guimaraens_, usada por Camillo e outros, e _Guimarãis_, usada por alguns escritores partidários da simplificação orthográphica.
+</def>
+</sense>
+</entry>
+
+
+<entry id="guipúscoa" geo="1">
+<form>
+<orth>Guipúscoa</orth>
+</form>
+<sense><def>Província espanhola.
+</def>
+</sense>
+</entry>
+
+
+<entry id="guipúzcoa" geo="1">
+<form>
+<orth>Guipúzcoa</orth>
+</form>
+<sense><def>Província espanhola.
+</def>
+</sense>
+</entry>
+
+
+<entry id="guyana" geo="1">
+<form>
+<orth>Guyana</orth>
+</form>
+<sense><def>(v. _Guiana_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="guzarate:2" n="2" geo="1" type="hom">
+<form>
+<orth>Guzarate</orth>
+</form>
+<sense><def>O mesmo ou melhór que _Guzerate_^2. Cf. _Not. para a Hist. e Geogr._, II, p. 267.
+</def>
+</sense>
+</entry>
+
+
+<entry id="guzerate:2" n="2" geo="1" type="hom">
+<form>
+<orth>Guzerate</orth>
+</form>
+<sense><def>Península da Ásia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="hainan" geo="1" chaveta="1">
+<form>
+<orth>Hainan</orth>
+</form>
+<sense><def>Nome francês de _Ainão_.
+<ref>(V. <term>Ainão</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="heidelberg" geo="1" chaveta="1">
+<form>
+<orth>Heidelberg</orth>
+</form>
+<sense><def>(v. _Edelberga_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="hélade" geo="1">
+<form>
+<orth>Hélade</orth>
+</form>
+<sense><def>Nome, com que se designava quási toda a parte continental da Grécia, isto é, a Áttica, Beócia, Etólia, Acarnania, etc.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Hellas_)</etym>
+</entry>
+
+
+<entry id="helesponto" geo="1">
+<form>
+<orth>Helesponto</orth>
+</form>
+<sense><def>Designação antiga do canal dos Dardanelos.
+</def>
+</sense>
+</entry>
+
+
+<entry id="héllada" geo="1">
+<form>
+<orth>Héllada</orth>
+</form>
+<sense><def>O mesmo que _Héllade_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Hellada_)</etym>
+</entry>
+
+
+<entry id="héllade" geo="1">
+<form>
+<orth>Héllade</orth>
+</form>
+<sense><def>Nome, com que se designava quási toda a parte continental da Grécia, isto é, a Áttica, Beócia, Etólia, Acarnania, etc.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Hellas_)</etym>
+</entry>
+
+
+<entry id="hellesponto" geo="1">
+<form>
+<orth>Hellesponto</orth>
+</form>
+<sense><def>Designação antiga do canal dos Dardanelos.
+</def>
+</sense>
+</entry>
+
+
+<entry id="hemo" geo="1">
+<form>
+<orth>Hemo</orth>
+</form>
+<sense><def>Montanha, conhecida hoje geralmente por _Balcans_. Cf. _Lusíadas_, III, 12.
+</def>
+</sense>
+</entry>
+
+
+<entry id="hércina" geo="1">
+<form>
+<orth>Hércina</orth>
+</form>
+<sense><def>Cordilheira entre a Saxónia e a Bohêmia, a que os Alemães e alguns dos nossos livros modernos chamam _Erzgebirge_. Cf. _Lusíadas_, III, 11.
+</def>
+</sense>
+</entry>
+
+
+<entry id="hérmo" geo="1">
+<form>
+<orth>Hérmo</orth>
+</form>
+<sense><def>Rio da Turquia Asiática, indicado em livros nossos, modernos, com o nome estrangeiro de _Sarabat_. Cf. _Lusíadas_, VII, 11.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Hermus_)</etym>
+</entry>
+
+
+<entry id="hespanha" geo="1">
+<form>
+<orth>Hespanha</orth>
+</form>
+<sense><def>Modernamente, fórma usual, mas a mais injustificável das que designam a nação comprehendida com Portugal na península ibérica.
+Em língua nenhuma se designa essa nação por palavra que comece por _he_: lat. _Hispania_, b. lat. _Spanía_, ingl. _Spanish_, fr. _Espagne_, cast. _España..._
+<ref>(V. <term>Hispanha_ e _Espanha</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="hespérides:2" n="2" geo="1" type="hom">
+<form>
+<orth>Hespérides</orth>
+</form>
+<sense><def>Designação poética das ilhas de _Cabo-Verde_. Cf. _Lusíadas_, V, 8.
+</def>
+</sense>
+</entry>
+
+
+<entry id="hidaspes" geo="1">
+<form>
+<orth>Hidaspes</orth>
+</form>
+<sense><def>Um dos affluentes do Indo.
+(Em livros de hoje, _Djelum_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="himalaia" geo="1">
+<form>
+<orth>Himalaia</orth>
+</form>
+<sense><def>(e não Himalaya)
+Grande cadeia de montanhas da Ásia central, talvez a mais alta do globo.
+</def>
+</sense>
+</entry>
+
+
+<entry id="hímera" geo="1">
+<form>
+<orth>Hímera</orth>
+</form>
+<sense><def>(e não Himéra)
+Antiga cidade da Sicília.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Himera_)</etym>
+</entry>
+
+
+<entry id="hispanha" geo="1">
+<form>
+<orth>Hispanha</orth>
+</form>
+<sense><def>É fórma preferível a _Hespanha_, porque representa a or. latina, _Hispania_. Entretanto, a palavra veio directamente do b. lat. _Spania_, que deu o cast. _España_, o fr. _Espagne_, o port. _Espanha_; e portanto _Espanha_ é ainda preferível a _Hispanha_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="hormuz" geo="1">
+<form>
+<orth>Hormuz</orth>
+</form>
+<sense><def>Ilha, e cidade, á entrada do Gôlfo-Pérsico. Cf. David Lopes, _Mist. dos Port. no Malabar_, 72--Alguns escrevem _Ormuz_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="hurão" geo="1">
+<form>
+<orth>Hurão</orth>
+</form>
+<sense><def>Grande lago da América do Norte, a que os nossos mappas e geógraphos chamam _Huron_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="huron" geo="1">
+<form>
+<orth>Huron</orth>
+</form>
+<sense><def>Fórma estranha de _Hurão_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="hydaspes" geo="1">
+<form>
+<orth>Hydaspes</orth>
+</form>
+<sense><def>Um dos affluentes do Indo.
+(Em livros de hoje, _Djelum_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="ibéro" geo="1">
+<form>
+<orth>Ibéro</orth>
+</form>
+<sense><def>Designação antiga e alatinada do rio _Ebro_. Cf. _Lusíadas_, III, 60.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Ibérus_)</etym>
+</entry>
+
+
+<entry id="ida:2" n="2" geo="1" type="hom">
+<form>
+<orth>Ida</orth>
+</form>
+<sense><def>Montanha de Creta, que em mappas modernos figura com o nome de _Kas-Dagh_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Ida_)</etym>
+</entry>
+
+
+<entry id="ílhavo" geo="1">
+<form>
+<orth>Ílhavo</orth>
+</form>
+<sense><def>Villa de Portugal.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ílio:2" n="2" geo="1" type="hom">
+<form>
+<orth>Ílio</orth>
+</form>
+<sense><def>(v. _Tróia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="iocoama" geo="1">
+<form>
+<orth>Iocoama</orth>
+</form>
+<sense><def>Cidade japonesa.
+</def>
+</sense>
+</entry>
+
+
+<entry id="ispahan" geo="1" chaveta="1">
+<form>
+<orth>Ispahan</orth>
+</form>
+<sense><def>(v. _Ispahão_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="ispahão" geo="1">
+<form>
+<orth>Ispahão</orth>
+</form>
+<sense><def>Cidade da Pérsia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="istro" geo="1">
+<form>
+<orth>Istro</orth>
+</form>
+<sense><def>Designação clássica do rio _Danúbio_. Cf. _Lusíadas_, III, 12.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Istrum_)</etym>
+</entry>
+
+
+<entry id="ítaca" geo="1">
+<form>
+<orth>Ítaca</orth>
+</form>
+<sense><def>Ilha grega, que em mappas se representa hoje por _Theáki_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Íthaca_)</etym>
+</entry>
+
+
+<entry id="íthaca" geo="1">
+<form>
+<orth>Íthaca</orth>
+</form>
+<sense><def>Ilha grega, que em mappas se representa hoje por _Theáki_.
+</def>
+</sense>
+<etym orig="Lat">(Lat. _Íthaca_)</etym>
+</entry>
+
+
+<entry id="iücatão" geo="1">
+<form>
+<orth>Iücatão</orth>
+</form>
+<sense><def>Península da América central e um dos Estados da confederação mexicana.--_Yucatan_ dizem as nossas modernas cartas geográphicas.
+</def>
+</sense>
+</entry>
+
+
+<entry id="jalof" geo="1">
+<form>
+<orth>Jalof</orth>
+</form>
+<sense><def>Região da Senegâmbia, que em livros modernos se chama _Yolof_. Cf. _Lusíadas_, V, 10; Barros, _Déc._, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="jalofo:2" n="2" geo="1" type="hom">
+<form>
+<orth>Jalofo</orth>
+</form>
+<sense><def>Região da Senegâmbia, que em livros modernos se chama _Yolof_. Cf. _Lusíadas_, V, 10; Barros, _Déc._, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="jáoa" geo="1">
+<form>
+<orth>Jáoa</orth>
+</form>
+<sense><def>Fórma antiga de _Java_. Cf. Filinto, _Vida de D. Man._, II, 255.--Pronunciava-se _Jáoa_==_Jaua_ (v. _Jáua_), mas os editores de Barros, (_Déc._ III, liv. III, cap. 7), accentuaram _Jaóa_.
+</def>
+</sense>
+</entry>
+
+
+<entry id="jânina" geo="1">
+<form>
+<orth>Jânina</orth>
+</form>
+<sense><def>(e não Janína)
+Cidade da Albânia.
+</def>
+</sense>
+</entry>
+
+
+<entry id="jaquete:2" n="2" geo="1" type="hom">
+<form>
+<orth>Jaquete</orth>
+</form>
+<sense><def>Ilha ao norte de Guzarate, representada hoje nos mappas por _Cutch_. Cf. _Lusíadas_, X, 106; Barros, _Déc._, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="jasque" geo="1">
+<form>
+<orth>Jasque</orth>
+</form>
+<sense><def>Cabo da Carmânia. Cf. _Lusíadas_, X, 105.
+(Em livros modernos, _Djask_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="jáua" geo="1">
+<form>
+<orth>Jáua</orth>
+</form>
+<sense><def>Outra fórma antiga de _Java_. Cf. _Not. para a Hist. e Geogr._, II, p. 375.
+</def>
+</sense>
+</entry>
+
+
+<entry id="java" geo="1">
+<form>
+<orth>Java</orth>
+</form>
+<sense><def>Uma das ilhas da Sunda.
+</def>
+</sense>
+</entry>
+
+
+<entry id="jerumenha" geo="1">
+<form>
+<orth>Jerumenha</orth>
+</form>
+<sense><def>(e não Juromenha)
+Antiga villa alentejana. Cf. _Chancellaria_ de Filippe I, _Doações_, liv. XI, fol. 152, (na Tôrre do Tombo).
+</def>
+</sense>
+</entry>
+
+
+<entry id="juromenha" geo="1">
+<form>
+<orth>Juromenha</orth>
+</form>
+<sense><def>Fórma usada hoje, mas inexacta, em vez de _Jerumenha_.
+<ref>(V. <term>Jerumenha</term>)</ref>
+</def>
+</sense>
+</entry>
+
+
+<entry id="k:2" n="2" geo="1" type="hom">
+<form>
+<orth>K</orth>
+</form>
+<sense><def>Esta letra não se escreve em nomes portugueses, mas só naquelles que, sendo estrangeiros, ainda não foram aportuguesados, como _Kentucky_, _Kessel_, _Königstein_, _Kyrpoy_, etc.
+</def>
+</sense>
+</entry>
+
+
+<entry id="kabul" geo="1">
+<form>
+<orth>Kabul</orth>
+</form>
+<sense><def>(v. _Cabul_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="kallat" geo="1" chaveta="1">
+<form>
+<orth>Kallat</orth>
+</form>
+<sense><def>(v. _Calaiate_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="kamtchatka" geo="1">
+<form>
+<orth>Kamtchatka</orth>
+</form>
+<sense><def>(v. _Camchatca_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="kandahar" geo="1">
+<form>
+<orth>Kandahar</orth>
+</form>
+<sense><def>(v. _Candar_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="karnak" geo="1" chaveta="1">
+<form>
+<orth>Karnak</orth>
+</form>
+<sense><def>(v. _Carnac_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="karthoum" geo="1" chaveta="1">
+<form>
+<orth>Karthoum</orth>
+</form>
+<sense><def>(v. _Cartum_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="kas-dagh" geo="1" chaveta="1">
+<form>
+<orth>Kas-Dagh</orth>
+</form>
+<sense><def>(v. _Ida_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="kedah" geo="1" chaveta="1">
+<form>
+<orth>Kedah</orth>
+</form>
+<sense><def>(v. _Quedá_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="kerman" geo="1" chaveta="1">
+<form>
+<orth>Kerman</orth>
+</form>
+<sense><def>(v. _Carmânia_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="khorassan" geo="1" chaveta="1">
+<form>
+<orth>Khorassan</orth>
+</form>
+<sense><def>(v. _Coraçan_)
+</def>
+</sense>
+</entry>
+
+
+<entry id="königsberg" geo="1" chaveta="1">
+<form>
+<orth>Königsberg</orth>
+</form>
+<sense><def>(v. _Conisberga_)
+</def>
+</sense>
+</entry>
+
+</dic>
