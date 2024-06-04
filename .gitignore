@@ -1,0 +1,10 @@
+pyvenv.cfg
+**/bin/
+**/lib/
+**/include/
+piper/
+vosk*/
+**/__pycache__
+fakers/
+**/users/*
+**/graphs/*
