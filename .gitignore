@@ -9,3 +9,4 @@ fakers/
 **/users/*
 **/graphs/*
 .vscode/
+**data/
