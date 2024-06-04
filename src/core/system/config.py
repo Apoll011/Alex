@@ -3,7 +3,7 @@ import os
 __lang__ = "pt"
 
 
-path = os.path.dirname(os.path.realpath(__file__)) + "/../"
+path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/Alex/src")
 
 
 voice: dict = {
