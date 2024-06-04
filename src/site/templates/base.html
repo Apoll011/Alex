@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block head %}
+    <title>{% block title %}{% endblock %} - Alex Admin</title>
+    {% endblock %}
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{{url_for('static', filename='vendors/feather/feather.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='vendors/ti-icons/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='vendors/css/vendor.bundle.base.css')}}">
+    <link rel="stylesheet"
+        href="{{url_for('static', filename='vendors/jquery-contextmenu/jquery.contextMenu.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='vendors/sweetalert/sweetalert2.css')}}">
+
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    {% block cssplugin %}
+    {% endblock %}
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/vertical-layout-light/style.css')}}">
+    <!-- endinject -->
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='./images/favicon.png') }}" />
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="preloader-body">
+            <div class="cssload-container">
+                <div class="cssload-speeding-wheel"></div>
+            </div>
+            <p>Carregando...</p>
+        </div>
+    </div>
+    <div class="container-scroller page">
+
+        {% block body %}
+        {% endblock %}
+        <div id="notifications"></div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{{ url_for('static', filename='vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendors/jquery-contextmenu/jquery.contextMenu.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/preloader.js') }}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    {% block jsplugin %}
+    {% endblock %}
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{{ url_for('static', filename='./js/off-canvas.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/hoverable-collapse.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/template.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/settings.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/todolist.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/desktop-notification.js') }}"></script>
+    <!-- endinject -->
+
+    {% block customjs %}
+    {% endblock %}
+</body>
+
+</html>
