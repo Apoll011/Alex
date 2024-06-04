@@ -31,7 +31,7 @@ class Application:
             with open(Application.getPath(extension), "r") as t:
                 return str(t.read())
         else:
-            return None
+            return ""
     
     @staticmethod
     def exist(extension:str):
