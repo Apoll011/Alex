@@ -7,7 +7,7 @@ class Application:
     @staticmethod
     def getPath(extension:str):
         """Return the path for the application file."""
-        return f"{path}/resource/application/application.{extension}"
+        return f"{path}/resources/application/application.{extension}"
 
     @staticmethod
     def load(extension:str):
@@ -29,7 +29,7 @@ class Application:
     def get(extension:str):
         if Application.exist(extension):
             with open(Application.getPath(extension), "r") as t:
-                return str(t.read())
+                return str(t.read())[0:-1] #Remove /n with [0:-1]
         else:
             return ""
     

@@ -5,7 +5,7 @@ class DataFile:
     @staticmethod
     def getPath(name:str, extension:str):
         """Return the path for the data file."""
-        return f"{path}/resource/data/{extension}/{name}.{extension}"
+        return f"{path}/resources/data/{extension}/{name}.{extension}"
 
     @staticmethod
     def load(name, extension, create_if_not = True):
