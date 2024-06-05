@@ -36,6 +36,9 @@
                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                     data-toggle="dropdown">
                     <i class="icon-bell mx-0"></i>
+                    {% if len(notifications) > 0 %}
+                    <span class="count"></span>
+                    {%endif%}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                     aria-labelledby="notificationDropdown" id="notify-panel">
@@ -56,6 +59,9 @@
                         </div>
                     </a>
                     {% endfor %}
+                    {% if len(notifications) == 0 %}
+                    <h6 class="dropdown-item preview-item font-weight-normal mb-0">You dont have any notifications</h6>
+                    {%endif%}
                 </div>
             </li>
             <li class="nav-item nav-profile dropdown">
