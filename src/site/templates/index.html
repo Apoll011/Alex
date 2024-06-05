@@ -72,6 +72,14 @@
       <div class="card-body">
         <p class="card-title">System</p>
         <div class="d-flex flex-wrap mb-5">
+          <div class="mr-5 mt-3" style="width: 100%;">
+            <p class="text-muted">Satus</p>
+            <h3 class="text-primary fs-30 font-weight-medium">{{system['overall']['status']}}</h3>
+          </div>
+          <div class="mr-5 mt-3" style="width: 100%;">
+            <p class="text-muted">Disk Usage</p>
+            <h3 class="text-primary fs-30 font-weight-medium">{{system['overall']['disk_usage']}}</h3>
+          </div>
           <div class="mr-5 mt-3" id="process_exec_t">
             <p class="text-muted">Process Executed Today</p>
             <h3 class="text-primary fs-30 font-weight-medium">{{system['data']['process_exec_t']}}</h3>
@@ -111,6 +119,17 @@
               </tr>
             </thead>
             <tbody id="nexus">
+              {% for ai in nexus%}
+              <tr id="context-menu-multi" for="{{ai['AI']}}">
+                <td>{{ai['AI']}}<input type="hidden" name="{{ai['AI']}}" value="{{ai['AI']}}" id="{{ai['AI']}}"></td>
+                <td class="font-weight-bold">{{ai['Acronym']}}</td>
+                <td class="font-weight-medium">
+                  <div
+                    class="badge badge-{% if ai['Status'] == 'Open'%}success{% elif ai['Status'] == 'Closed'%}warning{% else %}danger{%endif%}">
+                    {{ai['Status']}}</div>
+                </td>
+              </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -139,4 +158,144 @@
 {% block customjs %}
 <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 <script src="{{ url_for('static', filename='js/Chart.roundedBarCharts.js') }}"></script>
+<script>
+  data_chart = JSON.parse('{"cpu_usage": {{ system["data"]["chart"]["cpu_usage"] }}, "internet_usage": {{ system["data"]["chart"]["internet_usage"] }} }');
+
+  var areaData = {
+    labels: ["7am", "8am", "9am", "10am", "11am", "12pm", "13pm", "14pm", "15pm", "16pm", "17pm", "18pm", "19pm", "20pm", "21pm", "22pm", "23pm", "0am", "1am", "2am", "3am", "4am", "5am", "6am", "7am"],
+    datasets: [{
+      data: data_chart["cpu_usage"],
+      borderColor: [
+        `rgb(66, 200, 255)`
+      ],
+      borderWidth: 2,
+      fill: false,
+      label: "Cpu Usage"
+    }, {
+      data: data_chart["internet_usage"],
+      borderColor: [
+        `rgb(150, 150, 150)`
+      ],
+      borderWidth: 2,
+      fill: false,
+      label: "Internet"
+    }]
+  };
+  var areaOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      filler: {
+        propagate: false
+      }
+    },
+    scales: {
+      xAxes: [{
+        display: true,
+        ticks: {
+          display: true,
+          padding: 10,
+          fontColor: "#6C7383"
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false,
+          color: 'transparent',
+          zeroLineColor: '#eeeeee'
+        }
+      }],
+      yAxes: [{
+        display: true,
+        ticks: {
+          display: true,
+          autoSkip: false,
+          maxRotation: 0,
+          stepSize: 10,
+          min: 0,
+          max: 100,
+          padding: 18,
+          fontColor: "#6C7383"
+        },
+        gridLines: {
+          display: true,
+          color: "#f2f2f2",
+          drawBorder: false
+        }
+      }]
+    },
+    legend: {
+      display: true,
+      class: "text-capitalize"
+    },
+    tooltips: {
+      enabled: true
+    },
+    elements: {
+      line: {
+        tension: .35
+      },
+    }
+  }
+  var revenueChartCanvas = $("#functionality-chart").get(0).getContext("2d");
+  var revenueChart = new Chart(revenueChartCanvas, {
+    type: 'line',
+    data: areaData,
+    options: areaOptions
+  });
+
+  var scatterChartCanvas = $("#scatterChart").get(0).getContext("2d");
+  var scatterChart = new Chart(scatterChartCanvas, {
+    type: 'scatter',
+    data: JSON.parse("{{system['data']['plot']}}".replaceAll("&#39;", '"')),
+    options: {
+      scales: {
+        xAxes: [{
+          type: 'linear',
+          position: 'bottom',
+          display: true,
+          ticks: {
+            display: true,
+            autoSkip: false,
+            maxRotation: 0,
+            stepSize: 1,
+            min: 0,
+            max: 24,
+            padding: 18,
+            fontColor: "#6C7383"
+          },
+          gridLines: {
+            display: true,
+            color: "#f2f2f2",
+            drawBorder: false
+          }
+        }],
+        yAxes: [{
+          display: true,
+          ticks: {
+            display: true,
+            autoSkip: false,
+            maxRotation: 0,
+            stepSize: 10,
+            min: 0,
+            max: 100,
+            padding: 18,
+            fontColor: "#6C7383"
+          },
+          gridLines: {
+            display: true,
+            color: "#f2f2f2",
+            drawBorder: false
+          }
+        }]
+      },
+      legend: {
+        display: true,
+        class: "text-capitalize"
+      },
+      tooltips: {
+        enabled: true
+      }
+    }
+  });
+</script>
 {% endblock %}
