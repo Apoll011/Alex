@@ -36,7 +36,6 @@
                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                     data-toggle="dropdown">
                     <i class="icon-bell mx-0"></i>
-                    <span class="count">{{len(notifications)}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                     aria-labelledby="notificationDropdown" id="notify-panel">
@@ -144,10 +143,11 @@
                     <div class="row">
                         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                             <h3 class="font-weight-bold" id="user_name">Welcome {{user["name"]}}</h3>
-                            <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <a
-                                    class="text-warning" aria-labelledby="notificationDropdown"
-                                    data-toggle="dropdown"><span id="unreadenots"></span> unread
-                                    notifications!</a></h6>
+                            <h6 class="font-weight-normal mb-0">All systems are running smoothly!
+                                {% if len(notifications) > 0 %} You have <a class="text-warning"
+                                    aria-labelledby="notificationDropdown" data-toggle="dropdown"><span id="unreadenots"
+                                        class="count">{{len(notifications)}}</span> unread
+                                    notifications!</a>{%endif%}</h6>
                         </div>
                         <div class="col-12 col-xl-4">
                             <div class="justify-content-end d-flex" id="update_date">
