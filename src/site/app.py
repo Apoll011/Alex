@@ -66,7 +66,7 @@ defs = {
                 "plot": {
                         "datasets": [
                         {
-                            "label": "First Dataset",
+                            "label": "Wake Up",
                             "data": [{
                                 "x": 10,
                                 "y": 0
@@ -80,7 +80,7 @@ defs = {
                             "borderWidth": 1
                         },
                         {
-                            "label": "Second Dataset",
+                            "label": "Api Calls",
                             "data": [{
                                 "x": 11,
                                 "y": 53
