@@ -36,11 +36,27 @@
                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                     data-toggle="dropdown">
                     <i class="icon-bell mx-0"></i>
-                    <span class="count"></span>
+                    <span class="count">{{len(notifications)}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                     aria-labelledby="notificationDropdown" id="notify-panel">
                     <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                    {% for notification in notifications %}
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-{{notification['bg']}}">
+                                <i class="ti-{{notification['icon']}} mx-0 {{notification['costume_class']}}"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <h6 class="preview-subject font-weight-normal">{{notification['title']}}</h6>
+                            <p class="mb-0">{{notification['description']}}</p>
+                            <p class="font-weight-light small-text mb-0 text-muted">
+                                {{notification['date']}}
+                            </p>
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
             </li>
             <li class="nav-item nav-profile dropdown">
@@ -113,13 +129,21 @@
         </ul>
     </nav>
     <!-- partial -->
+
     <div class="main-panel">
+
         <div class="content-wrapper">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
             <div class="row">
                 <div class="col-md-12 grid-margin">
                     <div class="row">
                         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                            <h3 class="font-weight-bold" id="user_name">Welcome {{user_name}}</h3>
+                            <h3 class="font-weight-bold" id="user_name">Welcome {{user["name"]}}</h3>
                             <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <a
                                     class="text-warning" aria-labelledby="notificationDropdown"
                                     data-toggle="dropdown"><span id="unreadenots"></span> unread
@@ -127,7 +151,7 @@
                         </div>
                         <div class="col-12 col-xl-4">
                             <div class="justify-content-end d-flex" id="update_date">
-                                <i class="mdi mdi-calendar"></i> {{date}}
+                                <i class="mdi mdi-calendar"></i> {{climate["date"]}}
                             </div>
                         </div>
                     </div>
