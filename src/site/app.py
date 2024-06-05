@@ -153,6 +153,22 @@ defs = {
                 "Acronym": "WEC",
                 "Status": "Open"
             }
+        ],
+        "plugins": [
+            {
+                "name": "Weather",
+                "id": "ig4t",
+                "cpu": 0.02, # max 4% of Alex cpu
+                "internetDialy": "4153", #Max 3 mbp dialy
+                "status": "running"
+            },
+            {
+                "name": "House",
+                "id": "y3gw",
+                "cpu": 0.03614244, # max 4% of Alex cpu
+                "internetDialy": "135", #Max 3 mbp dialy
+                "status": "running"
+            }
         ]
     }
     
@@ -164,7 +180,7 @@ def index():
 
 @app.route('/plugins.html') 
 def plugins():
-    return render_template('plugins.html', len=len, **defs)
+    return render_template('plugins.html', len=len, int=float, **defs)
 
 @app.errorhandler(404) 
 def page_not_found(e):

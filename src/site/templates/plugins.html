@@ -38,10 +38,10 @@
                   Name
                 </th>
                 <th>
-                  Progress
+                  Internet Usage
                 </th>
                 <th>
-                  Amount
+                  Cpu Usage
                 </th>
                 <th>
                   Status
@@ -49,66 +49,37 @@
               </tr>
             </thead>
             <tbody>
+              {% for plugin in plugins%}
               <tr>
                 <td>
-                  1
+                  {{plugin["id"]}}
                 </td>
                 <td>
-                  Herman Beck
+                  {{plugin['name']}}
                 </td>
                 <td>
                   <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
-                      aria-valuemin="0" aria-valuemax="100"></div>
+                    <div
+                      class="progress-bar bg-{% if 0 < int(plugin['internetDialy'])*100/250 < 50%}success{% elif 50 <= int(plugin['internetDialy'])*100/250 < 90%}warning{% else %}danger{%endif%}"
+                      role="progressbar" style="width: {{int(plugin['internetDialy'])*100/250}}%"
+                      aria-valuenow="{{int(plugin['internetDialy'])*100/250}}" aria-valuemin="0" aria-valuemax="100">
+                    </div>
                   </div>
                 </td>
                 <td>
-                  $ 77.99
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-{% if 0 < int(plugin['cpu'])*2500 < 50%}success{% elif 50 <= int(plugin['cpu'])*2500 < 90%}warning{% else %}danger{%endif%}"
+                      role="progressbar" style="width: {{int(plugin['cpu'])*2500}}%"
+                      aria-valuenow="{{int(plugin['cpu'])*2500}}" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
                 </td>
                 <td>
                   <div class="badge badge-success">Active</div>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  2
-                </td>
-                <td>
-                  Messsy Adam
-                </td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-                <td>
-                  $245.30
-                </td>
-                <td>
-                  <div class="badge badge-danger">Error</div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  3
-                </td>
-                <td>
-                  John Richards
-                </td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-                <td>
-                  $138.00
-                </td>
-                <td>
-                  <div class="badge badge-warning">Closed</div>
-                </td>
-              </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -116,7 +87,7 @@
     </div>
   </div>
 </div>
-<div class="row" id="plugin" style="display: block;">
+<div class="row" id="plugin" style="display: none;">
   <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
