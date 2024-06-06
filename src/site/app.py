@@ -1,9 +1,11 @@
 from flask import Flask, render_template, flash
 from datetime import datetime
-
+from json import JSONEncoder
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'eryh840tiwry48ouehrjg8yoeuhgye58ohrugd'
+
+sendNotification = False
 
 defs = {
         "user": {
@@ -171,24 +173,37 @@ defs = {
             }
         ]
     }
-    
+
+importantNotification = [
+    {
+      "title": "This is a Test Notification",
+      "options": {
+        "body": "Hi just passing by to test this",
+        "icon": "",
+      }
+    },
+
+]
 
 @app.route('/') 
 def index():
-    flash("Hithere")
+    for i in importantNotification:
+        j = JSONEncoder().encode(i) 
+        if sendNotification:
+            flash(j)
     return render_template('index.html',len=len, **defs)
 
-@app.route('/plugins.html') 
-def plugins():
+@app.route('/alex/<id>/plugins') 
+def plugins(id):
     return render_template('plugins.html', len=len, int=float, **defs)
 
 @app.errorhandler(404) 
 def page_not_found(e):
-    return render_template('error.html' , errorcode=404, error_description="Page Not Found", error_link="./"), 404
+    return render_template('error.html' , errorcode=404, error_description="Page Not Found"), 404
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    return render_template('error.html', errorcode=500, error_description="Server error", error_link="./"), 500
+    return render_template('error.html', errorcode=500, error_description="Server error"), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

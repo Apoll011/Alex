@@ -1,6 +1,6 @@
-(function($) {
+(function ($) {
   'use strict';
-  $.fn.easyNotify = function(options) {
+  $.fn.easyNotify = function (options) {
 
     var settings = $.extend({
       title: "Notification",
@@ -14,7 +14,7 @@
       }
     }, options);
 
-    this.init = function() {
+    this.init = function () {
       var notify = this;
       if (!("Notification" in window)) {
         alert("This browser does not support desktop notification");
@@ -22,26 +22,26 @@
 
         var notification = new Notification(settings.title, settings.options);
 
-        notification.onclose = function() {
+        notification.onclose = function () {
           if (typeof settings.options.onClose === 'function') {
             settings.options.onClose();
           }
         };
 
-        notification.onclick = function() {
+        notification.onclick = function () {
           if (typeof settings.options.onClick === 'function') {
             settings.options.onClick();
           }
         };
 
-        notification.onerror = function() {
+        notification.onerror = function () {
           if (typeof settings.options.onError === 'function') {
             settings.options.onError();
           }
         };
 
       } else if (Notification.permission !== 'denied') {
-        Notification.requestPermission(function(permission) {
+        Notification.requestPermission(function (permission) {
           if (permission === "granted") {
             notify.init();
           }
@@ -56,6 +56,7 @@
   };
 
 
+
   //Initialise notification
- 
+
 }(jQuery));

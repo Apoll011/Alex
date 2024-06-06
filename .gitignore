@@ -11,3 +11,5 @@ fakers/
 .vscode/
 **data/
 **faces/
+**/fonts/
+**/.DS_Store
