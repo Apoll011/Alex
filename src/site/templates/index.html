@@ -1,9 +1,7 @@
 {% extends "base_with_navegation.html" %}
 {% block title %}Index{% endblock %}
 
-{% block cssplugin %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='js/select.dataTables.min.css') }}">
-{% endblock %}
+
 
 {% block container %}
 
@@ -121,7 +119,7 @@
             <tbody id="nexus">
               {% for ai in nexus%}
               <tr id="context-menu-multi" for="{{ai['AI']}}">
-                <td>{{ai['AI']}}<input type="hidden" name="{{ai['AI']}}" value="{{ai['AI']}}" id="{{ai['AI']}}"></td>
+                <td>{{ai['AI']}}<input type="hidden" name="ai" value="{{ai['Acronym']}}"></td>
                 <td class="font-weight-bold">{{ai['Acronym']}}</td>
                 <td class="font-weight-medium">
                   <div

@@ -28,7 +28,7 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='./images/favicon.png') }}" />
 </head>
 
-<body>
+<body style="background-color: cornflowerblue;">
     <div class="preloader">
         <div class="preloader-body">
             <div class="cssload-container">
@@ -63,6 +63,15 @@
     <script src="{{ url_for('static', filename='./js/todolist.js') }}"></script>
     <script src="{{ url_for('static', filename='js/desktop-notification.js') }}"></script>
     <!-- endinject -->
+    <script>
+        function Notify(options, func) {
+            options.onClick = func
+            $("#notifications").easyNotify(options);
+        }
+        {% for message in get_flashed_messages() %}
+        Notify(JSON.parse("{{ message }}".replaceAll("&#34;", '"')), (click) => { console.log("tahell") })
+        {% endfor %}
+    </script>
 
     {% block customjs %}
     {% endblock %}
