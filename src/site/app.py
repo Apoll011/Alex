@@ -228,17 +228,18 @@ class AlexAPI:
 API = AlexAPI("732178387248")
 defs = API.getAll()
 
-@app.route('/') 
-def index():
+@app.route('/alex/<id>')
+@app.route('/alex/<id>/') 
+def index(id):
     for i in defs['importantNotifications']['notifications']:
         j = JSONEncoder().encode(i) 
         if defs['importantNotifications']['send']:
             flash(j)
     return render_template('index.html',len=len, **defs)
 
-@app.route('/alex/<id>/plugins') 
-def plugins(id):
-    return render_template('plugins.html', len=len, int=float, **defs)
+@app.route('/alex/<id>/<page>') 
+def plugins(id, page):
+    return render_template('{page}.html', len=len, int=float, **defs)
 
 @app.errorhandler(404) 
 def page_not_found(e):
