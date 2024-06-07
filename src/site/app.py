@@ -5,48 +5,43 @@ from json import JSONEncoder
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'eryh840tiwry48ouehrjg8yoeuhgye58ohrugd'
 
-sendNotification = False
+class AlexAPI:
+    def __init__(self, key) -> None:
+        pass
+    
+    def conect(self):
+        pass
 
-defs = {
-        "user": {
-            "name": "Tiago",
-            "id": 1,
-            "weather": {
+    def send(self, url, value):
+        pass
+
+    def get(self, url):
+        pass
+    
+    def getWeather(self):
+        return {
                 "city": "Sao Vicente",
                 "country": "Cabo Verde",
                 "icon": "sun",
                 "degree": "27"
             }
-        },
-        "device_id": "1",
-        "update_date": "26 JUL 23 (10:24)",
-        "location": "localhost",
-        "port": "5500",
-        "notifications": [
-                {
-                    "title": "Aplication Error Fixed",
-                    "date": "26 JUL 23 (10:26)",
-                    "description": "The Error ID#4523624 of Type 2 has been fixed",
-                    "icon": "info-alt",
-                    "bg": "success"
-                },
-                {
-                    "title": "New user registration",
-                    "date": "26 JUL 23 (10:28)",
-                    "description": "User 524 was been learn",
-                    "icon": "user",
-                    "bg": "info"
-                },
-                {
-                    "title": "System Started",
-                    "date": "26 JUL 23 (10:30)",
-                    "description": "Alex System Have Started",
-                    "icon": "settings",
-                    "bg": "warning",
-                    "costume_class": "infinite-spin"
-                }
-            ],
-        "system": {
+
+    def getUserInfo(self):
+        return  {
+            "name": "Tiago",
+            "id": 1,
+        }
+    
+    def getAlexInfo(self):
+        return {
+            "device_id": "1",
+            "update_date": "26 JUL 23 (10:24)",
+            "location": "localhost",
+            "port": "5500",
+        }
+
+    def getSystemInfo(self):
+        return {
             "overall": {
                 "cpu": "53%",
                 "disk_usage": "12%",
@@ -103,8 +98,36 @@ defs = {
                         ]
                 }
             }
-        },
-        "nexus":[
+        }
+
+    def getNotifications(self):
+        return [
+                {
+                    "title": "Aplication Error Fixed",
+                    "date": "26 JUL 23 (10:26)",
+                    "description": "The Error ID#4523624 of Type 2 has been fixed",
+                    "icon": "info-alt",
+                    "bg": "success"
+                },
+                {
+                    "title": "New user registration",
+                    "date": "26 JUL 23 (10:28)",
+                    "description": "User 524 was been learn",
+                    "icon": "user",
+                    "bg": "info"
+                },
+                {
+                    "title": "System Started",
+                    "date": "26 JUL 23 (10:30)",
+                    "description": "Alex System Have Started",
+                    "icon": "settings",
+                    "bg": "warning",
+                    "costume_class": "infinite-spin"
+                }
+            ]
+    
+    def getNexusInfo(self):
+        return [
             {
                 "AI": "Main AI",
                 "Acronym": "ALEX",
@@ -155,8 +178,25 @@ defs = {
                 "Acronym": "WEC",
                 "Status": "Open"
             }
-        ],
-        "plugins": [
+        ]
+    
+    def getImportantNotifications(self):
+        return {
+            "notifications": [
+                {
+                "title": "This is a Test Notification",
+                "options": {
+                    "body": "Hi just passing by to test this",
+                    "icon": "",
+                }
+                },
+
+            ],
+            "send": False
+        }
+
+    def getPlugins(self):
+        return [
             {
                 "name": "Weather",
                 "id": "ig4t",
@@ -172,24 +212,27 @@ defs = {
                 "status": "running"
             }
         ]
-    }
 
-importantNotification = [
-    {
-      "title": "This is a Test Notification",
-      "options": {
-        "body": "Hi just passing by to test this",
-        "icon": "",
-      }
-    },
+    def getAll(self):
+        return {
+            "user": self.getUserInfo(),
+            "alex": self.getAlexInfo(),
+            "system": self.getSystemInfo(),
+            "nexus": self.getNexusInfo(),
+            "plugins": self.getPlugins(),
+            "notifications": self.getNotifications(),
+            "importantNotifications": self.getImportantNotifications(),
+            "weather": self.getWeather(),
+        }
 
-]
+API = AlexAPI("732178387248")
+defs = API.getAll()
 
 @app.route('/') 
 def index():
-    for i in importantNotification:
+    for i in defs['importantNotifications']['notifications']:
         j = JSONEncoder().encode(i) 
-        if sendNotification:
+        if defs['importantNotifications']['send']:
             flash(j)
     return render_template('index.html',len=len, **defs)
 
