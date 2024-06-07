@@ -238,7 +238,7 @@ def index(id):
     return render_template('index.html',len=len, **defs)
 
 @app.route('/alex/<id>/<page>') 
-def plugins(id, page):
+def alex(id, page):
     return render_template('{page}.html', len=len, int=float, **defs)
 
 @app.errorhandler(404) 
