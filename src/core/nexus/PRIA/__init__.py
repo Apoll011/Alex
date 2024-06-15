@@ -1,5 +1,4 @@
 from ..ai import AI
-import os
 from .functions import priaInitAction
 
 class PRIA(AI):
