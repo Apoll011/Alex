@@ -35,7 +35,6 @@ class AI:
 
     def activate(self):
         self.header()
-        print("Running Init Actions")
         for action in self.init_actions:
             print("Running", action)
             self.init_actions[action](self)
@@ -76,5 +75,4 @@ class AI:
         self.init_actions_done.append(name)
         print("OK.....", name)
         if len(self.init_actions_done) == len(self.init_actions.keys()):
-            print("Done Runnign Init Actions.")
             self.done_init_actions = True
