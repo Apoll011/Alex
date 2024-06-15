@@ -39,14 +39,14 @@ class AI:
             print("Running", action)
             self.init_actions[action](self)
         
-        while not self.done_init_actions:
+        while not self.done_init_actions and len(self.init_actions) != 0:
             pass
         
         self.footer()
         self.start()
 
     def header(self):
-        os.system("clear")
+        #os.system("clear")
         print("-"*30, "Initing", self.name, "-"*30)
     
     def footer(self):
