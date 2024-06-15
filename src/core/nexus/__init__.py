@@ -9,8 +9,9 @@ _NAT = "NAT"
 _AMI = "AMI"
 
 class Nexus:
-    def call(self, name, action="", **kargs):
-        path = f"resource.Nexos.{name}"
+    @staticmethod
+    def call(name, action="", **kargs):
+        path = f"core.nexus.{name}"
         exec("from {} import {}".format(path, name))
         jh ="("
         i = False
@@ -21,10 +22,7 @@ class Nexus:
             jh = jh[:-1]+")"
         else:
             jh +=")"
-        ret = ''
         if action == '':
             exec(f"{name}{jh}")
         else:
             exec(f"{name}().{action}{jh}")
-
-        return ret
