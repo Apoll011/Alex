@@ -7,6 +7,3 @@ class PRIA(AI):
         super().__init__("PRIA")
         self.register_blueprint(priaInitAction)
 
-    def activate(self):
-        super().activate()
-

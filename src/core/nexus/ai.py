@@ -23,7 +23,7 @@ class AI:
 
     init_actions_done = []
 
-    context = {
+    __context = {
 
     }
 
@@ -39,25 +39,37 @@ class AI:
         for action in self.init_actions:
             print("Running", action)
             self.init_actions[action](self)
+        
+        while not self.done_init_actions:
+            pass
+        
+        self.footer()
+        self.start()
 
     def header(self):
         os.system("clear")
         print("-"*30, "Initing", self.name, "-"*30)
+    
+    def footer(self):
+        print("-"*30, "End initializing", self.name, "-"*30)
+
+    def start(self):
+        pass
 
     def deactivate(self):
         pass
 
     def get_context(self, name):
-        pass
+        return self.__context[name]
     
     def register_blueprint(self, blueprint: AiInitActionBlueprint):
         self.init_actions = blueprint.init_actions | self.init_actions
     
-    def set(self, name, value):
-        self.context[name] = value
+    def set_context(self, name, value):
+        self.__context[name] = value
 
     def finish_and_set(self, name, ctx_name, ctx_value):
-        self.set(ctx_name, ctx_value)
+        self.set_context(ctx_name, ctx_value)
         self.finish(name)
 
     def finish(self, name):
