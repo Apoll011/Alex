@@ -1,3 +1,3 @@
-from core.nexus import Nexus, _PRIA
+from core.nexus import Nexus
 
-Nexus.call(_PRIA, "activate")
+Nexus.start()

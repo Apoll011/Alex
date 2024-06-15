@@ -1,28 +1,9 @@
-_PRIA = "PRIA"
-_SID = "SID"
-_WEC = "WEC"
-_LIS = "LIS"
-_HIS = "HIS"
-_ALEX = "ALEX"
-_SAMI = "SAMI"
-_NAT = "NAT"
-_AMI = "AMI"
+from ..system.config import nexus_ai
 
 class Nexus:
     @staticmethod
-    def call(name, action="", **kargs):
-        path = f"core.nexus.{name}"
-        exec("from {} import {}".format(path, name))
-        jh ="("
-        i = False
-        for la in kargs:
-            i = True
-            jh += f'{la}="{kargs[la]}",'
-        if i:
-            jh = jh[:-1]+")"
-        else:
-            jh +=")"
-        if action == '':
-            exec(f"{name}{jh}")
-        else:
-            exec(f"{name}().{action}{jh}")
+    def start():
+        for name in nexus_ai:
+            path = f"core.nexus.{name}"
+            exec("from {} import {}".format(path, name))
+            exec(f"{name}().activate()")
