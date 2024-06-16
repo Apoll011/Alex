@@ -1,4 +1,4 @@
-from nexus.ai import AI
+from core.nexus.ai import AI
 
 class SAMI(AI):
     def __init__(self) -> None:

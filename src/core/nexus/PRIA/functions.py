@@ -1,4 +1,4 @@
-from nexus.ai import AiBluePrintSkeleton, AI
+from core.nexus.ai import AiBluePrintSkeleton, AI
 from core.system.api.call import ApiCall
 from core.system.security._key import AlexKey
 

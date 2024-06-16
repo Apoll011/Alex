@@ -1,4 +1,4 @@
-from nexus.ai import AI
+from core.nexus.ai import AI
 from .functions import priaSkeleton
 
 class PRIA(AI):
