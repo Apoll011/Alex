@@ -73,20 +73,16 @@ class AiRepresentatorInScreen:
         Prints a header message
         """
         terminal_size = shutil.get_terminal_size().columns
-        border_size = int(terminal_size * 0.4)
-        name_size = terminal_size - border_size * 2 - 7  # 7 is for "Initing " and spaces
-        name_truncated = self.name[:name_size]
-        print("-" * border_size, "Initing", name_truncated, "-" * border_size)
+        border_size = (terminal_size - len(self.name) - 7) // 2  # 7 is for "Initing " and spaces
+        print("-" * border_size, "Initing", self.name, "-" * border_size)
 
     def footer(self):
         """
         Prints a footer message
         """
         terminal_size = shutil.get_terminal_size().columns
-        border_size = int(terminal_size * 0.4)
-        name_size = terminal_size - border_size * 2 - 14  # 14 is for "End initializing " and spaces
-        name_truncated = self.name[:name_size]
-        print("-" * border_size, "End initializing", name_truncated, "-" * border_size)
+        border_size = (terminal_size - len(self.name) - 14) // 2  # 14 is for "End initializing " and spaces
+        print("-" * border_size, "End initializing", self.name, "-" * border_size)
 
     def clear(self):
         """
