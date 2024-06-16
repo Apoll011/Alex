@@ -6,9 +6,22 @@ class AiBluePrintSkeleton:
     init_actions = {
         
     }
+    
+    deactivate_actions = {
+
+    }
+
     def init_action(self, name):
         def decorator(fun): 
             self.init_actions[name] = fun
+            def wrapper(*args, **kwargs):
+                return fun(*args, **kwargs)
+            return wrapper
+        return decorator
+
+    def deactivate_action(self, name):
+        def decorator(fun): 
+            self.deactivate_actions[name] = fun  # Fix: use deactivate_actions instead of init_actions
             def wrapper(*args, **kwargs):
                 return fun(*args, **kwargs)
             return wrapper
@@ -39,6 +52,10 @@ class AiBluePrintUser(AiContextUser):
 
     }
 
+    deactivate_actions = {
+
+    }
+
     init_actions_done = []
 
     done_init_actions = False
@@ -55,6 +72,7 @@ class AiBluePrintUser(AiContextUser):
     
     def register_blueprint(self, blueprint: AiBluePrintSkeleton):
         self.init_actions = blueprint.init_actions | self.init_actions
+        self.deactivate_actions = blueprint.deactivate_actions | self.deactivate_actions
 
 class AI(AiRepresentatorInScreen, AiBluePrintUser):
     def __init_subclass__(cls) -> None:
@@ -74,10 +92,18 @@ class AI(AiRepresentatorInScreen, AiBluePrintUser):
             pass
         
         self.footer()
-        self.start()
+        self.__start()
     
-    def start(self):
+    def __start(self):
+        pass
+
+    def __end(self):
         pass
 
     def deactivate(self):
-        pass
+        for action in self.deactivate_actions:
+            print("Running", action)
+            self.init_actions[action](action, self)
+        
+        while not self.done_init_actions and len(self.init_actions) != 0:
+            pass
