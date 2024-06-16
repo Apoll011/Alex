@@ -22,8 +22,8 @@ class ApiCall:
         promisse = self.call_route_async("alex/alive")
         promisse.then(lambda data: self.__auth(data))
 
-    def __auth(self, data):
-        if data["on"] == True:
+    def __auth(self, data:Api):
+        if data.responce["on"] == True:
             self.active = True
 
     def call_route_async(self, route, value: str | dict[str, str] = ""):
