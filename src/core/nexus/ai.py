@@ -1,6 +1,7 @@
 from core.system.config import path
 from core.system.context import ContextManager
 import os
+import shutil
 import threading
 
 class AiBluePrintSkeleton:
@@ -61,17 +62,31 @@ class AiRepresentatorInScreen:
         The name of the AI
     """
 
+    def __init__(self, name: str):
+        """
+        Initializes the AiRepresentatorInScreen instance
+        """
+        self.name = name
+
     def header(self):
         """
         Prints a header message
         """
-        print("-"*30, "Initing", self.name, "-"*30)
+        terminal_size = shutil.get_terminal_size().columns
+        border_size = int(terminal_size * 0.4)
+        name_size = terminal_size - border_size * 2 - 7  # 7 is for "Initing " and spaces
+        name_truncated = self.name[:name_size]
+        print("-" * border_size, "Initing", name_truncated, "-" * border_size)
 
     def footer(self):
         """
         Prints a footer message
         """
-        print("-"*30, "End initializing", self.name, "-"*30)
+        terminal_size = shutil.get_terminal_size().columns
+        border_size = int(terminal_size * 0.4)
+        name_size = terminal_size - border_size * 2 - 14  # 14 is for "End initializing " and spaces
+        name_truncated = self.name[:name_size]
+        print("-" * border_size, "End initializing", name_truncated, "-" * border_size)
 
     def clear(self):
         """
