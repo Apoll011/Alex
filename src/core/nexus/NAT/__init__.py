@@ -1,4 +1,4 @@
-from ..ai import AI
+from nexus.ai import AI
 
 class NAT(AI):
     def __init__(self) -> None:

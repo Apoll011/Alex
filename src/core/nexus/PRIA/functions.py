@@ -1,5 +1,5 @@
-from ..ai import AiBluePrintSkeleton, AI
-from ...system.api.call import ApiCall
+from nexus.ai import AiBluePrintSkeleton, AI
+from core.system.api.call import ApiCall
 from core.system.security._key import AlexKey
 
 priaSkeleton = AiBluePrintSkeleton()

@@ -1,4 +1,4 @@
-from ..system.config import nexus_ai
+from core.system.config import nexus_ai
 import os
 
 class Nexus:

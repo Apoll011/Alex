@@ -1,4 +1,4 @@
-from ..ai import AI
+from nexus.ai import AI
 
 class HIS(AI):
     def __init__(self) -> None:

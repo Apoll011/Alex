@@ -1,6 +1,6 @@
 import json
 import socket
-from ..promise import Promise
+from core.system.promise import Promise
 from .api import Api
 
 class ApiCall:

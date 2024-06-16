@@ -1,5 +1,5 @@
 import os
-from ..config import path
+from core.system.config import path
 
 class Application:
     """Class that work with the application files from Alex"""

@@ -1,6 +1,6 @@
 from playsound import playsound
-from .data_files import *
-from ..config import path
+from core.system.resources.data_files import *
+from core.system.config import path
 
 
 class Sound:

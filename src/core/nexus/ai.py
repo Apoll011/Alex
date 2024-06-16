@@ -1,4 +1,4 @@
-from ..system.config import path
+from core.system.config import path
 from core.system.context import ContextManager
 
 
