@@ -27,6 +27,9 @@ class AI:
 
     done_init_actions = False
 
+    def __init_subclass__(cls) -> None:
+        cls._context.save(cls, cls.__name__)
+
     def __init__(self, sig) -> None:
         with open(f"{path}/core/nexus/{sig}/sys.sg", "r") as name:
             self.name = name.read()
