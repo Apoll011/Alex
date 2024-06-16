@@ -5,7 +5,7 @@ __lang__ = "pt"
 
 path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/Alex/src")
 
-nexus_ai = ["PRIA", "SID", "WEC", "LIS", "HIS", "ALEX",  "SAMI", "NAT", "AMI"]
+nexus_ai = ["SID", "WEC", "LIS", "HIS", "ALEX",  "SAMI", "NAT", "AMI", "PRIA"]
 
 voice: dict = {
     "voice":{

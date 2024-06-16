@@ -100,27 +100,27 @@ class AiContextUser:
     The context manager
     """
 
-    def get_context(self, name: str, type: str = "memory"):
+    def get_context(self, name: str, type: str = "pickle"):
         """
         Retrieves a context value
 
         Args:
             name (str): The name of the context value
-            type (str): The type of the context value (default: "memory")
+            type (str): The type of the context value (default: "pickle")
 
         Returns:
             The context value
         """
         return self._context.load(name, type)
 
-    def set_context(self, name: str, value, type: str = "memory"):
+    def set_context(self, name: str, value, type: str = "pickle"):
         """
         Sets a context value
 
         Args:
             name (str): The name of the context value
             value: The value to be set
-            type (str): The type of the context value (default: "memory")
+            type (str): The type of the context value (default: "pickle")
         """
         self._context.save(value, name, type)
 
@@ -262,7 +262,7 @@ class Nexus:
         Returns:
             The result of the method call
         """
-        ai = cls.get_ai(name)
+        ai = cls.get_ai(name)()
         if ai:
             return getattr(ai, method)(*args, **kwargs)
         else:
@@ -311,15 +311,15 @@ class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
         self.run_init_actions()
         
         self.footer()
-        self.__start()
+        self.start()
 
-    def __start(self):
+    def start(self):
         """
         Starts the AI instance (not implemented)
         """
         pass
 
-    def __end(self):
+    def end(self):
         """
         Ends the AI instance (not implemented)
         """
@@ -330,4 +330,4 @@ class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
         Deactivates the AI instance
         """
         self.run_deactivate_actions()
-        self.__end()
+        self.end()
