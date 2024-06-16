@@ -23,7 +23,7 @@ class AI:
 
     init_actions_done = []
 
-    __context = ContextManager()
+    _context = ContextManager()
 
     done_init_actions = False
 
@@ -57,13 +57,13 @@ class AI:
         pass
 
     def get_context(self, name, type = "memory"):
-        return self.__context.load(name, type)
+        return self._context.load(name, type)
     
     def register_blueprint(self, blueprint: AiBluePrintSkeleton):
         self.init_actions = blueprint.init_actions | self.init_actions
     
     def set_context(self, name, value, type = "memory"):
-        self.__context.save(value, name, type)
+        self._context.save(value, name, type)
 
     def finish_and_set(self, name, ctx_name, ctx_value):
         self.set_context(ctx_name, ctx_value)
