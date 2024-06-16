@@ -13,7 +13,7 @@ class ContextManager:
     def __exit__(self, exc_type, exc_val, exc_tb):
         pass
 
-    def save(self, obj, context_name, file_format="memory"):
+    def save(self, obj, context_name, file_format="pickle"):
         """Save an context to the contexts dictionary and optionally to a file.
 
         Args:
@@ -112,7 +112,7 @@ class ContextManager:
         Returns:
             str: The file path.
         """
-        file_name = f"{context_name}.{file_format}"
+        file_name = f"{path}/resources/ctx/{context_name}.{file_format}"
         return os.path.join(ContextManager.__file_dir, file_name)
 
     @classmethod
