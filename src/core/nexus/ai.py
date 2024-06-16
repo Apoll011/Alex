@@ -1,6 +1,6 @@
 from core.system.config import path
 from core.system.context import ContextManager
-
+import os
 
 class AiBluePrintSkeleton:
     init_actions = {
@@ -14,19 +14,49 @@ class AiBluePrintSkeleton:
             return wrapper
         return decorator
 
-class AI:
+class AiRepresentatorInScreen:
     name: str
+    def header(self):
+        print("-"*30, "Initing", self.name, "-"*30)
+    
+    def footer(self):
+        print("-"*30, "End initializing", self.name, "-"*30)
+    
+    def clear(self):
+        os.system("clear")
 
+class AiContextUser:
+    _context = ContextManager()
+
+    def get_context(self, name, type = "memory"):
+        return self._context.load(name, type)
+    
+    def set_context(self, name, value, type = "memory"):
+        self._context.save(value, name, type)
+
+class AiBluePrintUser(AiContextUser):
     init_actions = {
 
     }
 
     init_actions_done = []
 
-    _context = ContextManager()
-
     done_init_actions = False
 
+    def finish_and_set(self, name, ctx_name, ctx_value):
+        self.set_context(ctx_name, ctx_value)
+        self.finish(name)
+
+    def finish(self, name):
+        self.init_actions_done.append(name)
+        print("OK.....", name)
+        if len(self.init_actions_done) == len(self.init_actions.keys()):
+            self.done_init_actions = True
+    
+    def register_blueprint(self, blueprint: AiBluePrintSkeleton):
+        self.init_actions = blueprint.init_actions | self.init_actions
+
+class AI(AiRepresentatorInScreen, AiBluePrintUser):
     def __init_subclass__(cls) -> None:
         cls._context.save(cls, cls.__name__)
 
@@ -45,35 +75,9 @@ class AI:
         
         self.footer()
         self.start()
-
-    def header(self):
-        #os.system("clear")
-        print("-"*30, "Initing", self.name, "-"*30)
     
-    def footer(self):
-        print("-"*30, "End initializing", self.name, "-"*30)
-
     def start(self):
         pass
 
     def deactivate(self):
         pass
-
-    def get_context(self, name, type = "memory"):
-        return self._context.load(name, type)
-    
-    def register_blueprint(self, blueprint: AiBluePrintSkeleton):
-        self.init_actions = blueprint.init_actions | self.init_actions
-    
-    def set_context(self, name, value, type = "memory"):
-        self._context.save(value, name, type)
-
-    def finish_and_set(self, name, ctx_name, ctx_value):
-        self.set_context(ctx_name, ctx_value)
-        self.finish(name)
-
-    def finish(self, name):
-        self.init_actions_done.append(name)
-        print("OK.....", name)
-        if len(self.init_actions_done) == len(self.init_actions.keys()):
-            self.done_init_actions = True
