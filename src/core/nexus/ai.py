@@ -73,16 +73,16 @@ class AiRepresentatorInScreen:
         Prints a header message
         """
         terminal_size = shutil.get_terminal_size().columns
-        border_size = (terminal_size - len(self.name) - 7) // 2  # 7 is for "Initing " and spaces
-        print("-" * border_size, "Initing", self.name, "-" * border_size)
+        border_size = (terminal_size - len(self.name) - 10 - self.name.count(" ")) // 3  # 10 is for "Initing " and spaces
+        print("\33[91m-" * border_size, "\33[36mIniting", self.name,"\33[91m", "-" * border_size, "\33[97m")
 
     def footer(self):
         """
         Prints a footer message
         """
         terminal_size = shutil.get_terminal_size().columns
-        border_size = (terminal_size - len(self.name) - 14) // 2  # 14 is for "End initializing " and spaces
-        print("-" * border_size, "End initializing", self.name, "-" * border_size)
+        border_size = (terminal_size - len(self.name) - 18 - self.name.count(" ")) // 3  # 14 is for "End initializing " and spaces
+        print("\33[91m-" * border_size, "\33[96mEnd initializing", self.name, "\33[91m", "-" * border_size, "\33[97m")
 
     def clear(self):
         """
@@ -172,7 +172,7 @@ class AiBluePrintUser(AiContextUser):
             name (str): The name of the action
         """
         self.init_actions_done.append(name)
-        print("OK.....", name)
+        print("\33[93mOK.....", name, "\33[97m")
         if len(self.init_actions_done) == len(self.init_actions.keys()):
             self.done_init_actions = True
 
@@ -185,6 +185,22 @@ class AiBluePrintUser(AiContextUser):
         """
         self.init_actions = blueprint.init_actions | self.init_actions
         self.deactivate_actions = blueprint.deactivate_actions | self.deactivate_actions
+
+    def run_init_actions(self):
+        """
+        Runs the registered init actions
+        """
+        for action in self.init_actions:
+            print("\33[32mRunning", action, "\33[97m")
+            self.init_actions[action](action, self)
+        
+        while not self.done_init_actions and len(self.init_actions) != 0:
+            pass
+    
+    def run_deactivate_actions(self):
+        for action in self.deactivate_actions:
+            print("\33[32mRunning", action, "\33[97m")
+            self.deactivate_actions[action](action, self)
 
 class Nexus:
     """
@@ -292,12 +308,7 @@ class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
         Activates the AI instance
         """
         self.header()
-        for action in self.init_actions:
-            print("Running", action)
-            self.init_actions[action](action, self)
-        
-        while not self.done_init_actions and len(self.init_actions) != 0:
-            pass
+        self.run_init_actions()
         
         self.footer()
         self.__start()
@@ -318,10 +329,5 @@ class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
         """
         Deactivates the AI instance
         """
-        for action in self.deactivate_actions:
-            print("Running", action)
-            self.deactivate_actions[action](action, self)
-        
-        while not self.done_init_actions and len(self.init_actions) != 0:
-            pass
+        self.run_deactivate_actions()
         self.__end()
