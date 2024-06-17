@@ -215,13 +215,12 @@ class Nexus:
     Lock for concurrent access
     """
 
-    def __init_subclass__(cls) -> None:
+    def register_ai(self, name, cls) -> None:
         """
         Registers the AI subclass in the nexus
         """
-        if cls.__name__ != "Ai":
-            with Nexus._lock:
-                Nexus._registry[cls.__name__] = cls
+        with Nexus._lock:
+            Nexus._registry[name] = cls
 
     @classmethod
     def get_ai(cls, name: str):
@@ -262,7 +261,7 @@ class Nexus:
         Returns:
             The result of the method call
         """
-        ai = cls.get_ai(name)()
+        ai = cls.get_ai(name)
         if ai:
             return getattr(ai, method)(*args, **kwargs)
         else:
@@ -293,6 +292,8 @@ class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
     The main AI class
     """
 
+    active: bool
+
     def __init__(self, sig: str) -> None:
         """
         Initializes the AI instance
@@ -302,6 +303,8 @@ class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
         """
         with open(f"{path}/core/nexus/{sig}/sys.sg", "r") as name:
             self.name = name.read()
+        self.register_ai(sig, self)
+        
 
     def activate(self):
         """
@@ -310,14 +313,15 @@ class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
         self.header()
         self.run_init_actions()
         
+        self.active = True
         self.footer()
-        self.start()
 
     def start(self):
         """
         Starts the AI instance (not implemented)
         """
-        pass
+        while self.activate:
+            self.loop()
 
     def end(self):
         """
@@ -331,3 +335,8 @@ class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
         """
         self.run_deactivate_actions()
         self.end()
+
+    def loop(self):
+        """
+        Will Always loop over unless `active` is set to `False` 
+        """
