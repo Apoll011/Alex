@@ -19,15 +19,14 @@ class AiBluePrintSkeleton:
         
     }
 
+    request_actions = {
+
+    }
+
     def __init__(self) -> None:
-        self.init_actions = {
-        
-        }
-    
-        # Dictionary to store deactivate actions
-        self.deactivate_actions = {
-            
-        }
+        self.init_actions = {}
+        self.deactivate_actions = {}
+        self.request_actions = {}
 
     def init_action(self, name: str):
         """
@@ -62,6 +61,24 @@ class AiBluePrintSkeleton:
                 return fun(*args, **kwargs)
             return wrapper
         return decorator
+    
+    def request_action(self, name: str):
+        """
+        Decorator to register a request action
+
+        Args:
+            name (str): The name of the request
+
+        Returns:
+            A decorator function
+        """
+        def decorator(fun):
+            self.request_actions[name] = fun
+            def wrapper(*args, **kwargs):
+                return fun(*args, **kwargs)
+            return wrapper
+        return decorator
+
 
 class AiRepresentatorInScreen:
     """
@@ -139,11 +156,19 @@ class AiBluePrintUser(AiContextUser):
     """
     A class to manage AI blueprints and their actions
     """
+
     init_actions = {
         
     }
     """
     Dictionary to store init actions
+    """
+
+    request_actions = {
+
+    }
+    """
+    Dictionary to store request actions
     """
 
     deactivate_actions = {
@@ -196,7 +221,8 @@ class AiBluePrintUser(AiContextUser):
         """
         self.init_actions = blueprint.init_actions | self.init_actions
         self.deactivate_actions = blueprint.deactivate_actions | self.deactivate_actions
-
+        self.request_actions = blueprint.request_actions | self.request_actions
+        
     def run_init_actions(self):
         """
         Runs the registered init actions
@@ -213,7 +239,7 @@ class AiBluePrintUser(AiContextUser):
             print("\33[32mRunning", action, "\33[97m")
             self.deactivate_actions[action](action, self)
 
-class Nexus:
+class Nexus(AiBluePrintUser):
     """
     A nexus class to manage AI instances and enable communication between them
     """
@@ -298,6 +324,12 @@ class Nexus:
         else:
             raise ValueError(f"AI instance '{name}' not found")
 
+    def handle_request(self, request, *args, **kwargs):
+        if request in self.request_actions.keys():
+            return self.request_actions[request](*args, **kwargs)
+        else:
+            raise ValueError(f"AI request '{request}' not found")
+
     @staticmethod
     def start_nexus():
         cm = ContextManager()
@@ -309,7 +341,7 @@ class Nexus:
             exec(f"{name}().activate()")
         cm.save(True, "all_ai_started", "pickle")
 
-class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
+class AI(Nexus, AiRepresentatorInScreen):
     """
     The main AI class
     """
