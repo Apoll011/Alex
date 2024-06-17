@@ -1,7 +1,7 @@
 
 
 class Api:
-    responce: str
+    responce: dict
     code: int
     time: float
 

@@ -1,3 +1,5 @@
-from core.nexus import Nexus
+from core.nexus.ai import Nexus
 
-Nexus.start()
+Nexus.start_nexus()
+
+Nexus.call_ai("PRIA", "start")

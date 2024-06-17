@@ -1,5 +1,6 @@
-from core.system.config import path
+from core.system.config import path, nexus_ai
 from core.system.context import ContextManager
+from core.system.api.call import ApiCall
 import os
 import shutil
 import threading
@@ -17,6 +18,16 @@ class AiBluePrintSkeleton:
     deactivate_actions = {
         
     }
+
+    def __init__(self) -> None:
+        self.init_actions = {
+        
+        }
+    
+        # Dictionary to store deactivate actions
+        self.deactivate_actions = {
+            
+        }
 
     def init_action(self, name: str):
         """
@@ -287,11 +298,23 @@ class Nexus:
         else:
             raise ValueError(f"AI instance '{name}' not found")
 
+    @staticmethod
+    def start_nexus():
+        cm = ContextManager()
+        os.system("clear")
+        cm.save(False, "all_ai_started", "pickle")
+        for name in nexus_ai:
+            path = f"core.nexus.{name}"
+            exec("from {} import {}".format(path, name))
+            exec(f"{name}().activate()")
+        cm.save(True, "all_ai_started", "pickle")
+
 class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
     """
     The main AI class
     """
 
+    api:ApiCall
     active: bool
 
     def __init__(self, sig: str) -> None:
@@ -304,6 +327,8 @@ class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
         with open(f"{path}/core/nexus/{sig}/sys.sg", "r") as name:
             self.name = name.read()
         self.register_ai(sig, self)
+
+        self.done_init_actions = False
         
 
     def activate(self):
@@ -320,7 +345,7 @@ class AI(Nexus, AiRepresentatorInScreen, AiBluePrintUser):
         """
         Starts the AI instance (not implemented)
         """
-        while self.activate:
+        while self.active:
             self.loop()
 
     def end(self):
