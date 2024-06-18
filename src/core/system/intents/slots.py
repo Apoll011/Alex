@@ -1,6 +1,7 @@
 from typing import NamedTuple, Dict, Any
 from enum import Enum
 
+
 class Temperature(Enum):
     """Temperature enumeration"""
     celsius = 0
@@ -9,12 +10,12 @@ class Temperature(Enum):
 class SlotValue(NamedTuple):
     """Base class for slot values"""
     kind: str
-    value: Any
+    value: str
 
 class SlotValueFactory:
     """Factory class for creating SlotValue instances"""
     @staticmethod
-    def create(kind: str, **kwargs: Any) -> SlotValue:
+    def create(kind: str, **kwargs: Any):
         """Creates a SlotValue instance based on the kind parameter and additional keyword arguments"""
         if kind == "InstantTime":
             return SlotValueInstantTime(kind=kind, **kwargs)
@@ -29,7 +30,7 @@ class SlotValueFactory:
         elif kind == "Temperature":
             return SlotValueTemperature(kind=kind, **kwargs)
         elif kind == "TimeInterval":
-            return SlotValueTimeInterval(kind=kind, **kwargs)
+            return SlotValueTimeInterval(kind=kind, from_ = kwargs["from"], to = kwargs["to"])
         elif kind == "Percentage":
             return SlotValuePercentage(kind=kind, **kwargs)
         elif kind == "MusicAlbum":
@@ -49,19 +50,23 @@ class SlotValueFactory:
         else:
             raise ValueError(f"Unknown kind of SlotValue: {kind}")
 
-class SlotValueInstantTime(SlotValue):
+class SlotValueInstantTime(NamedTuple):
     """Slot value representing an instant time"""
+    kind: str
+    value: str
     grain: str
     precision: str
 
-class SlotValueAmountOfMoney(SlotValue):
+class SlotValueAmountOfMoney(NamedTuple):
     """Slot value representing an amount of money"""
+    kind: str
     value: int
     precision: str
     unit: str
 
-class SlotValueDuration(SlotValue):
+class SlotValueDuration(NamedTuple):
     """Slot value representing a duration"""
+    kind: str
     years: int
     quarters: int
     months: int
@@ -72,105 +77,58 @@ class SlotValueDuration(SlotValue):
     seconds: int
     precision: str
 
-class SlotValueNumber(SlotValue):
+class SlotValueNumber(NamedTuple):
     """Slot value representing a number"""
+    kind: str
     value: int
 
-class SlotValueOrdinal(SlotValueNumber):
+class SlotValueOrdinal(NamedTuple):
     """Slot value representing an ordinal number"""
-    pass
+    kind: str
+    value: int
 
-class SlotValueTemperature(SlotValue):
+class SlotValueTemperature(NamedTuple):
     """Slot value representing a temperature"""
+    kind: str
     value: float
     unit: Temperature
 
-class SlotValueTimeInterval(SlotValue):
+class SlotValueTimeInterval(NamedTuple):
     """Slot value representing a time interval"""
+    kind: str
     from_: str
     to: str
 
-class SlotValuePercentage(SlotValue):
+class SlotValuePercentage(NamedTuple):
     """Slot value representing a percentage"""
+    kind: str
     value: float
 
-class SlotValueMusicAlbum(SlotValue):
+class SlotValueMusicAlbum(NamedTuple):
     """Slot value representing a music album"""
+    kind: str
     value: str
 
 class SlotValueMusicArtist(SlotValue):
     """Slot value representing a music artist"""
     value: str
 
-class SlotValueMusicTrack(SlotValue):
+class SlotValueMusicTrack(NamedTuple):
     """Slot value representing a music track"""
+    kind: str
     value: str
 
-class SlotValueCity(SlotValue):
+class SlotValueCity(NamedTuple):
     """Slot value representing a city"""
+    kind: str
     value: str
 
-class SlotValueCountry(SlotValue):
+class SlotValueCountry(NamedTuple):
     """Slot value representing a country"""
+    kind: str
     value: str
 
-class SlotValueRegion(SlotValue):
+class SlotValueRegion(NamedTuple):
     """Slot value representing a region"""
+    kind: str
     value: str
-
-class SlotRange(NamedTuple):
-    """Range of values"""
-    start: int
-    end: int
-
-class Slot(NamedTuple):
-    """Slot representing a piece of information extracted from user input"""
-    range: SlotRange
-    raw_value: str
-    value: SlotValue
-    entity: str
-    slot_name: str
-
-class Entity(NamedTuple):
-    """Entity representing a piece of information"""
-    name: str
-    value: str
-
-class Intent(NamedTuple):
-    """Intent representing the user's intention"""
-    intent_name: str
-    confidence: float
-
-class IntentResponse(NamedTuple):
-    """Response to a user's input, containing the input, intent, and slots"""
-    input: str
-    intent: Intent
-    slots: list[Slot]
-
-class IntentParserToObject:
-    """Class for parsing intent data from a dictionary representation"""
-    def __init__(self) -> None:
-        """Initializes the parser"""
-        pass
-
-    def parse_slot(self, slot: Dict[str, Any]) -> Slot:
-        """Parses a slot dictionary and returns a Slot instance"""
-        range = SlotRange(start=slot["range"]["start"], end=slot["range"]["end"])
-        raw_value = slot["rawValue"]
-        entity = slot["entity"]
-        slot_name = slot["slotName"]
-        value = SlotValueFactory.create(**slot["value"])
-        return Slot(range=range, raw_value=raw_value, value=value, entity=entity, slot_name=slot_name)
-
-    def parse_intent(self, intent: Dict[str, Any]) -> Intent:
-        """Parses an intent dictionary and returns an Intent instance"""
-        intent_name = intent["intentName"]
-        confidence = intent["probability"]
-        return Intent(intent_name=intent_name, confidence=confidence)
-
-    def parser(self, intentr: Dict[str, Any]) -> IntentResponse:
-        """Parses the entire intent data dictionary and returns an IntentResponse instance"""
-        input = intentr["input"]
-        intent = self.parse_intent(intentr["intent"])
-        slots = [self.parse_slot(slot) for slot in intentr["slots"]]
-        return IntentResponse(input=input, intent=intent, slots=slots)
