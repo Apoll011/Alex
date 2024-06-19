@@ -23,13 +23,15 @@ def train_intents(self, alex: AI):
 def train_engine(alex: AI):
     alex.clear()
     time_stared = time.time()
-    alex.print_header_text("Re-trainig", 2)
-    print("Re-trainig everyting. This process take around 1 to 10 minutes please wait...")
+    alex.print_header_text("Re-trainig", 1)
+    print("\33[34mRe-trainig everyting. This process take around 1 to 10 minutes please wait...\33[0m")
     for act in trainig_actions:
         name = act.replace(".", " ").title()
-        print(name)
+        alex.print_header_text(name, 3)
+        print("Sending Request...")
         trainig_actions[act](alex)
-        print("Ended", name)
-    print("Time Took:", time.time() - time_stared)
-    alex.print_header_text("Ended Re-Training")
+        print("Prossesing Request...")
+        alex.print_header_text("Ended " + name, 3)
+    print("\33[93mTime Took:", time.time() - time_stared)
+    alex.print_header_text("Ended Re-Training", 1)
     
