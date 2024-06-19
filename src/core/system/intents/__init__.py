@@ -32,7 +32,7 @@ class IntentResponse(NamedTuple):
 
 class IntentParserToObject:
     """Class for parsing intent data from a dictionary representation"""
-    def __init__(self) -> None:
+    def __init__(self):
         """Initializes the parser"""
         pass
 
@@ -104,4 +104,4 @@ class IntentParserToObject:
             elif isinstance(slot.value, SlotValueTimeInterval):
                 print(f"    {RESET_COLOR}From: {COLORS['value']}{slot.value.from_}")
                 print(f"    {RESET_COLOR}To: {COLORS['value']}{slot.value.to}")
-            print()
+            print(f"{RESET_COLOR}")
