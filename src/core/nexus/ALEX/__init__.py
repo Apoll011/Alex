@@ -20,4 +20,4 @@ class ALEX(AI):
             promesa = self.api.call_route("intent_recognition/parse", int)
             r = promesa.responce
             t = self.intent.parser(r)
-            print(self.intent.draw_intent(t))
+            self.intent.draw_intent(t)
