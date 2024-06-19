@@ -100,18 +100,19 @@ class AiRepresentatorInScreen:
         """
         Prints a header message
         """
+        self.print_header_text(f"Initializing {self.name}")
+
+    def print_header_text(self, text, size = 3):
         terminal_size = shutil.get_terminal_size().columns
-        border_size = (terminal_size - len(self.name) - 10 - self.name.count(" ")) // 3  # 10 is for "Initing " and spaces
-        print("\33[91m-" * border_size, "\33[36mIniting", self.name,"\33[91m", "-" * border_size, "\33[97m")
+        border_size = (terminal_size - len(text) - 2 - self.name.count(" ")) // size  # 2 is for spaces
+        print("\33[91m-" * border_size, f"\33[36m{text}\33[91m", "-" * border_size, "\33[97m")
 
     def footer(self):
         """
         Prints a footer message
         """
-        terminal_size = shutil.get_terminal_size().columns
-        border_size = (terminal_size - len(self.name) - 18 - self.name.count(" ")) // 3  # 14 is for "End initializing " and spaces
-        print("\33[91m-" * border_size, "\33[96mEnd initializing", self.name, "\33[91m", "-" * border_size, "\33[97m")
-
+        self.print_header_text(f"End initializing {self.name}")
+        
     def clear(self):
         """
         Clears the screen
@@ -326,7 +327,7 @@ class Nexus(AiBluePrintUser):
 
     def handle_request(self, request, *args, **kwargs):
         if request in self.request_actions.keys():
-            return self.request_actions[request](*args, **kwargs)
+            return self.request_actions[request](self, *args, **kwargs)
         else:
             raise ValueError(f"AI request '{request}' not found")
 
