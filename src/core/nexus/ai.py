@@ -1,9 +1,10 @@
+import os
+import time
+import shutil
+import threading
 from core.system.config import path, nexus_ai
 from core.system.context import ContextManager
 from core.system.api.call import ApiCall
-import os
-import shutil
-import threading
 
 class AiBluePrintSkeleton:
     """
@@ -373,6 +374,7 @@ class AI(Nexus, AiRepresentatorInScreen):
         self.run_init_actions()
         
         self.active = True
+        time.sleep(1)
         self.footer()
 
     def start(self):
