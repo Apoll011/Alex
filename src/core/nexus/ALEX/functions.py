@@ -10,5 +10,5 @@ def set_api_con(self, alex: AI):
 
 @alexSkeleton.init_action("Train intents")
 def train_intents(self, alex: AI):
-    promise = alex.api.call_route_async("intent_recognition/train", "pt-pt")
+    promise = alex.api.call_route_async("intent_recognition/get/reuse")
     promise.then(lambda data: alex.finish(self))

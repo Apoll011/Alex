@@ -17,7 +17,7 @@ class ALEX(AI):
     def loop(self):
         while True:
             int = input("Seu texto: ")
-            promesa = self.api.call_route("intent_recognition/recognize", {"lang": "pt-pt", "text": int})
+            promesa = self.api.call_route("intent_recognition/parse", int)
             r = promesa.responce
-            print(r)
-            print(self.intent.parser(r).entities)
+            t = self.intent.parser(r)
+            print(self.intent.draw_intent(t))
