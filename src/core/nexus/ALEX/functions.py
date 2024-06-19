@@ -32,6 +32,6 @@ def train_engine(alex: AI):
         trainig_actions[act](alex)
         print("Prossesing Request...")
         alex.print_header_text("Ended " + name, 3)
-    print("\33[93mTime Took:", time.time() - time_stared)
+    print("\33[93mTime Took:", time.time() - time_stared, "seconds")
     alex.print_header_text("Ended Re-Training", 1)
     
