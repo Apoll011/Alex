@@ -102,9 +102,10 @@ class AiRepresentatorInScreen:
         """
         self.print_header_text(f"Initializing {self.name}")
 
-    def print_header_text(self, text, size = 3):
+    def print_header_text(self, text, size = 2):
+        s = (size + 1)
         terminal_size = shutil.get_terminal_size().columns
-        border_size = (terminal_size - len(text) - 2 - self.name.count(" ")) // size  # 2 is for spaces
+        border_size = (terminal_size - len(text) - 2 - self.name.count(" ")) // s  # 2 is for spaces
         print("\33[91m-" * border_size, f"\33[36m{text}\33[91m", "-" * border_size, "\33[97m")
 
     def footer(self):
