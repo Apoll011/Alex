@@ -82,7 +82,8 @@ class IntentParserToObject:
             print(f"    Slot Name: {COLORS['slot']}{slot.slot_name}{RESET_COLOR}")
             print(f"    Raw Value: {COLORS['value']}{slot.raw_value}{RESET_COLOR}")
             print(f"    Value Kind: {COLORS['value']}{slot.value.kind}")
-            print(f"    {RESET_COLOR}Value: {COLORS['value']}{slot.value.value}")
+            if not isinstance(slot.value, SlotValueDuration):
+                print(f"    {RESET_COLOR}Value: {COLORS['value']}{slot.value.value}")
             if isinstance(slot.value, SlotValueInstantTime):
                 print(f"    {RESET_COLOR}Grain: {COLORS['value']}{slot.value.grain}")
                 print(f"    {RESET_COLOR}Precision: {COLORS['value']}{slot.value.precision}")
