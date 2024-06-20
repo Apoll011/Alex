@@ -11,7 +11,7 @@ class TranslationSystem:
         translations (dict): A dictionary of translations, where keys are translation keys and values are translated strings
     """
 
-    def __init__(self, lang: str, file: str = "system") -> None:
+    def __init__(self, lang: str, file: str = "system", path_file = "/resources/language/") -> None:
         """
         Initializes the translation system.
 
@@ -21,6 +21,7 @@ class TranslationSystem:
         """
         self.lang = lang
         self.file = file
+        self.language_path = path + path_file
         self.translations = self.load_translations()
 
     def load_translations(self) -> dict:
@@ -30,7 +31,7 @@ class TranslationSystem:
         Returns:
             dict: A dictionary of translations, where keys are translation keys and values are translated strings
         """
-        file_path = f"{path}/resources/language/{self.lang}/tradutor/{self.file}.lang"
+        file_path = "{self.file}.{self.lang}.lang"
         with open(file_path, "r", encoding="UTF-8") as f:
             translations = {}
             for line in f:
