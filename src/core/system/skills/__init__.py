@@ -49,8 +49,8 @@ class BaseSkill:
                return text
 
      def set_as_last_intent(self, text):
-          self.alex_context.save("last_responce", text)
-          self.alex_context.save("last_intent", self.intent)
+          self.alex_context.save(text, "last_responce")
+          self.alex_context.save(self.intent, "last_intent")
 
      def speak(self, text):
           print(text)
