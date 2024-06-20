@@ -21,6 +21,7 @@ class ALEX(AI):
         t = self.intent.parser(r)
         self.intent.draw_intent(t)
         try:
-            SkillCaller().call(self._context, t)
+            s = SkillCaller().call(t)
+            s.execute(self._context, t)
         except Exception as e:
             print(e)
