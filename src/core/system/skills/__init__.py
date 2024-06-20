@@ -1,6 +1,6 @@
 from core.system.intents import IntentResponse, Slot
 from core.nexus.ai import AI
-from .erros import SkillIntentError, SkillSlotNotFound
+from .error import SkillIntentError, SkillSlotNotFound
 
 class BaseSkill:
      name: str
@@ -10,7 +10,7 @@ class BaseSkill:
      alex: AI
      intent: IntentResponse
 
-     slots: dict[str, Slot] = {}
+     slots: dict[str, Slot | None] = {}
 
      def __init__(self):
           pass
@@ -33,6 +33,12 @@ class BaseSkill:
                self.slots[slot_name] = self.intent.slots[slot_name].value
           else:
                raise SkillSlotNotFound(slot_name)
+
+     def optional(self, slot_name: str, slot_type):
+          if slot_name in self.intent.slots.keys() and isinstance(self.intent.slots[slot_name].value, slot_type):
+               self.slots[slot_name] = self.intent.slots[slot_name].value
+          else:
+               self.slots[slot_name] = None
 
      def responce(self, text):
           if not self.is_api:
