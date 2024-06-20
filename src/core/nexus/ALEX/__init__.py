@@ -23,6 +23,9 @@ class ALEX(AI):
             t = self.intent.parser(r)
             self.intent.draw_intent(t)
             try:
-                EvenOrOdd().execute(self, t)
+                if t.intent.intent_name == "saudation@are.u.sure":
+                    AreUSure().execute(self, t)
+                else:
+                    EvenOrOdd().execute(self, t)
             except Exception as e:
                 print(e)
