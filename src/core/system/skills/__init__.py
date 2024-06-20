@@ -5,6 +5,8 @@ from .erros import SkillIntentError, SkillSlotNotFound
 class BaseSkill:
      name: str
 
+     is_api: bool = False
+
      alex: AI
      intent: IntentResponse
 
@@ -12,6 +14,9 @@ class BaseSkill:
 
      def __init__(self):
           pass
+     
+     def set_as_api(self):
+          self.is_api = True
 
      def execute(self, alex: AI, intent: IntentResponse):
           if intent.intent.intent_name != self.name:
