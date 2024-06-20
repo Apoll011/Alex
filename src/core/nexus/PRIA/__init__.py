@@ -8,7 +8,7 @@ class PRIA(AI):
         self.register_blueprint(priaSkeleton)
         
     def start(self):
-        time.sleep(2)
+        #time.sleep(2)
         print("Booting up Alex...")
-        time.sleep(1)
+        #time.sleep(1)
         self.call_ai("ALEX", "start")
