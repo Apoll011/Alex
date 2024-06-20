@@ -1,6 +1,7 @@
 from core.system.intents import IntentResponse, Slot
 from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
+from core.system.translate import TranslationSystem
 
 class BaseSkill:
      name: str
@@ -9,6 +10,8 @@ class BaseSkill:
 
      alex_context: ContextManager
      intent: IntentResponse
+
+     translate: TranslationSystem
 
      slots: dict[str, Slot | None] = {}
 
@@ -27,6 +30,8 @@ class BaseSkill:
                
      def register(self, name):
           self.name = name
+          path, skname = self.prety_name(name)
+          self.translate = TranslationSystem("en", "locale", path + "/assets/")
      
      def require(self, slot_name: str, slot_type):
           if slot_name in self.intent.slots.keys() and isinstance(self.intent.slots[slot_name].value, slot_type):
@@ -54,3 +59,9 @@ class BaseSkill:
 
      def speak(self, text):
           print(text)
+
+     def prety_name(self, name: str):
+          s = name.split("@")
+          skillname = " ".join(s[1].split(".")).title().replace(" ", "")
+          path = f"skills/{s[0]}/{s[1].replace(".", "_")}"
+          return path, skillname

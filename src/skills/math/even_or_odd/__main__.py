@@ -28,15 +28,14 @@ class EvenOrOdd(BaseSkill):
           self.optional("type", SlotValue)
 
           if self.slots["type"] and self.slots["type"].value == "prime":
-               return self.is_prime()
+               r =  self.is_prime()
           elif self.slots["type"] and self.slots["type"].value == "even":
-               self.make_responce("Yes", "No")
+               r = self.make_responce("Yes", "No")
           elif self.slots["type"] and self.slots["type"].value == "odd":
-               self.make_responce("No", "Yes")
+               r = self.make_responce("No", "Yes")
           else:
-               print(self.slots["type"], self.slots["type"])
-               self.make_responce()
-     
+               r = self.make_responce()
+          return r
      def make_responce(self, first = "", second = ""):
           if self.slots["number"]:
                if self.is_even():
