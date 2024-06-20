@@ -3,7 +3,7 @@ from core.system.intents import IntentResponse
 from core.system.context import ContextManager
 from core.system.skills import BaseSkill
 
-def prety_name(name):
+def prety_name(name: str):
     s = name.split("@")
     skillname = " ".join(s[1].split(".")).title().replace(" ", "")
     path = f"skills.{s[0]}.{s[1].replace(".", "_")}"
@@ -15,7 +15,7 @@ class SkillCaller:
         pass
 
     def call(self, contextManager: ContextManager, intent: IntentResponse):
-        path, skillname = prety_name(intent)
+        path, skillname = prety_name(intent.intent.intent_name)
 
         skill = importlib.import_module(path + ".__main__")
 
