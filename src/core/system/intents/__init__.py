@@ -40,7 +40,7 @@ class IntentParserToObject:
         """Parses a slot dictionary and returns a Slot instance"""
         range = SlotRange(start=slot["range"]["start"], end=slot["range"]["end"])
         raw_value = slot["rawValue"]
-        entity = slot["entity"]
+        entity = slot["entity"].replace("snips/", "")
         slot_name = slot["slotName"]
         value = SlotValueFactory.create(**slot["value"])
         return Slot(range=range, raw_value=raw_value, value=value, entity=entity, slot_name=slot_name)
