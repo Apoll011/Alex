@@ -11,6 +11,6 @@ class EvenOrOdd(BaseSkill):
           self.require("number", SlotValueNumber)
 
           if ((self.slots["number"].value % 2)==0):
-               self.responce(f"{self.slots["number"].value} is even")
+               return self.responce(f"{self.slots["number"].value} is even")
           else:
-               self.responce(f"{self.slots["number"].value} is odd")
+               return self.responce(f"{self.slots["number"].value} is odd")
