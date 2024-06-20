@@ -5,7 +5,7 @@ class EvenOrOdd(BaseSkill):
      prime_search_limit = 5000
 
      def __init__(self):
-          self.register("math@even_or_odd")
+          self.register("math@even.or.odd")
           super().__init__()
 
      def is_even(self):
