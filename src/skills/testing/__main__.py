@@ -1,7 +1,7 @@
 from core.system.intents.slots import SlotValueNumber
 from core.system.skills import BaseSkill
 
-class Skill(BaseSkill):
+class EvenOrOdd(BaseSkill):
      def __init__(self):
           self.register("math@even_or_odd")
           super().__init__()
@@ -11,7 +11,7 @@ class Skill(BaseSkill):
           self.require("number", SlotValueNumber)
 
           if ((self.slots["number"].value % 2)==0):
-               print(f"{self.slots["number"].value} is even")
+               self.responce(f"{self.slots["number"].value} is even")
           else:
-               print(f"{self.slots["number"].value} is odd")
+               self.responce(f"{self.slots["number"].value} is odd")
       

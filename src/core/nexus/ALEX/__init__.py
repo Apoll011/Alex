@@ -1,7 +1,7 @@
 from core.nexus.ai import AI
 from core.system.intents import IntentParserToObject
 from .functions import alexSkeleton
-from skills.testing.__main__ import Skill
+from skills.testing.__main__ import EvenOrOdd
 
 class ALEX(AI):
     def __init__(self) -> None:
@@ -22,6 +22,6 @@ class ALEX(AI):
             t = self.intent.parser(r)
             self.intent.draw_intent(t)
             try:
-                Skill().execute(self, t)
+                EvenOrOdd().execute(self, t)
             except Exception as e:
                 print(e)
