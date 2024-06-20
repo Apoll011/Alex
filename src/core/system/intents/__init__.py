@@ -28,7 +28,7 @@ class IntentResponse(NamedTuple):
     """Response to a user's input, containing the input, intent, and slots"""
     input: str
     intent: Intent
-    slots: list[Slot]
+    slots: dict[str, Slot]
 
 class IntentParserToObject:
     """Class for parsing intent data from a dictionary representation"""
@@ -55,7 +55,12 @@ class IntentParserToObject:
         """Parses the entire intent data dictionary and returns an IntentResponse instance"""
         input = intentr["input"]
         intent = self.parse_intent(intentr["intent"])
-        slots = [self.parse_slot(slot) for slot in intentr["slots"]]
+        
+        slots = {}
+
+        for slot in intentr["slots"]:
+            s = self.parse_slot(slot)
+            slots[s.slot_name] = s 
         return IntentResponse(input=input, intent=intent, slots=slots)
 
     @staticmethod
@@ -76,8 +81,9 @@ class IntentParserToObject:
 
         print(f"{COLORS['input']}{intent_response.input}{RESET_COLOR}")
         print(f"  Intent: {COLORS['intent']}{intent_response.intent.intent_name} ({COLORS['percentage']}{intent_response.intent.confidence:.2f}{COLORS['intent']}){RESET_COLOR}")
-        for i, slot in enumerate(intent_response.slots):
-            print(f"  {COLORS['slot']}Slot {i+1}:{RESET_COLOR}")
+        for sl in intent_response.slots:
+            slot = intent_response.slots[sl]
+            print(f"  {COLORS['slot']}Slot:{RESET_COLOR}")
             print(f"    Entity: {COLORS['entity']}{slot.entity}{RESET_COLOR}")
             print(f"    Slot Name: {COLORS['slot']}{slot.slot_name}{RESET_COLOR}")
             print(f"    Raw Value: {COLORS['value']}{slot.raw_value}{RESET_COLOR}")
