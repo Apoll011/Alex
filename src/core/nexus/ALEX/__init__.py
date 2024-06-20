@@ -1,8 +1,7 @@
 from core.nexus.ai import AI
 from core.system.intents import IntentParserToObject
 from .functions import alexSkeleton
-from skills.testing.__main__ import EvenOrOdd
-from skills.saudation.are_u_sure.__main__ import AreUSure
+from core.system.skills.call import SkillCaller
 
 class ALEX(AI):
     def __init__(self) -> None:
@@ -22,9 +21,6 @@ class ALEX(AI):
         t = self.intent.parser(r)
         self.intent.draw_intent(t)
         try:
-            if t.intent.intent_name == "saudation@are.u.sure":
-                AreUSure().execute(self._context, t)
-            else:
-                EvenOrOdd().execute(self._context, t)
+            SkillCaller().call(self._context, t)
         except Exception as e:
             print(e)
