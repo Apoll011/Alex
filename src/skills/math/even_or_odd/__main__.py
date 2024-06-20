@@ -27,8 +27,6 @@ class EvenOrOdd(BaseSkill):
           self.require("number", SlotValueNumber)
           self.optional("type", SlotValue)
 
-          print(intent)
-
           if self.slots["type"] and self.slots["type"].value == "prime":
                r =  self.is_prime()
           elif self.slots["type"] and self.slots["type"].value == "even":
