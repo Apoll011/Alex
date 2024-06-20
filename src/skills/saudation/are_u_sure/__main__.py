@@ -3,7 +3,7 @@ from core.system.skills import BaseSkill
 
 class AreUSure(BaseSkill):
      def __init__(self):
-          self.register("math@even_or_odd")
+          self.register("saudation@are.u.sure")
           super().__init__()
 
      def execute(self, alex, intent):
@@ -11,7 +11,7 @@ class AreUSure(BaseSkill):
 
           last_responce = self.alex.get_context("last_responce")
           last_intent = self.alex.get_context("last_intent")
-
+          
           skill = EvenOrOdd()
           skill.set_as_api()
           new_value = skill.execute(alex, last_intent) # type: ignore
