@@ -40,7 +40,8 @@ class BaseSkill:
           else:
                self.slots[slot_name] = None
 
-     def responce(self, text):
+     def responce(self, text: str):
+          text = text.strip()
           if not self.is_api:
                self.set_as_last_intent(text)
                self.speak(text)
