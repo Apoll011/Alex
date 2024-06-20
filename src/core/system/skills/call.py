@@ -1,3 +1,24 @@
-"""
-Objectve is call SkillName().execute(context???, Intent object)
-"""
+import importlib
+from core.system.intents import IntentResponse
+from core.system.context import ContextManager
+from core.system.skills import BaseSkill
+
+def prety_name(name):
+    s = name.split("@")
+    skillname = " ".join(s[1].split(".")).title().replace(" ", "")
+    path = f"skills.{s[0]}.{s[1].replace(".", "_")}"
+    return path, skillname
+
+
+class SkillCaller:
+    def __init__(self) -> None:
+        pass
+
+    def call(self, contextManager: ContextManager, intent: IntentResponse):
+        path, skillname = prety_name(intent)
+
+        skill = importlib.import_module(path + ".__main__")
+
+        instance: BaseSkill = getattr(skill, skillname)()
+
+        return instance.execute(contextManager, intent)
