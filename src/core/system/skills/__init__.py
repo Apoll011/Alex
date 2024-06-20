@@ -1,5 +1,5 @@
 from core.system.intents import IntentResponse, Slot
-from core.nexus.ai import AI
+from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
 
 class BaseSkill:
@@ -7,7 +7,7 @@ class BaseSkill:
 
      is_api: bool = False
 
-     alex: AI
+     alex_context: ContextManager
      intent: IntentResponse
 
      slots: dict[str, Slot | None] = {}
@@ -18,11 +18,11 @@ class BaseSkill:
      def set_as_api(self):
           self.is_api = True
 
-     def execute(self, alex: AI, intent: IntentResponse):
+     def execute(self, context: ContextManager, intent: IntentResponse):
           if intent.intent.intent_name != self.name:
                raise SkillIntentError(self.name, intent.intent.intent_name)
 
-          self.alex = alex
+          self.alex_context = context
           self.intent = intent
                
      def register(self, name):
@@ -49,8 +49,8 @@ class BaseSkill:
                return text
 
      def set_as_last_intent(self, text):
-          self.alex.set_context("last_responce", text)
-          self.alex.set_context("last_intent", self.intent)
+          self.alex_context.save("last_responce", text)
+          self.alex_context.save("last_intent", self.intent)
 
      def speak(self, text):
           print(text)

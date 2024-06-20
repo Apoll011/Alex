@@ -6,15 +6,15 @@ class AreUSure(BaseSkill):
           self.register("saudation@are.u.sure")
           super().__init__()
 
-     def execute(self, alex, intent):
-          super().execute(alex, intent)
+     def execute(self, context, intent):
+          super().execute(context, intent)
 
-          last_responce = self.alex.get_context("last_responce")
-          last_intent = self.alex.get_context("last_intent")
+          last_responce = self.alex_context.load("last_responce")
+          last_intent = self.alex_context.load("last_intent")
           
           skill = EvenOrOdd()
           skill.set_as_api()
-          new_value = skill.execute(alex, last_intent) # type: ignore
+          new_value = skill.execute(context, last_intent) # type: ignore
 
           if new_value  == last_responce: 
                self.responce("Yes")

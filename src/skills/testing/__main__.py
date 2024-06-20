@@ -22,8 +22,8 @@ class EvenOrOdd(BaseSkill):
           
           return self.responce(f"Yes {self.slots["number"].value} is prime")
                
-     def execute(self, alex, intent):
-          super().execute(alex, intent)
+     def execute(self, context, intent):
+          super().execute(context, intent)
           self.require("number", SlotValueNumber)
           self.optional("type", SlotValue)
 
