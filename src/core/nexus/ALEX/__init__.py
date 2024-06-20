@@ -16,16 +16,15 @@ class ALEX(AI):
         super().start()
 
     def loop(self):
-        while True:
-            int = input("Seu texto: ")
-            promesa = self.api.call_route("intent_recognition/parse", int)
-            r = promesa.responce
-            t = self.intent.parser(r)
-            self.intent.draw_intent(t)
-            try:
-                if t.intent.intent_name == "saudation@are.u.sure":
-                    AreUSure().execute(self, t)
-                else:
-                    EvenOrOdd().execute(self, t)
-            except Exception as e:
-                print(e)
+        int = input("Seu texto: ")
+        promesa = self.api.call_route("intent_recognition/parse", int)
+        r = promesa.responce
+        t = self.intent.parser(r)
+        self.intent.draw_intent(t)
+        try:
+            if t.intent.intent_name == "saudation@are.u.sure":
+                AreUSure().execute(self, t)
+            else:
+                EvenOrOdd().execute(self, t)
+        except Exception as e:
+            print(e)
