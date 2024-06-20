@@ -1,7 +1,7 @@
 from skills.testing.__main__ import EvenOrOdd
 from core.system.skills import BaseSkill
 
-class Skill(BaseSkill):
+class AreUSure(BaseSkill):
      def __init__(self):
           self.register("math@even_or_odd")
           super().__init__()
