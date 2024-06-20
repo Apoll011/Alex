@@ -35,8 +35,11 @@ class BaseSkill:
                raise SkillSlotNotFound(slot_name)
 
      def responce(self, text):
-          self.set_as_last_intent(text)
-          self.speak(text)
+          if not self.is_api:
+               self.set_as_last_intent(text)
+               self.speak(text)
+          else:
+               return text
 
      def set_as_last_intent(self, text):
           self.alex.set_context("last_renponce", text)

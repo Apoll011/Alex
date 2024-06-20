@@ -14,4 +14,3 @@ class EvenOrOdd(BaseSkill):
                self.responce(f"{self.slots["number"].value} is even")
           else:
                self.responce(f"{self.slots["number"].value} is odd")
-      
