@@ -28,3 +28,9 @@ class BaseSkill:
                self.slots[slot_name] = self.intent.slots[slot_name].value
           else:
                raise SkillSlotNotFound(slot_name)
+
+     def responce(self, text):
+          self.alex.set_context("last_renponce", text)
+          self.alex.set_context("last_intent", self.intent)
+
+          print(text)
