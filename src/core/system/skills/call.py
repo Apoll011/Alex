@@ -14,11 +14,11 @@ class SkillCaller:
     def __init__(self) -> None:
         pass
 
-    def call(self, contextManager: ContextManager, intent: IntentResponse):
+    def call(self, intent: IntentResponse):
         path, skillname = prety_name(intent.intent.intent_name)
 
         skill = importlib.import_module(path + ".__main__")
 
         instance: BaseSkill = getattr(skill, skillname)()
 
-        return instance.execute(contextManager, intent)
+        return instance
