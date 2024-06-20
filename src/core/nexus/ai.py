@@ -352,6 +352,9 @@ class AI(Nexus, AiRepresentatorInScreen):
     api:ApiCall
     active: bool
 
+
+    debug_mode = True
+
     def __init__(self, sig: str) -> None:
         """
         Initializes the AI instance
@@ -374,7 +377,8 @@ class AI(Nexus, AiRepresentatorInScreen):
         self.run_init_actions()
         
         self.active = True
-        time.sleep(1)
+        if not self.debug_mode:
+            time.sleep(1)
         self.footer()
 
     def start(self):
