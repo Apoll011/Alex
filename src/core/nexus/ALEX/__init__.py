@@ -1,7 +1,7 @@
 from core.nexus.ai import AI
 from core.system.intents import IntentParserToObject
 from .functions import alexSkeleton
-import json
+from skills.testing.__main__ import Skill
 
 class ALEX(AI):
     def __init__(self) -> None:
@@ -21,3 +21,7 @@ class ALEX(AI):
             r = promesa.responce
             t = self.intent.parser(r)
             self.intent.draw_intent(t)
+            try:
+                Skill().execute(self, t)
+            except Exception as e:
+                print(e)
