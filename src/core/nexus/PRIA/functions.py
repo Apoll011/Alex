@@ -1,12 +1,13 @@
 from core.nexus.ai import AiBluePrintSkeleton, AI
 from core.system.api.call import ApiCall
+from core.system.config import api
 from core.system.security._key import AlexKey
 
 priaSkeleton = AiBluePrintSkeleton()
 
 @priaSkeleton.init_action("Set Api conection")
 def set_api_con(self, pria: AI):
-    pria.api = ApiCall("127.0.0.1", 1178)
+    pria.api = ApiCall(api['host'], api['port'])
     pria.finish(self)
 
 @priaSkeleton.init_action("Get Master User")

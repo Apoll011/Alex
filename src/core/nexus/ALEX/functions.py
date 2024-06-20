@@ -1,5 +1,6 @@
 from core.nexus.ai import AiBluePrintSkeleton, AI
 from core.system.api.call import ApiCall
+from core.system.config import api
 import time
 
 alexSkeleton = AiBluePrintSkeleton()
@@ -10,7 +11,7 @@ trainig_actions = {
 
 @alexSkeleton.init_action("Set Api conection")
 def set_api_con(self, alex: AI):
-    alex.api = ApiCall("127.0.0.1", 1178)
+    alex.api = ApiCall(api['host'], api['port'])
     alex.finish(self)
 
 @alexSkeleton.init_action("Geting intents engine")
