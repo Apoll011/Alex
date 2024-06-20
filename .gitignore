@@ -13,3 +13,4 @@ fakers/
 **faces/
 **/fonts/
 **/.DS_Store
+**.pickle
