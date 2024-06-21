@@ -19,7 +19,10 @@ class AreUSure(BaseSkill):
           if new_value  == last_responce: 
                self.responce_translated("confirmation.yes")
           else:
+               self.alex_context.save(new_value, "last_responce")
                self.responce_translated("confirmation.no", new_value)
+                
+
 
      def responce(self, text):
           self.speak(text)
