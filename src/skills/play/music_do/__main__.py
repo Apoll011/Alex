@@ -28,7 +28,7 @@ class MusicDo(BaseSkill):
           self.responce_translated("Ok") # type: ignore
      
      def comand(self, text):
-               os.system(f"zsh \"{path}/skills/play/np.sh\" do \"{text}\"")
+          os.system(f"zsh \"{path}/skills/play/np.sh\" do \"{text}\"")
           
      def responce(self, text):
           self.speak(text)
