@@ -9,4 +9,4 @@ class HowAreU(BaseSkill):
      def execute(self, context, intent):
           super().execute(context, intent)
 
-          self.responce("The AI HIANE is not set yet. We from Nexus apreciate your pacience while your creator is working on it.")   
+          self.responce(self.translate("under.contruction"))   
