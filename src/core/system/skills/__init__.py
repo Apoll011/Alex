@@ -52,8 +52,8 @@ class BaseSkill:
                self.speak(text)
           return text
      
-     def responce_translated(self, key: str):
-          return self.responce(self.translate(key))
+     def responce_translated(self, key: str, *args):
+          return self.responce(self.translate.get_translation(key, *args))
 
      def set_as_last_intent(self, text):
           self.alex_context.save(text, "last_responce")
