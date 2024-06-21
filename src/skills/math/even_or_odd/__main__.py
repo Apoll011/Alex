@@ -20,7 +20,7 @@ class EvenOrOdd(BaseSkill):
                if self.slots["number"].value % i == 0:
                     return self.responce_translated(f"prime.no",self.slots["number"].value)
           
-          return self.responce_translated(f"prime.no",self.slots["number"].value)
+          return self.responce_translated(f"prime.yes",self.slots["number"].value)
                
      def execute(self, context, intent):
           super().execute(context, intent)
