@@ -33,7 +33,7 @@ if args.train or args.start:
     Nexus.start_nexus()
 
     if args.debug:
-        Nexus.request_ai("ALEX", "debug")
+        Nexus.request_ai("ALEX", "debugMode")
 
     if args.train:
         Nexus.request_ai("ALEX", "retrain")
