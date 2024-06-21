@@ -3,7 +3,7 @@ from core.system.skills import BaseSkill
 
 class HowAreU(BaseSkill):
      def __init__(self):
-          self.register("saudation@how.are.you")
+          self.register("saudation@how.are.u")
           super().__init__()
 
      def execute(self, context, intent):
