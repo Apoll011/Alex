@@ -50,8 +50,10 @@ class BaseSkill:
           if not self.is_api:
                self.set_as_last_intent(text)
                self.speak(text)
-          else:
-               return text
+          return text
+     
+     def responce_translated(self, key: str):
+          return self.responce(self.translate(key))
 
      def set_as_last_intent(self, text):
           self.alex_context.save(text, "last_responce")
