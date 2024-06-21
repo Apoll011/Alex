@@ -5,3 +5,5 @@ responce.no.even: No #% is even
 responce.yes.even: Yes #% is even
 responce.no.odd: No #% is odd
 responce.yes.odd: Yes #% is odd
+responce..even:#% is even
+responce..odd:#% is odd
