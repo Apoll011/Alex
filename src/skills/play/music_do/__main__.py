@@ -1,4 +1,3 @@
-from core.system.skills.call import SkillCaller
 from core.system.intents.slots import SlotValue
 from core.system.skills import BaseSkill
 from core.system.config import path
