@@ -14,13 +14,13 @@ class EvenOrOdd(BaseSkill):
 
      def is_prime(self):
           if self.slots["number"].value > self.prime_search_limit:
-               return self.responce("Sorry. This number is bigger than my upper search limit.")
+               return self.responce_translated("search_limit")
           
           for i in range(2, int(self.slots["number"].value//2)):
                if self.slots["number"].value % i == 0:
-                    return self.responce(f"No {self.slots["number"].value} is not prime")
+                    return self.responce_translated(f"prime.no",self.slots["number"].value)
           
-          return self.responce(f"Yes {self.slots["number"].value} is prime")
+          return self.responce_translated(f"prime.no",self.slots["number"].value)
                
      def execute(self, context, intent):
           super().execute(context, intent)
@@ -30,15 +30,18 @@ class EvenOrOdd(BaseSkill):
           if self.slots["type"] and self.slots["type"].value == "prime":
                r =  self.is_prime()
           elif self.slots["type"] and self.slots["type"].value == "even":
-               r = self.make_responce("Yes", "No")
+               r = self.make_responce("yes", "no")
           elif self.slots["type"] and self.slots["type"].value == "odd":
-               r = self.make_responce("No", "Yes")
+               r = self.make_responce("no", "yes")
           else:
                r = self.make_responce()
           return r
      def make_responce(self, first = "", second = ""):
           if self.slots["number"]:
+               last = "odd"
+               f = second
                if self.is_even():
-                    return self.responce(f"{first} {self.slots["number"].value} is even")
-               else:
-                    return self.responce(f"{second} {self.slots["number"].value} is odd")
+                    last = "even"
+                    f = first
+               return self.responce_translated(f"responce.{f}.{last}", self.slots["number"].value)
+              

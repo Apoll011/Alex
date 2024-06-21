@@ -9,4 +9,4 @@ class HowAreU(BaseSkill):
      def execute(self, context, intent):
           super().execute(context, intent)
 
-          self.responce(self.translate("under.contruction"))   
+          self.responce_translated("under.contruction") 

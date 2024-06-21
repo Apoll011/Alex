@@ -25,7 +25,7 @@ class Simple(BaseSkill):
                r = op(self.slots["first_number"].value, self.slots["second_number"].value)
                self.alex_context.save(r, "last_result")
           
-          self.responce(f"The result is {r}")
+          self.responce_translated("result", r)
 
      def convert(self):
           if self.slots["mathoperation"].value == "plus":

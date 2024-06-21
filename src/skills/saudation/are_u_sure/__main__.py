@@ -17,9 +17,9 @@ class AreUSure(BaseSkill):
           new_value = skill.execute(context, last_intent) # type: ignore
 
           if new_value  == last_responce: 
-               self.responce(self.translate.get_translation("confirmation.yes"))
+               self.responce_translated("confirmation.yes")
           else:
-               self.responce(self.translate.get_translation("confirmation.no", new_value))
+               self.responce_translated("confirmation.no", new_value)
 
      def responce(self, text):
           self.speak(text)

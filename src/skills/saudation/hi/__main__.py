@@ -8,7 +8,7 @@ class Hi(BaseSkill):
 
      def execute(self, context, intent):
           super().execute(context, intent)
-          self.responce(self.translate.get_translation("greet.hi", context.load("master")["name"]))
+          self.responce_translated("greet.hi", context.load("master")["name"]) # type: ignore
           
      def responce(self, text):
           self.speak(text)
