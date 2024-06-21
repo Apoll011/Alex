@@ -23,6 +23,7 @@ class TranslationSystem:
         self.file = file
         self.language_path = path + "/"+ path_file
         self.translations = self.load_translations()
+        self.translations.update({"error.457": "The key {} was not found in this translation file map: ("+self.language_path+")"})
 
     def load_translations(self) -> dict:
         """
