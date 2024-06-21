@@ -353,7 +353,7 @@ class AI(Nexus, AiRepresentatorInScreen):
     active: bool
 
 
-    debug_mode = True
+    debug_mode = False
 
     def __init__(self, sig: str) -> None:
         """
@@ -378,7 +378,7 @@ class AI(Nexus, AiRepresentatorInScreen):
         
         self.active = True
         if not self.debug_mode:
-            time.sleep(1)
+            time.sleep(0.1)
         self.footer()
 
     def start(self):

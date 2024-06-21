@@ -35,4 +35,7 @@ def train_engine(alex: AI):
         alex.print_header_text("Ended " + name, 3)
     print("\33[93mTime Took:", time.time() - time_stared, "seconds")
     alex.print_header_text("Ended Re-Training", 1)
-    
+
+@alexSkeleton.request_action("debugMode")
+def train_engine(alex: AI):
+    alex.debug_mode = True
