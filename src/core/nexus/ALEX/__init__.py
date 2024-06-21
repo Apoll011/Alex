@@ -17,12 +17,16 @@ class ALEX(AI):
     def loop(self):
         int = input("Seu texto: ")
         promesa = self.api.call_route("intent_recognition/parse", int)
-        r = promesa.responce
-        t = self.intent.parser(r)
-        if self.debug_mode:
-            self.intent.draw_intent(t)
-        try:
-            s = SkillCaller().call(t)
-            s.execute(self._context, t)
-        except Exception as e:
-            print(e)
+        responce = promesa.responce
+        intent = self.intent.parser(responce)
+        if intent.intent.intent_name != None:
+            if self.debug_mode:
+                self.intent.draw_intent(intent)
+            try:
+                s = SkillCaller().call(intent)
+                s.execute(self._context, intent)
+
+            except Exception as e:
+                print(e)
+        else:
+            print("Sorry. Thats not a valid intent")
