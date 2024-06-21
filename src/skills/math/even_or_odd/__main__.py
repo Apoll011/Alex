@@ -14,7 +14,7 @@ class EvenOrOdd(BaseSkill):
 
      def is_prime(self):
           if self.slots["number"].value > self.prime_search_limit:
-               return self.responce_translated("search_limit")
+               return self.responce_translated("search.limit")
           
           for i in range(2, int(self.slots["number"].value//2)):
                if self.slots["number"].value % i == 0:
