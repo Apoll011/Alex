@@ -10,7 +10,7 @@ class MusicWhatsPlaying(BaseSkill):
      def execute(self, context, intent):
           super().execute(context, intent)
           artist, name, album = self.beutify(self.comand())
-          self.responce_translated("playing.now", artist, name) # type: ignore
+          return self.responce_translated("playing.now", artist, name) # type: ignore
           
      def comand(self):
           result = subprocess.check_output(f"zsh \"{path}/skills/play/np.sh\" now", shell=True, text=True)
