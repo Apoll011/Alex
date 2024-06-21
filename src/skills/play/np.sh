@@ -9,6 +9,15 @@
 # set shuffle enabled to true
 
 
+now(){
+	name=$(osascript -e 'tell application "Music" to get name of current track')
+	artist=$(osascript -e 'tell application "Music" to get artist of current track')
+	record=$(osascript -e 'tell application "Music" to get album of current track')
+
+	echo $name
+	echo $artist
+	echo $record
+}
 
 list(){
 	usage="Usage: list [-grouping] [name]
@@ -177,6 +186,9 @@ else
     elif [ $1 = "do" ]
     then
         osascript -e 'tell application "Music"' -e "$2" -e 'end tell'
+	elif [ $1 = "now" ]
+    then
+        now
 	else
 		printf '%s\n' "$usage";
 	fi
