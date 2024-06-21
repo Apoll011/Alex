@@ -1,7 +1,7 @@
 import os
 
 __lang__ = "pt"
-__version__ = "0.7.2-BETA"
+__version__ = "1.0.5-BETA"
 
 
 path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/Alex/src")
