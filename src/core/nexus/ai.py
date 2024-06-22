@@ -1,6 +1,8 @@
 import os
 import time
+import vosk
 import shutil
+import pyaudio
 import threading
 from core.system.config import path, nexus_ai
 from core.system.context import ContextManager
@@ -94,7 +96,25 @@ class AiSound:
         """
         Initializes the AiSound instance.
         """
-        pass
+        self.vosk_model = vosk.Model("path/to/vosk/model")  # Replace with the path to your Vosk model
+        self.vosk_recognizer = vosk.KaldiRecognizer(self.vosk_model, 16000)
+
+    def listen(self):
+        """
+        Listens for speech input using Vosk.
+        """
+        p = pyaudio.PyAudio()
+        stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
+        stream.start_stream()
+
+        print("Listening...")
+        while True:
+            data = stream.read(4000)
+            if len(data) == 0:
+                break
+            if self.vosk_recognizer.AcceptWaveform(data):
+                result = self.vosk_recognizer.Result()
+                return result
 
     def speak(self, text: str, voice: str = 'Alex', voice_command = None):
         """
