@@ -4,9 +4,9 @@ import vosk
 import shutil
 import pyaudio
 import threading
+from core.system.api.call import ApiCall
 from core.system.config import path, nexus_ai
 from core.system.context import ContextManager
-from core.system.api.call import ApiCall
 
 class AiBluePrintSkeleton:
     """
@@ -96,7 +96,7 @@ class AiSound:
         """
         Initializes the AiSound instance.
         """
-        self.vosk_model = vosk.Model("path/to/vosk/model")  # Replace with the path to your Vosk model
+        self.vosk_model = vosk.Model(f"{path}/resources/language/en/en-vosk/")
         self.vosk_recognizer = vosk.KaldiRecognizer(self.vosk_model, 16000)
 
     def listen(self):
