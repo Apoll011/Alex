@@ -1,7 +1,7 @@
 from core.nexus.ai import AI
-from core.system.intents import IntentParserToObject
 from .functions import alexSkeleton
 from core.system.skills.call import SkillCaller
+from core.system.intents import IntentParserToObject
 
 class ALEX(AI):
     def __init__(self) -> None:
@@ -20,6 +20,7 @@ class ALEX(AI):
         responce = promesa.responce
         intent = self.intent.parser(responce)
         if intent.intent.intent_name != None:
+            #Sound().play_dot()
             if self.debug_mode:
                 self.intent.draw_intent(intent)
             try:
