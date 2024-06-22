@@ -2,8 +2,9 @@ from core.system.intents import IntentResponse, Slot
 from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
+from core.nexus.ai import AiSound
 
-class BaseSkill:
+class BaseSkill(AiSound):
      name: str
 
      is_api: bool = False
@@ -58,9 +59,6 @@ class BaseSkill:
      def set_as_last_intent(self, text):
           self.alex_context.save(text, "last_responce")
           self.alex_context.save(self.intent, "last_intent")
-
-     def speak(self, text):
-          print(text)
 
      def prety_name(self, name: str):
           s = name.split("@")

@@ -80,6 +80,38 @@ class AiBluePrintSkeleton:
             return wrapper
         return decorator
 
+class AiSound:
+    """
+    A class to interact with the sound system.
+    """
+
+    alex_voice = 'Alex'
+    pria_voice = 'Samantha'
+
+    say_voice_command = "say -v '#name#' '#text#'"
+
+    def __init__(self) -> None:
+        """
+        Initializes the AiSound instance.
+        """
+        pass
+
+    def speak(self, text: str, voice: str = 'Alex', voice_command = None):
+        """
+        Speaks the given text using the specified voice.
+
+        Args:
+            text (str): The text to be spoken.
+            voice (str): The voice to use (default: 'Alex').
+            voice_command (str): The voice command to use (default: None).
+        """
+        command = voice_command
+        if voice_command is None:
+            command = self.say_voice_command
+        
+        command = command.replace('#name#', voice).replace('#text#', text) # type: ignore
+
+        os.system(command)
 
 class AiRepresentatorInScreen:
     """
@@ -344,7 +376,7 @@ class Nexus(AiBluePrintUser):
             exec(f"{name}().activate()")
         cm.save(True, "all_ai_started", "pickle")
 
-class AI(Nexus, AiRepresentatorInScreen):
+class AI(Nexus, AiRepresentatorInScreen, AiSound):
     """
     The main AI class
     """

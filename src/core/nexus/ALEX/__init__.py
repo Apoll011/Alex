@@ -30,4 +30,4 @@ class ALEX(AI):
             except Exception as e:
                 print(e)
         else:
-            print("Sorry. Thats not a valid intent")
+            self.speak("Sorry. Thats not a valid intent")
