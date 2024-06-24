@@ -193,7 +193,7 @@ class AiContextUser:
         """
         self._context.save(value, name, type)
 
-class AiBluePrintUser(AiContextUser):
+class AiBluePrintUser:
     """
     A class to manage AI blueprints and their actions
     """
@@ -238,7 +238,7 @@ class AiBluePrintUser(AiContextUser):
             ctx_name (str): The name of the context value
             ctx_value: The value to be set
         """
-        self.set_context(ctx_name, ctx_value)
+        self.set_context(ctx_name, ctx_value) # type: ignore
         self.finish(name)
 
     def finish(self, name: str):
@@ -280,7 +280,7 @@ class AiBluePrintUser(AiContextUser):
             print("\33[32mRunning", action, "\33[97m")
             self.deactivate_actions[action](action, self)
 
-class Nexus(AiBluePrintUser):
+class Nexus:
     """
     A nexus class to manage AI instances and enable communication between them
     """
@@ -292,6 +292,8 @@ class Nexus(AiBluePrintUser):
     """
     Lock for concurrent access
     """
+
+    request_actions = {}
 
     def register_ai(self, name, cls) -> None:
         """
@@ -382,7 +384,7 @@ class Nexus(AiBluePrintUser):
             exec(f"{name}().activate()")
         cm.save(True, "all_ai_started", "pickle")
 
-class AI(Nexus, AiRepresentatorInScreen, AiSound):
+class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound):
     """
     The main AI class
     """
