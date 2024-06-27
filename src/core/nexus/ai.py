@@ -85,8 +85,13 @@ class AiSound:
     """
     A class to interact with the sound system. Plus it's still in construction so we have to use it carefully.
     """
-
-    alex_voice = 'Fred'
+    alex_possibilities = {
+        "en_US": "Alex",
+        "en_US2": "Fred",
+        "en_GB": "Daniel"
+    }
+    
+    alex_voice = alex_possibilities["en_GB"]
     pria_voice = 'Samantha'
 
     say_voice_command = "say -v '#name#' '#text#'"
