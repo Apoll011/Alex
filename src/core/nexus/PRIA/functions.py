@@ -13,7 +13,7 @@ def set_api_con(self, pria: AI):
 @priaSkeleton.init_action("Get Master User")
 def get_master_user(self, pria: AI):
     p = pria.api.call_route_async("users/search/tags", {"query": "Master"})
-    p.then(lambda user: pria.finish_and_set(self, "master", pria.api.call_route("users/get", user.responce["users"][0]).response))
+    p.then(lambda user: pria.finish_and_set(self, "master", pria.api.call_route("users/get", user.response["users"][0]).response))
 
 @priaSkeleton.init_action("Set context")
 def set_context(self, pria: AI):
