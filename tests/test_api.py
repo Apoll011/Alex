@@ -1,10 +1,10 @@
 import unittest
-from src.core.system.api.call import ApiCall
+from src.core.system.api.client import ApiClient
 from core.system.config import api
 
 class TestApi(unittest.TestCase):
     def setUp(self) -> None:
-        self.api =  ApiCall(api['host'], api['port'])
+        self.api =  ApiClient(api['host'], api['port'])
 
     def test_api_exist(self):
         

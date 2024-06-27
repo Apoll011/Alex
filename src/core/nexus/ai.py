@@ -3,7 +3,7 @@ import time
 import shutil
 import threading
 import subprocess
-from core.system.api.call import ApiCall
+from core.system.api.client import ApiClient
 from core.system.config import path, nexus_ai
 from core.system.context import ContextManager
 
@@ -389,7 +389,7 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound
     The main AI class
     """
 
-    api:ApiCall
+    api:ApiClient
     active: bool
 
 
