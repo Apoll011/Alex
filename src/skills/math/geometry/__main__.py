@@ -19,6 +19,15 @@ class Geometry(BaseSkill):
 
           elif self.slots['func'].value == "cos":
                r = cos(self.slots["number"].value)
+
+          elif self.slots['func'].value == "sqrt":
+               r = sqrt(self.slots["number"].value)
+          
+          elif self.slots['func'].value == "tan":
+               r = tan(self.slots["number"].value)
+          
+          elif self.slots['func'].value == "tanh":
+               r = tanh(self.slots["number"].value)
           
           self.alex_context.save(r, "last_result")
           
