@@ -23,7 +23,7 @@ class ALEX(AI):
     def loop(self):
         int = self.listen()
         promesa = self.api.call_route("intent_recognition/parse", int)
-        responce = promesa.responce
+        responce = promesa.response
         intent = self.intent.parser(responce)
         if intent.intent.intent_name != None:
             #Sound().play_dot()
