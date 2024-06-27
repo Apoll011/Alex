@@ -26,7 +26,7 @@ class ApiCall:
         if data.responce["on"] == True:
             self.active = True
 
-    def call_route_async(self, route, value: str | dict[str, str] = ""):
+    def call_route_async(self, route:str, value: str | dict[str, str] = ""):
         """
         Will call a route in the `AlexBaseApi` and return a `Promise` for when the result gets back
         """
@@ -38,7 +38,7 @@ class ApiCall:
         promise.resolve(lambda: self.__get_info(s, promise))
         return promise
     
-    def call_route(self, route, value: str | dict[str, str] = ""):
+    def call_route(self, route:str , value: str | dict[str, str] = ""):
         """
         Will call a route in the `AlexBaseApi` and return the recived `JSON`
         """
@@ -50,7 +50,7 @@ class ApiCall:
         return Api(json.loads(data))
 
 
-    def __get_info(self, s, promise):
+    def __get_info(self, s: socket.socket, promise: Promise):
         try:
             data = s.recv(1024).decode("utf-8")
             promise.resolve(lambda: Api(json.loads(data)))
