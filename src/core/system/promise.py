@@ -12,6 +12,7 @@ class Promise:
         self.then_callback = None
         self.catch_callback = None
         self.lock = threading.Lock()
+        self.catch(lambda e: print(str(e)))
 
     def then(self, callback):
         """
