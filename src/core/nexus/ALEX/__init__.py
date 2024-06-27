@@ -46,7 +46,8 @@ class ALEX(AI):
             r = input("Seu texto: ")
         if r == "":
             return self.listen()
-        print(r)
+        if self.debug_mode:
+            print("Input: ", r)
         return r
 
     def internet_on(self):
