@@ -273,6 +273,31 @@ class SlotValueOrdinal(SlotValue):
     def is_first(self) -> bool:
         return self.value == 1
 
+    def is_last(self) -> bool:
+        """Returns True if the ordinal is the last in its series, and False otherwise"""
+        return self.value == len(self.get_series())
+
+    def get_series(self) -> list[int]:
+        """Returns a list of all ordinals in the series to which this ordinal belongs"""
+        series = []
+        for i in range(1, self.value + 2):
+            series.append(i)
+        return series
+
+    def get_previous(self) -> int | None:
+        """Returns the previous ordinal in the series, or None if this is the first ordinal"""
+        if self.is_first():
+            return None
+        else:
+            return self.value - 1
+
+    def get_next(self) -> int | None:
+        """Returns the next ordinal in the series, or None if this is the last ordinal"""
+        if self.is_last():
+            return None
+        else:
+            return self.value + 1
+
 @dataclass
 class SlotValueTemperature(SlotValue):
     """Slot value representing a temperature"""
