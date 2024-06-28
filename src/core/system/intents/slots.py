@@ -138,6 +138,14 @@ class SlotValueAmountOfMoney(SlotValue):
     def get_unit(self) -> str:
         return self.unit
 
+    def to_float(self) -> float:
+        """Converts the value to a float"""
+        return float(self.value)
+
+    def format(self) -> str:
+        """Formats the value as a string with the unit"""
+        return f"{self.to_float():.2f} {self.unit}"
+
 @dataclass
 class SlotValueDuration(SlotValue):
     """Slot value representing a duration"""
