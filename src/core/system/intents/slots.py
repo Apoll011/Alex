@@ -310,6 +310,31 @@ class SlotValueTemperature(SlotValue):
     def get_unit(self) -> Temperature:
         return self.unit
 
+    def to_celsius(self) -> float:
+        """Converts the temperature to Celsius"""
+        if self.unit == Temperature.fahrenheit:
+            return (self.value - 32) * 5 / 9
+        else:
+            return self.value
+
+    def to_fahrenheit(self) -> float:
+        """Converts the temperature to Fahrenheit"""
+        if self.unit == Temperature.celsius:
+            return (self.value * 9 / 5) + 32
+        else:
+            return self.value
+
+    def is_freezing(self) -> bool:
+        """Returns True if the temperature is at or below freezing, and False otherwise"""
+        return self.to_celsius() <= 0
+
+    def is_boiling(self) -> bool:
+        """Returns True if the temperature is at or above boiling, and False otherwise"""
+        if self.unit == Temperature.celsius:
+            return self.value >= 100
+        else:
+            return self.to_celsius() >= 100
+
 @dataclass
 class SlotValueTimeInterval(SlotValue):
     """Slot value representing a time interval"""
