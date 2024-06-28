@@ -1,7 +1,7 @@
 from typing import Any
 from enum import Enum
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class Temperature(Enum):
     """Temperature enumeration"""
@@ -38,7 +38,7 @@ class SlotValueFactory:
         elif kind == "Temperature":
             return SlotValueTemperature(kind=kind, **kwargs)
         elif kind == "TimeInterval":
-            return SlotValueTimeInterval(kind=kind, **kwargs)
+            return SlotValueTimeInterval(kind=kind, value=kwargs["value"], from_=kwargs["from"], to=kwargs["to"])
         elif kind == "Percentage":
             return SlotValuePercentage(kind=kind, **kwargs)
         elif kind == "MusicAlbum":
@@ -347,6 +347,23 @@ class SlotValueTimeInterval(SlotValue):
     def get_to(self) -> str:
         return self.to
 
+    def to_datetime_range(self) -> tuple[datetime, datetime]:
+        """Converts the time interval to a tuple of datetime objects"""
+        from_datetime = datetime.strptime(self.from_, "%Y-%m-%d %H:%M:%S")
+        to_datetime = datetime.strptime(self.to, "%Y-%m-%d %H:%M:%S")
+        return from_datetime, to_datetime
+
+    def get_duration(self) -> timedelta:
+        """Returns the duration of the time interval as a timedelta object"""
+        from_datetime, to_datetime = self.to_datetime_range()
+        return to_datetime - from_datetime
+
+    def is_overlapping(self, other: "SlotValueTimeInterval") -> bool:
+        """Returns True if this time interval overlaps with the given time interval, and False otherwise"""
+        from_datetime1, to_datetime1 = self.to_datetime_range()
+        from_datetime2, to_datetime2 = other.to_datetime_range()
+        return (from_datetime1 < to_datetime2) and (to_datetime1 > from_datetime2)
+    
 @dataclass
 class SlotValuePercentage(SlotValue):
     """Slot value representing a percentage"""
