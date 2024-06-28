@@ -14,7 +14,7 @@ class BaseSkill(AiSound):
 
      translate: TranslationSystem
 
-     slots: dict[str, Slot | None] = {}
+     slots: dict[str, SlotValue] = {}
 
      def __init__(self):
           pass
