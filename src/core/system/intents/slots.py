@@ -205,6 +205,63 @@ class SlotValueNumber(SlotValue):
     def is_even(self) -> bool:
         return self.value % 2 == 0
 
+    def is_positive(self) -> bool:
+        return self.value > 0
+
+    def is_negative(self) -> bool:
+        return self.value < 0
+
+    def abs(self) -> int:
+        return abs(self.value)
+
+    def __add__(self, other):
+        if isinstance(other, int):
+            return SlotValueNumber(kind="Number", value=self.value + other)
+        elif isinstance(other, SlotValueNumber):
+            return SlotValueNumber(kind="Number", value=self.value + other.value)
+        else:
+            raise ValueError(f"Cannot add {self.value} and {other}")
+
+    def __sub__(self, other):
+        if isinstance(other, int):
+            return SlotValueNumber(kind="Number", value=self.value - other)
+        elif isinstance(other, SlotValueNumber):
+            return SlotValueNumber(kind="Number", value=self.value - other.value)
+        else:
+            raise ValueError(f"Cannot subtract {other} from {self.value}")
+
+    def __mul__(self, other):
+        if isinstance(other, int):
+            return SlotValueNumber(kind="Number", value=self.value * other)
+        elif isinstance(other, SlotValueNumber):
+            return SlotValueNumber(kind="Number", value=self.value * other.value)
+        else:
+            raise ValueError(f"Cannot multiply {self.value} and {other}")
+
+    def __truediv__(self, other):
+        if isinstance(other, int):
+            return self.value / other
+        elif isinstance(other, SlotValueNumber):
+            return self.value / other.value
+        else:
+            raise ValueError(f"Cannot divide {self.value} by {other}")
+
+    def __mod__(self, other):
+        if isinstance(other, int):
+            return self.value % other
+        elif isinstance(other, SlotValueNumber):
+            return self.value % other.value
+        else:
+            raise ValueError(f"Cannot find the modulus of {self.value} and {other}")
+
+    def __pow__(self, other):
+        if isinstance(other, int):
+            return self.value ** other
+        elif isinstance(other, SlotValueNumber):
+            return self.value ** other.value
+        else:
+            raise ValueError(f"Cannot raise {self.value} to the power of {other}")
+
 @dataclass
 class SlotValueOrdinal(SlotValue):
     """Slot value representing an ordinal number"""
