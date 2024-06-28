@@ -63,3 +63,9 @@ class BaseSkill(AiSound):
           skillname = " ".join(s[1].split(".")).title().replace(" ", "")
           path = f"skills/{s[0]}/{s[1].replace(".", "_")}"
           return path, skillname
+
+     def slot_exists(self, *args: str):
+          for a in args:
+               if a not in self.slots.keys():
+                    return False
+          return True
