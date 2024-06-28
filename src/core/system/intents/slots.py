@@ -1,6 +1,7 @@
 from typing import Any
 from enum import Enum
 from dataclasses import dataclass
+from datetime import datetime
 
 class Temperature(Enum):
     """Temperature enumeration"""
@@ -57,17 +58,72 @@ class SlotValueFactory:
         else:
             raise ValueError(f"Unknown kind of SlotValue: {kind}")
 
-@dataclass
 class SlotValueInstantTime(SlotValue):
     """Slot value representing an instant time"""
     grain: str
     precision: str
+    value: str
 
-    def get_grain(self) -> str:
-        return self.grain
+    def __init__(self, kind: str, value: str, grain: str, precision: str):
+        super().__init__(kind, value)
+        self.grain = grain
+        self.precision = precision
 
-    def get_precision(self) -> str:
-        return self.precision
+    def to_datetime(self) -> datetime:
+        """Converts the value to a datetime object"""
+        if self.precision == "year":
+            return datetime.strptime(self.value, "%Y")
+        elif self.precision == "month":
+            return datetime.strptime(self.value, "%Y-%m")
+        elif self.precision == "day":
+            return datetime.strptime(self.value, "%Y-%m-%d")
+        elif self.precision == "hour":
+            return datetime.strptime(self.value, "%Y-%m-%d %H")
+        elif self.precision == "minute":
+            return datetime.strptime(self.value, "%Y-%m-%d %H:%M")
+        elif self.precision == "second":
+            return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S")
+        else:
+            raise ValueError(f"Unknown precision: {self.precision}")
+
+    def get_year(self) -> int | None:
+        """Returns the year component of the value"""
+        return int(self.value[:4])
+
+    def get_month(self) -> int | None:
+        """Returns the month component of the value"""
+        if self.precision == "month":
+            return int(self.value[5:7])
+        else:
+            return int(self.value[5:7]) if len(self.value) > 4 else None
+
+    def get_day(self) -> int | None:
+        """Returns the day component of the value"""
+        if self.precision == "day":
+            return int(self.value[8:10])
+        else:
+            return int(self.value[8:10]) if len(self.value) > 7 else None
+
+    def get_hour(self) -> int | None:
+        """Returns the hour component of the value"""
+        if self.precision == "hour":
+            return int(self.value[11:13])
+        else:
+            return int(self.value[11:13]) if len(self.value) > 10 else None
+
+    def get_minute(self) -> int | None:
+        """Returns the minute component of the value"""
+        if self.precision == "minute":
+            return int(self.value[14:16])
+        else:
+            return int(self.value[14:16]) if len(self.value) > 13 else None
+
+    def get_second(self) -> int | None:
+        """Returns the second component of the value"""
+        if self.precision == "second":
+            return int(self.value[17:19])
+        else:
+            return int(self.value[17:19]) if len(self.value) > 16 else None
 
 @dataclass
 class SlotValueAmountOfMoney(SlotValue):
