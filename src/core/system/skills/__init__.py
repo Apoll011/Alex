@@ -43,8 +43,6 @@ class BaseSkill(AiSound):
      def optional(self, slot_name: str, slot_type):
           if slot_name in self.intent.slots.keys() and isinstance(self.intent.slots[slot_name].value, slot_type):
                self.slots[slot_name] = self.intent.slots[slot_name].value
-          else:
-               self.slots[slot_name] = None
 
      def responce(self, text: str):
           text = text.strip()
