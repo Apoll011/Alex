@@ -1,5 +1,6 @@
-from typing import Any
+import math
 from enum import Enum
+from typing import Any
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 
@@ -30,7 +31,7 @@ class SlotValueFactory:
         elif kind == "AmountOfMoney":
             return SlotValueAmountOfMoney(kind=kind, **kwargs)
         elif kind == "Duration":
-            return SlotValueDuration(kind=kind, **kwargs)
+            return SlotValueDuration(kind=kind, value="", **kwargs)
         elif kind == "Number":
             return SlotValueNumber(kind=kind, **kwargs)
         elif kind == "Ordinal":
@@ -38,7 +39,7 @@ class SlotValueFactory:
         elif kind == "Temperature":
             return SlotValueTemperature(kind=kind, **kwargs)
         elif kind == "TimeInterval":
-            return SlotValueTimeInterval(kind=kind, value=kwargs["value"], from_=kwargs["from"], to=kwargs["to"])
+            return SlotValueTimeInterval(kind=kind, value="", from_=kwargs["from"], to=kwargs["to"])
         elif kind == "Percentage":
             return SlotValuePercentage(kind=kind, **kwargs)
         elif kind == "MusicAlbum":
