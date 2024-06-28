@@ -160,10 +160,39 @@ class SlotValueDuration(SlotValue):
     precision: str
 
     def get_total_seconds(self) -> int:
+        """Returns the total number of seconds in the duration"""
         return self.seconds + self.minutes * 60 + self.hours * 3600 + self.days * 86400 + self.weeks * 604800 + self.months * 2629800 + self.quarters * 7889400 + self.years * 31557600
 
     def get_precision(self) -> str:
+        """Returns the precision of the duration"""
         return self.precision
+
+    def to_string(self) -> str:
+        """Converts the duration to a string representation"""
+        parts = []
+        if self.years > 0:
+            parts.append(f"{self.years} years")
+        if self.quarters > 0:
+            parts.append(f"{self.quarters} quarters")
+        if self.months > 0:
+            parts.append(f"{self.months} months")
+        if self.weeks > 0:
+            parts.append(f"{self.weeks} weeks")
+        if self.days > 0:
+            parts.append(f"{self.days} days")
+        if self.hours > 0:
+            parts.append(f"{self.hours} hours")
+        if self.minutes > 0:
+            parts.append(f"{self.minutes} minutes")
+        if self.seconds > 0:
+            parts.append(f"{self.seconds} seconds")
+
+        if len(parts) == 1:
+            return parts[0]
+        elif len(parts) == 2:
+            return f"{parts[0]} and {parts[1]}"
+        else:
+            return ", ".join(parts[:-1]) + f", and {parts[-1]}"
 
 @dataclass
 class SlotValueNumber(SlotValue):
