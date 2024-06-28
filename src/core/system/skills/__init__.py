@@ -1,4 +1,4 @@
-from core.system.intents import IntentResponse, Slot
+from core.system.intents import *
 from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
