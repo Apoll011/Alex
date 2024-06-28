@@ -2,19 +2,21 @@ from core.system.api.promise.promise import Promise
 from core.system.intents.slots import SlotValueDuration
 import time
 
-def convertDurationToSeconts(duration: SlotValueDuration):
-    s = duration.seconds
-    s_m = duration.minutes * 60
-    s_h = duration.hours * 60 * 60
-    s_d = duration.days * 24 * 60 * 60
-    s_w = duration.weeks * 7 * 24 * 60 * 60
-    s_mt = duration.months * 30.5 * 24 * 60 * 60
-    s_q = duration.quarters * 3 *  30.5 * 24 * 60 * 60
-    s_y = duration.years * 365 * 24 * 60 * 60
-    return  s + s_m + s_h + s_d + s_w + s_mt + s_q + s_y
+def total_seconds(duration: SlotValueDuration) -> int:
+    """Calculates the total seconds in a SlotValueDuration namedtuple"""
+    total_seconds = 0
+    total_seconds += duration.years * 365 * 24 * 60 * 60  # assume 365 days per year
+    total_seconds += duration.quarters * 3 * 30 * 24 * 60 * 60  # assume 3 months per quarter
+    total_seconds += duration.months * 30 * 24 * 60 * 60  # assume 30 days per month
+    total_seconds += duration.weeks * 7 * 24 * 60 * 60
+    total_seconds += duration.days * 24 * 60 * 60
+    total_seconds += duration.hours * 60 * 60
+    total_seconds += duration.minutes * 60
+    total_seconds += duration.seconds
+    return total_seconds
 
 d = SlotValueDuration("duration", 0, 0 , 0, 0 , 0, 4, 2, 75, "hour")
-print(convertDurationToSeconts(d))
+dd = total_seconds(d)
 P = Promise()
 P.resolve(lambda: time.sleep(2))
 P.then(lambda r: print("Ring Ring Ring"))

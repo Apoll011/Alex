@@ -1,21 +1,28 @@
-from typing import NamedTuple, Dict, Any
+from typing import Any
 from enum import Enum
-
+from dataclasses import dataclass
 
 class Temperature(Enum):
     """Temperature enumeration"""
     celsius = 0
-    fahrenheit = 0
+    fahrenheit = 1
 
-class SlotValue(NamedTuple):
+@dataclass
+class SlotValue:
     """Base class for slot values"""
     kind: str
     value: str
 
+    def __str__(self) -> str:
+        return f"{self.kind}: {self.value}"
+
+    def to_dict(self) -> dict:
+        return {"kind": self.kind, "value": self.value}
+
 class SlotValueFactory:
     """Factory class for creating SlotValue instances"""
     @staticmethod
-    def create(kind: str, **kwargs: Any):
+    def create(kind: str, **kwargs: Any) -> SlotValue:
         """Creates a SlotValue instance based on the kind parameter and additional keyword arguments"""
         if kind == "InstantTime":
             return SlotValueInstantTime(kind=kind, **kwargs)
@@ -30,7 +37,7 @@ class SlotValueFactory:
         elif kind == "Temperature":
             return SlotValueTemperature(kind=kind, **kwargs)
         elif kind == "TimeInterval":
-            return SlotValueTimeInterval(kind=kind, from_ = kwargs["from"], to = kwargs["to"])
+            return SlotValueTimeInterval(kind=kind, **kwargs)
         elif kind == "Percentage":
             return SlotValuePercentage(kind=kind, **kwargs)
         elif kind == "MusicAlbum":
@@ -50,23 +57,34 @@ class SlotValueFactory:
         else:
             raise ValueError(f"Unknown kind of SlotValue: {kind}")
 
-class SlotValueInstantTime(NamedTuple):
+@dataclass
+class SlotValueInstantTime(SlotValue):
     """Slot value representing an instant time"""
-    kind: str
-    value: str
     grain: str
     precision: str
 
-class SlotValueAmountOfMoney(NamedTuple):
+    def get_grain(self) -> str:
+        return self.grain
+
+    def get_precision(self) -> str:
+        return self.precision
+
+@dataclass
+class SlotValueAmountOfMoney(SlotValue):
     """Slot value representing an amount of money"""
-    kind: str
     value: int
     precision: str
     unit: str
 
-class SlotValueDuration(NamedTuple):
+    def get_value(self) -> int:
+        return self.value
+
+    def get_unit(self) -> str:
+        return self.unit
+
+@dataclass
+class SlotValueDuration(SlotValue):
     """Slot value representing a duration"""
-    kind: str
     years: int
     quarters: int
     months: int
@@ -77,58 +95,113 @@ class SlotValueDuration(NamedTuple):
     seconds: int
     precision: str
 
-class SlotValueNumber(NamedTuple):
+    def get_total_seconds(self) -> int:
+        return self.seconds + self.minutes * 60 + self.hours * 3600 + self.days * 86400 + self.weeks * 604800 + self.months * 2629800 + self.quarters * 7889400 + self.years * 31557600
+
+    def get_precision(self) -> str:
+        return self.precision
+
+@dataclass
+class SlotValueNumber(SlotValue):
     """Slot value representing a number"""
-    kind: str
     value: int
 
-class SlotValueOrdinal(NamedTuple):
+    def get_value(self) -> int:
+        return self.value
+
+    def is_even(self) -> bool:
+        return self.value % 2 == 0
+
+@dataclass
+class SlotValueOrdinal(SlotValue):
     """Slot value representing an ordinal number"""
-    kind: str
     value: int
 
-class SlotValueTemperature(NamedTuple):
+    def get_value(self) -> int:
+        return self.value
+
+    def is_first(self) -> bool:
+        return self.value == 1
+
+@dataclass
+class SlotValueTemperature(SlotValue):
     """Slot value representing a temperature"""
-    kind: str
     value: float
     unit: Temperature
 
-class SlotValueTimeInterval(NamedTuple):
+    def get_value(self) -> float:
+        return self.value
+
+    def get_unit(self) -> Temperature:
+        return self.unit
+
+@dataclass
+class SlotValueTimeInterval(SlotValue):
     """Slot value representing a time interval"""
-    kind: str
     from_: str
     to: str
 
-class SlotValuePercentage(NamedTuple):
+    def get_from(self) -> str:
+        return self.from_
+
+    def get_to(self) -> str:
+        return self.to
+
+@dataclass
+class SlotValuePercentage(SlotValue):
     """Slot value representing a percentage"""
-    kind: str
     value: float
 
-class SlotValueMusicAlbum(NamedTuple):
+    def get_value(self) -> float:
+        return self.value
+
+    def is_positive(self) -> bool:
+        return self.value > 0
+
+@dataclass
+class SlotValueMusicAlbum(SlotValue):
     """Slot value representing a music album"""
-    kind: str
     value: str
 
+    def get_value(self) -> str:
+        return self.value
+
+@dataclass
 class SlotValueMusicArtist(SlotValue):
     """Slot value representing a music artist"""
     value: str
 
-class SlotValueMusicTrack(NamedTuple):
+    def get_value(self) -> str:
+        return self.value
+
+@dataclass
+class SlotValueMusicTrack(SlotValue):
     """Slot value representing a music track"""
-    kind: str
     value: str
 
-class SlotValueCity(NamedTuple):
+    def get_value(self) -> str:
+        return self.value
+
+@dataclass
+class SlotValueCity(SlotValue):
     """Slot value representing a city"""
-    kind: str
     value: str
 
-class SlotValueCountry(NamedTuple):
+    def get_value(self) -> str:
+        return self.value
+
+@dataclass
+class SlotValueCountry(SlotValue):
     """Slot value representing a country"""
-    kind: str
     value: str
 
-class SlotValueRegion(NamedTuple):
+    def get_value(self) -> str:
+        return self.value
+
+@dataclass
+class SlotValueRegion(SlotValue):
     """Slot value representing a region"""
-    kind: str
     value: str
+
+    def get_value(self) -> str:
+        return self.value
