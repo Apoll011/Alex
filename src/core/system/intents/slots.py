@@ -375,6 +375,51 @@ class SlotValuePercentage(SlotValue):
     def is_positive(self) -> bool:
         return self.value > 0
 
+    def is_negative(self) -> bool:
+        return self.value < 0
+
+    def is_zero(self) -> bool:
+        return self.value == 0
+
+    def to_decimal(self) -> float:
+        """Converts the percentage to a decimal value"""
+        return self.value / 100
+
+    def to_fraction(self) -> str:
+        """Converts the percentage to a fraction string"""
+        numerator = int(self.value * 100)
+        denominator = 100
+        gcd = math.gcd(numerator, denominator)
+        return f"{numerator // gcd}/{denominator // gcd}"
+
+    def increase_by(self, amount: float) -> 'SlotValuePercentage':
+        """Returns a new SlotValuePercentage with the value increased by the given amount"""
+        return SlotValuePercentage(kind="Percentage", value=self.value + amount)
+
+    def decrease_by(self, amount: float) -> 'SlotValuePercentage':
+        """Returns a new SlotValuePercentage with the value decreased by the given amount"""
+        return SlotValuePercentage(kind="Percentage", value=self.value - amount)
+
+    def multiply_by(self, factor: float) -> 'SlotValuePercentage':
+        """Returns a new SlotValuePercentage with the value multiplied by the given factor"""
+        return SlotValuePercentage(kind="Percentage", value=self.value * factor)
+
+    def __add__(self, other: 'SlotValuePercentage') -> 'SlotValuePercentage':
+        """Returns a new SlotValuePercentage with the value added to the given SlotValuePercentage"""
+        return SlotValuePercentage(kind="Percentage", value=self.value + other.value)
+
+    def __sub__(self, other: 'SlotValuePercentage') -> 'SlotValuePercentage':
+        """Returns a new SlotValuePercentage with the value subtracted by the given SlotValuePercentage"""
+        return SlotValuePercentage(kind="Percentage", value=self.value - other.value)
+
+    def __mul__(self, other: float) -> 'SlotValuePercentage':
+        """Returns a new SlotValuePercentage with the value multiplied by the given factor"""
+        return SlotValuePercentage(kind="Percentage", value=self.value * other)
+
+    def __truediv__(self, other: float) -> 'SlotValuePercentage':
+        """Returns a new SlotValuePercentage with the value divided by the given factor"""
+        return SlotValuePercentage(kind="Percentage", value=self.value / other)
+
 @dataclass
 class SlotValueMusicAlbum(SlotValue):
     """Slot value representing a music album"""
