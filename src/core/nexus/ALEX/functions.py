@@ -1,7 +1,9 @@
-from core.nexus.ai import AiBluePrintSkeleton, AI
-from core.system.api.client import ApiClient
-from core.system.config import api
+import os
 import time
+import glob
+from core.system.config import api, path
+from core.system.api.client import ApiClient
+from core.nexus.ai import AiBluePrintSkeleton, AI
 
 alexSkeleton = AiBluePrintSkeleton()
 
@@ -42,5 +44,12 @@ def debug_mode(alex: AI):
 
 @alexSkeleton.request_action("serverMode")
 def server_mode(alex: AI):
-    alex.server_mode = True
-    alex.init_server()
+    alex.server_mode = True # type: ignore
+    alex.voice_active = not alex.server_mode # type: ignore
+    alex.init_server() # type: ignore
+
+@alexSkeleton.deactivate_action("Delete context")
+def delete_ctx(alex: AI):
+    files = glob.glob(f'{path}/resources/ctx/*.pickle')
+    for f in files:
+        os.remove(f)
