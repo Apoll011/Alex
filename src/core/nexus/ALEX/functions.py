@@ -39,3 +39,8 @@ def train_engine(alex: AI):
 @alexSkeleton.request_action("debugMode")
 def debug_mode(alex: AI):
     alex.debug_mode = True
+
+@alexSkeleton.request_action("serverMode")
+def server_mode(alex: AI):
+    alex.server_mode = True
+    alex.init_server()

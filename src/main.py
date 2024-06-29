@@ -24,6 +24,7 @@ parser.add_argument("-i", "--install-skill", action=InstallSkill, nargs=2, help=
 parser.add_argument("-t", "--train", action="store_true", help="Train all the resources from Alex and exit")
 parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
 parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
+parser.add_argument("-c", "--cmd", action="store_true", help="Enters Comand Line Mode")
 
 parser.add_argument("-v", "--version", action="version", version=f"Alex {__version__}")
 
@@ -34,8 +35,11 @@ if args.train or args.start:
 
     if args.debug:
         Nexus.request_ai("ALEX", "debugMode")
+    if not args.cmd:
+        Nexus.request_ai("ALEX", "serverMode")
 
     if args.train:
         Nexus.request_ai("ALEX", "retrain")
+
     else:
         Nexus.call_ai("PRIA", "start")

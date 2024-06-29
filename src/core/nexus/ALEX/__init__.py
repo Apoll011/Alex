@@ -27,28 +27,27 @@ class ChatServer:
     def start_server(self):
         self.socketio.on('send_message')(self.handle_send_message)
         self.app.add_url_rule('/', view_func=self.index)
-        self.socketio.run(self.app)
+        self.socketio.run(self.app) # type: ignore
 
 
 class ALEX(AI, ChatServer):
 
     internet_is_on: bool
 
-    server_mode: bool = True
+    server_mode: bool
 
     def __init__(self) -> None:
         super().__init__("ALEX")
         self.register_blueprint(alexSkeleton)
         self.internet_is_on = False
-        self.intent = IntentParserToObject()
-
-        if self.server_mode:
-            self.init_server()
+        self.server_mode = False
+        self.intent = IntentParserToObject()            
 
     def start(self):
         self.clear()
-        print("Hi", self.get_context("master")["name"]) 
+        print("Hi", self.get_context("master")["name"])  # type: ignore
         if self.server_mode:
+            print(self.server_mode)
             self.start_server()
         else:
             super().start()
