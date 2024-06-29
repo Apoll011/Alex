@@ -80,7 +80,6 @@ class AiBluePrintSkeleton:
                 return fun(*args, **kwargs)
             return wrapper
         return decorator
-
 class AiSound:
     """
     A class to interact with the sound system. Plus it's still in construction so we have to use it carefully.
@@ -95,6 +94,8 @@ class AiSound:
     pria_voice = 'Samantha'
 
     say_voice_command = "say -v '#name#' '#text#'"
+
+    voice_active: bool
 
     def start(self) -> None:
         """
@@ -122,7 +123,8 @@ class AiSound:
         
         command = command.replace('#name#', voice).replace('#text#', text) # type: ignore
 
-        os.system(command)
+        if self.voice_active:
+            os.system(command)
         return text
 
 class AiRepresentatorInScreen:

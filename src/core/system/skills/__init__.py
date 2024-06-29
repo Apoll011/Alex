@@ -2,7 +2,7 @@ from core.system.intents import *
 from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
-from core.nexus.ai import AiSound
+from core.nexus.ai import Nexus
 from typing import Any
 
 class BaseSkill:
@@ -26,7 +26,6 @@ class BaseSkill:
      def execute(self, context: ContextManager, intent: IntentResponse):
           if intent.intent.intent_name != self.name:
                raise SkillIntentError(self.name, intent.intent.intent_name)
-
           self.alex_context = context
           self.intent = intent
                
