@@ -12,22 +12,24 @@ class Geometry(BaseSkill):
           self.require("func", SlotValue)
           self.require("number", SlotValueNumber)
 
+          self.number: SlotValueNumber = self.slots["number"]
+
           r = None 
 
-          if self.slots['func'].value == "sen":
-               r = sin(self.slots["number"].value)
+          if self.assert_equal("mathoperation", "sen"):
+               r = sin(self.number.value)
 
-          elif self.slots['func'].value == "cos":
-               r = cos(self.slots["number"].value)
+          elif self.assert_equal("mathoperation", "cos"):
+               r = cos(self.number.value)
 
-          elif self.slots['func'].value == "sqrt":
-               r = sqrt(self.slots["number"].value)
+          elif self.assert_equal("mathoperation", "sqrt"):
+               r = sqrt(self.number.value)
           
-          elif self.slots['func'].value == "tan":
-               r = tan(self.slots["number"].value)
+          elif self.assert_equal("mathoperation", "tan"):
+               r = tan(self.number.value)
           
-          elif self.slots['func'].value == "tanh":
-               r = tanh(self.slots["number"].value)
+          elif self.assert_equal("mathoperation", "tanh"):
+               r = tanh(self.number.value)
           
           self.alex_context.save(r, "last_result")
           

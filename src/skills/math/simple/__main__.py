@@ -12,29 +12,33 @@ class Simple(BaseSkill):
           self.optional("first_number", SlotValueNumber)
           self.optional("second_number", SlotValueNumber)
           self.optional("number", SlotValueNumber)
+          
+          self.mathOp: SlotValue = self.slots["mathoperation"]
 
           op = self.convert()
 
           r = None
 
-          if self.slots["number"]:
+          if self.slot_exists("number"):
+               number: SlotValueNumber = self.slots["number"]
                last_result = self.alex_context.load("last_result")
-               r = op(last_result, self.slots["number"].value)
+               r = op(last_result, number.value)
 
-          elif self.slots["first_number"] and self.slots["second_number"]:
-               r = op(self.slots["first_number"].value, self.slots["second_number"].value)
+          elif self.slot_exists("first_number", "second_number"):
+               fNumber: SlotValueNumber = self.slots["first_number"]
+               sNumber: SlotValueNumber = self.slots["second_number"]
+               r = op(fNumber.value, sNumber.value)
                self.alex_context.save(r, "last_result")
-          
           return self.responce_translated("result", r)
 
      def convert(self):
-          if self.slots["mathoperation"].value == "plus":
+          if self.assert_equal("mathoperation", "plus"):
                return lambda x, y: x + y 
-          elif self.slots["mathoperation"].value == "times":
+          elif self.assert_equal("mathoperation", "times"):
                return lambda x, y: x * y 
-          elif self.slots["mathoperation"].value == "minus":
+          elif self.assert_equal("mathoperation", "minus"):
                return lambda x, y: x - y 
-          elif self.slots["mathoperation"].value == "over":
+          elif self.assert_equal("mathoperation", "over"):
                return lambda x, y: x / y 
           else:
                return lambda x, y: int(x) ^ int(y) 

@@ -8,40 +8,38 @@ class EvenOrOdd(BaseSkill):
           self.register("math@even.or.odd")
           super().__init__()
 
-     def is_even(self):
-          if self.slots["number"]:
-               return ((self.slots["number"].value % 2)==0)
-
      def is_prime(self):
-          if self.slots["number"].value > self.prime_search_limit:
+          if self.number.value > self.prime_search_limit:
                return self.responce_translated("search.limit")
           
-          for i in range(2, int(self.slots["number"].value//2)):
-               if self.slots["number"].value % i == 0:
-                    return self.responce_translated(f"prime.no",self.slots["number"].value)
+          for i in range(2, int(self.number.value//2)):
+               if self.number.value % i == 0:
+                    return self.responce_translated(f"prime.no", self.number.value)
           
-          return self.responce_translated(f"prime.yes",self.slots["number"].value)
+          return self.responce_translated(f"prime.yes", self.number.value)
                
      def execute(self, context, intent):
           super().execute(context, intent)
           self.require("number", SlotValueNumber)
           self.optional("type", SlotValue)
 
-          if self.slots["type"] and self.slots["type"].value == "prime":
+          self.number: SlotValueNumber = self.slots["number"] # type: ignore
+
+          if self.slot_exists("type") and self.assert_equal("type", "prime"):
                r =  self.is_prime()
-          elif self.slots["type"] and self.slots["type"].value == "even":
+          elif self.slot_exists("type") and self.assert_equal("type", "even"):
                r = self.make_responce("yes", "no")
-          elif self.slots["type"] and self.slots["type"].value == "odd":
+          elif self.slot_exists("type") and self.assert_equal("type", "odd"):
                r = self.make_responce("no", "yes")
           else:
                r = self.make_responce()
           return r
+     
      def make_responce(self, first = "", second = ""):
-          if self.slots["number"]:
-               last = "odd"
-               f = second
-               if self.is_even():
-                    last = "even"
-                    f = first
-               return self.responce_translated(f"responce.{f}.{last}", self.slots["number"].value)
+          last = "odd"
+          f = second
+          if self.number.is_even():
+               last = "even"
+               f = first
+          return self.responce_translated(f"responce.{f}.{last}", self.number.value)
               
