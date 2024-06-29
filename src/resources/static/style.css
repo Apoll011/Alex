@@ -668,6 +668,10 @@ frenify_typing h3 {
     display: block
 }
 
+.techwave_fn_aichatbot_page .chat__item.deactive {
+    display: none
+}
+
 .fn__chatbot .chat__box {
     position: relative;
     margin-bottom: 20px

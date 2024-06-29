@@ -50,6 +50,9 @@
                                     <!-- Active chat title -->
                                     <h1 class="title">Chat With Alex</h1>
                                     <!-- !Active chat title -->
+                                    <button class="change" id="change"
+                                        style="right: 100px;top: 20px;width: 10%;height: 51%;float: right;position: absolute;border-radius: 25px;border: none;">Voice
+                                        Mode</button>
                                 </div>
                             </div>
 
@@ -117,9 +120,36 @@
         document.addEventListener("DOMContentLoaded", function () {
             var messageInput = document.getElementById("fn__chat_textarea");
             var sendButton = document.getElementById("send-button");
+            var changeButton = document.getElementById("change");
+
+            var messageDiv = document.getElementById("messages");
+            var voiceDiv = document.getElementById("voice");
+
+            active = "Text"
 
             sendButton.addEventListener("click", function () {
                 send();
+            });
+
+            changeButton.addEventListener("click", function () {
+                changeButton.innerText = `${active} Mode`
+                var new_mode = "";
+                if (active === "Text") {
+                    new_mode = "Voice"
+                    messageDiv.classList.remove("active")
+                    messageDiv.classList.add("deactive")
+                    voiceDiv.classList.remove("deactive")
+                    voiceDiv.classList.add("active")
+                }
+                else {
+                    new_mode = "Text"
+                    voiceDiv.classList.remove("active")
+                    voiceDiv.classList.add("deactive")
+                    messageDiv.classList.remove("deactive")
+                    messageDiv.classList.add("active")
+                }
+                socket.emit("change_mode", { mode: new_mode });
+                active = new_mode;
             });
 
             messageInput.addEventListener("keyup", function (e) {

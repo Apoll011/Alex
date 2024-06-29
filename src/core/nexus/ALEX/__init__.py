@@ -22,7 +22,10 @@ class ChatServer:
 
     def handle_send_message(self, data):
         message = data['message']
-        self.process_message(message)
+        m = self.process_message(message)
+        if m != None:
+            emit('receive_message', {'message': m, 'username': "Alex"}, broadcast=True)
+
 
     def start_server(self):
         self.socketio.on('send_message')(self.handle_send_message)
