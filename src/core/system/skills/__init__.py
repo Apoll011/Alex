@@ -3,6 +3,7 @@ from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
 from core.nexus.ai import AiSound
+from typing import Any
 
 class BaseSkill(AiSound):
      name: str
@@ -14,7 +15,7 @@ class BaseSkill(AiSound):
 
      translate: TranslationSystem
 
-     slots: dict[str, SlotValue] = {}
+     slots: dict[str, Any] = {}
 
      def __init__(self):
           pass
