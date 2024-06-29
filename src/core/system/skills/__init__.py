@@ -2,9 +2,9 @@ from core.system.intents import IntentResponse, Slot
 from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
-from core.nexus.ai import AiSound
+from core.nexus.ai import Nexus
 
-class BaseSkill(AiSound):
+class BaseSkill:
      name: str
 
      is_api: bool = False
@@ -53,6 +53,9 @@ class BaseSkill(AiSound):
                self.speak(text)
           return text
      
+     def speak(self, text):
+          Nexus.call_ai("ALEX", "speak", text)
+
      def responce_translated(self, key: str, *args):
           return self.responce(self.translate.get_translation(key, *args))
 

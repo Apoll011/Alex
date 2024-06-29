@@ -123,6 +123,7 @@ class AiSound:
         command = command.replace('#name#', voice).replace('#text#', text) # type: ignore
 
         os.system(command)
+        return text
 
 class AiRepresentatorInScreen:
     """
