@@ -50,6 +50,11 @@ class ALEX(AI):
             print("Input: ", r)
         return r
 
+    def speak(self, text: str, voice: str = 'Alex', voice_command=None):
+        if self.debug_mode:
+            print("Alex: ", text)
+        return super().speak(text, voice, voice_command)
+
     def internet_on(self):
         connection = httplib.HTTPConnection("google.com",timeout=3)
         try:
