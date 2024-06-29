@@ -8,7 +8,7 @@ class Tanks(BaseSkill):
 
      def execute(self, context, intent):
           super().execute(context, intent)
-          self.responce_translated("tank") # type: ignore
+          self.responce_translated("tank")
           
      def responce(self, text):
           self.speak(text)

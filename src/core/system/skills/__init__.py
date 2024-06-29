@@ -1,8 +1,9 @@
-from core.system.intents import IntentResponse, Slot
+from core.system.intents import *
 from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
-from core.nexus.ai import Nexus
+from core.nexus.ai import AiSound
+from typing import Any
 
 class BaseSkill:
      name: str
@@ -14,7 +15,7 @@ class BaseSkill:
 
      translate: TranslationSystem
 
-     slots: dict[str, Slot | None] = {}
+     slots: dict[str, Any] = {}
 
      def __init__(self):
           pass
@@ -43,8 +44,6 @@ class BaseSkill:
      def optional(self, slot_name: str, slot_type):
           if slot_name in self.intent.slots.keys() and isinstance(self.intent.slots[slot_name].value, slot_type):
                self.slots[slot_name] = self.intent.slots[slot_name].value
-          else:
-               self.slots[slot_name] = None
 
      def responce(self, text: str):
           text = text.strip()
@@ -68,3 +67,14 @@ class BaseSkill:
           skillname = " ".join(s[1].split(".")).title().replace(" ", "")
           path = f"skills/{s[0]}/{s[1].replace(".", "_")}"
           return path, skillname
+
+     def slot_exists(self, *args: str):
+          for a in args:
+               if a not in self.slots.keys():
+                    return False
+          return True
+     
+     def assert_equal(self, slot_name: str, value: Any):
+          if self.slots[slot_name] == value:
+               return True
+          return False

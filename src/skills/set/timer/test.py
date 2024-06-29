@@ -1,20 +1,19 @@
 from core.system.api.promise.promise import Promise
 from core.system.intents.slots import SlotValueDuration
 import time
+import datetime
 
-def convertDurationToSeconts(duration: SlotValueDuration):
-    s = duration.seconds
-    s_m = duration.minutes * 60
-    s_h = duration.hours * 60 * 60
-    s_d = duration.days * 24 * 60 * 60
-    s_w = duration.weeks * 7 * 24 * 60 * 60
-    s_mt = duration.months * 30.5 * 24 * 60 * 60
-    s_q = duration.quarters * 3 *  30.5 * 24 * 60 * 60
-    s_y = duration.years * 365 * 24 * 60 * 60
-    return  s + s_m + s_h + s_d + s_w + s_mt + s_q + s_y
+
+def convertDurationToDateTime(duration: SlotValueDuration):
+    return datetime.datetime(duration.years, (duration.quarters * 3) + duration.months, (duration.weeks * 7) + duration.days, duration.hours, duration.minutes, duration.minutes)
+
+def getDateTimeToSeconds(datetime: datetime.datetime):
+    total_timedelta = datetime - datetime.now()
+    return total_timedelta.total_seconds()
 
 d = SlotValueDuration("duration", 0, 0 , 0, 0 , 0, 4, 2, 75, "hour")
-print(convertDurationToSeconts(d))
+dd = convertDurationToDateTime(d)
+print
 P = Promise()
 P.resolve(lambda: time.sleep(2))
 P.then(lambda r: print("Ring Ring Ring"))

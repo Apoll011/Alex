@@ -16,13 +16,13 @@ class MusicDo(BaseSkill):
           self.optional("shuffleEnabled", SlotValue)
 
 
-          if self.slots["musicDo"]:
+          if self.slot_exists("musicDo"):
                 self.comand(self.slots["musicDo"].value)
-          if self.slots["musicTrackAction"]:
+          if self.slot_exists("musicTrackAction"):
                 self.comand(self.slots["musicTrackAction"].value + " track")
-          if self.slots["musicReapeatOptions"]:
+          if self.slot_exists("musicReapeatOptions"):
                 self.comand(f"Set song repeat to {self.slots["musicReapeatOptions"].value}")
-          if self.slots["shuffleEnabled"]:
+          if self.slot_exists("shuffleEnabled"):
                 self.comand(f"Set shuffle enabled to {self.slots["shuffleEnabled"].value.replace("\\", "")}")
           
           self.responce_translated("Ok") # type: ignore

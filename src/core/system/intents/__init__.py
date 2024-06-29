@@ -10,7 +10,7 @@ class Slot(NamedTuple):
     """Slot representing a piece of information extracted from user input"""
     range: SlotRange
     raw_value: str
-    value: Any
+    value: SlotValue
     entity: str
     slot_name: str
 
@@ -57,7 +57,7 @@ class IntentParserToObject:
         intent = self.parse_intent(intentr["intent"])
         
         slots = {}
-
+        
         for slot in intentr["slots"]:
             s = self.parse_slot(slot)
             slots[s.slot_name] = s 
