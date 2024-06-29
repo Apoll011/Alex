@@ -69,3 +69,8 @@ class BaseSkill(AiSound):
                if a not in self.slots.keys():
                     return False
           return True
+     
+     def assert_equal(self, slot_name: str, value: Any):
+          if self.slots[slot_name] == value:
+               return True
+          return False
