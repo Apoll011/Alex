@@ -47,7 +47,6 @@ class ALEX(AI, ChatServer):
         self.clear()
         print("Hi", self.get_context("master")["name"])  # type: ignore
         if self.server_mode:
-            print(self.server_mode)
             self.start_server()
         else:
             super().start()
