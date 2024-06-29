@@ -1539,7 +1539,12 @@ a.fn__like.has__like .full__like {
 
 .section_home .company_info p,
 .techwave_fn_aichatbot_page .fn__title_holder {
-    margin-bottom: 23px
+    position: sticky;
+    margin-bottom: 40px;
+    padding: 20px;
+    z-index: 999;
+    top: 0px;
+    background-color: var(--techwave-site-bg-color);
 }
 
 .section_home .company_info img {
