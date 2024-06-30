@@ -1,14 +1,10 @@
 import time
-import http.client as httplib
 from core.nexus.ai import AI
 from .functions import alexSkeleton
 from core.system.skills.call import SkillCaller
 from core.system.intents import IntentParserToObject
 
 class ALEX(AI):
-
-    internet_is_on: bool
-
     def __init__(self) -> None:
         super().__init__("ALEX")
         self.register_blueprint(alexSkeleton)
@@ -54,8 +50,10 @@ class ALEX(AI):
             r = super().listen().strip()
         else:
             r = input("Seu texto: ")
+
         if r == "":
             return self.listen()
+        
         if self.debug_mode:
             print("Input: ", r)
         return r
@@ -64,13 +62,3 @@ class ALEX(AI):
         if self.debug_mode:
             print("Alex: ", text)
         return super().speak(text, voice, voice_command)
-
-    def internet_on(self):
-        connection = httplib.HTTPConnection("google.com",timeout=3)
-        try:
-            # only header requested for fast operation
-            connection.request("HEAD", "/")
-            connection.close()  # connection closed
-            return True
-        except Exception as exep:
-            return False

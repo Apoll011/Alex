@@ -3,13 +3,27 @@ import time
 import shutil
 import threading
 import subprocess
-from core.system.security._key import AlexKey
+import http.client as httplib
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 from core.system.api.client import ApiClient
+from core.system.security._key import AlexKey
 from core.system.config import path, nexus_ai
 from core.system.intents import IntentResponse
 from core.system.context import ContextManager
+
+class InternetUser:
+    internet_is_on: bool
+
+    def internet_on(self):
+        connection = httplib.HTTPConnection("google.com",timeout=3)
+        try:
+            # only header requested for fast operation
+            connection.request("HEAD", "/")
+            connection.close()  # connection closed
+            return True
+        except Exception as exep:
+            return False
 
 class ChatServer:
     
@@ -424,7 +438,7 @@ class Nexus:
             exec(f"{name}().activate()")
         cm.save(True, "all_ai_started", "pickle")
 
-class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound, ChatServer):
+class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound, ChatServer, InternetUser):
     """
     The main AI class
     """
