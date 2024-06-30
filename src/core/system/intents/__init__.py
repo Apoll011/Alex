@@ -29,6 +29,7 @@ class IntentResponse(NamedTuple):
     input: str
     intent: Intent
     slots: dict[str, Slot]
+    json:Dict[str, Any]
 
 class IntentParserToObject:
     """Class for parsing intent data from a dictionary representation"""
@@ -61,7 +62,7 @@ class IntentParserToObject:
         for slot in intentr["slots"]:
             s = self.parse_slot(slot)
             slots[s.slot_name] = s 
-        return IntentResponse(input=input, intent=intent, slots=slots)
+        return IntentResponse(input=input, intent=intent, slots=slots, json=intentr)
 
     @staticmethod
     def draw_intent(intent_response: IntentResponse) -> None:
