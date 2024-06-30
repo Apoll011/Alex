@@ -27,13 +27,11 @@ class InternetUser:
 
 class ChatServer:
     
-    emit = emit
-
     server_mode: bool = False
 
     def init_server(self):
         self.app = Flask(__name__, template_folder=f'{path}/resources/templates', static_folder=f'{path}/resources/static')
-        self.app.config['SECRET_KEY'] = AlexKey.get()
+        self.app.config['SECRET_KEY'] = str(AlexKey.get())
         self.socketio = SocketIO(self.app)
 
     def process_message(self, message) -> (tuple[str, IntentResponse] | tuple[None, IntentResponse]): ...
@@ -507,5 +505,5 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound
 
     def speak(self, text: str, voice: str = 'Alex', voice_command=None):
         if self.server_mode:
-            self.emit('receive_message', {'message': text}, broadcast=True)
+            emit('receive_message', {'message': text}, broadcast=True)
         return super().speak(text, voice, voice_command)
