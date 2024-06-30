@@ -12,15 +12,18 @@ class AreUSure(BaseSkill):
           last_responce = self.alex_context.load("last_responce")
           last_intent = self.alex_context.load("last_intent")
           
-          skill = SkillCaller().call(last_intent) # type: ignore
-          skill.set_as_api()
-          new_value = skill.execute(context, last_intent) # type: ignore
-
-          if new_value  == last_responce: 
-               self.responce_translated("confirmation.yes")
+          if last_responce == None:
+               self.responce_translated("not.enough.data")
           else:
-               self.alex_context.save(new_value, "last_responce")
-               self.responce_translated("confirmation.no", new_value)
+               skill = SkillCaller().call(last_intent)
+               skill.set_as_api()
+               new_value = skill.execute(context, last_intent) # type: ignore
+
+               if new_value  == last_responce: 
+                    self.responce_translated("confirmation.yes")
+               else:
+                    self.alex_context.save(new_value, "last_responce")
+                    self.responce_translated("confirmation.no", new_value)
                 
 
 
