@@ -1,43 +1,13 @@
 import time
 import http.client as httplib
-from flask import Flask, render_template
-from flask_socketio import SocketIO, emit
 from core.nexus.ai import AI
-from core.system.config import path
 from .functions import alexSkeleton
 from core.system.skills.call import SkillCaller
 from core.system.intents import IntentParserToObject
 
-class ChatServer:
-    def init_server(self):
-        self.app = Flask(__name__, template_folder=f'{path}/resources/templates', static_folder=f'{path}/resources/static')
-        self.app.config['SECRET_KEY'] = 'ufi75egf68vj6u8f'
-        self.socketio = SocketIO(self.app)
-
-    def process_message(self, message):
-        return f"Processed message: {message}"
-
-    def index(self):
-        return render_template('index.html')
-
-    def handle_send_message(self, data):
-        message = data['message']
-        m = self.process_message(message)
-        if m != None:
-            emit('receive_message', {'message': m, 'username': "Alex"}, broadcast=True)
-
-
-    def start_server(self):
-        self.socketio.on('send_message')(self.handle_send_message)
-        self.app.add_url_rule('/', view_func=self.index)
-        self.socketio.run(self.app) # type: ignore
-
-
-class ALEX(AI, ChatServer):
+class ALEX(AI):
 
     internet_is_on: bool
-
-    server_mode: bool
 
     def __init__(self) -> None:
         super().__init__("ALEX")
@@ -49,10 +19,7 @@ class ALEX(AI, ChatServer):
     def start(self):
         self.clear()
         print("Hi", self.get_context("master")["name"])  # type: ignore
-        if self.server_mode:
-            self.start_server()
-        else:
-            super().start()
+        super().start()
 
     def process_message(self, message):
         return self.get_text_and_process(message)
@@ -75,10 +42,12 @@ class ALEX(AI, ChatServer):
                 s = SkillCaller().call(intent)
                 s.execute(self._context, intent)
             except Exception as e:
-                return e
+                return f"An error ocurred during the execution of the intented skill {str(e)}. Please report.", intent
         else:
-            return "Sorry. Thats not a valid intent"
+            return "Sorry. Thats not a valid intent", intent
 
+        return None, intent
+    
     def listen(self):
         if self.internet_is_on:
             time.sleep(1)
@@ -94,8 +63,6 @@ class ALEX(AI, ChatServer):
     def speak(self, text: str, voice: str = 'Alex', voice_command=None):
         if self.debug_mode:
             print("Alex: ", text)
-        if self.server_mode:
-            emit('receive_message', {'message': text, 'username': "Alex"}, broadcast=True)
         return super().speak(text, voice, voice_command)
 
     def internet_on(self):

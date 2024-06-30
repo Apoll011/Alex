@@ -3,9 +3,41 @@ import time
 import shutil
 import threading
 import subprocess
+from core.system.security._key import AlexKey
+from flask import Flask, render_template
+from flask_socketio import SocketIO, emit
 from core.system.api.client import ApiClient
 from core.system.config import path, nexus_ai
+from core.system.intents import IntentResponse
 from core.system.context import ContextManager
+
+class ChatServer:
+    
+    emit = emit
+
+    server_mode: bool = False
+
+    def init_server(self):
+        self.app = Flask(__name__, template_folder=f'{path}/resources/templates', static_folder=f'{path}/resources/static')
+        self.app.config['SECRET_KEY'] = AlexKey.get()
+        self.socketio = SocketIO(self.app)
+
+    def process_message(self, message) -> (tuple[str, IntentResponse] | tuple[None, IntentResponse]): ...
+
+    def index(self):
+        return render_template('index.html')
+
+    def handle_send_message(self, data):
+        message = data['message']
+        m, intent = self.process_message(message)
+        if m != None:
+            emit('receive_message', {'message': m}, broadcast=True)
+
+
+    def start_server(self):
+        self.socketio.on('send_message')(self.handle_send_message)
+        self.app.add_url_rule('/', view_func=self.index)
+        self.socketio.run(self.app) # type: ignore
 
 class AiBluePrintSkeleton:
     """
@@ -392,7 +424,7 @@ class Nexus:
             exec(f"{name}().activate()")
         cm.save(True, "all_ai_started", "pickle")
 
-class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound):
+class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound, ChatServer):
     """
     The main AI class
     """
@@ -433,10 +465,13 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound
 
     def start(self):
         """
-        Starts the AI instance (not implemented)
+        Starts the AI instance
         """
-        while self.active:
-            self.loop()
+        if self.server_mode:
+            self.start_server()
+        else:
+            while self.active:
+                self.loop()
 
     def end(self):
         """
@@ -455,3 +490,8 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound
         """
         Will Always loop over unless `active` is set to `False` 
         """
+
+    def speak(self, text: str, voice: str = 'Alex', voice_command=None):
+        if self.server_mode:
+            self.emit('receive_message', {'message': text}, broadcast=True)
+        return super().speak(text, voice, voice_command)
