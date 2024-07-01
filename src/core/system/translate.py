@@ -1,5 +1,6 @@
 from .config import path
 from random import choice
+import re
 
 class TranslationSystem:
     """
@@ -40,30 +41,30 @@ class TranslationSystem:
                     key, value = line.strip().split(":", 1)
                     if value.strip().startswith("["):
                         v = value.replace("[", "").replace("]", "")
-                        v = v.strip().replace("#%", "{}")
+                        v = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}', value.strip())
                         translations[key] = v.split(";")
                     else:
-                        translations[key] = value.strip().replace("#%", "{}")
+                        translations[key] = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}',value.strip())
             return translations
 
-    def get_translation(self, key: str, *args) -> str:
+    def get_translation(self, key: str, context=None) -> str:
         """
         Retrieves a translation for a given key.
 
         Args:
             key (str): The translation key
-            *args: Optional arguments to format the translation string
+            context (dict): Optional arguments to format the translation string
 
         Returns:
             str: The translated string
         """
+        context = context or {}
         try:
             translation = self.translations[key]
             if isinstance(translation, list):
                 translation = choice(translation)
-            if args:
-                return translation.format(*args)
-            return translation
+            return translation.format(**context)
+        
         except KeyError:
             return self.get_translation("error.457", key)
 
