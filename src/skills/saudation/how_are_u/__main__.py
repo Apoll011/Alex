@@ -1,4 +1,3 @@
-from core.system.skills.call import SkillCaller
 from core.system.skills import BaseSkill
 
 class HowAreU(BaseSkill):
