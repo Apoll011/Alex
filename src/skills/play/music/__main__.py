@@ -37,7 +37,7 @@ class Music(BaseSkill):
 		self.responce_translated("Ok")
      
 	def comand(self, flag, pattern):
-		os.system(f"zsh \"{path}/skills/play/np.sh\" play \"{flag}\" \"{pattern}\"")
+		os.system(f"zsh \"{path}/skills/play/np.sh\" play {flag} \"{pattern}\"")
           
 	def responce(self, text):
 		self.speak(text)
