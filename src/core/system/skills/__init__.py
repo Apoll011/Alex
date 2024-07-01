@@ -78,12 +78,12 @@ class BaseSkill:
                return True
           return False
 
-     def assert_in(self, slot_name: str, value: list):
-          if self.slots[slot_name] in value:
+     def assert_in(self, slot_name: str, list: list):
+          if self.slots[slot_name].value in list:
                return True
           return False
 
-     def assert_in_dict(self, slot_name: str, value: dict):
-          if self.slots[slot_name] in value.keys():
+     def assert_in_dict(self, slot_name: str, dictionary: dict):
+          if self.slots[slot_name].value in dictionary.keys():
                return True
           return False
