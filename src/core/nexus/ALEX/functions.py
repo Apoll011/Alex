@@ -44,10 +44,17 @@ def debug_mode(alex: AI):
 
 @alexSkeleton.request_action("serverMode")
 def server_mode(alex: AI):
-    alex.server_mode = True # type: ignore
-    alex.voice_active = not alex.server_mode # type: ignore
-    alex.init_server() # type: ignore
+    alex.server_mode = True
+    alex.voice_active = not alex.server_mode
+    alex.init_server()
 
+@alexSkeleton.request_action("changeMode")
+def changeMode(alex: AI, mode):
+    if mode == "Text":
+        alex.voice_active = False
+    else:
+        alex.voice_active = True
+        
 @alexSkeleton.deactivate_action("Delete context")
 def delete_ctx(alex: AI):
     files = glob.glob(f'{path}/resources/ctx/*.pickle')

@@ -5,6 +5,9 @@ from core.system.skills.call import SkillCaller
 from core.system.intents import IntentParserToObject
 
 class ALEX(AI):
+
+    mode: str
+
     def __init__(self) -> None:
         super().__init__("ALEX")
         self.register_blueprint(alexSkeleton)
@@ -20,15 +23,18 @@ class ALEX(AI):
     def process_message(self, message):
         return self.get_text_and_process(message)
 
+    def change_mode(self, data: dict):
+        self.handle_request("changeMode", data["mode"])
+
     def loop(self):
         int = self.listen()
-        text_returned = self.get_text_and_process(int)
+        text_returned, intent = self.get_text_and_process(int)
         if text_returned != None:
             self.speak(str(text_returned))
 
     def get_text_and_process(self, text):
-        promesa = self.api.call_route("intent_recognition/parse", text)
-        responce = promesa.response
+        promise = self.api.call_route("intent_recognition/parse", text)
+        responce = promise.response
         
         intent = self.intent.parser(responce)
         if intent.intent.intent_name != None:

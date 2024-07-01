@@ -45,9 +45,11 @@ class ChatServer:
         if m != None:
             emit('receive_message', {'message': m}, broadcast=True)
 
+    def change_mode(self, data: dict): ...
 
     def start_server(self):
         self.socketio.on('send_message')(self.handle_send_message)
+        self.socketio.on('change_mode')(self.change_mode)
         self.app.add_url_rule('/', view_func=self.index)
         self.socketio.run(self.app) # type: ignore
 
