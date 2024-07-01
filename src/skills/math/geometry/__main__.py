@@ -16,19 +16,19 @@ class Geometry(BaseSkill):
 
           r = None 
 
-          if self.assert_equal("mathoperation", "sen"):
+          if self.assert_equal("func", "sen"):
                r = sin(self.number.value)
 
-          elif self.assert_equal("mathoperation", "cos"):
+          elif self.assert_equal("func", "cos"):
                r = cos(self.number.value)
 
-          elif self.assert_equal("mathoperation", "sqrt"):
+          elif self.assert_equal("func", "sqrt"):
                r = sqrt(self.number.value)
           
-          elif self.assert_equal("mathoperation", "tan"):
+          elif self.assert_equal("func", "tan"):
                r = tan(self.number.value)
           
-          elif self.assert_equal("mathoperation", "tanh"):
+          elif self.assert_equal("func", "tanh"):
                r = tanh(self.number.value)
           
           self.alex_context.save(r, "last_result")
