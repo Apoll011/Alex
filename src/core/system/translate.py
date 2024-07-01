@@ -1,5 +1,5 @@
-# translation_system.py
 from .config import path
+from random import choice
 
 class TranslationSystem:
     """
@@ -25,7 +25,7 @@ class TranslationSystem:
         self.translations = self.load_translations()
         self.translations.update({"error.457": "The key {} was not found in this translation file map: ("+self.language_path+")"})
 
-    def load_translations(self) -> dict:
+    def load_translations(self) -> dict[str, str | list]:
         """
         Loads translations from a file.
 
@@ -38,7 +38,12 @@ class TranslationSystem:
             for line in f:
                 if line.strip() and line != "":
                     key, value = line.strip().split(":", 1)
-                    translations[key] = value.strip().replace("#%", "{}")
+                    if value.strip().startswith("["):
+                        v = value.replace("[", "").replace("]", "")
+                        v = v.strip().replace("#%", "{}")
+                        translations[key] = v.split(";")
+                    else:
+                        translations[key] = value.strip().replace("#%", "{}")
             return translations
 
     def get_translation(self, key: str, *args) -> str:
@@ -54,6 +59,8 @@ class TranslationSystem:
         """
         try:
             translation = self.translations[key]
+            if isinstance(translation, list):
+                translation = choice(translation)
             if args:
                 return translation.format(*args)
             return translation
