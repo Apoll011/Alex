@@ -41,7 +41,7 @@ class TranslationSystem:
                     key, value = line.strip().split(":", 1)
                     if value.strip().startswith("["):
                         v = value.replace("[", "").replace("]", "")
-                        v = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}', value.strip())
+                        v = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}', v.strip())
                         translations[key] = v.split(";")
                     else:
                         translations[key] = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}',value.strip())
