@@ -9,7 +9,7 @@ class MusicWhatsPlaying(BaseSkill):
 
      def execute(self, context, intent):
           super().execute(context, intent)
-          artist, name, album = self.beutify(self.comand())
+          name, artist, album = self.beutify(self.comand())
           return self.responce_translated("playing.now", {"artist":artist, "track":name}) # type: ignore
           
      def comand(self):
