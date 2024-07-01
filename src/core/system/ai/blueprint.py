@@ -157,4 +157,4 @@ class AiBluePrintUser:
     def run_deactivate_actions(self):
         for action in self.deactivate_actions:
             print("\33[32mRunning", action, "\33[97m")
-            self.deactivate_actions[action](action, self)
+            self.deactivate_actions[action](self)

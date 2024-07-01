@@ -1,4 +1,5 @@
 import time
+import sys
 from .nexus import Nexus
 from .sound import AiSound
 from flask_socketio import emit
@@ -64,9 +65,9 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound
 
     def end(self):
         """
-        Ends the AI instance (not implemented)
+        Ends the AI instance
         """
-        pass
+        sys.exit(1)
 
     def deactivate(self):
         """
