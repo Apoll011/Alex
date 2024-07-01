@@ -1,4 +1,4 @@
-from core.nexus.ai import Nexus
+from core.system.ai.nexus import Nexus
 from core.system.version import VersionManager
 import argparse
 import zipfile
