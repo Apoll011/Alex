@@ -174,14 +174,15 @@
             var messageInput = document.getElementById("fn__chat_textarea");
             var sendButton = document.getElementById("send-button");
 
-            var message = messageInput.value;
-            var username = "Tiago Bernardo"; // Replace with actual username
-            socket.emit("send_message", { message: message, username: username });
-            var messageElement = document.createElement("div");
-            messageElement.classList.add("chat__box", "your__chat")
-            messageElement.innerHTML = `<div class="author"><span>You</span></div><div class="chat"><p>${message}</p></div>`;
-            document.getElementById("messages").appendChild(messageElement);
-            messageInput.value = "";
+            var message = messageInput.value.trim();
+            if (message != "") {
+                socket.emit("send_message", { message: message });
+                var messageElement = document.createElement("div");
+                messageElement.classList.add("chat__box", "your__chat")
+                messageElement.innerHTML = `<div class="author"><span>You</span></div><div class="chat"><p>${message}</p></div>`;
+                document.getElementById("messages").appendChild(messageElement);
+            }
+            messageInput.value = ""
         }
     </script>
 
