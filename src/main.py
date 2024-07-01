@@ -1,5 +1,5 @@
 from core.nexus.ai import Nexus
-from core.system.config import __version__
+from core.system.version import VersionManager
 import argparse
 import zipfile
 import os
@@ -26,7 +26,7 @@ parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
 parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
 parser.add_argument("-c", "--cmd", action="store_true", help="Enters Comand Line Mode")
 
-parser.add_argument("-v", "--version", action="version", version=f"Alex {__version__}")
+parser.add_argument("-v", "--version", action="version", version=f"Alex {VersionManager.get().get("coreVersion", "")}")
 
 args = parser.parse_args()
 
