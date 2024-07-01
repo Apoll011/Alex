@@ -1,9 +1,10 @@
+from typing import Any
+from core.system.intents.responce import *
 from core.system.intents import *
 from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
 from core.system.ai.nexus import Nexus
-from typing import Any
 
 class BaseSkill:
      name: str
@@ -87,3 +88,7 @@ class BaseSkill:
           if self.slots[slot_name].value in dictionary.keys():
                return True
           return False
+
+     def question(self, key_to_question_to_ask, callback, question_replacers = {}, required_responce:Responce = AnyReponce(), *args):
+          self.responce_translated(key_to_question_to_ask, question_replacers)
+          Nexus.call_ai("ALEX", "setListenProcessor", callback, required_responce, *args)
