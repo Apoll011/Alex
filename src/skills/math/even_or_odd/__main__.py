@@ -16,7 +16,7 @@ class EvenOrOdd(BaseSkill):
                if self.number.value % i == 0:
                     return self.responce_translated(f"prime.no", self.number.value)
           
-          return self.responce_translated(f"prime.yes", self.number.value)
+          return self.responce_translated(f"prime.yes", {"number": self.number.value})
                
      def execute(self, context, intent):
           super().execute(context, intent)
@@ -41,5 +41,5 @@ class EvenOrOdd(BaseSkill):
           if self.number.is_even():
                last = "even"
                f = first
-          return self.responce_translated(f"responce.{f}.{last}", self.number.value)
+          return self.responce_translated(f"responce.{f}.{last}", {"number": self.number.value})
               

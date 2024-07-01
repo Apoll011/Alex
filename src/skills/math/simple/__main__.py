@@ -29,7 +29,7 @@ class Simple(BaseSkill):
                sNumber: SlotValueNumber = self.slots["second_number"]
                r = op(fNumber.value, sNumber.value)
                self.alex_context.save(r, "last_result")
-          return self.responce_translated("result", r)
+          return self.responce_translated("result", {"result": r})
 
      def convert(self):
           if self.assert_equal("mathoperation", "plus"):

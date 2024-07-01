@@ -1,1 +1,1 @@
-greet.hi:Hi, #%
+greet.hi:[Hi, {{user}};Hello {{user}}]

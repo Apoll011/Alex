@@ -33,6 +33,6 @@ class Geometry(BaseSkill):
           
           self.alex_context.save(r, "last_result")
           
-          return self.responce_translated("result", r)
+          return self.responce_translated("result", {"result": r})
 
      

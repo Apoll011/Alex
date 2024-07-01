@@ -1,1 +1,1 @@
-playing.now:Currently is playing #% by #%
+playing.now:Currently is playing {{track}} by {{artist}}

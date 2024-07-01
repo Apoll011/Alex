@@ -23,7 +23,7 @@ class AreUSure(BaseSkill):
                     self.responce_translated("confirmation.yes")
                else:
                     self.alex_context.save(new_value, "last_responce")
-                    self.responce_translated("confirmation.no", new_value)
+                    self.responce_translated("confirmation.no", {"new": new_value})
                 
 
 

@@ -1,3 +1,3 @@
 confirmation.yes:Yes
-confirmation.no:Sorry. The correct anwser is #%
+confirmation.no:Sorry. The correct anwser is {{new}}
 not.enough.data:Sorry. But I dont have enough data to anwser that question

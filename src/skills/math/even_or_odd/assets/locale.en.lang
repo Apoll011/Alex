@@ -1,9 +1,9 @@
 search.limit:Sorry. This number is bigger than my upper search limit.
-prime.no:No. #% is not prime
-prime.yes:Yes. #% is prime
-responce.no.even: No. #% is even
-responce.yes.even: Yes. #% is even
-responce.no.odd: No. #% is odd
-responce.yes.odd: Yes. #% is odd
-responce..even:#%. is even
-responce..odd:#%. is odd
+prime.no:No. {{number}} is not prime
+prime.yes:Yes. {{number}} is prime
+responce.no.even: No. {{number}} is even
+responce.yes.even: Yes. {{number}} is even
+responce.no.odd: No. {{number}} is odd
+responce.yes.odd: Yes. {{number}} is odd
+responce..even: {{number}}. is even
+responce..odd: {{number}} is odd
