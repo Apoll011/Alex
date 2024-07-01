@@ -103,5 +103,3 @@ class LOG:
                 name = 'Alex'
 
         func(cls.create_logger(name), *args, **kwargs)
-
-LOG.debug('My message: %s', "Hi")
