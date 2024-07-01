@@ -74,7 +74,7 @@ class BaseSkill:
           return True
      
      def assert_equal(self, slot_name: str, value: Any):
-          if self.slots[slot_name] == value:
+          if self.slots[slot_name].value == value:
                return True
           return False
 
