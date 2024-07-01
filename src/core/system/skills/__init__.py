@@ -54,8 +54,8 @@ class BaseSkill:
      def speak(self, text):
           Nexus.call_ai("ALEX", "speak", text)
 
-     def responce_translated(self, key: str, *args):
-          return self.responce(self.translate.get_translation(key, *args))
+     def responce_translated(self, key: str, context = None):
+          return self.responce(self.translate.get_translation(key, context))
 
      def set_as_last_intent(self, text):
           self.alex_context.save(text, "last_responce")
