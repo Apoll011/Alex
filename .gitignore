@@ -14,3 +14,4 @@ fakers/
 **/fonts/
 **/.DS_Store
 **.pickle
+src/resources/language/en/en-vosk/
