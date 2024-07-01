@@ -318,7 +318,6 @@ frenify_typing h3 {
     align-items: center
 }
 
-.section_home,
 .techwave_fn_aichatbot_page,
 .techwave_fn_footer .menu_items ul,
 .techwave_fn_interactive_list ul {
@@ -353,33 +352,11 @@ frenify_typing h3 {
     letter-spacing: .5px
 }
 
-.section_home,
 .techwave_fn_aichatbot_page {
     display: flex;
     min-height: calc(100vh - var(--techwave-header-height) - 71px)
 }
 
-.section_home .section_left {
-    padding: 93px 40px 80px;
-    border-right: 1px solid var(--techwave-border-color);
-    width: 60%
-}
-
-.section_home .section_right {
-    width: 40%;
-    padding: 155px 40px
-}
-
-.section_home .company_info {
-    margin: 0 auto;
-    max-width: 350px
-}
-
-.section_home .company_info hr {
-    margin-bottom: 24px
-}
-
-.section_home .company_info p,
 .techwave_fn_aichatbot_page .fn__title_holder {
     position: sticky;
     margin-bottom: 40px;
@@ -387,15 +364,6 @@ frenify_typing h3 {
     z-index: 999;
     top: 0px;
     background-color: var(--techwave-site-bg-color);
-}
-
-.section_home .company_info img {
-    margin-bottom: 25px
-}
-
-.section_home .techwave_fn_title_holder,
-.techwave_fn_pricing_page .techwave_fn_title_holder {
-    margin-bottom: 43px
 }
 
 .fn__title_holder .title,
@@ -418,8 +386,8 @@ frenify_typing h3 {
 
 .fn__chatbot .author {
     position: absolute;
-    left: 30px;
-    top: -10px;
+    left: 10px;
+    top: -5px;
     display: block;
     height: 20px;
     padding: 0 15px;
@@ -496,7 +464,7 @@ frenify_typing h3 {
     margin-top: auto;
     position: sticky;
     bottom: 0;
-    padding: 20px 0;
+    padding: 10px 0;
     background-color: var(--techwave-site-bg-color)
 }
 
@@ -583,7 +551,7 @@ frenify_typing h3 {
 .fn__chat_comment textarea {
     border: 2px solid var(--techwave-border-color);
     background-color: transparent;
-    border-radius: 5px;
+    border-radius: 40px;
     outline: 0;
     display: block;
     width: 100%;
@@ -619,7 +587,7 @@ frenify_typing h3 {
     right: 8px;
     padding: 0;
     margin: 0;
-    border-radius: 5px;
+    border-radius: 40px;
     outline: 0;
     cursor: pointer;
     border: none;
@@ -659,6 +627,7 @@ frenify_typing h3 {
 .fn__chatbot .chat__box:last-child,
 .fn__icon_options .fn__icon_popup li:last-child,
 .fn__select_model .all_models li:last-child {
+    margin-top: 10px;
     margin-bottom: 0
 }
 
@@ -683,8 +652,8 @@ frenify_typing h3 {
 }
 
 .fn__chatbot .chat {
-    padding: 30px;
-    border-radius: 5px;
+    padding: 10px 15px;
+    border-radius: 10px;
     font-size: 16px;
     line-height: 1.375
 }
@@ -713,26 +682,6 @@ frenify_typing h3 {
     border: 1px solid var(--techwave-border-color)
 }
 
-
-@media(max-width:1400px) {
-    .fn__model_item {
-        width: 25%
-    }
-}
-
-@media(max-width:1367px) {
-    .techwave_fn_interactive_list li {
-        width: 100%;
-        max-width: 100%
-    }
-}
-
-@media(max-width:1200px) {
-    .fn__model_item {
-        width: 33.3333%
-    }
-}
-
 @media(max-width:1040px) {
     :root {
         --techwave-header-height: 80px
@@ -742,52 +691,12 @@ frenify_typing h3 {
         padding: 0 20px
     }
 
-    .techwave_fn_image_generation_page .sidebar__trigger,
-    .techwave_fn_leftpanel .desktop_closer,
-    .techwave_fn_pricing .pricing__content {
-        display: none
-    }
-
-    .fn__mobile_pricing,
-    .techwave_fn_leftpanel .mobile_closer {
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex
-    }
-
-    .font__trigger {
-        right: 0
-    }
-
-    .techwave_fn_accordion .acc__title {
-        font-size: 18px
-    }
-
-    .fn__generation_item,
-    .techwave_fn_accordion .acc__content,
-    .techwave_fn_accordion .acc__header,
-    .techwave_fn_changelog .item__content,
-    .techwave_fn_changelog .item__header,
-    .techwave_fn_footer,
-    .techwave_fn_image_generation_page .generation_header,
-    .techwave_fn_img_lightbox .lightbox__related,
-    .techwave_fn_img_lightbox .lightbox__tlimg,
-    .techwave_fn_interactive_list.modern a,
-    .techwave_fn_pricing .pricing__fields .item_col,
-    .techwave_fn_pricing .pricing__footer .item_col,
-    .techwave_fn_pricing .pricing__header .item_col,
-    .techwave_fn_pricing .pricing__heading .item,
-    .techwave_fn_sign,
-    .techwave_fn_sign .form__content {
+    .techwave_fn_footer {
         padding-left: 20px;
         padding-right: 20px
     }
 
-    .techwave_fn_aichatbot_page,
-    .techwave_fn_doc_page,
-    .techwave_fn_image_generation_page {
+    .techwave_fn_aichatbot_page {
         display: -webkit-flex;
         display: -moz-flex;
         display: -ms-flex;
@@ -819,163 +728,12 @@ frenify_typing h3 {
         border-bottom: 1px solid var(--techwave-border-color)
     }
 
-    .techwave_fn_searchbar {
-        left: 0;
-        padding: 0 20px
-    }
-
-    .techwave_fn_searchbar .search__icon {
-        left: 20px
-    }
-
-    .techwave_fn_searchbar .search__closer {
-        right: 20px
-    }
-
-    .techwave_fn_searchbar .search__input {
-        padding-left: 25px;
-        padding-right: 30px
-    }
-
-    .fn__grid_items li {
-        width: 25%
-    }
-
-    .fn__gallery_item {
-        width: 33.3333%
-    }
-
-    .techwave_fn_header {
-        padding: 0 20px 0 60px;
-        left: 0
-    }
-
-    .techwave_fn_leftpanel .mobile_extra_closer {
-        position: absolute;
-        left: 100%;
-        width: calc(100vw - var(--techwave-left-panel-width));
-        top: 0;
-        bottom: 0;
-        background-color: var(--techwave-some-r-bg-color);
-        opacity: 0;
-        pointer-events: none;
-        margin-left: 1px
-    }
-
-    .section_home {
-        -webkit-flex-direction: column;
-        -moz-flex-direction: column;
-        -ms-flex-direction: column;
-        -o-flex-direction: column;
-        flex-direction: column
-    }
-
-    .section_home .section_left {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--techwave-border-color);
-        padding: 73px 20px 60px
-    }
-
-    .section_home .section_right {
-        width: 100%;
-        padding: 70px 20px
-    }
-
-    .section_home .company_info {
-        max-width: 100%
-    }
-
     .techwave_fn_content {
         margin-left: 0
-    }
-
-    .techwave_fn_leftpanel {
-        transform: translateX(-100%)
-    }
-
-    .techwave_fn_leftpanel .fn__icon_button {
-        right: -51px;
-        width: 40px;
-        height: 40px;
-        transform: rotate(180deg);
-        margin-top: -20px
-    }
-
-    .mobile-panel-opened .techwave_fn_leftpanel .fn__icon_button {
-        transform: rotate(0)
-    }
-
-    .mobile-panel-opened .techwave_fn_leftpanel .mobile_extra_closer {
-        opacity: .9;
-        pointer-events: all
-    }
-
-    .mobile-panel-opened .techwave_fn_content,
-    .mobile-panel-opened .techwave_fn_header {
-        transform: translateX(300px)
-    }
-
-    .mobile-panel-opened .techwave_fn_leftpanel {
-        transform: translateX(0)
-    }
-}
-
-@media(max-width:900px) {
-    .techwave_fn_pricing .item_row .item_col {
-        width: 25% !important;
-        max-width: 25% !important
-    }
-
-    .techwave_fn_pricing .pricing__header .price span {
-        font-size: 20px
-    }
-
-    .techwave_fn_pricing .pricing__fields .item_col,
-    .techwave_fn_pricing .pricing__footer .item_col,
-    .techwave_fn_pricing .pricing__header .item_col,
-    .techwave_fn_pricing .pricing__heading .item {
-        padding-left: 10px;
-        padding-right: 10px
-    }
-
-    .techwave_fn_img_lightbox .lightbox__top {
-        -webkit-flex-direction: column;
-        -moz-flex-direction: column;
-        -ms-flex-direction: column;
-        -o-flex-direction: column;
-        flex-direction: column
-    }
-
-    .techwave_fn_img_lightbox .lightbox__tl {
-        width: 100%
-    }
-
-    .techwave_fn_img_lightbox .lightbox__tr {
-        width: 100%;
-        border-left: none;
-        border-top: 1px solid var(--techwave-border-color)
     }
 }
 
 @media(max-width:768px) {
-    .fn__mobile_pricing .pricing__item {
-        width: 100%
-    }
-
-    .fn__gallery_item,
-    .fn__generation_list .fn__gl_item,
-    .fn__grid_items li,
-    .fn__model_item {
-        width: 50%
-    }
-
-    .fn__gallery_items .item__info {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0)
-    }
-
     .techwave_fn_footer_content {
         flex-wrap: wrap
     }
@@ -994,62 +752,7 @@ frenify_typing h3 {
         padding: 0 10px
     }
 
-    .fn__generation_item,
-    .techwave_fn_accordion .acc__content,
-    .techwave_fn_accordion .acc__header,
-    .techwave_fn_changelog .item__content,
-    .techwave_fn_changelog .item__header,
-    .techwave_fn_image_generation_page .generation_header,
-    .techwave_fn_sign,
-    .techwave_fn_sign .form__content {
-        padding-left: 10px;
-        padding-right: 10px
-    }
-
-    .fn__details_list li,
-    .fn__gallery_item,
-    .fn__generation_list .fn__gl_item,
-    .fn__model_item {
-        width: 100%
-    }
-
-    .fn__grid_items ul {
-        margin-left: -10px
-    }
-
-    .fn__grid_items li {
-        padding-left: 10px;
-        margin-bottom: 10px
-    }
-
-    .fn__nav_bar .user_opener {
-        width: 50px;
-        height: 50px
-    }
-
     .techwave_fn_header {
         padding-right: 10px
-    }
-
-    .fn__nav_bar .item_opener .dark_mode {
-        margin: -9px 0 0 -9px
-    }
-
-    .fn__nav_bar .bar__item {
-        margin-right: 5px
-    }
-
-    .fn__nav_bar .bar__item_user {
-        margin-left: 5px
-    }
-
-    .fn__nav_bar .item_opener {
-        width: 40px;
-        height: 40px
-    }
-
-    .fn__nav_bar .item_opener .fn__svg {
-        width: 18px;
-        height: 18px
     }
 }
