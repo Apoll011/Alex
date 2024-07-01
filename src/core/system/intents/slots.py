@@ -16,7 +16,7 @@ class SlotValue:
     value: str
 
     def __str__(self) -> str:
-        return f"{self.kind}: {self.value}"
+        return f"{self.value}"
 
     def to_dict(self) -> dict:
         return {"kind": self.kind, "value": self.value}
