@@ -51,7 +51,7 @@ class ChatServer:
         self.socketio.on('send_message')(self.handle_send_message)
         self.socketio.on('change_mode')(self.change_mode)
         self.app.add_url_rule('/', view_func=self.index)
-        self.socketio.run(self.app) # type: ignore
+        self.socketio.run(self.app, host="0.0.0.0", port="80") # type: ignore
 
 class AiBluePrintSkeleton:
     """
