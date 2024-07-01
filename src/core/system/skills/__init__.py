@@ -2,7 +2,7 @@ from core.system.intents import *
 from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
-from core.nexus.ai import Nexus
+from core.system.ai.nexus import Nexus
 from typing import Any
 
 class BaseSkill:

@@ -1,7 +1,8 @@
-from core.nexus.ai import AiBluePrintSkeleton, AI
-from core.system.api.client import ApiClient
+from core.system.ai.ai import AI
 from core.system.config import api
+from core.system.api.client import ApiClient
 from core.system.security._key import AlexKey
+from core.system.ai.blueprint import AiBluePrintSkeleton
 
 priaSkeleton = AiBluePrintSkeleton()
 

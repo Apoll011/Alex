@@ -1,4 +1,4 @@
-from core.nexus.ai import AI
+from core.system.ai.ai import AI
 
 class LIS(AI):
     def __init__(self) -> None:

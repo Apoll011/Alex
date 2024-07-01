@@ -1,8 +1,7 @@
 import time
-from core.nexus.ai import AI
+from core.system.ai.ai import AI
 from .functions import alexSkeleton
-from core.system.skills.call import SkillCaller
-from core.system.intents import IntentParserToObject
+
 
 class ALEX(AI):
 
@@ -13,58 +12,48 @@ class ALEX(AI):
         self.register_blueprint(alexSkeleton)
         self.internet_is_on = False
         self.server_mode = False
-        self.intent = IntentParserToObject()            
+                
 
     def start(self):
         self.clear()
         print("Hi", self.get_context("master")["name"])  # type: ignore
         super().start()
 
-    def process_message(self, message):
-        return self.get_text_and_process(message)
-
-    def change_mode(self, data: dict):
-        self.handle_request("changeMode", data["mode"])
-
     def loop(self):
         int = self.listen()
-        text_returned, intent = self.get_text_and_process(int)
+        text_returned, intent = self.process(int)
         if text_returned != None:
             self.speak(str(text_returned))
-
-    def get_text_and_process(self, text):
-        promise = self.api.call_route("intent_recognition/parse", text)
-        responce = promise.response
-        
-        intent = self.intent.parser(responce)
-        if intent.intent.intent_name != None:
-            if self.debug_mode:
-                self.intent.draw_intent(intent)
-            try:
-                s = SkillCaller().call(intent)
-                s.execute(self._context, intent)
-            except Exception as e:
-                return f"An error ocurred during the execution of the intented skill {str(e)}. Please report.", intent
-        else:
-            return "Sorry. Thats not a valid intent", intent
-
-        return None, intent
     
-    def listen(self):
-        if self.internet_is_on:
-            time.sleep(1)
-            r = super().listen().strip()
-        else:
-            r = input("Seu texto: ")
+    def listen(self, data = None):
+        if data == None:
+            if self.internet_is_on:
+                time.sleep(1)
+                r = super().listen().strip()
+            else:
+                r = input("Seu texto: ")
 
-        if r == "":
-            return self.listen()
-        
-        if self.debug_mode:
-            print("Input: ", r)
-        return r
+            if r == "":
+                return self.listen()
+            
+            if self.debug_mode:
+                print("Input: ", r)
+            
+            return r
+        else:
+            return data['message']
+    
+    def handle_send_message(self, data):
+        message = self.listen(data)
+        m, intent = self.process(message)
+        if m != None:
+            pass
+            #emit('receive_message', {'message': m}, broadcast=True)
 
     def speak(self, text: str, voice: str = 'Alex', voice_command=None):
         if self.debug_mode:
             print("Alex: ", text)
         return super().speak(text, voice, voice_command)
+
+    def change_mode(self, data: dict):
+        self.handle_request("changeMode", data["mode"])
