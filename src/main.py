@@ -4,7 +4,7 @@ import argparse
 import zipfile
 import os
 
-class InstallSkill(argparse.Action):
+"""class InstallSkill(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         file = values[0] # type: ignore
         intent = values[1] # type: ignore
@@ -31,7 +31,7 @@ parser.add_argument("-v", "--version", action="version", version=f"Alex {Version
 args = parser.parse_args()
 
 if args.train or args.start:
-    Nexus.start_nexus()
+    
 
     if args.debug:
         Nexus.request_ai("ALEX", "debugMode")
@@ -41,5 +41,7 @@ if args.train or args.start:
     if args.train:
         Nexus.request_ai("ALEX", "retrain")
 
-    else:
-        Nexus.call_ai("PRIA", "start")
+    else:"""
+Nexus.start_nexus()
+Nexus.call_ai("PRIA", "start")
+
