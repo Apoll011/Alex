@@ -58,9 +58,13 @@ class Server(BaseInterface):
         self.socketio = SocketIO(self.app)
 
         self.socketio.on('send_message')(self.input)
+        self.socketio.on('wake')(self.wakeword)
         self.socketio.on('change_mode')(self.change_mode)
         self.app.add_url_rule('/', view_func=self.index)
         self.socketio.run(self.app, host="0.0.0.0", port=80) # type: ignore
+
+    def wakeword(self, data):
+        Nexus.call_ai("ALEX", "wake", data)
 
     def index(self):
         return render_template('index.html')
