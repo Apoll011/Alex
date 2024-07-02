@@ -61,7 +61,7 @@ class Server(BaseInterface):
         return render_template('index.html')
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None):
-        emit('receive_message', {'message': data['mesage'], 'intent': data['intent'].json, 'ai': voice}, broadcast=True) # type: ignore
+        emit('receive_message', {'message': data['message'], 'intent': data['intent'].json, 'ai': voice}, broadcast=True) # type: ignore
 
 class Voice(BaseInterface):
     alex_possibilities = {
