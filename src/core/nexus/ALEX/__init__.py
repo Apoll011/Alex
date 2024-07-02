@@ -30,7 +30,7 @@ class ALEX(AI):
     def start(self):
         self.clear()
         self.interface.init()
-        self.speak("Hi", self.get_context("master")["name"])  # type: ignore
+        self.speak({"message": "Hi " + self.get_context("master")["name"]})  # type: ignore
         super().start()
 
     def loop(self):
