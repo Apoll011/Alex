@@ -61,7 +61,7 @@ class Server(BaseInterface):
         return render_template('index.html')
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None):
-        emit('receive_message', {'message': data['message'], 'intent': data['intent'].json, 'ai': voice}, broadcast=True) # type: ignore
+        emit('receive_message', {'message': data['message'], 'intent': data['intent'], 'ai': voice}, broadcast=True) # type: ignore
 
 class Voice(BaseInterface):
     alex_possibilities = {
@@ -76,12 +76,13 @@ class Voice(BaseInterface):
     say_voice_command = "say -v '#name#' '#text#'"
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None):
-        command = voice_command
         if voice_command is None:
             command = self.say_voice_command
-        
-        command = command.replace('#name#', voice).replace('#text#', text) # type: ignore
-    
+        else:
+            command = voice_command
+
+        command = command.replace('#name#', voice).replace('#text#', data['message']) # type: ignore
+
         os.system(command)
 
     def listen(self):

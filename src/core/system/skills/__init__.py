@@ -59,7 +59,7 @@ class BaseSkill:
                }
           
           data = {
-               "intent": self.intent,
+               "intent": self.intent.json,
                "voice": "Alex"
           } | text
           Nexus.call_ai("ALEX", "speak", data)

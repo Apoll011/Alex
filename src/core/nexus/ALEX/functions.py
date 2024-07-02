@@ -52,9 +52,9 @@ def interface(alex: AI, interface: BaseInterface):
 @alexSkeleton.request_action("changeMode")
 def changeMode(alex: AI, mode):
     if mode == "Text":
-        alex.voice_active = False
+        alex.voice_mode = False # type: ignore
     else:
-        alex.voice_active = True
+        alex.voice_mode = True # type: ignore
         
 @alexSkeleton.deactivate_action("Delete context")
 def delete_ctx(alex: AI):

@@ -4,7 +4,7 @@ from .functions import alexSkeleton
 from core.system.intents.responce import *
 from core.system.intents import IntentResponse
 from core.system.skills.call import SkillCaller
-from core.system.interface.base import BaseInterface
+from core.system.interface.base import BaseInterface, Voice
 from core.system.intents import IntentParserToObject
 
 class ALEX(AI):
@@ -18,12 +18,14 @@ class ALEX(AI):
 
     interface: BaseInterface
 
+    voice_mode: bool
+
 
     def __init__(self) -> None:
         super().__init__("ALEX")
         self.register_blueprint(alexSkeleton)
         self.internet_is_on = False
-        self.server_mode = False
+        self.voice_mode = False
         
     def start(self):
         self.clear()
@@ -36,6 +38,8 @@ class ALEX(AI):
     
     def speak(self, data, voice: str = 'Alex', voice_command = None):
         self.interface.speak(data, voice, voice_command)
+        if self.voice_mode:
+            Voice().speak(data, voice, voice_command)
     
     def process(self, text) -> (tuple[str, IntentResponse] | tuple[None, IntentResponse]):
         """
