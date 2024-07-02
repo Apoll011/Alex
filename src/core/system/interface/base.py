@@ -39,6 +39,8 @@ class BaseInterface:
     def loop(self): ...
 
     def close(self): ...
+
+    def user_conect(self, data): ...
     
     def change_mode(self, data: dict):
         Nexus.request_ai("ALEX", "changeMode", data["mode"])
@@ -61,6 +63,7 @@ class Server(BaseInterface):
         self.socketio.on('send_message')(self.input)
         self.socketio.on('wake')(self.wakeword)
         self.socketio.on('change_mode')(self.change_mode)
+        self.socketio.on('conect')(self.user_conect)
         self.app.add_url_rule('/', view_func=self.index)
         self.socketio.run(self.app, host="0.0.0.0", port=80) # type: ignore
 
@@ -69,6 +72,9 @@ class Server(BaseInterface):
     
     def close(self):
         self.socketio.stop()
+
+    def user_conect(self, data):
+        Nexus.request_ai("ALEX", "userConect")
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         emit('receive_message', {'message': data['message'], 'intent': data['intent'], 'ai': voice}, broadcast=True) # type: ignore

@@ -122,6 +122,7 @@
         var socket = io();
 
         document.addEventListener("DOMContentLoaded", function () {
+            socket.emit("conect", {});
             var messageInput = document.getElementById("fn__chat_textarea");
             var messageConatiner = document.getElementById("write");
             var messageVoiceConatiner = document.getElementById("speach");

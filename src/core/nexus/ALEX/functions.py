@@ -57,6 +57,10 @@ def interface(alex: AI, interface: BaseInterface):
 def sendApi(alex: AI, route: str, value: str | dict[str, str] = ""):
     return alex.api.call_route(route, value)
 
+@alexSkeleton.request_action("userConect")
+def userConect(alex: AI):
+     alex.speak({"message": "Welcome " + alex.get_context("master")["name"], "intent": "saudation@init"})  # type: ignore
+
 @alexSkeleton.request_action("changeMode")
 def changeMode(alex: AI, mode):
     if mode == "Text":
