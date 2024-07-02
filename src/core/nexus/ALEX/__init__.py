@@ -2,11 +2,9 @@ from typing import Any
 from core.system.ai.ai import AI
 from .functions import alexSkeleton
 from core.system.intents.responce import *
-from core.system.api.client import ApiClient
-from core.system.context import ContextManager
 from core.system.intents import IntentResponse
 from core.system.skills.call import SkillCaller
-from core.system.interface.base import ComandLine
+from core.system.interface.base import BaseInterface
 from core.system.intents import IntentParserToObject
 
 class ALEX(AI):
@@ -14,13 +12,11 @@ class ALEX(AI):
     mode: str
     intentParser = IntentParserToObject()
 
-    api: ApiClient
-    debug_mode: bool
-    _context: ContextManager
-
     next_listen_processor: Any = None
     required_listen_input: Responce
     next_processor_args:tuple[Any, ...] = ()
+
+    interface: BaseInterface
 
 
     def __init__(self) -> None:
@@ -28,7 +24,6 @@ class ALEX(AI):
         self.register_blueprint(alexSkeleton)
         self.internet_is_on = False
         self.server_mode = False
-        self.interface = ComandLine()
         
     def start(self):
         self.clear()
