@@ -28,6 +28,10 @@ h6>a:hover {
     color: var(--techwave-main-color)
 }
 
+a {
+    color: white;
+}
+
 body,
 select {
     font-size: 16px
