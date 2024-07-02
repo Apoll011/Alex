@@ -34,6 +34,8 @@ class BaseInterface:
     def execute(self, comand): ...
 
     def loop(self): ...
+
+    def close(self): ...
     
     def change_mode(self, data: dict):
         Nexus.request_ai("ALEX", "changeMode", data["mode"])
@@ -59,6 +61,9 @@ class Server(BaseInterface):
 
     def index(self):
         return render_template('index.html')
+    
+    def close(self):
+        self.socketio.stop()
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None):
         emit('receive_message', {'message': data['message'], 'intent': data['intent'], 'ai': voice}, broadcast=True) # type: ignore

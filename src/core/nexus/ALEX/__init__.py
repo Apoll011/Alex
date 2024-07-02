@@ -41,6 +41,9 @@ class ALEX(AI):
         if self.voice_mode:
             Voice().speak(data, voice, voice_command)
     
+    def end(self):
+        self.interface.close()
+    
     def process(self, text) -> (tuple[str, IntentResponse] | tuple[None, IntentResponse]):
         """
             Process a text and execute an action
