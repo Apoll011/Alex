@@ -37,10 +37,11 @@ class ALEX(AI):
         self.interface.loop()
     
     def speak(self, data, voice: str = 'Alex', voice_command = None):
-        self.interface.speak(data, voice, voice_command)
-        if self.voice_mode:
-            Voice().speak(data, voice, voice_command)
+        self.interface.speak(data, voice, voice_command, self.voice_mode)
     
+    def wake(self, data):
+        self.speak({"message": "Yes", "intent": ""})
+
     def end(self):
         self.interface.close()
     

@@ -13,7 +13,9 @@ class BaseInterface:
 
     def start(self): ...
     
-    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None): ...
+    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
+        if voice_mode:
+            Voice().speak(data, voice, voice_command, False)
     
     def input(self, data): 
         message = data['message']
@@ -41,8 +43,9 @@ class BaseInterface:
         Nexus.request_ai("ALEX", "changeMode", data["mode"])
 
 class ComandLine(BaseInterface):
-    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None):
+    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         print(f"{voice}: {data['message']}")
+        return super().speak(data, voice, voice_command, voice_mode)
     
     def loop(self):
         self.input({"message": input("Your request: ")})
@@ -65,8 +68,9 @@ class Server(BaseInterface):
     def close(self):
         self.socketio.stop()
 
-    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None):
+    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         emit('receive_message', {'message': data['message'], 'intent': data['intent'], 'ai': voice}, broadcast=True) # type: ignore
+        return super().speak(data, voice, voice_command, voice_mode)
 
 class Voice(BaseInterface):
     alex_possibilities = {
@@ -80,7 +84,7 @@ class Voice(BaseInterface):
 
     say_voice_command = "say -v '#name#' '#text#'"
 
-    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None):
+    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         if voice_command is None:
             command = self.say_voice_command
         else:
@@ -89,6 +93,8 @@ class Voice(BaseInterface):
         command = command.replace('#name#', voice).replace('#text#', data['message']) # type: ignore
 
         os.system(command)
+
+        return super().speak(data, voice, voice_command, False)
 
     def listen(self):
         print("Listening...")
