@@ -635,13 +635,11 @@ frenify_typing h3 {
     margin-bottom: 0
 }
 
-.fn_contact_form .input_list input,
-.fn_contact_form .input_list textarea,
-.techwave_fn_aichatbot_page .chat__item.active {
+.active {
     display: block
 }
 
-.techwave_fn_aichatbot_page .chat__item.deactive {
+.deactive {
     display: none
 }
 

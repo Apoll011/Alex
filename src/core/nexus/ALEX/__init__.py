@@ -1,59 +1,83 @@
-import time
+from typing import Any
 from core.system.ai.ai import AI
 from .functions import alexSkeleton
-
+from core.system.intents.responce import *
+from core.system.intents import IntentResponse
+from core.system.skills.call import SkillCaller
+from core.system.interface.base import BaseInterface, Voice
+from core.system.intents import IntentParserToObject
 
 class ALEX(AI):
 
     mode: str
+    intentParser = IntentParserToObject()
+
+    next_listen_processor: Any = None
+    required_listen_input: Responce
+    next_processor_args:tuple[Any, ...] = ()
+
+    interface: BaseInterface
+
+    voice_mode: bool
+
 
     def __init__(self) -> None:
         super().__init__("ALEX")
         self.register_blueprint(alexSkeleton)
         self.internet_is_on = False
-        self.server_mode = False
-                
-
+        self.voice_mode = False
+        
     def start(self):
         self.clear()
-        print("Hi", self.get_context("master")["name"])  # type: ignore
+        self.interface.init()
+        self.speak("Hi", self.get_context("master")["name"])  # type: ignore
         super().start()
 
     def loop(self):
-        int = self.listen()
-        text_returned, intent = self.process(int)
-        if text_returned != None:
-            self.speak(str(text_returned))
+        self.interface.loop()
     
-    def listen(self, data = None):
-        if data == None:
-            if self.internet_is_on:
-                time.sleep(1)
-                r = super().listen().strip()
-            else:
-                r = input("Seu texto: ")
+    def speak(self, data, voice: str = 'Alex', voice_command = None):
+        self.interface.speak(data, voice, voice_command, self.voice_mode)
+    
+    def wake(self, data):
+        self.speak({"message": "Yes", "intent": ""})
 
-            if r == "":
-                return self.listen()
-            
-            if self.debug_mode:
-                print("Input: ", r)
-            
-            return r
+    def end(self):
+        self.interface.close()
+    
+    def process(self, text) -> (tuple[str, IntentResponse] | tuple[None, IntentResponse]):
+        """
+            Process a text and execute an action
+        """
+        if self.next_listen_processor == None:
+            return self.process_as_intent(text)
         else:
-            return data['message']
-    
-    def handle_send_message(self, data):
-        message = self.listen(data)
-        m, intent = self.process(message)
-        if m != None:
-            pass
-            #emit('receive_message', {'message': m}, broadcast=True)
+            
+            if self.required_listen_input.is_accepted(text):
+                self.next_listen_processor(self.required_listen_input.parse(text), *self.next_processor_args)
+                self.next_listen_processor: Any = None
+                self.next_processor_args = ()
+        return None, self.intentParser.parser({"input": "", "slots": [], "intent": {"intentName": "", "probability": 0}})
 
-    def speak(self, text: str, voice: str = 'Alex', voice_command=None):
-        if self.debug_mode:
-            print("Alex: ", text)
-        return super().speak(text, voice, voice_command)
+    def process_as_intent(self, text) -> (tuple[str, IntentResponse] | tuple[None, IntentResponse]):
+        promise = self.api.call_route("intent_recognition/parse", text)
+        responce = promise.response
+        
+        intent = self.intentParser.parser(responce)
+        if intent.intent.intent_name != None:
+            if self.debug_mode:
+                self.intentParser.draw_intent(intent)
+            try:
+                s = SkillCaller().call(intent)
+                s.execute(self._context, intent)
+            except Exception as e:
+                return f"An error ocurred during the execution of the intented skill {str(e)}. Please report.", intent
+        else:
+            return "Sorry. Thats not a valid intent", intent
 
-    def change_mode(self, data: dict):
-        self.handle_request("changeMode", data["mode"])
+        return None, intent
+
+    def setListenProcessor(self, callback, responceType, *args):
+        self.next_listen_processor = callback
+        self.required_listen_input = responceType
+        self.next_processor_args = args

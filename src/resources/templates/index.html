@@ -61,7 +61,7 @@
                                     <div class="chat__item active" id="messages">
 
                                     </div>
-                                    <div class="chat__item" id="voice">
+                                    <div class="chat__item deactive" id="voice">
 
                                     </div>
                                 </div>
@@ -70,12 +70,16 @@
 
                             <div class="chat__comment">
                                 <div class="container">
-                                    <div class="fn__chat_comment">
+                                    <div class="fn__chat_comment" id="write">
                                         <textarea rows="1" placeholder="Send a message..."
                                             id="fn__chat_textarea"></textarea>
                                         <button id="send-button"><img
                                                 src="{{ url_for('static', filename='enter.svg') }}" alt=""
                                                 class="fn__svg"></button>
+                                    </div>
+                                    <div class="fn__chat_comment deactive" id="speach">
+                                        <button id="wake-button"
+                                            style="border: 2px solid var(--techwave-border-color);background-color: transparent;border-radius: 40px;outline: 0;width: 100%;padding: 18px 72px 16px 20px;font-size: 16px;line-height: 22px;height: 60px;">Talk</button>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +123,10 @@
 
         document.addEventListener("DOMContentLoaded", function () {
             var messageInput = document.getElementById("fn__chat_textarea");
+            var messageConatiner = document.getElementById("write");
+            var messageVoiceConatiner = document.getElementById("speach");
             var sendButton = document.getElementById("send-button");
+            var wakeButton = document.getElementById("wake-button");
             var changeButton = document.getElementById("change");
 
             var messageDiv = document.getElementById("messages");
@@ -131,6 +138,10 @@
                 send();
             });
 
+            wakeButton.addEventListener("click", function () {
+                socket.emit("wake", { confidence: 1.0 });
+            });
+
             changeButton.addEventListener("click", function () {
                 changeButton.innerText = `${active} Mode`
                 var new_mode = "";
@@ -139,12 +150,16 @@
                     messageDiv.classList.remove("active")
                     messageDiv.classList.add("deactive")
                     voiceDiv.classList.remove("deactive")
+                    messageConatiner.classList.add("deactive")
+                    messageVoiceConatiner.classList.remove("deactive")
                     voiceDiv.classList.add("active")
                 }
                 else {
                     new_mode = "Text"
                     voiceDiv.classList.remove("active")
                     voiceDiv.classList.add("deactive")
+                    messageConatiner.classList.remove("deactive")
+                    messageVoiceConatiner.classList.add("deactive")
                     messageDiv.classList.remove("deactive")
                     messageDiv.classList.add("active")
                 }

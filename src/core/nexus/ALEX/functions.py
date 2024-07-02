@@ -4,7 +4,9 @@ import glob
 from core.system.ai.ai import AI
 from core.system.config import api, path
 from core.system.api.client import ApiClient
+from core.system.interface.base import BaseInterface
 from core.system.ai.blueprint import AiBluePrintSkeleton
+
 
 alexSkeleton = AiBluePrintSkeleton()
 
@@ -43,18 +45,16 @@ def train_engine(alex: AI):
 def debug_mode(alex: AI):
     alex.debug_mode = True
 
-@alexSkeleton.request_action("serverMode")
-def server_mode(alex: AI):
-    alex.server_mode = True
-    alex.voice_active = not alex.server_mode
-    alex.init_server()
+@alexSkeleton.request_action("interfaceMode")
+def interface(alex: AI, interface: BaseInterface):
+    alex.interface = interface # type: ignore
 
 @alexSkeleton.request_action("changeMode")
 def changeMode(alex: AI, mode):
     if mode == "Text":
-        alex.voice_active = False
+        alex.voice_mode = False # type: ignore
     else:
-        alex.voice_active = True
+        alex.voice_mode = True # type: ignore
         
 @alexSkeleton.deactivate_action("Delete context")
 def delete_ctx(alex: AI):

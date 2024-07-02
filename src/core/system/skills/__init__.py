@@ -53,7 +53,16 @@ class BaseSkill:
           return text
      
      def speak(self, text):
-          Nexus.call_ai("ALEX", "speak", text)
+          if not isinstance(text, dict):
+               text = {
+                    "message": text
+               }
+          
+          data = {
+               "intent": self.intent.json,
+               "voice": "Alex"
+          } | text
+          Nexus.call_ai("ALEX", "speak", data)
 
      def responce_translated(self, key: str, context = None):
           return self.responce(self.translate.get_translation(key, context))

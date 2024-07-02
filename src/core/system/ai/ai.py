@@ -1,20 +1,18 @@
 import time
 import sys
 from .nexus import Nexus
-from .sound import AiSound
 from flask_socketio import emit
 from .chatserver import ChatServer
 from .context import AiContextUser
 from core.system.config import path
 from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
-from .intentmanager import AiIntentManager
 from .screen import AiRepresentatorInScreen
 from core.system.api.client import ApiClient
 
 
 
-class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound, ChatServer, InternetUser, AiIntentManager):
+class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, ChatServer, InternetUser):
     """
     The main AI class
     """
@@ -38,9 +36,6 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound
 
         self.done_init_actions = False
 
-        super().start()
-        
-
     def activate(self):
         """
         Activates the AI instance
@@ -57,11 +52,8 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound
         """
         Starts the AI instance
         """
-        if self.server_mode:
-            self.start_server()
-        else:
-            while self.active:
-                self.loop()
+        while self.active:
+            self.loop()
 
     def end(self):
         """
@@ -80,8 +72,3 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, AiSound
         """
         Will Always loop over unless `active` is set to `False` 
         """
-
-    def speak(self, text: str, voice: str = 'Alex', voice_command=None):
-        if self.server_mode:
-            emit('receive_message', {'message': text}, broadcast=True)
-        return super().speak(text, voice, voice_command)

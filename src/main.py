@@ -1,8 +1,9 @@
-from core.system.ai.nexus import Nexus
-from core.system.version import VersionManager
-import argparse
-import zipfile
 import os
+import zipfile
+import argparse
+from core.system.ai.nexus import Nexus
+from core.system.interface.base import *
+from core.system.version import VersionManager
 
 class InstallSkill(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
@@ -24,22 +25,31 @@ parser.add_argument("-i", "--install-skill", action=InstallSkill, nargs=2, help=
 parser.add_argument("-t", "--train", action="store_true", help="Train all the resources from Alex and exit")
 parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
 parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
-parser.add_argument("-c", "--cmd", action="store_true", help="Enters Comand Line Mode")
+parser.add_argument("-c", "--cmd", action="store_true", help="Enters Comand Line Interface")
+parser.add_argument("-sr", "--server", action="store_true", help="Enters Server Interface")
+parser.add_argument("-vc", "--voice", action="store_true", help="Enters Voice Interace")
 
 parser.add_argument("-v", "--version", action="version", version=f"Alex {VersionManager.get().get("coreVersion", "")}")
 
 args = parser.parse_args()
 
 if args.train or args.start:
+    
     Nexus.start_nexus()
 
     if args.debug:
         Nexus.request_ai("ALEX", "debugMode")
-    if not args.cmd:
-        Nexus.request_ai("ALEX", "serverMode")
+    
+    if args.server:
+        Nexus.request_ai("ALEX", "interfaceMode", Server())
+    elif args.voice:
+        Nexus.request_ai("ALEX", "interfaceMode", Voice())
+    else:
+        Nexus.request_ai("ALEX", "interfaceMode", ComandLine())
+
 
     if args.train:
         Nexus.request_ai("ALEX", "retrain")
-
     else:
         Nexus.call_ai("PRIA", "start")
+
