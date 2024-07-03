@@ -2,7 +2,7 @@ import os
 import zipfile
 import argparse
 from core.system.ai.nexus import Nexus
-from core.system.interface.base import *
+from core.system.interface import *
 from core.system.version import VersionManager
 
 class InstallSkill(argparse.Action):
