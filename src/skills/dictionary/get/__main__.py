@@ -14,15 +14,14 @@ class Get(BaseSkill):
      def execute(self, context, intent):
           super().execute(context, intent)
           self.require("word", SlotValue)
-          self.meaning: ApiResponse = Nexus.request_ai("ALEX", "sendToApi", "dictionary/get/closest", self.slots["word"].value)
+          self.meaning: ApiResponse = Nexus.request_ai("ALEX", "sendToApi", "dictionary/get/closest", self.slots["word"].value.lower())
           if self.meaning.response["name"] != None:
                if self.meaning.response["name"].lower() != self.slots["word"].value.lower():
                     self.question("not.equal", self.not_equal, {"word": self.meaning.response["name"]}, BoolResponce())
                else:
                    self.respond_meaning()
           else:
-               print("not.found")
-               self.responce_translated("not.found", self.slots["word"].value)
+               self.responce_translated("not.found", {"word": self.slots["word"].value})
 
      def not_equal(self, responce: bool):
           if responce:
