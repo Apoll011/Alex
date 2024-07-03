@@ -44,21 +44,22 @@ class ALEX(AI):
     def end(self):
         self.interface.close()
     
-    def process(self, text) -> (tuple[str, IntentResponse] | tuple[None, IntentResponse]):
+    def process(self, text):
         """
             Process a text and execute an action
         """
         if self.next_listen_processor == None:
             return self.process_as_intent(text)
         else:
-            
             if self.required_listen_input.is_accepted(text):
                 self.next_listen_processor(self.required_listen_input.parse(text), *self.next_processor_args)
                 self.next_listen_processor: Any = None
                 self.next_processor_args = ()
+            else:
+                self.speak({"message": f"That is not a valid responce for my question. I was expecting {"something with" if not self.required_listen_input.hard_search else ""} {" or ".join(self.required_listen_input.replace.keys())} not {text}"})
         return None, self.intentParser.parser({"input": "", "slots": [], "intent": {"intentName": "", "probability": 0}})
 
-    def process_as_intent(self, text) -> (tuple[str, IntentResponse] | tuple[None, IntentResponse]):
+    def process_as_intent(self, text):
         promise = self.api.call_route("intent_recognition/parse", text)
         responce = promise.response
         
@@ -70,9 +71,9 @@ class ALEX(AI):
                 s = SkillCaller().call(intent)
                 s.execute(self._context, intent)
             except Exception as e:
-                return f"An error ocurred during the execution of the intented skill {str(e)}. Please report.", intent
+                return {"message": f"An error ocurred during the execution of the intented skill {str(e)}. Please report."}, intent
         else:
-            return "Sorry. Thats not a valid intent", intent
+            return {"message": "Sorry. Thats not a valid intent"}, intent
 
         return None, intent
 
