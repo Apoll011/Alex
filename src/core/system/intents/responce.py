@@ -2,7 +2,6 @@ from typing import Any
 class Responce:
 
      rtype: Any
-     rvalue = []
      replace = {
 
      }
@@ -10,8 +9,8 @@ class Responce:
 
      def is_accepted(self, text) -> bool:
           try:
-               r = self.rtype(self.parse(text))
-               if len(self.rvalue) > 0 and text.lower() in self.rvalue:
+               r = self.rtype(self.replace[self.parse(text)])
+               if len(self.replace) > 0:
                     return True
                else:
                     return False
@@ -21,11 +20,11 @@ class Responce:
      def parse(self, text):
           if len(self.replace) > 0:
                if self.hard_search:
-                    return self.replace[text.lower()]
+                    return text.lower()
                else:
                     for e in self.replace.keys():
                          if e in text.lower():
-                              return self.replace[e]
+                              return e
           else: 
                return text
 
@@ -38,4 +37,3 @@ class BoolReponce(Responce):
           "no": False
      }
      rtype = bool
-     rvalue = ["yes", "no"]
