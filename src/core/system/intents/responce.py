@@ -6,6 +6,7 @@ class Responce:
      replace = {
 
      }
+     hard_search = False
 
      def is_accepted(self, text) -> bool:
           try:
@@ -18,7 +19,15 @@ class Responce:
                return False
      
      def parse(self, text):
-          return self.replace[text.lower()]
+          if len(self.replace) > 0:
+               if self.hard_search:
+                    return self.replace[text.lower()]
+               else:
+                    for e in self.replace.keys():
+                         if e in text.lower():
+                              return self.replace[e]
+          else: 
+               return text
 
 class AnyReponce(Responce):
      rtype = lambda x: x

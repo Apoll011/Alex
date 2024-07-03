@@ -4,7 +4,7 @@ from .functions import alexSkeleton
 from core.system.intents.responce import *
 from core.system.intents import IntentResponse
 from core.system.skills.call import SkillCaller
-from core.system.interface import BaseInterface, Voice
+from core.system.interface import BaseInterface
 from core.system.intents import IntentParserToObject
 
 class ALEX(AI):
