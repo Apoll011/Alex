@@ -3,7 +3,7 @@ from core.system.ai.nexus import Nexus
 from core.system.skills import BaseSkill
 from core.system.api.client import ApiResponse
 from core.system.intents.slots import SlotValue
-from core.system.intents.responce import BoolReponce
+from core.system.intents.responce import BoolResponce
 
 class Get(BaseSkill):
      def __init__(self):
@@ -17,7 +17,7 @@ class Get(BaseSkill):
           self.meaning: ApiResponse = Nexus.request_ai("ALEX", "sendToApi", "dictionary/get/closest", self.slots["word"].value)
           if self.meaning.response["name"] != None:
                if self.meaning.response["name"].lower() != self.slots["word"].value.lower():
-                    self.question("not.equal", self.not_equal, {"word": self.meaning.response["name"]}, BoolReponce())
+                    self.question("not.equal", self.not_equal, {"word": self.meaning.response["name"]}, BoolResponce())
                else:
                    self.respond_meaning()
           else:
@@ -44,7 +44,7 @@ class Get(BaseSkill):
           self.responce(definition)
      
      def respond_multiple_meaning(self):
-          self.question("multiple.meaning", self.multiple_meaning, {"number_of_meaning": len(self.meaning.response['definition'])}, BoolReponce())
+          self.question("multiple.meaning", self.multiple_meaning, {"number_of_meaning": len(self.meaning.response['definition'])}, BoolResponce())
 
      def multiple_meaning(self, responce: bool):
           types_os_joins = [", and we can say that it is, ", ", or, ", ", and it is, "]

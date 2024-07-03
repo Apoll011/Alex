@@ -30,10 +30,10 @@ class Responce:
           else: 
                return text
 
-class AnyReponce(Responce):
+class AnyResponce(Responce):
      rtype = lambda x: x
 
-class BoolReponce(Responce):
+class BoolResponce(Responce):
      replace = {
           "yes": True,
           "no": False

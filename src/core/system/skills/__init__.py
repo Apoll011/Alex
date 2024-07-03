@@ -101,6 +101,6 @@ class BaseSkill:
                return True
           return False
 
-     def question(self, key_to_question_to_ask, callback, question_replacers = {}, required_responce:Responce = AnyReponce(), *args):
+     def question(self, key_to_question_to_ask, callback, question_replacers = {}, required_responce:Responce = AnyResponce(), *args):
           self.responce_translated(key_to_question_to_ask, question_replacers)
           Nexus.call_ai("ALEX", "setListenProcessor", callback, required_responce, *args)

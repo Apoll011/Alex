@@ -1,7 +1,7 @@
 from core.system.skills import BaseSkill
 from core.system.ai.nexus import Nexus
 from core.system.api.client import ApiClient
-from core.system.intents.responce import BoolReponce
+from core.system.intents.responce import BoolResponce
 
 class Alex(BaseSkill):
      def __init__(self):
@@ -11,7 +11,7 @@ class Alex(BaseSkill):
 
      def execute(self, context, intent):
           super().execute(context, intent)
-          self.question("close.server", self.after_responce, {}, BoolReponce())
+          self.question("close.server", self.after_responce, {}, BoolResponce())
      
      def after_responce(self, close_server):
           if close_server:
