@@ -1,1 +1,4 @@
 not.found:[Sorry, I could not found {{word}} in my dictionary;Sorry, {{word}} is not on my dictionary]
+not.equal:[Did you mean {{word}};Did {{word}} was what you ment to say;I found a result for {{word}}, is that what you want.]
+sorry.wrong.word:[Sorry;My mistaque]
+multiple.meaning:[There is {{number_of_meaning}} diferents meanings. Do you want to hear them all;Do you want to hear all the {{number_of_meaning}} meanings for this word]
