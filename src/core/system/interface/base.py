@@ -32,7 +32,8 @@ class BaseInterface:
 
     def close(self): ...
 
-    def user_conect(self, data): ...
-    
+    def user_conect(self, data):
+        Nexus.request_ai("ALEX", "userConect")
+        
     def change_mode(self, data: dict):
         Nexus.request_ai("ALEX", "changeMode", data["mode"])

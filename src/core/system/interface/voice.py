@@ -15,6 +15,9 @@ class Voice(BaseInterface):
 
     say_voice_command = "say -v '#name#' '#text#'"
 
+    def start(self):
+        self.user_conect({})
+
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         if voice_command is None:
             command = self.say_voice_command

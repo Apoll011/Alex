@@ -4,6 +4,9 @@ from core.system.interface.base import BaseInterface
 
 
 class ComandLine(BaseInterface):
+    def start(self):
+        self.user_conect({})
+
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         print(f"{voice}: {data['message']}")
 

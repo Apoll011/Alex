@@ -26,9 +26,6 @@ class Server(BaseInterface):
     def close(self):
         self.socketio.stop()
 
-    def user_conect(self, data):
-        Nexus.request_ai("ALEX", "userConect")
-
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         emit('receive_message', {'message': data['message'], 'intent': data['intent'], 'ai': voice}, broadcast=True) # type: ignore
         if voice_mode:
