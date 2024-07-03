@@ -7,13 +7,15 @@ class Responce:
      }
      hard_search = False
 
+     result: Any
+
      def is_accepted(self, text) -> bool:
           try:
-               r = self.rtype(self.replace[self.parse(text)])
-               if len(self.replace) > 0:
-                    return True
+               if len(self.replace) > 0: 
+                    self.result = self.rtype(self.replace[self.parse(text)])
                else:
-                    return False
+                    self.result = self.rtype(self.parse(text))
+               return True
           except:
                return False
      

@@ -52,7 +52,7 @@ class ALEX(AI):
             return self.process_as_intent(text)
         else:
             if self.required_listen_input.is_accepted(text):
-                self.next_listen_processor(self.required_listen_input.parse(text), *self.next_processor_args)
+                self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
                 self.next_listen_processor: Any = None
                 self.next_processor_args = ()
             else:
