@@ -6,6 +6,7 @@ from core.system.intents.responce import BoolReponce
 class Alex(BaseSkill):
      def __init__(self):
           self.register("close@alex")
+          self.save_responce_for_context = False
           super().__init__()
 
      def execute(self, context, intent):
@@ -17,6 +18,3 @@ class Alex(BaseSkill):
                pass
           else:
                Nexus.call_ai("ALEX", "deactivate")
-
-     def responce(self, text):
-          self.speak(text)

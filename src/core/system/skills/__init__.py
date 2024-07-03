@@ -18,6 +18,8 @@ class BaseSkill:
 
      slots: dict[str, Any] = {}
 
+     save_responce_for_context = True
+
      def __init__(self):
           pass
      
@@ -48,7 +50,8 @@ class BaseSkill:
      def responce(self, text: str):
           text = text.strip()
           if not self.is_api:
-               self.set_as_last_intent(text)
+               if self.save_responce_for_context:
+                    self.set_as_last_intent(text)
                self.speak(text)
           return text
      

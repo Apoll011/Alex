@@ -6,6 +6,7 @@ import os
 class MusicDo(BaseSkill):
      def __init__(self):
           self.register("play@music.do")
+          self.save_responce_for_context = False
           super().__init__()
 
      def execute(self, context, intent):
@@ -29,6 +30,3 @@ class MusicDo(BaseSkill):
      
      def comand(self, text):
           os.system(f"zsh \"{path}/skills/play/np.sh\" do \"{text}\"")
-          
-     def responce(self, text):
-          self.speak(text)

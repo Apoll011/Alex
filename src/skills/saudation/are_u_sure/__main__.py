@@ -4,6 +4,7 @@ from core.system.skills import BaseSkill
 class AreUSure(BaseSkill):
      def __init__(self):
           self.register("saudation@are.u.sure")
+          self.save_responce_for_context = False
           super().__init__()
 
      def execute(self, context, intent):
@@ -24,8 +25,3 @@ class AreUSure(BaseSkill):
                else:
                     self.alex_context.save(new_value, "last_responce")
                     self.responce_translated("confirmation.no", {"new": new_value})
-                
-
-
-     def responce(self, text):
-          self.speak(text)
