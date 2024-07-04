@@ -1,10 +1,13 @@
+import json
 from typing import Any
-from core.system.intents.responce import *
+from pathlib import Path
+from core.system.log import LOG
 from core.system.intents import *
+from core.system.ai.nexus import Nexus
+from core.system.intents.responce import *
 from core.system.context import ContextManager
 from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
-from core.system.ai.nexus import Nexus
 
 class BaseSkill:
      name: str
@@ -22,6 +25,8 @@ class BaseSkill:
 
      can_go_again = False
 
+     skill_settings: dict 
+
      def __init__(self):
           pass
      
@@ -37,6 +42,8 @@ class BaseSkill:
      def register(self, name):
           self.name = name
           path, skname = self.prety_name(name)
+          self.skill_dir = path
+          self.get_local_settings()
           self.translate = TranslationSystem("en", "locale", path + "/assets/")
      
      def require(self, slot_name: str, slot_type):
@@ -58,7 +65,7 @@ class BaseSkill:
                     self.set_as_last_intent_repeater(text)
                self.speak(text)
           return text
-     
+
      def speak(self, text):
           if not isinstance(text, dict):
                text = {
@@ -112,3 +119,42 @@ class BaseSkill:
      def question(self, key_to_question_to_ask, callback, question_replacers = {}, required_responce:Responce = AnyResponce(), *args):
           self.responce_translated(key_to_question_to_ask, question_replacers)
           Nexus.call_ai("ALEX", "setListenProcessor", callback, required_responce, *args)
+     
+     def get_local_settings(self):
+          """Build a dictionary using the JSON string stored in settings.json."""
+          skill_settings = {}
+          settings_path = Path(self.skill_dir).joinpath('settings.json')
+          LOG.info(settings_path)
+          if settings_path.exists():
+               with open(str(settings_path)) as settings_file:
+                    settings_file_content = settings_file.read()
+               if settings_file_content:
+                    try:
+                         skill_settings = json.loads(settings_file_content)
+                    # TODO change to check for JSONDecodeError in 19.08
+                    except Exception:
+                         log_msg = 'Failed to load {} settings from settings.json'
+                         LOG.exception(log_msg.format(self.name))
+
+          self.skill_settings
+
+
+     def save_settings(self):
+          """Save skill settings to file."""
+          settings_path = Path(self.skill_dir).joinpath('settings.json')
+
+          # Either the file already exists in /opt, or we are writing
+          # to XDG_CONFIG_DIR and always have the permission to make
+          # sure the file always exists
+          if not Path(settings_path).exists():
+               settings_path.touch(mode=0o644)
+
+          with open(str(settings_path), 'w') as settings_file:
+               try:
+                    json.dump(self.skill_settings, settings_file)
+               except Exception:
+                    LOG.exception('error saving skill settings to '
+                                   '{}'.format(settings_path))
+               else:
+                    LOG.info('Skill settings successfully saved to '
+                              '{}' .format(settings_path))
