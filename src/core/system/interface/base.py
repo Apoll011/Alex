@@ -37,3 +37,5 @@ class BaseInterface:
         
     def change_mode(self, data: dict):
         Nexus.request_ai("ALEX", "changeMode", data["mode"])
+
+    def send_audio(self, path_to_audio: str): ...
