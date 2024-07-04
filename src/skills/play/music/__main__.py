@@ -1,7 +1,8 @@
-from core.system.intents.slots import SlotValue
-from core.system.skills import BaseSkill
-from core.system.config import path
 import os
+from core.system.config import path
+from core.nexus.MIM.library import *
+from core.system.skills import BaseSkill
+from core.system.intents.slots import SlotValue
 
 class Music(BaseSkill):
 	def __init__(self):
@@ -15,7 +16,7 @@ class Music(BaseSkill):
 		self.optional("track", SlotValue)
 		self.optional("album", SlotValue)
 		self.optional("genre", SlotValue)
-		
+
 		flag = "-l"
 		pattern = ""
 		if self.slot_exists("artist"):

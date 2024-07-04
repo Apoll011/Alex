@@ -23,7 +23,7 @@ class QueryMusicType(Enum):
     ARTIST = 2
 
 @dataclass
-class Music:
+class MusicObject:
     name: str
     album: str
     artist: str
@@ -51,9 +51,9 @@ class Music:
 
 class Library:
 
-    __musics: list[Music] = []
+    __musics: list[MusicObject] = []
 
-    currently: Music
+    currently: MusicObject
 
     music_path = "/Users/Pegasus/Music/Music/Media.localized/Music"
 
@@ -62,9 +62,9 @@ class Library:
         album = re.sub(rf'{self.music_path}/.*?/(.*?)/.*?.mp3', r'\1',path)
         artist = re.sub(rf'{self.music_path}/(.*?)/.*?/.*?.mp3', r'\1',path)
 
-        return Music(name, album, artist)
+        return MusicObject(name, album, artist)
 
-    def add_music(self, music: Music):
+    def add_music(self, music: MusicObject):
         self.__musics.append(music)
 
     def start_import(self):
@@ -83,7 +83,7 @@ class Library:
     def get_currently_playing(self):
         return self.currently
 
-    def play(self, music:Music):
+    def play(self, music:MusicObject):
         self.currently = music
         
         ALEX:AI = Nexus.get_ai("ALEX") # type: ignore
@@ -92,7 +92,7 @@ class Library:
     def get_library_size(self) -> int:
         return len(self.__musics)
 
-    def play_list(self, music_list:list[Music], mode:PlayMode = PlayMode.NORMAL, repeat:RepeatMode = RepeatMode.NO):
+    def play_list(self, music_list:list[MusicObject], mode:PlayMode = PlayMode.NORMAL, repeat:RepeatMode = RepeatMode.NO):
         if mode == PlayMode.SHUFFLE:
             shuffle(music_list)
         
