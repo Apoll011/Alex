@@ -3,7 +3,7 @@ from core.system.skills import BaseSkill
 
 class AreUSure(BaseSkill):
      def __init__(self):
-          self.register("saudation@are.u.sure")
+          self.register("alex@are.u.sure")
           self.save_responce_for_context = False
           super().__init__()
 
@@ -16,7 +16,7 @@ class AreUSure(BaseSkill):
           if last_responce == None:
                self.responce_translated("not.enough.data")
           else:
-               skill = SkillCaller().call(last_intent)
+               skill = SkillCaller().call(last_intent) # type: ignore
                skill.set_as_api()
                new_value = skill.execute(context, last_intent) # type: ignore
 
