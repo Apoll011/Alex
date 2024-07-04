@@ -5,6 +5,7 @@ from flask_socketio import emit
 from .chatserver import ChatServer
 from .context import AiContextUser
 from core.system.config import path
+from .data_system import AiDataSytem
 from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
 from .screen import AiRepresentatorInScreen
@@ -12,7 +13,8 @@ from core.system.api.client import ApiClient
 
 
 
-class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, ChatServer, InternetUser):
+
+class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, ChatServer, InternetUser, AiDataSytem):
     """
     The main AI class
     """
@@ -20,8 +22,11 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, ChatSer
     api: ApiClient
     active: bool
 
+    sig: str
 
     debug_mode = False
+
+    database: dict
 
     def __init__(self, sig: str) -> None:
         """
@@ -35,6 +40,8 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, ChatSer
         self.register_ai(sig, self)
 
         self.done_init_actions = False
+
+        self.sig = sig
 
     def activate(self):
         """
