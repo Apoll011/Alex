@@ -136,16 +136,13 @@ class BaseSkill:
                          log_msg = 'Failed to load {} settings from settings.json'
                          LOG.exception(log_msg.format(self.name))
 
-          self.skill_settings
+          self.skill_settings = skill_settings
 
 
      def save_settings(self):
           """Save skill settings to file."""
           settings_path = Path(self.skill_dir).joinpath('settings.json')
 
-          # Either the file already exists in /opt, or we are writing
-          # to XDG_CONFIG_DIR and always have the permission to make
-          # sure the file always exists
           if not Path(settings_path).exists():
                settings_path.touch(mode=0o644)
 
