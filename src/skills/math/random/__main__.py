@@ -1,6 +1,5 @@
 from random import randint, random
 from core.system.skills import BaseSkill
-from core.system.skills.settings import get_local_settings
 from core.system.intents.slots import SlotValueNumber
 
 class Random(BaseSkill):
@@ -18,8 +17,7 @@ class Random(BaseSkill):
           self.optional("signal")
 
           result = 0
-          print(get_local_settings("/Users/Pegasus/Library/Mobile Documents/com~apple~CloudDocs/Pegasus/Projects/Alex/Alex/src/skills/math/random/", self.name))
-          
+
           required_signal = self.convert_signal()
           required_type = self.convert_type()
           number_range = self.getnumber_range()
@@ -27,7 +25,7 @@ class Random(BaseSkill):
           if number_range:
                smaller_number, bigger_number = number_range
           else:
-               smaller_number, bigger_number = 0, 100
+               smaller_number, bigger_number = self.skill_settings['min'], self.skill_settings["max"]
 
           if required_type == "even":
                result = randint(smaller_number // 2 * 2, bigger_number // 2 * 2)
