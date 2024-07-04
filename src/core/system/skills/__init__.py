@@ -28,7 +28,12 @@ class BaseSkill:
      skill_settings: dict 
 
      def __init__(self):
-          pass
+          self.slots = {}
+          self.name: str
+          self.is_api: bool = False
+          self.save_responce_for_context = True
+          self.can_go_again = False
+          self.skill_settings: dict 
      
      def set_as_api(self):
           self.is_api = True
