@@ -1,3 +1,4 @@
+import sys
 from typing import Any
 from core.system.ai.ai import AI
 from .functions import alexSkeleton
@@ -41,7 +42,9 @@ class ALEX(AI):
         self.speak({"message": "Yes", "intent": ""})
 
     def end(self):
+        self.speak({"message": "Good bye sir."})
         self.interface.close()
+        sys.exit(1)
     
     def process(self, text):
         """

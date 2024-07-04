@@ -15,6 +15,5 @@ class Alex(BaseSkill):
      
      def after_responce(self, close_server):
           if close_server:
-               pass
-          else:
-               Nexus.call_ai("ALEX", "deactivate")
+               pass 
+          Nexus.call_ai("ALEX", "deactivate")
