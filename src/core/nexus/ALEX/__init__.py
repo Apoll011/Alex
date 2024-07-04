@@ -2,7 +2,6 @@ from typing import Any
 from core.system.ai.ai import AI
 from .functions import alexSkeleton
 from core.system.intents.responce import *
-from core.system.intents import IntentResponse
 from core.system.skills.call import SkillCaller
 from core.system.interface import BaseInterface
 from core.system.intents import IntentParserToObject
