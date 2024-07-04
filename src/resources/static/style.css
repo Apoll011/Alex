@@ -186,8 +186,8 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(#6b72ff00 50%, #000dff3b 40%);
-    box-shadow: 0 0 50px rgb(25, 0, 255), inset 0 0 50px rgb(25, 0, 255);
+    background-image: radial-gradient(#00eaff00 50%, #0085a3e7 40%);
+    box-shadow: 0 0 50px rgb(0, 191, 255), inset 0 0 50px rgb(0, 191, 255);
     border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
     transition: 0.5s;
     animation: animate1 6s linear infinite;
@@ -199,8 +199,8 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(#6b72ff00 50%, #000dff3b 40%);
-    box-shadow: 0 0 50px rgb(25, 0, 255), inset 0 0 50px rgb(25, 0, 255);
+    background-image: radial-gradient(#00eaff00 50%, #0085a3e7 40%);
+    box-shadow: 0 0 50px rgb(0, 191, 255), inset 0 0 50px rgb(0, 191, 255);
     border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
     transition: 0.5s;
     animation: animate2 4s linear infinite;
@@ -212,8 +212,8 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(#6b72ff00 50%, #000dff3b 40%);
-    box-shadow: 0 0 50px rgb(25, 0, 255), inset 0 0 50px rgb(25, 0, 255);
+    background-image: radial-gradient(#00eaff00 50%, #0085a3e7 40%);
+    box-shadow: 0 0 50px rgb(0, 191, 255), inset 0 0 50px rgb(0, 191, 255);
     border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
     transition: 0.5s;
     animation: animate3 8s linear infinite;
