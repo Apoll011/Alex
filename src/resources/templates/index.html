@@ -12,6 +12,7 @@
 
     <title>Alex</title>
 
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.ico') }}" type="image/x-icon">
 
     <script>
         if (!localStorage.frenify_skin) {
@@ -126,6 +127,7 @@
         var socket = io();
 
         document.addEventListener("DOMContentLoaded", function () {
+            socket.emit("change_mode", { mode: "Text" });
             socket.emit("conect", {});
             var messageInput = document.getElementById("fn__chat_textarea");
             var messageConatiner = document.getElementById("write");
