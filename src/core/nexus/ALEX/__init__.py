@@ -4,7 +4,6 @@ from core.system.ai.ai import AI
 from .functions import alexSkeleton
 from core.system.intents.responce import *
 from core.system.skills.call import SkillCaller
-from core.system.interface import BaseInterface
 from core.system.intents import IntentParserToObject
 
 class ALEX(AI):
@@ -15,8 +14,6 @@ class ALEX(AI):
     next_listen_processor: Any = None
     required_listen_input: Responce
     next_processor_args:tuple[Any, ...] = ()
-
-    interface: BaseInterface
 
     voice_mode: bool
 

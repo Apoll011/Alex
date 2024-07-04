@@ -10,7 +10,7 @@ from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
 from .screen import AiRepresentatorInScreen
 from core.system.api.client import ApiClient
-
+from core.system.interface import BaseInterface
 
 
 
@@ -27,6 +27,8 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, ChatSer
     debug_mode = False
 
     database: dict
+
+    interface: BaseInterface
 
     def __init__(self, sig: str) -> None:
         """
