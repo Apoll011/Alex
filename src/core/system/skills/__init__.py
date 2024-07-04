@@ -20,6 +20,8 @@ class BaseSkill:
 
      save_responce_for_context = True
 
+     can_go_again = False
+
      def __init__(self):
           pass
      
@@ -43,7 +45,7 @@ class BaseSkill:
           else:
                raise SkillSlotNotFound(slot_name)
 
-     def optional(self, slot_name: str, slot_type):
+     def optional(self, slot_name: str, slot_type = SlotValue):
           if slot_name in self.intent.slots.keys() and isinstance(self.intent.slots[slot_name].value, slot_type):
                self.slots[slot_name] = self.intent.slots[slot_name].value
 
@@ -52,6 +54,8 @@ class BaseSkill:
           if not self.is_api:
                if self.save_responce_for_context:
                     self.set_as_last_intent(text)
+               if self.can_go_again:
+                    self.set_as_last_intent_repeater(text)
                self.speak(text)
           return text
      
@@ -73,6 +77,10 @@ class BaseSkill:
      def set_as_last_intent(self, text):
           self.alex_context.save(text, "last_responce")
           self.alex_context.save(self.intent, "last_intent")
+
+     def set_as_last_intent_repeater(self, text):
+          self.alex_context.save(text, "last_responce_repeater")
+          self.alex_context.save(self.intent, "last_intent_repeater")
 
      def prety_name(self, name: str):
           s = name.split("@")
