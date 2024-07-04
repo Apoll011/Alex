@@ -4,10 +4,10 @@ from core.system.intents.slots import SlotValueNumber
 
 class Random(BaseSkill):
      def __init__(self):
+          super().__init__()
           self.register("math@random")
           self.can_go_again = True
           self.save_responce_for_context = False
-          super().__init__()
 
      def execute(self, context, intent):
           super().execute(context, intent)

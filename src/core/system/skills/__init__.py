@@ -6,6 +6,7 @@ from core.system.intents import *
 from core.system.ai.nexus import Nexus
 from core.system.intents.responce import *
 from core.system.context import ContextManager
+from core.system.config import path as p
 from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
 
@@ -33,7 +34,7 @@ class BaseSkill:
           self.is_api: bool = False
           self.save_responce_for_context = True
           self.can_go_again = False
-          self.skill_settings: dict 
+          self.skill_settings: dict = {}
      
      def set_as_api(self):
           self.is_api = True
@@ -47,7 +48,7 @@ class BaseSkill:
      def register(self, name):
           self.name = name
           path, skname = self.prety_name(name)
-          self.skill_dir = path
+          self.skill_dir = p + "/" + path
           self.get_local_settings()
           self.translate = TranslationSystem("en", "locale", path + "/assets/")
      
