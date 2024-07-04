@@ -15,3 +15,5 @@ fakers/
 **/.DS_Store
 **.pickle
 en-vosk/
+**/data_learn/
+**/net/
