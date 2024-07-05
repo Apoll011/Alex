@@ -1,7 +1,7 @@
 # Skills
 ## Information & Learning
 - [ ] Learn@Basics - Provides explanations on fundamental concepts in various subjects.
-- [ ] Define@Word - Looks up word definitions.
+- [x] dictionary@get - Looks up word definitions.
 - [ ] Translate@Language - Translates between languages.
 - [ ] News@Headlines - Reads current headlines.
 - [ ] FunFact@Topic - Shares a fun fact on a chosen topic.
