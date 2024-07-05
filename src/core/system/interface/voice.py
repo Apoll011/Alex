@@ -1,5 +1,7 @@
 import os
 import subprocess
+from core.system.config import path
+from core.system.ai.nexus import Nexus
 from core.system.intents import IntentResponse
 from core.system.interface.base import BaseInterface
 
@@ -13,7 +15,9 @@ class Voice(BaseInterface):
     alex_voice = alex_possibilities["en_GB"]
     pria_voice = 'Samantha'
 
-    say_voice_command = "say -v '#name#' '#text#'"
+    voice_file_path = "./src/resources/data/temp/alex_speak.m4a"
+
+    say_voice_command = "say -v '{name}' '{text}' -o {vfp} --data-format=alac"
 
     def start(self):
         self.user_conect({})
@@ -24,9 +28,12 @@ class Voice(BaseInterface):
         else:
             command = voice_command
 
-        command = command.replace('#name#', voice).replace('#text#', data['message']) # type: ignore
+        command = command.format(name=voice, text=data["message"], vfp=self.voice_file_path) # type: ignore
 
         os.system(command)
+
+        ALEX = Nexus.get_ai("ALEX")
+        ALEX.interface.send_audio(f"{path}/{self.voice_file_path}") # type: ignore
 
     def listen(self):
         print("Listening...")
