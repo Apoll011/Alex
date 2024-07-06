@@ -11,4 +11,5 @@ class PRIA(AI):
         #time.sleep(2)
         print("Booting up Alex...")
         #time.sleep(1)
+        self.call_ai("MIM", "start")
         self.call_ai("ALEX", "start")
