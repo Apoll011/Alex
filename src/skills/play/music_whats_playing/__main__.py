@@ -1,6 +1,8 @@
-from core.system.skills import BaseSkill
-from core.system.config import path
 import subprocess
+from core.system.config import path
+from core.system.ai.nexus import Nexus
+from core.system.skills import BaseSkill
+
 
 class MusicWhatsPlaying(BaseSkill):
      def __init__(self):
@@ -9,6 +11,7 @@ class MusicWhatsPlaying(BaseSkill):
 
      def execute(self, context, intent):
           super().execute(context, intent)
+          print(Nexus.request_ai("MIM", "getCurrentSong"))
           name, artist, album = self.beutify(self.comand())
           return self.responce_translated("playing.now", {"artist":artist, "track":name}) # type: ignore
           

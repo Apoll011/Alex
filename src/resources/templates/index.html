@@ -203,6 +203,8 @@
                 messageElement.classList.add("chat__box", "your__chat")
                 messageElement.innerHTML = `<div class="author"><span>You</span></div><div class="chat"><p>${message}</p></div>`;
                 document.getElementById("messages").appendChild(messageElement);
+                document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
+                document.getElementsByTagName("body").item.scrollTop
             }
             messageInput.value = ""
         }

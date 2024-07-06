@@ -57,6 +57,12 @@ class Library:
 
     music_path = "/Users/Pegasus/Music/Music/Media.localized/Music"
 
+    actual_playlist: list[MusicObject]
+
+    actual_music_pointer: int
+
+    stop: bool = False
+
     def get_music(self, path):
         name = re.sub(rf'{self.music_path}/.*?/.*?/(.*?).mp3', r'\1',path)
         album = re.sub(rf'{self.music_path}/.*?/(.*?)/.*?.mp3', r'\1',path)
@@ -72,6 +78,9 @@ class Library:
         for music in files:
             self.add_music(self.get_music(music))
 
+        self.actual_playlist = self.__musics
+        self.actual_music_pointer = 0
+
     def search(self, query:str, type: QueryMusicType = QueryMusicType.NAME):
         result = []
         for m in self.__musics:
@@ -84,11 +93,16 @@ class Library:
         return self.currently
 
     def play(self, music:MusicObject):
-        self.currently = music
-        
-        ALEX:AI = Nexus.get_ai("ALEX") # type: ignore
-        ALEX.interface.send_audio(music.get_path())
+        if not self.stop:
+            self.currently = music
+            
+            # ALEX:AI = Nexus.get_ai("ALEX") # type: ignore
+            # ALEX.interface.send_audio(music.get_path())
+            print(music)
     
+    def start(self):
+        self.stop = False
+
     def get_library_size(self) -> int:
         return len(self.__musics)
 
@@ -96,20 +110,36 @@ class Library:
         if mode == PlayMode.SHUFFLE:
             shuffle(music_list)
         
-        repeat_list = True
-        while repeat_list:
-            repeat_list = False
-            
-            if repeat == RepeatMode.REPEAT_PLAYLIST:
-                repeat_list = True
-            
-            for music in music_list:
-                repeat_music = True
+        self.actual_playlist = music_list
+        self.actual_music_pointer = 0
+        self.repeat_mode = repeat
 
-                while repeat_music:
+        self.play(music_list[0])
 
-                    repeat_music = False
-                    if repeat == RepeatMode.REPEAT_SONG:
-                        repeat_music = True
+    def next(self):
+        if self.repeat_mode != RepeatMode.REPEAT_SONG:
+            self.increment_pointer()
+        music = self.actual_playlist[self.actual_music_pointer]
+        self.play(music)
 
-                    self.play(music)
+    def increment_pointer(self):
+        if len(self.actual_playlist) - 1 <= self.actual_music_pointer:
+            if self.repeat_mode == RepeatMode.REPEAT_PLAYLIST:
+                self.actual_music_pointer = 0
+            else:
+                self.stop = True
+        else:
+            self.actual_music_pointer += 1
+    
+    def decrement_pointer(self):
+        if self.actual_music_pointer == 0 and self.repeat_mode == RepeatMode.REPEAT_PLAYLIST:
+            self.actual_music_pointer = len(self.actual_playlist)
+        elif self.actual_music_pointer != 0 and self.repeat_mode != RepeatMode.REPEAT_PLAYLIST:
+            self.actual_music_pointer -= 1
+        else:
+            self.stop = True
+
+    def previus(self):
+        self.decrement_pointer()
+        music = self.actual_playlist[self.actual_music_pointer]
+        self.play(music)

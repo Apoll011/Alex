@@ -1,6 +1,7 @@
 import os
 from core.system.config import path
 from core.nexus.MIM.library import *
+from core.system.ai.nexus import Nexus
 from core.system.skills import BaseSkill
 from core.system.intents.slots import SlotValue
 
@@ -16,25 +17,30 @@ class Music(BaseSkill):
 		self.optional("track", SlotValue)
 		self.optional("album", SlotValue)
 		self.optional("genre", SlotValue)
-
+		
 		flag = "-l"
 		pattern = ""
 		if self.slot_exists("artist"):
 			pattern = self.slots["artist"].value
 			flag = "-a"
+			type = QueryMusicType.ARTIST
 
 		if self.slot_exists("track"):
 			pattern = self.slots["track"].value
 			flag = "-s"
+			type = QueryMusicType.NAME
 
 		if self.slot_exists("album"):
 			pattern = self.slots["album"].value
 			flag = "-p"
+			type = QueryMusicType.ALBUM
 
 		if self.slot_exists("genre"):
 			pattern = self.slots["genre"].value
 			flag = "-g"
-
+		
+		s = Nexus.request_ai("MIM", "searchSong", pattern, type)
+		Nexus.request_ai("MIM", "playSong", s[0])
 		self.comand(flag, pattern)
 		self.responce_translated("Ok")
      
