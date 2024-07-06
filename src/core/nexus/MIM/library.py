@@ -81,7 +81,7 @@ class Library:
         self.actual_playlist = self.__musics
         self.actual_music_pointer = 0
 
-    def search(self, query:str, type: QueryMusicType = QueryMusicType.NAME):
+    def search(self, query:str, type: QueryMusicType = QueryMusicType.NAME) -> list[MusicObject]:
         result = []
         for m in self.__musics:
             if m.match(query, type):
