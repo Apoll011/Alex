@@ -29,6 +29,9 @@ class Server(BaseInterface):
     
     def close(self):
         self.socketio.stop()
+    
+    def emit(self, route, data):
+        emit(route, data)
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         emit('receive_message', {'message': data['message'], 'intent': data['intent'], 'ai': voice}, broadcast=True) # type: ignore

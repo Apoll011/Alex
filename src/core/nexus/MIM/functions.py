@@ -20,6 +20,12 @@ def playSong(mim: AI, music: MusicObject):
     mim.library.play(music) # type: ignore
     return None
 
+@mimSkeleton.request_action("playPause")
+def playPause(mim: AI, music: MusicObject):
+    alex = Nexus.get_ai("ALEX")
+    alex.interface.emit("playpause", {})
+    return None
+
 @mimSkeleton.request_action("playList")
 def playList(mim: AI, musicList: list[MusicObject], mode:PlayMode = PlayMode.NORMAL, repeat:RepeatMode = RepeatMode.NO):
     mim.library.play_list(musicList, mode, repeat) # type: ignore

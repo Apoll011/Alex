@@ -14,7 +14,7 @@ class MusicWhatsPlaying(BaseSkill):
           print(Nexus.request_ai("MIM", "getCurrentSong"))
           name, artist, album = self.beutify(self.comand())
           return self.responce_translated("playing.now", {"artist":artist, "track":name}) # type: ignore
-          
+
      def comand(self):
           result = subprocess.check_output(f"zsh \"{path}/skills/play/np.sh\" now", shell=True, text=True)
           return result

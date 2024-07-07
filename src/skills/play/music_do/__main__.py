@@ -1,32 +1,34 @@
-from core.system.intents.slots import SlotValue
-from core.system.skills import BaseSkill
-from core.system.config import path
 import os
+from core.system.config import path
+from core.system.ai.nexus import Nexus
+from core.system.skills import BaseSkill
+from core.system.intents.slots import SlotValue
 
 class MusicDo(BaseSkill):
-     def __init__(self):
-          self.register("play@music.do")
-          self.save_responce_for_context = False
-          super().__init__()
+	def __init__(self):
+		self.register("play@music.do")
+		self.save_responce_for_context = False
+		super().__init__()
 
-     def execute(self, context, intent):
-          super().execute(context, intent)
-          self.optional("musicDo", SlotValue)
-          self.optional("musicTrackAction", SlotValue)
-          self.optional("musicReapeatOptions", SlotValue)
-          self.optional("shuffleEnabled", SlotValue)
+	def execute(self, context, intent):
+		super().execute(context, intent)
+		self.optional("musicDo", SlotValue)
+		self.optional("musicTrackAction", SlotValue)
+		self.optional("musicReapeatOptions", SlotValue)
+		self.optional("shuffleEnabled", SlotValue)
 
+		Nexus.request_ai("MIM", "playPause")
 
-          if self.slot_exists("musicDo"):
-                self.comand(self.slots["musicDo"].value)
-          if self.slot_exists("musicTrackAction"):
-                self.comand(self.slots["musicTrackAction"].value + " track")
-          if self.slot_exists("musicReapeatOptions"):
-                self.comand(f"Set song repeat to {self.slots["musicReapeatOptions"].value}")
-          if self.slot_exists("shuffleEnabled"):
-                self.comand(f"Set shuffle enabled to {self.slots["shuffleEnabled"].value.replace("\\", "")}")
-          
-          self.responce_translated("Ok") # type: ignore
-     
-     def comand(self, text):
-          os.system(f"zsh \"{path}/skills/play/np.sh\" do \"{text}\"")
+		if self.slot_exists("musicDo"):
+			self.comand(self.slots["musicDo"].value)
+		if self.slot_exists("musicTrackAction"):
+			self.comand(self.slots["musicTrackAction"].value + " track")
+		if self.slot_exists("musicReapeatOptions"):
+			self.comand(f"Set song repeat to {self.slots["musicReapeatOptions"].value}")
+		if self.slot_exists("shuffleEnabled"):
+			self.comand(f"Set shuffle enabled to {self.slots["shuffleEnabled"].value.replace("\\", "")}")
+
+		self.responce_translated("Ok") # type: ignore
+
+	def comand(self, text):
+		os.system(f"zsh \"{path}/skills/play/np.sh\" do \"{text}\"")

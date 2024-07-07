@@ -61,6 +61,8 @@ class ALEX(AI):
     def process_as_intent(self, text):
         promise = self.api.call_route("intent_recognition/parse", text)
         responce = promise.response
+
+        print(responce)
         
         intent = self.intentParser.parser(responce)
         if intent.intent.intent_name != None:

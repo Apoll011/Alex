@@ -236,6 +236,10 @@
                 }
             });
 
+            socket.on("playpause", function (data) {
+                togglePlay();
+            });
+
             socket.on("receive_message", function (data) {
                 var messageElement = document.createElement("div");
                 messageElement.innerHTML = `<div class="author"><span>Alex:</span></div>
