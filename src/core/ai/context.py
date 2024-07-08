@@ -1,4 +1,4 @@
-from core.system.context import ContextManager
+from core.context import ContextManager
 
 class AiContextUser:
     """

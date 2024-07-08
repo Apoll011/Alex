@@ -1,11 +1,11 @@
 import sys
 import time
 from .context import AiContextUser
-from core.system.config import path
+from core.config import path
 from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
 from .screen import AiRepresentatorInScreen
-from core.system.api.client import ApiClient
+from core.api.client import ApiClient
 
 class AI(AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, InternetUser):
     """

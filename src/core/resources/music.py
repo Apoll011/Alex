@@ -1,7 +1,7 @@
 from pydub import AudioSegment
 from pydub.playback import play
-from core.system.resources.data_files import *
-from core.system.config import path
+from core.resources.data_files import *
+from core.config import path
 
 
 class Sound:

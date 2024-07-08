@@ -1,11 +1,11 @@
 import sys
 from typing import Any
-from core.system.ai.ai import AI
+from core.ai.ai import AI
 from .functions import alexSkeleton
-from core.system.intents.responce import *
-from core.system.skills.call import SkillCaller
-from core.system.interface.base import BaseInterface
-from core.system.intents import IntentParserToObject
+from core.intents.responce import *
+from core.skills.call import SkillCaller
+from core.interface.base import BaseInterface
+from core.intents import IntentParserToObject
 
 class ALEX(AI):
 

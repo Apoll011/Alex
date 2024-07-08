@@ -1,13 +1,13 @@
 import json
 from typing import Any
 from pathlib import Path
-from core.system.log import LOG
-from core.system.intents import *
-from core.system.config import path as p
-from core.system.intents.responce import *
-from core.system.context import ContextManager
-from core.system.translate import TranslationSystem
-from core.system.interface.base import BaseInterface
+from core.log import LOG
+from core.intents import *
+from core.config import path as p
+from core.intents.responce import *
+from core.context import ContextManager
+from core.translate import TranslationSystem
+from core.interface.base import BaseInterface
 from .error import SkillIntentError, SkillSlotNotFound
 
 class BaseSkill:

@@ -1,7 +1,7 @@
 import importlib
-from core.system.intents import IntentResponse
-from core.system.context import ContextManager
-from core.system.skills import BaseSkill
+from core.intents import IntentResponse
+from core.context import ContextManager
+from core.skills import BaseSkill
 
 def prety_name(name: str):
     s = name.split("@")

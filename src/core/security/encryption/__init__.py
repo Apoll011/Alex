@@ -1,4 +1,4 @@
-from core.system.security._key import *
+from core.security._key import *
 
 class cryptografy:
     

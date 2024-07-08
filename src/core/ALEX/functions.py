@@ -1,10 +1,10 @@
 import os
 import time
 import glob
-from core.system.ai.ai import AI
-from core.system.config import api, path
-from core.system.api.client import ApiClient
-from core.system.ai.blueprint import AiBluePrintSkeleton
+from core.ai.ai import AI
+from core.config import api, path
+from core.api.client import ApiClient
+from core.ai.blueprint import AiBluePrintSkeleton
 
 
 alexSkeleton = AiBluePrintSkeleton()

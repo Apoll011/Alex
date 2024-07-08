@@ -1,6 +1,6 @@
-from core.system.interface.voice import Voice
-from core.system.intents import IntentResponse
-from core.system.interface.base import BaseInterface
+from core.interface.voice import Voice
+from core.intents import IntentResponse
+from core.interface.base import BaseInterface
 
 
 class ComandLine(BaseInterface):

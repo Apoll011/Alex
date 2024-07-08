@@ -1,4 +1,4 @@
-from core.system.resources.application import Application
+from core.resources.application import Application
 from random import randint
 
 class AlexKey:

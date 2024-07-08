@@ -1,5 +1,5 @@
 import os
-from core.system.config import path
+from core.config import path
 
 class DataFile:
     @staticmethod

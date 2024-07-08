@@ -1,5 +1,5 @@
-from core.system.ai.ai import AI
-from core.system.intents import IntentResponse
+from core.ai.ai import AI
+from core.intents import IntentResponse
 
 class BaseInterface:
     closed = False

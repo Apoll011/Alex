@@ -1,7 +1,7 @@
 import os
 import subprocess
-from core.system.intents import IntentResponse
-from core.system.interface.base import BaseInterface
+from core.intents import IntentResponse
+from core.interface.base import BaseInterface
 
 class Voice(BaseInterface):
     alex_possibilities = {

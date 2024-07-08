@@ -1,10 +1,10 @@
-from core.system.config import path
+from core.config import path
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
-from core.system.security._key import AlexKey
-from core.system.interface.voice import Voice
-from core.system.intents import IntentResponse
-from core.system.interface.base import BaseInterface
+from core.security._key import AlexKey
+from core.interface.voice import Voice
+from core.intents import IntentResponse
+from core.interface.base import BaseInterface
 
 class Server(BaseInterface):
     def start(self):
