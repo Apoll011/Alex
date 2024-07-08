@@ -46,8 +46,14 @@ if args.train or args.start:
     else:
         alex.start()
 
+
     if args.server:
+        Server(alex)
+    elif args.voice:
+        Voice(alex)
+    else:
         ComandLine(alex)
-        BaseInterface.get().start()
+    
+    BaseInterface.get().start()
 
 
