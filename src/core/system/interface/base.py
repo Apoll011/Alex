@@ -17,11 +17,11 @@ class BaseInterface:
     
     def input(self, data): 
         message = data['message']
-        data = self.alex.process(message) 
+        data = self.alex.process(message)  # type: ignore
         self.speak(data)
 
     def wakeword(self, data):
-        self.alex.wake(data)
+        self.alex.wake(data) # type: ignore
     
     def parse(self, data): ...
     

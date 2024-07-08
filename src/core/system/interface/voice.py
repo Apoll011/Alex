@@ -20,7 +20,8 @@ class Voice(BaseInterface):
         super().start()
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
-        Voice.s(data, voice, voice_command, voice_mode)
+        if data['message'] != "":
+            Voice.s(data, voice, voice_command, voice_mode)
         
     @staticmethod
     def s(data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
