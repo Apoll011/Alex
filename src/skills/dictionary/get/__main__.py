@@ -1,9 +1,9 @@
 from random import choice
-from core.ai.nexus import Nexus
 from core.skills import BaseSkill
 from core.api.client import ApiResponse
 from core.intents.slots import SlotValue
 from core.intents.responce import BoolResponce
+from core.interface.base import BaseInterface
 
 class Get(BaseSkill):
      def __init__(self):
@@ -14,7 +14,7 @@ class Get(BaseSkill):
      def execute(self, context, intent):
           super().execute(context, intent)
           self.require("word", SlotValue)
-          self.meaning: ApiResponse = Nexus.request_ai("ALEX", "sendToApi", "dictionary/get/closest", self.slots["word"].value.lower())
+          self.meaning: ApiResponse = BaseInterface.get().alex.handle_request("sendToApi", "dictionary/get/closest", self.slots["word"].value.lower())
           if self.meaning.response["name"] != None:
                if self.meaning.response["name"].lower() != self.slots["word"].value.lower():
                     self.question("not.equal", self.not_equal, {"word": self.meaning.response["name"]}, BoolResponce())
