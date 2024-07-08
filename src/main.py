@@ -1,9 +1,9 @@
 import os
 import zipfile
 import argparse
-from core.system.ALEX import ALEX
-from core.system.interface import *
-from core.system.version import VersionManager
+from core.ALEX import ALEX
+from core.interface import *
+from core.version import VersionManager
 
 class InstallSkill(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):

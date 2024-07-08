@@ -1,5 +1,5 @@
-from core.system.skills.call import SkillCaller
-from core.system.skills import BaseSkill
+from core.skills.call import SkillCaller
+from core.skills import BaseSkill
 
 class Repeat(BaseSkill):
      def __init__(self):

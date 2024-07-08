@@ -1,7 +1,7 @@
 import os
-from core.system.config import path
-from core.system.skills import BaseSkill
-from core.system.intents import SlotValue
+from core.config import path
+from core.skills import BaseSkill
+from core.intents import SlotValue
 
 class Skills(BaseSkill):
      def __init__(self):

@@ -1,5 +1,5 @@
-from core.system.api.promise.promise import Promise
-from core.system.intents.slots import SlotValueDuration
+from core.api.promise.promise import Promise
+from core.intents.slots import SlotValueDuration
 import time
 import datetime
 

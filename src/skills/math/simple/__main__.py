@@ -1,5 +1,5 @@
-from core.system.intents.slots import SlotValueNumber, SlotValue
-from core.system.skills import BaseSkill
+from core.intents.slots import SlotValueNumber, SlotValue
+from core.skills import BaseSkill
 
 class Simple(BaseSkill):
      def __init__(self):

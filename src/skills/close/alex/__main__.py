@@ -1,7 +1,7 @@
-from core.system.skills import BaseSkill
-from core.system.ai.nexus import Nexus
-from core.system.api.client import ApiClient
-from core.system.intents.responce import BoolResponce
+from core.skills import BaseSkill
+from core.ai.nexus import Nexus
+from core.api.client import ApiClient
+from core.intents.responce import BoolResponce
 
 class Alex(BaseSkill):
      def __init__(self):

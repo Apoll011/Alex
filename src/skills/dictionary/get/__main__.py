@@ -1,9 +1,9 @@
 from random import choice
-from core.system.ai.nexus import Nexus
-from core.system.skills import BaseSkill
-from core.system.api.client import ApiResponse
-from core.system.intents.slots import SlotValue
-from core.system.intents.responce import BoolResponce
+from core.ai.nexus import Nexus
+from core.skills import BaseSkill
+from core.api.client import ApiResponse
+from core.intents.slots import SlotValue
+from core.intents.responce import BoolResponce
 
 class Get(BaseSkill):
      def __init__(self):

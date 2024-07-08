@@ -1,6 +1,6 @@
-from core.system.skills import BaseSkill
-from core.system.ai.nexus import Nexus
-from core.system.intents.slots import SlotValue
+from core.skills import BaseSkill
+from core.ai.nexus import Nexus
+from core.intents.slots import SlotValue
 
 class RandomName(BaseSkill):
      def __init__(self):

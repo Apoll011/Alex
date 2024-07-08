@@ -1,6 +1,6 @@
 from random import randint, random
-from core.system.skills import BaseSkill
-from core.system.intents.slots import SlotValueNumber
+from core.skills import BaseSkill
+from core.intents.slots import SlotValueNumber
 
 class Random(BaseSkill):
      def __init__(self):

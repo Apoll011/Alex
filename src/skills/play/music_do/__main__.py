@@ -1,6 +1,6 @@
-from core.system.intents.slots import SlotValue
-from core.system.skills import BaseSkill
-from core.system.config import path
+from core.intents.slots import SlotValue
+from core.skills import BaseSkill
+from core.config import path
 import os
 
 class MusicDo(BaseSkill):

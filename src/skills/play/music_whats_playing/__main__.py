@@ -1,5 +1,5 @@
-from core.system.skills import BaseSkill
-from core.system.config import path
+from core.skills import BaseSkill
+from core.config import path
 import subprocess
 
 class MusicWhatsPlaying(BaseSkill):

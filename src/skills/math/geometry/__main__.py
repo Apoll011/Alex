@@ -1,5 +1,5 @@
-from core.system.intents.slots import SlotValueNumber, SlotValue
-from core.system.skills import BaseSkill
+from core.intents.slots import SlotValueNumber, SlotValue
+from core.skills import BaseSkill
 from math import sin, cos, sqrt, cosh, sinh, tan, tanh
 
 class Geometry(BaseSkill):
