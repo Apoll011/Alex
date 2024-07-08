@@ -28,7 +28,7 @@ class AI(AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, InternetUser):
         Args:
             sig (str): The signature of the AI
         """
-        with open(f"{path}/core/system/{sig}/sys.sg", "r") as name:
+        with open(f"{path}/core/{sig}/sys.sg", "r") as name:
             self.name = name.read()
         
         self.done_init_actions = False
