@@ -1,20 +1,13 @@
-import time
 import sys
-from .nexus import Nexus
-from flask_socketio import emit
-from .chatserver import ChatServer
+import time
 from .context import AiContextUser
 from core.system.config import path
-from .data_system import AiDataSytem
 from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
 from .screen import AiRepresentatorInScreen
 from core.system.api.client import ApiClient
 
-
-
-
-class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, ChatServer, InternetUser, AiDataSytem):
+class AI(AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, InternetUser):
     """
     The main AI class
     """
@@ -35,10 +28,9 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, ChatSer
         Args:
             sig (str): The signature of the AI
         """
-        with open(f"{path}/core/nexus/{sig}/sys.sg", "r") as name:
+        with open(f"{path}/core/system/{sig}/sys.sg", "r") as name:
             self.name = name.read()
-        self.register_ai(sig, self)
-
+        
         self.done_init_actions = False
 
         self.sig = sig
@@ -59,8 +51,7 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, ChatSer
         """
         Starts the AI instance
         """
-        while self.active:
-            self.loop()
+        
 
     def end(self):
         """
@@ -79,3 +70,9 @@ class AI(Nexus, AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, ChatSer
         """
         Will Always loop over unless `active` is set to `False` 
         """
+
+    def handle_request(self, request, *args, **kwargs):
+        if request in self.request_actions.keys():
+            return self.request_actions[request](self, *args, **kwargs)
+        else:
+            raise ValueError(f"AI request '{request}' not found")

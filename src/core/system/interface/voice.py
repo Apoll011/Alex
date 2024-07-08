@@ -17,10 +17,15 @@ class Voice(BaseInterface):
 
     def start(self):
         self.user_conect({})
+        super().start()
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
+        Voice.s(data, voice, voice_command, voice_mode)
+        
+    @staticmethod
+    def s(data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         if voice_command is None:
-            command = self.say_voice_command
+            command = Voice.say_voice_command
         else:
             command = voice_command
 

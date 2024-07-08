@@ -1,5 +1,4 @@
 from core.system.config import path
-from core.system.ai.nexus import Nexus
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 from core.system.security._key import AlexKey
@@ -29,4 +28,4 @@ class Server(BaseInterface):
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         emit('receive_message', {'message': data['message'], 'intent': data['intent'], 'ai': voice}, broadcast=True) # type: ignore
         if voice_mode:
-            Voice().speak(data, voice, voice_command, False)
+            Voice.s(data, voice, voice_command, False)

@@ -1,7 +1,7 @@
 import os
 import zipfile
 import argparse
-from core.system.ai.nexus import Nexus
+from core.system.ALEX import ALEX
 from core.system.interface import *
 from core.system.version import VersionManager
 
@@ -35,21 +35,19 @@ args = parser.parse_args()
 
 if args.train or args.start:
     
-    Nexus.start_nexus()
+    alex = ALEX()
+    alex.activate()
 
     if args.debug:
-        Nexus.request_ai("ALEX", "debugMode")
+        alex.handle_request("debugMode")
     
-    if args.server:
-        Nexus.request_ai("ALEX", "interfaceMode", Server())
-    elif args.voice:
-        Nexus.request_ai("ALEX", "interfaceMode", Voice())
-    else:
-        Nexus.request_ai("ALEX", "interfaceMode", ComandLine())
-
-
     if args.train:
-        Nexus.request_ai("ALEX", "retrain")
+        alex.handle_request("retrain")
     else:
-        Nexus.call_ai("PRIA", "start")
+        alex.start()
+
+    if args.server:
+        ComandLine(alex)
+        BaseInterface.get().start()
+
 

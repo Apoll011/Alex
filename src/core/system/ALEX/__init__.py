@@ -4,7 +4,7 @@ from core.system.ai.ai import AI
 from .functions import alexSkeleton
 from core.system.intents.responce import *
 from core.system.skills.call import SkillCaller
-from core.system.interface import BaseInterface
+from core.system.interface.base import BaseInterface
 from core.system.intents import IntentParserToObject
 
 class ALEX(AI):
@@ -16,10 +16,7 @@ class ALEX(AI):
     required_listen_input: Responce
     next_processor_args:tuple[Any, ...] = ()
 
-    interface: BaseInterface
-
     voice_mode: bool
-
 
     def __init__(self) -> None:
         super().__init__("ALEX")
@@ -29,21 +26,15 @@ class ALEX(AI):
         
     def start(self):
         self.clear()
-        self.interface.init()
-        super().start()
-
-    def loop(self):
-        self.interface.loop()
     
     def speak(self, data, voice: str = 'Alex', voice_command = None):
-        self.interface.speak(data, voice, voice_command, self.voice_mode)
+        BaseInterface.get().speak(data, voice, voice_command)
     
     def wake(self, data):
         self.speak({"message": "Yes", "intent": ""})
 
     def end(self):
         self.speak({"message": "Good bye sir."})
-        self.interface.close()
         sys.exit(1)
     
     def process(self, text):
@@ -58,9 +49,8 @@ class ALEX(AI):
                 self.next_listen_processor: Any = None
                 self.next_processor_args = ()
             else:
-                self.speak({"message": f"That is not a valid responce for my question. I was expecting {"something with" if not self.required_listen_input.hard_search else ""} {" or ".join(self.required_listen_input.replace.keys())} not {text}"})
-        return None, self.intentParser.parser({"input": "", "slots": [], "intent": {"intentName": "", "probability": 0}})
-
+                return {"message": f"That is not a valid responce for my question. I was expecting {"something with" if not self.required_listen_input.hard_search else ""} {" or ".join(self.required_listen_input.replace.keys())} not {text}", "intent": {}}
+        
     def process_as_intent(self, text):
         promise = self.api.call_route("intent_recognition/parse", text)
         responce = promise.response
@@ -73,11 +63,11 @@ class ALEX(AI):
                 s = SkillCaller().call(intent)
                 s.execute(self._context, intent)
             except Exception as e:
-                return {"message": f"An error ocurred during the execution of the intented skill {str(e)}. Please report."}, intent
+                return {"message": f"An error ocurred during the execution of the intented skill {str(e)}. Please report.", "intent": intent}
         else:
-            return {"message": "Sorry. Thats not a valid intent"}, intent
+            return {"message": "Sorry. Thats not a valid intent", "intent": intent.json}
 
-        return None, intent
+        return {"message": "", "intent": intent.json}
 
     def setListenProcessor(self, callback, responceType, *args):
         self.next_listen_processor = callback

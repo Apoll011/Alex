@@ -3,12 +3,12 @@ from typing import Any
 from pathlib import Path
 from core.system.log import LOG
 from core.system.intents import *
-from core.system.ai.nexus import Nexus
+from core.system.config import path as p
 from core.system.intents.responce import *
 from core.system.context import ContextManager
-from core.system.config import path as p
-from .error import SkillIntentError, SkillSlotNotFound
 from core.system.translate import TranslationSystem
+from core.system.interface.base import BaseInterface
+from .error import SkillIntentError, SkillSlotNotFound
 
 class BaseSkill:
      name: str
@@ -82,7 +82,10 @@ class BaseSkill:
                "intent": self.intent.json,
                "voice": "Alex"
           } | text
-          Nexus.call_ai("ALEX", "speak", data)
+          self.alex().speak(data)
+
+     def alex(self):
+          return BaseInterface.get().alex
 
      def responce_translated(self, key: str, context = None):
           return self.responce(self.translate.get_translation(key, context))
@@ -124,7 +127,7 @@ class BaseSkill:
 
      def question(self, key_to_question_to_ask, callback, question_replacers = {}, required_responce:Responce = AnyResponce(), *args):
           self.responce_translated(key_to_question_to_ask, question_replacers)
-          Nexus.call_ai("ALEX", "setListenProcessor", callback, required_responce, *args)
+          self.alex().setListenProcessor(callback, required_responce, *args)
      
      def get_local_settings(self):
           """Build a dictionary using the JSON string stored in settings.json."""

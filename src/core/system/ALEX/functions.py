@@ -4,7 +4,6 @@ import glob
 from core.system.ai.ai import AI
 from core.system.config import api, path
 from core.system.api.client import ApiClient
-from core.system.interface.base import BaseInterface
 from core.system.ai.blueprint import AiBluePrintSkeleton
 
 
@@ -18,6 +17,11 @@ trainig_actions = {
 def set_api_con(self, alex: AI):
     alex.api = ApiClient(api['host'], api['port'])
     alex.finish(self)
+
+@alexSkeleton.init_action("Get Master User")
+def get_master_user(self, alex: AI):
+    p = alex.api.call_route_async("users/search/tags", {"query": "Master"})
+    p.then(lambda user: alex.finish_and_set(self, "master", alex.api.call_route("users/get", user.response["users"][0]).response))
 
 @alexSkeleton.init_action("Geting dictionary engine")
 def load_dictionary(self, alex: AI):
@@ -49,10 +53,6 @@ def train_engine(alex: AI):
 def debug_mode(alex: AI):
     alex.debug_mode = True
 
-@alexSkeleton.request_action("interfaceMode")
-def interface(alex: AI, interface: BaseInterface):
-    alex.interface = interface # type: ignore
-
 @alexSkeleton.request_action("sendToApi")
 def sendApi(alex: AI, route: str, value: str | dict[str, str] = ""):
     return alex.api.call_route(route, value)
@@ -73,3 +73,4 @@ def delete_ctx(alex: AI):
     files = glob.glob(f'{path}/resources/ctx/*.pickle')
     for f in files:
         os.remove(f)
+

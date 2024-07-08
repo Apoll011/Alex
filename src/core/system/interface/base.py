@@ -1,39 +1,50 @@
-from core.system.ai.nexus import Nexus
+from core.system.ai.ai import AI
 from core.system.intents import IntentResponse
 
 class BaseInterface:
-    def init(self):
-        self.start()
+    closed = False
+    _registry: 'BaseInterface'
 
-    def start(self): ...
+    def __init__(self, alex: AI):
+        self.alex = alex
+        self.register()
+        
+    def start(self): 
+        while not self.closed:
+            self.loop()
     
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False): ...
     
     def input(self, data): 
         message = data['message']
-        retrive_message, intent = Nexus.call_ai("ALEX", "process", message)
-        try: 
-            new_data = {
-                "intent": intent,
-                "voice": "Alex"
-            } | retrive_message
-            self.speak(new_data)
-        except TypeError:
-            pass
+        data = self.alex.process(message) 
+        self.speak(data)
 
     def wakeword(self, data):
-        Nexus.call_ai("ALEX", "wake", data)
+        self.alex.wake(data)
     
     def parse(self, data): ...
     
     def execute(self, comand): ...
 
-    def loop(self): ...
+    def loop(self): 
+        self.alex.loop()
 
-    def close(self): ...
+    def close(self): 
+        self.closed = True
 
     def user_conect(self, data):
-        Nexus.request_ai("ALEX", "userConect")
+        self.alex.handle_request("userConect")
         
     def change_mode(self, data: dict):
-        Nexus.request_ai("ALEX", "changeMode", data["mode"])
+        self.alex.handle_request("changeMode", data["mode"])
+
+    def register(self) -> None:
+        """
+        Registers the Interface
+        """
+        BaseInterface._registry = self
+
+    @classmethod
+    def get(cls):
+        return cls._registry
