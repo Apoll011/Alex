@@ -28,7 +28,7 @@ class ALEX(AI):
         self.clear()
     
     def speak(self, data, voice: str = 'Alex', voice_command = None):
-        BaseInterface.get().speak(data, voice, voice_command)
+        BaseInterface.get().speak(data, voice, voice_command, self.voice_mode | False)
     
     def wake(self, data):
         self.speak({"message": "Yes", "intent": ""})
@@ -45,12 +45,14 @@ class ALEX(AI):
             return self.process_as_intent(text)
         else:
             if self.required_listen_input.is_accepted(text):
+                print("Passei aqui")
                 self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
                 self.next_listen_processor: Any = None
                 self.next_processor_args = ()
             else:
                 return {"message": f"That is not a valid responce for my question. I was expecting {"something with" if not self.required_listen_input.hard_search else ""} {" or ".join(self.required_listen_input.replace.keys())} not {text}", "intent": {}}
-        
+        return {"message": "", "intent": {}}
+
     def process_as_intent(self, text):
         promise = self.api.call_route("intent_recognition/parse", text)
         responce = promise.response

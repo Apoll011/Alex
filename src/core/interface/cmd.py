@@ -17,4 +17,3 @@ class ComandLine(BaseInterface):
     
     def loop(self):
         self.input({"message": input("Your request: ")})
-        super().loop()
