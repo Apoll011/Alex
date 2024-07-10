@@ -45,10 +45,12 @@ class ALEX(AI):
             return self.process_as_intent(text)
         else:
             if self.required_listen_input.is_accepted(text):
-                print("Passei aqui")
+                nextL = self.next_listen_processor
+                nextA = self.next_processor_args
                 self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
-                self.next_listen_processor: Any = None
-                self.next_processor_args = ()
+                if nextL == self.next_listen_processor and nextA == self.next_processor_args:
+                    self.next_listen_processor: Any = None
+                    self.next_processor_args = ()
             else:
                 return {"message": f"That is not a valid responce for my question. I was expecting {"something with" if not self.required_listen_input.hard_search else ""} {" or ".join(self.required_listen_input.replace.keys())} not {text}", "intent": {}}
         return {"message": "", "intent": {}}
@@ -75,3 +77,11 @@ class ALEX(AI):
         self.next_listen_processor = callback
         self.required_listen_input = responceType
         self.next_processor_args = args
+    
+    def setDefaultListenProcessor(self):
+        self.next_listen_processor = self.process_as_intent
+        self.required_listen_input = AnyResponce()
+        self.next_processor_args = ()
+
+    def isListenProcessorDefault(self):
+        return self.next_listen_processor == self.process_as_intent

@@ -43,7 +43,7 @@ class Get(BaseSkill):
           self.responce(definition)
      
      def respond_multiple_meaning(self):
-          self.question("multiple.meaning", self.multiple_meaning, {"number_of_meaning": len(self.meaning.response['definition'])}, BoolResponce(), True)
+          self.question("multiple.meaning", self.multiple_meaning, {"number_of_meaning": len(self.meaning.response['definition'])}, BoolResponce())
 
      def multiple_meaning(self, responce: bool):
           types_os_joins = [", and we can say that it is, ", ", or, ", ", and it is, "]
