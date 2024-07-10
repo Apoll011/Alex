@@ -82,7 +82,7 @@ class BaseSkill:
                "intent": self.intent.json,
                "voice": "Alex"
           } | text
-          self.alex().speak(data)
+          self.alex().speak(data) # type: ignore
 
      def alex(self):
           return BaseInterface.get().alex
@@ -127,7 +127,7 @@ class BaseSkill:
 
      def question(self, key_to_question_to_ask, callback, question_replacers = {}, required_responce:Responce = AnyResponce(), *args):
           self.responce_translated(key_to_question_to_ask, question_replacers)
-          self.alex().setListenProcessor(callback, required_responce, *args)
+          self.alex().setListenProcessor(callback, required_responce, *args) # type: ignore
      
      def get_local_settings(self):
           """Build a dictionary using the JSON string stored in settings.json."""
