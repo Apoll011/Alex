@@ -1,9 +1,8 @@
 from random import choice
 from core.skills import BaseSkill
 from core.api.client import ApiResponse
-from core.intents.slots import SlotValue
-from core.intents.responce import BoolResponce
 from core.interface.base import BaseInterface
+from core.intents.responce import BoolResponce, SomethingFromListOrNoneResponce
 
 class Get(BaseSkill):
      def __init__(self):
@@ -13,22 +12,45 @@ class Get(BaseSkill):
 
      def execute(self, context, intent):
           super().execute(context, intent)
-          self.require("word", SlotValue)
-          self.meaning: ApiResponse = BaseInterface.get().alex.handle_request("sendToApi", "dictionary/get/closest", self.slots["word"].value.lower())
+          self.require("word")
+          self.get_meaning(self.slots["word"].value)
+
+     def get_meaning(self, word):
+          self.meaning: ApiResponse = BaseInterface.get().alex.handle_request("sendToApi", "dictionary/get/closest", word.lower())
+          self.requested = word
           if self.meaning.response["name"] != None:
-               if self.meaning.response["name"].lower() != self.slots["word"].value.lower():
+               if self.meaning.response["name"].lower() != self.requested.lower():
                     self.question("not.equal", self.not_equal, {"word": self.meaning.response["name"]}, BoolResponce())
                else:
                    self.respond_meaning()
           else:
-               self.responce_translated("not.found", {"word": self.slots["word"].value})
+               self.responce_translated("not.found", {"word": self.requested})
 
      def not_equal(self, responce: bool):
           if responce:
                self.respond_meaning()
           else:
-               self.responce_translated("sorry.wrong.word")
-
+               others = self.meaning.response["others"]
+               if len(others) == 0:
+                    self.responce_translated("not.found", {"word": self.requested})
+               elif len(others) == 1:
+                    self.question("other.match", self.get_meaning_from_question, {"word": others[0]}, BoolResponce(), others[0])
+               else:
+                    self.question("other.matchs", self.get_meanig_of_one_word, {"words": ", ".join(others)}, SomethingFromListOrNoneResponce(others))
+     
+     def get_meaning_from_question(self, responce: bool, word):
+          if responce:
+               self.get_meaning(word)
+          else:
+               self.responce_translated("sorry.not.have.word")
+     
+     def get_meanig_of_one_word(self, responce: str | None):
+          if responce == None:
+               self.responce_translated("sorry.not.have.word")
+          else:
+               print(responce)
+               self.get_meaning(responce)
+     
      def respond_meaning(self):
           if self.is_list() and len(self.meaning.response['definition']) > 1:
                self.respond_multiple_meaning()
