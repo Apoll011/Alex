@@ -32,6 +32,10 @@ class Responce:
 
 class AnyResponce(Responce):
      rtype = lambda x: x
+     
+     def is_accepted(self, text) -> bool:
+          self.result = text
+          return True
 
 class BoolResponce(Responce):
      replace = {

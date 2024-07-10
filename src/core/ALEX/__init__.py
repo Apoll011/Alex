@@ -23,6 +23,7 @@ class ALEX(AI):
         self.register_blueprint(alexSkeleton)
         self.internet_is_on = False
         self.voice_mode = False
+        self.setDefaultListenProcessor()
         
     def start(self):
         self.clear()
@@ -41,18 +42,15 @@ class ALEX(AI):
         """
             Process a text and execute an action
         """
-        if self.next_listen_processor == None:
-            return self.process_as_intent(text)
+        nextL = self.next_listen_processor
+        nextA = self.next_processor_args
+        
+        if self.required_listen_input.is_accepted(text) or self.isListenProcessorDefault():
+            self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
+            if nextL == self.next_listen_processor and nextA == self.next_processor_args:
+                self.setDefaultListenProcessor() 
         else:
-            if self.required_listen_input.is_accepted(text):
-                nextL = self.next_listen_processor
-                nextA = self.next_processor_args
-                self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
-                if nextL == self.next_listen_processor and nextA == self.next_processor_args:
-                    self.next_listen_processor: Any = None
-                    self.next_processor_args = ()
-            else:
-                return {"message": f"That is not a valid responce for my question. I was expecting {"something with" if not self.required_listen_input.hard_search else ""} {" or ".join(self.required_listen_input.replace.keys())} not {text}", "intent": {}}
+            return {"message": f"That is not a valid responce for my question. I was expecting {"something with" if not self.required_listen_input.hard_search else ""} {" or ".join(self.required_listen_input.replace.keys())} not {text}", "intent": {}}
         return {"message": "", "intent": {}}
 
     def process_as_intent(self, text):
