@@ -32,10 +32,10 @@ class ALEX(AI):
         BaseInterface.get().speak(data, voice, voice_command, self.voice_mode | False)
     
     def wake(self, data):
-        self.speak({"message": "Yes", "intent": ""})
+        self.speak(self.make_responce("Yes"))
 
     def end(self):
-        self.speak({"message": "Good bye sir."})
+        self.speak(self.make_responce("Good Bye. Sir."))
         sys.exit(1)
     
     def process(self, text):
@@ -50,8 +50,8 @@ class ALEX(AI):
             if nextL == self.next_listen_processor and nextA == self.next_processor_args:
                 self.setDefaultListenProcessor() 
         else:
-            return {"message": f"That is not a valid responce for my question. I was expecting {"something with" if not self.required_listen_input.hard_search else ""} {" or ".join(self.required_listen_input.replace.keys())} not {text}", "intent": {}}
-        return {"message": "", "intent": {}}
+            return self.make_responce(f"That is not a valid responce for my question. I was expecting {"something with" if not self.required_listen_input.hard_search else ""} {" or ".join(self.required_listen_input.replace.keys())} not {text}")
+        return self.make_responce()
 
     def process_as_intent(self, text):
         promise = self.api.call_route("intent_recognition/parse", text)
@@ -65,11 +65,11 @@ class ALEX(AI):
                 s = SkillCaller().call(intent)
                 s.execute(self._context, intent)
             except Exception as e:
-                return {"message": f"An error ocurred during the execution of the intented skill {str(e)}. Please report.", "intent": intent}
+                return self.make_responce(f"An error ocurred during the execution of the intented skill {str(e)}. Please report.", intent.json)
         else:
-            return {"message": "Sorry. Thats not a valid intent", "intent": intent.json}
+            return self.make_responce("Sorry. Thats not a valid intent", intent.json)
 
-        return {"message": "", "intent": intent.json}
+        return self.make_responce()
 
     def setListenProcessor(self, callback, responceType, *args):
         self.next_listen_processor = callback
@@ -83,3 +83,6 @@ class ALEX(AI):
 
     def isListenProcessorDefault(self):
         return self.next_listen_processor == self.process_as_intent
+
+    def make_responce(self, message = "", intent = {}):
+        return {"message": message, "intent": intent}
