@@ -1,4 +1,4 @@
-from core.intents.slots import SlotValueNumber, SlotValue
+from core.intents.slots import SlotValueNumber
 from core.skills import BaseSkill
 
 class EvenOrOdd(BaseSkill):
@@ -21,7 +21,7 @@ class EvenOrOdd(BaseSkill):
      def execute(self, context, intent):
           super().execute(context, intent)
           self.require("number", SlotValueNumber)
-          self.optional("type", SlotValue)
+          self.optional("type")
 
           self.number: SlotValueNumber = self.slots["number"] # type: ignore
 

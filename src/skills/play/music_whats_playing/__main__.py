@@ -1,6 +1,6 @@
-from core.skills import BaseSkill
-from core.config import path
 import subprocess
+from core.config import path
+from core.skills import BaseSkill
 
 class MusicWhatsPlaying(BaseSkill):
      def __init__(self):

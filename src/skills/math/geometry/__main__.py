@@ -1,4 +1,4 @@
-from core.intents.slots import SlotValueNumber, SlotValue
+from core.intents.slots import SlotValueNumber
 from core.skills import BaseSkill
 from math import sin, cos, sqrt, cosh, sinh, tan, tanh
 
@@ -9,10 +9,10 @@ class Geometry(BaseSkill):
 
      def execute(self, context, intent):
           super().execute(context, intent)
-          self.require("func", SlotValue)
+          self.require("func")
           self.require("number", SlotValueNumber)
 
-          self.number: SlotValueNumber = self.slots["number"]
+          self.number: SlotValueNumber = self.slots["number"] # type: ignore
 
           r = None 
 

@@ -1,7 +1,6 @@
-from core.intents.slots import SlotValue
-from core.skills import BaseSkill
-from core.config import path
 import os
+from core.config import path
+from core.skills import BaseSkill
 
 class MusicDo(BaseSkill):
      def __init__(self):
@@ -11,10 +10,10 @@ class MusicDo(BaseSkill):
 
      def execute(self, context, intent):
           super().execute(context, intent)
-          self.optional("musicDo", SlotValue)
-          self.optional("musicTrackAction", SlotValue)
-          self.optional("musicReapeatOptions", SlotValue)
-          self.optional("shuffleEnabled", SlotValue)
+          self.optional("musicDo")
+          self.optional("musicTrackAction")
+          self.optional("musicReapeatOptions")
+          self.optional("shuffleEnabled")
 
 
           if self.slot_exists("musicDo"):

@@ -1,7 +1,6 @@
-from core.intents.slots import SlotValue
-from core.skills import BaseSkill
-from core.config import path
 import os
+from core.config import path
+from core.skills import BaseSkill
 
 class Music(BaseSkill):
 	def __init__(self):
@@ -11,10 +10,10 @@ class Music(BaseSkill):
 
 	def execute(self, context, intent):
 		super().execute(context, intent)
-		self.optional("artist", SlotValue)
-		self.optional("track", SlotValue)
-		self.optional("album", SlotValue)
-		self.optional("genre", SlotValue)
+		self.optional("artist")
+		self.optional("track")
+		self.optional("album")
+		self.optional("genre")
 		
 		flag = "-l"
 		pattern = ""

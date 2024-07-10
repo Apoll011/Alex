@@ -1,7 +1,6 @@
 import os
 from core.config import path
 from core.skills import BaseSkill
-from core.intents import SlotValue
 
 class Skills(BaseSkill):
      def __init__(self):
@@ -10,8 +9,8 @@ class Skills(BaseSkill):
 
      def execute(self, context, intent):
           super().execute(context, intent)
-          self.require("major_skill", SlotValue)
-          self.optional("minor_skill", SlotValue)
+          self.require("major_skill")
+          self.optional("minor_skill")
           
           if not self.slot_exists("minor_skill"):
                self.look_for_major(self.respond_based_on_minors)
