@@ -18,6 +18,11 @@ def set_api_con(self, alex: AI):
     alex.api = ApiClient(api['host'], api['port'])
     alex.finish(self)
 
+@alexSkeleton.init_action("Geting intents engine")
+def train_intents(self, alex: AI):
+    promise = alex.api.call_route_async("intent_recognition/get/reuse")
+    promise.then(lambda data: alex.finish(self))
+
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):
     p = alex.api.call_route_async("users/search/tags", {"query": "Master"})
@@ -27,11 +32,6 @@ def get_master_user(self, alex: AI):
 def load_dictionary(self, alex: AI):
     d = alex.api.call_route("dictionary/load", "en")
     alex.finish(self)
-
-@alexSkeleton.init_action("Geting intents engine")
-def train_intents(self, alex: AI):
-    promise = alex.api.call_route_async("intent_recognition/get/reuse")
-    promise.then(lambda data: alex.finish(self))
 
 @alexSkeleton.request_action("retrain")
 def train_engine(alex: AI):
