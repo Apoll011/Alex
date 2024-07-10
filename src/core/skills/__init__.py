@@ -20,7 +20,7 @@ class BaseSkill:
 
      translate: TranslationSystem
 
-     slots: dict[str, Any] = {}
+     slots: dict[str, SlotValue] = {}
 
      save_responce_for_context = True
 
@@ -52,7 +52,7 @@ class BaseSkill:
           self.get_local_settings()
           self.translate = TranslationSystem("en", "locale", path + "/assets/")
      
-     def require(self, slot_name: str, slot_type):
+     def require(self, slot_name: str, slot_type = SlotValue):
           if slot_name in self.intent.slots.keys() and isinstance(self.intent.slots[slot_name].value, slot_type):
                self.slots[slot_name] = self.intent.slots[slot_name].value
           else:
