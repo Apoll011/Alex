@@ -5,8 +5,11 @@ class BaseInterface:
     closed = False
     _registry: 'BaseInterface'
 
+    request_sentence: str
+
     def __init__(self, alex: AI):
         self.alex = alex
+        self.request_sentence = alex.translate("system.request")
         self.register()
         
     def start(self): 

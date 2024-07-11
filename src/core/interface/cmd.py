@@ -16,7 +16,7 @@ class ComandLine(BaseInterface):
                 Voice.s(data, voice, voice_command, False)
     
     def loop(self):
-        message = input("Your request: \33[32m")
+        message = input(f"{self.request_sentence}: \33[32m")
         print("\33[0m", end="")
         self.input({"message": message})
         super().loop()

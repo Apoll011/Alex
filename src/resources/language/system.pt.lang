@@ -1,3 +1,4 @@
+system.welcome:Bem vindo {{user}}
 system.wake:[Oi;Sim;Estou Ouvindo;Fale;Yep]
 system.close:[Adeus. Senhor.;Tenha uma boa {{time_of_day}}. Senhor.]
 time.day.1:Manhã
@@ -8,3 +9,4 @@ error.during.skill:Um erro occorreu durante a execução da skill pretendida {{e
 wrong.answer.hard:Essa não é uma resposta valida para minha questão. Eu experava {{expected}} não {{entry}}
 wrong.answer.soft:Essa não é uma resposta valida para minha questão. Eu experava algo contendo {{expected}} não {{entry}}
 wrong.answer.joiner:ou
+system.request:Seu pedido

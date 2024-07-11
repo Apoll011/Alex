@@ -1,3 +1,4 @@
+system.welcome:Welcome {{user}}
 system.wake:[Hi;Yes;Im Listening;Say;Yep]
 system.close:[Good Bye. Sir.;Have a good {{time_of_day}}. Sir.]
 time.day.1:Morning
@@ -8,3 +9,4 @@ error.during.skill:An error ocurred during the execution of the intented skill {
 wrong.answer.hard:That is not a valid responce for my question. I was expecting {{expected}} not {{entry}}
 wrong.answer.soft:That is not a valid responce for my question. I was expecting something with {{expected}} not {{entry}}
 wrong.answer.joiner:or
+system.request:Your request

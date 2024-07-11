@@ -43,8 +43,9 @@ def train_engine(alex: AI):
         name = act.replace(".", " ").title()
         alex.print_header_text(name, 3)
         print("Sending Request...")
-        trainig_actions[act](alex)
+        action = trainig_actions[act]
         print("Prossesing Request...")
+        action(alex)
         alex.print_header_text("Ended " + name, 3)
     print("\33[93mTime Took:", time.time() - time_stared, "seconds")
     alex.print_header_text("Ended Re-Training", 1)
@@ -59,7 +60,8 @@ def sendApi(alex: AI, route: str, value: str | dict[str, str] = ""):
 
 @alexSkeleton.request_action("userConect")
 def userConect(alex: AI):
-     alex.speak({"message": "Welcome " + alex.get_context("master")["name"], "intent": "saudation@init"})  # type: ignore
+     m = alex.translate_responce("system.welcome", {"user": alex.get_context("master")["name"]}) # type: ignore
+     alex.speak(m) # type: ignore
 
 @alexSkeleton.request_action("changeMode")
 def changeMode(alex: AI, mode):
