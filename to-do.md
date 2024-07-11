@@ -1,5 +1,5 @@
 # System
-- [ ] Translation System for them
+- [x] Translation System for them
 - [ ] Fix stt in Voice interface
 - [ ] Async server for multiple conections
 - [ ] If server closes and reopens just reconnect without needing to close alex 
