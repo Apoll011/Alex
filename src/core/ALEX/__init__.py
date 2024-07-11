@@ -19,13 +19,16 @@ class ALEX(AI):
 
     voice_mode: bool
 
-    def __init__(self) -> None:
+    def __init__(self, language = "en") -> None:
+        self.language = language
+
         super().__init__("ALEX")
         self.register_blueprint(alexSkeleton)
+
         self.internet_is_on = False
         self.voice_mode = False
+        
         self.setDefaultListenProcessor()
-        self.init_translator()
         
     def start(self):
         self.clear()

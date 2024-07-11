@@ -22,6 +22,8 @@ class AI(AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInScreen, In
 
     database: dict
 
+    language: str
+
     def __init__(self, sig: str) -> None:
         """
         Initializes the AI instance
@@ -35,6 +37,8 @@ class AI(AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInScreen, In
         self.done_init_actions = False
 
         self.sig = sig
+
+        self.init_translator(self.language)
 
     def activate(self):
         """
