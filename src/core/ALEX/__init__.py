@@ -25,6 +25,7 @@ class ALEX(AI):
         self.internet_is_on = False
         self.voice_mode = False
         self.setDefaultListenProcessor()
+        self.init_translator()
         
     def start(self):
         self.clear()
@@ -48,10 +49,10 @@ class ALEX(AI):
         nextA = self.next_processor_args
         
         if self.required_listen_input.is_accepted(text) or self.isListenProcessorDefault():
-            self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
+            r = self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
             if nextL == self.next_listen_processor and nextA == self.next_processor_args:
                 self.setDefaultListenProcessor() 
-            return self.make_responce()
+            return r if isinstance(r, dict) else self.make_responce()
         else:
             joiner = self.translate("wrong.answer.joiner")
             context = {"expected": f" {joiner} ".join(self.required_listen_input.replace.keys()), "entry": text}
@@ -72,7 +73,7 @@ class ALEX(AI):
                 s.execute(self._context, intent)
             except Exception as e:
                 return self.translate_responce("error.during.skill", {"error": str(e)}, intent.json) 
-            
+        else:
             return self.translate_responce("intent.not.valid", intent=intent.json)
 
         return self.make_responce()
