@@ -31,19 +31,19 @@ parser.add_argument("-v", "--version", action="version", version=f"Alex {Version
 
 args = parser.parse_args()
 
-if args.train or args.start:
+def main(args):
+    language = args.start
 
-    alex = ALEX()
+    alex = ALEX(language)
     alex.activate()
 
     if args.debug:
         alex.handle_request("debugMode")
-    
+
     if args.train:
         alex.handle_request("retrain")
     else:
         alex.start()
-
 
     if args.interface == "server":
         Server(alex)
@@ -51,7 +51,8 @@ if args.train or args.start:
         Voice(alex)
     else:
         ComandLine(alex)
-    
+
     BaseInterface.get().start()
 
-
+if __name__ == "__main__":
+    main(args)
