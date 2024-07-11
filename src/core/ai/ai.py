@@ -40,6 +40,7 @@ class AI(AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInScreen, In
         """
         Activates the AI instance
         """
+        self.clear()
         self.header()
         self.run_init_actions()
         
