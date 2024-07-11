@@ -1,5 +1,6 @@
 import sys
 import time
+from .dna import AlexDna
 from core.config import path
 from .translate import Translator
 from .context import AiContextUser
@@ -8,7 +9,7 @@ from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
 from .screen import AiRepresentatorInScreen
 
-class AI(AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInScreen, InternetUser):
+class AI(AlexDna, AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInScreen, InternetUser):
     """
     The main AI class
     """
