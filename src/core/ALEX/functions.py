@@ -5,6 +5,7 @@ from core.ai.ai import AI
 from core.config import api, path
 from core.api.client import ApiClient
 from core.ai.blueprint import AiBluePrintSkeleton
+from core.resources.application import Application
 
 
 alexSkeleton = AiBluePrintSkeleton()
@@ -12,6 +13,12 @@ alexSkeleton = AiBluePrintSkeleton()
 trainig_actions = {
     "training.intents": lambda ai: ai.api.call_route("intent_recognition/get/train")
 }
+
+@alexSkeleton.init_action("Import Alex DNA")
+def dna(self, alex: AI):
+    dna = Application.get("dna")
+    alex.load_dna(dna)
+    alex.finish(self)
 
 @alexSkeleton.init_action("Set Api conection")
 def set_api_con(self, alex: AI):
