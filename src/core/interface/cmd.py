@@ -10,10 +10,13 @@ class ComandLine(BaseInterface):
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         if data['message'] != "":
-            print(f"{voice}: {data['message']}")
+            print(f"{voice}: \33[36m{data['message']}\33[0m")
 
             if voice_mode:
                 Voice.s(data, voice, voice_command, False)
     
     def loop(self):
-        self.input({"message": input("Your request: ")})
+        message = input("Your request: \33[32m")
+        print("\33[0m", end="")
+        self.input({"message": message})
+        super().loop()
