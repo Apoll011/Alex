@@ -3,6 +3,7 @@ from typing import Any
 from core.ai.ai import AI
 from .functions import alexSkeleton
 from core.intents.responce import *
+from core.date import get_time_of_day
 from core.skills.call import SkillCaller
 from core.interface.base import BaseInterface
 from core.intents import IntentParserToObject
@@ -32,11 +33,12 @@ class ALEX(AI):
         BaseInterface.get().speak(data, voice, voice_command, self.voice_mode | False)
     
     def wake(self, data):
-        self.speak(self.make_responce("Yes"))
-
+        self.speak(self.translate("system.wake"))
+    
     def end(self):
-        self.speak(self.make_responce("Good Bye. Sir."))
-        sys.exit(1)
+        time_of_day = self.translate(f"time.day.{get_time_of_day()}")
+        self.speak(self.make_responce(self.translate("system.close", {"time_of_day": time_of_day})))
+        sys.exit(0)
     
     def process(self, text):
         """
@@ -49,9 +51,13 @@ class ALEX(AI):
             self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
             if nextL == self.next_listen_processor and nextA == self.next_processor_args:
                 self.setDefaultListenProcessor() 
+            return self.make_responce()
         else:
-            return self.make_responce(f"That is not a valid responce for my question. I was expecting {"something with" if not self.required_listen_input.hard_search else ""} {" or ".join(self.required_listen_input.replace.keys())} not {text}")
-        return self.make_responce()
+            joiner = self.translate("wrong.answer.joiner")
+            context = {"expected": f" {joiner} ".join(self.required_listen_input.replace.keys()), "entry": text}
+            if self.required_listen_input.hard_search:
+                return self.translate_responce("wrong.answer.hard", context)
+            return self.translate_responce("wrong.answer.soft", context)
 
     def process_as_intent(self, text):
         promise = self.api.call_route("intent_recognition/parse", text)
@@ -65,9 +71,9 @@ class ALEX(AI):
                 s = SkillCaller().call(intent)
                 s.execute(self._context, intent)
             except Exception as e:
-                return self.make_responce(f"An error ocurred during the execution of the intented skill {str(e)}. Please report.", intent.json)
-        else:
-            return self.make_responce("Sorry. Thats not a valid intent", intent.json)
+                return self.translate_responce("error.during.skill", {"error": str(e)}, intent.json) 
+            
+            return self.translate_responce("intent.not.valid", intent=intent.json)
 
         return self.make_responce()
 

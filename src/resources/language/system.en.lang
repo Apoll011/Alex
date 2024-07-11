@@ -3,3 +3,8 @@ system.close:[Good Bye. Sir.;Have a good {{time_of_day}}. Sir.]
 time.day.1:Morning
 time.day.2:Affternoon
 time.day.3:Night
+intent.not.valid:[Sorry that not a valid intent;Sorry I could not understant;Sorry I didnt understand]
+error.during.skill:An error ocurred during the execution of the intented skill {{error}}. Please report.
+wrong.answer.hard:That is not a valid responce for my question. I was expecting {{expected}} not {{entry}}
+wrong.answer.soft:That is not a valid responce for my question. I was expecting something with {{expected}} not {{entry}}
+wrong.answer.joiner:or
