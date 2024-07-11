@@ -24,8 +24,9 @@ class TranslationSystem:
         self.file = file
         self.language_path = path + "/"+ path_file
         self.translations = self.load_translations()
-        self.translations.update({"error.457": "The key {} was not found in this translation file map: ("+self.language_path+")"})
-
+        self.translations.update({"error.451": "The key {key} does not have a valid output"})
+        self.translations.update({"error.457": "The key {key} was not found in this translation file map: ("+self.language_path+")"})
+        
     def load_translations(self) -> dict[str, str | list]:
         """
         Loads translations from a file.
@@ -39,6 +40,8 @@ class TranslationSystem:
             for line in f:
                 if line.strip() and line != "":
                     key, value = line.strip().split(":", 1)
+                    if value == "":
+                        value = self.get_translation("error.451", {"key": key})
                     if value.strip().startswith("["):
                         v = value.replace("[", "").replace("]", "")
                         v = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}', v.strip())
@@ -66,7 +69,7 @@ class TranslationSystem:
             return translation.format(**context)
         
         except KeyError:
-            return self.get_translation("error.457", key)
+            return self.get_translation("error.457", {"key": key})
 
     def __call__(self, key: str, *args) -> str:
         """
