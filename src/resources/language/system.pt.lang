@@ -1,0 +1,5 @@
+system.wake:[Oi;Sim;Estou Ouvindo;Fale;Yep]
+system.close:[Adeus. Senhor.;Tenha uma boa {{time_of_day}}. Senhor.]
+time.day.1:Manhã
+time.day.2:Tarde
+time.day.3:Noite
