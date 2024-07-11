@@ -21,20 +21,18 @@ class InstallSkill(argparse.Action):
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("-i", "--install-skill", action=InstallSkill, nargs=2, help="Install a skill")
+parser.add_argument("-p", "--install-skill", action=InstallSkill, nargs=2, help="Install a skill")
 parser.add_argument("-t", "--train", action="store_true", help="Train all the resources from Alex and exit")
-parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
+parser.add_argument("-s", "--start", help="Start Alex", default="en", choices=["en", "pt"])
 parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
-parser.add_argument("-c", "--cmd", action="store_true", help="Enters Comand Line Interface")
-parser.add_argument("-sr", "--server", action="store_true", help="Enters Server Interface")
-parser.add_argument("-vc", "--voice", action="store_true", help="Enters Voice Interace")
+parser.add_argument("-i", "--interface", help="Interface mode" , default="cmd", choices=["cmd", "server", "voice"])
 
 parser.add_argument("-v", "--version", action="version", version=f"Alex {VersionManager.get().get("coreVersion", "")}")
 
 args = parser.parse_args()
 
 if args.train or args.start:
-    
+
     alex = ALEX()
     alex.activate()
 
@@ -47,9 +45,9 @@ if args.train or args.start:
         alex.start()
 
 
-    if args.server:
+    if args.interface == "server":
         Server(alex)
-    elif args.voice:
+    elif args.interface == "voice":
         Voice(alex)
     else:
         ComandLine(alex)
