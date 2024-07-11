@@ -1,9 +1,9 @@
 import os
 import zipfile
 import argparse
-from core.system.ai.nexus import Nexus
-from core.system.interface import *
-from core.system.version import VersionManager
+from core.ALEX import ALEX
+from core.interface import *
+from core.version import VersionManager
 
 class InstallSkill(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
@@ -21,35 +21,38 @@ class InstallSkill(argparse.Action):
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("-i", "--install-skill", action=InstallSkill, nargs=2, help="Install a skill")
+parser.add_argument("-p", "--install-skill", action=InstallSkill, nargs=2, help="Install a skill")
 parser.add_argument("-t", "--train", action="store_true", help="Train all the resources from Alex and exit")
-parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
+parser.add_argument("-s", "--start", help="Start Alex", default="en", choices=["en", "pt"])
 parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
-parser.add_argument("-c", "--cmd", action="store_true", help="Enters Comand Line Interface")
-parser.add_argument("-sr", "--server", action="store_true", help="Enters Server Interface")
-parser.add_argument("-vc", "--voice", action="store_true", help="Enters Voice Interace")
+parser.add_argument("-i", "--interface", help="Interface mode" , default="cmd", choices=["cmd", "server", "voice"])
 
 parser.add_argument("-v", "--version", action="version", version=f"Alex {VersionManager.get().get("coreVersion", "")}")
 
 args = parser.parse_args()
 
-if args.train or args.start:
-    
-    Nexus.start_nexus()
+def main(args):
+    language = args.start
+
+    alex = ALEX(language)
+    alex.activate()
 
     if args.debug:
-        Nexus.request_ai("ALEX", "debugMode")
-    
-    if args.server:
-        Nexus.request_ai("ALEX", "interfaceMode", Server())
-    elif args.voice:
-        Nexus.request_ai("ALEX", "interfaceMode", Voice())
-    else:
-        Nexus.request_ai("ALEX", "interfaceMode", ComandLine())
-
+        alex.handle_request("debugMode")
 
     if args.train:
-        Nexus.request_ai("ALEX", "retrain")
+        alex.handle_request("retrain")
     else:
-        Nexus.call_ai("PRIA", "start")
+        alex.start()
 
+    if args.interface == "server":
+        Server(alex)
+    elif args.interface == "voice":
+        Voice(alex)
+    else:
+        ComandLine(alex)
+
+    BaseInterface.get().start()
+
+if __name__ == "__main__":
+    main(args)

@@ -1,5 +1,5 @@
-from core.system.intents.slots import SlotValueNumber, SlotValue
-from core.system.skills import BaseSkill
+from core.intents.slots import SlotValueNumber
+from core.skills import BaseSkill
 
 class Simple(BaseSkill):
      def __init__(self):
@@ -8,25 +8,25 @@ class Simple(BaseSkill):
 
      def execute(self, context, intent):
           super().execute(context, intent)
-          self.require("mathoperation", SlotValue)
+          self.require("mathoperation")
           self.optional("first_number", SlotValueNumber)
           self.optional("second_number", SlotValueNumber)
           self.optional("number", SlotValueNumber)
           
-          self.mathOp: SlotValue = self.slots["mathoperation"]
+          self.mathOp = self.slots["mathoperation"]
 
           op = self.convert()
 
           r = None
 
           if self.slot_exists("number"):
-               number: SlotValueNumber = self.slots["number"]
+               number: SlotValueNumber = self.slots["number"] # type: ignore
                last_result = self.alex_context.load("last_result")
                r = op(last_result, number.value)
 
           elif self.slot_exists("first_number", "second_number"):
-               fNumber: SlotValueNumber = self.slots["first_number"]
-               sNumber: SlotValueNumber = self.slots["second_number"]
+               fNumber: SlotValueNumber = self.slots["first_number"] # type: ignore
+               sNumber: SlotValueNumber = self.slots["second_number"] # type: ignore
                r = op(fNumber.value, sNumber.value)
                self.alex_context.save(r, "last_result")
           return self.responce_translated("result", {"result": r})

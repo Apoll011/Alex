@@ -1,7 +1,6 @@
-from core.system.intents.slots import SlotValue
-from core.system.skills import BaseSkill
-from core.system.config import path
 import os
+from core.config import path
+from core.skills import BaseSkill
 
 class Music(BaseSkill):
 	def __init__(self):
@@ -11,10 +10,14 @@ class Music(BaseSkill):
 
 	def execute(self, context, intent):
 		super().execute(context, intent)
-		self.optional("artist", SlotValue)
-		self.optional("track", SlotValue)
-		self.optional("album", SlotValue)
-		self.optional("genre", SlotValue)
+		self.optional("artist")
+		self.optional("track")
+		self.optional("album")
+		self.optional("genre")
+
+		if len(self.slots) == 0:
+			os.system(f"zsh \"{path}/skills/play/np.sh\" do playpause")
+			return
 		
 		flag = "-l"
 		pattern = ""

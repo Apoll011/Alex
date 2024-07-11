@@ -1,3 +1,10 @@
+# System
+- [x] Translation System for them
+- [ ] Fix stt in Voice interface
+- [ ] Async server for multiple conections
+- [ ] If server closes and reopens just reconnect without needing to close alex 
+- [ ] Change hoe are you sure and repeat by  intead of re running the skill use the last sentence speak
+
 # Skills
 ## Information & Learning
 - [ ] Learn@Basics - Provides explanations on fundamental concepts in various subjects.

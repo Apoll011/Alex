@@ -1,6 +1,6 @@
 from random import randint, random
-from core.system.skills import BaseSkill
-from core.system.intents.slots import SlotValueNumber
+from core.skills import BaseSkill
+from core.intents.slots import SlotValueNumber
 
 class Random(BaseSkill):
      def __init__(self):
@@ -14,7 +14,7 @@ class Random(BaseSkill):
           self.optional("smaller_number", SlotValueNumber)
           self.optional("bigger_number", SlotValueNumber)
           self.optional("type")
-          self.optional("signal")
+          self.optional("sign")
 
           result = 0
 
@@ -45,10 +45,10 @@ class Random(BaseSkill):
 
           self.alex_context.save(result, "last_result")
           self.responce_translated("tell.result", {"result": str(result) + ("i" if required_type == "imaginary" else "")})
-
+     
      def convert_signal(self):
-          if self.slot_exists("signal"):
-               if self.assert_equal("signal", "positive"):
+          if self.slot_exists("sign"):
+               if self.assert_equal("sign", "positive"):
                     return "+"
                else:
                     return "-"

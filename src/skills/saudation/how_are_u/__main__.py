@@ -1,4 +1,4 @@
-from core.system.skills import BaseSkill
+from core.skills import BaseSkill
 
 class HowAreU(BaseSkill):
      def __init__(self):

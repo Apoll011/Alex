@@ -1,5 +1,5 @@
-from core.system.skills.call import SkillCaller
-from core.system.skills import BaseSkill
+from core.skills.call import SkillCaller
+from core.skills import BaseSkill
 
 class Repeat(BaseSkill):
      def __init__(self):
@@ -7,6 +7,7 @@ class Repeat(BaseSkill):
           self.save_responce_for_context = False
           super().__init__()
 
+     #TODO: Change the implementation instead of rerunning a skill. just repeat the last said sentence.
      def execute(self, context, intent):
           super().execute(context, intent)
 

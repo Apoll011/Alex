@@ -1,6 +1,4 @@
-from core.system.skills import BaseSkill
-from core.system.ai.nexus import Nexus
-from core.system.intents.slots import SlotValue
+from core.skills import BaseSkill
 
 class RandomName(BaseSkill):
      def __init__(self):
@@ -14,8 +12,8 @@ class RandomName(BaseSkill):
           self.optional("gender")
 
           if self.slot_exists("gender"):
-               name = Nexus.request_ai("WEC", "getName", self.slots["gender"].value)
+               name = "Holdon"
           else:
-               name = Nexus.request_ai("WEC", "getName", None)
+               name = "Hold"
 
           self.responce_translated("say.name", {"name": name})

@@ -1,6 +1,6 @@
 import unittest
 from src.core.system.api.client import ApiClient
-from core.system.config import api
+from core.config import api
 
 class TestApi(unittest.TestCase):
     def setUp(self) -> None:

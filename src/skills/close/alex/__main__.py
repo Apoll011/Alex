@@ -1,7 +1,6 @@
-from core.system.skills import BaseSkill
-from core.system.ai.nexus import Nexus
-from core.system.api.client import ApiClient
-from core.system.intents.responce import BoolResponce
+from core.skills import BaseSkill
+from core.interface.base import BaseInterface
+from core.intents.responce import BoolResponce
 
 class Alex(BaseSkill):
      def __init__(self):
@@ -16,4 +15,4 @@ class Alex(BaseSkill):
      def after_responce(self, close_server):
           if close_server:
                pass 
-          Nexus.call_ai("ALEX", "deactivate")
+          BaseInterface.get().alex.deactivate()
