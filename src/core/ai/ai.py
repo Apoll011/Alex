@@ -1,13 +1,14 @@
 import sys
 import time
-from .context import AiContextUser
 from core.config import path
+from .translate import Translator
+from .context import AiContextUser
+from core.api.client import ApiClient
 from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
 from .screen import AiRepresentatorInScreen
-from core.api.client import ApiClient
 
-class AI(AiBluePrintUser, AiContextUser, AiRepresentatorInScreen, InternetUser):
+class AI(AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInScreen, InternetUser):
     """
     The main AI class
     """
