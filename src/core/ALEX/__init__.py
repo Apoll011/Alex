@@ -48,20 +48,26 @@ class ALEX(AI):
         """
             Process a text and execute an action
         """
+        if self.required_listen_input.is_accepted(text) or self.isListenProcessorDefault():
+            return self.execute_processor()
+        else:
+            return self.wrong_answer(text)
+    
+    def execute_processor(self):
         nextL = self.next_listen_processor
         nextA = self.next_processor_args
-        
-        if self.required_listen_input.is_accepted(text) or self.isListenProcessorDefault():
-            r = self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
-            if nextL == self.next_listen_processor and nextA == self.next_processor_args:
-                self.setDefaultListenProcessor() 
-            return r if isinstance(r, dict) else self.make_responce()
-        else:
-            joiner = self.translate("wrong.answer.joiner")
-            context = {"expected": f" {joiner} ".join(self.required_listen_input.replace.keys()), "entry": text}
-            if self.required_listen_input.hard_search:
-                return self.translate_responce("wrong.answer.hard", context)
-            return self.translate_responce("wrong.answer.soft", context)
+
+        r = self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
+        if nextL == self.next_listen_processor and nextA == self.next_processor_args:
+            self.setDefaultListenProcessor() 
+        return r if isinstance(r, dict) else self.make_responce()
+
+    def wrong_answer(self, text):
+        joiner = self.translate("wrong.answer.joiner")
+        context = {"expected": f" {joiner} ".join(self.required_listen_input.replace.keys()), "entry": text}
+        if self.required_listen_input.hard_search:
+            return self.translate_responce("wrong.answer.hard", context)
+        return self.translate_responce("wrong.answer.soft", context)
 
     def process_as_intent(self, text):
         promise = self.api.call_route("intent_recognition/parse", text)
@@ -71,15 +77,17 @@ class ALEX(AI):
         if intent.intent.intent_name != None:
             if self.debug_mode:
                 self.intentParser.draw_intent(intent)
-            try:
-                s = SkillCaller().call(intent)
-                s.execute(self._context, intent)
-            except Exception as e:
-                return self.translate_responce("error.during.skill", {"error": str(e)}, intent.json) 
+            return self.call_skill(intent)
         else:
             return self.translate_responce("intent.not.valid", intent=intent.json)
 
-        return self.make_responce()
+    def call_skill(self, intent):
+        try:
+            s = SkillCaller().call(intent)
+            s.execute(self._context, intent)
+            return self.make_responce()
+        except Exception as e:
+            return self.translate_responce("error.during.skill", {"error": str(e)}, intent.json) 
 
     def setListenProcessor(self, callback, responceType, *args):
         self.next_listen_processor = callback
@@ -95,4 +103,7 @@ class ALEX(AI):
         return self.next_listen_processor == self.process_as_intent
 
     def make_responce(self, message = "", intent = {}):
+        """
+        Make a responce spoke by the interface just instancieate witout any args will be a empy responce that wont be spoke by the interface.
+        """
         return {"message": message, "intent": intent}
