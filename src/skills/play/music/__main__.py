@@ -14,6 +14,10 @@ class Music(BaseSkill):
 		self.optional("track")
 		self.optional("album")
 		self.optional("genre")
+
+		if len(self.slots) == 0:
+			os.system(f"zsh \"{path}/skills/play/np.sh\" do playpause")
+			return
 		
 		flag = "-l"
 		pattern = ""
