@@ -1,0 +1,9 @@
+search.limit:Desculpe. esse numero excede meus limites de busca.
+prime.no:Não, {{number}} não e primo
+prime.yes:Sim, {{number}} é primo
+responce.no.even:Não, {{number}} é par
+responce.yes.even:Sim, {{number}} é par
+responce.no.odd: Não, {{number}} é impar
+responce.yes.odd: Sim. {{number}} é impar
+responce..even:{{number}}, é par
+responce..odd:{{number}}, é impar

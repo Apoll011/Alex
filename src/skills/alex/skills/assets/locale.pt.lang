@@ -1,0 +1,4 @@
+not.found:Não. Isso não é uma skil lvalida
+yes.avaliables:Sim eu posso fazer {{major}} para as seguintes coisas {{minors}}
+yes.avaliable:Eu so posso fazer {{major}} para {{minor}}
+yes.avaliable.one:Sim eu posso fazer {{major}} para {{minor}}
