@@ -26,38 +26,39 @@ class SlotValueFactory:
     @staticmethod
     def create(kind: str, **kwargs: Any) -> SlotValue:
         """Creates a SlotValue instance based on the kind parameter and additional keyword arguments"""
-        if kind == "InstantTime":
-            return SlotValueInstantTime(kind=kind, **kwargs)
-        elif kind == "AmountOfMoney":
-            return SlotValueAmountOfMoney(kind=kind, **kwargs)
-        elif kind == "Duration":
-            return SlotValueDuration(kind=kind, value="", **kwargs)
-        elif kind == "Number":
-            return SlotValueNumber(kind=kind, **kwargs)
-        elif kind == "Ordinal":
-            return SlotValueOrdinal(kind=kind, **kwargs)
-        elif kind == "Temperature":
-            return SlotValueTemperature(kind=kind, **kwargs)
-        elif kind == "TimeInterval":
-            return SlotValueTimeInterval(kind=kind, value="", from_=kwargs["from"], to=kwargs["to"])
-        elif kind == "Percentage":
-            return SlotValuePercentage(kind=kind, **kwargs)
-        elif kind == "MusicAlbum":
-            return SlotValueMusicAlbum(kind=kind, **kwargs)
-        elif kind == "MusicArtist":
-            return SlotValueMusicArtist(kind=kind, **kwargs)
-        elif kind == "MusicTrack":
-            return SlotValueMusicTrack(kind=kind, **kwargs)
-        elif kind == "City":
-            return SlotValueCity(kind=kind, **kwargs)
-        elif kind == "Country":
-            return SlotValueCountry(kind=kind, **kwargs)
-        elif kind == "Region":
-            return SlotValueRegion(kind=kind, **kwargs)
-        elif kind == "Custom":
-            return SlotValue(kind=kind, **kwargs)
-        else:
-            raise ValueError(f"Unknown kind of SlotValue: {kind}")
+        match kind:
+            case "Custom":
+                return SlotValue(kind=kind, **kwargs)
+            case "InstantTime":
+                return SlotValueInstantTime(kind=kind, **kwargs)
+            case "AmountOfMoney":
+                return SlotValueAmountOfMoney(kind=kind, **kwargs)
+            case "Duration":
+                return SlotValueDuration(kind=kind, value="", **kwargs)
+            case "Number":
+                return SlotValueNumber(kind=kind, **kwargs)
+            case "Ordinal":
+                return SlotValueOrdinal(kind=kind, **kwargs)
+            case "Temperature":
+                return SlotValueTemperature(kind=kind, **kwargs)
+            case "TimeInterval":
+                return SlotValueTimeInterval(kind=kind, value="", from_=kwargs["from"], to=kwargs["to"])
+            case "Percentage":
+                return SlotValuePercentage(kind=kind, **kwargs)
+            case "MusicAlbum":
+                return SlotValueMusicAlbum(kind=kind, **kwargs)
+            case "MusicArtist":
+                return SlotValueMusicArtist(kind=kind, **kwargs)
+            case "MusicTrack":
+                return SlotValueMusicTrack(kind=kind, **kwargs)
+            case "City":
+                return SlotValueCity(kind=kind, **kwargs)
+            case "Country":
+                return SlotValueCountry(kind=kind, **kwargs)
+            case "Region":
+                return SlotValueRegion(kind=kind, **kwargs)
+            case _:
+                raise ValueError(f"Unknown kind of SlotValue: {kind}")
 
 class SlotValueInstantTime(SlotValue):
     """Slot value representing an instant time"""
@@ -72,20 +73,21 @@ class SlotValueInstantTime(SlotValue):
 
     def to_datetime(self) -> datetime:
         """Converts the value to a datetime object"""
-        if self.precision == "year":
-            return datetime.strptime(self.value, "%Y")
-        elif self.precision == "month":
-            return datetime.strptime(self.value, "%Y-%m")
-        elif self.precision == "day":
-            return datetime.strptime(self.value, "%Y-%m-%d")
-        elif self.precision == "hour":
-            return datetime.strptime(self.value, "%Y-%m-%d %H")
-        elif self.precision == "minute":
-            return datetime.strptime(self.value, "%Y-%m-%d %H:%M")
-        elif self.precision == "second":
-            return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S")
-        else:
-            raise ValueError(f"Unknown precision: {self.precision}")
+        match self.precision: 
+            case "year":
+                return datetime.strptime(self.value, "%Y")
+            case "month":
+                return datetime.strptime(self.value, "%Y-%m")
+            case "day":
+                return datetime.strptime(self.value, "%Y-%m-%d")
+            case "hour":
+                return datetime.strptime(self.value, "%Y-%m-%d %H")
+            case "minute":
+                return datetime.strptime(self.value, "%Y-%m-%d %H:%M")
+            case "second":
+                return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S")
+            case _:
+                raise ValueError(f"Unknown precision: {self.precision}")
 
     def get_year(self) -> int | None:
         """Returns the year component of the value"""
