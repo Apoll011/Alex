@@ -5,7 +5,7 @@ class RandomName(BaseSkill):
           self.register("wec@random.name")
           self.save_responce_for_context = False
           self.can_go_again = True
-          super().__init__()
+          
 
      def execute(self, context, intent):
           super().execute(context, intent)

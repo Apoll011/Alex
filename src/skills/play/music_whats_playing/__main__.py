@@ -5,7 +5,7 @@ from core.skills import BaseSkill
 class MusicWhatsPlaying(BaseSkill):
      def init(self):
           self.register("play@music.whats.playing")
-          super().__init__()
+          
 
      def execute(self, context, intent):
           super().execute(context, intent)

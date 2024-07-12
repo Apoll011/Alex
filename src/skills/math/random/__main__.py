@@ -4,7 +4,7 @@ from core.intents.slots import SlotValueNumber
 
 class Random(BaseSkill):
      def init(self):
-          super().__init__()
+          
           self.register("math@random")
           self.can_go_again = True
           self.save_responce_for_context = False

@@ -5,7 +5,7 @@ from math import sin, cos, sqrt, cosh, sinh, tan, tanh
 class Geometry(BaseSkill):
      def init(self):
           self.register("math@geometry")
-          super().__init__()
+          
 
      def execute(self, context, intent):
           super().execute(context, intent)

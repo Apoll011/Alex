@@ -5,7 +5,7 @@ class Repeat(BaseSkill):
      def init(self):
           self.register("alex@repeat")
           self.save_responce_for_context = False
-          super().__init__()
+          
 
      #TODO: Change the implementation instead of rerunning a skill. just repeat the last said sentence.
      def execute(self, context, intent):

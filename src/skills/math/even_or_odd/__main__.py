@@ -6,7 +6,7 @@ class EvenOrOdd(BaseSkill):
 
      def init(self):
           self.register("math@even.or.odd")
-          super().__init__()
+          
 
      def is_prime(self):
           if self.number.value > self.prime_search_limit:

@@ -6,7 +6,7 @@ class MusicDo(BaseSkill):
      def init(self):
           self.register("play@music.do")
           self.save_responce_for_context = False
-          super().__init__()
+          
 
      def execute(self, context, intent):
           super().execute(context, intent)

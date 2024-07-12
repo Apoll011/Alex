@@ -5,7 +5,7 @@ from core.skills import BaseSkill
 class Skills(BaseSkill):
      def init(self):
           self.register("alex@skills")
-          super().__init__()
+          
 
      def execute(self, context, intent):
           super().execute(context, intent)

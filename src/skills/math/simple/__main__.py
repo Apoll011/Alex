@@ -4,7 +4,7 @@ from core.skills import BaseSkill
 class Simple(BaseSkill):
      def init(self):
           self.register("math@simple")
-          super().__init__()
+          
 
      def execute(self, context, intent):
           super().execute(context, intent)
