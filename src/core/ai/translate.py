@@ -3,8 +3,11 @@ from core.config import path
 from core.translate import TranslationSystem
 
 class Translator:
-    def init_translator(self, language = "en"):
-        self.translationSystem = TranslationSystem(language)
+
+    language: str
+    
+    def init_translator(self):
+        self.translationSystem = TranslationSystem(self.language)
 
     def translate(self, key: str, context: dict[str, Any] | None = None):
         return self.translationSystem.get_translation(key, context)

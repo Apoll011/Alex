@@ -34,26 +34,28 @@ args = parser.parse_args()
 def main(args):
     language = args.start
 
-    if not language == None:
-        alex = ALEX(language)
-        alex.activate()
-
-    if args.debug:
-        alex.handle_request("debugMode")
-
+    alex = ALEX()
+    
     if args.train:
         alex.handle_request("retrain")
-    else:
+
+    if not language == None:
+        alex.set_language(language)
+        alex.activate()
+
+        if args.debug:
+            alex.handle_request("debugMode")
+    
         alex.start()
 
-    if args.interface == "server":
-        Server(alex)
-    elif args.interface == "voice":
-        Voice(alex)
-    else:
-        ComandLine(alex)
+        if args.interface == "server":
+            Server(alex)
+        elif args.interface == "voice":
+            Voice(alex)
+        else:
+            ComandLine(alex)
 
-    BaseInterface.get().start()
+        BaseInterface.get().start()
 
 if __name__ == "__main__":
     main(args)
