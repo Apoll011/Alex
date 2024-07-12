@@ -20,12 +20,7 @@ class Random(BaseSkill):
 
           required_signal = self.convert_signal()
           required_type = self.convert_type()
-          number_range = self.getnumber_range()
-
-          if number_range:
-               smaller_number, bigger_number = number_range
-          else:
-               smaller_number, bigger_number = self.skill_settings['min'], self.skill_settings["max"]
+          smaller_number, bigger_number = self.getnumber_range()
 
           if required_type == "even":
                result = randint(smaller_number // 2 * 2, bigger_number // 2 * 2)
@@ -42,6 +37,8 @@ class Random(BaseSkill):
                result = abs(result)
           elif required_signal == "-":
                result = -abs(result)
+          
+          result = self.round(result)
 
           self.alex_context.save(result, "last_result")
           self.responce_translated("tell.result", {"result": str(result) + ("i" if required_type == "imaginary" else "")})
@@ -62,4 +59,8 @@ class Random(BaseSkill):
      def getnumber_range(self):
           if self.slot_exists("smaller_number") and self.slot_exists("bigger_number"):
                return (int(self.slots["smaller_number"].value), int(self.slots["bigger_number"].value))
-          return None
+          return self.skill_settings['min'], self.skill_settings["max"]
+     
+     def round(self, result):
+          r = "{:.4f}".format(result)
+          return float(r)

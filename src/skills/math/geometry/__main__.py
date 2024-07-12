@@ -1,5 +1,5 @@
-from core.intents.slots import SlotValueNumber
 from core.skills import BaseSkill
+from core.intents.slots import SlotValueNumber
 from math import sin, cos, sqrt, cosh, sinh, tan, tanh
 
 class Geometry(BaseSkill):
@@ -31,8 +31,13 @@ class Geometry(BaseSkill):
           elif self.assert_equal("func", "tanh"):
                r = tanh(self.number.value)
           
+          r = self.round(r)
+          
           self.alex_context.save(r, "last_result")
           
           return self.responce_translated("result", {"result": r})
 
+     def round(self, result):
+          r = "{:.4f}".format(result)
+          return float(r)
      
