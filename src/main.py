@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument("-p", "--install-skill", action=InstallSkill, nargs=2, help="Install a skill")
 parser.add_argument("-t", "--train", action="store_true", help="Train all the resources from Alex and exit")
-parser.add_argument("-s", "--start", help="Start Alex", default="en", choices=["en", "pt"])
+parser.add_argument("-s", "--start", help="Start Alex", choices=["en", "pt"])
 parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
 parser.add_argument("-i", "--interface", help="Interface mode" , default="cmd", choices=["cmd", "server", "voice"])
 
@@ -34,8 +34,9 @@ args = parser.parse_args()
 def main(args):
     language = args.start
 
-    alex = ALEX(language)
-    alex.activate()
+    if not language == None:
+        alex = ALEX(language)
+        alex.activate()
 
     if args.debug:
         alex.handle_request("debugMode")
