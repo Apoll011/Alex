@@ -1,6 +1,6 @@
 import os
 
-__lang__ = "pt"
+DEFALUT_LANG = "en"
 
 path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/Alex/src")
 

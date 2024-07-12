@@ -1,6 +1,7 @@
-from .config import path
-from random import choice
 import re
+import os
+from random import choice
+from .config import path, DEFALUT_LANG
 
 class TranslationSystem:
     """
@@ -35,6 +36,9 @@ class TranslationSystem:
             dict: A dictionary of translations, where keys are translation keys and values are translated strings
         """
         file_path = f"{self.language_path}/{self.file}.{self.lang}.lang"
+        if not os.path.isfile(file_path):
+            file_path = f"{self.language_path}/{self.file}.{DEFALUT_LANG}.lang"
+
         with open(file_path, "r", encoding="UTF-8") as f:
             translations = {}
             for line in f:
