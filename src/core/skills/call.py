@@ -11,14 +11,16 @@ def prety_name(name: str):
 
 
 class SkillCaller:
-    def __init__(self) -> None:
-        pass
+    language: str
+
+    def __init__(self, language = "en") -> None:
+        self.language = language        
 
     def call(self, intent: IntentResponse):
         path, skillname = prety_name(intent.intent.intent_name)
 
         skill = importlib.import_module(path + ".__main__")
 
-        instance: BaseSkill = getattr(skill, skillname)()
+        instance: BaseSkill = getattr(skill, skillname)(self.language)
 
         return instance

@@ -29,6 +29,8 @@ class ALEX(AI):
         self.voice_mode = False
         
         self.setDefaultListenProcessor()
+
+        self.skill_caller = SkillCaller(self.language)
         
     def start(self):
         self.clear()
@@ -83,8 +85,8 @@ class ALEX(AI):
 
     def call_skill(self, intent):
         try:
-            s = SkillCaller().call(intent)
-            s.execute(self._context, intent)
+            skill = self.skill_caller.call(intent)
+            skill.execute(self._context, intent)
             return self.make_responce()
         except Exception as e:
             return self.translate_responce("error.during.skill", {"error": str(e)}, intent.json) 

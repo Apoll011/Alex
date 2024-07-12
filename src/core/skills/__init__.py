@@ -27,8 +27,11 @@ class BaseSkill:
      can_go_again = False
 
      skill_settings: dict 
+     
+     language: str
 
-     def __init__(self):
+     def __init__(self, language = "en"):
+          self.language = language
           self.slots = {}
           self.name: str
           self.is_api: bool = False
@@ -50,7 +53,7 @@ class BaseSkill:
           path, skname = self.prety_name(name)
           self.skill_dir = p + "/" + path
           self.get_local_settings()
-          self.translate = TranslationSystem("en", "locale", path + "/assets/")
+          self.translate = TranslationSystem(self.language, "locale", path + "/assets/")
      
      def require(self, slot_name: str, slot_type = SlotValue):
           if slot_name in self.intent.slots.keys() and isinstance(self.intent.slots[slot_name].value, slot_type):
