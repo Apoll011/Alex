@@ -1,7 +1,7 @@
 from core.skills import BaseSkill
 
 class Something(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("close@something")
           super().__init__()
 

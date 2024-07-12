@@ -3,7 +3,7 @@ from core.interface.base import BaseInterface
 from core.intents.responce import BoolResponce
 
 class Alex(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("close@alex")
           self.save_responce_for_context = False
           super().__init__()

@@ -3,7 +3,7 @@ from core.config import path
 from core.skills import BaseSkill
 
 class Skills(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("alex@skills")
           super().__init__()
 

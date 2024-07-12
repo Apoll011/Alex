@@ -1,7 +1,7 @@
 from core.skills import BaseSkill
 
 class RandomName(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("wec@random.name")
           self.save_responce_for_context = False
           self.can_go_again = True

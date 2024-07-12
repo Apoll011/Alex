@@ -3,7 +3,7 @@ from core.skills import BaseSkill
 from core.intents.slots import SlotValueNumber
 
 class Random(BaseSkill):
-     def __init__(self):
+     def init(self):
           super().__init__()
           self.register("math@random")
           self.can_go_again = True

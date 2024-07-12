@@ -2,7 +2,7 @@ from core.skills.call import SkillCaller
 from core.skills import BaseSkill
 
 class Repeat(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("alex@repeat")
           self.save_responce_for_context = False
           super().__init__()

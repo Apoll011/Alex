@@ -2,7 +2,7 @@ from core.intents.slots import SlotValueNumber
 from core.skills import BaseSkill
 
 class Simple(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("math@simple")
           super().__init__()
 

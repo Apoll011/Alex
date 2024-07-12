@@ -1,7 +1,7 @@
 from core.skills import BaseSkill
 
 class HowAreU(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("saudation@how.are.u")
           super().__init__()
 

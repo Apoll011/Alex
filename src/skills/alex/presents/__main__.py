@@ -1,7 +1,7 @@
 from core.skills import BaseSkill
 
 class Presents(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("alex@presents")
           self.save_responce_for_context = False
           super().__init__()

@@ -38,6 +38,10 @@ class BaseSkill:
           self.save_responce_for_context = True
           self.can_go_again = False
           self.skill_settings: dict = {}
+
+          self.init()
+
+     def init(self): ...
      
      def set_as_api(self):
           self.is_api = True

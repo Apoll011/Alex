@@ -2,7 +2,7 @@ from core.skills.call import SkillCaller
 from core.skills import BaseSkill
 
 class AreUSure(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("alex@are.u.sure")
           self.save_responce_for_context = False
           super().__init__()

@@ -3,7 +3,7 @@ from core.config import path
 from core.skills import BaseSkill
 
 class MusicDo(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("play@music.do")
           self.save_responce_for_context = False
           super().__init__()

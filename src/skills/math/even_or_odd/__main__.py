@@ -4,7 +4,7 @@ from core.skills import BaseSkill
 class EvenOrOdd(BaseSkill):
      prime_search_limit = 5000
 
-     def __init__(self):
+     def init(self):
           self.register("math@even.or.odd")
           super().__init__()
 

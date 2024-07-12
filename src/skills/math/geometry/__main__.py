@@ -3,7 +3,7 @@ from core.skills import BaseSkill
 from math import sin, cos, sqrt, cosh, sinh, tan, tanh
 
 class Geometry(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("math@geometry")
           super().__init__()
 

@@ -5,7 +5,7 @@ from core.interface.base import BaseInterface
 from core.intents.responce import BoolResponce, SomethingFromListOrNoneResponce
 
 class Get(BaseSkill):
-     def __init__(self):
+     def init(self):
           self.register("dictionary@get")
           self.save_responce_for_context = False
           super().__init__()
