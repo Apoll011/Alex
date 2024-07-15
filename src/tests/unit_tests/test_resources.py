@@ -1,6 +1,6 @@
 import unittest
-from src.core.system.resources.application import Application
-from src.core.system.resources.data_files import DataFile
+from core.resources.application import Application
+from core.resources.data_files import DataFile
 
 class ApplicationResources(unittest.TestCase):
     def test_getPath(self):

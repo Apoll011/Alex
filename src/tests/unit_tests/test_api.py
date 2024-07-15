@@ -1,5 +1,5 @@
 import unittest
-from src.core.system.api.client import ApiClient
+from core.api.client import ApiClient
 from core.config import api
 
 class TestApi(unittest.TestCase):
@@ -11,7 +11,7 @@ class TestApi(unittest.TestCase):
         self.assertEqual(self.api.active, True, "Error Server Not Active")
 
     def test_api_responce(self):
-        p = self.api.call_route("users/search/name", {"query": "Tiago"})
+        p = self.api.call_route_async("users/search/name", {"query": "Tiago"})
         p.then(lambda data: self.assertEqual(data["result"], "0000000001", "Something went  wrong with inexisting errors."))
         # Assert the result
         

@@ -1,5 +1,5 @@
 import unittest
-from src.core.system.error import Error
+from core.error import Error
 
 class TestError(unittest.TestCase):
     def test_error_exist(self):

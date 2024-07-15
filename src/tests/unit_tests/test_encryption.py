@@ -1,5 +1,5 @@
 import unittest
-from src.core.system.security.encryption import cryptografy
+from core.security.encryption import cryptografy
 
 class EncryptionTest(unittest.TestCase):
     def test_encrypt_match(self):
