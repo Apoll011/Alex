@@ -49,7 +49,12 @@ class BaseInterface:
         Registers the Interface
         """
         BaseInterface._registry = self
+        BaseInterface._name = self.__class__.__name__
 
     @classmethod
     def get(cls):
         return cls._registry
+    
+    @classmethod
+    def get_name(cls):
+        return cls._name
