@@ -4,6 +4,7 @@ import glob
 from core.ai.ai import AI
 from core.config import api, path
 from core.api.client import ApiClient
+from core.interface.base import BaseInterface
 from core.ai.blueprint import AiBluePrintSkeleton
 from core.resources.application import Application
 
@@ -78,27 +79,36 @@ def check_api(alex: AI):
         raise ServerClosed()
     
     kits = responce["kit"]
-
+    
     if not kits["all_on"]:
-        alex.print_header_text("Server Changed", 3)
-        print("Detected a change in the server re-importing the kits. Please Wait")
+        print("\33[0m")
+        if alex.debug_mode:
+            alex.print_header_text("Server Changed", 3)
+        say_or_print_debug("Detected a change in the server re-importing the kits. Please Wait.", alex)
     else:
         return
 
     if not kits["user"]:
-        print("\33[32mUsers not loaded Loading...")
+        say_or_print_debug("Users not loaded. Loading.", alex)
 
     if not kits["intent"]:
-        print("\33[32mIntent not loaded Loading...")
+        say_or_print_debug("Intent not loaded. Loading.", alex)
         alex.api.call_route("intent_recognition/get/reuse")
-        print("\33[34mDone loading Intent")
+        say_or_print_debug("Done loading Intent", alex)
     
     if not kits["dictionary"]:
-        print("\33[32mDictionary not loaded Loading...")
+        say_or_print_debug("Dictionary not loaded. Loading.", alex)
         alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
-        print("\33[34mDone loading Dictionary")
+        say_or_print_debug("Done loading Dictionary.", alex)
 
-    alex.print_header_text("Done", 3)
+    if alex.debug_mode:
+        alex.print_header_text("Done", 3)
+
+def say_or_print_debug(text, alex):
+    if alex.debug_mode:
+        print(f"{text}")
+    else:
+        alex.speak(alex.make_responce(text))
 
 @alexSkeleton.request_action("sendToApi")
 def sendApi(alex: AI, route: str, value: str | dict[str, str] = ""):
