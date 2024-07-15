@@ -4,6 +4,7 @@ from core.intents import IntentResponse
 class BaseInterface:
     closed = False
     _registry: 'BaseInterface'
+    _name: str
 
     request_sentence: str
 
