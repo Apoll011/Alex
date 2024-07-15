@@ -9,6 +9,7 @@ class BaseInterface:
 
     def __init__(self, alex: AI):
         self.alex = alex
+        print("Starting on interface:\33[32m", self.__class__.__name__,"\33[0m")
         self.request_sentence = alex.translate("system.request")
         self.register()
         
