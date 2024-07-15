@@ -15,6 +15,7 @@ class ComandLine(BaseInterface):
         if data['message'] != "":
             if self.waiting_for_message:
                 print()
+                self.waiting_for_message = False
             print(f"\33[0m{voice}: \33[36m{data['message']}\33[0m")
             if voice_mode:
                 Voice.s(data, voice, voice_command, False)
