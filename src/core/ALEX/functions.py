@@ -122,6 +122,10 @@ def delete_ctx(alex: AI):
     for f in files:
         os.remove(f)
 
+@alexSkeleton.deactivate_action("Closing Scheduler")
+def stopt_scheduler(alex: AI):
+    alex.stopt_scheduler()
+
 class ServerClosed(Exception):
     def __init__(self) -> None:
         super().__init__("The Alex Base Server Is Closed.")
