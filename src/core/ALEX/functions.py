@@ -135,7 +135,7 @@ def delete_ctx(alex: AI):
 
 @alexSkeleton.deactivate_action("Closing Scheduler")
 def stopt_scheduler(alex: AI):
-    alex.stopt_scheduler()
+    alex.stopt_scheduler(True)
 
 class ServerClosed(Exception):
     def __init__(self) -> None:
