@@ -1,0 +1,2 @@
+timer.fire:[The timer was fired;The timer had finished;Time is off]
+timer.defined:A timer was defined for {{time}}
