@@ -16,6 +16,8 @@ class AiBluePrintSkeleton:
 
     }
 
+    scheduled_funcs = []
+
     def __init__(self) -> None:
         self.init_actions = {}
         self.deactivate_actions = {}
@@ -71,6 +73,28 @@ class AiBluePrintSkeleton:
                 return fun(*args, **kwargs)
             return wrapper
         return decorator
+    
+    def scheduled(self, time: int, priority: int, recurring = True):
+        """
+        Decorator to register a schedulled event
+
+        Args:
+            time (int): Time took to execute it
+            priority (int): The priority of the event lower value = Higher Priority
+            recurring (bool): If event is recuring or not
+
+        Returns:
+            A decorator function
+        """
+        def decorator(fun):
+            if recurring:
+                self.scheduled_funcs.append(lambda alex: alex.schedule_recurent(time, priority, fun, alex))
+            else:
+                self.scheduled_funcs.append(lambda alex: alex.schedule(time, priority, fun, alex))
+            def wrapper(*args, **kwargs):
+                return fun(*args, **kwargs)
+            return wrapper
+        return decorator
 
 class AiBluePrintUser:
     """
@@ -102,6 +126,8 @@ class AiBluePrintUser:
     """
         List to track completed init actions
     """
+
+    scheduled_funcs = []
 
     done_init_actions = False
     """
@@ -142,6 +168,7 @@ class AiBluePrintUser:
         self.init_actions = blueprint.init_actions | self.init_actions
         self.deactivate_actions = blueprint.deactivate_actions | self.deactivate_actions
         self.request_actions = blueprint.request_actions | self.request_actions
+        self.scheduled_funcs = blueprint.scheduled_funcs + self.scheduled_funcs
         
     def run_init_actions(self):
         """
@@ -159,3 +186,7 @@ class AiBluePrintUser:
         for action in self.deactivate_actions:
             print("\33[32mRunning", action, "\33[97m")
             self.deactivate_actions[action](self)
+
+    def register_scheduled_funcs(self):
+        for e in self.scheduled_funcs:
+            e(self)
