@@ -10,6 +10,7 @@ from core.translate import TranslationSystem
 from core.interface.base import BaseInterface
 from .error import SkillIntentError, SkillSlotNotFound
 
+#TODO: Add a method for getting slot value 
 class BaseSkill:
      name: str
 
