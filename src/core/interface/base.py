@@ -1,4 +1,5 @@
 from core.ai.ai import AI
+from core.log import LOG
 from core.intents import IntentResponse
 
 class BaseInterface:
@@ -10,6 +11,7 @@ class BaseInterface:
 
     def __init__(self, alex: AI):
         self.alex = alex
+        LOG.info(f"Started interface {self.__class__.__name__}")
         print("Starting on interface:\33[32m", self.__class__.__name__,"\33[0m")
         self.request_sentence = alex.translate("system.request")
         self.register()
@@ -35,11 +37,14 @@ class BaseInterface:
     def loop(self): 
         self.alex.loop()
 
-    def close(self): 
+    def close(self):
+        LOG.info("Deactivating Alex")
         self.closed = True
         self.alex.deactivate()
+        LOG.info("Closed Alex")
 
     def user_conect(self, data):
+        LOG.info("User Conected")
         self.alex.handle_request("userConect")
         
     def change_mode(self, data: dict):

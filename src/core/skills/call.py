@@ -1,7 +1,8 @@
 import importlib
+from core.log import LOG
+from core.skills import BaseSkill
 from core.intents import IntentResponse
 from core.context import ContextManager
-from core.skills import BaseSkill
 
 def prety_name(name: str):
     s = name.split("@")
@@ -19,8 +20,12 @@ class SkillCaller:
     def call(self, intent: IntentResponse):
         path, skillname = prety_name(intent.intent.intent_name)
 
-        skill = importlib.import_module(path + ".__main__")
-
-        instance: BaseSkill = getattr(skill, skillname)(self.language)
+        try:
+            skill = importlib.import_module(path + ".__main__")
+            instance: BaseSkill = getattr(skill, skillname)(self.language)
+        except ModuleNotFoundError:
+            LOG.error(f"The Skill {intent.intent.intent_name} was not found")
+        except AttributeError:
+            LOG.error(f"The Skill {intent.intent.intent_name} is wronglly implemented.")
 
         return instance

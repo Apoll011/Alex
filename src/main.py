@@ -1,6 +1,7 @@
 import os
 import zipfile
 import argparse
+from core.log import LOG
 from core.ALEX import ALEX
 from core.interface import *
 from core.version import VersionManager
@@ -33,18 +34,22 @@ parser.add_argument("-v", "--version", action="version", version=f"Alex {Version
 args = parser.parse_args()
 
 def main(args):
+    LOG.init()
     language = args.language
 
     alex = ALEX()
 
     if args.start:
         alex.set_language(language)
+        LOG.info("Activating alex Alex")
         alex.activate()
 
         if args.debug:
+            LOG.init("Debug Mode")
             alex.handle_request("debugMode")
         
         if args.train:
+            LOG.info("Training server")
             alex.handle_request("retrain")
     
         alex.start()
@@ -57,6 +62,7 @@ def main(args):
             ComandLine(alex)
 
         try:
+            LOG.info("Started Alex")
             BaseInterface.get().start()
         except KeyboardInterrupt:
             print()

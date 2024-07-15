@@ -52,7 +52,7 @@ class LOG:
         log_level can be "CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG"
         """
         log_message_format = (
-            '{asctime} | {levelname:8} | {process:5} | {name} | {message}'
+            'Alex - {asctime} | {levelname:8} | {process:5} | {name} | {message}'
         )
 
         formatter = logging.Formatter(log_message_format, style='{')
@@ -71,9 +71,6 @@ class LOG:
         logger.propagate = False
         logger.addHandler(cls.handler) # type: ignore
         return logger
-
-    def __init__(self, name):
-        LOG._custom_name = name
 
     @classmethod
     def _log(cls, func, *args, **kwargs):

@@ -1,5 +1,6 @@
 import re
 import os
+from core.log import LOG
 from random import choice
 from .config import path, DEFALUT_LANG
 
@@ -23,6 +24,7 @@ class TranslationSystem:
         """
         self.lang = lang
         self.file = file
+        self.path = path
         self.language_path = path + "/"+ path_file
         self.translations = self.load_translations()
         self.translations.update({"error.451": "The key {key} does not have a valid output"})
@@ -73,6 +75,7 @@ class TranslationSystem:
             return translation.format(**context)
         
         except KeyError:
+            LOG.warning(f"The Key {key} was not found in {self.file} on path {self.path}")
             return self.get_translation("error.457", {"key": key})
 
     def __call__(self, key: str, *args) -> str:
