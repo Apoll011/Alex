@@ -197,6 +197,10 @@ class SlotValueDuration(SlotValue):
         else:
             return ", ".join(parts[:-1]) + f", and {parts[-1]}"
 
+    def toDateTime(self):
+        return datetime(self.years, (self.quarters * 3) + self.months, (self.weeks * 7) + self.days, self.hours, self.minutes, self.minutes)
+
+
 @dataclass
 class SlotValueNumber(SlotValue):
     """Slot value representing a number"""
