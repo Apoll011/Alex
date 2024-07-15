@@ -69,6 +69,7 @@ def debug_mode(alex: AI):
     alex.debug_mode = True
 
 @alexSkeleton.request_action("checkApi")
+@alexSkeleton.scheduled(5, 10)
 def check_api(alex: AI):
     api_responce = alex.api.call_route("alex/alive")
     responce = api_responce.response
