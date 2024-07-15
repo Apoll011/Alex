@@ -28,7 +28,7 @@ class ALEX(AI):
         self.voice_mode = False
         
         self.setDefaultListenProcessor()
-        
+        self.register_scheduled_funcs()
     
     def set_language(self, lang = "en"):
         self.language = lang
@@ -48,6 +48,7 @@ class ALEX(AI):
         self.speak(self.translate("system.wake"))
     
     def end(self):
+        self.stopt_scheduler()
         time_of_day = self.translate(f"time.day.{get_time_of_day()}")
         self.speak(self.make_responce(self.translate("system.close", {"time_of_day": time_of_day})))
         sys.exit(0)
