@@ -36,9 +36,6 @@ def main(args):
     language = args.language
 
     alex = ALEX()
-    
-    if args.train:
-        alex.handle_request("retrain")
 
     if args.start:
         alex.set_language(language)
@@ -46,6 +43,9 @@ def main(args):
 
         if args.debug:
             alex.handle_request("debugMode")
+        
+        if args.train:
+            alex.handle_request("retrain")
     
         alex.start()
 
