@@ -2,6 +2,7 @@ import sys
 import time
 from .dna import AlexDna
 from core.config import path
+from .scheduler import Scheduler
 from .translate import Translator
 from .context import AiContextUser
 from core.api.client import ApiClient
@@ -9,7 +10,7 @@ from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
 from .screen import AiRepresentatorInScreen
 
-class AI(AlexDna, AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInScreen, InternetUser):
+class AI(AlexDna, AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInScreen, InternetUser, Scheduler):
     """
     The main AI class
     """
@@ -38,6 +39,8 @@ class AI(AlexDna, AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInS
         self.done_init_actions = False
 
         self.sig = sig
+
+        self.start_scheduller()
 
     def activate(self):
         """
