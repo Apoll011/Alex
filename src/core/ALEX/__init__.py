@@ -39,8 +39,8 @@ class ALEX(AI):
         self.clear()
     
     def loop(self):
-        self.handle_request("checkApi")
-        
+        pass
+    
     def speak(self, data, voice: str = 'Alex', voice_command = None):
         BaseInterface.get().speak(data, voice, voice_command, self.voice_mode | False)
     
