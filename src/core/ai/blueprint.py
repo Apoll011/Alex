@@ -1,3 +1,5 @@
+from core.config import EventPriority
+
 class AiBluePrintSkeleton:
     """
     A blueprint skeleton class for AI-related actions
@@ -74,7 +76,7 @@ class AiBluePrintSkeleton:
             return wrapper
         return decorator
     
-    def scheduled(self, time: int, priority: int, recurring = True):
+    def scheduled(self, time: int, priority: EventPriority, recurring = True):
         """
         Decorator to register a schedulled event
 

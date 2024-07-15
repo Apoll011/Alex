@@ -1,4 +1,13 @@
 import os
+from enum import Enum
+
+class EventPriority(Enum):
+    SYSTEM = 1
+    ALEX = 0
+    SKILLS = 2
+    UI_UX = 3
+    OTHERS = 4
+    APPS = 3
 
 DEFALUT_LANG = "en"
 

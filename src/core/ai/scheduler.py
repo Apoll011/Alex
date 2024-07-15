@@ -1,4 +1,5 @@
 from core.event_scheduler import *
+from core.config import EventPriority
 
 class Scheduler:
     event_scheduler: EventScheduler
@@ -16,7 +17,7 @@ class Scheduler:
         """
         return self.event_scheduler.stop(hard_stop)
 
-    def schedule(self, delay, priority, action, *args, **kwargs):
+    def schedule(self, delay, priority: EventPriority, action, *args, **kwargs):
         """
         Schedule an event with a callable action to be executed after the delay. Events will be executed according to their delay and priority (lower number = higher priority). arguments holds positional arguments and kwargs hold keyword arguments for the action. Returns an event object which can be used to cancel the event.
 
@@ -33,9 +34,9 @@ class Scheduler:
             kwargs (:obj:`dict`, optional): Keyword arguments for the action.
 
         """
-        return self.event_scheduler.enter(delay, priority, action, arguments=args, kwargs=kwargs)
+        return self.event_scheduler.enter(delay, priority.value, action, arguments=args, kwargs=kwargs)
     
-    def schedule_recurent(self, interval, priority, action, *args, **kwargs):
+    def schedule_recurent(self, interval, priority: EventPriority, action, *args, **kwargs):
         """
         Enter a new recurring event in the queue to occur at a specified
         interval.
@@ -65,7 +66,7 @@ class Scheduler:
             Long running actions will stall the internal thread and may impact
             the scheduling of other events.
         """
-        return self.event_scheduler.enter_recurring(interval, priority, action, arguments=args, kwargs=kwargs)
+        return self.event_scheduler.enter_recurring(interval, priority.value, action, arguments=args, kwargs=kwargs)
     
 
     def cancel(self, event: Event):
