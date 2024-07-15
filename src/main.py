@@ -56,7 +56,10 @@ def main(args):
         else:
             ComandLine(alex)
 
-        BaseInterface.get().start()
-
+        try:
+            BaseInterface.get().start()
+        except KeyboardInterrupt:
+            print()
+            BaseInterface.get().close()
 if __name__ == "__main__":
     main(args)

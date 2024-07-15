@@ -35,6 +35,7 @@ class BaseInterface:
 
     def close(self): 
         self.closed = True
+        self.alex.deactivate()
 
     def user_conect(self, data):
         self.alex.handle_request("userConect")
