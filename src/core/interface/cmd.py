@@ -18,5 +18,5 @@ class ComandLine(BaseInterface):
     def loop(self):
         message = input(f"{self.request_sentence}: \33[32m")
         print("\33[0m", end="")
-        self.input({"message": message})
         super().loop()
+        self.input({"message": message})

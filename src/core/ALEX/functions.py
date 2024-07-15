@@ -25,20 +25,27 @@ def set_api_con(self, alex: AI):
     alex.api = ApiClient(api['host'], api['port'])
     alex.finish(self)
 
-@alexSkeleton.init_action("Geting intents engine")
-def train_intents(self, alex: AI):
-    promise = alex.api.call_route_async("intent_recognition/get/reuse")
-    promise.then(lambda data: alex.finish(self))
 
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):
     p = alex.api.call_route_async("users/search/tags", {"query": "Master"})
     p.then(lambda user: alex.finish_and_set(self, "master", alex.api.call_route("users/get", user.response["users"][0]).response))
 
+@alexSkeleton.init_action("Geting intents engine")
+def train_intents(self, alex: AI):
+    promise = alex.api.call_route_async("intent_recognition/get/reuse")
+    promise.then(lambda data: alex.finish(self))
+
 @alexSkeleton.init_action("Geting dictionary engine")
 def load_dictionary(self, alex: AI):
-    d = alex.api.call_route("dictionary/load", "en")
+    d = alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
     alex.finish(self)
+
+@alexSkeleton.init_action("Checking the Api")
+def checking_The_api(self, alex: AI):
+    check_api(alex)
+    alex.finish(self)
+
 
 @alexSkeleton.request_action("retrain")
 def train_engine(alex: AI):
@@ -60,6 +67,37 @@ def train_engine(alex: AI):
 @alexSkeleton.request_action("debugMode")
 def debug_mode(alex: AI):
     alex.debug_mode = True
+
+@alexSkeleton.request_action("checkApi")
+def check_api(alex: AI):
+    api_responce = alex.api.call_route("alex/alive")
+    responce = api_responce.response
+
+    if "on" not in responce.keys():
+        raise ServerClosed()
+    
+    kits = responce["kit"]
+
+    if not kits["all_on"]:
+        alex.print_header_text("Server Changed", 3)
+        print("Detected a change in the server re-importing the kits. Please Wait")
+    else:
+        return
+
+    if not kits["user"]:
+        print("\33[32mUsers not loaded Loading...")
+
+    if not kits["intent"]:
+        print("\33[32mIntent not loaded Loading...")
+        alex.api.call_route("intent_recognition/get/reuse")
+        print("\33[34mDone loading Intent")
+    
+    if not kits["dictionary"]:
+        print("\33[32mDictionary not loaded Loading...")
+        alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
+        print("\33[34mDone loading Dictionary")
+
+    alex.print_header_text("Done", 3)
 
 @alexSkeleton.request_action("sendToApi")
 def sendApi(alex: AI, route: str, value: str | dict[str, str] = ""):
@@ -83,3 +121,6 @@ def delete_ctx(alex: AI):
     for f in files:
         os.remove(f)
 
+class ServerClosed(Exception):
+    def __init__(self) -> None:
+        super().__init__("The Alex Base Server Is Closed.")
