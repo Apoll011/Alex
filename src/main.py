@@ -19,9 +19,9 @@ class InstallSkill(argparse.Action):
         print(f"\33[32mEnded Instalation of \33[33m{intent}\33[0m")
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description='Install, train, and start Alex', epilog='Developed by Tiago Bernardo')
 
-parser.add_argument("-p", "--install-skill", action=InstallSkill, nargs=2, help="Install a skill")
+parser.add_argument("-p", "--install-skill", action=InstallSkill, nargs=2, help="Install a skill", metavar=("file_path", "intent"))
 parser.add_argument("-t", "--train", action="store_true", help="Train all the resources from Alex and exit")
 parser.add_argument("-l", "--language", default="en", help="Set the language", choices=["en", "pt"])
 parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
@@ -40,7 +40,7 @@ def main(args):
     if args.train:
         alex.handle_request("retrain")
 
-    if args.start_alex:
+    if args.start:
         alex.set_language(language)
         alex.activate()
 
