@@ -144,6 +144,10 @@ def delete_ctx(alex: AI):
 def stopt_scheduler(alex: AI):
     alex.stopt_scheduler(True)
 
+@alexSkeleton.deactivate_action("Closing Interface")
+def close_interface(alex: AI):
+    BaseInterface.get().close()
+
 class ServerClosed(Exception):
     def __init__(self) -> None:
         super().__init__("The Alex Base Server Is Closed.")
