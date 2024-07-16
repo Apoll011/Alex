@@ -8,9 +8,10 @@ The default log level can also be programatically be changed by setting the
 LOG.level parameter.
 """
 
+import datetime
 import inspect
 import logging
-import sys
+from core.resources.data_files import DataFile
 
 def _make_log_method(fn):
     @classmethod
@@ -57,7 +58,7 @@ class LOG:
 
         formatter = logging.Formatter(log_message_format, style='{')
         formatter.default_msec_format = '%s.%03d'
-        cls.handler = logging.StreamHandler(sys.stdout)
+        cls.handler = logging.FileHandler(DataFile.load(datetime.datetime.now().strftime("%d.%m.%Y %H"), "log"))
         cls.handler.setFormatter(formatter)
 
         cls.level = logging.getLevelName(log_level)
