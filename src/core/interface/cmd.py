@@ -26,4 +26,4 @@ class ComandLine(BaseInterface):
         print("\33[0m", end="")
         self.waiting_for_message = False
         self.input({"message": message})
-        super().loop()
+        

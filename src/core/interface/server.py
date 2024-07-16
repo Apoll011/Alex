@@ -18,6 +18,7 @@ class Server(BaseInterface):
         self.socketio.on('conect')(self.user_conect)
         self.app.add_url_rule('/', view_func=self.index)
         self.socketio.run(self.app, host="0.0.0.0", port=80) # type: ignore
+        super().start()
 
     def index(self):
         return render_template('index.html')

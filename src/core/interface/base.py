@@ -1,5 +1,8 @@
-from core.ai.ai import AI
+import time
+import threading
 from core.log import LOG
+from core.ai.ai import AI
+from core.config import *
 from core.intents import IntentResponse
 
 class BaseInterface:
@@ -15,11 +18,17 @@ class BaseInterface:
         print("Starting on interface:\33[32m", self.__class__.__name__,"\33[0m")
         self.request_sentence = alex.translate("system.request")
         self.register()
-        
-    def start(self): 
+    
+    def start(self):
+        loop = threading.Thread(name = "MainLoop", target=self.start_loop)
+        loop.start()
         while not self.closed:
             self.loop()
-    
+
+    def start_loop(self): 
+        while not self.closed:
+            time.sleep(ALEX_LOOP_DELAY)
+            self.alex.loop()
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False): ...
     
     def input(self, data): 
@@ -34,13 +43,11 @@ class BaseInterface:
     
     def execute(self, comand): ...
 
-    def loop(self): 
-        self.alex.loop()
+    def loop(self): ...
 
     def close(self):
         LOG.info("Deactivating Alex")
         self.closed = True
-        self.alex.deactivate()
         LOG.info("Closed Alex")
 
     def user_conect(self, data):
