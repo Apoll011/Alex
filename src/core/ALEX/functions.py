@@ -108,7 +108,7 @@ def check_api(alex):
             say("Server is closed.", alex)
         if server_trys > MAXSERVER_ACCEPTD_TRYS:
             say("Sorry. But the Server is closed. So Im closing myself.", alex)
-            alex.deactivate()
+            alex.on_next_loop(alex.deactivate)
         else:
             say("Trying again...", alex)
             time.sleep(SERVER_RECONECT_DELAY)
