@@ -2,7 +2,7 @@ import os
 import time
 import glob
 from core.ai.ai import AI
-from core.config import api, path
+from core.config import *
 from core.api.client import ApiClient
 from core.config import EventPriority
 from core.interface.base import BaseInterface
@@ -15,6 +15,8 @@ alexSkeleton = AiBluePrintSkeleton()
 trainig_actions = {
     "training.intents": lambda ai: ai.api.call_route("intent_recognition/get/train")
 }
+
+server_trys = 0
 
 @alexSkeleton.init_action("Import Alex DNA")
 def dna(self, alex: AI):
@@ -43,12 +45,6 @@ def load_dictionary(self, alex: AI):
     d = alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
     alex.finish(self)
 
-@alexSkeleton.init_action("Checking the Api")
-def checking_The_api(self, alex: AI):
-    check_api(alex)
-    alex.finish(self)
-
-
 @alexSkeleton.request_action("retrain")
 def train_engine(alex: AI):
     alex.clear()
@@ -72,44 +68,55 @@ def debug_mode(alex: AI):
 
 @alexSkeleton.request_action("checkApi")
 @alexSkeleton.scheduled(5, EventPriority.ALEX)
-def check_api(alex: AI):
-    api_responce = alex.api.call_route("alex/alive")
-    responce = api_responce.response
+def check_api(alex):
+    global server_trys
+    try:
+        api_responce = alex.api.call_route("alex/alive")
+        responce = api_responce.response
 
-    if "on" not in responce.keys():
-        raise ServerClosed()
-    
-    kits = responce["kit"]
-    
-    if not kits["all_on"]:
-        print("\33[0m")
+        if "on" not in responce.keys():
+            raise ServerClosed()
+        
+        kits = responce["kit"]
+        
+        server_trys = 0
+
+        if not kits["all_on"]:
+            print("\33[0m")
+            say("Detected a change in the server re-importing the kits. Please Wait.", alex)
+        else:
+            return
+
+        if not kits["user"]:
+            say("Users not loaded. Loading.", alex)
+
+        if not kits["intent"]:
+            say("Intent not loaded. Loading.", alex)
+            alex.api.call_route("intent_recognition/get/reuse")
+            say("Done loading Intent", alex)
+        
+        if not kits["dictionary"]:
+            say("Dictionary not loaded. Loading.", alex)
+            alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
+            say("Done loading Dictionary.", alex)
+
         if alex.debug_mode:
-            alex.print_header_text("Server Changed", 3)
-        say_or_print_debug("Detected a change in the server re-importing the kits. Please Wait.", alex)
-    else:
-        return
+            alex.print_header_text("Done", 3)
+        
+    except Exception:
+        if server_trys == 0:
+            say("Server is closed.", alex)
+        if server_trys > MAXSERVER_ACCEPTD_TRYS:
+            say("Sorry. But the Server is closed. So Im closing myself.", alex)
+            alex.deactivate()
+        else:
+            say("Trying again...", alex)
+            time.sleep(SERVER_RECONECT_DELAY)
+            server_trys += 1
+            check_api(alex)
 
-    if not kits["user"]:
-        say_or_print_debug("Users not loaded. Loading.", alex)
-
-    if not kits["intent"]:
-        say_or_print_debug("Intent not loaded. Loading.", alex)
-        alex.api.call_route("intent_recognition/get/reuse")
-        say_or_print_debug("Done loading Intent", alex)
-    
-    if not kits["dictionary"]:
-        say_or_print_debug("Dictionary not loaded. Loading.", alex)
-        alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
-        say_or_print_debug("Done loading Dictionary.", alex)
-
-    if alex.debug_mode:
-        alex.print_header_text("Done", 3)
-
-def say_or_print_debug(text, alex):
-    if alex.debug_mode:
-        print(f"{text}")
-    else:
-        alex.speak(alex.make_responce(text))
+def say(text, alex):
+    alex.speak(alex.make_responce(text))
 
 @alexSkeleton.request_action("sendToApi")
 def sendApi(alex: AI, route: str, value: str | dict[str, str] = ""):

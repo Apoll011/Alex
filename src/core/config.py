@@ -11,6 +11,9 @@ class EventPriority(Enum):
 
 DEFALUT_LANG = "en"
 
+MAXSERVER_ACCEPTD_TRYS = 10
+SERVER_RECONECT_DELAY = 5
+
 path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/src")
 
 voice: dict = {
