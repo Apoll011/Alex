@@ -111,8 +111,8 @@ def check_api(alex):
                 say("Trying to re-connect...", alex)
             if server_trys > MAXSERVER_ACCEPTD_TRYS:
                 allowed_to_check_api = False # This has to happen since while alex is speaching the schedule theread seems to continue executing this function causeing it too loop forever.
-                say(f"The limit of {MAXSERVER_ACCEPTD_TRYS} reconcetions failed exceded.", alex)
-                say("Sorry. But the Server is closed. So Im closing myself.", alex)
+                say(f"The limit of {MAXSERVER_ACCEPTD_TRYS} reconetions failed exceded.", alex)
+                say("Sorry. But the Server is closed. So I am closing myself.", alex)
                 alex.on_next_loop(alex.deactivate)
             else:
                 time.sleep(SERVER_RECONECT_DELAY)
