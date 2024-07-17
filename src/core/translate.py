@@ -41,20 +41,24 @@ class TranslationSystem:
         if not os.path.isfile(file_path):
             file_path = f"{self.language_path}/{self.file}.{DEFALUT_LANG}.lang"
 
-        with open(file_path, "r", encoding="UTF-8") as f:
-            translations = {}
-            for line in f:
-                if line.strip() and line != "":
-                    key, value = line.strip().split(":", 1)
-                    if value == "":
-                        value = self.get_translation("error.451", {"key": key})
-                    if value.strip().startswith("["):
-                        v = value.replace("[", "").replace("]", "")
-                        v = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}', v.strip())
-                        translations[key] = v.split(";")
-                    else:
-                        translations[key] = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}',value.strip())
-            return translations
+        try:
+            with open(file_path, "r", encoding="UTF-8") as f:
+                translations = {}
+                for line in f:
+                    if line.strip() and line != "":
+                        key, value = line.strip().split(":", 1)
+                        if value == "":
+                            value = self.get_translation("error.451", {"key": key})
+                        if value.strip().startswith("["):
+                            v = value.replace("[", "").replace("]", "")
+                            v = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}', v.strip())
+                            translations[key] = v.split(";")
+                        else:
+                            translations[key] = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}',value.strip())
+                return translations
+        except:
+            LOG.error(f"The file {self.file}.{self.lang}.locale was not found on path {self.language_path}")
+            return {}
 
     def get_translation(self, key: str, context=None) -> str:
         """
@@ -75,7 +79,7 @@ class TranslationSystem:
             return translation.format(**context)
         
         except KeyError:
-            LOG.warning(f"The Key {key} was not found in {self.file} on path {self.path}")
+            LOG.warning(f"The Key {key} was not found in {self.file}.{self.lang}.locale on path {self.language_path}")
             return self.get_translation("error.457", {"key": key})
 
     def __call__(self, key: str, *args) -> str:
