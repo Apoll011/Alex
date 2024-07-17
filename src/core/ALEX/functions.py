@@ -67,7 +67,7 @@ def debug_mode(alex: AI):
     alex.debug_mode = True
 
 @alexSkeleton.request_action("checkApi")
-@alexSkeleton.scheduled(5, EventPriority.ALEX)
+@alexSkeleton.scheduled(SERVER_RECONECT_DELAY, EventPriority.ALEX)
 def check_api(alex):
     global server_trys
     try:
