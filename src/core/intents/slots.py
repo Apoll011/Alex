@@ -73,21 +73,8 @@ class SlotValueInstantTime(SlotValue):
 
     def to_datetime(self) -> datetime:
         """Converts the value to a datetime object"""
-        match self.precision: 
-            case "year":
-                return datetime.strptime(self.value, "%Y")
-            case "month":
-                return datetime.strptime(self.value, "%Y-%m")
-            case "day":
-                return datetime.strptime(self.value, "%Y-%m-%d")
-            case "hour":
-                return datetime.strptime(self.value, "%Y-%m-%d %H")
-            case "minute":
-                return datetime.strptime(self.value, "%Y-%m-%d %H:%M")
-            case "second":
-                return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S")
-            case _:
-                raise ValueError(f"Unknown precision: {self.precision}")
+        return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S -01:00")
+
 
     def get_year(self) -> int | None:
         """Returns the year component of the value"""
