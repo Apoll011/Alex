@@ -37,6 +37,10 @@ class DataFile:
         else:
             return False
 
+    @staticmethod
+    def delete(name, extension):
+        os.remove(DataFile.load(name, extension))
+
 class List(DataFile):
     extension = "list"
 
