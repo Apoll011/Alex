@@ -35,7 +35,7 @@ class BaseInterface:
     def input(self, data): 
         message = data['message']
         data = self.alex.process(message)
-        self.speak(data)
+        self.speak(data, voice_mode=self.alex.voice_mode) # type: ignore
 
     def wakeword(self, data):
         self.alex.wake(data)
