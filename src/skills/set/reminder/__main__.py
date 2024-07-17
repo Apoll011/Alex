@@ -92,11 +92,19 @@ class Reminder(BaseSkill):
 
           reminder.save()
           
+          
           reminder.schedule(self.alex(), self.fire_reminder)
           
-          self.responce_translated("reminder.set", {"time": self.get_raw_slot_value("time"), "action": reminder.get_action()})
+          if reminder.person == None:
+               self.responce_translated("reminder.set", {"time": self.get_raw_slot_value("time"), "action": reminder.get_action()})
+          else:
+               self.responce_translated("reminder.set.person", {"time": self.get_raw_slot_value("time"), "action": reminder.get_action(), "person": reminder.person.value})
+          
 
      def fire_reminder(self, id):
           reminder = ReminderObject.load(id)
 
-          self.responce_translated("reminder.fire", {"action": reminder.get_action()})
+          if reminder.person == None:
+               self.responce_translated("reminder.fire", {"action": reminder.get_action()})
+          else:
+               self.responce_translated("reminder.fire.person", {"action": reminder.get_action(), "person": reminder.person.value})

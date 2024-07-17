@@ -1,2 +1,2 @@
 reminder.fire:Lembre-se de {{action}}
-reminder.set:O lembrete foi definido para {{date}} para {{action}}
+reminder.set:O lembrete foi definido para {{time}} para {{action}}
