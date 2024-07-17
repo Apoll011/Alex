@@ -48,7 +48,6 @@ class Get(BaseSkill):
           if responce == None:
                self.responce_translated("sorry.not.have.word")
           else:
-               print(responce)
                self.get_meaning(responce)
      
      def respond_meaning(self):
