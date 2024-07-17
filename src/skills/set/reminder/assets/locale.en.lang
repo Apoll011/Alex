@@ -1,2 +1,2 @@
-timer.fire:[The timer was fired;The timer had finished;Time is off]
-timer.defined:A timer was defined for {{time}}
+reminder.fire:Remember to {{action}}
+reminder.set:the reminder was defined for {{time}} to {{action}}
