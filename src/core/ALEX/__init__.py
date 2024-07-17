@@ -32,6 +32,8 @@ class ALEX(AI):
         self.voice_mode = False
         
         self.setDefaultListenProcessor()
+    
+    def interface_on(self):
         self.register_scheduled_funcs()
     
     def set_language(self, lang = "en"):
@@ -52,8 +54,11 @@ class ALEX(AI):
             self.next_on_loop_args = None
     
     def speak(self, data, voice: str = 'Alex', voice_command = None):
-        BaseInterface.get().speak(data, voice, voice_command, self.voice_mode | False)
-    
+        if BaseInterface.is_set():
+            BaseInterface.get().speak(data, voice, voice_command, self.voice_mode | False)
+        else:
+            raise InterfaceNotRegistered()
+
     def wake(self, data):
         self.speak(self.translate("system.wake"))
     
@@ -62,7 +67,7 @@ class ALEX(AI):
         self.speak(self.make_responce(self.translate("system.close", {"time_of_day": time_of_day})))
         sys.exit(0)
     
-    def process(self, text):
+    def process(self, text) -> dict[str, Any]:
         """
             Process a text and execute an action
         """
@@ -71,7 +76,7 @@ class ALEX(AI):
         else:
             return self.wrong_answer(text)
     
-    def execute_processor(self):
+    def execute_processor(self) -> dict[str, Any]:
         nextL = self.next_listen_processor
         nextA = self.next_processor_args
 
@@ -129,7 +134,7 @@ class ALEX(AI):
     def isListenProcessorDefault(self):
         return self.next_listen_processor == self.process_as_intent
 
-    def make_responce(self, message = "", intent = {}):
+    def make_responce(self, message = "", intent = {}) -> dict[str, Any]:
         """
         Make a responce spoke by the interface just instancieate witout any args will be a empy responce that wont be spoke by the interface.
         """
@@ -138,3 +143,8 @@ class ALEX(AI):
     def on_next_loop(self, action, *args):
         self.next_on_loop = action
         self.next_on_loop_args = args
+
+
+class InterfaceNotRegistered(Exception):
+    def __init__(self) -> None:
+        super().__init__("The Alex Interface is still not registered when it was requested.")

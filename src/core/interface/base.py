@@ -18,6 +18,7 @@ class BaseInterface:
         print("Starting on interface:\33[32m", self.__class__.__name__,"\33[0m")
         self.request_sentence = alex.translate("system.request")
         self.register()
+        self.alex.interface_on() 
     
     def start(self):
         loop = threading.Thread(name = "MainLoop", target=self.start_loop)
@@ -33,11 +34,11 @@ class BaseInterface:
     
     def input(self, data): 
         message = data['message']
-        data = self.alex.process(message)  # type: ignore
+        data = self.alex.process(message)
         self.speak(data)
 
     def wakeword(self, data):
-        self.alex.wake(data) # type: ignore
+        self.alex.wake(data)
     
     def parse(self, data): ...
     
@@ -68,6 +69,12 @@ class BaseInterface:
     def get(cls):
         return cls._registry
     
+    @classmethod
+    def is_set(cls):
+        if cls._registry:
+            return True
+        return False
+
     @classmethod
     def get_name(cls):
         return cls._name

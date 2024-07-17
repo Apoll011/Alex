@@ -1,5 +1,6 @@
 import sys
 import time
+from typing import Any
 from .dna import AlexDna
 from core.config import path
 from .scheduler import Scheduler
@@ -84,3 +85,7 @@ class AI(AlexDna, AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInS
             return self.request_actions[request](self, *args, **kwargs)
         else:
             raise ValueError(f"AI request '{request}' not found")
+
+    def interface_on(self): ...
+    def process(self, message) -> dict[str, Any]: ...
+    def wake(self, data): ...
