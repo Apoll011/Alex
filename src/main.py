@@ -67,5 +67,6 @@ def main(args):
         except KeyboardInterrupt:
             print()
             BaseInterface.get().close()
+            alex.deactivate()
 if __name__ == "__main__":
     main(args)
