@@ -1,0 +1,2 @@
+timer.fire:[O temporizador disparou;O temporizador Terminou;O tempo acabou]
+timer.defined:Um temporizador foi definido para daqui há {{time}}
