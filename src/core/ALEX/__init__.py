@@ -60,7 +60,7 @@ class ALEX(AI):
             raise InterfaceNotRegistered()
 
     def wake(self, data):
-        self.speak(self.translate("system.wake"))
+        self.speak(self.make_responce(self.translate("system.wake")))
     
     def end(self):
         time_of_day = self.translate(f"time.day.{get_time_of_day()}")
