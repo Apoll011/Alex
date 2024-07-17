@@ -28,6 +28,7 @@ parser.add_argument("-l", "--language", default="en", help="Set the language", c
 parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
 parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
 parser.add_argument("-i", "--interface", default="cmd", help="Interface mode", choices=["cmd", "server", "voice"])
+parser.add_argument("-vm", "--voice", action="store_true", help="Enters voice mode")
 
 parser.add_argument("-v", "--version", action="version", version=f"Alex {VersionManager.get().get('coreVersion', '')}")
 
@@ -43,7 +44,8 @@ def main(args):
         alex.set_language(language)
         LOG.info("Activating alex Alex")
         alex.activate()
-
+        if args.voice:
+            alex.handle_request("changeMode", "Voice")
         if args.debug:
             LOG.init("Debug Mode")
             alex.handle_request("debugMode")
