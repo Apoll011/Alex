@@ -1,12 +1,13 @@
 import sys
 from typing import Any
 from core.ai.ai import AI
+from core.intents import *
+from core.skills.error import *
 from .functions import alexSkeleton
 from core.intents.responce import *
 from core.date import get_time_of_day
 from core.skills.call import SkillCaller
 from core.interface.base import BaseInterface
-from core.intents import IntentParserToObject
 
 class ALEX(AI):
 
@@ -98,11 +99,20 @@ class ALEX(AI):
         else:
             return self.translate_responce("intent.not.valid", intent=intent.json)
 
-    def call_skill(self, intent):
+    def call_skill(self, intent: IntentResponse):
         try:
             skill = self.skill_caller.call(intent)
             skill.execute(self._context, intent)
             return self.make_responce()
+        
+        except ModuleNotFoundError:
+            return self.translate_responce("error.skill.not.found", {"skill": intent.intent.intent_name}, intent.json)
+        except AttributeError:
+            return self.translate_responce("error.missing.main.skill.class", {"skill": intent.intent.intent_name}, intent.json)
+        except SkillIntentError:
+            return self.translate_responce("error.wrong.intent", {}, intent.json)
+        except SkillSlotNotFound as e:
+            return self.translate_responce("error.slot.missing", {"slot": e.slot_name}, intent.json)
         except Exception as e:
             return self.translate_responce("error.during.skill", {"error": str(e)}, intent.json) 
 

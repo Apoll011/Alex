@@ -10,3 +10,7 @@ wrong.answer.hard:That is not a valid responce for my question. I was expecting 
 wrong.answer.soft:That is not a valid responce for my question. I was expecting something with {{expected}} not {{entry}}
 wrong.answer.joiner:or
 system.request:Your request
+error.wrong.intent:Sorry but a strange error occurred and your request was send to another skill.
+error.slot.missing:Sorry but I need more information on the {{slot}} please try again.
+error.skill.not.found:The Skill {{skill}} was not found.
+error.missing.main.skill.class:The Skill {{skill}} is wronglly implemented.
