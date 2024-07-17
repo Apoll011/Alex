@@ -5,15 +5,31 @@ from core.interface.base import BaseInterface
 
 class Voice(BaseInterface):
     alex_possibilities = {
-        "en_US": "Alex",
-        "en_US2": "Fred",
-        "en_GB": "Daniel"
+        "en": {
+            "US": "Alex",
+            "US2": "Fred",
+            "GB": "Daniel"
+        },
+        "pt": {
+            "PT": "Joana",
+            "BR": "Luciana"
+        }
+    }
+
+    alex_voice_preference = {
+        "en": "US",
+        "pt": "PT"
     }
     
-    alex_voice = alex_possibilities["en_GB"]
-    pria_voice = 'Samantha'
+    alex_voice: str
 
     say_voice_command = "say -v '#name#' '#text#'"
+
+    @staticmethod
+    def select_voice():
+        lang = BaseInterface.get().alex.language
+        preference = Voice.alex_voice_preference[lang]
+        return Voice.alex_possibilities[lang][preference]
 
     def start(self):
         self.user_conect({})
@@ -25,11 +41,15 @@ class Voice(BaseInterface):
         
     @staticmethod
     def s(data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
+
         if voice_command is None:
             command = Voice.say_voice_command
         else:
             command = voice_command
 
+        if voice == "Alex":
+            voice = Voice.select_voice()
+        
         command = command.replace('#name#', voice).replace('#text#', data['message']) # type: ignore
 
         os.system(command)
