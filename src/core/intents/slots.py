@@ -73,8 +73,13 @@ class SlotValueInstantTime(SlotValue):
 
     def to_datetime(self) -> datetime:
         """Converts the value to a datetime object"""
-        return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S -01:00")
+        try:
+            return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S -01:00")
+        except:
+            return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S.%f -01:00")
 
+    def diference_from_now_to_value(self):
+        return self.to_datetime() - datetime.now()
 
     def get_year(self) -> int | None:
         """Returns the year component of the value"""
