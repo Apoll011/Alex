@@ -155,7 +155,6 @@ class BaseSkill:
 
           self.skill_settings = skill_settings
 
-
      def save_settings(self):
           """Save skill settings to file."""
           settings_path = Path(self.skill_dir).joinpath('settings.json')
@@ -172,3 +171,6 @@ class BaseSkill:
                else:
                     LOG.info('Skill settings successfully saved to '
                               '{}' .format(settings_path))
+
+     def get_raw_slot_value(self, slot_name: str):
+          return self.intent.slots[slot_name].raw_value
