@@ -37,7 +37,7 @@ class BaseSkill:
           self.name: str
           self.is_api: bool = False
           self.save_responce_for_context = True
-          self.can_go_again = False
+          self.can_go_again = True
           self.skill_settings: dict = {}
 
           self.init()
@@ -103,9 +103,8 @@ class BaseSkill:
           self.alex_context.save(self.intent, "last_intent")
 
      def set_as_last_intent_repeater(self, text):
-          self.alex_context.save(text, "last_responce_repeater")
-          self.alex_context.save(self.intent, "last_intent_repeater")
-
+          self.alex_context.save(text, "last_responce_text")
+          
      def prety_name(self, name: str):
           s = name.split("@")
           skillname = " ".join(s[1].split(".")).title().replace(" ", "")
