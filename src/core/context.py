@@ -44,16 +44,19 @@ class ContextManager:
         Returns:
             context: The loaded context.
         """
-        obj = cls.__contexts.get(context_name)
-        if obj is None:
-            if file_format == "pickle":
-                obj = cls.__load_from_file(context_name, "pickle")
-            elif file_format == "json":
-                obj = cls.__load_from_file(context_name, "json")
-            else:
-                raise ValueError(f"Invalid file format: {file_format}")
-        return obj
-
+        try:
+            obj = cls.__contexts.get(context_name)
+            if obj is None:
+                if file_format == "pickle":
+                    obj = cls.__load_from_file(context_name, "pickle")
+                elif file_format == "json":
+                    obj = cls.__load_from_file(context_name, "json")
+                else:
+                    raise ValueError(f"Invalid file format: {file_format}")
+            return obj
+        except FileNotFoundError:
+            return None
+        
     def delete(self, context_name):
         """Delete an context from the contexts dictionary and optionally from a file.
 
