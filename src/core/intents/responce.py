@@ -46,7 +46,7 @@ class SomethingFromListOrNoneResponce(Responce):
           self.list = list_word
 
      def is_accepted(self, text) -> bool:
-          if "none" in text:
+          if "none" in text.lower():
                self.result = None
                return True
           
