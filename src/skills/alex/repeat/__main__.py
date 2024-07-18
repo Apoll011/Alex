@@ -13,4 +13,4 @@ class Repeat(BaseSkill):
           if last_responce == None:
                self.responce_translated("not.enough.data")
           else:
-               self.responce(last_responce)
+               self.responce_translated("repeat.text", {"text":last_responce})
