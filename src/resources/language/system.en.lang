@@ -1,6 +1,6 @@
 system.welcome:Welcome {{user}}
-system.wake:[Hi;Yes;Im Listening;Say;Yep]
-system.close:[Good Bye. Sir.;Have a good {{time_of_day}}. Sir.]
+system.wake:[Hi;Yes;I am Listening;Say;]
+system.close:[Good Bye, Sir.;Have a good {{time_of_day}}. Sir.]
 time.day.1:Morning
 time.day.2:Affternoon
 time.day.3:Night
