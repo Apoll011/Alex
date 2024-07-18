@@ -36,7 +36,7 @@ class Random(BaseSkill):
           elif required_signal == "-":
                result = -abs(result)
           
-          result = self.round(result)
+          result = self.int_or_float(result)
 
           self.alex_context.save(result, "last_result")
           self.responce_translated("tell.result", {"result": str(result) + ("i" if required_type == "imaginary" else "")})
@@ -56,9 +56,12 @@ class Random(BaseSkill):
 
      def getnumber_range(self):
           if self.slot_exists("smaller_number") and self.slot_exists("bigger_number"):
-               return (int(self.slots["smaller_number"].value), int(self.slots["bigger_number"].value))
+               return (int(self.slots["smaller_number"].get_value()), int(self.slots["bigger_number"].get_value())) # type: ignore
           return self.skill_settings['min'], self.skill_settings["max"]
      
      def round(self, result):
           r = "{:.4f}".format(result)
           return float(r)
+
+     def int_or_float(self, value):
+        return int(value) if (value % 1) == 0 else self.round(value)

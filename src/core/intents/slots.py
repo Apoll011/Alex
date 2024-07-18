@@ -196,10 +196,17 @@ class SlotValueDuration(SlotValue):
 @dataclass
 class SlotValueNumber(SlotValue):
     """Slot value representing a number"""
-    value: int
+    value: int | float
 
-    def get_value(self) -> int:
-        return self.value
+    def round(self):
+          r = "{:.4f}".format(self.value)
+          return float(r)
+
+    def int_or_float(self):
+        return int(self.value) if (self.value % 1) == 0 else self.round()
+
+    def get_value(self) -> int | float:
+        return self.int_or_float()
 
     def is_even(self) -> bool:
         return self.value % 2 == 0
@@ -210,56 +217,56 @@ class SlotValueNumber(SlotValue):
     def is_negative(self) -> bool:
         return self.value < 0
 
-    def abs(self) -> int:
+    def abs(self) -> int | float:
         return abs(self.value)
 
     def __add__(self, other):
-        if isinstance(other, int):
-            return SlotValueNumber(kind="Number", value=self.value + other)
+        if isinstance(other, int | float):
+            return SlotValueNumber(kind="Number", value=self.get_value() + other)
         elif isinstance(other, SlotValueNumber):
-            return SlotValueNumber(kind="Number", value=self.value + other.value)
+            return SlotValueNumber(kind="Number", value=self.get_value() + other.get_value())
         else:
-            raise ValueError(f"Cannot add {self.value} and {other}")
+            raise ValueError(f"Cannot add {self.get_value()} and {other}")
 
     def __sub__(self, other):
-        if isinstance(other, int):
-            return SlotValueNumber(kind="Number", value=self.value - other)
+        if isinstance(other, int | float):
+            return SlotValueNumber(kind="Number", value=self.get_value() - other)
         elif isinstance(other, SlotValueNumber):
-            return SlotValueNumber(kind="Number", value=self.value - other.value)
+            return SlotValueNumber(kind="Number", value=self.get_value() - other.get_value())
         else:
-            raise ValueError(f"Cannot subtract {other} from {self.value}")
+            raise ValueError(f"Cannot subtract {other} from {self.get_value()}")
 
     def __mul__(self, other):
-        if isinstance(other, int):
-            return SlotValueNumber(kind="Number", value=self.value * other)
+        if isinstance(other, int | float):
+            return SlotValueNumber(kind="Number", value=self.get_value() * other)
         elif isinstance(other, SlotValueNumber):
-            return SlotValueNumber(kind="Number", value=self.value * other.value)
+            return SlotValueNumber(kind="Number", value=self.get_value() * other.get_value())
         else:
-            raise ValueError(f"Cannot multiply {self.value} and {other}")
+            raise ValueError(f"Cannot multiply {self.get_value()} and {other}")
 
     def __truediv__(self, other):
-        if isinstance(other, int):
-            return self.value / other
+        if isinstance(other, int | float):
+            return self.get_value() / other
         elif isinstance(other, SlotValueNumber):
-            return self.value / other.value
+            return self.get_value() / other.get_value()
         else:
-            raise ValueError(f"Cannot divide {self.value} by {other}")
+            raise ValueError(f"Cannot divide {self.get_value()} by {other}")
 
     def __mod__(self, other):
-        if isinstance(other, int):
-            return self.value % other
+        if isinstance(other, int | float):
+            return self.get_value() % other
         elif isinstance(other, SlotValueNumber):
-            return self.value % other.value
+            return self.get_value() % other.get_value()
         else:
             raise ValueError(f"Cannot find the modulus of {self.value} and {other}")
 
     def __pow__(self, other):
-        if isinstance(other, int):
-            return self.value ** other
+        if isinstance(other, int | float):
+            return self.get_value() ** other
         elif isinstance(other, SlotValueNumber):
-            return self.value ** other.value
+            return self.get_value() ** other.get_value()
         else:
-            raise ValueError(f"Cannot raise {self.value} to the power of {other}")
+            raise ValueError(f"Cannot raise {self.get_value()} to the power of {other}")
 
 @dataclass
 class SlotValueOrdinal(SlotValue):

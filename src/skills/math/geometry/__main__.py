@@ -17,19 +17,19 @@ class Geometry(BaseSkill):
           r = None 
 
           if self.assert_equal("func", "sen"):
-               r = sin(self.number.value)
+               r = sin(self.number.get_value())
 
           elif self.assert_equal("func", "cos"):
-               r = cos(self.number.value)
+               r = cos(self.number.get_value())
 
           elif self.assert_equal("func", "sqrt"):
-               r = sqrt(self.number.value)
+               r = sqrt(self.number.get_value())
           
           elif self.assert_equal("func", "tan"):
-               r = tan(self.number.value)
+               r = tan(self.number.get_value())
           
           elif self.assert_equal("func", "tanh"):
-               r = tanh(self.number.value)
+               r = tanh(self.number.get_value())
           
           r = self.round(r)
           
