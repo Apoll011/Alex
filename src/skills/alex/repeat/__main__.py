@@ -1,4 +1,3 @@
-from core.skills.call import SkillCaller
 from core.skills import BaseSkill
 
 class Repeat(BaseSkill):
@@ -6,16 +5,12 @@ class Repeat(BaseSkill):
           self.register("alex@repeat")
           self.save_responce_for_context = False
           
-
-     #TODO: Change the implementation instead of rerunning a skill. just repeat the last said sentence.
      def execute(self, context, intent):
           super().execute(context, intent)
 
-          last_responce = self.alex_context.load("last_responce_repeater")
-          last_intent = self.alex_context.load("last_intent_repeater")
+          last_responce = self.alex_context.load("last_responce_text")
           
           if last_responce == None:
                self.responce_translated("not.enough.data")
           else:
-               skill = SkillCaller().call(last_intent) # type: ignore
-               skill.execute(context, last_intent) # type: ignore
+               self.responce(last_responce)
