@@ -47,7 +47,7 @@ def main(args):
         if args.voice:
             alex.handle_request("changeMode", "Voice")
         if args.debug:
-            LOG.init("Debug Mode")
+            LOG.info("Debug Mode")
             alex.handle_request("debugMode")
         
         if args.train:
