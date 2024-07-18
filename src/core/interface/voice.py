@@ -34,23 +34,29 @@ class Voice(BaseInterface):
         return Voice.alex_possibilities[lang][preference]
 
     def loop(self):
-        self.waiting_for_message = True
-        try:
-            message = self.listen()
-        except NotImplementedError:
-            self.alex.clear()
-            message = input(f"{self.request_sentence}: \33[32m")
-            print("\33[0m")
-            if message == "":
-                self.wakeword({})
-                return
-        self.waiting_for_message = False
-        self.input({"message": message})   
+        message = input(f"{self.request_sentence}: \33[32m")
+        print("\33[0m")
+        if message == "":
+            self.wakeword({})
+            return
 
     def start(self):
         self.user_conect({})
         self.voice_command_extensions = "--interactive=/cyan"
         super().start()
+
+    def on_wake_word(self):
+        self.waiting_for_message = True
+        try:
+            message = self.listen()
+            print(len(message))
+            print(message, "f")
+        except NotImplementedError:
+            self.alex.clear()
+            message = input(f"{self.request_sentence}: \33[32m")
+            print("\33[0m")
+        self.waiting_for_message = False
+        self.input({"message": message})   
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         if data['message'] != "":
@@ -78,6 +84,6 @@ class Voice(BaseInterface):
             print("Listening...")
             c = "hear -m -p -t 2"
             result = subprocess.check_output(c, shell=True, text=True)
-            return result
+            return result.strip().replace("\n", "").strip().lstrip().rstrip()
         else:
             raise NotImplementedError("Listen Function is not Implemented yet for Voice Interface")

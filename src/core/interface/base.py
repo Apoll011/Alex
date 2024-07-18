@@ -41,6 +41,9 @@ class BaseInterface:
 
     def wakeword(self, data):
         self.alex.wake(data)
+        self.on_wake_word()
+
+    def on_wake_word(self): ...
     
     def parse(self, data): ...
     
