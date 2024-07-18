@@ -4,8 +4,6 @@ from core.interface.base import BaseInterface
 
 
 class ComandLine(BaseInterface):
-    
-    waiting_for_message = False
 
     def start(self):
         self.user_conect({})

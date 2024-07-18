@@ -12,6 +12,8 @@ class BaseInterface:
 
     request_sentence: str
 
+    waiting_for_message = False
+
     def __init__(self, alex: AI):
         self.alex = alex
         LOG.info(f"Started interface {self.__class__.__name__}")
