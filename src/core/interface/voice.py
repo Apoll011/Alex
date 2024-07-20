@@ -34,8 +34,9 @@ class Voice(BaseInterface):
         return Voice.alex_possibilities[lang][preference]
 
     def loop(self):
-        message = input(f"{self.request_sentence}: \33[32m")
-        print("\33[0m")
+        self.alex.clear()
+        self.print_header()
+        message = input(f"")
         if message == "":
             self.wakeword({})
             return
@@ -52,7 +53,6 @@ class Voice(BaseInterface):
             print(len(message))
             print(message, "f")
         except NotImplementedError:
-            self.alex.clear()
             message = input(f"{self.request_sentence}: \33[32m")
             print("\33[0m")
         self.waiting_for_message = False

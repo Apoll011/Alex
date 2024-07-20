@@ -17,10 +17,13 @@ class BaseInterface:
     def __init__(self, alex: AI):
         self.alex = alex
         LOG.info(f"Started interface {self.__class__.__name__}")
-        print("Starting on interface:\33[32m", self.__class__.__name__,"\33[0m")
+        self.print_header()
         self.request_sentence = alex.translate("system.request")
         self.register()
         self.alex.interface_on() 
+
+    def print_header(self):
+        print("Starting on interface:\33[32m", self.__class__.__name__,"\33[0m")
     
     def start(self):
         loop = threading.Thread(name = "MainLoop", target=self.start_loop)
