@@ -1,1 +1,2 @@
 greet.hi:[Hi, {{user}};Hello {{user}}]
+greet.hi.based.on.time.of.day:Good {{time}}
