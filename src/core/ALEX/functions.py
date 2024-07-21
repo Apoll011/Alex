@@ -16,13 +16,17 @@ trainig_actions = {
     "training.intents": lambda ai: ai.api.call_route("intent_recognition/get/train")
 }
 
-allowed_to_check_api = True
 server_trys = 0
 
 @alexSkeleton.init_action("Import Alex DNA")
 def dna(self, alex: AI):
     dna = Application.get("dna")
     alex.load_dna(dna)
+    alex.finish(self)
+
+@alexSkeleton.init_action("Creating important Context Variables")
+def make_ctx(self, alex: AI):
+    alex.set_context("allowed_to_check_api", True)
     alex.finish(self)
 
 @alexSkeleton.init_action("Set Api conection")
@@ -77,8 +81,9 @@ def debug_mode(alex: AI):
 #TODO: Make this speach based on language chosen
 @alexSkeleton.request_action("checkApi")
 @alexSkeleton.scheduled(SERVER_RECONECT_DELAY, EventPriority.ALEX)
-def check_api(alex):
-    global server_trys, allowed_to_check_api
+def check_api(alex: AI):
+    global server_trys
+    allowed_to_check_api = alex.get_context("allowed_to_check_api")
     if allowed_to_check_api:
         try:
             api_responce = alex.api.call_route("alex/alive")
@@ -117,7 +122,7 @@ def check_api(alex):
                 say("The Server is Offline.", alex)
                 say("Trying to re-connect...", alex)
             if server_trys > MAXSERVER_ACCEPTD_TRYS:
-                allowed_to_check_api = False # This has to happen since while alex is speaching the schedule theread seems to continue executing this function causeing it too loop forever.
+                alex.set_context("allowed_to_check_api", False)# This has to happen since while alex is speaching the schedule theread seems to continue executing this function causeing it too loop forever.
                 say(f"The limit of {MAXSERVER_ACCEPTD_TRYS} reconetions failed exceded.", alex)
                 say("Sorry. But the Server is closed. So I am closing myself.", alex)
                 alex.on_next_loop(alex.deactivate)
