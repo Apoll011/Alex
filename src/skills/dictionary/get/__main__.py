@@ -1,3 +1,4 @@
+import re
 from random import choice
 from core.skills import BaseSkill
 from core.api.client import ApiResponse
@@ -14,6 +15,13 @@ class Get(BaseSkill):
           super().execute(context, intent)
           self.require("word")
           self.get_meaning(self.slots["word"].value)
+
+     def clean(self, text: str):
+          r = re.match("(.*)\\\\n(.Source: .*.)", text)
+          if r == None:
+               return text
+          else:
+               return r.group(1)
 
      def get_meaning(self, word):
           self.meaning: ApiResponse = BaseInterface.get().alex.handle_request("sendToApi", "dictionary/get/closest", word.lower())
@@ -61,6 +69,7 @@ class Get(BaseSkill):
      
      def respond_one_meaning(self):
           definition = self.meaning.response["definition"] if not self.is_list() else self.meaning.response["definition"][0]
+          definition = self.clean(definition)
           self.responce(definition)
      
      def respond_multiple_meaning(self):
@@ -72,6 +81,7 @@ class Get(BaseSkill):
           if responce:
                i = 0
                for defs in self.meaning.response['definition']:
+                    defs = self.clean(defs)
                     i += 1
                     if defs.endswith("."):
                          defs = defs[0:-1]
