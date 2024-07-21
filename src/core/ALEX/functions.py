@@ -27,8 +27,15 @@ def dna(self, alex: AI):
 
 @alexSkeleton.init_action("Set Api conection")
 def set_api_con(self, alex: AI):
-    alex.api = ApiClient(api['host'], api['port'])
-    alex.finish(self)
+    try:
+        alex.api = ApiClient(api['host'], api['port'])
+        alex.finish(self)
+        return
+    except ConnectionRefusedError:
+        alex.clear()
+        alex.set_context("allowed_to_check_api", False)
+        say("The server is closed please be sure to Open the Base Server before starting me.", alex)
+        alex.deactivate()
 
 
 @alexSkeleton.init_action("Get Master User")
