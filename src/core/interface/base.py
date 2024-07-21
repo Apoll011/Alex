@@ -16,10 +16,12 @@ class BaseInterface:
 
     def __init__(self, alex: AI):
         self.alex = alex
+        self.register()
+    
+    def init(self):
         LOG.info(f"Started interface {self.__class__.__name__}")
         self.print_header()
-        self.request_sentence = alex.translate("system.request")
-        self.register()
+        self.request_sentence = self.alex.translate("system.request")
         self.alex.interface_on() 
 
     def print_header(self):

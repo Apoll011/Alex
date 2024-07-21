@@ -43,25 +43,30 @@ def main(args):
     if args.start:
         alex.set_language(language)
         LOG.info("Activating alex Alex")
-        alex.activate()
+        
         if args.voice:
             alex.handle_request("changeMode", "Voice")
         if args.debug:
             LOG.info("Debug Mode")
             alex.handle_request("debugMode")
         
-        if args.train:
-            LOG.info("Training server")
-            alex.handle_request("retrain")
-    
-        alex.start()
-
         if args.interface == "server":
             Server(alex)
         elif args.interface == "voice":
             Voice(alex)
         else:
             ComandLine(alex)
+        
+        BaseInterface.get().init()
+
+        alex.activate()
+
+        if args.train:
+            LOG.info("Training server")
+            alex.handle_request("retrain")
+    
+        alex.start()
+
 
         try:
             LOG.info("Started Alex")
