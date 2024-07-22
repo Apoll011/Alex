@@ -41,7 +41,8 @@ class BaseInterface:
     
     def input(self, data): 
         message = data['message']
-        data = self.alex.process(message)
+        message_processed = self.process_input(message)
+        data = self.alex.process(message_processed)
         self.speak(data, voice_mode=self.alex.voice_mode) # type: ignore
 
     def wakeword(self, data):
@@ -88,3 +89,8 @@ class BaseInterface:
     @classmethod
     def get_name(cls):
         return cls._name
+    
+    def process_input(self, text: str):
+        text = text.strip()
+        text = text.replace("×", " times ").replace("÷", " over ").replace("+", " plus ").replace("-", " minus ")
+        return text
