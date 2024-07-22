@@ -37,7 +37,7 @@ class Voice(BaseInterface):
         return Voice.alex_possibilities[lang][preference]
 
     def loop(self):
-        message = input(f"")
+        message = input(f"Waiting for wake word...")
         if message == "":
             self.wakeword({})
             return
@@ -50,15 +50,16 @@ class Voice(BaseInterface):
     def on_wake_word(self):
         self.get_input_and_process()
 
-    def get_input_and_process(self):
+    def get_input_and_process(self, timeout:int = 2):
         self.allowed_after_wake_word_listen = False
         self.waiting_for_message = True
-        message = self.listen()
-        print(f"{self.request_sentence}: \33[32m {message} \33[0m")
+        message = self.listen(timeout)
         self.waiting_for_message = False
-        self.input({"message": message})   
-        self.allowed_after_wake_word_listen = True
-        threading.Thread(target=self.after_wake_word).start()
+        if not message.strip() == "":
+            print(f"{self.request_sentence}: \33[32m {message} \33[0m")
+            self.input({"message": message})   
+            self.allowed_after_wake_word_listen = True
+            threading.Thread(target=self.after_wake_word).start()
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         if data['message'] != "":
@@ -81,14 +82,15 @@ class Voice(BaseInterface):
 
         os.system(command)
 
-    def listen(self):
-        c = "hear -p -t 2"
+    def listen(self, timeout: int):
+        c = f"hear -p -t {timeout}"
         result = subprocess.check_output(c, shell=True, text=True)
         return result.strip().split("\n")[-1].strip().lstrip().rstrip()
 
     def after_wake_word(self):
-        r = self.listen()
         if self.allowed_after_wake_word_listen:
-            self.get_input_and_process()
+            print("Listening for continuation...")
+            self.get_input_and_process(2)
+            print("Ended listening of continuation")
         else:
             self.allowed_after_wake_word_listen = True
