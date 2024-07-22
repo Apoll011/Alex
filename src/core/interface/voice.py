@@ -1,4 +1,5 @@
 import os
+import threading
 import subprocess
 from core.intents import IntentResponse
 from core.interface.base import BaseInterface
@@ -27,6 +28,8 @@ class Voice(BaseInterface):
 
     voice_command_extensions = ""
 
+    allowed_after_wake_word_listen = True
+
     @staticmethod
     def select_voice():
         lang = BaseInterface.get().alex.language
@@ -45,11 +48,15 @@ class Voice(BaseInterface):
         super().start()
 
     def on_wake_word(self):
+        self.allowed_after_wake_word_listen = False
         self.waiting_for_message = True
         message = self.listen()
         print(f"{self.request_sentence}: \33[32m {message} \33[0m")
         self.waiting_for_message = False
         self.input({"message": message})   
+        self.allowed_after_wake_word_listen = True
+        print("Hi")
+        threading.Thread(target=self.after_wake_word).start()
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
         if data['message'] != "":
@@ -76,3 +83,11 @@ class Voice(BaseInterface):
         c = "hear -p -t 2"
         result = subprocess.check_output(c, shell=True, text=True)
         return result.strip().split("\n")[-1].strip().lstrip().rstrip()
+
+    def after_wake_word(self):
+        r = self.listen()
+        if self.allowed_after_wake_word_listen:
+            self.input({"message": r})   
+            threading.Thread(target=self.after_wake_word).start()
+        else:
+            self.allowed_after_wake_word_listen = True
