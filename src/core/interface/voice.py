@@ -48,6 +48,9 @@ class Voice(BaseInterface):
         super().start()
 
     def on_wake_word(self):
+        self.get_input_and_process()
+
+    def get_input_and_process(self):
         self.allowed_after_wake_word_listen = False
         self.waiting_for_message = True
         message = self.listen()
@@ -55,7 +58,6 @@ class Voice(BaseInterface):
         self.waiting_for_message = False
         self.input({"message": message})   
         self.allowed_after_wake_word_listen = True
-        print("Hi")
         threading.Thread(target=self.after_wake_word).start()
 
     def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
@@ -87,7 +89,6 @@ class Voice(BaseInterface):
     def after_wake_word(self):
         r = self.listen()
         if self.allowed_after_wake_word_listen:
-            self.input({"message": r})   
-            threading.Thread(target=self.after_wake_word).start()
+            self.get_input_and_process()
         else:
             self.allowed_after_wake_word_listen = True
