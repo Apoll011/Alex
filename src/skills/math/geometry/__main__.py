@@ -10,10 +10,12 @@ class Geometry(BaseSkill):
      def execute(self, context, intent):
           super().execute(context, intent)
           self.require("func")
-          self.require("number", SlotValueNumber)
+          self.optional("number", SlotValueNumber)
 
-          self.number: SlotValueNumber = self.slots["number"] # type: ignore
-
+          if self.slot_exists("number"):
+               self.number: SlotValueNumber = self.slots["number"] # type: ignore
+          else:
+               self.number: SlotValueNumber = self.alex_context.load("last_result") # type: ignore
           r = None 
 
           if self.assert_equal("func", "sen"):
@@ -39,5 +41,5 @@ class Geometry(BaseSkill):
 
      def round(self, result):
           r = "{:.4f}".format(result)
-          return float(r)
+          return SlotValueNumber("SlotValueNumber", float(r))
      
