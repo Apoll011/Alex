@@ -41,8 +41,6 @@ class AI(AlexDna, AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInS
 
         self.sig = sig
 
-        self.start_scheduller()
-
     def activate(self):
         """
         Activates the AI instance

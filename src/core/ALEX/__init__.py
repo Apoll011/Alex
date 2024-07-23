@@ -33,6 +33,7 @@ class ALEX(AI):
         self.voice_mode = False
         
         self.setDefaultListenProcessor()
+        self.start_scheduller()
     
     def interface_on(self):
         self.register_scheduled_funcs()
