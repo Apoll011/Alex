@@ -1,9 +1,9 @@
 import os
 import sys
 from typing import Any
+from core.error import *
 from core.ai.ai import AI
 from core.intents import *
-from core.skills.error import *
 from .functions import alexSkeleton
 from core.intents.responce import *
 from core.date import get_time_of_day
@@ -114,7 +114,7 @@ class ALEX(AI):
         
         except ModuleNotFoundError:
             return self.translate_responce("error.skill.not.found", {"skill": intent.intent.intent_name}, intent.json)
-        except AttributeError:
+        except MissingMainSkillClass:
             return self.translate_responce("error.missing.main.skill.class", {"skill": intent.intent.intent_name}, intent.json)
         except SkillIntentError:
             return self.translate_responce("error.wrong.intent", {}, intent.json)
@@ -145,8 +145,3 @@ class ALEX(AI):
     def on_next_loop(self, action, *args):
         self.next_on_loop = action
         self.next_on_loop_args = args
-
-
-class InterfaceNotRegistered(Exception):
-    def __init__(self) -> None:
-        super().__init__("The Alex Interface is still not registered when it was requested.")

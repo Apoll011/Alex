@@ -2,7 +2,7 @@ import importlib
 from core.log import LOG
 from core.skills import BaseSkill
 from core.intents import IntentResponse
-from core.context import ContextManager
+from core.error import MissingMainSkillClass
 
 def prety_name(name: str):
     s = name.split("@")
@@ -21,7 +21,10 @@ class SkillCaller:
         LOG.info("Executing skill: " + intent.intent.intent_name)
         path, skillname = prety_name(intent.intent.intent_name)
         
-        skill = importlib.import_module(path + ".__main__")
-        instance: BaseSkill = getattr(skill, skillname)(self.language)
-        
+        try: 
+            skill = importlib.import_module(path + ".__main__")
+            instance: BaseSkill = getattr(skill, skillname)(self.language)
+        except AttributeError:
+            raise MissingMainSkillClass(skillname, intent.intent.intent_name)
+
         return instance

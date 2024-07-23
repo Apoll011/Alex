@@ -8,7 +8,7 @@ from core.intents.responce import *
 from core.context import ContextManager
 from core.translate import TranslationSystem
 from core.interface.base import BaseInterface
-from .error import SkillIntentError, SkillSlotNotFound
+from core.error import SkillIntentError, SkillSlotNotFound
 
 class BaseSkill:
      name: str
@@ -46,7 +46,7 @@ class BaseSkill:
 
      def execute(self, context: ContextManager, intent: IntentResponse):
           if self.can_go_again:
-               self.alex_context.save(self.intent, "last_intent")
+               context.save(intent, "last_intent")
           if intent.intent.intent_name != self.name:
                raise SkillIntentError(self.name, intent.intent.intent_name)
           self.alex_context = context
