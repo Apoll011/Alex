@@ -125,7 +125,7 @@ class BaseSkill:
      def get_local_settings(self):
           """Build a dictionary using the JSON string stored in settings.json."""
           skill_settings = {}
-          settings_path = Path(self.skill_dir).joinpath('settings.json')
+          settings_path = Path(self.skill_dir).joinpath('.config')
           LOG.info(settings_path)
           if settings_path.exists():
                with open(str(settings_path)) as settings_file:
@@ -134,14 +134,14 @@ class BaseSkill:
                     try:
                          skill_settings = json.loads(settings_file_content)
                     except json.JSONDecodeError as error:
-                         log_msg = f'Failed to load {self.name} settings from settings.json. LINE: {error.lineno}'
+                         log_msg = f'Failed to load {self.name} settings from .config. LINE: {error.lineno}'
                          LOG.exception(log_msg)
 
           self.skill_settings = skill_settings
 
      def save_settings(self):
           """Save skill settings to file."""
-          settings_path = Path(self.skill_dir).joinpath('settings.json')
+          settings_path = Path(self.skill_dir).joinpath('.config')
 
           if not Path(settings_path).exists():
                settings_path.touch(mode=0o644)
