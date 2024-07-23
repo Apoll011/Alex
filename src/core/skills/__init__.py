@@ -10,11 +10,8 @@ from core.translate import TranslationSystem
 from core.interface.base import BaseInterface
 from .error import SkillIntentError, SkillSlotNotFound
 
-#TODO: Add a method for getting slot value 
 class BaseSkill:
      name: str
-
-     is_api: bool = False
 
      alex_context: ContextManager
      intent: IntentResponse
@@ -23,9 +20,7 @@ class BaseSkill:
 
      slots: dict[str, SlotValue] = {}
 
-     save_responce_for_context = True
-
-     can_go_again = False
+     can_go_again: bool
 
      skill_settings: dict 
      
@@ -35,8 +30,6 @@ class BaseSkill:
           self.language = language
           self.slots = {}
           self.name: str
-          self.is_api: bool = False
-          self.save_responce_for_context = True
           self.can_go_again = True
           self.skill_settings: dict = {}
 
@@ -44,21 +37,20 @@ class BaseSkill:
 
      def init(self): ...
      
-     def set_as_api(self):
-          self.is_api = True
-
-     def execute(self, context: ContextManager, intent: IntentResponse):
-          if intent.intent.intent_name != self.name:
-               raise SkillIntentError(self.name, intent.intent.intent_name)
-          self.alex_context = context
-          self.intent = intent
-               
      def register(self, name):
           self.name = name
           path, skname = self.prety_name(name)
           self.skill_dir = p + "/" + path
           self.get_local_settings()
           self.translate = TranslationSystem(self.language, "locale", path + "/assets/")
+
+     def execute(self, context: ContextManager, intent: IntentResponse):
+          if self.can_go_again:
+               self.alex_context.save(self.intent, "last_intent")
+          if intent.intent.intent_name != self.name:
+               raise SkillIntentError(self.name, intent.intent.intent_name)
+          self.alex_context = context
+          self.intent = intent
      
      def require(self, slot_name: str, slot_type = SlotValue):
           if slot_name in self.intent.slots.keys() and isinstance(self.intent.slots[slot_name].value, slot_type):
@@ -70,15 +62,17 @@ class BaseSkill:
           if slot_name in self.intent.slots.keys() and isinstance(self.intent.slots[slot_name].value, slot_type):
                self.slots[slot_name] = self.intent.slots[slot_name].value
 
+     def question(self, key_to_question_to_ask, callback, question_replacers = {}, required_responce:Responce = AnyResponce(), *args):
+          self.responce_translated(key_to_question_to_ask, question_replacers)
+          self.alex().setListenProcessor(callback, required_responce, *args) # type: ignore
+     
+     def responce_translated(self, key: str, context = None):
+          self.responce(self.translate.get_translation(key, context))
+     
      def responce(self, text: str):
-          text = text.strip()
-          if not self.is_api:
-               if self.save_responce_for_context:
-                    self.set_as_last_intent(text)
-               if self.can_go_again:
-                    self.set_as_last_intent_repeater(text)
-               self.speak(text)
-          return text
+          text = text.strip()     
+          self.save_last_responce(text)
+          self.speak(text)
 
      def speak(self, text):
           if not isinstance(text, dict):
@@ -92,24 +86,20 @@ class BaseSkill:
           } | text
           self.alex().speak(data) # type: ignore
 
-     def alex(self):
-          return BaseInterface.get().alex
-
-     def responce_translated(self, key: str, context = None):
-          return self.responce(self.translate.get_translation(key, context))
-
-     def set_as_last_intent(self, text):
+     def save_last_responce(self, text):
           self.alex_context.save(text, "last_responce")
-          self.alex_context.save(self.intent, "last_intent")
-
-     def set_as_last_intent_repeater(self, text):
-          self.alex_context.save(text, "last_responce_text")
           
      def prety_name(self, name: str):
           s = name.split("@")
           skillname = " ".join(s[1].split(".")).title().replace(" ", "")
           path = f"skills/{s[0]}/{s[1].replace(".", "_")}"
           return path, skillname
+
+     def get_raw_slot_value(self, slot_name: str):
+          return self.intent.slots[slot_name].raw_value
+
+     def get(self, slot_name: str):
+          return self.slots[slot_name].value
 
      def slot_exists(self, *args: str):
           for a in args:
@@ -132,10 +122,6 @@ class BaseSkill:
                return True
           return False
 
-     def question(self, key_to_question_to_ask, callback, question_replacers = {}, required_responce:Responce = AnyResponce(), *args):
-          self.responce_translated(key_to_question_to_ask, question_replacers)
-          self.alex().setListenProcessor(callback, required_responce, *args) # type: ignore
-     
      def get_local_settings(self):
           """Build a dictionary using the JSON string stored in settings.json."""
           skill_settings = {}
@@ -147,10 +133,9 @@ class BaseSkill:
                if settings_file_content:
                     try:
                          skill_settings = json.loads(settings_file_content)
-                    # TODO change to check for JSONDecodeError in 19.08
-                    except Exception:
-                         log_msg = 'Failed to load {} settings from settings.json'
-                         LOG.exception(log_msg.format(self.name))
+                    except json.JSONDecodeError as error:
+                         log_msg = f'Failed to load {self.name} settings from settings.json. LINE: {error.lineno}'
+                         LOG.exception(log_msg)
 
           self.skill_settings = skill_settings
 
@@ -171,5 +156,5 @@ class BaseSkill:
                     LOG.info('Skill settings successfully saved to '
                               '{}' .format(settings_path))
 
-     def get_raw_slot_value(self, slot_name: str):
-          return self.intent.slots[slot_name].raw_value
+     def alex(self):
+          return BaseInterface.get().alex
