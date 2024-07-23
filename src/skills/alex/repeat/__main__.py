@@ -3,6 +3,7 @@ from core.skills import BaseSkill
 class Repeat(BaseSkill):
      def init(self):
           self.register("alex@repeat")
+          self.can_go_again = False
           
      def execute(self, context, intent):
           super().execute(context, intent)
