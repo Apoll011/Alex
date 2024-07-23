@@ -5,7 +5,6 @@ from core.intents.slots import SlotValueDuration
 class Timer(BaseSkill):
      def init(self):
           self.register("set@timer")
-          self.save_responce_for_context = False
           
      def execute(self, context, intent):
           super().execute(context, intent)
@@ -18,7 +17,8 @@ class Timer(BaseSkill):
           self.responce_translated("timer.defined", {"time": self.duration.to_string()})
 
      def define(self):
-          self.alex().schedule(self.duration.get_total_seconds(), EventPriority.SKILLS, self.fire_timer)
+          total_seconds = self.duration.get_total_seconds()
+          self.alex().schedule(total_seconds, EventPriority.SKILLS, self.fire_timer)
 
      def fire_timer(self):
           self.responce_translated("timer.fire")

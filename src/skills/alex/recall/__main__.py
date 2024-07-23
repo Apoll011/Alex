@@ -4,7 +4,6 @@ from core.skills import BaseSkill
 class Recall(BaseSkill):
      def init(self):
           self.register("alex@recall")
-          self.save_responce_for_context = False
           self.can_go_again = False
 
      def execute(self, context, intent):
@@ -15,5 +14,5 @@ class Recall(BaseSkill):
           if last_intent == None:
                self.responce_translated("not.enough.data")
           else:
-               skill = SkillCaller().call(last_intent) 
+               skill = SkillCaller(self.language).call(last_intent) 
                skill.execute(context, last_intent)

@@ -6,7 +6,6 @@ class Skills(BaseSkill):
      def init(self):
           self.register("alex@skills")
           
-
      def execute(self, context, intent):
           super().execute(context, intent)
           self.require("major_skill")

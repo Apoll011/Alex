@@ -8,8 +8,6 @@ from core.intents.responce import BoolResponce, SomethingFromListOrNoneResponce
 class Get(BaseSkill):
      def init(self):
           self.register("dictionary@get")
-          self.save_responce_for_context = False
-          
 
      def execute(self, context, intent):
           super().execute(context, intent)

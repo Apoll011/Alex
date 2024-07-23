@@ -5,8 +5,7 @@ from core.skills import BaseSkill
 class MusicWhatsPlaying(BaseSkill):
      def init(self):
           self.register("play@music.whats.playing")
-          self.can_go_again = False
-
+          
      def execute(self, context, intent):
           super().execute(context, intent)
           name, artist, album = self.beutify(self.comand())

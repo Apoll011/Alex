@@ -2,9 +2,7 @@ from core.skills import BaseSkill
 
 class PresentsMaker(BaseSkill):
      def init(self):
-          self.register("alex@presents.maker")
-          self.save_responce_for_context = False
-          
+          self.register("alex@presents.maker")  
 
      def execute(self, context, intent):
           super().execute(context, intent)

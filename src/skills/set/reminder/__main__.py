@@ -88,7 +88,11 @@ class Reminder(BaseSkill):
 
           reminder = ReminderObject(self.slots["time"], self.slots["action"]) # type: ignore
           if self.slot_exists("person"):
-               reminder = ReminderObject(self.slots["time"], self.slots["action"], self.slots["person"]) # type: ignore
+               reminder = ReminderObject(
+                         self.slots["time"], # type: ignore
+                         self.slots["action"], 
+                         self.slots["person"]
+                    ) 
 
           reminder.save()
           
@@ -96,15 +100,27 @@ class Reminder(BaseSkill):
           reminder.schedule(self.alex(), self.fire_reminder)
           
           if reminder.person == None:
-               self.responce_translated("reminder.set", {"time": self.get_raw_slot_value("time"), "action": reminder.get_action()})
+               self.responce_translated("reminder.set", {
+                         "time": self.get_raw_slot_value("time"), 
+                         "action": reminder.get_action()
+                         })
           else:
-               self.responce_translated("reminder.set.person", {"time": self.get_raw_slot_value("time"), "action": reminder.get_action(), "person": reminder.person.value})
+               self.responce_translated("reminder.set.person", {
+                         "time": self.get_raw_slot_value("time"), 
+                         "action": reminder.get_action(), 
+                         "person": reminder.person.value
+                         })
           
 
      def fire_reminder(self, id):
           reminder = ReminderObject.load(id)
 
           if reminder.person == None:
-               self.responce_translated("reminder.fire", {"action": reminder.get_action()})
+               self.responce_translated("reminder.fire", {
+                    "action": reminder.get_action()
+                    })
           else:
-               self.responce_translated("reminder.fire.person", {"action": reminder.get_action(), "person": reminder.person.value})
+               self.responce_translated("reminder.fire.person", {
+                    "action": reminder.get_action(), 
+                    "person": reminder.person.value
+                    })
