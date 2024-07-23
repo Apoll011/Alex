@@ -13,7 +13,7 @@ class InstallSkill(argparse.Action):
         print(f"\33[32mStarting Instalation of \33[33m{intent}\33[0m")
         s = intent.split("@")
         path = f"{s[0]}/{s[1].replace('.', '_')}/"
-        with zipfile.ZipFile(file, 'r') as zip_ref: # type: ignore
+        with zipfile.ZipFile(file, 'r') as zip_ref:
             zip_ref.extractall('./src/skills/'+path)
             os.system(f"rm -rf./src/skills/{path}/__MACOSX/")
             zip_ref.close()
@@ -22,13 +22,13 @@ class InstallSkill(argparse.Action):
 
 parser = argparse.ArgumentParser(description='Install, train, and start Alex', epilog='Developed by Tiago Bernardo')
 
-parser.add_argument("-p", "--install-skill", action=InstallSkill, nargs=2, help="Install a skill", metavar=("file_path", "intent"))
+parser.add_argument("--install-skill", action=InstallSkill, nargs=2, help="Install a skill", metavar=("file_path", "intent"))
 parser.add_argument("-t", "--train", action="store_true", help="Train all the resources from Alex and exit")
 parser.add_argument("-l", "--language", default="en", help="Set the language", choices=["en", "pt"])
 parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
 parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
 parser.add_argument("-i", "--interface", default="cmd", help="Interface mode", choices=["cmd", "server", "voice"])
-parser.add_argument("-vm", "--voice", action="store_true", help="Enters voice mode")
+parser.add_argument("--voice", action="store_true", help="Enters voice mode")
 
 parser.add_argument("-v", "--version", action="version", version=f"Alex {VersionManager.get().get('coreVersion', '')}")
 
