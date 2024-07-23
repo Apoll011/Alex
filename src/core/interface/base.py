@@ -44,6 +44,7 @@ class BaseInterface:
         message_processed = self.process_input(message)
         data = self.alex.process(message_processed)
         self.speak(data, voice_mode=self.alex.voice_mode) # type: ignore
+        return data
 
     def wakeword(self, data):
         self.alex.wake(data)

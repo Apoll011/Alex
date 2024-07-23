@@ -3,6 +3,7 @@ import time
 import shutil
 import socket
 import os
+import threading
 
 class Blueprint:
     """
@@ -41,13 +42,16 @@ class Blueprint:
             A decorator function.
         """
         def decorator(fun):
-            p = "" if self.pre == "" else  "/"
-            self.route_functions[self.pre + p + route] = fun
+            self.set_route(route, fun)        
             def wrapper(*args, **kwargs):
                 return fun(*args, **kwargs)
             return wrapper
         return decorator
     
+    def set_route(self, route, fun):
+        p = "" if self.pre == "" else  "/"
+        self.route_functions[self.pre + p + route] = fun
+
     def register_blueprint_list(self, list_blueprint: list):
         """
         Registers a list of blueprints.
@@ -98,8 +102,9 @@ class API(Blueprint):
     PORT: int
     closed: bool
 
-    connected_client_text = "Host connected at #addr#."
-    disconnected_client_text = "Host disconnected from #addr#."
+    client_name = "Host"
+    conections = 0
+    active = 0
 
     def __init__(self, host: str, port: int):
         """
@@ -155,16 +160,24 @@ class API(Blueprint):
         """
         Starts the API server.
         """
-        os.system("clear")
         try:
             self.__start_server()
-            self.__print_header_text(f"Started API Server on address \33[93m{self.HOST}:{self.PORT}", 1)
+            self.screen()
             self.__main_loop()
         except KeyboardInterrupt:
             self.close()
         finally:
             self.server_socket.close()
             self.__print_header_text(f"Closed API Server", 1)
+    
+    def screen(self):
+        os.system("clear")
+        self.__print_header_text(f"Started API Server on address \33[93m{self.HOST}:{self.PORT}", 1)
+        print(f"Till now there was \33[32m{self.conections}\33[0m from \33[94m{self.client_name}.\33[0m")
+        print(f"There are \33[32m{self.active}\33[0m active conections")
+        print("Active Routes Are: ")
+        for route in self.route_functions:
+            print("\t- \33[33mRoute:\33[32m", route, "\33[36mUp and running\33[0m")
 
     def __start_server(self):
         """
@@ -172,7 +185,7 @@ class API(Blueprint):
         """
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server_socket.bind((self.HOST, self.PORT))
-        self.server_socket.listen()
+        self.server_socket.listen(5)
 
     def __main_loop(self):
         """
@@ -180,8 +193,8 @@ class API(Blueprint):
         """
         while not self.closed:
             conn, addr = self.server_socket.accept()
-            with conn:
-                self.__connect_client(conn, addr)
+            client_thread = threading.Thread(target=self.__connect_client, args=(conn, addr))
+            client_thread.start()
 
     def __connect_client(self, conn: socket.socket, addr: tuple):
         """
@@ -191,9 +204,12 @@ class API(Blueprint):
             conn (socket.socket): The client connection.
             addr (tuple): The client address.
         """
-        print(f"\33[32m{self.connected_client_text.replace('#addr#', str(addr))}\33[0m")
+        self.conections += 1
+        self.active += 1
+        self.screen()
         self.__client_main_loop(conn)
-        print(f"\33[31m{self.disconnected_client_text.replace('#addr#', str(addr))}\33[0m")
+        self.active -= 1
+        self.screen()
 
     def __client_main_loop(self, conn: socket.socket):
         """
