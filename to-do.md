@@ -1,10 +1,11 @@
 # System
 - [x] Translation System for them
-- [ ] Fix stt in Voice interface
+- [x] Fix stt in Voice interface
 - [x] Async server for multiple conections
 - [x] If server closes and reopens just reconnect without needing to close alex 
 - [x] Change how are you sure and repeat by  intead of re running the skill use the last sentence speak
 - [ ] Added event scheduler in a file for hard saving so its persist on mutiple coses and opens
+- [ ] Add support for programing skills. And jellyfin related skills
 
 # Skills
 ## Information & Learning
@@ -32,9 +33,9 @@
 - [ ] Play@Soundscape - Plays soundscapes like nature or city ambiance.
 
 ## Productivity & Daily Life
-- [ ] Schedule@Reminder - Creates reminders for tasks or events.
+- [x] set@Reminder - Creates reminders for tasks or events.
 - [ ] Set@Alarm - Sets alarms.
-- [ ] Set@Timer - Sets timers.
+- [x] Set@Timer - Sets timers.
 - [ ] Make@List (Grocery/Shopping/To-Do) - Creates different kinds of lists.
 - [ ] Weather@Today - Provides the weather forecast for the day.
 - [ ] News@Summary - Delivers a summarized news report.
