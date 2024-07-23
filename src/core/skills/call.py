@@ -18,6 +18,7 @@ class SkillCaller:
         self.language = language        
 
     def call(self, intent: IntentResponse):
+        LOG.info("Executing skill: " + intent.intent.intent_name)
         path, skillname = prety_name(intent.intent.intent_name)
         
         skill = importlib.import_module(path + ".__main__")
