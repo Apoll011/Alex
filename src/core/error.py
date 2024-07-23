@@ -32,3 +32,7 @@ class SkillSlotNotFound(Exception):
 class InterfaceNotRegistered(Exception):
     def __init__(self) -> None:
         super().__init__("The Alex Interface is still not registered when it was requested.")
+
+class ServerClosed(Exception):
+    def __init__(self) -> None:
+        super().__init__("The Alex Base Server Is Closed.")

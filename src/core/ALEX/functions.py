@@ -1,6 +1,7 @@
 import os
 import time
 import glob
+from core.error import *
 from core.ai.ai import AI
 from core.config import *
 from core.api.client import ApiClient
@@ -163,7 +164,3 @@ def delete_ctx(alex: AI):
 @alexSkeleton.deactivate_action("Closing Interface")
 def close_interface(alex: AI):
     BaseInterface.get().close()
-
-class ServerClosed(Exception):
-    def __init__(self) -> None:
-        super().__init__("The Alex Base Server Is Closed.")
