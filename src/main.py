@@ -27,10 +27,8 @@ parser.add_argument("-t", "--train", action="store_true", help="Train all the re
 parser.add_argument("-l", "--language", default="en", help="Set the language", choices=["en", "pt"])
 parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
 parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
-parser.add_argument("-i", "--interface", default="cmd", help="Interface mode", choices=["cmd", "server", "voice"])
 parser.add_argument("--voice", action="store_true", help="Enters voice mode")
 parser.add_argument("-i", "--interface", default="cmd", help="Interface mode", choices=["cmd", "server", "voice", "api"])
-parser.add_argument("-vm", "--voice", action="store_true", help="Enters voice mode")
 
 parser.add_argument("-v", "--version", action="version", version=f"Alex {VersionManager.get().get('coreVersion', '')}")
 
