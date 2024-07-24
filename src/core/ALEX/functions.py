@@ -2,6 +2,7 @@ import os
 import time
 import glob
 import pickle
+from core.log import LOG
 from core.error import *
 from core.ai.ai import AI
 from core.config import *
@@ -36,10 +37,12 @@ def make_ctx(self, alex: AI):
 @alexSkeleton.init_action("Set Api conection")
 def set_api_con(self, alex: AI):
     try:
+        LOG.info("Conecting to Base Api")
         alex.api = ApiClient(api['host'], api['port'])
         alex.finish(self)
         return
     except ConnectionRefusedError:
+        LOG.error("Base Api Closed.")
         alex.clear()
         alex.set_context("allowed_to_check_api", False)
         say("The server is closed please be sure to Open the Base Server before starting me.", alex)
@@ -80,6 +83,7 @@ def train_engine(alex: AI):
 
 @alexSkeleton.request_action("debugMode")
 def debug_mode(alex: AI):
+    LOG.info("Alex set ot Debug Mode")
     alex.debug_mode = True
 
 #TODO: Make this speach based on language chosen
@@ -89,6 +93,7 @@ def check_api(alex: AI):
     global server_trys
     allowed_to_check_api = alex.get_context("allowed_to_check_api")
     if allowed_to_check_api:
+        LOG.info("Cheking the Api...")
         try:
             api_responce = alex.api.call_route("alex/alive")
             responce = api_responce.response
@@ -103,18 +108,23 @@ def check_api(alex: AI):
             if not kits["all_on"]:
                 print("\33[0m")
                 say("Detected a change in the server. Re-importing the kits. Please Wait.", alex)
+                LOG.info("Server changed reimporting the kits")
+
             else:
                 return
 
             if not kits["user"]:
+                LOG.info("Loading User kit from server")
                 say("Users not loaded. Loading.", alex)
 
             if not kits["intent"]:
+                LOG.info("Loading Intent recognition kit from server")
                 say("Intent Recognition not loaded. Loading.", alex)
                 alex.api.call_route("intent_recognition/get/reuse")
                 say("Done loading Intent Recognition", alex)
             
             if not kits["dictionary"]:
+                LOG.info("Loading Dictionary kit from server")
                 say("Dictionary not loaded. Loading.", alex)
                 alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
                 say("Done loading Dictionary.", alex)
@@ -123,15 +133,18 @@ def check_api(alex: AI):
             
         except Exception:
             if server_trys == 0:
+                LOG.warning("The server is Offline")
                 say("The Server is Offline.", alex)
                 say("Trying to re-connect...", alex)
             if server_trys > MAXSERVER_ACCEPTD_TRYS:
+                LOG.error("Server. Closed. Closing system")
                 alex.set_context("allowed_to_check_api", False)# This has to happen since while alex is speaching the schedule theread seems to continue executing this function causeing it too loop forever.
                 say(f"The limit of {MAXSERVER_ACCEPTD_TRYS} reconetions failed exceded.", alex)
                 say("Sorry. But the Server is closed. So I am closing myself.", alex)
                 alex.on_next_loop(alex.deactivate)
             else:
                 time.sleep(SERVER_RECONECT_DELAY)
+                LOG.info("Trying to reconect")
                 server_trys += 1
                 check_api(alex)
 
@@ -149,6 +162,7 @@ def userConect(alex: AI):
 
 @alexSkeleton.request_action("changeMode")
 def changeMode(alex: AI, mode):
+    LOG.info(f"changed alex mode to {mode}")
     if mode == "Text":
         alex.voice_mode = False # type: ignore
     else:
@@ -156,23 +170,27 @@ def changeMode(alex: AI, mode):
         
 @alexSkeleton.deactivate_action("Closing Scheduler")
 def stopt_scheduler(alex: AI):
+    LOG.info("Closing Scheduler")
     alex.stopt_scheduler(True)
 
 @alexSkeleton.deactivate_action("Delete context")
 def delete_ctx(alex: AI):
+    LOG.info("Deleting the context")
     files = glob.glob(f'{path}/resources/ctx/*.pickle')
     for f in files:
         os.remove(f)
 
 @alexSkeleton.deactivate_action("Closing Interface")
 def close_interface(alex: AI):
+    LOG.info("Closing the Alex Interface")
     BaseInterface.get().close()
-
 
 @alexSkeleton.scheduled(5, EventPriority.SKILLS, False)
 def get_reminders(alex: AI):
+    LOG.info("Loading Reminders")
     list = os.listdir(DataFile.getBasePath("reminder"))
     for reminder_file in list:
         with open(DataFile.getPath(reminder_file.split(".")[0], "reminder"), "rb") as file:
             reminder: ReminderObject = pickle.load(file)
             reminder.schedule(alex)
+            LOG.info(f"Reminder of ID: {reminder.id} scheduled")
