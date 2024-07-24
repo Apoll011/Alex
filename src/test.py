@@ -1,5 +1,7 @@
 import os
 import json
+import time
+import enum
 import socket
 import threading
 
@@ -50,11 +52,7 @@ class RecurrentApiClient:
             data = self.conection.recv(1024).decode("utf-8")
             if data == None or data == "":
                 continue
-            d = data.split("}{")
-            for dat in d:
-                if not dat.endswith("}"):
-                    dat += "}"
-                self.callback_on_responce(ApiResponse(json.loads(dat)))
+            self.callback_on_responce(ApiResponse(json.loads(data)))
 
     def close_server(self):
         """
@@ -75,6 +73,7 @@ class RecurrentApiClient:
         Returns:
             An ApiResponse object.
         """
+        time.sleep(0.5)
         self.__send(route, value)
 
     def __send(self, route: str, value: str | dict[str, str] = ""):
@@ -84,32 +83,69 @@ class RecurrentApiClient:
     def close(self):
         self.conection.close()
 
-def responce(data: ApiResponse):
-    d = data.response
-    match d:
-        case {"responce": True}:
-            pass
+class AlexModes(enum.Enum):
+    TEXT = "Text"
+    VOICE = "Voice"
 
-        case {"value": ""}:
-            pass
+class AlexApi:
+    def __init__(self) -> None:
+        self.client = RecurrentApiClient("127.0.0.1", 1287, self.process_responce)
 
-        case {"type": "say"}:
-            print(f"\n\33[0m{d["settings"]["voice"]}: \33[36m{d['value']}\33[0m")
-            print("Your request: ")
+    def process_responce(self, data: ApiResponse):
+        d = data.response
+        match d:
+            case {"responce": True}:
+                pass
 
-        case {"type": "play_audio"}:
-            os.system(f"afplay {d["value"]}")
+            case {"value": ""}:
+                pass
+            
+            case {"value": None}:
+                pass
+            
+            case None:
+                pass
 
-        case _:
-            print(d)
+            case {"type": "say"}:
+                print(f"\n\33[0m{d["settings"]["voice"]}: \33[36m{d['value']}\33[0m")
 
+            case {"type": "play_audio"}:
+                os.system(f"afplay {d["value"]}")
+
+            case _:
+                print(d)
+
+    def wake(self):
+        self.client.call_route("alex/wake")
+
+    def input(self, message: str):
+        self.client.call_route("alex/input", json.dumps({"message": message}))
+
+    def change_mode(self, mode: AlexModes):
+        self.client.call_route("alex/change/mode", json.dumps({"mode": mode.value}))
+    
+    def user_conect(self):
+        self.client.call_route("alex/user/conect")
+
+    def api(self, route, value):
+        self.client.call_route("alex/wake", json.dumps({"route": route, "value": value}))
+    
+    def info(self):
+        self.client.call_route("alex/info")
+    
+    def info_user(self):
+        self.client.call_route("alex/info/user")
+
+    def close(self):
+        self.client.close()
 
 try:
-    client = RecurrentApiClient("127.0.0.1", 1287, responce)
-
+    alex = AlexApi()
+    alex.user_conect()
+    alex.change_mode(AlexModes.VOICE)
     while True:
         m = input("Your request: ")
-        client.call_route("alex/input", json.dumps({"message": m}))
+        alex.input(m)
 
 except KeyboardInterrupt:
-    client.close()
+    alex.close()
