@@ -26,8 +26,6 @@ class Server(BaseInterface):
     def close(self):
         self.socketio.stop()
 
-    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
-        if data['message'] != "":
-            emit('receive_message', {'message': data['message'], 'intent': data['intent'], 'ai': voice}, broadcast=True) # type: ignore
-            if voice_mode:
-                Voice.s(data, voice, voice_command, False)
+    def speak(self, data):
+        if data['value'] != "":
+            emit('receive_message', data, broadcast=True) # type: ignore
