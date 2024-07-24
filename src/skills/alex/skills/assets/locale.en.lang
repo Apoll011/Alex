@@ -1,4 +1,4 @@
-not.found:No. Sorry, that's not a valid skill
+not.found:No. Sorry, that is not a valid skill
 yes.avaliables:Yes I can do {{major}} for the folowing things {{minors}}
 yes.avaliable:I can only do {{major}} for {{minor}}
 yes.avaliable.one:Yes I can do {{major}} for {{minor}}
