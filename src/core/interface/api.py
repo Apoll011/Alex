@@ -1,12 +1,14 @@
 import json
+import socket
 import datetime
+from core.intents import IntentResponse
 from core.security.code import AlexKey
 from core.api.server import API as SERVER
 from core.interface.base import BaseInterface
 
 
 class API(BaseInterface):
-    server: SERVER = SERVER("0.0.0.0", 1287)
+    server: SERVER = SERVER("0.0.0.0", 1287, 1)
 
     def start(self):
         self.server.client_name = "Alex Client"
@@ -20,6 +22,14 @@ class API(BaseInterface):
         self.server.serve()
         super().start()
     
+    def process(self, data):
+        cons:dict[tuple, socket.socket] = self.server.conections_func_send
+        for addr in cons:
+            if cons[addr] == None:
+                continue 
+            cons[addr].send(json.dumps({"responce": data, "code": 200, "time": 0}).encode("utf-8"))
+            
+    
     def register_fun(self, route, callback) -> None:
         self.server.set_route(route, lambda data: self.run_return(callback, {} if data == None or data == "" else json.loads(data)))
 
@@ -31,10 +41,11 @@ class API(BaseInterface):
             return f
 
     def api_call(self, data):
-        return self.alex.api.call_route(data["route"], data["value"])
+        return self.alex.api.call_route(data["route"], data["value"]).response
 
     def info(self, data):
         return {
+                "type": "info",
                 "device_id": AlexKey.get(),
                 "update_date": datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),
                 "ip": {
