@@ -1,2 +1,3 @@
 timer.fire:[The timer was fired;The timer had finished;Time is off]
+timer.fire.entity:[The timer for {{entity}} was fired;The timer to {{entity}} had finished;{{entity}} time is off]
 timer.defined:A timer was defined for {{time}}

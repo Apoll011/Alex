@@ -1,2 +1,3 @@
 timer.fire:[O temporizador disparou;O temporizador Terminou;O tempo acabou]
+timer.fire:[O temporizador da {{entity}} disparou;O temporizador de {{entity}} Terminou;O temporirador para {{entity}} acabou]
 timer.defined:Um temporizador foi definido para daqui há {{time}}
