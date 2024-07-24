@@ -1,7 +1,7 @@
 import json
+import time
 import socket
 import datetime
-from core.intents import IntentResponse
 from core.security.code import AlexKey
 from core.api.server import API as SERVER
 from core.interface.base import BaseInterface
@@ -13,12 +13,12 @@ class API(BaseInterface):
     def start(self):
         self.server.client_name = "Alex Client"
         self.register_fun("alex/wake", self.wakeword)
-        self.register_fun("alex/input", self.input)
         self.register_fun("alex/change/mode", self.change_mode)
         self.register_fun("alex/user/conect", self.user_conect)
         self.register_fun("alex/api/call", self.api_call)
         self.register_fun("alex/info", self.info)
         self.register_fun("alex/info/user", self.user)
+        self.server.set_route("alex/input", self.input)
         self.server.serve()
         super().start()
     
@@ -28,7 +28,10 @@ class API(BaseInterface):
             if cons[addr] == None:
                 continue 
             cons[addr].send(json.dumps({"responce": data, "code": 200, "time": 0}).encode("utf-8"))
-            
+            time.sleep(0.5)
+
+    def input(self, data):
+        super().input(json.loads(data))        
     
     def register_fun(self, route, callback) -> None:
         self.server.set_route(route, lambda data: self.run_return(callback, {} if data == None or data == "" else json.loads(data)))
@@ -57,14 +60,7 @@ class API(BaseInterface):
     def user(self, data):
         return self.alex.get_context("master")
 """
-routes:
-    /alex/wake, {}, None
-    /alex/input, {"message": str}, None
-    /alex/change/mode, {"mode": ["Text", "Voice"]}, {"responce": True}
-    /alex/user/conect, {"id": str}, {"responce": True}
-    /alex/api/call, {...}, {...}
-    /alex/info/, {}, {"device_id": ...,"update_date": str,"location": ...(IPAddres),"port": ...}
-    /alex/info/user/, {}, {"name": str,"id": str, ...}
+S
     /alex/info/system/, {}, {
             "data": {
                 "process_exec_t": "1042",
