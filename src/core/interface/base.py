@@ -37,14 +37,13 @@ class BaseInterface:
         while not self.closed:
             time.sleep(ALEX_LOOP_DELAY)
             self.alex.loop()
-    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False): ...
+
+    def speak(self, data): ...
     
     def input(self, data): 
         message = data['message']
         message_processed = self.process_input(message)
-        data = self.alex.process(message_processed)
-        self.speak(data, voice_mode=self.alex.voice_mode) # type: ignore
-        return data
+        self.alex.process(message_processed)
 
     def wakeword(self, data):
         self.alex.wake(data)
@@ -95,3 +94,16 @@ class BaseInterface:
         text = text.strip()
         text = text.replace("×", " times ").replace("÷", " over ").replace("+", " plus ").replace("-", " minus ")
         return text
+
+    def process(self, data):
+        type = data["type"]
+
+        match type:
+            case "say":
+                self.speak(data)
+
+            case "play_audio":
+                os.system(f"afplay {data["value"]}")
+
+            case _:
+                raise KeyError(f"The type {type} is not valid")
