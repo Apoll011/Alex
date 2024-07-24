@@ -99,7 +99,10 @@ class BaseSkill:
           return self.intent.slots[slot_name].raw_value
 
      def get(self, slot_name: str):
-          return self.slots[slot_name].value
+          try:
+               return self.slots[slot_name].value
+          except KeyError:
+               raise SkillSlotNotFound(slot_name)
 
      def slot_exists(self, *args: str):
           for a in args:
