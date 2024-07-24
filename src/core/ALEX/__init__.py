@@ -57,26 +57,44 @@ class ALEX(AI):
     
     def speak(self, data, voice: str = 'Alex', voice_command = None):
         if BaseInterface.is_set():
-            BaseInterface.get().speak(data, voice, voice_command, self.voice_mode | False)
+            dataP = {
+                "type": "say",
+                "value": data["message"],
+                "settings": {
+                    "intent": data["intent"],
+                    "voice": voice,
+                    "voice_command": voice_command,
+                    "voice_mode": self.voice_mode | False
+                }
+            }
+            BaseInterface.get().process(dataP)
         else:
             raise InterfaceNotRegistered()
 
     def wake(self, data):
-        os.system("afplay ./resources/data/mp3/acknowledge.mp3")
+        data = {
+                "type": "play_audio",
+                "value": "./resources/data/mp3/acknowledge.mp3",
+                "settings": {
+                }
+            }
+        BaseInterface.get().process(data)
     
     def end(self):
         time_of_day = self.translate(f"time.day.{get_time_of_day()}")
         self.speak(self.make_responce(self.translate("system.close", {"time_of_day": time_of_day})))
         sys.exit(0)
     
-    def process(self, text) -> dict[str, Any]:
+    def process(self, text):
         """
             Process a text and execute an action
         """
         if self.required_listen_input.is_accepted(text) or self.isListenProcessorDefault():
-            return self.execute_processor()
+            responce =  self.execute_processor()
         else:
-            return self.wrong_answer(text)
+            responce = self.wrong_answer(text)
+        
+        self.speak(responce)
     
     def execute_processor(self) -> dict[str, Any]:
         nextL = self.next_listen_processor

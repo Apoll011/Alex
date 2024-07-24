@@ -9,14 +9,14 @@ class ComandLine(BaseInterface):
         self.user_conect({})
         super().start()
 
-    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
-        if data['message'] != "":
+    def speak(self, data):
+        if data['value'] != "":
             if self.waiting_for_message:
                 print()
                 self.waiting_for_message = False
-            print(f"\33[0m{voice}: \33[36m{data['message']}\33[0m")
-            if voice_mode:
-                Voice.s(data, voice, voice_command, False)
+            print(f"\33[0m{data["settings"]["voice"]}: \33[36m{data['value']}\33[0m")
+            if data["settings"]["voice"]:
+                Voice.s(data)
     
     def loop(self):
         self.waiting_for_message = True
