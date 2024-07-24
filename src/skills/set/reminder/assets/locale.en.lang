@@ -1,6 +1,6 @@
 reminder.fire:Remember to {{action}}
 reminder.fire.person:Remember to {{action}} {{person}}
-reminder.fire.person.your:Remember to {{action}}
+reminder.fire.late:A late reminder to {{action}}
+reminder.fire.person.late:A late reminder to {{action}} {{person}}
 reminder.set:the reminder was defined for {{time}} to {{action}}
 reminder.set.person:the reminder was defined for {{time}} to {{action}} {{person}}
-reminder.set.person.your:the reminder was defined for {{time}} to {{action}} your {{person}}

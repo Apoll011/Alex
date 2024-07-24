@@ -1,12 +1,15 @@
 import os
 import time
 import glob
+import pickle
 from core.error import *
 from core.ai.ai import AI
 from core.config import *
 from core.api.client import ApiClient
 from core.config import EventPriority
+from core.models import ReminderObject
 from core.interface.base import BaseInterface
+from core.resources.data_files import DataFile
 from core.ai.blueprint import AiBluePrintSkeleton
 from core.resources.application import Application
 
@@ -164,3 +167,12 @@ def delete_ctx(alex: AI):
 @alexSkeleton.deactivate_action("Closing Interface")
 def close_interface(alex: AI):
     BaseInterface.get().close()
+
+
+@alexSkeleton.scheduled(5, EventPriority.SKILLS, False)
+def get_reminders(alex: AI):
+    list = os.listdir(DataFile.getBasePath("reminder"))
+    for reminder_file in list:
+        with open(DataFile.getPath(reminder_file.split(".")[0], "reminder"), "rb") as file:
+            reminder: ReminderObject = pickle.load(file)
+            reminder.schedule(alex)

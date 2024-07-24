@@ -1,79 +1,9 @@
-import json
-import uuid
-from core.log import LOG
-from core.skills import BaseSkill
+import os
+import pickle
 from core.intents.slots import *
-from core.config import EventPriority
+from core.skills import BaseSkill
+from core.models import ReminderObject
 from core.resources.data_files import DataFile
-
-
-class ReminderObject:
-     id: str
-     time: SlotValueInstantTime
-     action: SlotValue
-     person: SlotValue | None
-
-     def __init__(self, time: SlotValueInstantTime, action: SlotValue, person: SlotValue | None = None, uid: str | None = None) -> None:
-          self.time = time
-          self.action = action
-          self.person = person
-
-          self.id = str(uuid.uuid4()) if uid == None else uid
-
-     def get_hour_and_minute(self):
-          if self.time.get_hour() == "00" and self.time.get_minute() == "00":
-               return "12:00"
-          else:
-               return f"{self.time.get_hour()}:{self.time.get_minute() == "00"}"
-
-     def save(self):
-          Reminderjson = {
-               "id": self.id,
-               "time": {
-                    "kind": self.time.kind,
-                    "grain": self.time.grain,
-                    "precision": self.time.precision,
-                    "value": self.time.value
-               },
-               "action": {
-                    "kind": self.action.kind,
-                    "value": self.action.value
-               },
-               "person": None
-          }
-          if self.person != None:
-               Reminderjson["person"] = {
-                    "kind": self.person.kind,
-                    "value": self.person.value
-               }
-          with open(DataFile.load(self.id, "reminder"), "w") as remind:
-               json.dump(Reminderjson, remind)
-
-     @staticmethod
-     def load(uuid):
-          d = DataFile.get(uuid, "reminder")
-          reminder_json = json.loads(d)
-          id = reminder_json["id"]
-          time = SlotValueInstantTime(reminder_json["time"]["kind"], reminder_json["time"]["value"], reminder_json["time"]["grain"], reminder_json["time"]["precision"])
-          action = SlotValue(reminder_json["action"]["kind"], reminder_json["action"]["value"])
-          person = None
-          if reminder_json["person"] != None:
-               person = SlotValue(reminder_json["person"]["kind"], reminder_json["person"]["value"])
-          return ReminderObject(time, action, person, id)
-     
-     def seconds(self):
-          return self.time.diference_from_now_to_value().total_seconds()
-
-     def get_action(self):
-          return self.action.value    
-
-     def schedule(self, alex, callback):
-          seconds = self.seconds()
-          if seconds > 0:
-               alex.schedule(seconds, EventPriority.SKILLS, callback, self.id)
-          else:
-               LOG.debug("removed reminder of id: ", self.id)
-               DataFile.delete(self.id, "reminder")
 
 class Reminder(BaseSkill):
      def init(self):
@@ -94,10 +24,12 @@ class Reminder(BaseSkill):
                          self.slots["person"]
                     ) 
 
-          reminder.save()
+          reminder.save_callback(self.fire_reminder)
           
-          
-          reminder.schedule(self.alex(), self.fire_reminder)
+          with open(DataFile.getPath(reminder.id, "reminder"), "wb") as f:
+               pickle.dump(reminder, f)
+
+          reminder.schedule(self.alex())
           
           if reminder.person == None:
                self.responce_translated("reminder.set", {
@@ -112,15 +44,14 @@ class Reminder(BaseSkill):
                          })
           
 
-     def fire_reminder(self, id):
-          reminder = ReminderObject.load(id)
-
+     def fire_reminder(self, reminder: ReminderObject, late = False):
           if reminder.person == None:
-               self.responce_translated("reminder.fire", {
+               self.responce_translated(f"reminder.fire{".late" if late else ""}", {
                     "action": reminder.get_action()
                     })
           else:
-               self.responce_translated("reminder.fire.person", {
+               self.responce_translated(f"reminder.fire.person{".late" if late else ""}", {
                     "action": reminder.get_action(), 
                     "person": reminder.person.value
                     })
+          os.remove(DataFile.getPath(reminder.id, "reminder"))
