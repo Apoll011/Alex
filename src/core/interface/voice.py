@@ -60,25 +60,28 @@ class Voice(BaseInterface):
             self.input({"message": message})   
             self.allowed_after_wake_word_listen = True
             threading.Thread(target=self.after_wake_word).start()
-
-    def speak(self, data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False):
-        if data['message'] != "":
-            Voice.s(data, voice, voice_command, voice_mode, f" {self.voice_command_extensions}")
+        else:
+            print("NULL MESSAGE")
+    def speak(self, data):
+        if data['value'] != "":
+            Voice.s(data, f" {self.voice_command_extensions}")
         
     @staticmethod
-    def s(data: dict[str, str | IntentResponse], voice: str = 'Alex', voice_command = None, voice_mode = False, extension = ""):
+    def s(data, extension = ""):
 
-        if voice_command is None:
+        if data["settings"]["voice_command"] is None:
             command = Voice.say_voice_command
         else:
-            command = voice_command
+            command = data["settings"]["voice_command"]
 
         command += extension
+
+        voice = data["settings"]["voice"]
 
         if voice == "Alex":
             voice = Voice.select_voice()
         
-        command = command.replace('#name#', voice).replace('#text#', data['message']) # type: ignore
+        command = command.replace('#name#', voice).replace('#text#', data['value']) # type: ignore
 
         os.system(command)
 
