@@ -26,6 +26,9 @@ class DataFile:
             o = open(DataFile.getPath(name,extension), type)
             o.write(value)
             o.close()
+        else:
+            DataFile.load(name, extension)
+            DataFile.save(name, extension, value, type)
     
     @staticmethod
     def get(name, extension):
@@ -46,6 +49,21 @@ class DataFile:
     def delete(name, extension):
         os.remove(DataFile.load(name, extension))
 
+class Dict(DataFile):
+    extension = "dict"
+
+    @staticmethod
+    def load(name, create_if_not=True):
+        return DataFile.load(name, Dict.extension, create_if_not)
+
+    @staticmethod
+    def get(name):
+        l = DataFile.get(name, Dict.extension).splitlines()
+        list = {}
+        for li in l:
+            list[li.split("::")[0]] = li.split("::")[1]
+        return list
+
 class List(DataFile):
     extension = "list"
 
@@ -56,7 +74,20 @@ class List(DataFile):
     @staticmethod
     def get(name):
         l = DataFile.get(name, List.extension).splitlines()
-        list = {}
-        for li in l:
-            list[li.split("::")[0]] = li.split("::")[1]
-        return list
+        return l
+
+    @staticmethod
+    def append(name, value):
+        List.save(name, value, "a")
+
+    @staticmethod
+    def save(name, value, type = "a"):
+        DataFile.save(name, List.extension, value, type)
+    
+    @staticmethod
+    def exist(name):
+        DataFile.exist(name, List.extension)
+
+    @staticmethod
+    def delete(name, extension):
+        DataFile.delete(name, List.extension)
