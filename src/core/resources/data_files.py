@@ -104,3 +104,11 @@ class List(DataFile):
     @staticmethod
     def getBasePath():
         return DataFile.getBasePath(List.extension)
+
+    @staticmethod
+    def element_exists(name, element) -> bool:
+        list_content = List.get(name)
+        if element in list_content:
+            return True
+        else:
+            return False
