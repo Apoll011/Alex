@@ -28,5 +28,10 @@ class Get(BaseSkill):
      def get_full_list(self):
           list_content = List.get(self.get("list"))
           ander = self.translate.get_translation("text.and")
-          text = ", ".join(list_content[0:-1]) + f" {ander} " + list_content[-1]
+          if len(list_content) == 0:
+               text = self.translate("no.elements", {"list": self.get("list")})
+          elif len(list_content) == 1:
+               text = list_content[0]
+          else:
+               text = ", ".join(list_content[0:-1]) + f" {ander} " + list_content[-1]
           self.responce(text)
