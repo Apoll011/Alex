@@ -74,6 +74,8 @@ class List(DataFile):
     @staticmethod
     def get(name):
         l = DataFile.get(name, List.extension).splitlines()
+        if "" in l:
+            l.remove("")
         return l
 
     @staticmethod
