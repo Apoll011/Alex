@@ -1,0 +1,9 @@
+get.entity:[What do you want me to change to {{new}}?;What do you want me to change to {{new}} in the {{list}} list?;]
+get.new.entity:[What do you want me to change {{entity}} to?;What do you want me to change {{entity}} to in the {{list}} list?;]
+get.list:In witch list?
+dont.have.data:Sorry. But what you said does not have enought data to work with. Try Again.
+changed.item:Changed {{entity}} to {{new}} in the {{list}} list
+did.not.found.list:I did not found the {{list}} list.
+did.not.found.entity:I did not found {{entity}} in the {{list}} list. Do you want to add {{new}} instead.
+added.item:Added {{entity}} to the {{list}} list
+cancel.adding:Ok. I wont add {{entity}} to {{list}} list.
