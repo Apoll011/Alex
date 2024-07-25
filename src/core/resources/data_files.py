@@ -86,7 +86,7 @@ class List(DataFile):
     
     @staticmethod
     def exist(name):
-        DataFile.exist(name, List.extension)
+        return DataFile.exist(name, List.extension)
 
     @staticmethod
     def delete(name, extension):
