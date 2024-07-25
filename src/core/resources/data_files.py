@@ -78,7 +78,10 @@ class List(DataFile):
 
     @staticmethod
     def append(name, value):
-        List.save(name, value, "a")
+        if len(List.get(name)) == 0:
+            List.save(name, value, "a")
+        else:
+            List.save(name, "\n"+value, "a")
 
     @staticmethod
     def save(name, value, type = "a"):
