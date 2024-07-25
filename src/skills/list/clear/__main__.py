@@ -38,15 +38,12 @@ class Clear(BaseSkill):
 
 
      def ensure_exists(self) -> bool:
-          list_directory_map = os.listdir(List.getBasePath())
-          full_list_filename = f"{self.list}.list"
-          if full_list_filename in list_directory_map:
-               list_content = List.get(self.list)
-               if self.entity != "" and self.entity in list_content: # Here Will See If user provide entity and if the entity is in the requested list. Then delete entity.
+          if List.exist(self.list):
+               if self.entity != "" and List.element_exists(self.list, self.entity):
                     return True
-               elif self.entity == "": # Here if user didnt provid entity .And because list exists. clear list.
+               elif self.entity == "":
                     return True
-               else: # Entity was provided but dont exist.
+               else:
                     self.responce_translated("did.not.found.entity", {"list": self.list, "entity": self.entity})
           else:
                self.responce_translated("did.not.found.list", {"list": self.list})
