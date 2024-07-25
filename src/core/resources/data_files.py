@@ -87,7 +87,10 @@ class List(DataFile):
 
     @staticmethod
     def save(name, value, type = "a"):
-        DataFile.save(name, List.extension, value, type)
+        if isinstance(value, list):
+            DataFile.save(name, List.extension, "\n".join(value), type)
+        else:
+            DataFile.save(name, List.extension, value, type)
     
     @staticmethod
     def exist(name):
