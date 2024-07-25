@@ -1,0 +1,4 @@
+entity.exists:[Yes {{entity}} is in {{list}} list;Yes {{entity}} is there]
+entity.dont.exists:[Not {{entity}} is not in {{list}} list;No {{entity}} is not there]
+list.does.not.exist:[I did not found the {{list}} list;the {{list}} list does not exist]
+text.and:and
