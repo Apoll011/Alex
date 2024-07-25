@@ -1,0 +1,8 @@
+get.list:What list do you want too clear?
+did.not.found.list:I did not fount the {{list}} list, to clear. Please confirm.
+did.not.found.entity:I did not fount {{entity}} in the {{list}} list, to clear. Please confirm.
+confirm.list:Do you want me to clear the {{list}} list?
+confirm.entity:Do you want me to remove {{entity}} from the {{list}} list?
+delete.list:Cleared the {{list}} list.
+delete.entity:Removed {{entity}} from the {{list}} list.
+dont.delete:[Ok i wont, delete it.;Canceling deletion.]
