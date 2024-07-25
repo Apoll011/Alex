@@ -91,3 +91,11 @@ class List(DataFile):
     @staticmethod
     def delete(name, extension):
         DataFile.delete(name, List.extension)
+
+    @staticmethod
+    def getPath(name):
+        return DataFile.getPath(name, List.extension)
+    
+    @staticmethod
+    def getBasePath():
+        return DataFile.getBasePath(List.extension)
