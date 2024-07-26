@@ -14,3 +14,19 @@ error.wrong.intent:Sorry but a strange error occurred and your request was send 
 error.slot.missing:Sorry but I need more information on the {{slot}}. please try again.
 error.skill.not.found:The Skill {{skill}} was not found.
 error.missing.main.skill.class:The Skill {{skill}} is wronglly implemented.
+yes.text:Yes
+no.text:No
+none.text:None
+server.closed:The server is closed please be sure to Open the Base Server before starting me.
+server.offline:The Server is Offline.
+server.reconect:Trying to re-connect...
+server.reconection.exceded:The limit of {{limit}} reconetions failed exceded.
+server.closed.exceded:Sorry. But the Server is closed. So I am closing myself.
+server.changed:Detected a change in the server. Re-importing the kits. Please Wait.
+server.kit.user.not.loaded:Users not loaded. Loading.
+server.kit.user.loaded:Done loading Users.
+server.kit.intent.not.loaded:Intent Recognition not loaded. Loading.
+server.kit.intent.loaded:Done loading Intent Recognition.
+server.kit.dictionary.not.loaded:Dictionary not loaded. Loading.
+server.kit.dictionary.loaded:Done loading Dictionary.
+server.kits.loaded:Done, Fixing the Server. All System Online.
