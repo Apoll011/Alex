@@ -45,9 +45,8 @@ def set_api_con(self, alex: AI):
         LOG.error("Base Api Closed.")
         alex.clear()
         alex.set_context("allowed_to_check_api", False)
-        say("The server is closed please be sure to Open the Base Server before starting me.", alex)
+        say("server.closed", alex)
         alex.deactivate()
-
 
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):
@@ -64,6 +63,7 @@ def load_dictionary(self, alex: AI):
     d = alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
     alex.finish(self)
 
+#TODO: Change print to say.
 @alexSkeleton.request_action("retrain")
 def train_engine(alex: AI):
     alex.clear()
@@ -86,7 +86,6 @@ def debug_mode(alex: AI):
     LOG.info("Alex set ot Debug Mode")
     alex.debug_mode = True
 
-#TODO: Make this speach based on language chosen
 @alexSkeleton.request_action("checkApi")
 @alexSkeleton.scheduled(SERVER_RECONECT_DELAY, EventPriority.ALEX)
 def check_api(alex: AI):
@@ -107,7 +106,7 @@ def check_api(alex: AI):
 
             if not kits["all_on"]:
                 print("\33[0m")
-                say("Detected a change in the server. Re-importing the kits. Please Wait.", alex)
+                say("server.changed", alex)
                 LOG.info("Server changed reimporting the kits")
 
             else:
@@ -115,32 +114,33 @@ def check_api(alex: AI):
 
             if not kits["user"]:
                 LOG.info("Loading User kit from server")
-                say("Users not loaded. Loading.", alex)
+                say("server.kit.user.not.loaded", alex)
+                say("server.kit.user.loaded", alex)
 
             if not kits["intent"]:
                 LOG.info("Loading Intent recognition kit from server")
-                say("Intent Recognition not loaded. Loading.", alex)
+                say("server.kit.intent.not.loaded", alex)
                 alex.api.call_route("intent_recognition/get/reuse")
-                say("Done loading Intent Recognition", alex)
+                say("server.kit.intent.loaded", alex)
             
             if not kits["dictionary"]:
                 LOG.info("Loading Dictionary kit from server")
-                say("Dictionary not loaded. Loading.", alex)
+                say("server.kit.dictionary.not.loaded", alex)
                 alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
-                say("Done loading Dictionary.", alex)
+                say("server.kit.dictionary.loaded", alex)
 
-            say("Done, Fixing the Server. All System Online.", alex)
+            say("server.kits.loaded", alex)
             
         except Exception:
             if server_trys == 0:
                 LOG.warning("The server is Offline")
-                say("The Server is Offline.", alex)
-                say("Trying to re-connect...", alex)
+                say("server.offline", alex)
+                say("server.reconect", alex)
             if server_trys > MAXSERVER_ACCEPTD_TRYS:
                 LOG.error("Server. Closed. Closing system")
                 alex.set_context("allowed_to_check_api", False)# This has to happen since while alex is speaching the schedule theread seems to continue executing this function causeing it too loop forever.
-                say(f"The limit of {MAXSERVER_ACCEPTD_TRYS} reconetions failed exceded.", alex)
-                say("Sorry. But the Server is closed. So I am closing myself.", alex)
+                say(f"server.reconection.exceded", alex, {"limit": MAXSERVER_ACCEPTD_TRYS})
+                say("server.closed.exceded", alex)
                 alex.on_next_loop(alex.deactivate)
             else:
                 time.sleep(SERVER_RECONECT_DELAY)
@@ -148,8 +148,8 @@ def check_api(alex: AI):
                 server_trys += 1
                 check_api(alex)
 
-def say(text, alex):
-    alex.speak(alex.make_responce(text))
+def say(key, alex: AI, context = {}):
+    alex.speak(alex.translate_responce(key, context))
 
 @alexSkeleton.request_action("sendToApi")
 def sendApi(alex: AI, route: str, value: str | dict[str, str] = ""):
