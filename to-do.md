@@ -6,3 +6,6 @@
 - [x] Change how are you sure and repeat by  intead of re running the skill use the last sentence speak
 - [x] Added event scheduler in a file for hard saving so its persist on mutiple coses and opens
 - [ ] Add support for programing skills. And jellyfin related skills
+- [ ] Add full PT support
+- [ ] Refactor / Fix/ Improve all the security code
+- [ ] Add tests to all the modules
