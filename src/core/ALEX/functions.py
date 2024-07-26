@@ -180,6 +180,12 @@ def delete_ctx(alex: AI):
     for f in files:
         os.remove(f)
 
+@alexSkeleton.deactivate_action("Delete Temporary Files")
+def delete_temp(alex: AI):
+    LOG.info("Deleting the temp dir")
+    for file in os.listdir(DataFile.getBasePath("temp")):
+        os.remove(f"{DataFile.getBasePath("temp")}/{file}")
+
 @alexSkeleton.deactivate_action("Closing Interface")
 def close_interface(alex: AI):
     LOG.info("Closing the Alex Interface")
