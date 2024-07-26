@@ -63,6 +63,7 @@ class BaseSkill:
                self.slots[slot_name] = self.intent.slots[slot_name].value
 
      def question(self, key_to_question_to_ask, callback, question_replacers = {}, required_responce:Responce = AnyResponce(), *args):
+          required_responce.set_translation_system(self.alex().translationSystem)
           self.responce_translated(key_to_question_to_ask, question_replacers)
           self.alex().setListenProcessor(callback, required_responce, *args) # type: ignore
      

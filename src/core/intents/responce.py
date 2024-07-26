@@ -1,6 +1,7 @@
 from typing import Any
-class Responce:
+from core.translate import TranslationSystem
 
+class Responce:
      rtype: Any
      replace = {
 
@@ -8,6 +9,8 @@ class Responce:
      hard_search = False
 
      result: Any
+
+     translate: TranslationSystem
 
      def is_accepted(self, text) -> bool:
           try:
@@ -30,23 +33,25 @@ class Responce:
           else: 
                return text
 
+     def set_translation_system(self, translation_system: TranslationSystem):
+          self.translate = translation_system
+
 class AnyResponce(Responce):
      def is_accepted(self, text) -> bool:
           self.result = text
           return True
 
 class SomethingFromListOrNoneResponce(Responce):
-     replace = {
-          "none": None,
-     }
 
      def __init__(self, list_word) -> None:
+          self.none_text = self.translate.get_translation("none.text").lower()
+          self.replace[self.none_text] = None
           for e in list_word:
                self.replace.update({e: 1})
           self.list = list_word
 
      def is_accepted(self, text) -> bool:
-          if "none" in text.lower():
+          if self.none_text in text.lower():
                self.result = None
                return True
           
@@ -57,16 +62,19 @@ class SomethingFromListOrNoneResponce(Responce):
           
           return False
 
-class SomethingOrNoneResponce(Responce):
+class SomethingOrNoneResponce(Responce):  
      def is_accepted(self, text) -> bool:
+          none_text = self.translate.get_translation("none.text").lower()
           self.result = text
-          if "none" in text:
+          if none_text in text:
                self.result = None
           return True
 
 class BoolResponce(Responce):
-     replace = {
-          "yes": True,
-          "no": False
-     }
      rtype = bool
+
+     def __init__(self) -> None:
+          yes = self.translate.get_translation("yes.text").lower()
+          no = self.translate.get_translation("no.text").lower()
+          self.replace[yes] = True
+          self.replace[no] = False
