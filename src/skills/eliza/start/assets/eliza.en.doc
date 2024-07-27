@@ -37,9 +37,10 @@ synon: happy elated glad better
 synon: cannot can't
 synon: everyone everybody nobody noone
 synon: be am is are was
+synon: no nope never
 key: xnone
   decomp: *
-    reasmb: I'm not sure I understand you fully.
+    reasmb: I see.
     reasmb: Please go on.
     reasmb: What does that suggest to you ?
     reasmb: Do you feel strongly about discussing such things ?
@@ -189,6 +190,7 @@ key: i
     reasmb: Has your treatment made you (3) ?
     reasmb: What makes you (3) just now ?
     reasmb: Can you explan why you are suddenly (3) ?
+    reasmb: How long have you been happy about (3)?
   decomp: * i was *
     reasmb: goto was
   decomp: * i @belief * i *
@@ -222,6 +224,50 @@ key: i
     reasmb: Do you wish to (2) me ?
     reasmb: You seem to need to (2) me.
     reasmb: Do you (2) anyone else ?
+  decomp: * i feel *
+    reasmb: Why do you feel (2) ?
+    reasmb: What causes you to feel (2) ?
+    reasmb: How long have you been feeling (2) ?
+    reasmb: Do you often feel (2) ?
+    reasmb: How do you deal with feeling (2) ?
+  decomp: * i want *
+    reasmb: Why do you want (2) ?
+    reasmb: What would getting (2) mean to you?
+    reasmb: How would your life change if you got (2) ?
+    reasmb: How important is it for you to get (2) ?
+    reasmb: What will you do if you don't get (2) ?
+  decomp: * i love *
+    reasmb: Why do you love (2) ?
+    reasmb: What do you love about (2) ?
+    reasmb: How long have you loved (2) ?
+    reasmb: What does loving (2) mean to you?
+  decomp: * i think *
+    reasmb: Why do you think (2) ?
+    reasmb: What led you to think (2) ?
+    reasmb: How often do you think (2) ?
+    reasmb: What does thinking (2) mean to you ?
+  decomp: * i hate *
+    reasmb: Why do you hate (2) ?
+    reasmb: What about (2) makes you hate it?
+    reasmb: How long have you hated (2) ?
+    reasmb: What does hating (3) mean to you?
+  decomp: * i am afraid *
+    reasmb: Why are you afraid of (2) ?
+    reasmb: What about (2) scares you ?
+    reasmb: How long have you been afraid of (2) ?
+    reasmb: How do you deal with your fear of (2) ?
+    reasmb: What would make you less afraid of (2) ?
+  decomp: * i am angry *
+    reasmb: Why are you angry about (2) ?
+    reasmb: What makes you angry about (2) ?
+    reasmb: How long have you been angry about (2) ?
+    reasmb: How do you express your anger about (2) ?
+    reasmb: What would help you feel less angry about (2) ?
+  decomp: * i am anxious *
+    reasmb: Why are you anxious about (2) ?
+    reasmb: What makes you anxious about (2) ?
+    reasmb: How long have you been anxious about (2) ?
+    reasmb: How do you handle your anxiety about (2) ?
   decomp: *
     reasmb: You say (1) ?
     reasmb: Can you elaborate on that ?
@@ -357,5 +403,34 @@ key: alike 10
     reasmb: How ?
 key: like 10
   decomp: * @be * like *
+    reasmb: In what way do you think you are like (3) ?
+    reasmb: What similarities do you see between (3) and yourself?
     reasmb: goto alike
-   
+    reasmb: How do you feel about being like (3) ?
+    reasmb: Do you wish you were not like (3) ?
+    reasmb: How long have you felt like (3) ?
+    reasmb: What makes you think you are like (3) ?
+    reasmb: Do others say you are like (3) ?
+key: friend 5
+  decomp: * my friend *
+    reasmb: Tell me more about your friends.
+    reasmb: How long have you known your friend (3) ?
+    reasmb: What makes you consider (3) a friend?
+    reasmb: Do you value your friendship with (3)?
+    reasmb: How did you meet your friend (3)?
+  decomp: * a friend *
+    reasmb: How important are friends to you?
+    reasmb: Do you have many friends?
+    reasmb: What do you like to do with your friends?
+    reasmb: What qualities do you seek in a friend?
+key: problem 4
+  decomp: * my problem *
+    reasmb: What problem are you referring to?
+    reasmb: How long have you had this problem?
+    reasmb: How does this problem affect your life?
+    reasmb: What have you tried to solve your problem?
+  decomp: * a problem *
+    reasmb: What kind of problem is it?
+    reasmb: How serious is this problem?
+    reasmb: Who else is affected by this problem?
+    reasmb: Have you sought help for this problem?
