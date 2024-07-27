@@ -1,8 +1,8 @@
-import logging
-import random
 import re
+import random
+from core.log import LOG
 
-log = logging.getLogger(__name__)
+log = LOG
 
 
 class Key:
