@@ -36,6 +36,8 @@ class Responce:
      def set_translation_system(self, translation_system: TranslationSystem):
           self.translate = translation_system
 
+     def init(self): ...
+     
 class AnyResponce(Responce):
      def is_accepted(self, text) -> bool:
           self.result = text
@@ -73,7 +75,7 @@ class SomethingOrNoneResponce(Responce):
 class BoolResponce(Responce):
      rtype = bool
 
-     def __init__(self) -> None:
+     def init(self):
           yes = self.translate.get_translation("yes.text").lower()
           no = self.translate.get_translation("no.text").lower()
           self.replace[yes] = True
