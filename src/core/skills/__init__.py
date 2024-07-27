@@ -65,6 +65,9 @@ class BaseSkill:
      def question(self, key_to_question_to_ask, callback, question_replacers = {}, required_responce:Responce = AnyResponce(), *args):
           required_responce.set_translation_system(self.alex().translationSystem)
           self.responce_translated(key_to_question_to_ask, question_replacers)
+          self.on_next_input(callback, required_responce, *args)
+     
+     def on_next_input(self, callback, required_responce:Responce = AnyResponce(), *args):
           self.alex().setListenProcessor(callback, required_responce, *args) # type: ignore
      
      def responce_translated(self, key: str, context = None):
