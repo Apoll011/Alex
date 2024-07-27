@@ -1,4 +1,4 @@
-get.entity:[What do you want me to add?;What do you want me to add to the {{list}} list?;]
-get.list:[In witch list?;Where do you want me to put {{entity}}?;]
+get.entity:[What do you want me to add?;What do you want me to add to the {{list}} list?]
+get.list:[In witch list?;Where do you want me to put {{entity}}?]
 dont.have.data:Sorry. But what you said does not have enought data to work with. Try Again.
 added.item:Added {{entity}} to the {{list}} list
