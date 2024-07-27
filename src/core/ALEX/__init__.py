@@ -2,6 +2,7 @@ import os
 import sys
 from typing import Any
 from core.error import *
+from core.log import LOG
 from core.ai.ai import AI
 from core.intents import *
 from .functions import alexSkeleton
@@ -144,11 +145,13 @@ class ALEX(AI):
     def setListenProcessor(self, callback, responceType, *args):
         self.next_listen_processor = callback
         self.required_listen_input = responceType
+        self.required_listen_input.init()
         self.next_processor_args = args
     
     def setDefaultListenProcessor(self):
         self.next_listen_processor = self.process_as_intent
         self.required_listen_input = AnyResponce()
+        self.required_listen_input.init()
         self.next_processor_args = ()
 
     def isListenProcessorDefault(self):
