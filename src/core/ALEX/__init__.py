@@ -56,14 +56,14 @@ class ALEX(AI):
             self.next_on_loop = None
             self.next_on_loop_args = None
     
-    def speak(self, data, voice: str = 'Alex', voice_command = None):
+    def speak(self, data, voice_command = None):
         if BaseInterface.is_set():
             dataP = {
                 "type": "say",
                 "value": data["message"],
                 "settings": {
                     "intent": data["intent"],
-                    "voice": voice,
+                    "voice": data["voice"],
                     "voice_command": voice_command,
                     "voice_mode": self.voice_mode | False
                 }
@@ -161,7 +161,7 @@ class ALEX(AI):
         """
         Make a responce spoke by the interface just instancieate witout any args will be a empy responce that wont be spoke by the interface.
         """
-        return {"message": message, "intent": intent}
+        return {"message": message, "intent": intent, "voice": "Alex"}
 
     def on_next_loop(self, action, *args):
         self.next_on_loop = action

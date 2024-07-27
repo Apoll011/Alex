@@ -21,6 +21,11 @@ class Voice(BaseInterface):
         "en": "US",
         "pt": "PT"
     }
+
+    replacers = {
+        "Alex": "Alex",
+        "Ema": "Karen"
+    }
     
     alex_voice: str
 
@@ -76,7 +81,7 @@ class Voice(BaseInterface):
 
         command += extension
 
-        voice = data["settings"]["voice"]
+        voice = Voice.replacers[data["settings"]["voice"]]
 
         if voice == "Alex":
             voice = Voice.select_voice()
