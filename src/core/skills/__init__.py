@@ -1,3 +1,4 @@
+import os
 import json
 from typing import Any
 from pathlib import Path
@@ -165,3 +166,10 @@ class BaseSkill:
 
      def alex(self):
           return BaseInterface.get().alex
+
+     def get_asset(self, name):
+          path = f"{self.skill_dir}/assets/{name}"
+          if os.path.isfile(path):
+               return path
+          else:
+               raise FileNotFoundError(f"The file {name} was not found in this skill asstes pack.")
