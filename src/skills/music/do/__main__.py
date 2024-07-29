@@ -2,9 +2,9 @@ import os
 from core.config import path
 from core.skills import BaseSkill
 
-class MusicDo(BaseSkill):
+class Do(BaseSkill):
      def init(self):
-          self.register("play@music.do")
+          self.register("music@do")
           self.can_go_again = False
 
      def execute(self, context, intent):
@@ -27,4 +27,4 @@ class MusicDo(BaseSkill):
           self.responce_translated("Ok") # type: ignore
      
      def comand(self, text):
-          os.system(f"zsh \"{path}/skills/play/np.sh\" do \"{text}\"")
+          os.system(f"zsh \"{path}/skills/music/np.sh\" do \"{text}\"")

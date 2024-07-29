@@ -2,9 +2,9 @@ import os
 from core.config import path
 from core.skills import BaseSkill
 
-class Music(BaseSkill):
+class Play(BaseSkill):
 	def init(self):
-		self.register("play@music")
+		self.register("music@play")
 		self.can_go_again = False
 
 	def execute(self, context, intent):
@@ -15,7 +15,7 @@ class Music(BaseSkill):
 		self.optional("genre")
 
 		if len(self.slots) == 0:
-			os.system(f"zsh \"{path}/skills/play/np.sh\" do playpause")
+			os.system(f"zsh \"{path}/skills/music/np.sh\" do playpause")
 			return
 		
 		flag = "-l"
@@ -40,4 +40,4 @@ class Music(BaseSkill):
 		self.responce_translated("Ok")
      
 	def comand(self, flag, pattern):
-		os.system(f"zsh \"{path}/skills/play/np.sh\" play {flag} \"{pattern}\"")
+		os.system(f"zsh \"{path}/skills/music/np.sh\" play {flag} \"{pattern}\"")
