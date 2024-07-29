@@ -1,4 +1,4 @@
-from core.eliza import Eliza
+from plugins.eliza import Eliza
 from core.skills import BaseSkill
 
 class Start(BaseSkill):
