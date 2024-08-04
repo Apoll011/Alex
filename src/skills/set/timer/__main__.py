@@ -25,7 +25,9 @@ class Timer(BaseSkill):
                self.alex().schedule(total_seconds, EventPriority.SKILLS, self.fire_timer)
 
      def fire_timer(self):
+          self.request_atention()
           self.responce_translated("timer.fire")
      
      def fire_timer_with_entity(self):
+          self.request_atention()
           self.responce_translated("timer.fire.entity")

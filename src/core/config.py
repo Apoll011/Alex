@@ -16,6 +16,8 @@ SERVER_RECONECT_DELAY = 5
 
 ALEX_LOOP_DELAY = 1
 
+ATENTION_WAIT_TIME = 2
+
 path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/src")
 
 voice: dict = {

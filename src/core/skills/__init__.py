@@ -1,14 +1,15 @@
 import os
 import json
+import time
 from typing import Any
 from pathlib import Path
 from core.log import LOG
 from core.intents import *
-from core.config import path as p
 from core.intents.responce import *
 from core.context import ContextManager
 from core.translate import TranslationSystem
 from core.interface.base import BaseInterface
+from core.config import path as p, ATENTION_WAIT_TIME
 from core.error import SkillIntentError, SkillSlotNotFound
 
 class BaseSkill:
@@ -173,3 +174,13 @@ class BaseSkill:
                return path
           else:
                raise FileNotFoundError(f"The file {name} was not found in this skill asstes pack.")
+
+     def request_atention(self, require_confirmation = False):
+          """
+          Will call Master name and if require_confirmation is set to True listen for a confirmation key word.
+          """
+          master_name: str = self.alex_context.load("master")["name"] # type: ignore
+          master_first_name = master_name.split()[0]
+          self.responce(master_first_name)
+          time.sleep(ATENTION_WAIT_TIME)
+          # TODO: Add require confirmation logic
