@@ -63,23 +63,18 @@ def load_dictionary(self, alex: AI):
     d = alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
     alex.finish(self)
 
-#TODO: Change print to say.
 @alexSkeleton.request_action("retrain")
 def train_engine(alex: AI):
     alex.clear()
     time_stared = time.time()
-    alex.print_header_text("Re-trainig", 1)
-    print("\33[34mRe-trainig everyting. This process take around 1 to 10 minutes please wait...\33[0m")
+    say("server.retrain", alex)
     for act in trainig_actions:
         name = act.replace(".", " ").title()
-        alex.print_header_text(name, 3)
-        print("Sending Request...")
+        say("server.retrain.thing", alex, {"name": name})
         action = trainig_actions[act]
-        print("Prossesing Request...")
         action(alex)
-        alex.print_header_text("Ended " + name, 3)
-    print("\33[93mTime Took:", time.time() - time_stared, "seconds")
-    alex.print_header_text("Ended Re-Training", 1)
+        say("done.text", alex)
+    say("server.retrain.end", alex, {"time": time.time() - time_stared})
 
 @alexSkeleton.request_action("debugMode")
 def debug_mode(alex: AI):

@@ -30,3 +30,7 @@ server.kit.intent.loaded:Done loading Intent Recognition.
 server.kit.dictionary.not.loaded:Dictionary not loaded. Loading.
 server.kit.dictionary.loaded:Done loading Dictionary.
 server.kits.loaded:Done, Fixing the Server. All System Online.
+server.retrain:Re-trainig everyting. This process take around 1 to 2 minutes please wait.
+server.retrain.thing:Training {{name}}.
+done.text:Done.
+server.retrain.end:Ended Re-Training. Time took {{time}} seconds.

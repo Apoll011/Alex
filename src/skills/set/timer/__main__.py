@@ -30,4 +30,4 @@ class Timer(BaseSkill):
      
      def fire_timer_with_entity(self):
           self.request_atention()
-          self.responce_translated("timer.fire.entity")
+          self.responce_translated("timer.fire.entity", {"entity": self.slots["entity"]})

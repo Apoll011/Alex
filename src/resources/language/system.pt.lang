@@ -30,3 +30,7 @@ server.kit.intent.loaded:Carregamento de Reconhecimento de intenção Completo.
 server.kit.dictionary.not.loaded:Dicionario não carregado. Carregando.
 server.kit.dictionary.loaded:Carregamento de Dicionario Completo.
 server.kits.loaded:Terminei de corrigir o servidor. Todos os sistemas online.
+server.retrain:Re-treinando tudo. Esse processo dura aproximadamente de 1 a 2 minutos. Por Favor Espere.
+server.retrain.thing:Treinando {{name}}.
+done.text:Pronto.
+server.retrain.end:terminei de treinar tudo. Tempo demorado {{time}} segundos.
