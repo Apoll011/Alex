@@ -1,5 +1,6 @@
 import json
 from enum import Enum
+from core.resources.data_files import DataFile
 
 class Size(Enum):
     X_SMALL = -2
@@ -153,6 +154,11 @@ class Lists:
             for i in l:
                 n_l[li].append(i.json())
         return json.dumps(n_l)
+    
+    def save(self):
+        j = self.json()
+        with open(DataFile.getPath("lists", "json"), "w") as file:
+            json.dump(j, file)
 
 class ItemOrListDontExist(Exception): ...
 class NoElements(Exception):
