@@ -23,7 +23,7 @@ class Item:
     quantity: int = 1
 
     def __init__(self, name: str, size: Size = Size.NORMAL, color: Color = Color.NONE, quantity: int = 1) -> None:
-         self.name = name
+         self.name = name.lower()
          self.size = size
          self.color = color
          self.quantity = quantity
@@ -37,13 +37,13 @@ class Item:
               text += "An "
 
          if self.size != Size.NORMAL:
-              text += f" {self.size.name.lower().replace("x_", "extra ")}"
+              text += f" {self.size.name.title().replace("x_", "extra ")}"
          
          if self.color != Color.NONE:
-              text += f" {self.color.name.lower()}"
+              text += f" {self.color.name.title()}"
          
-         text += " {self.name}"
-         return text
+         text += f" {self.name.title()}"
+         return text.strip()
     
     def json(self):
         j = {
@@ -54,7 +54,7 @@ class Item:
                   "quantity": self.quantity,
              }
         }
-        return json.dumps(j)
+        return j
 
     @staticmethod
     def from_json(itemJsonObj):
@@ -69,11 +69,23 @@ class Item:
     def is_name(self, name):
         return self.name.lower() == name.lower()
     
+    def is_equal(self, item:'Item'):
+        if (self.name.lower() == item.name.lower()) and (self.color == item.color) and (self.size == self.size):
+            return True
+        return False
+    
+    def increment(self, quantity: int):
+        self.quantity += quantity
+
 class Lists:
     lists:dict[str, list[Item]] = {}
 
     def add_to_list(self, list_name: str, item: Item):
         self.ensure_exists(list_name)
+        for eitem in self.lists[list_name]:
+            if eitem.is_equal(item):
+                eitem.increment(item.quantity)
+                return
         self.lists[list_name].append(item)
     
     def ensure_exists(self, list_name:str):
@@ -103,7 +115,7 @@ class Lists:
             text = list_content[0].get_representation()
         else:
             text = ", ".join(self.representation_of_all_elements(list_name)[0:-1]) + f" {ander} " + list_content[-1].get_representation()
-        return text
+        return text.replace("  ", " ").strip()
 
     def representation_of_all_elements(self, list_name) -> list[str]:
         return list(map(lambda x: x.get_representation(), self.lists[list_name]))
@@ -132,6 +144,15 @@ class Lists:
     def update(self, list_name, item_name, item: Item):
         self.remove_item(list_name, item_name)
         self.add_to_list(list_name, item)
+
+    def json(self):
+        n_l = {}
+        for li in self.lists:
+            l = self.lists[li]
+            n_l[li] = []
+            for i in l:
+                n_l[li].append(i.json())
+        return json.dumps(n_l)
 
 class ItemOrListDontExist(Exception): ...
 class NoElements(Exception):
