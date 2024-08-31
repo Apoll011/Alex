@@ -46,13 +46,13 @@ class AnyResponce(Responce):
 class SomethingFromListOrNoneResponce(Responce):
 
      def __init__(self, list_word) -> None:
-          self.none_text = self.translate.get_translation("none.text").lower()
-          self.replace[self.none_text] = None
           for e in list_word:
                self.replace.update({e: 1})
           self.list = list_word
 
      def is_accepted(self, text) -> bool:
+          self.none_text = self.translate.get_translation("none.text").lower()
+          self.replace[self.none_text] = None
           if self.none_text in text.lower():
                self.result = None
                return True
