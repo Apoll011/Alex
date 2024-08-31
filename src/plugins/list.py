@@ -61,7 +61,7 @@ class Item:
     def from_json(itemJsonObj):
        name = itemJsonObj["name"]
        attr = itemJsonObj["atributes"]
-       color = Color(attr["color"])
+       color = Color(tuple(attr["color"]))
        size = Size(attr["size"])
        quantity = attr["quantity"]
 
@@ -153,12 +153,27 @@ class Lists:
             n_l[li] = []
             for i in l:
                 n_l[li].append(i.json())
-        return json.dumps(n_l)
+        return n_l
     
     def save(self):
         j = self.json()
         with open(DataFile.getPath("lists", "json"), "w") as file:
             json.dump(j, file)
+
+    @staticmethod
+    def load() -> 'Lists':
+        l = Lists()
+
+        try:
+            with open(DataFile.getPath("lists", "json"), "r") as file:
+                list = json.load(file)
+            for li in list:
+                for item in list[li]:
+                    l.add_to_list(li, Item.from_json(item))
+        except KeyError:
+            pass
+
+        return l
 
 class ItemOrListDontExist(Exception): ...
 class NoElements(Exception):

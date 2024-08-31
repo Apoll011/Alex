@@ -1,12 +1,13 @@
 import os
 from core.skills import BaseSkill
-from core.resources.data_files import List
 from core.intents.responce import BoolResponce
+from plugins.list import Item, Lists, NoElements
 
 class Clear(BaseSkill):
      def init(self):
           self.register("list@clear")
-          self.can_go_again = False          
+          self.can_go_again = False    
+          self.list_obj = Lists.load()      
 
      def execute(self, context, intent):
           super().execute(context, intent)
@@ -38,16 +39,15 @@ class Clear(BaseSkill):
 
 
      def ensure_exists(self) -> bool:
-          if List.exist(self.list):
-               if self.entity != "" and List.element_exists(self.list, self.entity):
-                    return True
-               elif self.entity == "":
-                    return True
-               else:
+          try:
+               self.list_obj.get(self.list)
+               i: bool = self.list_obj.get(self.list, self.entity) # type: ignore
+               if not i:
                     self.responce_translated("did.not.found.entity", {"list": self.list, "entity": self.entity})
-          else:
+               return i
+          except NoElements:
                self.responce_translated("did.not.found.list", {"list": self.list})
-          return False     
+               return False
 
      def confirm_list(self, responce): 
           if responce:
@@ -62,11 +62,11 @@ class Clear(BaseSkill):
                self.responce_translated("dont.delete")
 
      def delete_list(self):
-          List.save(self.list, "", "w")
+          self.list_obj.clear(self.list)
           self.responce_translated("delete.list", {"list": self.list})          
+          self.list_obj.save()
 
      def delete_entity(self):
-          list_content = List.get(self.list)
-          list_content.remove(self.entity)
-          List.save(self.list, "\n".join(list_content), "w")
+          self.list_obj.clear(self.list, self.entity)
           self.responce_translated("delete.entity", {"list": self.list, "entity": self.entity})
+          self.list_obj.save()

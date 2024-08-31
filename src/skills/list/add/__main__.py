@@ -1,11 +1,12 @@
 from core.skills import BaseSkill
-from core.resources.data_files import List
+from plugins.list import Item, Lists
 
 #TODO: Add quantity, maybe size, color, etc
 class Add(BaseSkill):
      def init(self):
           self.register("list@add")
           self.can_go_again = False          
+          self.list_obj = Lists.load()
 
      def execute(self, context, intent):
           super().execute(context, intent)
@@ -30,11 +31,12 @@ class Add(BaseSkill):
 
      def get_entity(self, responce):
           self.entity = responce
-          self.list = self.get("list")
+          self.list = self.get("list").strip().lstrip("a ")
           self.add_to_list()
 
      def add_to_list(self):
           list = self.list.lower()
           entity = self.entity.lower()
-          List.append(list, entity)
+          self.list_obj.add_to_list(list, Item(entity))
           self.responce_translated("added.item", {"entity": entity.title(), "list": list.title()})
+          self.list_obj.save()
