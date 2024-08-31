@@ -13,7 +13,5 @@ class Alex(BaseSkill):
      
      def after_responce(self, close_server):
           if close_server:
-               promise = BaseInterface.get().alex.api.call_route_async("close") 
-               promise.catch(lambda x: self.responce_translated(x))
-               promise.reject("server.closed")
+               BaseInterface.get().alex.api.call_route("close") 
           BaseInterface.get().alex.deactivate()

@@ -22,7 +22,7 @@ class Get(BaseSkill):
                return r.group(1)
 
      def get_meaning(self, word):
-          self.meaning: ApiResponse = BaseInterface.get().alex.handle_request("sendToApi", "dictionary/get/closest", word.lower())
+          self.meaning: ApiResponse = BaseInterface.get().alex.handle_request("sendToApi", "dictionary/get/closest", {"word",word.lower()})
           self.requested = word
           if self.meaning.response["name"] != None:
                if self.meaning.response["name"].lower() != self.requested.lower():

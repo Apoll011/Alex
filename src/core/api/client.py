@@ -1,6 +1,5 @@
-import json
-import socket
-from .promise.promise import Promise
+import time
+import requests
 
 class ApiResponse:
     response: dict
@@ -53,7 +52,7 @@ class ApiClient:
         """
         Authenticates the client.
         """
-        data = self.call_route("auth")
+        data = self.call_route("alex/alive")
         self.__auth(data)
     
     def __auth(self, data: ApiResponse):
@@ -70,26 +69,9 @@ class ApiClient:
         """
         Close the server
         """
-        self.__conect_and_send("close")
         self.active = False
   
-    def call_route_async(self, route, value: str | dict[str, str] = ""):
-        """
-        Calls a route asynchronously.
-
-        Args:
-            route (str): The route to call.
-            value (str | dict[str, str]): The value to pass to the route (default: "").
-
-        Returns:
-            A Promise object.
-        """
-        s = self.__conect_and_send(route, value)
-        promise = Promise()
-        promise.resolve(lambda: self.__get_info(s, promise))
-        return promise
-
-    def call_route(self, route: str, value: str | dict[str, str] = ""):
+    def call_route(self, route: str, value: dict[str, str] = {}):
         """
         Calls a route synchronously.
 
@@ -100,34 +82,13 @@ class ApiClient:
         Returns:
             An ApiResponse object.
         """
-        s = self.__conect_and_send(route, value)
-        data = s.recv(1024).decode("utf-8")
-        return ApiResponse(json.loads(data))
-
-    def __conect_and_send(self, route: str, value: str | dict[str, str] = ""):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((self.HOST, self.PORT))
-        d = {"route": route, "value": value}
-        s.send(bytes(json.dumps(d).encode("utf-8")))
-        return s
-    
-    def __get_info(self, s, promise: Promise):
-        """
-        Gets the response from the server.
-
-        Args:
-            s (socket.socket): The socket object.
-            promise (Promise): The promise object.
-        """
-        try:
-            data = s.recv(1024).decode("utf-8")
-            promise.resolve(lambda: ApiResponse(json.loads(data)))
-            s.close()  # Close the socket object
-        except socket.error as e:
-            promise.reject(e)
-            s.close()  # Close the socket object
-        except json.JSONDecodeError as e:
-            promise.reject(e)
-            s.close()  # Close the socket object
-
-
+        t = ""
+        for key in value.keys():
+            t += f"{key}={value[key]}" 
+        tie = time.time()
+        data = requests.get(f"http://{self.HOST}:{self.PORT}/{route}?{t}")
+        j = data.json()
+        if "responce" in j.keys() and len(j.keys()) == 1:
+            j = j["responce"]
+        d = {"responce": j, "code": data.status_code, "time": time.time() - tie}
+        return ApiResponse(d)

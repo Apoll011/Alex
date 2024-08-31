@@ -114,7 +114,7 @@ class ALEX(AI):
         return self.translate_responce("wrong.answer.soft", context)
 
     def process_as_intent(self, text):
-        promise = self.api.call_route("intent_recognition/parse", text)
+        promise = self.api.call_route("intent_recognition/parse", {"text": text})
         responce = promise.response
         
         intent = self.intentParser.parser(responce)

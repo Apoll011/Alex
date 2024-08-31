@@ -55,7 +55,8 @@ def main(args):
         elif args.interface == "voice":
             Voice(alex)
         elif args.interface == "api":
-            API(alex)
+            #API(alex)
+            pass
         else:
             ComandLine(alex)
         

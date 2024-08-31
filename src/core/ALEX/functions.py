@@ -50,17 +50,17 @@ def set_api_con(self, alex: AI):
 
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):
-    p = alex.api.call_route_async("users/search/tags", {"query": "Master"})
-    p.then(lambda user: alex.finish_and_set(self, "master", alex.api.call_route("users/get", user.response["users"][0]).response))
+    user = alex.api.call_route("users/get/name", {"name": "Tiago"})
+    alex.finish_and_set(self, "master", alex.api.call_route("user/get", {"id":user.response["users"][0]}).response)
 
 @alexSkeleton.init_action("Geting intents engine")
 def train_intents(self, alex: AI):
-    promise = alex.api.call_route_async("intent_recognition/get/reuse")
-    promise.then(lambda data: alex.finish(self))
+    alex.api.call_route("intent_recognition/get/reuse")
+    alex.finish(self)
 
 @alexSkeleton.init_action("Geting dictionary engine")
 def load_dictionary(self, alex: AI):
-    d = alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
+    alex.api.call_route("dictionary/load", {"lang": "en"}) #TODO: Change this this to alex.language
     alex.finish(self)
 
 @alexSkeleton.request_action("retrain")
@@ -121,7 +121,7 @@ def check_api(alex: AI):
             if not kits["dictionary"]:
                 LOG.info("Loading Dictionary kit from server")
                 say("server.kit.dictionary.not.loaded", alex)
-                alex.api.call_route("dictionary/load", "en") #TODO: Change this this to alex.language
+                alex.api.call_route("dictionary/load", {"lang": "en"}) #TODO: Change this this to alex.language
                 say("server.kit.dictionary.loaded", alex)
 
             say("server.kits.loaded", alex)
@@ -147,7 +147,7 @@ def say(key, alex: AI, context = {}):
     alex.speak(alex.translate_responce(key, context))
 
 @alexSkeleton.request_action("sendToApi")
-def sendApi(alex: AI, route: str, value: str | dict[str, str] = ""):
+def sendApi(alex: AI, route: str, value: dict[str, str] = {}):
     return alex.api.call_route(route, value)
 
 @alexSkeleton.request_action("userConect")
