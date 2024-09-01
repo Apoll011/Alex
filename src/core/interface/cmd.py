@@ -20,8 +20,11 @@ class ComandLine(BaseInterface):
     
     def loop(self):
         self.waiting_for_message = True
-        message = input(f"{self.request_sentence}: \33[32m")
+        message = input(f"{self.request_sentence}: \33[32m").strip()
         print("\33[0m", end="")
         self.waiting_for_message = False
+        if message == "":
+            super().loop()
+            return
         self.input({"message": message})
         
