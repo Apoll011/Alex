@@ -25,6 +25,7 @@ parser = argparse.ArgumentParser(description='Install, train, and start Alex', e
 parser.add_argument("--install-skill", action=InstallSkill, nargs=2, help="Install a skill", metavar=("file_path", "intent"))
 parser.add_argument("-t", "--train", action="store_true", help="Train all the resources from Alex and exit")
 parser.add_argument("-l", "--language", default="en", help="Set the language", choices=["en", "pt"])
+parser.add_argument("-b", "--base-server", default="127.0.0.1", help="Set the Base Server IP", metavar=("ip"))
 parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
 parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
 parser.add_argument("--voice", action="store_true", help="Enters voice mode")
@@ -39,6 +40,8 @@ def main(args):
     language = args.language
 
     alex = ALEX()
+
+    alex.base_server_ip = args.base_server
 
     if args.start:
         alex.set_language(language)

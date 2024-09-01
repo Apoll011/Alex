@@ -38,7 +38,7 @@ def make_ctx(self, alex: AI):
 def set_api_con(self, alex: AI):
     try:
         LOG.info("Conecting to Base Api")
-        alex.api = ApiClient(api['host'], api['port'])
+        alex.api = ApiClient(alex.base_server_ip, api['port'])
         alex.finish(self)
         return
     except ConnectionRefusedError:
