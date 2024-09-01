@@ -46,11 +46,11 @@ class Reminder(BaseSkill):
 
      def fire_reminder(self, reminder: ReminderObject, late = False):
           if reminder.person == None:
-               self.responce_translated(f"reminder.fire{".late" if late else ""}", {
+               self.responce_translated(f"reminder.fire{'.late' if late else ''}", {
                     "action": reminder.get_action()
                     })
           else:
-               self.responce_translated(f"reminder.fire.person{".late" if late else ""}", {
+               self.responce_translated(f"reminder.fire.person{'.late' if late else ''}", {
                     "action": reminder.get_action(), 
                     "person": reminder.person.value
                     })

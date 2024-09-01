@@ -7,7 +7,7 @@ from core.error import MissingMainSkillClass
 def prety_name(name: str):
     s = name.split("@")
     skillname = " ".join(s[1].split(".")).title().replace(" ", "")
-    path = f"skills.{s[0]}.{s[1].replace(".", "_")}"
+    path = f"skills.{s[0]}.{s[1].replace('.', '_')}"
     return path, skillname
 
 

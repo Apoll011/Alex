@@ -83,7 +83,7 @@ class Get(BaseSkill):
                     i += 1
                     if defs.endswith("."):
                          defs = defs[0:-1]
-                    resp += defs + f"{choice(types_os_joins) if i < len(self.meaning.response['definition']) else ""}"
+                    resp += defs + f"{choice(types_os_joins) if i < len(self.meaning.response['definition']) else ''}"
           else:
                resp = choice(self.meaning.response['definition'])
           self.responce(resp)

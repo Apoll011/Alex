@@ -5,7 +5,7 @@ class DataFile:
     @staticmethod
     def getPath(name:str, extension:str):
         """Return the path for the data file."""
-        return f"{DataFile.getBasePath(extension)}{name.replace(" ", "_")}.{extension}"
+        return f"{DataFile.getBasePath(extension)}{name.replace(' ', '_')}.{extension}"
 
     @staticmethod
     def getBasePath(extension:str):

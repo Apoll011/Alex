@@ -107,10 +107,10 @@ class AlexApi:
                 pass
 
             case {"type": "say"}:
-                print(f"\n\33[0m{d["settings"]["voice"]}: \33[36m{d['value']}\33[0m")
+                print(f"\n\33[0m{d['settings']['voice']}: \33[36m{d['value']}\33[0m")
 
             case {"type": "play_audio"}:
-                os.system(f"afplay {d["value"]}")
+                os.system(f"afplay {d['value']}")
 
             case _:
                 print(d)

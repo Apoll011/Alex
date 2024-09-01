@@ -38,7 +38,7 @@ class Item:
               text += "An "
 
          if self.size != Size.NORMAL:
-              text += f" {self.size.name.title().replace("x_", "extra ")}"
+              text += f" {self.size.name.title().replace('x_', 'extra ')}"
          
          if self.color != Color.NONE:
               text += f" {self.color.name.title()}"

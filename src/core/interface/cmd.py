@@ -14,7 +14,7 @@ class ComandLine(BaseInterface):
             if self.waiting_for_message:
                 print()
                 self.waiting_for_message = False
-            print(f"\33[0m{data["settings"]["voice"]}: \33[36m{data['value']}\33[0m")
+            print(f"\33[0m{data['settings']['voice']}: \33[36m{data['value']}\33[0m")
             if data["settings"]["voice_mode"]:
                 Voice.s(data)
     
