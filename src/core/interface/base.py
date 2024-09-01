@@ -1,4 +1,5 @@
 import time
+import psutil
 import threading
 from core.log import LOG
 from core.ai.ai import AI
@@ -55,7 +56,8 @@ class BaseInterface:
     
     def execute(self, comand): ...
 
-    def loop(self): ...
+    def loop(self): 
+        print(self.performance())
 
     def close(self):
         LOG.info("Deactivating Alex")
@@ -107,3 +109,24 @@ class BaseInterface:
 
             case _:
                 raise KeyError(f"The type {type} is not valid")
+
+    def performance(self):
+        cpu = psutil.cpu_percent()
+        memory = psutil.virtual_memory().available * 100 / psutil.virtual_memory().total
+        battery = psutil.sensors_battery()
+        disk = psutil.disk_usage(".")
+        info = {
+            "cpu": cpu,
+            "memory": memory,
+            "battery": {
+                "total": battery.percent,
+                "plugged": battery.power_plugged
+            },
+            "disk": {
+                "total": disk.total, 
+                "used": disk.used,
+                "free": disk.free,
+                "percent": disk.percent
+            }
+        }
+        return info
