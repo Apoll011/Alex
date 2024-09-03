@@ -18,7 +18,7 @@ from core.resources.application import Application
 alexSkeleton = AiBluePrintSkeleton()
 
 trainig_actions = {
-    "training.intents": lambda ai: ai.api.call_route("intent_recognition/get/train")
+    "training.intents": lambda ai: ai.api.call_route("intent_recognition/engine", {"type": "train"})
 }
 
 server_trys = 0
@@ -50,12 +50,12 @@ def set_api_con(self, alex: AI):
 
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):
-    user = alex.api.call_route("users/get/name", {"name": "Tiago"})
-    alex.finish_and_set(self, "master", alex.api.call_route("user/get", {"id":user.response["users"][0]}).response)
+    user = alex.api.call_route("users/search/name", {"name": "Tiago"})
+    alex.finish_and_set(self, "master", alex.api.call_route("user/", {"id":user.response["users"][0]}).response)
 
 @alexSkeleton.init_action("Geting intents engine")
 def train_intents(self, alex: AI):
-    alex.api.call_route("intent_recognition/get/reuse")
+    alex.api.call_route("intent_recognition/engine")
     alex.finish(self)
 
 @alexSkeleton.init_action("Geting dictionary engine")
@@ -115,7 +115,7 @@ def check_api(alex: AI):
             if not kits["intent"]:
                 LOG.info("Loading Intent recognition kit from server")
                 say("server.kit.intent.not.loaded", alex)
-                alex.api.call_route("intent_recognition/get/reuse")
+                alex.api.call_route("intent_recognition/engine")
                 say("server.kit.intent.loaded", alex)
             
             if not kits["dictionary"]:

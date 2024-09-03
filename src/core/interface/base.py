@@ -24,6 +24,8 @@ class BaseInterface:
         self.print_header()
         self.request_sentence = self.alex.translate("system.request")
         self.alex.interface_on() 
+        self.alex.start()
+
 
     def print_header(self):
         print("Starting on interface:\33[32m", self.__class__.__name__,"\33[0m")

@@ -20,7 +20,7 @@ class InstallSkill(argparse.Action):
         print(f"\33[32mEnded Instalation of \33[33m{intent}\33[0m")
 
 
-parser = argparse.ArgumentParser(description='Install, train, and start Alex', epilog='Developed by Tiago Bernardo')
+parser = argparse.ArgumentParser(epilog='Developed by Tiago Bernardo')
 
 parser.add_argument("--install-skill", action=InstallSkill, nargs=2, help="Install a skill", metavar=("file_path", "intent"))
 parser.add_argument("-t", "--train", action="store_true", help="Train all the resources from Alex and exit")
@@ -63,7 +63,8 @@ def main(args):
         else:
             ComandLine(alex)
         
-        BaseInterface.get().init()
+        interface = BaseInterface.get()
+
 
         alex.activate()
 
@@ -71,15 +72,15 @@ def main(args):
             LOG.info("Training server")
             alex.handle_request("retrain")
     
-        alex.start()
-
+        interface.init()
 
         try:
             LOG.info("Started Alex")
-            BaseInterface.get().start()
+            interface.start()
         except KeyboardInterrupt:
             print()
-            BaseInterface.get().close()
+            interface.close()
             alex.deactivate()
+            
 if __name__ == "__main__":
     main(args)

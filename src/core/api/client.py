@@ -1,5 +1,6 @@
 import time
 import requests
+from enum import Enum
 
 class ApiResponse:
     response: dict
@@ -28,6 +29,14 @@ class ApiResponse:
         self.response = data["responce"]
         self.code = data["code"]
         self.time = data["time"]
+
+class ApiMethod(Enum):
+    GET = 0
+    PUT = 1
+    POST = 2
+    DELETE = 3
+    OPTIONS = 4
+    PATCH = 5
 
 class ApiClient:
     HOST: str
@@ -71,7 +80,7 @@ class ApiClient:
         """
         self.active = False
   
-    def call_route(self, route: str, value: dict[str, str] = {}):
+    def call_route(self, route: str, value: dict[str, str] = {}, method: ApiMethod = ApiMethod.GET):
         """
         Calls a route synchronously.
 
@@ -85,10 +94,29 @@ class ApiClient:
         t = ""
         for key in value.keys():
             t += f"{key}={value[key]}" 
+        
         tie = time.time()
-        data = requests.get(f"http://{self.HOST}:{self.PORT}/{route}?{t}")
+
+        url = f"http://{self.HOST}:{self.PORT}/{route}?{t}"
+
+        match method:
+            case ApiMethod.GET:
+                data = requests.get(url)
+            case ApiMethod.PUT:
+                data = requests.put(url)
+            case ApiMethod.POST:
+                data = requests.post(url)
+            case ApiMethod.PATCH:
+                data = requests.patch(url)
+            case ApiMethod.DELETE:
+                data = requests.delete(url)
+            case ApiMethod.OPTIONS:
+                data = requests.options(url)
+        
         j = data.json()
+        
         if "responce" in j.keys() and len(j.keys()) == 1:
             j = j["responce"]
         d = {"responce": j, "code": data.status_code, "time": time.time() - tie}
+        
         return ApiResponse(d)
