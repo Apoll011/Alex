@@ -4,6 +4,7 @@ import threading
 from core.log import LOG
 from core.ai.ai import AI
 from core.config import *
+from collections import namedtuple
 from core.intents import IntentResponse
 
 class BaseInterface:
@@ -115,13 +116,20 @@ class BaseInterface:
     def performance(self):
         cpu = psutil.cpu_percent()
         memory = psutil.virtual_memory().available * 100 / psutil.virtual_memory().total
-        battery = psutil.sensors_battery()
+        
+        try:
+            battery = psutil.sensors_battery()
+        except Exception:
+            sbattery = namedtuple('sbattery', ['percent', 'secsleft', 'power_plugged'])
+            battery = sbattery(None, -2, True)
+
         disk = psutil.disk_usage(".")
         info = {
             "cpu": cpu,
             "memory": memory,
             "battery": {
                 "total": battery.percent,
+                "seconds_left": battery.secsleft,
                 "plugged": battery.power_plugged
             },
             "disk": {
