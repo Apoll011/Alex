@@ -22,15 +22,18 @@ class Get(BaseSkill):
                return r.group(1)
 
      def get_meaning(self, word):
-          self.meaning: ApiResponse = BaseInterface.get().alex.handle_request("sendToApi", "dictionary/get/closest", {"word": word.lower()})
+          url = "dictionary/get/closest" if self.skill_settings["closest"] else "dictionary/get/"
+          self.meaning: ApiResponse = BaseInterface.get().alex.handle_request("sendToApi", url, {"word": word.lower()})
           self.requested = word
-          if self.meaning.response["name"] != None:
-               if self.meaning.response["name"].lower() != self.requested.lower():
-                    self.question("not.equal", self.not_equal, {"word": self.meaning.response["name"]}, BoolResponce())
-               else:
-                   self.respond_meaning()
-          else:
+          
+          if self.meaning.response["name"] == None:
                self.responce_translated("not.found", {"word": self.requested})
+               return
+          
+          if self.meaning.response["name"].lower() != self.requested.lower():
+               self.question("not.equal", self.not_equal, {"word": self.meaning.response["name"]}, BoolResponce())
+          else:
+              self.respond_meaning()
 
      def not_equal(self, responce: bool):
           if responce:
@@ -78,12 +81,12 @@ class Get(BaseSkill):
           resp = ""
           if responce:
                i = 0
-               for defs in self.meaning.response['definition']:
-                    defs = self.clean(defs)
+               for definition in self.meaning.response['definition']:
+                    definition = self.clean(definition)
                     i += 1
-                    if defs.endswith("."):
-                         defs = defs[0:-1]
-                    resp += defs + f"{choice(types_os_joins) if i < len(self.meaning.response['definition']) else ''}"
+                    if definition.endswith("."):
+                         definition = definition[0:-1]
+                    resp += definition + f"{choice(types_os_joins) if i < len(self.meaning.response['definition']) else ''}"
           else:
                resp = choice(self.meaning.response['definition'])
           self.responce(resp)
