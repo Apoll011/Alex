@@ -43,29 +43,28 @@ def main(args):
 
     alex.base_server_ip = args.base_server
 
+    alex.set_language(language)
+    LOG.info("Activating alex Alex")
+    
+    if args.voice:
+        alex.handle_request("changeMode", "Voice")
+    if args.debug:
+        LOG.info("Debug Mode")
+        alex.handle_request("debugMode")
+    
+    if args.interface == "server":
+        Server(alex)
+    elif args.interface == "voice":
+        Voice(alex)
+    elif args.interface == "api":
+        #API(alex)
+        pass
+    else:
+        ComandLine(alex)
+    
+    interface = BaseInterface.get()
+    
     if args.start:
-        alex.set_language(language)
-        LOG.info("Activating alex Alex")
-        
-        if args.voice:
-            alex.handle_request("changeMode", "Voice")
-        if args.debug:
-            LOG.info("Debug Mode")
-            alex.handle_request("debugMode")
-        
-        if args.interface == "server":
-            Server(alex)
-        elif args.interface == "voice":
-            Voice(alex)
-        elif args.interface == "api":
-            #API(alex)
-            pass
-        else:
-            ComandLine(alex)
-        
-        interface = BaseInterface.get()
-
-
         alex.activate()
 
         if args.train:
@@ -80,7 +79,8 @@ def main(args):
         except KeyboardInterrupt:
             print()
             interface.close()
-            alex.deactivate()
+    
+    alex.deactivate()
             
 if __name__ == "__main__":
     main(args)
