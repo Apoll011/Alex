@@ -35,6 +35,14 @@ parser.add_argument("-v", "--version", action="version", version=f"Alex {Version
 
 args = parser.parse_args()
 
+def lock_pid():
+    pid = os.getpid()
+    with open('/home/pegasus/.alex', "x") as pidfile:
+        pidfile.write(str(pid))
+
+def clean():
+    os.system("rm /home/pegasus/.alex")
+
 def main(args):
     LOG.init()
     language = args.language
@@ -83,4 +91,9 @@ def main(args):
     alex.deactivate()
             
 if __name__ == "__main__":
-    main(args)
+    try:
+        lock_pid()
+        main(args)
+    except Exception:
+        pass
+    clean()
