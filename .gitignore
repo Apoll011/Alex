@@ -1,7 +1,5 @@
 pyvenv.cfg
-**/bin/
-**/lib/
-**/include/
+.venv/
 piper/
 vosk*/
 **/__pycache__
