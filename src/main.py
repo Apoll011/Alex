@@ -37,6 +37,7 @@ args = parser.parse_args()
 
 def lock_pid():
     pid = os.getpid()
+    clean()
     with open('/home/pegasus/.alex', "x") as pidfile:
         pidfile.write(str(pid))
 
@@ -84,6 +85,7 @@ def main(args):
         try:
             LOG.info("Started Alex")
             interface.start()
+            
         except KeyboardInterrupt:
             print()
             interface.close()
