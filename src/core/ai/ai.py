@@ -28,6 +28,11 @@ class AI(AlexDna, AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInS
     language: str
 
     base_server_ip: str = "127.0.0.1"
+    
+    system_data = {
+        "cpu": [],
+        "net": []
+    }
 
 
     def __init__(self, sig: str) -> None:

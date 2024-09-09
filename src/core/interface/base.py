@@ -5,7 +5,6 @@ from core.log import LOG
 from core.ai.ai import AI
 from core.config import *
 from collections import namedtuple
-from core.intents import IntentResponse
 
 class BaseInterface:
     closed = False
@@ -15,6 +14,11 @@ class BaseInterface:
     request_sentence: str
 
     waiting_for_message = False
+    
+    sys = {
+        "process_given_today": 0,
+        "comands_given": 0,
+    }
 
     def __init__(self, alex: AI):
         self.alex = alex
@@ -48,7 +52,8 @@ class BaseInterface:
         message = data['message']
         message_processed = self.process_input(message)
         self.alex.process(message_processed)
-
+        self.sys["comands_given"] += 1
+        
     def wakeword(self, data):
         self.alex.wake(data)
         self.on_wake_word()
@@ -60,7 +65,7 @@ class BaseInterface:
     def execute(self, comand): ...
 
     def loop(self): 
-        print(self.performance())
+        self.sys["process_given_today"] += 1
 
     def close(self):
         LOG.info("Deactivating Alex")
@@ -113,7 +118,7 @@ class BaseInterface:
             case _:
                 raise KeyError(f"The type {type} is not valid")
 
-    def performance(self):
+    def system_info(self):
         cpu = psutil.cpu_percent()
         memory = psutil.virtual_memory().available * 100 / psutil.virtual_memory().total
         
@@ -138,5 +143,54 @@ class BaseInterface:
                 "free": disk.free,
                 "percent": disk.percent
             }
+        }
+        
+        system = {
+            "status": ["ok", "warning", "error", "suspended", "hiberning"],
+            "info": info,
+            "data": {
+                "process_exec_t": self.sys["process_given_today"],
+                "comands_gt": self.sys["comands_given"],
+                "errors_t":"0",
+                "chart": self.alex.system_data,
+                "plot": {
+                        "datasets": [
+                        {
+                            "label": "Wake Up",
+                            "data": [{
+                                "x": 10,
+                                "y": 0
+                            },
+                            {
+                                "x": 2,
+                                "y": 3
+                            }],
+                            "backgroundColor": "rgb(255, 9, 13)",
+                            "borderColor": "rgba(255,19,12,1)",
+                            "borderWidth": 1
+                        },
+                        {
+                            "label": "Api Calls",
+                            "data": [{
+                                "x": 11,
+                                "y": 53
+                            },
+                            {
+                                "x": 12,
+                                "y": 30
+                            },
+                            {
+                                "x": 10,
+                                "y": 5
+                            }
+                            ],
+                            "backgroundColor": "rgb(54, 162, 235)",
+                            "borderColor": "rgba(54, 192, 235, 1)",
+                            "borderWidth": 1
+                        }
+                        ]
+                }
+            },
+            "skills":  [{"name": str,"id": str,"cpu": int, "internetDialy": int, "status": ["running", "warning", "error"]}]
         }
         return info

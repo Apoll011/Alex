@@ -43,6 +43,7 @@ class Voice(BaseInterface):
 
     def loop(self):
         message = input(f"Waiting for wake word...")
+        super().loop()
         if message == "":
             self.wakeword({})
             return
