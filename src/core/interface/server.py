@@ -17,7 +17,7 @@ class Server(BaseInterface):
         self.socketio.on('change_mode')(self.change_mode)
         self.socketio.on('conect')(self.user_conect)
         self.app.add_url_rule('/', view_func=self.index)
-        self.socketio.run(self.app, host="0.0.0.0", port=80) # type: ignore
+        self.socketio.run(self.app, host="0.0.0.0", port=8416) # type: ignore
         super().start()
 
     def index(self):
@@ -28,4 +28,4 @@ class Server(BaseInterface):
 
     def speak(self, data):
         if data['value'] != "":
-            emit('receive_message', data, broadcast=True) # type: ignore
+            emit('receive_message', data, broadcast=True)
