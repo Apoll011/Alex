@@ -2,6 +2,7 @@ import os
 import time
 import glob
 import pickle
+import psutil
 from core.log import LOG
 from core.error import *
 from core.ai.ai import AI
@@ -87,7 +88,6 @@ def check_api(alex: AI):
     global server_trys
     allowed_to_check_api = alex.get_context("allowed_to_check_api")
     if allowed_to_check_api:
-        LOG.info("Cheking the Api...")
         try:
             api_responce = alex.api.call_route("alex/alive")
             responce = api_responce.response
@@ -97,13 +97,10 @@ def check_api(alex: AI):
             
             kits = responce["kit"]
             
-            server_trys = 0
-
-            if not kits["all_on"]:
+            if not kits["all_on"] or server_trys != 0:
                 print("\33[0m")
                 say("server.changed", alex)
                 LOG.info("Server changed reimporting the kits")
-
             else:
                 return
 
@@ -124,7 +121,9 @@ def check_api(alex: AI):
                 alex.api.call_route("dictionary/load", {"lang": "en"}) #TODO: Change this this to alex.language
                 say("server.kit.dictionary.loaded", alex)
 
-            say("server.kits.loaded", alex)
+            if server_trys != 0:
+                server_trys = 0
+                say("server.kits.loaded", alex)
             
         except Exception:
             if server_trys == 0:
@@ -141,7 +140,11 @@ def check_api(alex: AI):
                 time.sleep(SERVER_RECONECT_DELAY)
                 LOG.info("Trying to reconect")
                 server_trys += 1
-                check_api(alex)
+
+@alexSkeleton.request_action("checkApi")
+@alexSkeleton.scheduled(SCHEDULE_TIME.ONE_HOUR, EventPriority.SYSTEM)
+def save_sys_status(alex: AI):
+    alex.system_data["cpu"].append(cpu = psutil.cpu_percent())
 
 def say(key, alex: AI, context = {}):
     alex.speak(alex.translate_responce(key, context))
