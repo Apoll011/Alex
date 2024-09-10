@@ -8,6 +8,7 @@ from core.intents import *
 from .functions import alexSkeleton
 from core.intents.responce import *
 from core.date import get_time_of_day
+from core.ai.infor import Registeries
 from core.skills.call import SkillCaller
 from core.interface.base import BaseInterface
 
@@ -80,6 +81,7 @@ class ALEX(AI):
                 }
             }
         BaseInterface.get().process(data)
+        self.register(Registeries.WAKE_UP)
     
     def end(self):
         time_of_day = self.translate(f"time.day.{get_time_of_day()}")

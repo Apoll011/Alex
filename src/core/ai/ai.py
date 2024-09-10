@@ -2,6 +2,7 @@ import sys
 import time
 from typing import Any
 from .dna import AlexDna
+from .infor import SysInfo
 from core.config import path
 from .scheduler import Scheduler
 from .translate import Translator
@@ -11,7 +12,7 @@ from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
 from .screen import AiRepresentatorInScreen
 
-class AI(AlexDna, AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInScreen, InternetUser, Scheduler):
+class AI(AlexDna, AiBluePrintUser, SysInfo, AiContextUser, Translator, AiRepresentatorInScreen, InternetUser, Scheduler):
     """
     The main AI class
     """
@@ -29,10 +30,7 @@ class AI(AlexDna, AiBluePrintUser, AiContextUser, Translator, AiRepresentatorInS
 
     base_server_ip: str = "127.0.0.1"
     
-    system_data = {
-        "cpu": [],
-        "net": []
-    }
+    
 
 
     def __init__(self, sig: str) -> None:
