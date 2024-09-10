@@ -1,5 +1,5 @@
-import os
 import sys
+import time
 from typing import Any
 from core.error import *
 from core.log import LOG
@@ -100,9 +100,9 @@ class ALEX(AI):
     def execute_processor(self) -> dict[str, Any]:
         nextL = self.next_listen_processor
         nextA = self.next_processor_args
-
+        #This code might look confusing. Thrust me it is. Explanation: Alex have One WAy of understading wath the user says (Listen_processor) but some times a skill might need to get te text an user send withoud parsing its intent so they can set their one listen processor for the next loop (User input.)
         r = self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
-        if nextL == self.next_listen_processor and nextA == self.next_processor_args:
+        if nextL == self.next_listen_processor and nextA == self.next_processor_args: # After getting the value they wanted (Skill listen processor) they might want to know somthing else. (THat listen processor would be set insed the executing of the previous action so if this Check would not be here they could not do that)
             self.setDefaultListenProcessor() 
         return r if isinstance(r, dict) else self.make_responce()
 
@@ -114,17 +114,27 @@ class ALEX(AI):
         return self.translate_responce("wrong.answer.soft", context)
 
     def process_as_intent(self, text):
+        started = time.time()
         promise = self.api.call_route("intent_recognition/", {"text": text})
         responce = promise.response
+        
+        server_time = time.time() - started
         
         intent = self.intentParser.parser(responce)
         if intent.intent.intent_name != None:
             if self.debug_mode:
                 self.intentParser.draw_intent(intent)
-            return self.call_skill(intent)
+            result = self.call_skill(intent)
         else:
-            return self.translate_responce("intent.not.valid", intent=intent.json)
-
+            result = self.translate_responce("intent.not.valid", intent=intent.json)
+        
+        took = time.time() - started
+        
+        if self.debug_mode:
+            print("Took:", server_time, "seconds to get intent +", took - server_time, "Of skill execution")
+        
+        return result
+        
     def call_skill(self, intent: IntentResponse):
         try:
             skill = self.skill_caller.call(intent)
