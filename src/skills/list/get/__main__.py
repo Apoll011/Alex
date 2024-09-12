@@ -26,9 +26,6 @@ class Get(BaseSkill):
           else:
                self.responce_translated("entity.dont.exists", {"list": self.get("list"), "entity": self.get("entity")})
     
-     def get_full_list(self):
-          try:
-               text:str = self.list_obj.get(self.get("list")) # type: ignore
-               self.responce(text)
-          except NoElements:
-               self.responce(self.translate("no.elements", {"list": self.get("list")}))
+     def get_full_list(self): 
+          text:str = self.list_obj.get(self.get("list"))
+          self.responce(text)

@@ -111,7 +111,7 @@ class Lists:
     def get_list(self, list_name, ander):
         list_content = self.lists[list_name]
         if len(list_content) == 0:
-            raise NoElements(list_name)
+            text = f"Your {list_name} list is empy!"
         elif len(list_content) == 1:
             text = list_content[0].get_representation()
         else:

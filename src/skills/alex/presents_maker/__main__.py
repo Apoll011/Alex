@@ -10,5 +10,5 @@ class PresentsMaker(BaseSkill):
 
      def get_creator(self):
           user_id = self.alex().api.call_route("users/search/tags", {"query": "Creator"}).response["users"][0]
-          user = self.alex().api.call_route("users/", {"id": user_id}).response
+          user = self.alex().api.call_route("user/", {"id": user_id}).response
           return user
