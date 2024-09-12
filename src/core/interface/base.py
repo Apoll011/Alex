@@ -12,9 +12,14 @@ class BaseInterface:
     request_sentence: str
 
     waiting_for_message = False
+    
+    config = {}
+    
+    name = ""
 
     def __init__(self, alex: AI):
         self.alex = alex
+        self.config = interfaces_config[self.name]
         self.register()
     
     def init(self):
@@ -26,7 +31,7 @@ class BaseInterface:
 
 
     def print_header(self):
-        print("Starting on interface:\33[32m", self.__class__.__name__,"\33[0m")
+        print("Starting on", self.name.title(),"interface:\33[32m", self.name,"\33[0m")
     
     def start(self):
         loop = threading.Thread(name = "MainLoop", target=self.start_loop)

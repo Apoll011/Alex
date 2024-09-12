@@ -9,7 +9,7 @@ from core.interface.base import BaseInterface
 
 class API(BaseInterface):
     server: SERVER = SERVER("0.0.0.0", 1287, 1)
-
+    name = "api"
     def start(self):
         self.server.client_name = "Alex Client"
         self.register_fun("alex/wake", self.wakeword)

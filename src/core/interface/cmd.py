@@ -4,7 +4,8 @@ from core.interface.base import BaseInterface
 
 
 class ComandLine(BaseInterface):
-
+    name = "cmd"
+    
     def start(self):
         self.user_conect({})
         super().start()

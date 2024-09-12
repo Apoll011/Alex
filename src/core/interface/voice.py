@@ -5,6 +5,9 @@ from core.intents import IntentResponse
 from core.interface.base import BaseInterface
 
 class Voice(BaseInterface):
+    
+    name = "voice"
+    
     alex_possibilities = {
         "en": {
             "US": "Alex",
