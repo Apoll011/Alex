@@ -2,7 +2,7 @@ import os
 import zipfile
 import argparse
 from core.log import LOG
-from core.ALEX import ALEX
+from core.alex import ALEX
 from core.interface import *
 from core.version import VersionManager
 

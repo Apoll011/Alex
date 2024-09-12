@@ -40,7 +40,7 @@ class AI(AlexDna, AiBluePrintUser, SysInfo, AiContextUser, Translator, AiReprese
         Args:
             sig (str): The signature of the AI
         """
-        with open(f"{path}/core/{sig}/sys.sg", "r") as name:
+        with open(f"{path}/core/{sig.lower()}/sys.sg", "r") as name:
             self.name = name.read()
         
         self.done_init_actions = False
