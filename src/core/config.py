@@ -1,4 +1,5 @@
 import os
+import json
 from enum import Enum
 
 class EventPriority(Enum):
@@ -19,7 +20,7 @@ class SCHEDULE_TIME(int, Enum):
     THIRTY_SECONDS = FIFTEEN_SECONDS * 2
     FORTY_SECONDS = TWENTY_SECONDS * 2
     FIFTY_SECONDS = TWENTY_FIVE_SECONDS * 2
-    ONE_MINUTE = 60
+    ONE_MINUTE = THIRTY_SECONDS * 2 
     TEN_MINUTES = ONE_MINUTE * 10
     FIFTEEN_MINUTES = ONE_MINUTE * 15
     TWENTY_MINUTES = TEN_MINUTES * 2
@@ -31,7 +32,6 @@ class SCHEDULE_TIME(int, Enum):
     FIVE_HOURS = ONE_HOUR * 5
     ONE_DAY = ONE_HOUR * 24
 
-DEFALUT_LANG = "en"
 
 MAXSERVER_ACCEPTD_TRYS = 10
 SERVER_RECONECT_DELAY = SCHEDULE_TIME.FIVE_SECONDS
@@ -42,25 +42,11 @@ ATENTION_WAIT_TIME = 2
 
 path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/src")
 
-voice: dict = {
-    "voice":{
-        "PRIA": {
-            "en": 0,
-            "pt": 2
-        }, 
-        "ALEX": {
-            "en": 1,
-            "pt": 2
-        }
-    },
-    "speech": {
-        "s": 160,
-        "n": 170,
-        "f": 185
-    }
-}
+config_file = {}
+with open(f"{path}/.config", "r") as config:
+    config_file = json.load(config)
 
-api = {
-    "host": "127.0.0.1",
-    "port": 1178
-}
+DEFALUT_LANG = config_file["lang"]
+
+api = config_file["api"]
+interfaces_config = config_file["interfaces"]
