@@ -109,7 +109,7 @@ class BaseInterface:
                 self.speak(data)
 
             case "play_audio":
-                os.system(f"afplay {data['value']}")
+                os.system(f"aplay {data['value']}")
 
             case _:
                 raise KeyError(f"The type {type} is not valid")
