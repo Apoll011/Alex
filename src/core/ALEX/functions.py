@@ -7,7 +7,7 @@ from core.log import LOG
 from core.error import *
 from core.ai.ai import AI
 from core.config import *
-from core.api.client import ApiClient
+from core.client import ApiClient
 from core.config import EventPriority
 from core.models import ReminderObject
 from core.interface.base import BaseInterface

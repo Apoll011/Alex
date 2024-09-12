@@ -91,14 +91,27 @@ class ApiClient:
         Returns:
             An ApiResponse object.
         """
-        t = ""
-        for key in value.keys():
-            t += f"{key}={value[key]}" 
         
-        tie = time.time()
+        url = self.generate_url(route, value)
+        
+        
+        started_time = time.time()
 
-        url = f"http://{self.HOST}:{self.PORT}/{route}?{t}"
+        json_responce, status_code = self.make_request(url, method)        
+        
+        return self.create_responce_obj(json_responce, status_code, started_time)
 
+    def generate_url(self, route: str, value):
+        key_value = ""
+        for key in value.keys():
+            key_value += f"{key}={value[key]}"
+        
+        url = f"http://{self.HOST}:{self.PORT}/{route}?{key_value}"
+
+        return url
+    
+    def make_request(self, url: str, method: ApiMethod):
+        
         match method:
             case ApiMethod.GET:
                 data = requests.get(url)
@@ -112,11 +125,13 @@ class ApiClient:
                 data = requests.delete(url)
             case ApiMethod.OPTIONS:
                 data = requests.options(url)
+
+        return data.json(), data.status_code
+
+    def create_responce_obj(self, json_data, status_code, started_time):
+        if "responce" in json_data.keys() and len(json_data.keys()) == 1:
+            json_data = json_data["responce"]
+            
+        data = {"responce": json_data, "code": status_code, "time": time.time() - started_time}
         
-        j = data.json()
-        
-        if "responce" in j.keys() and len(j.keys()) == 1:
-            j = j["responce"]
-        d = {"responce": j, "code": data.status_code, "time": time.time() - tie}
-        
-        return ApiResponse(d)
+        return ApiResponse(data)

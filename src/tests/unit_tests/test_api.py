@@ -1,5 +1,5 @@
 import unittest
-from core.api.client import ApiClient
+from core.client import ApiClient
 from core.config import api
 
 class TestApi(unittest.TestCase):

@@ -7,7 +7,7 @@ from core.config import path
 from .scheduler import Scheduler
 from .translate import Translator
 from .context import AiContextUser
-from core.api.client import ApiClient
+from core.client import ApiClient
 from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
 from .screen import AiRepresentatorInScreen

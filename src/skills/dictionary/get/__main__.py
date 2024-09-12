@@ -1,7 +1,7 @@
 import re
 from random import choice
 from core.skills import BaseSkill
-from core.api.client import ApiResponse
+from core.client import ApiResponse
 from core.interface.base import BaseInterface
 from core.intents.responce import BoolResponce, SomethingFromListOrNoneResponce
 
