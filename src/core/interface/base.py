@@ -51,8 +51,8 @@ class BaseInterface:
         message_processed = self.process_input(message)
         self.alex.process(message_processed)
         
-    def wakeword(self, data):
-        self.alex.wake(data)
+    def wakeword(self, data = 1):
+        self.alex.wake({"prob":data})
         self.on_wake_word()
 
     def on_wake_word(self): ...

@@ -1,8 +1,10 @@
 import os
 import threading
 import subprocess
-from core.intents import IntentResponse
+from core.ai.ai import AI
+from core.config import path
 from core.interface.base import BaseInterface
+from precise_runner import PreciseEngine, PreciseRunner
 
 class Voice(BaseInterface):
     
@@ -38,18 +40,18 @@ class Voice(BaseInterface):
 
     allowed_after_wake_word_listen = True
 
+    def __init__(self, alex: AI):
+        super().__init__(alex)
+
+        engine = PreciseEngine('precise', f'{path}/resources/christopher-precise/christopher-precise.pb')
+        runner = PreciseRunner(engine, on_activation=self.wakeword, sensitivity=0.5)
+        runner.start()
+    
     @staticmethod
     def select_voice():
         lang = BaseInterface.get().alex.language
         preference = Voice.alex_voice_preference[lang]
         return Voice.alex_possibilities[lang][preference]
-
-    def loop(self):
-        message = input(f"Waiting for wake word...")
-        super().loop()
-        if message == "":
-            self.wakeword({})
-            return
 
     def start(self):
         self.user_conect({})
@@ -57,12 +59,9 @@ class Voice(BaseInterface):
         super().start()
 
     def on_wake_word(self):
-        self.get_input_and_process()
-
-    def get_input_and_process(self, timeout:int = 2):
         self.allowed_after_wake_word_listen = False
         self.waiting_for_message = True
-        message = self.listen(timeout)
+        message = self.listen(2)
         self.waiting_for_message = False
         if not message.strip() == "":
             print(f"{self.request_sentence}: \33[32m {message} \33[0m")
@@ -71,9 +70,11 @@ class Voice(BaseInterface):
             threading.Thread(target=self.after_wake_word).start()
         else:
             print("NULL MESSAGE")
+
     def speak(self, data):
         if data['value'] != "":
-            Voice.s(data, f" {self.voice_command_extensions}")
+            #Voice.s(data, f" {self.voice_command_extensions}")
+            print(data['value'])
         
     @staticmethod
     def s(data, extension = ""):
@@ -95,14 +96,15 @@ class Voice(BaseInterface):
         os.system(command)
 
     def listen(self, timeout: int):
-        c = f"hear -p -t {timeout}"
+        """ c = f"hear -p -t {timeout}"
         result = subprocess.check_output(c, shell=True, text=True)
-        return result.strip().split("\n")[-1].strip().lstrip().rstrip()
+        return result.strip().split("\n")[-1].strip().lstrip().rstrip() """
+        return input("Input: ")
 
     def after_wake_word(self):
         if self.allowed_after_wake_word_listen:
             print("Listening for continuation...")
-            self.get_input_and_process(2)
+            self.on_wake_word()
             print("Ended listening of continuation")
         else:
             self.allowed_after_wake_word_listen = True
