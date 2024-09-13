@@ -11,7 +11,6 @@ usage() {
     echo
     echo "Options:"
     echo "  --install-skill <file_path> <intent>    Install a skill from a file."
-    echo "  -t, --train                           Train all resources and exit."
     echo "  -l, --language <language>             Set the language (choices: en, pt). Default: en."
     echo "  -b, --base-server <ip>                 Set the Base Server IP. Default: 127.0.0.1."
     echo "  -s, --start                            Start Alex."

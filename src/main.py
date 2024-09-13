@@ -19,83 +19,121 @@ class InstallSkill(argparse.Action):
             zip_ref.close()
         print(f"\33[32mEnded Instalation of \33[33m{intent}\33[0m")
 
+class ParseArguments:
+    def __init__(self) -> None:
+        self.parser = argparse.ArgumentParser(epilog='Developed by Tiago Bernardo')
 
-parser = argparse.ArgumentParser(epilog='Developed by Tiago Bernardo')
+        self.parser.add_argument("--install-skill", action=InstallSkill, nargs=2, help="Install a skill", metavar=("file_path", "intent"))
+        self.parser.add_argument("-l", "--language", default="en", help="Set the language", choices=["en", "pt"])
+        self.parser.add_argument("-b", "--base-server", default="127.0.0.1", help="Set the Base Server IP", metavar=("ip"))
+        self.parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
+        self.parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
+        self.parser.add_argument("--voice", action="store_true", help="Enters voice mode")
+        self.parser.add_argument("-i", "--interface", default="cmd", help="Interface mode", choices=["cmd", "server", "voice", "api"])
 
-parser.add_argument("--install-skill", action=InstallSkill, nargs=2, help="Install a skill", metavar=("file_path", "intent"))
-parser.add_argument("-t", "--train", action="store_true", help="Train all the resources from Alex and exit")
-parser.add_argument("-l", "--language", default="en", help="Set the language", choices=["en", "pt"])
-parser.add_argument("-b", "--base-server", default="127.0.0.1", help="Set the Base Server IP", metavar=("ip"))
-parser.add_argument("-s", "--start", action="store_true", help="Start Alex")
-parser.add_argument("-d", "--debug", action="store_true", help="Enters Debug Mode")
-parser.add_argument("--voice", action="store_true", help="Enters voice mode")
-parser.add_argument("-i", "--interface", default="cmd", help="Interface mode", choices=["cmd", "server", "voice", "api"])
+        self.parser.add_argument("-v", "--version", action="version", version=f"Alex {VersionManager.get().get('coreVersion', '')}")
 
-parser.add_argument("-v", "--version", action="version", version=f"Alex {VersionManager.get().get('coreVersion', '')}")
+    def parse(self):
+        return self.parser.parse_args()
 
-args = parser.parse_args()
+class InterfaceFactory:
+    def __init__(self, interface_type: str, alex: ALEX) -> None:
+        match interface_type:
+            case "server":
+                Server(alex)
+            case "voice":
+                Voice(alex)
+            case "api":
+                raise NotImplementedError("The api interface is not implemented.")
+            case "cmd":
+                ComandLine(alex)
+            case _:
+                raise BaseException(f"The interface {interface_type} does not exist.")
+            
+        self.interface = BaseInterface.get()
 
-def lock_pid():
-    pid = os.getpid()
-    clean()
-    with open('/home/pegasus/.alex', "x") as pidfile:
-        pidfile.write(str(pid))
+    def get_interface(self):
+        return self.interface
+    
+    def init_interface(self):
+        self.interface.init()
+    
+    def start_interface(self):
+        self.init_interface()
+        LOG.info("Started Alex")
+        self.interface.start()
+    
+    def close_interface(self):
+        print()
+        self.interface.close()
 
-def clean():
-    os.system("rm /home/pegasus/.alex")
+class AlexFactory:
+    def __init__(self, args) -> None:
+        self.args = args
+        self.alex = ALEX()
+
+        self.set_base_server()
+        self.set_language()
+        
+    def set_base_server(self):
+        self.alex.base_server_ip = self.args.base_server
+
+    def set_language(self):
+        language = self.args.language
+        self.alex.set_language(language)
+    
+    def activate(self):
+        LOG.info("Activating Alex")
+        self.alex.activate()
+        self.config()
+        
+    def config(self):
+        if self.args.voice:
+            self.alex.handle_request("changeMode", "Voice")
+        if self.args.debug:
+            self.alex.handle_request("debugMode")
+    
+    def deactivate(self):
+        self.alex.deactivate()
+    
+    def get(self):
+        return self.alex
+
+class PID:
+    
+    pid_file = "/home/pegasus/.alex"
+    
+    @staticmethod
+    def lock():
+        pid = os.getpid()
+        PID.clean()
+        with open(PID.pid_file, "x") as pidfile:
+            pidfile.write(str(pid))
+
+    @staticmethod
+    def clean():
+        os.system(f"rm {PID.pid_file}")
 
 def main(args):
     LOG.init()
-    language = args.language
-
-    alex = ALEX()
-
-    alex.base_server_ip = args.base_server
-
-    alex.set_language(language)
-    LOG.info("Activating alex Alex")
     
-    if args.voice:
-        alex.handle_request("changeMode", "Voice")
-    if args.debug:
-        LOG.info("Debug Mode")
-        alex.handle_request("debugMode")
+    alex = AlexFactory(args)
     
-    if args.interface == "server":
-        Server(alex)
-    elif args.interface == "voice":
-        Voice(alex)
-    elif args.interface == "api":
-        #API(alex)
-        pass
-    else:
-        ComandLine(alex)
-    
-    interface = BaseInterface.get()
+    interface = InterfaceFactory(args.interface, alex.get())
     
     if args.start:
-        alex.activate()
-
-        if args.train:
-            LOG.info("Training server")
-            alex.handle_request("retrain")
-    
-        interface.init()
-
+        alex.activate()    
+        
         try:
-            LOG.info("Started Alex")
-            interface.start()
+            interface.start_interface()
             
         except KeyboardInterrupt:
-            print()
-            interface.close()
+            interface.close_interface()
     
     alex.deactivate()
             
 if __name__ == "__main__":
-    try:
-        lock_pid()
-        main(args)
-    except Exception:
-        pass
-    clean()
+    parser = ParseArguments()
+    PID.lock()
+    main(parser.parse())
+    PID.clean()
