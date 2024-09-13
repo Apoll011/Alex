@@ -144,7 +144,7 @@ def check_api(alex: AI):
 @alexSkeleton.request_action("checkApi")
 @alexSkeleton.scheduled(SCHEDULE_TIME.ONE_HOUR, EventPriority.SYSTEM)
 def save_sys_status(alex: AI):
-    alex.system_data["cpu"].append(cpu = psutil.cpu_percent())
+    alex.system_data["cpu"].append(cpu = psutil.cpu_percent()) # type: ignore
 
 def say(key, alex: AI, context = {}):
     alex.speak(alex.translate_responce(key, context))

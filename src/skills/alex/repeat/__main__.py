@@ -4,6 +4,7 @@ class Repeat(BaseSkill):
      def init(self):
           self.register("alex@repeat")
           self.can_go_again = False
+          self.can_repeat_responce = False
           
      def execute(self, context, intent):
           super().execute(context, intent)

@@ -24,6 +24,8 @@ class BaseSkill:
 
      can_go_again: bool
 
+     can_repeat_responce = True
+     
      skill_settings: dict 
      
      language: str
@@ -93,7 +95,8 @@ class BaseSkill:
           self.alex().speak(data) # type: ignore
 
      def save_last_responce(self, text):
-          self.alex_context.save(text, "last_responce")
+          if self.can_repeat_responce:
+               self.alex_context.save(text, "last_responce")
           
      def prety_name(self, name: str):
           s = name.split("@")
