@@ -1,7 +1,8 @@
-from random import Random, randint
-from .data_files import DataFile
 import os
 import pickle
+from random import Random, randint
+
+from .data_files import DataFile
 
 class TemporaryFileBaseClass(DataFile):
     
@@ -15,6 +16,7 @@ class TemporaryFileBaseClass(DataFile):
 
 
     def __init__(self, ext) -> None:
+        self.path = None
         self.extension = ext
 
     def create(self):
@@ -36,11 +38,11 @@ class TemporaryFileBaseClass(DataFile):
 
     def close(self):
         """Close the file buffer."""
-        if self.fileBuffer != None:
+        if self.fileBuffer is not None:
             self.fileBuffer.close()
 
     def deleteFile(self):
-        """Delethe the Temporary file"""
+        """Delete the Temporary file"""
         os.remove(self.path)
         
 class TemporaryFile(TemporaryFileBaseClass):
@@ -50,8 +52,9 @@ class TemporaryFile(TemporaryFileBaseClass):
         super().__init__("temp")
         self.create()
         super().write(data)
-    
-    def __generate_a_random_name(self):
+
+    @staticmethod
+    def __generate_a_random_name():
         alp = list(map(chr, range(97, 123)))
         i = 0
         a = []

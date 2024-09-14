@@ -1,11 +1,12 @@
-import json
-import time
-import socket
 import datetime
-from core.security.code import AlexKey
-from core.api.server import API as SERVER
-from core.interface.base import BaseInterface
+import json
+import socket
+import time
 
+from core.api.server import API as SERVER
+
+from core.interface.base import BaseInterface
+from core.security.code import AlexKey
 
 class API(BaseInterface):
     server: SERVER = SERVER("0.0.0.0", 1287, 1)
@@ -14,7 +15,7 @@ class API(BaseInterface):
         self.server.client_name = "Alex Client"
         self.register_fun("alex/wake", self.wakeword)
         self.register_fun("alex/change/mode", self.change_mode)
-        self.register_fun("alex/user/conect", self.user_conect)
+        self.register_fun("alex/user/conect", self.user_connect)
         self.register_fun("alex/api/call", self.api_call)
         self.register_fun("alex/info", self.info)
         self.register_fun("alex/info/user", self.user)

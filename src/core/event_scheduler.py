@@ -1,4 +1,4 @@
-#by: https://github.com/phluentmed/
+# by: https://github.com/phluentmed/
 from collections import namedtuple
 from enum import Enum
 import heapq
@@ -13,15 +13,25 @@ _sentinel = object()
 # https://github.com/python/cpython/blob/3.8/Lib/sched.py
 
 
-class Event(namedtuple('Event',
-                       'time, priority, action, argument, kwargs, id')):
+class Event(namedtuple("Event", "time, priority, action, argument, kwargs, id")):
     __slots__ = []
-    def __eq__(self, o): return (self.time, self.priority) == (o.time, o.priority)
-    def __lt__(self, o): return (self.time, self.priority) <  (o.time, o.priority)
-    def __le__(self, o): return (self.time, self.priority) <= (o.time, o.priority)
-    def __gt__(self, o): return (self.time, self.priority) >  (o.time, o.priority)
-    def __ge__(self, o): return (self.time, self.priority) >= (o.time, o.priority)
- 
+
+    def __eq__(self, o):
+        return (self.time, self.priority) == (o.time, o.priority)
+
+    def __lt__(self, o):
+        return (self.time, self.priority) < (o.time, o.priority)
+
+    def __le__(self, o):
+        return (self.time, self.priority) <= (o.time, o.priority)
+
+    def __gt__(self, o):
+        return (self.time, self.priority) > (o.time, o.priority)
+
+    def __ge__(self, o):
+        return (self.time, self.priority) >= (o.time, o.priority)
+
+
 class SchedulerStatus(Enum):
     RUNNING = 0
     STOPPING = 1
@@ -35,16 +45,16 @@ class EventScheduler:
     API was taken from python's sched module
     (https://docs.python.org/3/library/sched.html).
     """
-    def __init__(self,
-                 thread_name=None,
-                 timefunc=monotonic,
-                 timer_class=threading.Timer):
+
+    def __init__(
+        self, thread_name=None, timefunc=monotonic, timer_class=threading.Timer
+    ):
         """
         Args:
             thread_name (str, optional): provide a string name for the internal
             thread.
             timefunc (optional): provide a timing function the event scheduler
-            will rely on on to schedule events.
+            will rely on to schedule events.
             timer_class (:obj:`threading.Timer`, optional): provide a timer
             class which runs on the same time as timefunc
         """
@@ -52,8 +62,7 @@ class EventScheduler:
         self._lock = threading.RLock()
         self.timefunc = timefunc
         self._scheduler_status = SchedulerStatus.STOPPED
-        self._event_thread = threading.Thread(target=self._run,
-                                              name=thread_name)
+        self._event_thread = threading.Thread(target=self._run, name=thread_name)
         # Condition variable to notify the event thread when there's a new
         # event or when the deadline of the soonest event has passed.
         self._cv = threading.Condition(self._lock)
@@ -73,12 +82,7 @@ class EventScheduler:
         with self._cv:
             self._cv.notify()
 
-    def enterabs(self,
-                 time,
-                 priority,
-                 action,
-                 arguments=(),
-                 kwargs=_sentinel) -> Event:
+    def enterabs(self, time, priority, action, arguments=(), kwargs=_sentinel) -> Event:
         """Enter a new event in the queue to occur at an absolute time.
 
         Args:
@@ -104,15 +108,17 @@ class EventScheduler:
             the scheduling of other events.
         """
         if priority >= sys.maxsize or priority < 0:
-            raise ValueError('Priority must be equal to or greater than 0 and '
-                             'less than sys.maxsize')
+            raise ValueError(
+                "Priority must be equal to or greater than 0 and "
+                "less than sys.maxsize"
+            )
         if kwargs is _sentinel:
             kwargs = {}
         # Non-recurring events have an id of 0
         event = Event(time, priority, action, arguments, kwargs, 0)
         with self._lock:
             if self._scheduler_status != SchedulerStatus.RUNNING:
-                return None # type: ignore
+                return None  # type: ignore
             heapq.heappush(self._queue, event)
             # We only want to notify the event thread if the inserted event is
             # in the front of the queue
@@ -120,18 +126,13 @@ class EventScheduler:
                 self._notify()
         return event  # The ID
 
-    def enter(self,
-              delay,
-              priority,
-              action,
-              arguments=(),
-              kwargs=_sentinel) -> Event:
-        """ Enter a new event in the queue to occur at a time relative to the
+    def enter(self, delay, priority, action, arguments=(), kwargs=_sentinel) -> Event:
+        """Enter a new event in the queue to occur at a time relative to the
         current time.
 
         Args:
             delay: The relative time the event will be scheduled to execute.
-                Eg. If you pass in 1 as the delay, the event will be scheduled
+                E.g. If you pass in 1 as the delay, the event will be scheduled
                 to execute in 1 + now() seconds from now.
             priority (int): The priority the event will execute with. If two
                 events are scheduled for the same time, the event with the
@@ -154,23 +155,22 @@ class EventScheduler:
             the scheduling of other events.
         """
         if priority >= sys.maxsize or priority < 0:
-            raise ValueError('Priority must be equal to or greater than 0 and '
-                             'less than sys.maxsize')
+            raise ValueError(
+                "Priority must be equal to or greater than 0 and "
+                "less than sys.maxsize"
+            )
         time = self.timefunc() + delay
         return self.enterabs(time, priority, action, arguments, kwargs)
 
-    def enter_recurring(self,
-                        interval,
-                        priority,
-                        action,
-                        arguments=(),
-                        kwargs=_sentinel) -> int:
+    def enter_recurring(
+        self, interval, priority, action, arguments=(), kwargs=_sentinel
+    ) -> int:
         """Enter a new recurring event in the queue to occur at a specified
         interval.
 
         Args:
             interval: The interval time the event will be scheduled to execute.
-                Eg. If you pass in 5 as the delay, the event will be scheduled to
+                E.g. If you pass in 5 as the delay, the event will be scheduled to
                 execute every 5 seconds starting five seconds from when it's
                 entered.
             priority (int): The priority the event will execute with. If two
@@ -194,21 +194,18 @@ class EventScheduler:
             the scheduling of other events.
         """
         if priority >= sys.maxsize or priority < 0:
-            raise ValueError('Priority must be equal to or greater than 0 and '
-                             'less than sys.maxsize')
+            raise ValueError(
+                "Priority must be equal to or greater than 0 and "
+                "less than sys.maxsize"
+            )
         if kwargs is _sentinel:
             kwargs = {}
         with self._lock:
             if self._scheduler_status != SchedulerStatus.RUNNING:
-                return None # type: ignore
+                return None  # type: ignore
             self._id_counter += 1
             time = self.timefunc() + interval
-            event = Event(time,
-                          priority,
-                          action,
-                          arguments,
-                          kwargs,
-                          self._id_counter)
+            event = Event(time, priority, action, arguments, kwargs, self._id_counter)
             self._recurring_events[self._id_counter] = (event, interval)
             heapq.heappush(self._queue, event)
             # We only want to notify the event thread if the inserted event is
@@ -222,16 +219,13 @@ class EventScheduler:
         scheduler thread while holding the queue lock.
         """
         time, priority, action, argument, kwargs, event_id = args
-        if event_id in self._recurring_events and \
-                self._scheduler_status == SchedulerStatus.RUNNING:
+        if (
+            event_id in self._recurring_events
+            and self._scheduler_status == SchedulerStatus.RUNNING
+        ):
             interval = self._recurring_events[event_id][1]
             # We do the scheduling based on the previous execution time
-            event = Event(interval + time,
-                          priority,
-                          action,
-                          argument,
-                          kwargs,
-                          event_id)
+            event = Event(interval + time, priority, action, argument, kwargs, event_id)
             self._recurring_events[event_id] = (event, interval)
             heapq.heappush(self._queue, event)
 
@@ -302,7 +296,7 @@ class EventScheduler:
         return 0
 
     def _run(self):
-        """ Execute events with the soonest time and lowest priority events
+        """Execute events with the soonest time and lowest priority events
         executing first. If there aren't any events available to run, this
         thread uses a timer and waits on a condition variable. When the
         deadline for the event has passed, the timer calls notify() on the
@@ -345,8 +339,9 @@ class EventScheduler:
                     # execute
                     pop(q)
                 if event_id:
-                    self._reschedule_recurring(time, priority, action,
-                                               argument, kwargs, event_id)
+                    self._reschedule_recurring(
+                        time, priority, action, argument, kwargs, event_id
+                    )
                 action(*argument, **kwargs)
                 self._notify()
 
@@ -406,12 +401,7 @@ class EventScheduler:
                 last_event = max(self._queue)
             # we want to make sure the "terminating" event is the last one in
             # the queue
-            event = Event(last_event.time,
-                          sys.maxsize,
-                          None,
-                          (),
-                          {},
-                          0)
+            event = Event(last_event.time, sys.maxsize, None, (), {}, 0)
             heapq.heappush(self._queue, event)
             self._notify()
         sleep(0)  # let other threads run since the next line is a join

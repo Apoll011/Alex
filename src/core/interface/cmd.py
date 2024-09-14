@@ -1,13 +1,11 @@
-from core.interface.voice import Voice
-from core.intents import IntentResponse
 from core.interface.base import BaseInterface
+from core.interface.voice import Voice
 
-
-class ComandLine(BaseInterface):
+class CommandLine(BaseInterface):
     name = "cmd"
     
     def start(self):
-        self.user_conect({})
+        self.user_connect({})
         super().start()
 
     def speak(self, data):

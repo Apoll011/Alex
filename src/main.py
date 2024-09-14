@@ -7,7 +7,6 @@ from core.interface import *
 from core.log import LOG
 from core.version import VersionManager
 
-
 class InstallSkill(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         file = values[0]  # type: ignore
@@ -85,7 +84,7 @@ class InterfaceFactory:
             case "api":
                 raise NotImplementedError("The api interface is not implemented.")
             case "cmd":
-                ComandLine(alex)
+                CommandLine(alex)
             case _:
                 raise BaseException(f"The interface {interface_type} does not exist.")
 

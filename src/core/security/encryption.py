@@ -1,6 +1,4 @@
-from core.security._key import *
-
-class cryptografy:
+class cryptography:
     
     def __init__(self):
         pass
@@ -10,5 +8,5 @@ class cryptografy:
         return text
 
     @staticmethod
-    def desencrypt(text):
+    def desencripte(text):
         return text

@@ -1,8 +1,9 @@
-import time
 import threading
-from core.log import LOG
+import time
+
 from core.ai.ai import AI
 from core.config import *
+from core.log import LOG
 
 class BaseInterface:
     closed = False
@@ -68,9 +69,9 @@ class BaseInterface:
         self.closed = True
         LOG.info("Closed Alex")
 
-    def user_conect(self, data):
-        LOG.info("User Conected")
-        self.alex.handle_request("userConect")
+    def user_connect(self, data):
+        LOG.info("User Connected")
+        self.alex.handle_request("userConnect")
         
     def change_mode(self, data: dict):
         self.alex.handle_request("changeMode", data["mode"])
@@ -95,16 +96,17 @@ class BaseInterface:
     @classmethod
     def get_name(cls):
         return cls._name
-    
-    def process_input(self, text: str):
+
+    @staticmethod
+    def process_input(text: str):
         text = text.strip()
         text = text.replace("×", " times ").replace("÷", " over ").replace("+", " plus ").replace("-", " minus ")
         return text
 
     def process(self, data):
-        type = data["type"]
+        data_type = data["type"]
 
-        match type:
+        match data_type:
             case "say":
                 self.speak(data)
 
@@ -112,6 +114,4 @@ class BaseInterface:
                 os.system(f"aplay {data['value']}")
 
             case _:
-                raise KeyError(f"The type {type} is not valid")
-
-   
+                raise KeyError(f"The type {data_type} is not valid")

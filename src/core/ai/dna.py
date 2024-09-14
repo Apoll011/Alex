@@ -2,7 +2,7 @@ import json
 from enum import Enum
 
 class DnaAttribute(Enum):
-    HAPPINES = "happines"
+    HAPPINESS = "happiness"
     AGGRESSIVENESS = "aggressiveness"
     VOICE_SPEED = "voice_speed"
     VOICE_TONE = "voices_tone"
@@ -29,8 +29,6 @@ class AlexDna:
     def load_dna(self, dna: str):
         dna_object: dict[str, int]  = json.loads(dna)
         self.__dna = dna_object
-    
-    def get_dna_atribute(self, atribute: DnaAttribute):
-        return self.__dna[atribute.value]
-    
 
+    def get_dna_attribute(self, attribute: DnaAttribute):
+        return self.__dna[attribute.value]

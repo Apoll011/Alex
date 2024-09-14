@@ -4,13 +4,14 @@ Alex Logging module.
 This module provides the LOG pseudo function quickly creating a logger instance
 for use.
 
-The default log level can also be programatically be changed by setting the
+The default log level can also be programmatically be changed by setting the
 LOG.level parameter.
 """
 
 import datetime
 import inspect
 import logging
+
 from core.resources.data_files import DataFile
 
 def _make_log_method(fn):
@@ -20,6 +21,7 @@ def _make_log_method(fn):
 
     method.__func__.__doc__ = fn.__doc__
     return method
+
 
 class LOG:
     """
@@ -35,7 +37,7 @@ class LOG:
 
     _custom_name = None
     handler = None
-    level = logging.getLevelName('INFO')
+    level = logging.getLevelName("INFO")
 
     # Copy actual logging methods from logging.Logger
     # Usage: LOG.debug(message)
@@ -47,30 +49,32 @@ class LOG:
 
     @classmethod
     def init(cls, log_level="INFO"):
-        """ Initializes the class, sets the default log level and creates
+        """Initializes the class, sets the default log level and creates
         the required handlers.
 
         log_level can be "CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG"
         """
         log_message_format = (
-            'Alex - {asctime} | {levelname:8} | {process:5} | {name} | {message}'
+            "Alex - {asctime} | {levelname:8} | {process:5} | {name} | {message}"
         )
 
-        formatter = logging.Formatter(log_message_format, style='{')
-        formatter.default_msec_format = '%s.%03d'
-        cls.handler = logging.FileHandler(DataFile.load(datetime.datetime.now().strftime("%d.%m.%Y %H"), "log"))
+        formatter = logging.Formatter(log_message_format, style="{")
+        formatter.default_msec_format = "%s.%03d"
+        cls.handler = logging.FileHandler(
+            DataFile.load(datetime.datetime.now().strftime("%d.%m.%Y %H"), "log")
+        )
         cls.handler.setFormatter(formatter)
 
         cls.level = logging.getLevelName(log_level)
 
         # Enable logging in external modules
-        cls.create_logger('').setLevel(cls.level)
+        cls.create_logger("").setLevel(cls.level)
 
     @classmethod
     def create_logger(cls, name):
         logger = logging.getLogger(name)
         logger.propagate = False
-        logger.addHandler(cls.handler) # type: ignore
+        logger.addHandler(cls.handler)  # type: ignore
         return logger
 
     @classmethod
@@ -94,10 +98,10 @@ class LOG:
                 # ...
                 record = stack[2]
                 mod = inspect.getmodule(record[0])
-                module_name = mod.__name__ if mod else ''
-                name = module_name + ':' + record[3] + ':' + str(record[2])
+                module_name = mod.__name__ if mod else ""
+                name = module_name + ":" + record[3] + ":" + str(record[2])
             except Exception:
                 # The location couldn't be determined
-                name = 'Alex'
+                name = "Alex"
 
         func(cls.create_logger(name), *args, **kwargs)

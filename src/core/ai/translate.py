@@ -1,11 +1,14 @@
 from typing import Any
-from core.config import path
+
 from core.translate import TranslationSystem
 
 class Translator:
 
     language: str
-    
+
+    def __init__(self):
+        self.translationSystem = None
+
     def init_translator(self):
         self.translationSystem = TranslationSystem(self.language)
 

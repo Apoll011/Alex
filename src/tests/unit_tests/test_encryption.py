@@ -1,18 +1,19 @@
 import unittest
-from core.security.encryption import cryptografy
+
+from core.security.encryption import cryptography
 
 class EncryptionTest(unittest.TestCase):
     def test_encrypt_match(self):
         seg = "Texto super seguro"
-        crypted = cryptografy.encrypt(seg)
-        decr = cryptografy.desencrypt(crypted)
+        crypted = cryptography.encrypt(seg)
+        decr = cryptography.desencripte(crypted)
         # Assert the result
         self.assertEqual(seg, decr, "Test case failed")
 
     def test_encrypt_dont_match(self):
         seg = "Texto super seguro"
-        crypted = cryptografy.encrypt(seg)
-        decr = cryptografy.desencrypt(crypted+"yeurhebkerhbgbh")
+        crypted = cryptography.encrypt(seg)
+        decr = cryptography.desencripte(crypted + "yeurhebkerhbgbh")
         # Assert the result
         self.assertNotEqual(seg, decr, "Test case failed")
 

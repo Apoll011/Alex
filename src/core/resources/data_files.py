@@ -1,4 +1,5 @@
 import os
+
 from core.config import path
 
 class DataFile:

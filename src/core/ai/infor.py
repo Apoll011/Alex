@@ -1,13 +1,13 @@
-import os
-import psutil
 import datetime
-from enum import Enum
-from json import JSONEncoder
-from core.config import path
+import os
 from collections import namedtuple
+from enum import Enum
 
+import psutil
 
-class Registeries(Enum):
+from core.config import path
+
+class Registries(Enum):
     WAKE_UP = 1
     SYSTEM_ERROR = -1
 
@@ -30,7 +30,7 @@ class Register:
 class SysInfo:
     sys = {
         "process_given_today": 0,
-        "comands_given": 0,
+        "commands_given": 0,
     }
     
     system_data = {
@@ -87,7 +87,7 @@ class SysInfo:
         }
         return system
 
-    def register(self, registe: Registeries):
+    def register(self, registe: Registries):
         name = " ".join(registe.name.split("_"))
         name = name.title()
         

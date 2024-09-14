@@ -1,5 +1,5 @@
 import os
-from stat import S_ISREG, ST_MTIME, ST_MODE, ST_SIZE
+from stat import ST_MODE, ST_MTIME, ST_SIZE, S_ISREG
 
 from .log import LOG
 
@@ -12,14 +12,13 @@ def read_stripped_lines(filename):
     Returns:
         (list) list of lines stripped from leading and ending white chars.
     """
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         for line in f:
             line = line.strip()
             if line:
                 yield line
 
-
-def read_dict(filename, div='='):
+def read_dict(filename, div="="):
     """Read file into dict.
 
     A file containing:
@@ -34,13 +33,13 @@ def read_dict(filename, div='='):
 
     Args:
         filename (str):   path to file
-        div (str): deviders between dict keys and values
+        div (str): dividers between dict keys and values
 
     Returns:
         (dict) generated dictionary
     """
     d = {}
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         for line in f:
             key, val = line.split(div)
             d[key.strip()] = val.strip()
@@ -72,8 +71,11 @@ def _get_cache_entries(directory):
     entries = ((os.stat(path), path) for path in entries)
 
     # leave only regular files, insert modification date
-    return ((stat[ST_MTIME], stat[ST_SIZE], path)
-            for stat, path in entries if S_ISREG(stat[ST_MODE]))
+    return (
+        (stat[ST_MTIME], stat[ST_SIZE], path)
+        for stat, path in entries
+        if S_ISREG(stat[ST_MODE])
+    )
 
 
 def _delete_oldest(entries, bytes_needed):
@@ -101,6 +103,7 @@ def _delete_oldest(entries, bytes_needed):
 
     return deleted_files
 
+
 def ensure_directory_exists(directory, domain=None, permissions=0o777):
     """Create a directory and give access rights to all
 
@@ -112,6 +115,9 @@ def ensure_directory_exists(directory, domain=None, permissions=0o777):
 
     Returns:
         (str) a path to the directory
+        :param directory:
+        :param domain:
+        :param permissions:
     """
     if domain:
         directory = os.path.join(directory, domain)
@@ -124,10 +130,9 @@ def ensure_directory_exists(directory, domain=None, permissions=0o777):
         try:
             save = os.umask(0)
             os.makedirs(directory, permissions)
+            os.umask(save)
         except OSError:
             LOG.warning("Failed to create: " + directory)
-        finally:
-            os.umask(save)
 
     return directory
 
@@ -139,5 +144,5 @@ def create_file(filename):
         filename: Path to the file to be created
     """
     ensure_directory_exists(os.path.dirname(filename), permissions=0o775)
-    with open(filename, 'w') as f:
-        f.write('')
+    with open(filename, "w") as f:
+        f.write("")

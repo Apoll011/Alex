@@ -1,5 +1,5 @@
-import os
 import json
+import os
 from enum import Enum
 
 class EventPriority(Enum):
@@ -32,21 +32,19 @@ class SCHEDULE_TIME(int, Enum):
     FIVE_HOURS = ONE_HOUR * 5
     ONE_DAY = ONE_HOUR * 24
 
-
-MAXSERVER_ACCEPTD_TRYS = 10
-SERVER_RECONECT_DELAY = SCHEDULE_TIME.FIVE_SECONDS
+MAXSERVER_ACCEPTED_TRYS = 10
+SERVER_RECONNECT_DELAY = SCHEDULE_TIME.FIVE_SECONDS
 
 ALEX_LOOP_DELAY = 1
 
-ATENTION_WAIT_TIME = 2
+ATTENTION_WAIT_TIME = 2
 
 path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/src")
 
-config_file = {}
 with open(f"{path}/.config", "r") as config:
     config_file = json.load(config)
 
-DEFALUT_LANG = config_file["lang"]
+DEFAULT_LANG = config_file["lang"]
 
 api = config_file["api"]
 interfaces_config = config_file["interfaces"]

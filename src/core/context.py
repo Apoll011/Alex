@@ -1,6 +1,7 @@
 import json
 import os
 import pickle
+
 from .config import path
 
 class ContextManager:
@@ -14,7 +15,7 @@ class ContextManager:
         pass
 
     def save(self, obj, context_name, file_format="pickle"):
-        """Save an context to the contexts dictionary and optionally to a file.
+        """Save a context to the contexts dictionary and optionally to a file.
 
         Args:
             obj (context): The context to save.
@@ -22,7 +23,7 @@ class ContextManager:
             file_format (str, optional): The file format to use when saving the context to a file.
                 Supported formats are "pickle" and "json". Defaults to "memory".
         """
-        
+
         if file_format == "pickle":
             self.__save_to_file(obj, context_name, "pickle")
         elif file_format == "json":
@@ -34,7 +35,7 @@ class ContextManager:
 
     @classmethod
     def load(cls, context_name, file_format="pickle"):
-        """Load an context from the contexts dictionary and optionally from a file.
+        """Load a context from the contexts dictionary and optionally from a file.
 
         Args:
             context_name (str): The name of the context to load the context from.
@@ -56,9 +57,9 @@ class ContextManager:
             return obj
         except FileNotFoundError:
             return None
-        
+
     def delete(self, context_name):
-        """Delete an context from the contexts dictionary and optionally from a file.
+        """Delete a context from the contexts dictionary and optionally from a file.
 
         Args:
             context_name (str): The name of the context to delete the context from.
@@ -72,7 +73,7 @@ class ContextManager:
 
     @staticmethod
     def __save_to_file(obj, context_name, file_format):
-        """Save an context to a file.
+        """Save a context to a file.
 
         Args:
             obj (context): The context to save.
@@ -88,14 +89,14 @@ class ContextManager:
 
     @staticmethod
     def __load_from_file(context_name, file_format):
-        """Load an context from a file.
+        """Load a context from a file.
 
         Args:
             context_name (str): The name of the context to use as the file name.
             file_format (str): The file format to use. Supported formats are "pickle" and "json".
 
         Returns:
-            context: Theloaded context.
+            context: The loaded context.
         """
         if file_format == "pickle":
             with open(ContextManager.get_file_path(context_name, "pickle"), "rb") as f:

@@ -1,8 +1,9 @@
-import re
 import os
-from core.log import LOG
+import re
 from random import choice
-from .config import path, DEFALUT_LANG
+
+from core.log import LOG
+from .config import DEFAULT_LANG, path
 
 class TranslationSystem:
     """
@@ -14,7 +15,9 @@ class TranslationSystem:
         translations (dict): A dictionary of translations, where keys are translation keys and values are translated strings
     """
 
-    def __init__(self, lang: str, file: str = "system", path_file = "/resources/language/") -> None:
+    def __init__(
+            self, lang: str, file: str = "system", path_file="/resources/language/"
+    ) -> None:
         """
         Initializes the translation system.
 
@@ -25,11 +28,19 @@ class TranslationSystem:
         self.lang = lang
         self.file = file
         self.path = path
-        self.language_path = path + "/"+ path_file
+        self.language_path = path + "/" + path_file
         self.translations = self.load_translations()
-        self.translations.update({"error.451": "The key {key} does not have a valid output"})
-        self.translations.update({"error.457": "The key {key} was not found in this translation file map: ("+self.language_path+")"})
-        
+        self.translations.update(
+            {"error.451": "The key {key} does not have a valid output"}
+        )
+        self.translations.update(
+            {
+                "error.457": "The key {key} was not found in this translation file map: ("
+                             + self.language_path
+                             + ")"
+            }
+        )
+
     def load_translations(self) -> dict[str, str | list]:
         """
         Loads translations from a file.
@@ -39,7 +50,7 @@ class TranslationSystem:
         """
         file_path = f"{self.language_path}/{self.file}.{self.lang}.lang"
         if not os.path.isfile(file_path):
-            file_path = f"{self.language_path}/{self.file}.{DEFALUT_LANG}.lang"
+            file_path = f"{self.language_path}/{self.file}.{DEFAULT_LANG}.lang"
 
         try:
             with open(file_path, "r", encoding="UTF-8") as f:
@@ -51,13 +62,17 @@ class TranslationSystem:
                             value = self.get_translation("error.451", {"key": key})
                         if value.strip().startswith("["):
                             v = value.replace("[", "").replace("]", "")
-                            v = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}', v.strip())
+                            v = re.sub(r"\{\{+\s*(.*?)\s*\}\}+", r"{\1}", v.strip())
                             translations[key] = v.split(";")
                         else:
-                            translations[key] = re.sub(r'\{\{+\s*(.*?)\s*\}\}+', r'{\1}',value.strip())
+                            translations[key] = re.sub(
+                                r"\{\{+\s*(.*?)\s*\}\}+", r"{\1}", value.strip()
+                            )
                 return translations
-        except:
-            LOG.error(f"The file {self.file}.{self.lang}.locale was not found on path {self.language_path}")
+        except FileNotFoundError:
+            LOG.error(
+                f"The file {self.file}.{self.lang}.locale was not found on path {self.language_path}"
+            )
             return {}
 
     def get_translation(self, key: str, context=None) -> str:
@@ -77,9 +92,11 @@ class TranslationSystem:
             if isinstance(translation, list):
                 translation = choice(translation)
             return translation.format(**context)
-        
+
         except KeyError:
-            LOG.warning(f"The Key {key} was not found in {self.file}.{self.lang}.locale on path {self.language_path}")
+            LOG.warning(
+                f"The Key {key} was not found in {self.file}.{self.lang}.locale on path {self.language_path}"
+            )
             return self.get_translation("error.457", {"key": key})
 
     def __call__(self, key: str, *args) -> str:

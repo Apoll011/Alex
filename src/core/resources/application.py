@@ -1,4 +1,5 @@
 import os
+
 from core.config import path
 
 class Application:
@@ -18,10 +19,10 @@ class Application:
             
         return Application.getPath(extension)
 
-    @staticmethod  
-    def save(extension:str, value:str, type:str = "a"):
+    @staticmethod
+    def save(extension: str, value: str, opening_type: str = "a"):
         """Save some value into the application file given an extension, value, and type of opening"""
-        o = open(Application.load(extension), type)
+        o = open(Application.load(extension), opening_type)
         o.write(value+"\n")
         o.close()
 

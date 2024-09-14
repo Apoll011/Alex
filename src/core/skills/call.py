@@ -1,14 +1,15 @@
 import importlib
+
+from core.error import MissingMainSkillClass
+from core.intents import IntentResponse
 from core.log import LOG
 from core.skills import BaseSkill
-from core.intents import IntentResponse
-from core.error import MissingMainSkillClass
 
-def prety_name(name: str):
+def pretty_name(name: str):
     s = name.split("@")
-    skillname = " ".join(s[1].split(".")).title().replace(" ", "")
+    skill_name = " ".join(s[1].split(".")).title().replace(" ", "")
     path = f"skills.{s[0]}.{s[1].replace('.', '_')}"
-    return path, skillname
+    return path, skill_name
 
 
 class SkillCaller:
@@ -19,12 +20,12 @@ class SkillCaller:
 
     def call(self, intent: IntentResponse):
         LOG.info("Executing skill: " + intent.intent.intent_name)
-        path, skillname = prety_name(intent.intent.intent_name)
+        path, skill_name = pretty_name(intent.intent.intent_name)
         
         try: 
             skill = importlib.import_module(path + ".__main__")
-            instance: BaseSkill = getattr(skill, skillname)(self.language)
+            instance: BaseSkill = getattr(skill, skill_name)(self.language)
         except AttributeError:
-            raise MissingMainSkillClass(skillname, intent.intent.intent_name)
+            raise MissingMainSkillClass(skill_name, intent.intent.intent_name)
 
         return instance

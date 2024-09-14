@@ -1,18 +1,21 @@
 import sys
 import time
 from typing import Any
+
+from core.client import ApiClient
+from core.config import path
+from .blueprint import AiBluePrintUser
+from .context import AiContextUser
 from .dna import AlexDna
 from .infor import SysInfo
-from core.config import path
-from .scheduler import Scheduler
-from .translate import Translator
-from .context import AiContextUser
-from core.client import ApiClient
-from .blueprint import AiBluePrintUser
 from .internetuser import InternetUser
-from .screen import AiRepresentatorInScreen
+from .scheduler import Scheduler
+from .screen import AiRepresentationInScreen
+from .translate import Translator
 
-class AI(AlexDna, AiBluePrintUser, SysInfo, AiContextUser, Translator, AiRepresentatorInScreen, InternetUser, Scheduler):
+class AI(
+    AlexDna, AiBluePrintUser, SysInfo, AiContextUser, Translator, AiRepresentationInScreen, InternetUser, Scheduler
+    ):
     """
     The main AI class
     """

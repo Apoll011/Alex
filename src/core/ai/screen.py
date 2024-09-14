@@ -1,7 +1,7 @@
 import os
 import shutil
 
-class AiRepresentatorInScreen:
+class AiRepresentationInScreen:
     """
     A class to represent AI-related information on the screen
     """
@@ -13,7 +13,7 @@ class AiRepresentatorInScreen:
 
     def __init__(self, name: str):
         """
-        Initializes the AiRepresentatorInScreen instance
+        Initializes the AiRepresentationInScreen instance
         """
         self.name = name
 
@@ -34,8 +34,9 @@ class AiRepresentatorInScreen:
         Prints a footer message
         """
         self.print_header_text(f"End initializing {self.name}")
-        
-    def clear(self):
+
+    @staticmethod
+    def clear():
         """
         Clears the screen
         """

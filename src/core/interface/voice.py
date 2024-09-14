@@ -1,10 +1,11 @@
 import os
 import threading
-import subprocess
+
+from precise_runner import PreciseEngine, PreciseRunner
+
 from core.ai.ai import AI
 from core.config import path
 from core.interface.base import BaseInterface
-from precise_runner import PreciseEngine, PreciseRunner
 
 class Voice(BaseInterface):
     
@@ -54,7 +55,7 @@ class Voice(BaseInterface):
         return Voice.alex_possibilities[lang][preference]
 
     def start(self):
-        self.user_conect({})
+        self.user_connect({})
         self.voice_command_extensions = "--interactive=/cyan"
         super().start()
 

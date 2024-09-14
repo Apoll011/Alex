@@ -1,11 +1,19 @@
-from core.config import path
-from core.security._key import AlexKey
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
+
+from core.ai.ai import AI
+from core.config import path
 from core.interface.base import BaseInterface
+from core.security._key import AlexKey
 
 class Server(BaseInterface):
     name = "server"
+
+    def __init__(self, alex: AI):
+        super().__init__(alex)
+        self.socketio = None
+        self.app = None
+
     def start(self):
         self.app = Flask(__name__, template_folder=f'{path}/resources/templates', static_folder=f'{path}/resources/static')
         self.app.config['SECRET_KEY'] = str(AlexKey.get())
@@ -14,13 +22,14 @@ class Server(BaseInterface):
         self.socketio.on('send_message')(self.input)
         self.socketio.on('wake')(self.wakeword)
         self.socketio.on('change_mode')(self.change_mode)
-        self.socketio.on('conect')(self.user_conect)
+        self.socketio.on('connect')(self.user_connect)
         self.app.add_url_rule('/', view_func=self.index)
         print(f"Running on http://{self.config['host']}:{self.config['port']}/")
         self.socketio.run(self.app, host=self.config["host"], port=self.config["port"])
         super().start()
 
-    def index(self):
+    @staticmethod
+    def index():
         return render_template('index.html')
     
     def close(self):
