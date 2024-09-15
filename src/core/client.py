@@ -3,6 +3,8 @@ from enum import Enum
 
 import requests
 
+from core.error import ServerClosed
+
 class ApiResponse:
     response: dict
     """
@@ -74,8 +76,10 @@ class ApiClient:
         self.HOST = host
         self.PORT = port
 
-        self.authenticate()
-
+        try:
+            self.authenticate()
+        except Exception:
+            raise ServerClosed()
     def authenticate(self):
         """
         Authenticates the client.

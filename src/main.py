@@ -3,6 +3,7 @@ import os
 import zipfile
 
 from core.alex import ALEX
+from core.error import ServerClosed
 from core.interface import *
 from core.log import LOG
 from core.version import VersionManager
@@ -162,12 +163,18 @@ def main(args):
     interface = InterfaceFactory(args.interface, alex.get())
 
     if args.start:
-        alex.activate()
+
 
         try:
+            alex.activate()
             interface.start_interface()
-
+        except ServerClosed:
+            alex.get().clear()
+            print("The server is closed")
         except KeyboardInterrupt:
+            alex.get().clear()
+            print("Interrupted the application.")
+        finally:
             interface.close_interface()
 
     alex.deactivate()
