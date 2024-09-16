@@ -1,8 +1,6 @@
 import http.client as httplib
 
 class InternetUser:
-    internet_is_on: bool
-
     @staticmethod
     def internet_on():
         connection = httplib.HTTPConnection("google.com",timeout=3)

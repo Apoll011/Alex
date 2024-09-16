@@ -20,9 +20,9 @@ class Timer(BaseSkill):
      def define(self):
           total_seconds = self.duration.get_total_seconds()
           if self.slot_exists("entity"):
-               self.alex().schedule(total_seconds, EventPriority.SKILLS, self.fire_timer_with_entity)
+               self.alex().scheduler.schedule(total_seconds, EventPriority.SKILLS, self.fire_timer_with_entity)
           else:
-               self.alex().schedule(total_seconds, EventPriority.SKILLS, self.fire_timer)
+               self.alex().scheduler.schedule(total_seconds, EventPriority.SKILLS, self.fire_timer)
 
      def fire_timer(self):
           self.request_attention()

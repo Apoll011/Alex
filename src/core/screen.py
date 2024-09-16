@@ -1,16 +1,7 @@
 import os
 import shutil
 
-class AiRepresentationInScreen:
-    """
-    A class to represent AI-related information on the screen
-    """
-    
-    name: str 
-    """
-        The name of the AI
-    """
-
+class Screen:
     def __init__(self, name: str):
         """
         Initializes the AiRepresentationInScreen instance

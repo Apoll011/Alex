@@ -23,7 +23,7 @@ class DnaAttribute(Enum):
     SHY = "shy"
     RESPONSIBLE = "responsible"
 
-class AlexDna:
+class DNA:
     __dna: dict[str, int]
 
     def load_dna(self, dna: str):

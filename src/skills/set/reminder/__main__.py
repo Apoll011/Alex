@@ -1,9 +1,10 @@
 import os
 import pickle
+
 from core.intents.slots import *
-from core.skills import BaseSkill
 from core.models import ReminderObject
 from core.resources.data_files import DataFile
+from core.skills import BaseSkill
 
 class Reminder(BaseSkill):
      def init(self):
@@ -30,8 +31,8 @@ class Reminder(BaseSkill):
                pickle.dump(reminder, f)
 
           reminder.schedule(self.alex())
-          
-          if reminder.person == None:
+
+          if reminder.person is None:
                self.responce_translated("reminder.set", {
                          "time": self.get_raw_slot_value("time"), 
                          "action": reminder.get_action()
@@ -45,13 +46,16 @@ class Reminder(BaseSkill):
           
 
      def fire_reminder(self, reminder: ReminderObject, late = False):
-          if reminder.person == None:
-               self.responce_translated(f"reminder.fire{'.late' if late else ''}", {
+         if reminder.person is None:
+             self.responce_translated(
+                 f"reminder.fire{'.late' if late else ''}", {
                     "action": reminder.get_action()
                     })
-          else:
-               self.responce_translated(f"reminder.fire.person{'.late' if late else ''}", {
-                    "action": reminder.get_action(), 
+         else:
+             self.responce_translated(
+                 f"reminder.fire.person{'.late' if late else ''}", {
+                     "action": reminder.get_action(),
                     "person": reminder.person.value
-                    })
-          os.remove(DataFile.getPath(reminder.id, "reminder"))
+                 }
+                 )
+         os.remove(DataFile.getPath(reminder.id, "reminder"))

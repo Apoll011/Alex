@@ -28,11 +28,9 @@ class Register:
         return f'{{"label":  {self.label}, "data": {self.data}, "backgroundColor": {self.backgroundColor}, "borderColor": {self.borderColor}, "borderWidth": {self.borderWidth}}}'
     
 class SysInfo:
-    sys = {
-        "process_given_today": 0,
-        "commands_given": 0,
-    }
-    
+    process_given_today = 0,
+    commands_given = 0
+
     system_data = {
         "cpu": [],
         "net": []
@@ -49,10 +47,10 @@ class SysInfo:
         memory = psutil.virtual_memory().available * 100 / psutil.virtual_memory().total
         
         try:
-            battery = psutil.sensors_battery() or self.get_baterry_default()
+            battery = psutil.sensors_battery() or self.get_battery_default()
 
         except Exception:
-            battery = self.get_baterry_default()
+            battery = self.get_battery_default()
             
         disk = psutil.disk_usage(".")
         info = {
@@ -72,11 +70,11 @@ class SysInfo:
         }
         
         system = {
-            "status": ["ok", "warning", "error", "suspended", "hiberning"],
+            "status": ["ok", "warning", "error", "suspended", "hibernating"],
             "info": info,
             "data": {
-                "process_exec_t": self.sys["process_given_today"],
-                "comands_gt": self.sys["comands_given"],
+                "process_exec_t": self.process_given_today,
+                "commands_gt": self.commands_given,
                 "errors_t":"0",
                 "chart": self.system_data,
                 "plot": {
@@ -87,8 +85,8 @@ class SysInfo:
         }
         return system
 
-    def register(self, registe: Registries):
-        name = " ".join(registe.name.split("_"))
+    def register(self, register: Registries):
+        name = " ".join(register.name.split("_"))
         name = name.title()
         
         date = datetime.datetime.now()
@@ -105,7 +103,8 @@ class SysInfo:
         
         raise RegisterNotValid(name)
 
-    def get_baterry_default(self):
+    @staticmethod
+    def get_battery_default():
         sbattery = namedtuple('sbattery', ['percent', 'secsleft', 'power_plugged'])
         battery = sbattery(None, -2, True)
         return battery

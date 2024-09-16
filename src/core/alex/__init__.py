@@ -2,14 +2,16 @@ import sys
 import time
 
 from core.ai.ai import AI
-from core.ai.infor import Registries
 from core.date import get_time_of_day
 from core.error import *
 from core.intents import *
 from core.intents.responce import *
 from core.interface.base import BaseInterface
 from core.skills.call import SkillCaller
+from core.sysinformation import Registries
 from .functions import alexSkeleton
+from ..scheduler import Scheduler
+from ..sysinformation import SysInfo
 
 class ALEX(AI):
     mode: str
@@ -30,22 +32,24 @@ class ALEX(AI):
         self.skill_caller = None
         self.register_blueprint(alexSkeleton)
 
-        self.internet_is_on = False
         self.voice_mode = False
 
         self.setDefaultListenProcessor()
-        self.start_scheduler()
+        self.scheduler = Scheduler()
+        self.scheduler.start_scheduler()
+
+        self.information = SysInfo()
 
     def interface_on(self):
         self.register_scheduled_funcs()
 
     def set_language(self, lang="en"):
         self.language = lang
-        self.init_translator()
+        self.translationSystem = TranslationSystem(self.language)
         self.skill_caller = SkillCaller(self.language)
 
     def start(self):
-        self.clear()
+        self.screen.clear()
 
     def loop(self):
         if self.next_on_loop is not None:
@@ -80,7 +84,7 @@ class ALEX(AI):
             }
         }
         BaseInterface.get().process(data)
-        self.register(Registries.WAKE_UP)
+        self.information.register(Registries.WAKE_UP)
 
     def end(self):
         time_of_day = self.translate(f"time.day.{get_time_of_day()}")
@@ -91,13 +95,15 @@ class ALEX(AI):
         """
             Process a text and execute an action
         """
-        if self.required_listen_input.is_accepted(text) or self.isListenProcessorDefault():
-            responce = self.execute_processor()
-        else:
-            responce = self.wrong_answer(text)
+        try:
+            if self.required_listen_input.is_accepted(text) or self.isListenProcessorDefault():
+                responce = self.execute_processor()
+            else:
+                responce = self.wrong_answer(text)
 
-        self.speak(responce)
-
+            self.speak(responce)
+        except KeyError:
+            print("An error occur while connection to the server please try again.")
     def execute_processor(self) -> dict[str, Any]:
         nextL = self.next_listen_processor
         nextA = self.next_processor_args

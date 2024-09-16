@@ -169,10 +169,10 @@ def main(args):
             alex.activate()
             interface.start_interface()
         except ServerClosed:
-            alex.get().clear()
+            alex.get().screen.clear()
             print("The server is closed")
         except KeyboardInterrupt:
-            alex.get().clear()
+            alex.get().screen.clear()
             print("Interrupted the application.")
         finally:
             interface.close_interface()

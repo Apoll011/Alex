@@ -4,17 +4,13 @@ from typing import Any
 
 from core.client import ApiClient
 from core.config import path
+from core.dna import DNA
 from .blueprint import AiBluePrintUser
-from .context import AiContextUser
-from .dna import AlexDna
-from .infor import SysInfo
-from .internetuser import InternetUser
-from .scheduler import Scheduler
-from .screen import AiRepresentationInScreen
-from .translate import Translator
+from ..context import ContextManager
+from ..screen import Screen
 
 class AI(
-    AlexDna, AiBluePrintUser, SysInfo, AiContextUser, Translator, AiRepresentationInScreen, InternetUser, Scheduler
+    AiBluePrintUser
     ):
     """
     The main AI class
@@ -32,8 +28,13 @@ class AI(
     language: str
 
     base_server_ip: str = "127.0.0.1"
-    
-    
+
+    language: str
+
+    _context = ContextManager()
+    """
+    The context manager
+    """
 
 
     def __init__(self, sig: str) -> None:
@@ -43,6 +44,12 @@ class AI(
         Args:
             sig (str): The signature of the AI
         """
+
+        self.dna = DNA()
+        self.screen = Screen(sig)
+
+        self.translationSystem = None
+
         with open(f"{path}/core/{sig.lower()}/sys.sg", "r") as name:
             self.name = name.read()
         
@@ -54,14 +61,14 @@ class AI(
         """
         Activates the AI instance
         """
-        self.clear()
-        self.header()
+        self.screen.clear()
+        self.screen.header()
         self.run_init_actions()
         
         self.active = True
         if not self.debug_mode:
             time.sleep(0.1)
-        self.footer()
+        self.screen.footer()
 
     def start(self):
         """
@@ -93,6 +100,40 @@ class AI(
         else:
             raise ValueError(f"AI request '{request}' not found")
 
+    def translate(self, key: str, context: dict[str, Any] | None = None):
+        return self.translationSystem.get_translation(key, context)
+
+    def translate_responce(self, key: str, context: dict[str, Any] | None = None, intent=None):
+        if intent is None:
+            intent = {}
+        return self.make_responce(self.translate(key, context), intent)
+
+    def get_context(self, name: str, type: str = "pickle"):
+        """
+        Retrieves a context value
+
+        Args:
+            name (str): The name of the context value
+            type (str): The type of the context value (default: "pickle")
+
+        Returns:
+            The context value
+        """
+        return self._context.load(name, type)
+
+    def set_context(self, name: str, value, type: str = "pickle"):
+        """
+        Sets a context value
+
+        Args:
+            name (str): The name of the context value
+            value: The value to be set
+            type (str): The type of the context value (default: "pickle")
+        """
+        self._context.save(value, name, type)
+
+    def make_responce(self, message="", intent=None) -> dict[str, Any]:
+        ...
     def interface_on(self): ...
     def process(self, message) -> dict[str, Any]: ...
     def wake(self, data): ...

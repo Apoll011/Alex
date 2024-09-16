@@ -27,7 +27,7 @@ server_trys = 0
 @alexSkeleton.init_action("Import Alex DNA")
 def dna(self, alex: AI):
     app_dna = Application.get("dna")
-    alex.load_dna(app_dna)
+    alex.dna.load_dna(app_dna)
     alex.finish(self)
 
 @alexSkeleton.init_action("Creating important Context Variables")
@@ -44,7 +44,7 @@ def set_api_con(self, alex: AI):
         return
     except ConnectionRefusedError:
         LOG.error("Base Api Closed.")
-        alex.clear()
+        alex.screen.clear()
         alex.set_context("allowed_to_check_api", False)
         say("server.closed", alex)
         alex.deactivate()
@@ -66,7 +66,7 @@ def load_dictionary(self, alex: AI):
 
 @alexSkeleton.request_action("retrain")
 def train_engine(alex: AI):
-    alex.clear()
+    alex.screen.clear()
     time_stared = time.time()
     say("server.retrain", alex)
     for act in training_actions:
@@ -177,7 +177,7 @@ def changeMode(alex: AI, mode):
 @alexSkeleton.deactivate_action("Closing Scheduler")
 def stop_scheduler(alex: AI):
     LOG.info("Closing Scheduler")
-    alex.stop_scheduler(True)
+    alex.scheduler.stop_scheduler(True)
 
 @alexSkeleton.deactivate_action("Delete context")
 def delete_ctx(alex: AI):

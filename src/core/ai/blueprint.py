@@ -90,9 +90,9 @@ class AiBluePrintSkeleton:
         """
         def decorator(fun):
             if recurring:
-                self.scheduled_funcs.append(lambda alex: alex.schedule_recurrent(time, priority, fun, alex))
+                self.scheduled_funcs.append(lambda alex: alex.scheduler.schedule_recurrent(time, priority, fun, alex))
             else:
-                self.scheduled_funcs.append(lambda alex: alex.schedule(time, priority, fun, alex))
+                self.scheduled_funcs.append(lambda alex: alex.scheduler.schedule(time, priority, fun, alex))
             def wrapper(*args, **kwargs):
                 return fun(*args, **kwargs)
             return wrapper
