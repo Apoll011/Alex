@@ -1,11 +1,15 @@
 import unittest
+
 from core.resources.application import Application
 from core.resources.data_files import DataFile
 
 class ApplicationResources(unittest.TestCase):
     def test_getPath(self):
         app = Application
-        self.assertEqual(app.load("dna"), "/Users/Pegasus/Library/Mobile Documents/com~apple~CloudDocs/Pegasus/Projects/Alex/Alex/src/resources/application/application.dna", "The path is wrong.")
+        self.assertEqual(
+            app.load("dna"), "/home/pegasus/development/Alex/src/resources/application/application.dna",
+            "The path is wrong."
+        )
 
     def test_application_exist(self):
         result = Application.exist("def")
@@ -29,7 +33,9 @@ class ApplicationResources(unittest.TestCase):
         result = result = Application.load("plug")
 
         # Assert the result
-        self.assertEqual(result, "/Users/Pegasus/Library/Mobile Documents/com~apple~CloudDocs/Pegasus/Projects/Alex/Alex/src/resources/application/application.plug", "Test case failed")
+        self.assertEqual(
+            result, "/home/pegasus/development/Alex/src/resources/application/application.plug", "Test case failed"
+        )
 
 class DataFileTest(unittest.TestCase):
     def test_data_files_exist(self):
@@ -54,7 +60,7 @@ class DataFileTest(unittest.TestCase):
         result = result = DataFile.load("test", "txt")
 
         # Assert the result
-        self.assertEqual(result, "/Users/Pegasus/Library/Mobile Documents/com~apple~CloudDocs/Pegasus/Projects/Alex/Alex/src/resources/data/txt/test.txt", "Test case failed")
+        self.assertEqual(result, "/home/pegasus/development/Alex/src/resources/data/txt/test.txt", "Test case failed")
 
 
 if __name__ == '__main__':

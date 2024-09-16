@@ -1,5 +1,6 @@
 import unittest
-from plugins.list import Lists, Item, NoElements, Color, ItemOrListDontExist
+
+from plugins.list import Color, Item, ItemOrListDontExist, Lists
 
 class ApplicationResources(unittest.TestCase):
     def setUp(self) -> None:
@@ -27,9 +28,6 @@ class ApplicationResources(unittest.TestCase):
 
         self.assertTrue(self.list.get("shoping", "tomato"), "Tomato set to false")
         self.assertFalse(self.list.get("shoping", "Onion"), "Onion set to false")
-
-        with self.assertRaises(NoElements):
-            self.list.get("Shopping")
     
     def test_3_update(self):
         i = Item("Pencil", quantity=40, color=Color.BLUE)
@@ -45,8 +43,7 @@ class ApplicationResources(unittest.TestCase):
         self.assertListEqual(self.list.representation_of_all_elements("shoping"), ['7 Tomato', '4 Green Tomato'], "The lists dont match")
         self.list.clear("shoping")
 
-        with self.assertRaises(NoElements):
-            self.list.get("shoping")
+        self.assertEqual(self.list.get("shoping"), "Your shoping list is empy!")
 
         with self.assertRaises(ItemOrListDontExist):
             self.list.remove_item("shoping", "pen")
