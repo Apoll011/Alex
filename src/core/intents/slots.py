@@ -1,8 +1,8 @@
 import math
-from enum import Enum
-from typing import Any
 from dataclasses import dataclass
 from datetime import datetime, timedelta
+from enum import Enum
+from typing import Any
 
 class Temperature(Enum):
     """Temperature enumeration"""
@@ -74,9 +74,10 @@ class SlotValueInstantTime(SlotValue):
     def to_datetime(self) -> datetime:
         """Converts the value to a datetime object"""
         try:
+            new_value = self.value.split(".")
+            return datetime.strptime(new_value[0], "%Y-%m-%d %H:%M:%S")
+        except ValueError:
             return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S -01:00")
-        except:
-            return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S.%f -01:00")
 
     def diference_from_now_to_value(self):
         return self.to_datetime() - datetime.now()
