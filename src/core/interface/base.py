@@ -49,8 +49,9 @@ class BaseInterface:
     
     def input(self, data): 
         message = data['message']
-        message_processed = self.process_input(message)
-        self.alex.process(message_processed)
+        if message != "":
+            message_processed = self.process_input(message)
+            self.alex.process(message_processed)
         
     def wakeword(self, data = 1):
         self.alex.wake({"prob":data})
