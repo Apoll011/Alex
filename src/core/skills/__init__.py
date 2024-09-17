@@ -90,7 +90,7 @@ class BaseSkill:
      def on_next_input(
              self, callback, required_responce: Responce = AnyResponce(), *args
      ):
-          self.alex().setListenProcessor(callback, required_responce, *args)  # type: ignore
+         self.alex().text_processor.setListenProcessor(callback, required_responce, *args)  # type: ignore
 
      def responce_translated(self, key: str, context=None):
           self.responce(self.translate.get_translation(key, context))
