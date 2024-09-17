@@ -1,14 +1,15 @@
 from random import randint, random
-from core.skills import BaseSkill
+
 from core.intents.slots import SlotValueNumber
+from core.skills import BaseSkill
 
 class Random(BaseSkill):
      def init(self):
           
           self.register("math@random")
-          
-     def execute(self, context, intent):
-          super().execute(context, intent)
+
+     def execute(self, intent):
+         super().execute(intent)
           self.optional("smaller_number", SlotValueNumber)
           self.optional("bigger_number", SlotValueNumber)
           self.optional("type")

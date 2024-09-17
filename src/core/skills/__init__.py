@@ -50,7 +50,8 @@ class BaseSkill:
           self.get_local_settings()
           self.translate = TranslationSystem(self.language, "locale", path + "/assets/")
 
-     def execute(self, context: ContextManager, intent: IntentResponse):
+     def execute(self, intent: IntentResponse):
+          context = self.alex().context
           if self.can_go_again:
                context.save(intent, "last_intent")
           if intent.intent.intent_name != self.name:

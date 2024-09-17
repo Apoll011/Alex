@@ -1,14 +1,14 @@
-from core.skills import BaseSkill
+from math import cos, sin, sqrt, tan, tanh
+
 from core.intents.slots import SlotValueNumber
-from math import sin, cos, sqrt, cosh, sinh, tan, tanh
+from core.skills import BaseSkill
 
 class Geometry(BaseSkill):
      def init(self):
           self.register("math@geometry")
-          
 
-     def execute(self, context, intent):
-          super().execute(context, intent)
+     def execute(self, intent):
+          super().execute(intent)
           self.require("func")
           self.optional("number", SlotValueNumber)
 

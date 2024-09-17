@@ -4,10 +4,9 @@ from core.skills import BaseSkill
 class Simple(BaseSkill):
      def init(self):
           self.register("math@simple")
-          
 
-     def execute(self, context, intent):
-          super().execute(context, intent)
+     def execute(self, intent):
+          super().execute(intent)
           self.require("mathoperation")
           self.optional("first_number", SlotValueNumber)
           self.optional("second_number", SlotValueNumber)

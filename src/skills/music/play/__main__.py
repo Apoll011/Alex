@@ -1,4 +1,5 @@
 import os
+
 from core.config import path
 from core.skills import BaseSkill
 
@@ -7,8 +8,8 @@ class Play(BaseSkill):
 		self.register("music@play")
 		self.can_go_again = False
 
-	def execute(self, context, intent):
-		super().execute(context, intent)
+    def execute(self, intent):
+        super().execute(intent)
 		self.optional("artist")
 		self.optional("track")
 		self.optional("album")

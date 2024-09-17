@@ -5,7 +5,7 @@ class HowAreU(BaseSkill):
           self.register("saudation@how.are.u")
           self.can_go_again = False
 
-     def execute(self, context, intent):
-          super().execute(context, intent)
+     def execute(self, intent):
+          super().execute(intent)
 
           self.responce_translated("under.contruction") 

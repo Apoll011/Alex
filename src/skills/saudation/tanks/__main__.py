@@ -5,6 +5,6 @@ class Tanks(BaseSkill):
           self.register("saudation@tanks")
           self.can_go_again = False
 
-     def execute(self, context, intent):
-          super().execute(context, intent)
+     def execute(self, intent):
+          super().execute(intent)
           self.responce_translated("tank")

@@ -1,22 +1,24 @@
 import re
 from random import choice
-from core.skills import BaseSkill
+
 from core.client import ApiResponse
-from core.interface.base import BaseInterface
 from core.intents.responce import BoolResponce, SomethingFromListOrNoneResponce
+from core.interface.base import BaseInterface
+from core.skills import BaseSkill
 
 class Get(BaseSkill):
      def init(self):
           self.register("dictionary@get")
 
-     def execute(self, context, intent):
-          super().execute(context, intent)
+     def execute(self, intent):
+          super().execute(intent)
           self.require("word")
           self.get_meaning(self.slots["word"].value)
 
-     def clean(self, text: str):
+     @staticmethod
+     def clean(text: str):
           r = re.match("(.*)\\\\n(.Source: .*.)", text)
-          if r == None:
+          if r is None:
                return text
           else:
                return r.group(1)
@@ -45,16 +47,19 @@ class Get(BaseSkill):
                elif len(others) == 1:
                     self.question("other.match", self.get_meaning_from_question, {"word": others[0]}, BoolResponce(), others[0])
                else:
-                    self.question("other.matchs", self.get_meanig_of_one_word, {"words": ", ".join(others)}, SomethingFromListOrNoneResponce(others))
+                    self.question(
+                         "other.matchs", self.get_meaning_of_one_word, {"words": ", ".join(others)},
+                         SomethingFromListOrNoneResponce(others)
+                         )
      
      def get_meaning_from_question(self, responce: bool, word):
           if responce:
                self.get_meaning(word)
           else:
                self.responce_translated("sorry.not.have.word")
-     
-     def get_meanig_of_one_word(self, responce: str | None):
-          if responce == None:
+
+     def get_meaning_of_one_word(self, responce: str | None):
+          if responce is None:
                self.responce_translated("sorry.not.have.word")
           else:
                self.get_meaning(responce)

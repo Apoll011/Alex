@@ -31,7 +31,7 @@ class AI(
 
     language: str
 
-    _context = ContextManager()
+    context = ContextManager()
     """
     The context manager
     """
@@ -119,7 +119,7 @@ class AI(
         Returns:
             The context value
         """
-        return self._context.load(name, type)
+        return self.context.load(name, type)
 
     def set_context(self, name: str, value, type: str = "pickle"):
         """
@@ -130,7 +130,7 @@ class AI(
             value: The value to be set
             type (str): The type of the context value (default: "pickle")
         """
-        self._context.save(value, name, type)
+        self.context.save(value, name, type)
 
     def make_responce(self, message="", intent=None) -> dict[str, Any]:
         ...

@@ -1,13 +1,14 @@
 import subprocess
+
 from core.config import path
 from core.skills import BaseSkill
 
 class WhatsPlaying(BaseSkill):
      def init(self):
           self.register("music@whats.playing")
-          
-     def execute(self, context, intent):
-          super().execute(context, intent)
+
+     def execute(self, intent):
+          super().execute(intent)
           name, artist, album = self.beutify(self.comand())
           return self.responce_translated("playing.now", {"artist":artist, "track":name}) # type: ignore
           

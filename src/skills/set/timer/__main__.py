@@ -5,9 +5,9 @@ from core.skills import BaseSkill
 class Timer(BaseSkill):
      def init(self):
           self.register("set@timer")
-          
-     def execute(self, context, intent):
-          super().execute(context, intent)
+
+     def execute(self, intent):
+          super().execute(intent)
           self.require("duration", SlotValueDuration)
           self.optional("entity")
 

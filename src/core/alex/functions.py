@@ -13,6 +13,7 @@ from core.error import *
 from core.interface.base import BaseInterface
 from core.log import LOG
 from core.models import ReminderObject
+from core.process import Process
 from core.resources.application import Application
 from core.resources.data_files import DataFile
 
@@ -48,6 +49,13 @@ def set_api_con(self, alex: AI):
         alex.set_context("allowed_to_check_api", False)
         say("server.closed", alex)
         alex.deactivate()
+
+@alexSkeleton.init_action("Set Text Processor connection")
+def set_api_con(self, alex: AI):
+    alex.text_processor = Process(
+        alex.language, alex.debug_mode, alex.api, alex.translate, alex.translate_responce, alex.make_responce
+    )
+    alex.finish(self)
 
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):

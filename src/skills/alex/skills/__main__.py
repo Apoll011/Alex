@@ -5,9 +5,9 @@ from core.skills import BaseSkill
 class Skills(BaseSkill):
      def init(self):
           self.register("alex@skills")
-          
-     def execute(self, context, intent):
-          super().execute(context, intent)
+
+     def execute(self, intent):
+         super().execute(intent)
           self.require("major_skill")
           self.optional("minor_skill")
           

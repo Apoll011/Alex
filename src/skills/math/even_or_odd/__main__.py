@@ -17,9 +17,9 @@ class EvenOrOdd(BaseSkill):
                     return self.responce_translated(f"prime.no", self.number.value)
           
           return self.responce_translated(f"prime.yes", {"number": self.number.value})
-               
-     def execute(self, context, intent):
-          super().execute(context, intent)
+
+     def execute(self, intent):
+          super().execute(intent)
           self.require("number", SlotValueNumber)
           self.optional("type")
 

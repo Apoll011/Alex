@@ -2,10 +2,10 @@ from core.skills import BaseSkill
 
 class PresentsMaker(BaseSkill):
      def init(self):
-          self.register("alex@presents.maker")  
+          self.register("alex@presents.maker")
 
-     def execute(self, context, intent):
-          super().execute(context, intent)
+     def execute(self, intent):
+          super().execute(intent)
           self.responce_translated("who.made.alex", {"creator": self.get_creator()["name"]})
 
      def get_creator(self):

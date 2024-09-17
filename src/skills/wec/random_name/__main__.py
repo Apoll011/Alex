@@ -5,10 +5,9 @@ class RandomName(BaseSkill):
           self.register("wec@random.name")
           self.save_responce_for_context = False
           self.can_go_again = True
-          
 
-     def execute(self, context, intent):
-          super().execute(context, intent)
+     def execute(self, intent):
+         super().execute(intent)
           self.optional("gender")
 
           if self.slot_exists("gender"):

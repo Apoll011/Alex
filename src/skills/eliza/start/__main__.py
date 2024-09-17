@@ -1,13 +1,13 @@
-from plugins.eliza import Eliza
 from core.skills import BaseSkill
+from plugins.eliza import Eliza
 
 class Start(BaseSkill):
      def init(self):
           self.register("eliza@start")
           self.can_go_again = False
 
-     def execute(self, context, intent):
-          super().execute(context, intent)
+     def execute(self, intent):
+          super().execute(intent)
           
           self.init_eliza()
           
