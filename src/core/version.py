@@ -33,7 +33,7 @@ class VersionManager:
         CORE_VERSION_TYPE.value,
     )
     CORE_VERSION_STR = (
-            ".".join(map(str, CORE_VERSION_TUPLE)) + f"-{CORE_VERSION_TYPE.title()}"
+            ".".join(map(str, CORE_VERSION_TUPLE[0:-1])) + f"-{CORE_VERSION_TYPE.title()}"
     )
 
     @staticmethod

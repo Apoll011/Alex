@@ -1,45 +1,29 @@
 import datetime
-import json
-import socket
-import time
-
-from core.api.server import API as SERVER
 
 from core.interface.base import BaseInterface
 from core.security.code import AlexKey
 
 class API(BaseInterface):
-    server: SERVER = SERVER("0.0.0.0", 1287, 1)
     name = "api"
     def start(self):
-        self.server.client_name = "Alex Client"
-        self.register_fun("alex/wake", self.wakeword)
-        self.register_fun("alex/change/mode", self.change_mode)
-        self.register_fun("alex/user/conect", self.user_connect)
-        self.register_fun("alex/api/call", self.api_call)
-        self.register_fun("alex/info", self.info)
-        self.register_fun("alex/info/user", self.user)
-        self.server.set_route("alex/input", self.input)
-        self.server.serve()
+        # self.register_fun("alex/wake", self.wakeword)
+        # self.register_fun("alex/change/mode", self.change_mode)
+        # self.register_fun("alex/user/conect", self.user_connect)
+        # self.register_fun("alex/api/call", self.api_call)
+        # self.register_fun("alex/info", self.info)
+        # self.register_fun("alex/info/user", self.user)
+        # self.server.set_route("alex/input", self.input)
         super().start()
     
-    def process(self, data):
-        cons:dict[tuple, socket.socket] = self.server.conections_func_send
-        for addr in cons:
-            if cons[addr] == None:
-                continue 
-            cons[addr].send(json.dumps({"responce": data, "code": 200, "time": 0}).encode("utf-8"))
-            time.sleep(0.5)
 
-    def input(self, data):
-        super().input(json.loads(data))        
-    
     def register_fun(self, route, callback) -> None:
-        self.server.set_route(route, lambda data: self.run_return(callback, {} if data == None or data == "" else json.loads(data)))
+        # self.server.set_route(route, lambda data: self.run_return(callback, {} if data == None or data == "" else json.loads(data)))
+        pass
 
-    def run_return(self, fun, data):
+    @staticmethod
+    def run_return(fun, data):
         f = fun(data)
-        if f == None:
+        if f is None:
             return {"responce": True}
         else:
             return f
@@ -47,15 +31,12 @@ class API(BaseInterface):
     def api_call(self, data):
         return self.alex.api.call_route(data["route"], data["value"]).response
 
-    def info(self, data):
+    @staticmethod
+    def info(data):
         return {
                 "type": "info",
                 "device_id": AlexKey.get(),
                 "update_date": datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),
-                "ip": {
-                    "address": self.server.server_socket.getsockname(),
-                    "port": 1287
-                }
             }
 
     def user(self, data):

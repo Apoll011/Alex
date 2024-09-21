@@ -13,7 +13,7 @@ class AI(
     AiBluePrintUser
     ):
     """
-    The main AI class
+    The main Activation Instance class
     """
 
     api: ApiClient
