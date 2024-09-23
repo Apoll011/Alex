@@ -152,7 +152,7 @@ class PID:
 
     @staticmethod
     def clean():
-        os.system(f"rm {PID.pid_file}")
+        os.system(f"rm {PID.pid_file} -f")
 
 
 def main(args):
