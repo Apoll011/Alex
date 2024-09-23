@@ -44,8 +44,30 @@ path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/src")
 THE base src ALEX PATH
 """
 
-with open(f"{path}/.config", "r") as config:
-    config_file = json.load(config)
+try:
+    with open(f"{path}/.config", "r") as config:
+        config_file = json.load(config)
+except FileNotFoundError:
+    config_file = {
+        "lang": "en",
+        "api": {
+            "host": "127.0.0.1",
+            "port": 1178
+        },
+        "interfaces": {
+            "cmd": {},
+            "voice": {},
+            "server": {
+                "host": "0.0.0.0",
+                "port": "8416"
+            },
+            "api": {
+                "host": "0.0.0.0",
+                "port": "6752"
+            }
+        }
+
+    }
 
 DEFAULT_LANG = config_file["lang"]
 """
