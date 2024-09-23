@@ -75,16 +75,17 @@ class TranslationSystem:
             )
             return {}
 
-    def get_translation(self, key: str, context=None) -> str:
+    def get_translation(self, key: str, context=None, return_none=False) -> str:
         """
         Retrieves a translation for a given key.
 
-        Args:
-            key (str): The translation key
-            context (dict): Optional arguments to format the translation string
+        :param key: The translation key
+        :param context: Optional arguments to format the translation string
+        :param return_none: If key is not found return None
 
-        Returns:
-            str: The translated string
+        :return: The translated string
+
+        :raises KeyError: If the key is not found on the dictionary and raise_error is set to True.
         """
         context = context or {}
         try:
@@ -97,7 +98,7 @@ class TranslationSystem:
             LOG.warning(
                 f"The Key {key} was not found in {self.file}.{self.lang}.locale on path {self.language_path}"
             )
-            return self.get_translation("error.457", {"key": key})
+            return self.get_translation("error.457", {"key": key}) if not return_none else None
 
     def __call__(self, key: str, *args) -> str:
         """
