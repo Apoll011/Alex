@@ -38,6 +38,10 @@ class VersionManager:
 
     @staticmethod
     def get():
+        """
+
+        :return: A dict containing the coreVersion and enclosureVersion
+        """
         return {
             "coreVersion": VersionManager.CORE_VERSION_STR,
             "enclosureVersion": None,
@@ -48,9 +52,7 @@ class VersionManager:
         """
         Check if current version is equal or higher than the
         version string provided to the function
-
-        Args:
-            version_string (string): version string ('Major.Minor.Build-Type(Development, Beta, Alpha, Testing, Production)')
+        :param version_string: version string ('Major.Minor.Build-Type(Development, Beta, Alpha, Testing, Production)')
         """
         version = version_string.split("-")
         if len(version) > 1:

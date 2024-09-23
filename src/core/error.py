@@ -43,3 +43,7 @@ class InterfaceNotRegistered(Exception):
 class ServerClosed(Exception):
     def __init__(self) -> None:
         super().__init__("The Alex Base Server Is Closed.")
+
+class RegisterNotValid(BaseException):
+    def __init__(self, name) -> None:
+        super().__init__(f"Register {name} Not Valid")

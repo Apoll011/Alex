@@ -9,10 +9,9 @@ class TranslationSystem:
     """
     A translation system that loads translations from files and provides a way to retrieve them.
 
-    Attributes:
-        lang (str): The language code (e.g. "en", "pt", etc.)
-        file (str): The file name (e.g. "system", "game", etc.)
-        translations (dict): A dictionary of translations, where keys are translation keys and values are translated strings
+    :var lang (str): The language code (e.g. "en", "pt", etc.)
+    :var file (str): The file name (e.g. "system", "game", etc.)
+    :var translations (dict): A dictionary of translations, where keys are translation keys and values are translated strings
     """
 
     def __init__(
@@ -45,8 +44,7 @@ class TranslationSystem:
         """
         Loads translations from a file.
 
-        Returns:
-            dict: A dictionary of translations, where keys are translation keys and values are translated strings
+        :return: A dictionary of translations, where keys are translation keys and values are translated strings
         """
         file_path = f"{self.language_path}/{self.file}.{self.lang}.lang"
         if not os.path.isfile(file_path):
@@ -103,12 +101,9 @@ class TranslationSystem:
     def __call__(self, key: str, *args) -> str:
         """
         Convenience method to retrieve a translation.
+        :param key: The translation key
+        :param args: Optional arguments to format the translation string
 
-        Args:
-            key (str): The translation key
-            *args: Optional arguments to format the translation string
-
-        Returns:
-            str: The translated string
+        :return: The translated string
         """
         return self.get_translation(key, *args)

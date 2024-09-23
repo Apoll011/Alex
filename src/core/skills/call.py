@@ -5,13 +5,6 @@ from core.intents import IntentResponse
 from core.log import LOG
 from core.skills import BaseSkill
 
-def pretty_name(name: str):
-    s = name.split("@")
-    skill_name = " ".join(s[1].split(".")).title().replace(" ", "")
-    path = f"skills.{s[0]}.{s[1].replace('.', '_')}"
-    return path, skill_name
-
-
 class SkillCaller:
     language: str
 
@@ -20,7 +13,7 @@ class SkillCaller:
 
     def call(self, intent: IntentResponse):
         LOG.info("Executing skill: " + intent.intent.intent_name)
-        path, skill_name = pretty_name(intent.intent.intent_name)
+        path, skill_name = self.get_skill_path_and_name(intent.intent.intent_name)
         
         try: 
             skill = importlib.import_module(path + ".__main__")
@@ -29,3 +22,10 @@ class SkillCaller:
             raise MissingMainSkillClass(skill_name, intent.intent.intent_name)
 
         return instance
+
+    @staticmethod
+    def get_skill_path_and_name(name: str):
+        s = name.split("@")
+        skill_name = " ".join(s[1].split(".")).title().replace(" ", "")
+        path = f"skills.{s[0]}.{s[1].replace('.', '_')}"
+        return path, skill_name

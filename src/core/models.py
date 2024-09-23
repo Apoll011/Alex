@@ -28,7 +28,7 @@ class ReminderObject:
           if self.time.get_hour() == "00" and self.time.get_minute() == "00":
                return "12:00"
           else:
-               return f"{self.time.get_hour()}:{self.time.get_minute() == '00'}"
+              return f"{self.time.get_hour()}:{self.time.get_minute()}"
 
      def seconds(self):
           return self.time.diference_from_now_to_value().total_seconds()

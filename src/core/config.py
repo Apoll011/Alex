@@ -40,11 +40,17 @@ ALEX_LOOP_DELAY = 1
 ATTENTION_WAIT_TIME = 2
 
 path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/src")
+"""
+THE base src ALEX PATH
+"""
 
 with open(f"{path}/.config", "r") as config:
     config_file = json.load(config)
 
 DEFAULT_LANG = config_file["lang"]
+"""
+This is the default lang set a .config, It can be overwritten by the cli flag -l
+"""
 
 api = config_file["api"]
 interfaces_config = config_file["interfaces"]

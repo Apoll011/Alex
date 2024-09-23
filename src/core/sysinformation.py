@@ -6,6 +6,7 @@ from enum import Enum
 import psutil
 
 from core.config import path
+from core.error import RegisterNotValid
 
 class Registries(Enum):
     WAKE_UP = 1
@@ -43,6 +44,10 @@ class SysInfo:
     
     
     def system_info(self):
+        """
+        Return the system info
+        :return: dict contain info about the system,
+        """
         cpu = psutil.cpu_percent()
         memory = psutil.virtual_memory().available * 100 / psutil.virtual_memory().total
         
@@ -85,7 +90,11 @@ class SysInfo:
         }
         return system
 
-    def register(self, register: Registries):
+    def register(self, register: Registries) -> None:
+        """
+        Register an action in the system
+        :param register: Its the action to register in the system. Type (Registeries)
+        """
         name = " ".join(register.name.split("_"))
         name = name.title()
         
@@ -105,10 +114,10 @@ class SysInfo:
 
     @staticmethod
     def get_battery_default():
+        """
+        GEt the battery info default values
+        :return: The baterry info in a tuple representing ('percent', 'secsleft', 'power_plugged')
+        """
         sbattery = namedtuple('sbattery', ['percent', 'secsleft', 'power_plugged'])
         battery = sbattery(None, -2, True)
         return battery
-
-class RegisterNotValid(BaseException):
-    def __init__(self, name) -> None:
-        super().__init__(f"Register {name} Not Valid")
