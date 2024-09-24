@@ -5,7 +5,7 @@ from enum import Enum
 
 import psutil
 
-from core.config import path
+from core.config import SOURCE_DIR
 from core.error import RegisterNotValid
 
 class Registries(Enum):
@@ -86,7 +86,7 @@ class SysInfo:
                         "datasets": self.plot
                 }
             },
-            "skills":  [os.listdir(f"{path}/skills/")]
+            "skills": [os.listdir(f"{SOURCE_DIR}/skills/")]
         }
         return system
 

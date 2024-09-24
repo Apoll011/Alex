@@ -1,5 +1,5 @@
+from core.list import Item, Lists
 from core.skills import BaseSkill
-from plugins.list import Item, Lists
 
 #TODO: Add quantity, maybe size, color, etc
 class Add(BaseSkill):

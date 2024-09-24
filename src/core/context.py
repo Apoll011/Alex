@@ -2,11 +2,10 @@ import json
 import os
 import pickle
 
-from .config import path
+from .config import RESOURCE_FOLDER
 
 class ContextManager:
     __contexts = {}
-    __file_dir = "/resources/ctx/"
 
     def __enter__(self, context_name):
         return self
@@ -108,7 +107,7 @@ class ContextManager:
     @staticmethod
     def get_file_path(context_name, file_format):
         """Get the file path for a given context name and file format.
-
+__file_dir
         Args:
             context_name (str): The name of the context.
             file_format (str): The file format. Supported formats are "pickle" and "json".
@@ -116,8 +115,8 @@ class ContextManager:
         Returns:
             str: The file path.
         """
-        file_name = f"{path}/resources/ctx/{context_name}.{file_format}"
-        return os.path.join(ContextManager.__file_dir, file_name)
+        file_name = f"{RESOURCE_FOLDER}/ctx/{context_name}.{file_format}"
+        return file_name
 
     @classmethod
     def list_contexts(cls):

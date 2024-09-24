@@ -4,7 +4,7 @@ from core.skills import BaseSkill
 
 class Update(BaseSkill):
       def init(self):
-            self.register("list@update")
+          self.register("list@update")
             self.can_go_again = False
 
       def execute(self, intent):
@@ -13,20 +13,22 @@ class Update(BaseSkill):
             self.optional("entity")
             self.optional("new_entity")
 
-            if not self.slot_exists("list") and not self.slot_exists("entity") and not self.slot_exists("new_entity"):
+            if not self.slot_exists("list") and not self.slot_exists("entity") and not self.slot_exists(
+                    "new_entity"
+                    ):
                   self.responce_translated("dont.have.data")
             elif not self.slot_exists("list"):
-                  self.question("get.list", self.get_list)
+                self.question("get.list", self.get_list)
             elif not self.slot_exists("entity"):
                   self.question(
                         "get.entity", self.get_entity, {
-                    "list": self.get("list"), 
+                          "list": self.get("list"),
                     "new": self.get("new_entity")
                     })
             elif not self.slot_exists("new_entity"):
                   self.question(
                         "get.new.entity", self.get_new_entity, {
-                              "list": self.get("list"),
+                          "list": self.get("list"),
                     "entity": self.get("entity")
                     })
             else:
@@ -36,7 +38,7 @@ class Update(BaseSkill):
                   self.update_element()
 
       def get_list(self, responce):
-            self.list = responce.replace("list", "").strip()
+          self.list = responce.replace("list", "").strip()
             self.entity = self.get("entity")
             self.new = self.get("new_entity")
             self.update_element()
@@ -64,12 +66,12 @@ class Update(BaseSkill):
                   except ValueError:
                         self.question(
                               "did.not.found.entity", self.add_new, {
-                    "list": list, 
+                                "list": list,
                     "entity": entity,
                     "new": new,
                     }, BoolResponce(), list, new)
             else:
-                  self.responce_translated("did.not.found.list", {"list": list})
+                self.responce_translated("did.not.found.list", {"list": list})
 
       def try_to_update(self, list, entity, new):
             list_content = List.get(list)
@@ -78,8 +80,8 @@ class Update(BaseSkill):
             List.save(list, list_content, "w")
             self.responce_translated(
                   "changed.item", {
-               "entity": entity.title(), 
-               "list": list.title(),
+               "entity": entity.title(),
+                    "list": list.title(),
                "new": new.title()
                })
 
@@ -90,4 +92,4 @@ class Update(BaseSkill):
                   List.append(list, entity)
                   self.responce_translated("added.item", {"entity": entity.title(), "list": list.title()})
             else:
-                  self.responce_translated("cancel.adding", {"entity": entity.title(), "list": list.title()})
+                self.responce_translated("cancel.adding", {"entity": entity.title(), "list": list.title()})

@@ -50,7 +50,7 @@ def set_api_con(self, alex: AI):
         say("server.closed", alex)
         alex.deactivate()
 
-@alexSkeleton.init_action("Set Text Processor connection")
+@alexSkeleton.init_action("Set Text Processor")
 def set_api_con(self, alex: AI):
     alex.text_processor = Process(
         alex.language, alex.debug_mode, alex.api, alex.translate, alex.translate_responce, alex.make_responce
@@ -89,6 +89,7 @@ def train_engine(alex: AI):
 def debug_mode(alex: AI):
     LOG.info("Alex set ot Debug Mode")
     alex.debug_mode = True
+    alex.text_processor.debug_mode = True
 
 @alexSkeleton.request_action("checkApi")
 @alexSkeleton.scheduled(SERVER_RECONNECT_DELAY, EventPriority.ALEX)
@@ -190,7 +191,7 @@ def stop_scheduler(alex: AI):
 @alexSkeleton.deactivate_action("Delete context")
 def delete_ctx(alex: AI):
     LOG.info("Deleting the context")
-    files = glob.glob(f'{path}/resources/ctx/*.pickle')
+    files = glob.glob(f'{RESOURCE_FOLDER}/ctx/*.pickle')
     for f in files:
         os.remove(f)
 

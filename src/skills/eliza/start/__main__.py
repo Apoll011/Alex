@@ -1,5 +1,5 @@
+from core.eliza import Eliza
 from core.skills import BaseSkill
-from plugins.eliza import Eliza
 
 class Start(BaseSkill):
      def init(self):

@@ -1,0 +1,36 @@
+system.welcome:Bem vindo {{user}}
+system.wake:[Oi;Sim;Estou Ouvindo;Fale;Yep]
+system.close:[Adeus. Senhor.;Tenha uma boa {{time_of_day}}. Senhor.]
+time.day.1:Manhã
+time.day.2:Tarde
+time.day.3:Noite
+intent.not.valid:[Desculpe essa não é uma intenção valida;Desculpe eu não pode entender;Desculpe eu não entendi]
+error.during.skill:Um erro occorreu durante a execução da skill pretendida {{error}}. Por Favor Reporte.
+wrong.answer.hard:Essa não é uma resposta valida para minha questão. Eu experava {{expected}} não {{entry}}
+wrong.answer.soft:Essa não é uma resposta valida para minha questão. Eu experava algo contendo {{expected}} não {{entry}}
+wrong.answer.joiner:ou
+system.request:Seu pedido
+error.wrong.intent:Desculpe mas um error estranho aconteceu e o seu pedido foi enviado para outra skill.
+error.slot.missing:Desculpe mais para fazer isso preciso de mais informações especificamente {{slot}} Por favor tente novamente.
+error.skill.not.found:O Skill {{skill}} não foi encontrado.
+error.missing.main.skill.class:O Skill {{skill}} está implementado incorretamente.
+yes.text:Sim
+no.text:Não
+none.text:Nenhum
+server.closed:O servidor está fechado. Por favor Abra o servidor antes de me ativar.
+server.offline:O servidor está offline.
+server.reconect:Tentando reconectar...
+server.reconection.exceded:O limite de {{limit}} reconeções falhadas excedidas.
+server.closed.exceded:Desculpe. Mas o Servidor Está Fechado por isso estou fechando a me mesmo.
+server.changed:Detectado uma mudança no servidor. Re-importando os kits. Por favor espere.
+server.kit.user.not.loaded:Usuarios não carregados. Carregando.
+server.kit.user.loaded:Carregamento de Usuarios Completo.
+server.kit.intent.not.loaded:Reconhecimento de intenção não carregado. Carregando.
+server.kit.intent.loaded:Carregamento de Reconhecimento de intenção Completo.
+server.kit.dictionary.not.loaded:Dicionario não carregado. Carregando.
+server.kit.dictionary.loaded:Carregamento de Dicionario Completo.
+server.kits.loaded:Terminei de corrigir o servidor. Todos os sistemas online.
+server.retrain:Re-treinando tudo. Esse processo dura aproximadamente de 1 a 2 minutos. Por Favor Espere.
+server.retrain.thing:Treinando {{name}}.
+done.text:Pronto.
+server.retrain.end:terminei de treinar tudo. Tempo demorado {{time}} segundos.

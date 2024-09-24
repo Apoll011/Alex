@@ -1,6 +1,6 @@
 from core.intents.responce import BoolResponce
+from core.list import Lists, NoElements
 from core.skills import BaseSkill
-from plugins.list import Lists, NoElements
 
 class Clear(BaseSkill):
     def init(self):

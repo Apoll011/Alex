@@ -1,11 +1,11 @@
 # by: https://github.com/phluentmed/
-from collections import namedtuple
-from enum import Enum
 import heapq
 import sys
+import threading
+from collections import namedtuple
+from enum import Enum
 from time import monotonic
 from time import sleep
-import threading
 
 _sentinel = object()
 

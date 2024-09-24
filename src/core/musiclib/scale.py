@@ -1,20 +1,17 @@
 from __future__ import annotations
 
 import functools
-from typing import TYPE_CHECKING
-from typing import Any
 from typing import Self
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from collections.abc import Iterator
 
-from plugins.musiclib import config
-from plugins.musiclib.intervalset import IntervalSet
-from plugins.musiclib.note import Note
-from plugins.musiclib.noteset import NoteSet
-from plugins.musiclib.util.cache import Cached
-from plugins.musiclib.util.etc import setdefault_path
-
+from core.musiclib import config
+from core.musiclib.intervalset import IntervalSet
+from core.musiclib.note import Note
+from core.musiclib.noteset import NoteSet
+from core.musiclib.util.cache import Cached
 
 class Scale(Cached):
     def __init__(self, root: Note, intervalset: IntervalSet) -> None:

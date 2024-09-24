@@ -3,7 +3,7 @@ import os
 import time
 from pathlib import Path
 
-from core.config import ATTENTION_WAIT_TIME, path as p
+from core.config import ATTENTION_WAIT_TIME, SOURCE_DIR
 from core.context import ContextManager
 from core.error import SkillIntentError, SkillSlotNotFound
 from core.intents import *
@@ -46,9 +46,9 @@ class BaseSkill:
     def register(self, name):
         self.name = name
         path, skname = self.pretty_name(name)
-        self.skill_dir = p + "/" + path
+        self.skill_dir = f"{SOURCE_DIR}/{path}"
         self.get_local_settings()
-        self.translate = TranslationSystem(self.language, "locale", path + "/assets/")
+        self.translate = TranslationSystem(self.language, "locale", f"{self.skill_dir}/assets/")
 
     def execute(self, intent: IntentResponse):
         context = self.alex().context

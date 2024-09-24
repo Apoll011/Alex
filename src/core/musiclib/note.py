@@ -3,9 +3,9 @@ from __future__ import annotations
 import functools
 from typing import overload
 
-from plugins.musiclib import config
-from plugins.musiclib.interval import AbstractInterval
-from plugins.musiclib.util.cache import Cached
+from core.musiclib import config
+from core.musiclib.interval import AbstractInterval
+from core.musiclib.util.cache import Cached
 
 _note_i = {note: i for i, note in enumerate(config.chromatic_notes)}
 _is_black = {note: bool(int(x)) for note, x in zip(config.chromatic_notes, '010100101010', strict=True)}

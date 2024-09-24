@@ -1,5 +1,5 @@
+from core.list import Lists
 from core.skills import BaseSkill
-from plugins.list import Lists
 
 class Get(BaseSkill):
     def init(self):
@@ -22,9 +22,13 @@ class Get(BaseSkill):
 
     def check_element(self):
         if self.list_obj.get(self.get("list"), self.get("entity")):
-            self.responce_translated("entity.exists", {"list": self.get("list"), "entity": self.get("entity")})
+            self.responce_translated(
+                "entity.exists", {"list": self.get("list"), "entity": self.get("entity")}
+            )
         else:
-            self.responce_translated("entity.dont.exists", {"list": self.get("list"), "entity": self.get("entity")})
+            self.responce_translated(
+                "entity.dont.exists", {"list": self.get("list"), "entity": self.get("entity")}
+            )
 
     def get_full_list(self):
         text: str = self.list_obj.get(self.get("list"))

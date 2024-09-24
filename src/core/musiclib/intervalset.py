@@ -1,18 +1,14 @@
 from __future__ import annotations
 
-import pickle
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from collections.abc import Iterator
-    from typing import Any
     from typing import Self
 
-from plugins.musiclib import config
-from plugins.musiclib.interval import AbstractInterval
-from plugins.musiclib.util.cache import Cached
-from plugins.musiclib.util.etc import setdefault_path
-
+from core.musiclib import config
+from core.musiclib.interval import AbstractInterval
+from core.musiclib.util.cache import Cached
 
 class IntervalSet(Cached):
     def __init__(self, intervals: frozenset[AbstractInterval]) -> None:

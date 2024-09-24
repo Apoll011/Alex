@@ -15,4 +15,4 @@ class Recall(BaseSkill):
                self.responce_translated("not.enough.data")
           else:
                skill = SkillCaller(self.language).call(last_intent)
-               skill.execute(self.alex_context, last_intent)
+               skill.execute(last_intent)

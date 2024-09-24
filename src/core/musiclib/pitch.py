@@ -1,6 +1,6 @@
 import math
 
-from plugins.musiclib.note import SpecificNote
+from core.musiclib.note import SpecificNote
 
 A4 = SpecificNote('A', 4)
 

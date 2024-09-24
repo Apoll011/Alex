@@ -5,8 +5,7 @@ import itertools
 import random
 import statistics
 
-from plugins.musiclib.util.cache import Cached
-
+from core.musiclib.util.cache import Cached
 
 class Rhythm(Cached):
     def __init__(

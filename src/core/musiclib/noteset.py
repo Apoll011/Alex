@@ -1,19 +1,16 @@
 from __future__ import annotations
 
 import itertools
-import pickle
 import random
 from collections.abc import Sequence
-from typing import TYPE_CHECKING
-from typing import Any
 from typing import Self
+from typing import TYPE_CHECKING
 from typing import overload
 
-from plugins.musiclib import config
-from plugins.musiclib.note import Note
-from plugins.musiclib.note import SpecificNote
-from plugins.musiclib.util.cache import Cached
-from plugins.musiclib.util.etc import setdefault_path
+from core.musiclib import config
+from core.musiclib.note import Note
+from core.musiclib.note import SpecificNote
+from core.musiclib.util.cache import Cached
 
 if TYPE_CHECKING:
     from collections.abc import Iterator

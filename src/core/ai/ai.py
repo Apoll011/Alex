@@ -3,7 +3,6 @@ import time
 from typing import Any
 
 from core.client import ApiClient
-from core.config import path
 from core.dna import DNA
 from .blueprint import AiBluePrintUser
 from ..context import ContextManager
@@ -50,8 +49,7 @@ class AI(
 
         self.translationSystem = None
 
-        with open(f"{path}/core/{sig.lower()}/sys.sg", "r") as name:
-            self.name = name.read()
+        self.name = "ALEX"
         
         self.done_init_actions = False
 

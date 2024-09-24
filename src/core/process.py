@@ -3,6 +3,7 @@ import time
 from core.error import *
 from core.intents import *
 from core.intents.responce import *
+from core.log import LOG
 from core.skills.call import SkillCaller
 
 class Process:
@@ -90,10 +91,11 @@ class Process:
             skill = self.skill_caller.call(intent)
             skill.execute(intent)
             return self.make_responce()
-
         except ModuleNotFoundError:
+            LOG.error(f"Try to call none existing skill {intent.intent.intent_name}")
             return self.translate_responce("error.skill.not.found", {"skill": intent.intent.intent_name}, intent.json)
         except MissingMainSkillClass:
+            LOG.error(f"Skill {intent.intent.intent_name} missing main class")
             return self.translate_responce(
                 "error.missing.main.skill.class", {"skill": intent.intent.intent_name}, intent.json
             )
@@ -102,6 +104,7 @@ class Process:
         except SkillSlotNotFound as e:
             return self.translate_responce("error.slot.missing", {"slot": e.slot_name}, intent.json)
         except Exception as e:
+            LOG.error(e)
             return self.translate_responce("error.during.skill", {"error": str(e)}, intent.json)
 
     def setListenProcessor(self, callback, responceType, *args):

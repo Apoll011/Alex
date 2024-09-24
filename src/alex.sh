@@ -2,7 +2,7 @@
 
 # Define constants
 PID_FILE="/home/pegasus/.alex"
-SCRIPT_DIR="/home/pegasus/development/Alex/src"
+SCRIPT_DIR="/home/pegasus/development/Alex"
 LOG_FILE="output.log"
 
 # Function to display usage information
@@ -26,12 +26,12 @@ usage() {
 
 # Change to the script directory and activate the environment
 cd "$SCRIPT_DIR" || { echo "Directory $SCRIPT_DIR does not exist."; exit 1; }
-source ../.venv/bin/activate
+source .venv/bin/activate
 
 # Run the Python script with arguments
 run_python_script() {
     echo "Running Alex"
-    python main.py "$@"
+    python src/main.py "$@"
 }
 
 # Main script logic

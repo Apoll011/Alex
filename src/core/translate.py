@@ -3,7 +3,7 @@ import re
 from random import choice
 
 from core.log import LOG
-from .config import DEFAULT_LANG, path
+from .config import DEFAULT_LANG, RESOURCE_FOLDER
 
 class TranslationSystem:
     """
@@ -15,7 +15,7 @@ class TranslationSystem:
     """
 
     def __init__(
-            self, lang: str, file: str = "system", path_file="/resources/language/"
+            self, lang: str, file: str = "system", path_file=f"{RESOURCE_FOLDER}/language/"
     ) -> None:
         """
         Initializes the translation system.
@@ -26,8 +26,7 @@ class TranslationSystem:
         """
         self.lang = lang
         self.file = file
-        self.path = path
-        self.language_path = path + "/" + path_file
+        self.language_path = path_file
         self.translations = self.load_translations()
         self.translations.update(
             {"error.451": "The key {key} does not have a valid output"}

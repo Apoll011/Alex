@@ -4,7 +4,7 @@ import threading
 from precise_runner import PreciseEngine, PreciseRunner
 
 from core.ai.ai import AI
-from core.config import path
+from core.config import RESOURCE_FOLDER
 from core.interface.base import BaseInterface
 
 class Voice(BaseInterface):
@@ -44,7 +44,7 @@ class Voice(BaseInterface):
     def __init__(self, alex: AI):
         super().__init__(alex)
 
-        engine = PreciseEngine('precise', f'{path}/resources/christopher-precise/christopher-precise.pb')
+        engine = PreciseEngine('precise', f'{RESOURCE_FOLDER}/model/model.pb')
         runner = PreciseRunner(engine, on_activation=self.wakeword, sensitivity=0.5)
         runner.start()
     

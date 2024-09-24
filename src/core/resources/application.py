@@ -1,6 +1,6 @@
 import os
 
-from core.config import path
+from core.config import RESOURCE_FOLDER
 
 class Application:
     """Class that work with the application files from Alex"""

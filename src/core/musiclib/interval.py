@@ -1,8 +1,7 @@
 import functools
 from typing import Self
 
-from plugins.musiclib.util.cache import Cached
-
+from core.musiclib.util.cache import Cached
 
 @functools.total_ordering
 class AbstractInterval(Cached):

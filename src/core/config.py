@@ -39,13 +39,16 @@ ALEX_LOOP_DELAY = 1
 
 ATTENTION_WAIT_TIME = 2
 
-path = os.path.realpath(os.path.dirname(os.path.realpath("")) + "/src")
+path = os.path.realpath("")
 """
 THE base src ALEX PATH
 """
 
+RESOURCE_FOLDER = f"{path}/resources/"
+SOURCE_DIR = f"{path}/src/"
+
 try:
-    with open(f"{path}/.config", "r") as config:
+    with open(f"{SOURCE_DIR}/.config", "r") as config:
         config_file = json.load(config)
 except FileNotFoundError:
     config_file = {

@@ -1,6 +1,6 @@
 import subprocess
 
-from core.config import path
+from core.config import SOURCE_DIR
 from core.skills import BaseSkill
 
 class WhatsPlaying(BaseSkill):
@@ -13,7 +13,7 @@ class WhatsPlaying(BaseSkill):
           return self.responce_translated("playing.now", {"artist":artist, "track":name}) # type: ignore
           
      def comand(self):
-          result = subprocess.check_output(f"zsh \"{path}/skills/music/np.sh\" now", shell=True, text=True)
+         result = subprocess.check_output(f"zsh \"{SOURCE_DIR}/skills/music/np.sh\" now", shell=True, text=True)
           return result
 
      def beutify(self, text):

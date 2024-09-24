@@ -3,8 +3,8 @@ import functools
 import operator
 import typing as tp
 
-from plugins.musiclib.interval import AbstractInterval
-from plugins.musiclib.util.etc import named_intervals_rotations
+from core.musiclib.interval import AbstractInterval
+from core.musiclib.util.etc import named_intervals_rotations
 
 NIDict: tp.TypeAlias = dict[str, frozenset[AbstractInterval]]
 

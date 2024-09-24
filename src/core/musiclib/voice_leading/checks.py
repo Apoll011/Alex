@@ -2,18 +2,18 @@ from __future__ import annotations
 
 import functools
 import itertools
-from typing import TYPE_CHECKING
 from typing import Any
+from typing import TYPE_CHECKING
 
-from plugins.musiclib.progression import Progression
+from core.musiclib.progression import Progression
 
 if TYPE_CHECKING:
     from collections.abc import Callable
     from collections.abc import Hashable
 
-    from plugins.musiclib.note import SpecificNote
-    from plugins.musiclib.noteset import SpecificNoteSet
-    from plugins.musiclib.scale import Scale
+    from core.musiclib.note import SpecificNote
+    from core.musiclib.noteset import SpecificNoteSet
+    from core.musiclib.scale import Scale
 
 
 def chord_pair_check_cache(f: Callable[..., bool]) -> Callable[..., bool]:

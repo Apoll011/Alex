@@ -1,6 +1,6 @@
 import os
 
-from core.config import path
+from core.config import SOURCE_DIR
 from core.skills import BaseSkill
 
 class Play(BaseSkill):
@@ -16,7 +16,7 @@ class Play(BaseSkill):
         self.optional("genre")
 
         if len(self.slots) == 0:
-            os.system(f"zsh \"{path}/skills/music/np.sh\" do playpause")
+            os.system(f"zsh \"{SOURCE_DIR}/skills/music/np.sh\" do playpause")
             return
 
         flag = "-l"
@@ -41,4 +41,4 @@ class Play(BaseSkill):
         self.responce_translated("Ok")
 
     def comand(self, flag, pattern):
-        os.system(f"zsh \"{path}/skills/music/np.sh\" play {flag} \"{pattern}\"")
+        os.system(f"zsh \"{SOURCE_DIR}/skills/music/np.sh\" play {flag} \"{pattern}\"")

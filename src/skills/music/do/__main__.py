@@ -1,6 +1,6 @@
 import os
 
-from core.config import path
+from core.config import SOURCE_DIR
 from core.skills import BaseSkill
 
 class Do(BaseSkill):
@@ -28,4 +28,4 @@ class Do(BaseSkill):
           self.responce_translated("Ok") # type: ignore
      
      def comand(self, text):
-          os.system(f"zsh \"{path}/skills/music/np.sh\" do \"{text}\"")
+         os.system(f"zsh \"{SOURCE_DIR}/skills/music/np.sh\" do \"{text}\"")

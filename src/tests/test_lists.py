@@ -1,6 +1,6 @@
 import unittest
 
-from plugins.list import Color, Item, ItemOrListDontExist, Lists
+from core.list import Color, Item, ItemOrListDontExist, Lists
 
 class ApplicationResources(unittest.TestCase):
     def setUp(self) -> None:
