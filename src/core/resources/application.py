@@ -8,7 +8,11 @@ class Application:
     @staticmethod
     def getPath(extension:str):
         """Return the path for the application file."""
-        return f"{path}/resources/application/application.{extension}"
+        return Application.clear(f"{RESOURCE_FOLDER}/application/application.{extension}")
+
+    @staticmethod
+    def clear(path):
+        return path.replace("//", "/")
 
     @staticmethod
     def load(extension:str):
