@@ -15,7 +15,9 @@ class DataFile:
     @staticmethod
     def getBasePath(extension:str):
         """Return the path for the data file."""
-        return f"{RESOURCE_FOLDER}/data/{extension}/"
+        path = f"{RESOURCE_FOLDER}/data/{extension}/"
+        DataFile.ensure_folder_exists(path)
+        return path
 
     @staticmethod
     def load(name, extension, create_if_not = True):
@@ -53,6 +55,12 @@ class DataFile:
     @staticmethod
     def delete(name, extension):
         os.remove(DataFile.load(name, extension))
+
+    @staticmethod
+    def ensure_folder_exists(path):
+        if os.path.isdir(path):
+            return
+        os.mkdir(path)
 
 class Dict(DataFile):
     extension = "dict"

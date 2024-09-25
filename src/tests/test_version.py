@@ -1,6 +1,6 @@
 import unittest
 
-from core.version import *
+from core.codebase_managemet.version import *
 
 class Version(unittest.TestCase):
     def setUp(self):

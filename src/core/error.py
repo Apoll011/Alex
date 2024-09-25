@@ -1,11 +1,11 @@
-from .resources.data_files import Dict
-
-
 class Error:
     @staticmethod
     def get(code):
         try:
-            __errors__ = Dict.get("errors")
+            __errors__ = {
+                "404": "Not Found",
+                "457": "Key Error"
+            }
             erro = str(code)
 
             text_erro = ["Error " + erro + ": #" + __errors__[erro], code]

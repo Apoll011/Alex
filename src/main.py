@@ -3,10 +3,10 @@ import os
 import zipfile
 
 from core.alex import ALEX
+from core.codebase_managemet.version import VersionManager
 from core.error import ServerClosed
 from core.interface import *
 from core.log import LOG
-from core.version import VersionManager
 
 class InstallSkill(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):

@@ -7,7 +7,6 @@ from core.intents.responce import *
 from core.interface.base import BaseInterface
 from core.sysinformation import Registries
 from .functions import alexSkeleton
-from ..config import RESOURCE_FOLDER
 from ..scheduler import Scheduler
 from ..sysinformation import SysInfo
 
@@ -71,7 +70,7 @@ class ALEX(AI):
     def wake(self, data):
         data = {
             "type": "play_audio",
-            "value": f"{RESOURCE_FOLDER}/data/mp3/acknowledge.mp3",
+            "value": f"acknowledge.mp3",
             "settings": {
             }
         }

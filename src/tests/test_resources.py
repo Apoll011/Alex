@@ -39,7 +39,7 @@ class ApplicationResources(unittest.TestCase):
 
 class DataFileTest(unittest.TestCase):
     def test_data_files_exist(self):
-        result = DataFile.exist("dot_01", "mp3")
+        result = DataFile.exist("test", "txt")
 
         # Assert the result
         self.assertTrue(result, "Test case failed")

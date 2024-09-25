@@ -4,8 +4,6 @@ piper/
 vosk*/
 **/__pycache__
 fakers/
-**/users/*
-**/graphs/*
 .vscode/
 **data/
 **faces/
@@ -15,5 +13,5 @@ fakers/
 en-vosk/
 **/data_learn/
 **/net/
-precise-engine/
 model/
+audio/
