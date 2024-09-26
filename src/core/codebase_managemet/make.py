@@ -1,6 +1,6 @@
 import os
 
-from core.config import RESOURCE_FOLDER
+from core.config import LIB_RESOURCE_PATH, RESOURCE_FOLDER, USER_RESOURCE_PATH
 from core.log import LOG
 
 class PrepareWorkSpace:
@@ -43,14 +43,17 @@ class PrepareWorkSpace:
         return False
 
     def check_resource_content_full(self):
-        for dir_name in self.resources_dirs + self.resource_online_dirs:
-            if not os.path.isdir(f"{RESOURCE_FOLDER}/{dir_name}/"):
+        for dir_name in self.resources_dirs:
+            if not os.path.isdir(f"{USER_RESOURCE_PATH}/{dir_name}/"):
+                return False
+        for dir_name in self.resource_online_dirs:
+            if not os.path.isdir(f"{LIB_RESOURCE_PATH}/{dir_name}/"):
                 return False
         return True
 
     def create_dirs(self):
         for dir_name in self.resources_dirs:
-            self.ensure_folder_exists(f"{RESOURCE_FOLDER}/{dir_name}/")
+            self.ensure_folder_exists(f"{USER_RESOURCE_PATH}/{dir_name}/")
 
     def get_online_resources_dir(self):
         # For dirs in resources compare .version with the server version if greater download server version get smaller required version of the other packets and download them too

@@ -1,17 +1,9 @@
 pyvenv.cfg
 .venv/
-piper/
-vosk*/
 **/__pycache__
-fakers/
 .vscode/
 **data/
-**faces/
-**/fonts/
 **/.DS_Store
 **.pickle
-en-vosk/
-**/data_learn/
-**/net/
 model/
 audio/
