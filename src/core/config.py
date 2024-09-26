@@ -1,4 +1,3 @@
-import json
 import os
 from enum import Enum
 
@@ -44,17 +43,13 @@ path = os.path.realpath("")
 THE base src ALEX PATH
 """
 
-RESOURCE_FOLDER = f"{path}/resources/"
+RESOURCE_FOLDER = f"{path}/resources/" if os.getenv("ALEXDEVELOPMENT") == "1" else f"/home/pegasus/.alex_resources/"
 SOURCE_DIR = f"{path}/src/"
 
 USER_RESOURCE_PATH = f"{RESOURCE_FOLDER}/user/"
 LIB_RESOURCE_PATH = f"{RESOURCE_FOLDER}/lib/"
 
-try:
-    with open(f"{SOURCE_DIR}/.config", "r") as config:
-        config_file = json.load(config)
-except FileNotFoundError:
-    config_file = {
+config_file = {
         "lang": "en",
         "api": {
             "host": "127.0.0.1",

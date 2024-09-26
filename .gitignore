@@ -7,3 +7,4 @@ pyvenv.cfg
 **.pickle
 model/
 audio/
+build/

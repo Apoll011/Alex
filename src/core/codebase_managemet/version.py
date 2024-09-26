@@ -22,7 +22,7 @@ class VERSION_TYPE(Enum):
 class VersionManager:
     CORE_VERSION_MAJOR = 4
     CORE_VERSION_MINOR = 9
-    CORE_VERSION_BUILD = 0
+    CORE_VERSION_BUILD = 5
     CORE_VERSION_TYPE = VERSION_TYPE.ALPHA
     # END_VERSION_BLOCK
 
@@ -48,6 +48,10 @@ class VersionManager:
         }
 
     @staticmethod
+    def get_tuple():
+        return VersionManager.CORE_VERSION_TUPLE
+
+    @staticmethod
     def check_version(version_string: str):
         """
         Check if current version is equal or higher than the
@@ -62,4 +66,13 @@ class VersionManager:
             version_tuple = tuple(version_list)
         else:
             version_tuple = tuple(map(int, version_string.split(".")))
-        return VersionManager.CORE_VERSION_TUPLE >= version_tuple
+        return VersionManager.CORE_VERSION_TUPLE > version_tuple
+
+    @staticmethod
+    def check_version_tuple(version_tuple: tuple):
+        """
+        Check if current version is equal or higher than the
+        version tutple provided to the function
+        :param version_tuple: version tutple ('Major.Minor.Build-Type(Development, Beta, Alpha, Testing, Production)')
+        """
+        return VersionManager.CORE_VERSION_TUPLE > version_tuple
