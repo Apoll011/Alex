@@ -1,6 +1,6 @@
 import os
 
-from core.config import RESOURCE_FOLDER
+from core.config import USER_RESOURCE_PATH
 
 class DataFile:
     @staticmethod
@@ -15,7 +15,7 @@ class DataFile:
     @staticmethod
     def getBasePath(extension:str):
         """Return the path for the data file."""
-        path = f"{RESOURCE_FOLDER}/data/{extension}/"
+        path = f"{USER_RESOURCE_PATH}/data/{extension}/"
         DataFile.ensure_folder_exists(path)
         return path
 

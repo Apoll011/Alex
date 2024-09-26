@@ -191,7 +191,7 @@ def stop_scheduler(alex: AI):
 @alexSkeleton.deactivate_action("Delete context")
 def delete_ctx(alex: AI):
     LOG.info("Deleting the context")
-    files = glob.glob(f'{RESOURCE_FOLDER}/ctx/*.pickle')
+    files = glob.glob(f'{USER_RESOURCE_PATH}/ctx/*.pickle')
     for f in files:
         os.remove(f)
 

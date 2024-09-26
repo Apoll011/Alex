@@ -3,7 +3,7 @@ import re
 from random import choice
 
 from core.log import LOG
-from .config import DEFAULT_LANG, RESOURCE_FOLDER
+from .config import DEFAULT_LANG, LIB_RESOURCE_PATH
 
 class TranslationSystem:
     """
@@ -15,7 +15,7 @@ class TranslationSystem:
     """
 
     def __init__(
-            self, lang: str, file: str = "system", path_file=f"{RESOURCE_FOLDER}/language/"
+            self, lang: str, file: str = "system", path_file=f"{LIB_RESOURCE_PATH}/language/"
     ) -> None:
         """
         Initializes the translation system.

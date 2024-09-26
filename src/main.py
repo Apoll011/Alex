@@ -3,6 +3,7 @@ import os
 import zipfile
 
 from core.alex import ALEX
+from core.codebase_managemet.make import PrepareWorkSpace
 from core.codebase_managemet.version import VersionManager
 from core.error import ServerClosed
 from core.interface import *
@@ -61,7 +62,7 @@ class ParseArguments:
             "--interface",
             default="cmd",
             help="Interface mode",
-            choices=["cmd", "server", "voice", "api"],
+            choices=["cmd", "web", "voice", "api"],
         )
 
         self.parser.add_argument(
@@ -78,7 +79,7 @@ class ParseArguments:
 class InterfaceFactory:
     def __init__(self, interface_type: str, alex: ALEX) -> None:
         match interface_type:
-            case "server":
+            case "web":
                 Server(alex)
             case "voice":
                 Voice(alex)
@@ -183,5 +184,6 @@ def main(args):
 if __name__ == "__main__":
     parser = ParseArguments()
     PID.lock()
+    PrepareWorkSpace()
     main(parser.parse())
     PID.clean()

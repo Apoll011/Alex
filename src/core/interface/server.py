@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 
 from core.ai.ai import AI
-from core.config import RESOURCE_FOLDER
+from core.config import LIB_RESOURCE_PATH
 from core.interface.base import BaseInterface
 from core.security._key import AlexKey
 
@@ -16,7 +16,8 @@ class Server(BaseInterface):
 
     def start(self):
         self.app = Flask(
-            __name__, template_folder=f'{RESOURCE_FOLDER}/templates', static_folder=f'{RESOURCE_FOLDER}/static'
+            __name__, template_folder=f'{LIB_RESOURCE_PATH}/web/templates',
+            static_folder=f'{LIB_RESOURCE_PATH}/web/static'
             )
         self.app.config['SECRET_KEY'] = str(AlexKey.get())
         self.socketio = SocketIO(self.app)

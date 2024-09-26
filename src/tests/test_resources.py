@@ -7,12 +7,12 @@ class ApplicationResources(unittest.TestCase):
     def test_getPath(self):
         app = Application
         self.assertEqual(
-            app.load("dna"), "/home/pegasus/development/Alex/resources/application/application.dna",
+            app.load("dna"), "/home/pegasus/development/Alex/resources/user/application/application.dna",
             "The path is wrong."
         )
 
     def test_application_exist(self):
-        result = Application.exist("def")
+        result = Application.exist("dna")
 
         # Assert the result
         self.assertTrue(result, "Test case failed")
@@ -34,7 +34,7 @@ class ApplicationResources(unittest.TestCase):
 
         # Assert the result
         self.assertEqual(
-            result, "/home/pegasus/development/Alex/resources/application/application.plug", "Test case failed"
+            result, "/home/pegasus/development/Alex/resources/user/application/application.plug", "Test case failed"
         )
 
 class DataFileTest(unittest.TestCase):
@@ -60,7 +60,7 @@ class DataFileTest(unittest.TestCase):
         result = result = DataFile.load("test", "txt")
 
         # Assert the result
-        self.assertEqual(result, "/home/pegasus/development/Alex/resources/data/txt/test.txt", "Test case failed")
+        self.assertEqual(result, "/home/pegasus/development/Alex/resources/user/data/txt/test.txt", "Test case failed")
 
 
 if __name__ == '__main__':

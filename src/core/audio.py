@@ -3,7 +3,7 @@ from typing import Any
 from pydub import AudioSegment
 from pydub.playback import play
 
-from core.config import RESOURCE_FOLDER
+from core.config import LIB_RESOURCE_PATH
 
 # TODO: Change this. Instead of using 3d party modules use the API of the Interfaces in the action "play_audio"
 class Audio:
@@ -28,7 +28,7 @@ class Audio:
 
     @staticmethod
     def get_path(audio_name):
-        path = f"{RESOURCE_FOLDER}/audio/{audio_name}"
+        path = f"{LIB_RESOURCE_PATH}/audio/{audio_name}"
         return path
 
     def play_dot(self, n="01"):

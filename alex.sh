@@ -16,7 +16,7 @@ usage() {
     echo "  -s, --start                            Start Alex."
     echo "  -d, --debug                            Enters Debug Mode."
     echo "  --voice                                Enters voice mode."
-    echo "  -i, --interface <mode>                 Interface mode (choices: cmd, server, voice, api). Default: cmd."
+    echo "  -i, --interface <mode>                 Interface mode (choices: cmd, web, voice, api). Default: cmd."
     echo "  -v, --version                          Show version information."
     echo
     echo "The Alex front-end runs on the provided arguments."

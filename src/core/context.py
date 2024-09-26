@@ -2,7 +2,7 @@ import json
 import os
 import pickle
 
-from .config import RESOURCE_FOLDER
+from .config import USER_RESOURCE_PATH
 
 class ContextManager:
     __contexts = {}
@@ -115,7 +115,7 @@ __file_dir
         Returns:
             str: The file path.
         """
-        file_name = f"{RESOURCE_FOLDER}/ctx/{context_name}.{file_format}"
+        file_name = f"{USER_RESOURCE_PATH}/ctx/{context_name}.{file_format}"
         return file_name
 
     @classmethod

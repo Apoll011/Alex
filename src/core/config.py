@@ -47,6 +47,9 @@ THE base src ALEX PATH
 RESOURCE_FOLDER = f"{path}/resources/"
 SOURCE_DIR = f"{path}/src/"
 
+USER_RESOURCE_PATH = f"{RESOURCE_FOLDER}/user/"
+LIB_RESOURCE_PATH = f"{RESOURCE_FOLDER}/lib/"
+
 try:
     with open(f"{SOURCE_DIR}/.config", "r") as config:
         config_file = json.load(config)

@@ -1,6 +1,6 @@
 import os
 
-from core.config import RESOURCE_FOLDER
+from core.config import USER_RESOURCE_PATH
 
 class Application:
     """Class that work with the application files from Alex"""
@@ -8,7 +8,7 @@ class Application:
     @staticmethod
     def getPath(extension:str):
         """Return the path for the application file."""
-        return Application.clear(f"{RESOURCE_FOLDER}/application/application.{extension}")
+        return Application.clear(f"{USER_RESOURCE_PATH}/application/application.{extension}")
 
     @staticmethod
     def clear(path):
