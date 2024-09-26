@@ -1,9 +1,10 @@
 import json
 import os
+import sys
 import time
 from pathlib import Path
 
-from core.config import ATTENTION_WAIT_TIME, SOURCE_DIR
+from core.config import ATTENTION_WAIT_TIME
 from core.context import ContextManager
 from core.error import SkillIntentError, SkillSlotNotFound
 from core.intents import *
@@ -46,7 +47,7 @@ class BaseSkill:
     def register(self, name):
         self.name = name
         path, skname = self.pretty_name(name)
-        self.skill_dir = f"{SOURCE_DIR}/{path}"
+        self.skill_dir = self.resource_path(f"skills/{path}")
         self.get_local_settings()
         self.translate = TranslationSystem(self.language, "locale", f"{self.skill_dir}/assets/")
 
@@ -116,7 +117,7 @@ class BaseSkill:
     def pretty_name(name: str):
         s = name.split("@")
         skill_name = " ".join(s[1].split(".")).title().replace(" ", "")
-        path = f"skills/{s[0]}/{s[1].replace('.', '_')}"
+        path = f"{s[0]}/{s[1].replace('.', '_')}"
         return path, skill_name
 
     def get_raw_slot_value(self, slot_name: str):
@@ -207,3 +208,14 @@ class BaseSkill:
         self.responce(master_first_name)
         time.sleep(ATTENTION_WAIT_TIME)
         # TODO: Add require confirmation logic
+
+    @staticmethod
+    def resource_path(relative_path):
+        """ Get absolute path to resource, works for dev and for PyInstaller """
+        try:
+            # PyInstaller creates a temp folder and stores path in _MEIPASS
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath("." if os.getenv("ALEXDEVELOPMENT") != "1" else "./src/")
+
+        return os.path.join(base_path, relative_path)

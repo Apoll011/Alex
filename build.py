@@ -38,7 +38,7 @@ def build_alex():
     server_version = response.json()
 
     platforms = {
-        "linux": "pyinstaller --add-data './src/skills:skills' --distpath ./dist/linux ./src/main.py",
+        "linux": "pyinstaller --add-data './src/skills:skills' --collect-all 'main' --add-data './src/skills:src/skills' --distpath ./dist/linux ./src/main.py",
     }
 
     if server_version["name"] is None or version.check_version_tuple(tuple(server_version["version"])):

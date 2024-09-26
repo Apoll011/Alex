@@ -1,3 +1,4 @@
+import os
 import sys
 
 from core.ai.ai import AI
@@ -41,6 +42,8 @@ class ALEX(AI):
 
     def start(self):
         self.screen.clear()
+        if os.getenv("ALEXDEVELOPMENT") == "1":
+            print("[Development Mode]")
 
     def loop(self):
         if self.next_on_loop is not None:
