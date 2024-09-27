@@ -7,6 +7,7 @@ import psutil
 from core.ai.ai import AI
 from core.ai.blueprint import AiBluePrintSkeleton
 from core.client import ApiClient
+from core.codebase_managemet.updater import Updater
 from core.config import *
 from core.config import EventPriority
 from core.error import *
@@ -25,13 +26,15 @@ training_actions = {
 
 server_trys = 0
 
+allowed_to_update = True
+
 @alexSkeleton.init_action("Import Alex DNA")
 def dna(self, alex: AI):
     app_dna = Application.get("dna")
     alex.dna.load_dna(app_dna)
     alex.finish(self)
 
-@alexSkeleton.init_action("Creating important Context Variables")
+@alexSkeleton.init_action("Creating Context Variables")
 def make_ctx(self, alex: AI):
     alex.set_context("allowed_to_check_api", True)
     alex.finish(self)
@@ -55,6 +58,57 @@ def set_api_con(self, alex: AI):
     alex.text_processor = Process(
         alex.language, alex.debug_mode, alex.api, alex.translate, alex.translate_responce, alex.make_responce
     )
+    alex.finish(self)
+
+@alexSkeleton.init_action("Checking for Updates")
+@alexSkeleton.scheduled(SCHEDULE_TIME.TEN_MINUTES, EventPriority.SYSTEM)
+def check_update(self, alex: AI):
+    global allowed_to_update
+
+    if allowed_to_update:
+        updater = Updater()
+        (alex_up, alex_up_version), libs = updater.scan()
+
+        def update():
+            print("UPDATER: Updating Alex Libraries")
+            updater.update_lib(libs)
+            print("UPDATER: Updating Alex")
+            updater.update_alex()
+
+        if alex_up:
+            responce = input(
+                f"UPDATER: There is a new Alex version ({alex_up_version}) would you like to update it? [Y/n] (default: yes): "
+            ).lower().strip()
+            if responce.startswith("y"):
+                update()
+            elif responce.startswith("n"):
+                print("UPDATER: Canceling...")
+                allowed_to_update = False
+            else:
+                print(f"UPDATER: Invalid responce {responce}. Defaulting to yes.")
+                update()
+        else:
+            new = []
+            has = False
+            for lib in libs.keys():
+                if libs[lib]["outdated"]:
+                    new.append((lib, ".".join(list(map(lambda x: str(x), libs[lib]["new"])))))
+                    has = True
+            if has:
+                print(f"UPDATER: There are new versions for the Alex libraries:")
+                for n in new:
+                    print(f'---> {n[0].title()} ({n[1]})\n')
+                responce = input("UPDATER: Would you like to update? [Y/n] (default: yes): ").lower().strip()
+                if responce.startswith("y"):
+                    print("UPDATER: Updating Alex Libraries")
+                    updater.update_lib(libs)
+                elif responce.startswith("n"):
+                    print("UPDATER: Canceling...")
+                    allowed_to_update = False
+                else:
+                    print(f"UPDATER: Invalid responce {responce}. Defaulting to yes.")
+                    print("UPDATER: Updating Alex Libraries")
+                    updater.update_lib(libs)
     alex.finish(self)
 
 @alexSkeleton.init_action("Get Master User")

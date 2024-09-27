@@ -8,14 +8,20 @@ from core.codebase_managemet.version import VersionManager
 from core.config import API_URL, RESOURCE_FOLDER
 
 class Updater:
-    def scan(self):
-        libs = self.scan_lib()
-        self.scan_web()
 
+    def update_lib(self, libs):
         for lib in libs.keys():
             if libs[lib]["outdated"]:
-                print(f"Updating {lib}...")
                 self.download_lib(lib, libs[lib])
+
+    def update_alex(self):
+        pass
+
+    def scan(self):
+        libs = self.scan_lib()
+        alex = self.scan_web()
+
+        return alex, libs
 
     @staticmethod
     def scan_lib():
@@ -32,10 +38,6 @@ class Updater:
                 with open(f"{RESOURCE_FOLDER}/lib/{lib}/.version", "r") as version_file:
                     version = version_file.read()
                     version_core_tuple = tuple(map(lambda v: int(v), version.split(".")))
-                if server_version is None or version_core_tuple >= tuple(server_version):
-                    print(f"The Lib {lib} is up to date")
-                else:
-                    print(f"The Lib {lib} is outdated")
                 update[lib] = {
                     "outdated": server_version is None or version_core_tuple < tuple(server_version),
                     "current": version_core_tuple, "new": server_version
@@ -53,11 +55,8 @@ class Updater:
         response = requests.get(url)
         server_version = response.json()
 
-        r = server_version["name"] is None or not version.check_version_tuple(tuple(server_version["version"]))
-        if r:
-            print("Alex is up to date")
-        else:
-            print("Alex is out dated")
+        r = server_version["name"] is not None and version.check_version_tuple(tuple(server_version["version"]))
+        return r, tuple(server_version["version"])
 
     @staticmethod
     def download_lib(lib_type, lib_data):
