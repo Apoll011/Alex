@@ -80,8 +80,5 @@ class Updater:
 
             os.remove(zip_file_path)
 
-            with open(os.path.join(target_folder, ".version"), "x") as version_file:
-                version_file.write(".".join(list(map(lambda x: str(x), lib_data["new"]))))
-
     def download_core(self):
         raise NotImplementedError

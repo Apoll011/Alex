@@ -29,8 +29,8 @@ class Build:
             server_version = responce.json()["version"]
             if server_version is None or version_core_tuple > tuple(server_version):
                 print(f"Saving {lib} version {version_core_tuple}...")
-                os.system(f"zip -r {lib}.zip -j {LIB_RESOURCE_PATH}/{lib}/*")
-                file = {"file": open(f"{lib}.zip", "rb")}
+                os.system(f"(cd {LIB_RESOURCE_PATH}/{lib} && zip -r ../{lib}.zip .)")
+                file = {"file": open(f"{LIB_RESOURCE_PATH}/{lib}.zip", "rb")}
                 responce = requests.post(
                     url=f"{API_URL}/version_control/lib/upload?version={'.'.join(map(lambda x: str(x), version_core_tuple))}&lib_type={lib}",
                     files=file
@@ -38,7 +38,7 @@ class Build:
                 r = responce.json()["responce"]
                 if r:
                     print(f"Sent {lib} successfully.")
-                os.system(f"rm -f {lib}.zip")
+                os.system(f"rm -f {LIB_RESOURCE_PATH}/{lib}.zip")
 
     @staticmethod
     def build_alex():

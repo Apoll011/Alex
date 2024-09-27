@@ -1,3 +1,6 @@
 from core.codebase_managemet.updater import Updater
 
-Updater().scan()
+u = Updater()
+a, l = u.scan()
+
+u.update_lib(l)
