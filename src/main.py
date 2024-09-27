@@ -147,7 +147,7 @@ class AlexFactory:
 
 
 class PID:
-    pid_file = "/home/pegasus/.alex"
+    pid_file = f"{home()}/.alex"
 
     @staticmethod
     def lock():

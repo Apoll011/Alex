@@ -1,7 +1,8 @@
+import json
 import os
 from enum import Enum
 
-from core.codebase_managemet.app import is_compiled
+from core.codebase_managemet.app import home, is_compiled
 
 class EventPriority(Enum):
     SYSTEM = 1
@@ -45,13 +46,17 @@ path = os.path.realpath("")
 THE base src ALEX PATH
 """
 
-RESOURCE_FOLDER = f"{path}/resources/" if not is_compiled() else f"/home/pegasus/.alex_resources/"
+RESOURCE_FOLDER = f"{path}/resources/" if not is_compiled() else f"{home()}/.alex_resources/"
 SOURCE_DIR = f"{path}/src/"
 
 USER_RESOURCE_PATH = f"{RESOURCE_FOLDER}/user/"
 LIB_RESOURCE_PATH = f"{RESOURCE_FOLDER}/lib/"
 
-config_file = {
+try:
+    with open(f"{SOURCE_DIR}/.config" if not is_compiled() else "", "r") as config:
+        config_file = json.load(config)
+except FileNotFoundError:
+    config_file = {
         "lang": "en",
         "api": {
             "host": "127.0.0.1",

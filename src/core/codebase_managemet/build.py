@@ -4,6 +4,7 @@ import subprocess
 
 import requests
 
+from core.codebase_managemet.app import home
 from core.codebase_managemet.version import VersionManager
 from core.config import API_URL, LIB_RESOURCE_PATH
 
@@ -83,10 +84,10 @@ class Build:
 
     @staticmethod
     def built_resources():
-        if not os.path.isdir("/home/pegasus/.alex_resources"):
+        if not os.path.isdir(f"{home()}/.alex_resources"):
             print("Copying Resources")
-            os.system("cp -r ./resources /home/pegasus/.alex_resources")
+            os.system(f"cp -r ./resources {home()}/.alex_resources")
         else:
             print("Copying Lib...")
-            os.system("rm -f -r /home/pegasus/.alex_resources/lib")
-            os.system("cp -r ./resources/lib /home/pegasus/.alex_resources/lib")
+            os.system(f"rm -f -r {home()}/.alex_resources/lib")
+            os.system(f"cp -r ./resources/lib {home()}/.alex_resources/lib")

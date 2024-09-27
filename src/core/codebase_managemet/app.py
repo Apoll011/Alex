@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+from getpass import getuser
 
 def is_compiled():
     return getattr(sys, "frozen", False)
@@ -17,3 +18,6 @@ def restart_app():
             os.execv(python, [python] + sys.argv)
     except Exception as e:
         print(e)
+
+def home():
+    return f"/home/{getuser()}/"
