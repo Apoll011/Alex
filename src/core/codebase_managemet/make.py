@@ -1,6 +1,6 @@
 import os
 
-from core.config import LIB_RESOURCE_PATH, RESOURCE_FOLDER, USER_RESOURCE_PATH
+from core.config import RESOURCE_FOLDER, USER_RESOURCE_PATH
 from core.log import LOG
 
 class PrepareWorkSpace:
@@ -16,17 +16,11 @@ class PrepareWorkSpace:
         "ctx",
         "data",
     ]
-    resource_online_dirs = [
-        "language",
-        "model",
-        "web",
-        "audio"
-    ]
 
     def __init__(self):
         resource_exists = self.resources_dir_exists()
 
-        if resource_exists and self.check_resource_content_full():
+        if resource_exists:
             LOG.info("Resources folder is ready for usage")
             return
         self.create_dirs()
@@ -40,15 +34,6 @@ class PrepareWorkSpace:
             return True
         os.mkdir(folder)
         return False
-
-    def check_resource_content_full(self):
-        for dir_name in self.resources_dirs:
-            if not os.path.isdir(f"{USER_RESOURCE_PATH}/{dir_name}/"):
-                return False
-        for dir_name in self.resource_online_dirs:
-            if not os.path.isdir(f"{LIB_RESOURCE_PATH}/{dir_name}/"):
-                return False
-        return True
 
     def create_dirs(self):
         for dir_name in self.resources_dirs:
