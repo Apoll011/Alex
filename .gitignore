@@ -2,9 +2,7 @@ pyvenv.cfg
 .venv/
 **/__pycache__
 .vscode/
-**data/
 **/.DS_Store
 **.pickle
-model/
-audio/
 build/
+resources/

@@ -19,8 +19,7 @@ class PrepareWorkSpace:
     resource_online_dirs = [
         "language",
         "model",
-        "static",
-        "templates",
+        "web",
         "audio"
     ]
 
@@ -54,12 +53,3 @@ class PrepareWorkSpace:
     def create_dirs(self):
         for dir_name in self.resources_dirs:
             self.ensure_folder_exists(f"{USER_RESOURCE_PATH}/{dir_name}/")
-
-    def get_online_resources_dir(self):
-        # For dirs in resources compare .version with the server version if greater download server version get smaller required version of the other packets and download them too
-
-        raise NotImplementedError
-
-    def get_alex(self):
-
-        raise NotImplementedError

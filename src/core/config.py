@@ -70,6 +70,8 @@ config_file = {
 
     }
 
+API_URL = f"http://{config_file['api']['host']}:{config_file['api']['port']}/"
+
 DEFAULT_LANG = config_file["lang"]
 """
 This is the default lang set a .config, It can be overwritten by the cli flag -l

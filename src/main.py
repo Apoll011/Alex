@@ -3,7 +3,7 @@ import os
 import zipfile
 
 from core.alex import ALEX
-from core.codebase_managemet.make import PrepareWorkSpace
+from core.codebase_managemet.build import Build
 from core.codebase_managemet.version import VersionManager
 from core.error import ServerClosed
 from core.interface import *
@@ -47,6 +47,11 @@ class ParseArguments:
             default="127.0.0.1",
             help="Set the Base Server IP",
             metavar="ip",
+        )
+        self.parser.add_argument(
+            "--build",
+            help="Build Alex and stores him in server. (Only on developper mode)",
+            action="store_true"
         )
         self.parser.add_argument(
             "-s", "--start", action="store_true", help="Start Alex"
@@ -155,35 +160,39 @@ class PID:
     def clean():
         os.system(f"rm {PID.pid_file} -f")
 
-
-def main(args):
+def main(args_obj):
     LOG.init()
 
-    alex = AlexFactory(args)
+    alex = AlexFactory(args_obj)
 
-    interface = InterfaceFactory(args.interface, alex.get())
+    interface = InterfaceFactory(args_obj.interface, alex.get())
 
-    if args.start:
-
-
-        try:
-            alex.activate()
-            interface.start_interface()
-        except ServerClosed:
-            alex.get().screen.clear()
-            print("The server is closed")
-        except KeyboardInterrupt:
-            alex.get().screen.clear()
-            print("Interrupted the application.")
-        finally:
-            interface.close_interface()
+    try:
+        alex.activate()
+        interface.start_interface()
+    except ServerClosed:
+        alex.get().screen.clear()
+        print("The server is closed")
+    except KeyboardInterrupt:
+        alex.get().screen.clear()
+        print("Interrupted the application.")
+    finally:
+        interface.close_interface()
 
     alex.deactivate()
 
 
 if __name__ == "__main__":
     parser = ParseArguments()
+    args = parser.parse()
+
     PID.lock()
-    PrepareWorkSpace()
-    main(parser.parse())
+
+    # PrepareWorkSpace()
+
+    if args.start and not args.build:
+        main(args)
+    elif args.build:
+        Build()
+
     PID.clean()
