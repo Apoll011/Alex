@@ -1,4 +1,3 @@
-import os
 import sys
 
 from core.ai.ai import AI
@@ -8,6 +7,7 @@ from core.intents.responce import *
 from core.interface.base import BaseInterface
 from core.sysinformation import Registries
 from .functions import alexSkeleton
+from ..codebase_managemet.app import is_compiled
 from ..scheduler import Scheduler
 from ..sysinformation import SysInfo
 
@@ -42,7 +42,7 @@ class ALEX(AI):
 
     def start(self):
         self.screen.clear()
-        if os.getenv("ALEXDEVELOPMENT") == "1":
+        if not is_compiled():
             print("[Development Mode]")
 
     def loop(self):

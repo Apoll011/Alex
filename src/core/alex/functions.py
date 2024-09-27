@@ -1,7 +1,5 @@
 import glob
 import pickle
-import subprocess
-import sys
 import time
 
 import psutil
@@ -9,6 +7,7 @@ import psutil
 from core.ai.ai import AI
 from core.ai.blueprint import AiBluePrintSkeleton
 from core.client import ApiClient
+from core.codebase_managemet.app import restart_app
 from core.codebase_managemet.updater import Updater
 from core.config import *
 from core.config import EventPriority
@@ -275,16 +274,3 @@ def get_reminders(alex: AI):
             reminder: ReminderObject = pickle.load(file)
             reminder.schedule(alex)
             LOG.info(f"Reminder of ID: {reminder.id} scheduled")
-
-def restart_app():
-    try:
-        if getattr(sys, "frozen", False):
-            executable = sys.executable
-
-            subprocess.Popen([executable] + sys.argv[1:])
-        else:
-            python = sys.executable
-
-            os.execv(python, [python] + sys.argv)
-    except Exception as e:
-        print(e)

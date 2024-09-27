@@ -4,6 +4,7 @@ import sys
 import time
 from pathlib import Path
 
+from core.codebase_managemet.app import is_compiled
 from core.config import ATTENTION_WAIT_TIME
 from core.context import ContextManager
 from core.error import SkillIntentError, SkillSlotNotFound
@@ -216,6 +217,6 @@ class BaseSkill:
             # PyInstaller creates a temp folder and stores path in _MEIPASS
             base_path = sys._MEIPASS
         except Exception:
-            base_path = os.path.abspath("." if os.getenv("ALEXDEVELOPMENT") != "1" else "./src/")
+            base_path = os.path.abspath("." if is_compiled() else "./src/")
 
         return os.path.join(base_path, relative_path)

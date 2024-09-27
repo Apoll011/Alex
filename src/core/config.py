@@ -1,6 +1,8 @@
 import os
 from enum import Enum
 
+from core.codebase_managemet.app import is_compiled
+
 class EventPriority(Enum):
     SYSTEM = 1
     ALEX = 0
@@ -43,7 +45,7 @@ path = os.path.realpath("")
 THE base src ALEX PATH
 """
 
-RESOURCE_FOLDER = f"{path}/resources/" if os.getenv("ALEXDEVELOPMENT") == "1" else f"/home/pegasus/.alex_resources/"
+RESOURCE_FOLDER = f"{path}/resources/" if not is_compiled() else f"/home/pegasus/.alex_resources/"
 SOURCE_DIR = f"{path}/src/"
 
 USER_RESOURCE_PATH = f"{RESOURCE_FOLDER}/user/"
