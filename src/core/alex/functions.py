@@ -1,5 +1,7 @@
 import glob
 import pickle
+import subprocess
+import sys
 import time
 
 import psutil
@@ -75,18 +77,25 @@ def check_update(self, alex: AI):
             print("UPDATER: Updating Alex")
             updater.update_alex()
 
+        def check_entry(responce):
+            if responce.startswith("y") or responce == "":
+                return True
+            elif responce.startswith("n"):
+                return False
+            else:
+                print(f"UPDATER: Invalid responce {responce}. Defaulting to yes.")
+                return True
+
         if alex_up:
             responce = input(
                 f"UPDATER: There is a new Alex version ({alex_up_version}) would you like to update it? [Y/n] (default: yes): "
             ).lower().strip()
-            if responce.startswith("y"):
+            if check_entry(responce):
                 update()
-            elif responce.startswith("n"):
+                restart_app()
+            else:
                 print("UPDATER: Canceling...")
                 allowed_to_update = False
-            else:
-                print(f"UPDATER: Invalid responce {responce}. Defaulting to yes.")
-                update()
         else:
             new = []
             has = False
@@ -99,16 +108,13 @@ def check_update(self, alex: AI):
                 for n in new:
                     print(f'---> {n[0].title()} ({n[1]})\n')
                 responce = input("UPDATER: Would you like to update? [Y/n] (default: yes): ").lower().strip()
-                if responce.startswith("y"):
+                if check_entry(responce):
                     print("UPDATER: Updating Alex Libraries")
                     updater.update_lib(libs)
-                elif responce.startswith("n"):
+                    restart_app()
+                else:
                     print("UPDATER: Canceling...")
                     allowed_to_update = False
-                else:
-                    print(f"UPDATER: Invalid responce {responce}. Defaulting to yes.")
-                    print("UPDATER: Updating Alex Libraries")
-                    updater.update_lib(libs)
     alex.finish(self)
 
 @alexSkeleton.init_action("Get Master User")
@@ -269,3 +275,16 @@ def get_reminders(alex: AI):
             reminder: ReminderObject = pickle.load(file)
             reminder.schedule(alex)
             LOG.info(f"Reminder of ID: {reminder.id} scheduled")
+
+def restart_app():
+    try:
+        if getattr(sys, "frozen", False):
+            executable = sys.executable
+
+            subprocess.Popen([executable] + sys.argv[1:])
+        else:
+            python = sys.executable
+
+            os.execv(python, [python] + sys.argv)
+    except Exception as e:
+        print(e)
