@@ -30,7 +30,6 @@ class Updater:
         libs = ["web", "audio", "language", "model"]
 
         update = {}
-
         for lib in libs:
             responce = requests.get(url + f"?lib_type={lib}")
             server_version = responce.json()["version"]
@@ -39,7 +38,7 @@ class Updater:
                     version = version_file.read()
                     version_core_tuple = tuple(map(lambda v: int(v), version.split(".")))
                 update[lib] = {
-                    "outdated": server_version is None or version_core_tuple < tuple(server_version),
+                    "outdated": server_version is None or version_core_tuple < tuple(server_version or (0, 0, 0)),
                     "current": version_core_tuple, "new": server_version
                 }
             except FileNotFoundError:
@@ -56,7 +55,7 @@ class Updater:
         server_version = response.json()
 
         r = server_version["name"] is not None and version.check_version_tuple(tuple(server_version["version"]))
-        return r, tuple(server_version["version"])
+        return r, tuple(server_version["version"] or (0, 0, 0))
 
     @staticmethod
     def download_lib(lib_type, lib_data):
