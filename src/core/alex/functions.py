@@ -8,6 +8,7 @@ from core.ai.ai import AI
 from core.ai.blueprint import AiBluePrintSkeleton
 from core.client import ApiClient
 from core.codebase_managemet.updater import Updater
+from core.codebase_managemet.version import VersionManager
 from core.config import *
 from core.config import EventPriority
 from core.error import *
@@ -68,7 +69,6 @@ def check_update(self, alex: AI):
     if allowed_to_update:
         updater = Updater()
         (alex_up, alex_up_version), libs = updater.scan()
-
         def update():
             print("UPDATER: Updating Alex Libraries")
             updater.update_lib(libs)
@@ -84,7 +84,7 @@ def check_update(self, alex: AI):
                 print(f"UPDATER: Invalid responce {responce}. Defaulting to yes.")
                 return True
 
-        if alex_up:
+        if alex_up_version > VersionManager.CORE_VERSION_TUPLE:
             responce = input(
                 f"UPDATER: There is a new Alex version ({alex_up_version}) would you like to update it? Be aware that you will need to restart the app. [Y/n] (default: yes): "
             ).lower().strip()

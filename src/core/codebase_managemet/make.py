@@ -26,7 +26,8 @@ class PrepareWorkSpace:
         "list",
         "log",
         "reminder",
-        "txt"
+        "txt",
+        "temp"
     ]
 
     base_dna = {

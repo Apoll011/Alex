@@ -82,7 +82,8 @@ class ALEX(AI):
 
     def end(self):
         time_of_day = self.translate(f"time.day.{get_time_of_day()}")
-        self.speak(self.make_responce(self.translate("system.close", {"time_of_day": time_of_day})))
+        translated = self.translate("system.close", {"time_of_day": time_of_day}, True)
+        self.speak(self.make_responce(translated if translated else "Bye."))
         sys.exit(0)
 
     def make_responce(self, message="", intent=None) -> dict[str, Any]:

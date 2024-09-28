@@ -51,7 +51,7 @@ class Build:
             "linux": "pyinstaller --add-data './src/skills:skills' --collect-all 'main' --add-data './src/skills:src/skills' --distpath ./dist/linux ./src/main.py --onefile",
         }
 
-        if server_version["name"] is None or version.check_version_tuple(tuple(server_version["version"])):
+        if server_version["name"] is None or not version.check_version_tuple(tuple(server_version["version"])):
             print(f"Saving Alex version {version.get()['coreVersion']}...")
             for platform in platforms.keys():
                 print("Compiling Alex for", platform)

@@ -39,13 +39,15 @@ install() {
   echo "Building Alex..."
   unzip -qq /tmp/alex/alex.zip -d /tmp/alex/
   echo "Linking..."
-  sudo cp /tmp/alex/main /bin/alex
+  cp /tmp/alex/main /home/pegasus/alex
+  sudo ln -s /home/pegasus/alex /bin/alex
   rm -r /tmp/alex
   echo "Alex Installed..."
 }
 
 uninstall(){
   sudo rm -f /bin/alex
+  rm -f /home/pegasus/alex
   rm -r -f /home/pegasus/.alex_resources/
 }
 

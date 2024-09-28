@@ -4,8 +4,10 @@ import zipfile
 
 import requests
 
+from core.codebase_managemet.app import home
 from core.codebase_managemet.version import VersionManager
 from core.config import API_URL, RESOURCE_FOLDER
+from core.interface import BaseInterface
 
 class Updater:
 
@@ -15,7 +17,8 @@ class Updater:
                 self.download_lib(lib, libs[lib])
 
     def update_alex(self):
-        pass
+        self.download_core()
+        BaseInterface.get().alex.deactivate()
 
     def scan(self):
         libs = self.scan_lib()
@@ -79,5 +82,11 @@ class Updater:
 
             os.remove(zip_file_path)
 
-    def download_core(self):
-        raise NotImplementedError
+    @staticmethod
+    def download_core():
+        os.system("mkdir /tmp/alex")
+        os.system("wget \"http://0.0.0.0:1178/version_control/main/get\" -O /tmp/alex/alex.zip -t 5 -q")
+        os.system("unzip -qq /tmp/alex/alex.zip -d /tmp/alex/")
+        os.system(f"rm -f {home()}/alex")
+        os.system(f"cp /tmp/alex/main {home()}/alex")
+        os.system("rm -r /tmp/alex")

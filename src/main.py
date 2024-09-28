@@ -1,5 +1,6 @@
 import argparse
 import os
+import sys
 import zipfile
 
 from core.alex import ALEX
@@ -200,7 +201,7 @@ if __name__ == "__main__":
         try:
             main(args)
         except KeyboardInterrupt:
-            pass
+            sys.exit(0)
     elif not is_compiled() and args.build:
         Build()
 

@@ -98,8 +98,8 @@ class AI(
         else:
             raise ValueError(f"AI request '{request}' not found")
 
-    def translate(self, key: str, context: dict[str, Any] | None = None):
-        return self.translationSystem.get_translation(key, context)
+    def translate(self, key: str, context: dict[str, Any] | None = None, return_none=False):
+        return self.translationSystem.get_translation(key, context, return_none)
 
     def translate_responce(self, key: str, context: dict[str, Any] | None = None, intent=None):
         if intent is None:
