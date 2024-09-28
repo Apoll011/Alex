@@ -7,7 +7,6 @@ import psutil
 from core.ai.ai import AI
 from core.ai.blueprint import AiBluePrintSkeleton
 from core.client import ApiClient
-from core.codebase_managemet.app import restart_app
 from core.codebase_managemet.updater import Updater
 from core.config import *
 from core.config import EventPriority
@@ -87,11 +86,11 @@ def check_update(self, alex: AI):
 
         if alex_up:
             responce = input(
-                f"UPDATER: There is a new Alex version ({alex_up_version}) would you like to update it? [Y/n] (default: yes): "
+                f"UPDATER: There is a new Alex version ({alex_up_version}) would you like to update it? Be aware that you will need to restart the app. [Y/n] (default: yes): "
             ).lower().strip()
             if check_entry(responce):
                 update()
-                restart_app()
+                alex.deactivate()
             else:
                 print("UPDATER: Canceling...")
                 allowed_to_update = False
@@ -110,7 +109,7 @@ def check_update(self, alex: AI):
                 if check_entry(responce):
                     print("UPDATER: Updating Alex Libraries")
                     updater.update_lib(libs)
-                    restart_app()
+                    alex.deactivate()
                 else:
                     print("UPDATER: Canceling...")
                     allowed_to_update = False

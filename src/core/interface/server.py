@@ -4,7 +4,7 @@ from flask_socketio import SocketIO, emit
 from core.ai.ai import AI
 from core.config import LIB_RESOURCE_PATH
 from core.interface.base import BaseInterface
-from core.security._key import AlexKey
+from core.security.key import AlexKey
 
 class Server(BaseInterface):
     name = "server"

@@ -4,7 +4,6 @@ import subprocess
 
 import requests
 
-from core.codebase_managemet.app import home
 from core.codebase_managemet.version import VersionManager
 from core.config import API_URL, LIB_RESOURCE_PATH
 
@@ -13,7 +12,6 @@ class Build:
         print("Started Building")
         self.build_lib()
         self.build_alex()
-        self.built_resources()
         print("Build process completed.")
 
     @staticmethod
@@ -81,13 +79,3 @@ class Build:
                 os.remove(f"alex_{platform}.zip")
                 os.system("rm -r dist")
                 os.remove("main.spec")
-
-    @staticmethod
-    def built_resources():
-        if not os.path.isdir(f"{home()}/.alex_resources"):
-            print("Copying Resources")
-            os.system(f"cp -r ./resources {home()}/.alex_resources")
-        else:
-            print("Copying Lib...")
-            os.system(f"rm -f -r {home()}/.alex_resources/lib")
-            os.system(f"cp -r ./resources/lib {home()}/.alex_resources/lib")

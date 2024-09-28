@@ -1,7 +1,7 @@
 import datetime
 import math
-from ._key import AlexKey
 
+from .key import AlexKey
 
 class Key:
     @staticmethod

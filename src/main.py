@@ -3,7 +3,9 @@ import os
 import zipfile
 
 from core.alex import ALEX
+from core.codebase_managemet.app import home, is_compiled
 from core.codebase_managemet.build import Build
+from core.codebase_managemet.make import PrepareWorkSpace
 from core.codebase_managemet.version import VersionManager
 from core.error import ServerClosed
 from core.interface import *
@@ -48,11 +50,12 @@ class ParseArguments:
             help="Set the Base Server IP",
             metavar="ip",
         )
-        self.parser.add_argument(
-            "--build",
-            help="Build Alex and stores him in server. (Only on developper mode)",
-            action="store_true"
-        )
+        if not is_compiled():
+            self.parser.add_argument(
+                "--build",
+                help="Build Alex and stores him in server. (Only on developer mode)",
+                action="store_true"
+            )
         self.parser.add_argument(
             "-s", "--start", action="store_true", help="Start Alex"
         )
@@ -78,7 +81,10 @@ class ParseArguments:
         )
 
     def parse(self):
-        return self.parser.parse_args()
+        arg = self.parser.parse_args()
+        if "build" not in arg:
+            arg.build = False
+        return arg
 
 
 class InterfaceFactory:
@@ -188,11 +194,11 @@ if __name__ == "__main__":
 
     PID.lock()
 
-    # PrepareWorkSpace()
+    PrepareWorkSpace()
 
     if args.start and not args.build:
         main(args)
-    elif args.build:
+    elif not is_compiled() and args.build:
         Build()
 
     PID.clean()
