@@ -197,7 +197,10 @@ if __name__ == "__main__":
     PrepareWorkSpace()
 
     if args.start and not args.build:
-        main(args)
+        try:
+            main(args)
+        except KeyboardInterrupt:
+            pass
     elif not is_compiled() and args.build:
         Build()
 
