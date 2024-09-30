@@ -19,6 +19,7 @@ class BaseInterface:
     name = ""
 
     def __init__(self, alex: AI):
+        self.responce_sentence = None
         self.alex = alex
         self.config = interfaces_config[self.name]
         self.register()
@@ -27,7 +28,8 @@ class BaseInterface:
         LOG.info(f"Started interface {self.__class__.__name__}")
         self.print_header()
         self.request_sentence = self.alex.translate("system.request")
-        self.alex.interface_on() 
+        self.responce_sentence = self.alex.translate("system.responce")
+        self.alex.interface_on()
         self.alex.start()
 
 

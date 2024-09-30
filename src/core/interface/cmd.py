@@ -19,7 +19,9 @@ class CommandLine(BaseInterface):
     
     def loop(self):
         self.waiting_for_message = True
-        message = input(f"{self.request_sentence}: \33[32m").strip()
+        message = input(
+            f"{self.request_sentence if self.alex.text_processor.isListenProcessorDefault() else self.responce_sentence}: \33[32m"
+            ).strip()
         print("\33[0m", end="")
         self.waiting_for_message = False
         self.input({"message": message})
