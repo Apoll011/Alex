@@ -8,6 +8,8 @@ from core.interface.base import BaseInterface
 from core.sysinformation import Registries
 from .functions import alexSkeleton
 from ..codebase_managemet.app import is_compiled
+from ..config import BIGGEST_LOOP_ID_ALLOWED
+from ..process import Process
 from ..scheduler import Scheduler
 from ..sysinformation import SysInfo
 
@@ -18,11 +20,12 @@ class ALEX(AI):
 
     next_on_loop = None
     next_on_loop_args = None
+    loop_id = 0
 
     def __init__(self) -> None:
 
         super().__init__("ALEX")
-        self.text_processor = None
+        self.text_processor: None | Process = None
         self.register_blueprint(alexSkeleton)
 
         self.voice_mode = False
@@ -45,7 +48,17 @@ class ALEX(AI):
         if not is_compiled():
             print("[Development Mode]")
         self.handle_request("checkUpdates")
+
     def loop(self):
+        self.execute_on_next_loop()
+        self.increment_loop()
+        self.return_to_default_text_processor()
+
+    def return_to_default_text_processor(self):
+        if self.text_processor.id is not None and self.difference_in_loop_id(self.text_processor.id) > 20:
+            self.text_processor.setDefaultListenProcessor()
+
+    def execute_on_next_loop(self):
         if self.next_on_loop is not None:
             if self.next_on_loop_args:
                 self.next_on_loop()
@@ -53,6 +66,18 @@ class ALEX(AI):
                 self.next_on_loop(*self.next_on_loop_args)
             self.next_on_loop = None
             self.next_on_loop_args = None
+
+    def increment_loop(self):
+        if self.loop_id > BIGGEST_LOOP_ID_ALLOWED:
+            self.loop_id = 0
+        self.loop_id += 1
+
+    def difference_in_loop_id(self, start_loop_id):
+        return self.loop_id - start_loop_id if self.loop_id > start_loop_id else (
+                                                                                         BIGGEST_LOOP_ID_ALLOWED + self.loop_id) - start_loop_id
+
+    def get_loop_id(self):
+        return self.loop_id
 
     def speak(self, data, voice_command=None):
         if BaseInterface.is_set():

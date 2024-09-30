@@ -54,7 +54,7 @@ def set_api_con(self, alex: AI):
 @alexSkeleton.init_action("Set Text Processor")
 def set_api_con(self, alex: AI):
     alex.text_processor = Process(
-        alex.language, alex.debug_mode, alex.api, alex.translate, alex.translate_responce, alex.make_responce
+        alex
     )
     alex.finish(self)
 

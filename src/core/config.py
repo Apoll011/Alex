@@ -52,6 +52,8 @@ SOURCE_DIR = f"{path}/src/"
 USER_RESOURCE_PATH = f"{RESOURCE_FOLDER}/user/"
 LIB_RESOURCE_PATH = f"{RESOURCE_FOLDER}/lib/"
 
+BIGGEST_LOOP_ID_ALLOWED = 1024
+
 try:
     with open(f"{SOURCE_DIR}/.config" if not is_compiled() else "", "r") as config:
         config_file = json.load(config)

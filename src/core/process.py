@@ -13,14 +13,17 @@ class Process:
     required_listen_input: Responce
     next_processor_args: tuple[Any, ...] = ()
 
-    def __init__(self, language, debug_mode: bool, api, translate, translate_responce, make_responce):
+    id = None
+
+    def __init__(self, alex):
         self.skill_caller = None
-        self.debug_mode = debug_mode
-        self.api = api
-        self.translate = translate
-        self.translate_responce = translate_responce
-        self.make_responce = make_responce
-        self.skill_caller = SkillCaller(language)
+        self.debug_mode = alex.debug_mode
+        self.api = alex.api
+        self.translate = alex.translate
+        self.translate_responce = alex.translate_responce
+        self.make_responce = alex.make_responce
+        self.get_loop_id = alex.get_loop_id
+        self.skill_caller = SkillCaller(alex.language)
         self.setDefaultListenProcessor()
 
     def process(self, text):
@@ -112,8 +115,10 @@ class Process:
         self.required_listen_input = responceType
         self.required_listen_input.init()
         self.next_processor_args = args
+        self.id = self.get_loop_id()
 
     def setDefaultListenProcessor(self):
+        self.id = None
         self.next_listen_processor = self.process_as_intent
         self.required_listen_input = AnyResponce()
         self.required_listen_input.init()
@@ -121,3 +126,6 @@ class Process:
 
     def isListenProcessorDefault(self):
         return self.next_listen_processor == self.process_as_intent
+
+    def get_current_listen_processor(self):
+        return self.next_listen_processor
