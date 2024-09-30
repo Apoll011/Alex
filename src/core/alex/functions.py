@@ -105,9 +105,9 @@ def check_api(alex: AI):
 
             if "on" not in responce.keys():
                 raise ServerClosed()
-            
+
             kits = responce["kit"]
-            
+
             if not kits["all_on"] or server_trys != 0:
                 print("\33[0m")
                 say("server.changed", alex)
@@ -125,7 +125,7 @@ def check_api(alex: AI):
                 say("server.kit.intent.not.loaded", alex)
                 alex.api.call_route("intent_recognition/engine")
                 say("server.kit.intent.loaded", alex)
-            
+
             if not kits["dictionary"]:
                 LOG.info("Loading Dictionary kit from server")
                 say("server.kit.dictionary.not.loaded", alex)
@@ -135,7 +135,7 @@ def check_api(alex: AI):
             if server_trys != 0:
                 server_trys = 0
                 say("server.kits.loaded", alex)
-            
+
         except Exception:
             if server_trys == 0:
                 LOG.warning("The server is Offline")
@@ -180,8 +180,9 @@ def sendApi(alex: AI, route: str, value=None):
 
 @alexSkeleton.request_action("userConnect")
 def userConnect(alex: AI):
-     m = alex.translate_responce("system.welcome", {"user": alex.get_context("master")["name"]}) # type: ignore
-     alex.speak(m) # type: ignore
+    m = alex.translate_responce("system.welcome", {"user": alex.get_context("master")["name"]})  # type: ignore
+    alex.speak(m)  # type: ignore
+    alex.handle_request("checkUpdates")
 
 @alexSkeleton.request_action("changeMode")
 def changeMode(alex: AI, mode):
@@ -190,7 +191,7 @@ def changeMode(alex: AI, mode):
         alex.voice_mode = False # type: ignore
     else:
         alex.voice_mode = True # type: ignore
-        
+
 @alexSkeleton.deactivate_action("Closing Scheduler")
 def stop_scheduler(alex: AI):
     LOG.info("Closing Scheduler")
