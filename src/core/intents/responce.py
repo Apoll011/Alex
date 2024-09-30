@@ -1,4 +1,5 @@
 from typing import Any
+
 from core.translate import TranslationSystem
 
 class Responce:
@@ -80,3 +81,10 @@ class BoolResponce(Responce):
           no = self.translate.get_translation("no.text").lower()
           self.replace[yes] = True
           self.replace[no] = False
+
+class HardBoolResponce(Responce):
+    rtype = bool
+
+    def init(self):
+        self.replace["yes"] = True
+        self.replace["no"] = False
