@@ -7,6 +7,7 @@ import requests
 from core.codebase_managemet.app import home
 from core.codebase_managemet.version import VersionManager
 from core.config import API_URL, RESOURCE_FOLDER
+from core.intents.responce import HardBoolResponce
 from core.interface import BaseInterface
 
 class Updater:
@@ -90,3 +91,86 @@ class Updater:
         os.system(f"rm -f {home()}/alex")
         os.system(f"cp /tmp/alex/main {home()}/alex")
         os.system("rm -r /tmp/alex")
+
+class AlexUpdater:
+    def __init__(self, alex):
+        self.libs = None
+        self.alex = alex
+        self.version_manager = VersionManager
+        self.updater = Updater()
+        self.allowed_to_update = True
+
+    def up_say(self, text):
+        self.alex.speak(self.alex.make_responce(text, voice="UPDATER"))
+
+    def update(self):
+        self.up_say("Updating Alex Libraries")
+        self.updater.update_lib(self.libs)
+        self.up_say("Updating Alex")
+        self.updater.update_alex()
+
+    @staticmethod
+    def check_entry(response):
+        if response.startswith("y") or response == "":
+            return True
+        elif response.startswith("n"):
+            return False
+        else:
+            print(f"Invalid response {response}. Defaulting to yes.")
+            return True
+
+    @staticmethod
+    def versionify(version):
+        return ".".join(map(str, version))
+
+    def run_update_process(self):
+        if not self.allowed_to_update:
+            return
+
+        (alex_up, alex_up_version), self.libs = self.updater.scan()
+
+        if alex_up_version > self.version_manager.CORE_VERSION_TUPLE:
+            self.handle_alex_update(alex_up_version)
+        else:
+            self.handle_library_updates()
+
+    def question(self, text, callback):
+        self.up_say(text)
+        self.alex.text_processor.setListenProcessor(callback, HardBoolResponce())
+
+    def handle_alex_update(self, alex_up_version):
+        self.question(
+            f"There is a new Alex version {self.versionify(alex_up_version)} would you like to update it? Be aware that you will need to restart the app.",
+            self.handle_alex_update_responce
+        )
+
+    def handle_alex_update_responce(self, responce):
+        if responce:
+            self.update()
+            self.alex.deactivate()
+        else:
+            self.up_say("Canceling...")
+            self.allowed_to_update = False  # FIXME: Set as context...
+
+    def handle_library_updates(self):
+        new_libs = [
+            (lib, self.versionify(self.libs[lib]["new"]))
+            for lib in self.libs
+            if self.libs[lib]["outdated"]
+        ]
+
+        if new_libs:
+            self.up_say("There are new versions for the Alex libraries:")
+            for lib, version in new_libs:
+                self.up_say(f'Libraries {lib.title()} version {version}')
+
+            self.question("Would you like to update?", self.handle_alex_update_responce)
+
+    def handle_library_updates_responce(self, responce):
+        if responce:
+            self.up_say("Updating Alex Libraries")
+            self.updater.update_lib(self.libs)
+            self.alex.deactivate()
+        else:
+            self.up_say("Canceling...")
+            self.allowed_to_update = False

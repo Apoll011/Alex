@@ -101,10 +101,10 @@ class AI(
     def translate(self, key: str, context: dict[str, Any] | None = None, return_none=False):
         return self.translationSystem.get_translation(key, context, return_none)
 
-    def translate_responce(self, key: str, context: dict[str, Any] | None = None, intent=None):
+    def translate_responce(self, key: str, context: dict[str, Any] | None = None, intent=None, voice=None):
         if intent is None:
             intent = {}
-        return self.make_responce(self.translate(key, context), intent)
+        return self.make_responce(self.translate(key, context), intent, voice)
 
     def get_context(self, name: str, type: str = "pickle"):
         """
@@ -130,7 +130,7 @@ class AI(
         """
         self.context.save(value, name, type)
 
-    def make_responce(self, message="", intent=None) -> dict[str, Any]:
+    def make_responce(self, message="", intent=None, voice=None) -> dict[str, Any]:
         ...
     def interface_on(self): ...
     def process(self, message) -> dict[str, Any]: ...

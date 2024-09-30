@@ -44,7 +44,7 @@ class ALEX(AI):
         self.screen.clear()
         if not is_compiled():
             print("[Development Mode]")
-
+        self.handle_request("checkUpdates")
     def loop(self):
         if self.next_on_loop is not None:
             if self.next_on_loop_args:
@@ -86,14 +86,14 @@ class ALEX(AI):
         self.speak(self.make_responce(translated if translated else "Bye."))
         sys.exit(0)
 
-    def make_responce(self, message="", intent=None) -> dict[str, Any]:
+    def make_responce(self, message="", intent=None, voice=None) -> dict[str, Any]:
         """
         Make a responce spoke by the interface just instance without any args will be an empty responce
         that won't be spoked by the interface.
         """
         if intent is None:
             intent = {}
-        return {"message": message, "intent": intent, "voice": "Alex"}
+        return {"message": message, "intent": intent, "voice": voice or "Alex"}
 
     def process(self, text):
         responce = self.text_processor.process(text)

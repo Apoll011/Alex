@@ -7,8 +7,7 @@ import psutil
 from core.ai.ai import AI
 from core.ai.blueprint import AiBluePrintSkeleton
 from core.client import ApiClient
-from core.codebase_managemet.updater import Updater
-from core.codebase_managemet.version import VersionManager
+from core.codebase_managemet.updater import AlexUpdater
 from core.config import *
 from core.config import EventPriority
 from core.error import *
@@ -61,59 +60,6 @@ def set_api_con(self, alex: AI):
     )
     alex.finish(self)
 
-@alexSkeleton.init_action("Checking for Updates")
-@alexSkeleton.scheduled(SCHEDULE_TIME.TEN_MINUTES, EventPriority.SYSTEM)
-def check_update(self, alex: AI):
-    global allowed_to_update
-
-    if allowed_to_update:
-        updater = Updater()
-        (alex_up, alex_up_version), libs = updater.scan()
-        def update():
-            print("UPDATER: Updating Alex Libraries")
-            updater.update_lib(libs)
-            print("UPDATER: Updating Alex")
-            updater.update_alex()
-
-        def check_entry(responce):
-            if responce.startswith("y") or responce == "":
-                return True
-            elif responce.startswith("n"):
-                return False
-            else:
-                print(f"UPDATER: Invalid responce {responce}. Defaulting to yes.")
-                return True
-
-        if alex_up_version > VersionManager.CORE_VERSION_TUPLE:
-            responce = input(
-                f"UPDATER: There is a new Alex version ({alex_up_version}) would you like to update it? Be aware that you will need to restart the app. [Y/n] (default: yes): "
-            ).lower().strip()
-            if check_entry(responce):
-                update()
-                alex.deactivate()
-            else:
-                print("UPDATER: Canceling...")
-                allowed_to_update = False
-        else:
-            new = []
-            has = False
-            for lib in libs.keys():
-                if libs[lib]["outdated"]:
-                    new.append((lib, ".".join(list(map(lambda x: str(x), libs[lib]["new"])))))
-                    has = True
-            if has:
-                print(f"UPDATER: There are new versions for the Alex libraries:")
-                for n in new:
-                    print(f'---> {n[0].title()} ({n[1]})\n')
-                responce = input("UPDATER: Would you like to update? [Y/n] (default: yes): ").lower().strip()
-                if check_entry(responce):
-                    print("UPDATER: Updating Alex Libraries")
-                    updater.update_lib(libs)
-                    alex.deactivate()
-                else:
-                    print("UPDATER: Canceling...")
-                    allowed_to_update = False
-    alex.finish(self)
 
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):
@@ -212,15 +158,23 @@ def check_api(alex: AI):
                 LOG.info("Trying to reconnect")
                 server_trys += 1
 
-@alexSkeleton.request_action("checkApi")
+@alexSkeleton.request_action("checkUpdates")
+@alexSkeleton.scheduled(SCHEDULE_TIME.TEN_MINUTES, EventPriority.SYSTEM)
+def check_for_updates(alex: AI):
+    global allowed_to_update
+    updater = AlexUpdater(alex)
+    updater.allowed_to_update = allowed_to_update
+    updater.run_update_process()
+
+@alexSkeleton.request_action("systemStatus")
 @alexSkeleton.scheduled(SCHEDULE_TIME.ONE_HOUR, EventPriority.SYSTEM)
 def save_sys_status(alex: AI):
     alex.system_data["cpu"].append(cpu = psutil.cpu_percent()) # type: ignore
 
-def say(key, alex: AI, context=None):
+def say(key, alex: AI, context=None, voice=None):
     if context is None:
         context = {}
-    alex.speak(alex.translate_responce(key, context))
+    alex.speak(alex.translate_responce(key, context, voice))
 
 @alexSkeleton.request_action("sendToApi")
 def sendApi(alex: AI, route: str, value=None):
