@@ -93,12 +93,13 @@ class Updater:
         os.system("rm -r /tmp/alex")
 
 class AlexUpdater:
+    allowed_to_update = True
+
     def __init__(self, alex):
         self.libs = None
         self.alex = alex
         self.version_manager = VersionManager
         self.updater = Updater()
-        self.allowed_to_update = True
 
     def up_say(self, text):
         self.alex.speak(self.alex.make_responce(text, voice="UPDATER"))
@@ -124,7 +125,7 @@ class AlexUpdater:
         return ".".join(map(str, version))
 
     def run_update_process(self):
-        if not self.allowed_to_update:
+        if not self.is_allowed_to_update():
             return
 
         (alex_up, alex_up_version), self.libs = self.updater.scan()
@@ -150,7 +151,7 @@ class AlexUpdater:
             self.alex.deactivate()
         else:
             self.up_say("Canceling...")
-            self.allowed_to_update = False  # FIXME: Set as context...
+            self.block_update()
 
     def handle_library_updates(self):
         new_libs = [
@@ -173,4 +174,12 @@ class AlexUpdater:
             self.alex.deactivate()
         else:
             self.up_say("Canceling...")
-            self.allowed_to_update = False
+            self.block_update()
+
+    @classmethod
+    def block_update(cls):
+        cls.allowed_to_update = False
+
+    @classmethod
+    def is_allowed_to_update(cls):
+        return cls.allowed_to_update

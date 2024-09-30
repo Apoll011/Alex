@@ -26,8 +26,6 @@ training_actions = {
 
 server_trys = 0
 
-allowed_to_update = True
-
 @alexSkeleton.init_action("Import Alex DNA")
 def dna(self, alex: AI):
     app_dna = Application.get("dna")
@@ -161,9 +159,7 @@ def check_api(alex: AI):
 @alexSkeleton.request_action("checkUpdates")
 @alexSkeleton.scheduled(SCHEDULE_TIME.TEN_MINUTES, EventPriority.SYSTEM)
 def check_for_updates(alex: AI):
-    global allowed_to_update
     updater = AlexUpdater(alex)
-    updater.allowed_to_update = allowed_to_update
     updater.run_update_process()
 
 @alexSkeleton.request_action("systemStatus")
