@@ -27,3 +27,6 @@ vosk==0.3.44
 websockets==12.0
 Werkzeug==3.0.3
 wsproto==1.2.0
+
+black~=24.8.0
+pyjokes~=0.8.3
