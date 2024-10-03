@@ -30,11 +30,11 @@ class ApplicationResources(unittest.TestCase):
         self.assertEqual(result, "732178387248", "Test case failed")
 
     def test_application_load(self):
-        result = result = Application.load("plug")
+        result = result = Application.load("key")
 
         # Assert the result
         self.assertEqual(
-            result, "/home/pegasus/development/Alex/resources/user/application/application.plug", "Test case failed"
+            result, "/home/pegasus/development/Alex/resources/user/application/application.key", "Test case failed"
         )
 
 class DataFileTest(unittest.TestCase):

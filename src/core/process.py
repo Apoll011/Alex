@@ -12,6 +12,7 @@ class Process:
     next_listen_processor: Any = None
     required_listen_input: Responce
     next_processor_args: tuple[Any, ...] = ()
+    on_none_responce = None
 
     id = None
 
@@ -50,14 +51,20 @@ class Process:
         # but sometimes a skill might need to get the text a user sends without parsing its intent
         # so they can set their one listen processor for the next loop
         # (User input.)
-        responce = self.next_listen_processor(self.required_listen_input.result, *self.next_processor_args)
+        args = list(self.next_processor_args)
+        try:
+            args.remove(None)
+        except ValueError:
+            pass
+        responce = self.next_listen_processor(self.required_listen_input.result, *args)
         if nextL == self.next_listen_processor and nextA == self.next_processor_args:  # After getting the value they wanted
             # (Skill listen processor)
             # they might want
             # to know something else.
-            # (That listen processor would be set inset the executing of the previous action,
+            # (That listen processor would be set inside the executing of the previous action,
             # so if this Check is not here, they could not do that)
             self.setDefaultListenProcessor()
+        self.save_on_none()
         return responce if isinstance(responce, dict) else self.make_responce()
 
     def wrong_answer(self, text):
@@ -79,6 +86,8 @@ class Process:
             if self.debug_mode:
                 self.intentParser.draw_intent(intent)
             result = self.call_skill(intent)
+        elif self.is_on_none_set():
+            result = self.execute_on_none(text)
         else:
             result = self.translate_responce("intent.not.valid", intent=intent.json)
 
@@ -129,3 +138,25 @@ class Process:
 
     def get_current_listen_processor(self):
         return self.next_listen_processor
+
+    def save_on_none(self):
+        self.on_none_responce = self.next_listen_processor, self.required_listen_input, self.next_processor_args if len(
+            self.next_processor_args
+        ) > 0 else None
+
+    def clear_none(self):
+        self.on_none_responce = None
+
+    def is_on_none_set(self):
+        return True if self.on_none_responce else False
+
+    def execute_on_none(self, text):
+        callback, responceType, args = self.on_none_responce
+        self.setListenProcessor(callback, responceType, args if args is not None or args != (()) else ())
+        if self.required_listen_input.is_accepted(text):
+            responce = self.execute_processor()
+        else:
+            responce = self.wrong_answer(text)
+
+        self.clear_none()
+        return responce if isinstance(responce, dict) else self.make_responce()

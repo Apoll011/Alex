@@ -55,7 +55,8 @@ class ALEX(AI):
 
     def return_to_default_text_processor(self):
         if self.text_processor.id is not None and self.difference_in_loop_id(self.text_processor.id) > 20:
-            self.text_processor.setDefaultListenProcessor()  # TODO: But make it save the last lp if user says something he does not now try with it. if that fails to (Responce Type) SAid that alex did not undertand. BUt as soon as something new is sponke and recognize turn back to none
+            self.text_processor.save_on_none()
+            self.text_processor.setDefaultListenProcessor()
 
     def execute_on_next_loop(self):
         if self.next_on_loop is not None:
