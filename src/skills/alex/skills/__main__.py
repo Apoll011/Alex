@@ -1,11 +1,11 @@
 import os
 
-from core.config import SOURCE_DIR
 from core.skills import BaseSkill
 
 class Skills(BaseSkill):
     def init(self):
         self.register("alex@skills")
+        self.dir_path = self.resource_path("skills/")
 
     def execute(self, intent):
         super().execute(intent)
@@ -18,7 +18,7 @@ class Skills(BaseSkill):
             self.look_for_major(self.respond_based_on_minor)
 
     def look_for_major(self, func):
-        major_list = os.listdir(SOURCE_DIR + "/skills/")
+        major_list = os.listdir(self.dir_path)
         if self.assert_in("major_skill", major_list):
             func()
         else:
@@ -42,14 +42,13 @@ class Skills(BaseSkill):
         else:
             self.responce_translated("not.found")
 
-    @staticmethod
-    def get_minor(major):
+    def get_minor(self, major):
         l = map(
             lambda x: " ".join(x.split("_")),
             list(
                 filter(
-                    lambda obj: os.path.isdir(SOURCE_DIR + "/skills/" + major + "/" + obj),
-                    os.listdir(SOURCE_DIR + "/skills/" + major + "/")
+                    lambda obj: os.path.isdir(self.dir_path + "/" + major + "/" + obj),
+                    os.listdir(self.dir_path + "/" + major + "/")
                 )
             )
         )

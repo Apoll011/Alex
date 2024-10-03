@@ -241,8 +241,8 @@ class App:
         except KeyboardInterrupt:
             self.alex.get().screen.clear()
             print("Interrupted the application.")
+        finally:
+            self.alex.deactivate()
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.interface.close_interface()
-        self.alex.deactivate()
         PID.clean()

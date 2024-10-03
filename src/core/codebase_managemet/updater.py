@@ -19,7 +19,7 @@ class Updater:
 
     def update_alex(self):
         self.download_core()
-        BaseInterface.get().alex.deactivate()
+        BaseInterface.get().close()
 
     def scan(self):
         libs = self.scan_lib()

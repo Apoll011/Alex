@@ -14,4 +14,4 @@ class Alex(BaseSkill):
     def after_responce(self, close_server):
         if close_server:
             BaseInterface.get().alex.api.call_route("close")
-        BaseInterface.get().alex.deactivate()
+        BaseInterface.get().close()
