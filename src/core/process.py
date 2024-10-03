@@ -103,8 +103,8 @@ class Process:
             skill = self.skill_caller.call(intent)
             skill.execute(intent)
             return self.make_responce()
-        except ModuleNotFoundError:
-            LOG.error(f"Try to call none existing skill {intent.intent.intent_name}")
+        except ModuleNotFoundError as e:
+            LOG.error(f"Try to call none existing skill {intent.intent.intent_name} {e}")
             return self.translate_responce("error.skill.not.found", {"skill": intent.intent.intent_name}, intent.json)
         except MissingMainSkillClass:
             LOG.error(f"Skill {intent.intent.intent_name} missing main class")
