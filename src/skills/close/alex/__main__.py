@@ -9,9 +9,9 @@ class Alex(BaseSkill):
 
     def execute(self, intent):
         super().execute(intent)
-        self.question("close.server", self.after_responce, {}, BoolResponce())
+        self.question("is.sure", self.after_responce, {}, BoolResponce())
 
-    def after_responce(self, close_server):
-        if close_server:
-            BaseInterface.get().alex.api.call_route("close")
-        BaseInterface.get().close()
+    @staticmethod
+    def after_responce(sure):
+        if sure:
+            BaseInterface.get().close()
