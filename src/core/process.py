@@ -140,9 +140,10 @@ class Process:
         return self.next_listen_processor
 
     def save_on_none(self):
-        self.on_none_responce = self.next_listen_processor, self.required_listen_input, self.next_processor_args if len(
-            self.next_processor_args
-        ) > 0 else None
+        if not self.isListenProcessorDefault():
+            self.on_none_responce = self.next_listen_processor, self.required_listen_input, self.next_processor_args if len(
+                self.next_processor_args
+            ) > 0 else None
 
     def clear_none(self):
         self.on_none_responce = None
