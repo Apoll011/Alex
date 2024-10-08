@@ -54,6 +54,11 @@ LIB_RESOURCE_PATH = f"{RESOURCE_FOLDER}/lib/"
 
 BIGGEST_LOOP_ID_ALLOWED = 1024
 
+AUTO_UPDATE = True
+AUTO_UPDATE_SCHEDULED_TIME = "22:00"
+
+API_SEARCH_TIMEOUT = 0.01
+
 try:
     with open(f"{SOURCE_DIR}/.config" if not is_compiled() else "", "r") as config:
         config_file = json.load(config)

@@ -7,7 +7,8 @@ import psutil
 from core.ai.ai import AI
 from core.ai.blueprint import AiBluePrintSkeleton
 from core.client import ApiClient
-from core.codebase_managemet.updater import AlexUpdater
+from core.codebase_managemet.base_server import get_base_server_on_local_net, is_base_server
+from core.codebase_managemet.updater import AlexUpdater, AutoUpdater
 from core.config import *
 from core.config import EventPriority
 from core.error import *
@@ -39,6 +40,12 @@ def make_ctx(self, alex: AI):
 
 @alexSkeleton.init_action("Set Api connection")
 def set_api_con(self, alex: AI):
+    if alex.base_server_ip == config_file["api"]["host"] and not is_base_server(config_file["api"]["host"]):
+        print(
+            f"The base server is not set on the default ip {config_file["api"]["host"]} searching for the base server... \nThis process should take around {255 * API_SEARCH_TIMEOUT:0.2f} seconds"
+        )
+        alex.base_server_ip = get_base_server_on_local_net() or alex.base_server_ip
+
     try:
         LOG.info("Connecting to Base Api")
         alex.api = ApiClient(alex.base_server_ip, api['port'])
@@ -72,6 +79,12 @@ def train_intents(self, alex: AI):
 @alexSkeleton.init_action("Getting dictionary engine")
 def load_dictionary(self, alex: AI):
     alex.api.call_route("dictionary/load", {"lang": "en"}) #TODO: Change this this to alex.language
+    alex.finish(self)
+
+@alexSkeleton.init_action("Scheduling System tasks")
+def load_dictionary(self, alex: AI):
+    updater = AutoUpdater()
+    updater.schedule(alex)
     alex.finish(self)
 
 @alexSkeleton.request_action("retrain")

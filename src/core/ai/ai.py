@@ -45,6 +45,7 @@ class AI(
             sig (str): The signature of the AI
         """
 
+        self.scheduler: Scheduler | None = None
         self.dna = DNA()
         self.screen = Screen(sig)
 

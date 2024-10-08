@@ -1,10 +1,7 @@
 import argparse
 import os
-import socket
 import sys
 import zipfile
-
-import requests
 
 from core.alex import ALEX
 from core.codebase_managemet.app import home, is_compiled
@@ -126,47 +123,9 @@ class AlexFactory:
         self.args = args
         self.alex = ALEX()
 
-        self.set_base_server()
+        self.alex.base_server_ip = self.args.base_server
+
         self.set_language()
-
-    def set_base_server(self):
-        if self.args.base_server == config_file["api"]["host"] and not self.is_base_server(config_file["api"]["host"]):
-            self.alex.base_server_ip = self.get_base_server_on_local_net() or self.args.base_server
-        else:
-            self.alex.base_server_ip = self.args.base_server
-
-    @staticmethod
-    def get_base_server_on_local_net():
-        local_ip = socket.gethostbyname(socket.gethostname())
-
-        ip_parts = local_ip.split(".")
-        base_ip = ".".join(ip_parts[:-1])
-
-        for i in range(1, 255):
-            ip = f"{base_ip}.{i}"
-            url = f"http://{ip}:{config_file["api"]["port"]}/"
-
-            try:
-                responce = requests.get(url, timeout=1)
-
-                if responce.status_code == 200:
-                    data = responce.json()
-                    if "name" in data and data["name"] == "Alex":
-                        return ip
-            except (requests.ConnectionError, requests.Timeout):
-                pass
-
-        return None
-
-    @staticmethod
-    def is_base_server(id):
-        try:
-            responce = requests.get(f"http://{id}:{config_file["api"]["port"]}/")
-            if responce.json()["name"] != "Alex":
-                raise KeyError
-            return True
-        except (KeyError, Exception):
-            return False
 
     def set_language(self):
         language = self.args.language
