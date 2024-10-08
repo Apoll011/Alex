@@ -1,4 +1,2 @@
 import pyjokes  # type: ignore
-
-from core.eliza import Eliza
-from core.list import *
+from engineio.async_drivers.threading import _async  # type: ignore

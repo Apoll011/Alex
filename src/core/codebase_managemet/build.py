@@ -48,7 +48,7 @@ class Build:
         server_version = response.json()
 
         platforms = {
-            "linux": "pyinstaller --add-data './src/skills:skills' --collect-all 'main' --add-data './src/skills:src/skills' --distpath ./dist/linux ./src/main.py --onefile",
+            "linux": "pyinstaller --add-data './src/skills:skills' --collect-all 'main' --collect-all 'core' --add-data './src/skills:src/skills' --distpath ./dist/linux ./src/main.py --onefile",
         }
 
         if server_version["name"] is None or not version.check_version_tuple(tuple(server_version["version"])):
