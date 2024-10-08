@@ -6,6 +6,7 @@ from core.client import ApiClient
 from core.dna import DNA
 from .blueprint import AiBluePrintUser
 from ..context import ContextManager
+from ..scheduler import Scheduler
 from ..screen import Screen
 
 class AI(

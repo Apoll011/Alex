@@ -1,12 +1,15 @@
+import datetime
 import os.path
 import shutil
 import zipfile
+from datetime import timedelta
 
 import requests
 
-from core.codebase_managemet.app import home
+from core.ai.ai import AI
+from core.codebase_managemet.app import home, restart_app
 from core.codebase_managemet.version import VersionManager
-from core.config import API_URL, RESOURCE_FOLDER
+from core.config import API_URL, AUTO_UPDATE_SCHEDULED_TIME, EventPriority, RESOURCE_FOLDER, SCHEDULE_TIME
 from core.intents.responce import HardBoolResponce
 from core.interface import BaseInterface
 
@@ -19,7 +22,6 @@ class Updater:
 
     def update_alex(self):
         self.download_core()
-        BaseInterface.get().close()
 
     def scan(self):
         libs = self.scan_lib()
@@ -109,6 +111,7 @@ class AlexUpdater:
         self.updater.update_lib(self.libs)
         self.up_say("Updating Alex")
         self.updater.update_alex()
+        BaseInterface.get().close()
 
     @staticmethod
     def check_entry(response):
@@ -148,7 +151,6 @@ class AlexUpdater:
     def handle_alex_update_responce(self, responce):
         if responce:
             self.update()
-            self.alex.deactivate()
         else:
             self.up_say("Canceling...")
             self.block_update()
@@ -171,7 +173,7 @@ class AlexUpdater:
         if responce:
             self.up_say("Updating Alex Libraries")
             self.updater.update_lib(self.libs)
-            self.alex.deactivate()
+            BaseInterface.get().close()
         else:
             self.up_say("Canceling...")
             self.block_update()
@@ -183,3 +185,39 @@ class AlexUpdater:
     @classmethod
     def is_allowed_to_update(cls):
         return cls.allowed_to_update
+
+class AutoUpdater:
+    def __init__(self):
+        self.libs = None
+        self.version_manager = VersionManager
+        self.updater = Updater()
+
+    def scan(self):
+        (alex_up, alex_up_version), self.libs = self.updater.scan()
+
+        if alex_up_version > self.version_manager.CORE_VERSION_TUPLE:
+            self.update()
+
+    def update(self):
+        self.updater.update_lib(self.libs)
+        self.updater.update_alex()
+        restart_app()
+
+    @staticmethod
+    def seconds_to_scheduled_time():
+        now = datetime.datetime.now()
+        hour_split = AUTO_UPDATE_SCHEDULED_TIME.split(":")
+        target = now.replace(hour=int(hour_split[0]), minute=int(hour_split[1]), second=0, microsecond=0)
+
+        if now >= target:
+            target += timedelta(days=1)
+
+        time_difference = target - now
+        return int(time_difference.total_seconds())
+
+    def schedule(self, alex: AI):
+        alex.scheduler.schedule(self.seconds_to_scheduled_time(), EventPriority.SYSTEM, self.scan_and_schedule, alex)
+
+    def scan_and_schedule(self, alex: AI):
+        self.scan()
+        alex.scheduler.schedule_recurrent(SCHEDULE_TIME.ONE_DAY, EventPriority.SYSTEM, self.scan)

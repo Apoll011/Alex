@@ -157,7 +157,7 @@ def check_api(alex: AI):
                 server_trys += 1
 
 @alexSkeleton.request_action("checkUpdates")
-@alexSkeleton.scheduled(SCHEDULE_TIME.TEN_MINUTES, EventPriority.SYSTEM)
+@alexSkeleton.scheduled(SCHEDULE_TIME.ONE_SECOND, EventPriority.SYSTEM, False)
 def check_for_updates(alex: AI):
     updater = AlexUpdater(alex)
     updater.run_update_process()
