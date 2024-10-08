@@ -25,7 +25,7 @@ class Server(BaseInterface):
         self.socketio.on('send_message')(self.input)
         self.socketio.on('wake')(self.wakeword)
         self.socketio.on('change_mode')(self.change_mode)
-        self.socketio.on('connect')(self.user_connect)
+        self.socketio.on('connect_user')(self.user_connect)
         self.app.add_url_rule('/', view_func=self.index)
         print(f"Running on http://{self.config['host']}:{self.config['port']}/")
         self.socketio.run(self.app, host=self.config["host"], port=self.config["port"])

@@ -45,7 +45,7 @@ class DataFileTest(unittest.TestCase):
         self.assertTrue(result, "Test case failed")
 
     def test_data_files_dont_exist(self):
-        result = result = DataFile.exist("tiago", "ber")
+        result = result = DataFile.exist("tiago", "dict")
 
         # Assert the result
         self.assertFalse(result, "Test case failed")
