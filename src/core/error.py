@@ -1,4 +1,4 @@
-from fontTools.ufoLib.utils import deprecated
+from core.utils import deprecated
 
 class Error:
     @staticmethod
