@@ -1,15 +1,18 @@
+from fontTools.ufoLib.utils import deprecated
+
 class Error:
     @staticmethod
+    @deprecated("Use the Exceptions Class")
     def get(code):
         try:
             __errors__ = {
                 "404": "Not Found",
                 "457": "Key Error"
             }
-            erro = str(code)
+            error = str(code)
 
-            text_erro = ["Error " + erro + ": #" + __errors__[erro], code]
-            return text_erro
+            text_error = ["Error " + error + ": #" + __errors__[error], code]
+            return text_error
 
         except KeyError:
             return [f"Error 304: Error Not Found ({code})", 304]
