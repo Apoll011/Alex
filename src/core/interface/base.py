@@ -2,7 +2,6 @@ import threading
 import time
 
 from core.ai.ai import AI
-from core.audio import Audio
 from core.config import *
 from core.log import LOG
 
@@ -116,7 +115,8 @@ class BaseInterface:
 
             case "play_audio":
                 try:
-                    Audio.play(data['value'])
+                    raise NotImplementedError()
+                    # Audio.play(data['value'])
                 except Exception:
                     os.system(f"aplay {LIB_RESOURCE_PATH}/audio/{data['value']}")
             case _:
