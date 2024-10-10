@@ -2,6 +2,7 @@ import threading
 import time
 
 from core.ai.ai import AI
+from core.audio import Audio
 from core.config import *
 from core.log import LOG
 
@@ -114,7 +115,9 @@ class BaseInterface:
                 self.speak(data)
 
             case "play_audio":
-                os.system(f"aplay {data['value']}")
-
+                try:
+                    Audio.play(data['value'])
+                except Exception:
+                    os.system(f"aplay {LIB_RESOURCE_PATH}/audio/{data['value']}")
             case _:
                 raise KeyError(f"The type {data_type} is not valid")
