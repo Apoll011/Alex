@@ -18,12 +18,9 @@ from core.models import ReminderObject
 from core.process import Process
 from core.resources.application import Application
 from core.resources.data_files import DataFile
+from core.user import User
 
 alexSkeleton = AiBluePrintSkeleton()
-
-training_actions = {
-    "training.intents": lambda ai: ai.api.call_route("intent_recognition/engine", {"type": "train"})
-}
 
 server_trys = 0
 
@@ -65,11 +62,10 @@ def set_api_con(self, alex: AI):
     )
     alex.finish(self)
 
-
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):
-    user = alex.api.call_route("users/search/name", {"name": "Tiago"})
-    alex.finish_and_set(self, "master", alex.api.call_route("user/", {"id":user.response["users"][0]}).response)
+    u = User.search_name("Tiago")
+    alex.finish_and_set(self, "master", u)
 
 @alexSkeleton.init_action("Getting intents engine")
 def train_intents(self, alex: AI):
@@ -86,19 +82,6 @@ def load_dictionary(self, alex: AI):
     updater = AutoUpdater()
     updater.schedule(alex)
     alex.finish(self)
-
-@alexSkeleton.request_action("retrain")
-def train_engine(alex: AI):
-    alex.screen.clear()
-    time_stared = time.time()
-    say("server.retrain", alex)
-    for act in training_actions:
-        name = act.replace(".", " ").title()
-        say("server.retrain.thing", alex, {"name": name})
-        action = training_actions[act]
-        action(alex)
-        say("done.text", alex)
-    say("server.retrain.end", alex, {"time": time.time() - time_stared})
 
 @alexSkeleton.request_action("debugMode")
 def debug_mode(alex: AI):
@@ -192,7 +175,7 @@ def sendApi(alex: AI, route: str, value=None):
 
 @alexSkeleton.request_action("userConnect")
 def userConnect(alex: AI):
-    m = alex.translate_responce("system.welcome", {"user": alex.get_context("master")["name"]})  # type: ignore
+    m = alex.translate_responce("system.welcome", {"user": alex.get_context("master").name})  # type: ignore
     alex.speak(m)  # type: ignore
     alex.handle_request("checkUpdates")
 

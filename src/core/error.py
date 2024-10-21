@@ -1,22 +1,3 @@
-from core.utils import deprecated
-
-class Error:
-    @staticmethod
-    @deprecated("Use the Exceptions Class")
-    def get(code):
-        try:
-            __errors__ = {
-                "404": "Not Found",
-                "457": "Key Error"
-            }
-            error = str(code)
-
-            text_error = ["Error " + error + ": #" + __errors__[error], code]
-            return text_error
-
-        except KeyError:
-            return [f"Error 304: Error Not Found ({code})", 304]
-
 
 class MissingMainSkillClass(Exception):
     def __init__(self, skill_name: str, skill) -> None:

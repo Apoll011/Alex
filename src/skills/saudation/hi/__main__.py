@@ -9,7 +9,7 @@ class Hi(BaseSkill):
         super().execute(intent)
         self.optional("timeOfDay")
 
-        master_name = self.alex_context.load("master")["name"]  # type: ignore
+        master_name = self.alex_context.load("master").name  # type: ignore
 
         if self.slot_exists("timeOfDay"):
             self.responce_translated("greet.hi.based.on.time.of.day", {"time": self.slots["timeOfDay"]})

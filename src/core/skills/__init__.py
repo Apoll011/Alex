@@ -204,7 +204,7 @@ class BaseSkill:
         """
         Will call Master name and if the flag confirmation is set to True listen for a confirmation key word.
         """
-        master_name: str = self.alex_context.load("master")["name"]  # type: ignore
+        master_name: str = self.alex_context.load("master").name
         master_first_name = master_name.split()[0]
         self.responce(master_first_name)
         time.sleep(ATTENTION_WAIT_TIME)
