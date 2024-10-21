@@ -71,3 +71,11 @@ class User:
     @staticmethod
     def search_tags(query: str, condition: str = ">:0", exclude=None) -> 'User':
         pass
+
+    def is_birthday(self):
+        user_birth = self.data.citizenship.birth
+        now = datetime.now()
+        return user_birth.day == now.day and user_birth.month == now.month
+
+    def is_male(self):
+        return self.data.body.gender == UserGender.MALE
