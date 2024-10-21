@@ -1,11 +1,11 @@
 import sys
 
 from core.ai.ai import AI
-from core.date import get_time_of_day
 from core.error import *
 from core.intents.responce import *
 from core.interface.base import BaseInterface
 from core.sysinformation import Registries
+from core.utils import get_time_of_day
 from .functions import alexSkeleton
 from ..codebase_managemet.app import is_compiled
 from ..config import BIGGEST_LOOP_ID_ALLOWED

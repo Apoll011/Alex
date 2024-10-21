@@ -104,7 +104,9 @@ class AiBluePrintSkeleton:
 
     def on(self, event: AlexEvent | list[AlexEvent], *args, **kwargs):
         def decorator(fun):
-            self.notifications_events.append(lambda alex: alex.notifier.register(fun, event, *args, **kwargs))
+            self.notifications_events.append(
+                lambda alex: alex.notifier.register(fun, event, alex=alex, *args, **kwargs)
+                )
 
             def wrapper(*args, **kwargs):
                 return fun(*args, **kwargs)

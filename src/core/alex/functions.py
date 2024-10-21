@@ -189,8 +189,8 @@ def changeMode(alex: AI, mode):
         alex.voice_mode = True # type: ignore
 
 @alexSkeleton.on(AlexEvent.ALEX_GOOD_MORNING)
-def goodmorning(event):
-    print("Good Morning for you too...")
+def run_morning_actions(event, alex):
+    pass  # TODO: Add ability to create morning routines
 
 @alexSkeleton.deactivate_action("Closing Scheduler")
 def stop_scheduler(alex: AI):
