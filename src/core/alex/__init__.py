@@ -38,6 +38,7 @@ class ALEX(AI):
 
     def interface_on(self):
         self.register_scheduled_funcs()
+        self.register_notified_funcs()
 
     def set_language(self, lang="en"):
         self.language = lang

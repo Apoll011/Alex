@@ -6,6 +6,7 @@ from core.client import ApiClient
 from core.dna import DNA
 from .blueprint import AiBluePrintUser
 from ..context import ContextManager
+from ..notifier import Notify
 from ..scheduler import Scheduler
 from ..screen import Screen
 
@@ -36,7 +37,7 @@ class AI(
     The context manager
     """
 
-
+    notifier: Notify = Notify()
     def __init__(self, sig: str) -> None:
         """
         Initializes the AI instance

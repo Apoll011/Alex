@@ -12,6 +12,7 @@ from core.intents import *
 from core.intents.responce import *
 from core.interface.base import BaseInterface
 from core.log import LOG
+from core.notifier import AlexEvent
 from core.translate import TranslationSystem
 
 class BaseSkill:
@@ -209,6 +210,9 @@ class BaseSkill:
         self.responce(master_first_name)
         time.sleep(ATTENTION_WAIT_TIME)
         # TODO: Add require confirmation logic
+
+    def register_event(self, event: AlexEvent):
+        self.alex().notifier.event(event)
 
     @staticmethod
     def resource_path(relative_path):

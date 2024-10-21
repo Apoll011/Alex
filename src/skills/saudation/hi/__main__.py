@@ -1,3 +1,4 @@
+from core.notifier import AlexEvent
 from core.skills import BaseSkill
 
 class Hi(BaseSkill):
@@ -9,9 +10,10 @@ class Hi(BaseSkill):
         super().execute(intent)
         self.optional("timeOfDay")
 
-        master_name = self.alex_context.load("master").name  # type: ignore
+        master_name = self.alex_context.load("master").name
 
         if self.slot_exists("timeOfDay"):
+            self.register_event(AlexEvent.ALEX_GOOD_MORNING)
             self.responce_translated("greet.hi.based.on.time.of.day", {"time": self.slots["timeOfDay"]})
         else:
             self.responce_translated("greet.hi", {"user": master_name})

@@ -1,4 +1,5 @@
 from core.config import EventPriority
+from core.notifier import AlexEvent
 
 class AiBluePrintSkeleton:
     """
@@ -19,6 +20,8 @@ class AiBluePrintSkeleton:
     }
 
     scheduled_funcs = []
+
+    notifications_events = []
 
     def __init__(self) -> None:
         self.init_actions = {}
@@ -96,6 +99,17 @@ class AiBluePrintSkeleton:
             def wrapper(*args, **kwargs):
                 return fun(*args, **kwargs)
             return wrapper
+
+        return decorator
+
+    def on(self, event: AlexEvent | list[AlexEvent], *args, **kwargs):
+        def decorator(fun):
+            self.notifications_events.append(lambda alex: alex.notifier.register(fun, event, *args, **kwargs))
+
+            def wrapper(*args, **kwargs):
+                return fun(*args, **kwargs)
+
+            return wrapper
         return decorator
 
 class AiBluePrintUser:
@@ -136,6 +150,8 @@ class AiBluePrintUser:
         Flag to indicate if all init actions are completed
     """
 
+    notifications_events = []
+
     def finish_and_set(self, name: str, ctx_name: str, ctx_value):
         """
         Finishes an action and sets a context value
@@ -171,7 +187,8 @@ class AiBluePrintUser:
         self.deactivate_actions = blueprint.deactivate_actions | self.deactivate_actions
         self.request_actions = blueprint.request_actions | self.request_actions
         self.scheduled_funcs = blueprint.scheduled_funcs + self.scheduled_funcs
-        
+        self.notifications_events = blueprint.notifications_events + self.notifications_events
+
     def run_init_actions(self):
         """
         Runs the registered init actions
@@ -191,4 +208,8 @@ class AiBluePrintUser:
 
     def register_scheduled_funcs(self):
         for e in self.scheduled_funcs:
+            e(self)
+
+    def register_notified_funcs(self):
+        for e in self.notifications_events:
             e(self)

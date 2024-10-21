@@ -15,6 +15,7 @@ from core.error import *
 from core.interface.base import BaseInterface
 from core.log import LOG
 from core.models import ReminderObject
+from core.notifier import AlexEvent
 from core.process import Process
 from core.resources.application import Application
 from core.resources.data_files import DataFile
@@ -186,6 +187,10 @@ def changeMode(alex: AI, mode):
         alex.voice_mode = False # type: ignore
     else:
         alex.voice_mode = True # type: ignore
+
+@alexSkeleton.on(AlexEvent.ALEX_GOOD_MORNING)
+def goodmorning(event):
+    print("Good Morning for you too...")
 
 @alexSkeleton.deactivate_action("Closing Scheduler")
 def stop_scheduler(alex: AI):
