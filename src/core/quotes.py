@@ -45,6 +45,9 @@ class PyQuotes:
             return random.choice(self.quotes[category])
         return random.choice(self.all_quotes)
 
+    def get_clean_quote(self, category=None):
+        return self.get_quote(category).replace(" - ", " by ").replace(":", ",")
+
     def get_categories(self):
         """
         Get the list of available categories.
