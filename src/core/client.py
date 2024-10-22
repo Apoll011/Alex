@@ -129,7 +129,7 @@ class ApiClient:
     def generate_url(self, route: str, value):
         key_value = ""
         for key in value.keys():
-            key_value += f"{key}={value[key]}"
+            key_value += f"{key}={value[key]}&"
 
         url = f"http://{self.HOST}:{self.PORT}/{route}?{key_value}"
 
