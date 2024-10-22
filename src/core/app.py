@@ -170,10 +170,10 @@ class App:
         self.args = parser.parse()
 
     def __enter__(self):
-        LOG.init()
         PID.lock()
-
         PrepareWorkSpace()
+
+        LOG.init()
 
         return self
 

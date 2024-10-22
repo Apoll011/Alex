@@ -2,7 +2,6 @@ import json
 import os
 
 from core.config import LIB_RESOURCE_PATH, RESOURCE_FOLDER, USER_RESOURCE_PATH
-from core.log import LOG
 from core.resources.application import Application
 from core.security.key import AlexKey
 
@@ -42,7 +41,6 @@ class PrepareWorkSpace:
         resource_exists = self.resources_dir_exists()
 
         if resource_exists:
-            LOG.info("Resources folder is ready for usage")
             return
         else:
             self.generate_resources()

@@ -22,7 +22,7 @@ class VERSION_TYPE(Enum):
 class VersionManager:
     CORE_VERSION_MAJOR = 5
     CORE_VERSION_MINOR = 0
-    CORE_VERSION_BUILD = 29
+    CORE_VERSION_BUILD = 32
     CORE_VERSION_TYPE = VERSION_TYPE.BETA
     # END_VERSION_BLOCK
 
@@ -75,4 +75,4 @@ class VersionManager:
         version tutple provided to the function
         :param version_tuple: version tutple ('Major.Minor.Build-Type(Development, Beta, Alpha, Testing, Production)')
         """
-        return VersionManager.CORE_VERSION_TUPLE < version_tuple
+        return VersionManager.CORE_VERSION_TUPLE <= version_tuple
