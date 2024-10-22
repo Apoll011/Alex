@@ -22,7 +22,7 @@ class VERSION_TYPE(Enum):
 class VersionManager:
     CORE_VERSION_MAJOR = 5
     CORE_VERSION_MINOR = 0
-    CORE_VERSION_BUILD = 34
+    CORE_VERSION_BUILD = 36
     CORE_VERSION_TYPE = VERSION_TYPE.BETA
     # END_VERSION_BLOCK
 
@@ -76,3 +76,7 @@ class VersionManager:
         :param version_tuple: version tutple ('Major.Minor.Build-Type(Development, Beta, Alpha, Testing, Production)')
         """
         return VersionManager.CORE_VERSION_TUPLE <= version_tuple
+
+    @staticmethod
+    def versionify(version):
+        return ".".join(map(str, version))

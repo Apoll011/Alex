@@ -65,7 +65,7 @@ class Updater:
 
     @staticmethod
     def download_lib(lib_type, lib_data):
-        target_folder: str = os.path.join(RESOURCE_FOLDER, "lib", lib_type)
+        target_folder: str = os.path.join(str(RESOURCE_FOLDER), "lib", lib_type)
 
         responce = requests.get(f"{API_URL}/version_control/lib/get?lib_type={lib_type}")
 
@@ -99,33 +99,23 @@ class AlexUpdater:
 
     def __init__(self, alex):
         self.libs = None
-        self.alex = alex
+        self.alex: AI = alex
         self.version_manager = VersionManager
         self.updater = Updater()
 
-    def up_say(self, text):
-        self.alex.speak(self.alex.make_responce(text, voice="UPDATER"))
+    def question(self, text, callback, fallback=None, **kwargs):
+        self.up_say(text, fallback, **kwargs)
+        self.alex.text_processor.setListenProcessor(callback, HardBoolResponce())
+
+    def up_say(self, key, **kwargs, fallback=None):
+        self.alex.speak(self.alex.translate_responce(key, context=kwargs, voice="UPDATER", fallback=fallback))
 
     def update(self):
-        self.up_say("Updating Alex Libraries")
+        self.up_say("update.start.libraries", fallback="Updating Alex Libraries.")
         self.updater.update_lib(self.libs)
-        self.up_say("Updating Alex")
+        self.up_say("update.start.alex", fallback="Updating Alex.")
         self.updater.update_alex()
         BaseInterface.get().close()
-
-    @staticmethod
-    def check_entry(response):
-        if response.startswith("y") or response == "":
-            return True
-        elif response.startswith("n"):
-            return False
-        else:
-            print(f"Invalid response {response}. Defaulting to yes.")
-            return True
-
-    @staticmethod
-    def versionify(version):
-        return ".".join(map(str, version))
 
     def run_update_process(self):
         if not self.is_allowed_to_update():
@@ -138,44 +128,45 @@ class AlexUpdater:
         else:
             self.handle_library_updates()
 
-    def question(self, text, callback):
-        self.up_say(text)
-        self.alex.text_processor.setListenProcessor(callback, HardBoolResponce())
-
     def handle_alex_update(self, alex_up_version):
         self.question(
-            f"There is a new Alex version {self.versionify(alex_up_version)} would you like to update it? Be aware that you will need to restart the app.",
-            self.handle_alex_update_responce
+            "update.new.alex.version",
+            self.handle_alex_update_responce,
+            version=VersionManager.versionify(alex_up_version),
+            fallback="There is a new Alex version {version} would you like to update it? Be aware that you will need to restart the app."
         )
 
     def handle_alex_update_responce(self, responce):
         if responce:
             self.update()
         else:
-            self.up_say("Canceling...")
+            self.up_say("system.cancel", "Cancelling...")
             self.block_update()
 
     def handle_library_updates(self):
         new_libs = [
-            (lib, self.versionify(self.libs[lib]["new"]))
+            (lib, VersionManager.versionify(self.libs[lib]["new"]))
             for lib in self.libs
             if self.libs[lib]["outdated"]
         ]
 
         if new_libs:
-            self.up_say("There are new versions for the Alex libraries:")
+            self.up_say("update.new.libraries", "There are new versions for the Alex libraries.")
             for lib, version in new_libs:
-                self.up_say(f'Libraries {lib.title()} version {version}')
+                self.up_say(
+                    "update.new.library", name=lib.title(), version=version,
+                    fallback="Library {name} version {version}."
+                )
 
-            self.question("Would you like to update?", self.handle_alex_update_responce)
+            self.question("ask.for.update", self.handle_alex_update_responce, fallback="Would you like to update?")
 
     def handle_library_updates_responce(self, responce):
         if responce:
-            self.up_say("Updating Alex Libraries")
+            self.up_say("update.start.libraries", "Updating Alex Libraries.")
             self.updater.update_lib(self.libs)
             BaseInterface.get().close()
         else:
-            self.up_say("Canceling...")
+            self.up_say("system.cancel", "Cancelling...")
             self.block_update()
 
     @classmethod
