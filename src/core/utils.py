@@ -1,5 +1,6 @@
 import datetime
 import functools
+import http.client as httplib
 import warnings
 
 from core.client import ApiResponse
@@ -52,3 +53,17 @@ def get_meaning_of_word(word: str, closest: bool = True):
     meaning: ApiResponse = BaseInterface.get().alex.handle_request("sendToApi", url, {"word": word.lower()})
 
     return meaning.response
+
+def internet_on():
+    """
+    See if the internet is on or not by sending a request to google.com.
+    :return: A boolean
+    """
+    connection = httplib.HTTPConnection("google.com", timeout=1)
+    try:
+        # only header requested for fast operation
+        connection.request("HEAD", "/")
+        connection.close()  # connection closed
+        return True
+    except Exception:
+        return False
