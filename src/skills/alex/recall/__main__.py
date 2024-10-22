@@ -12,7 +12,7 @@ class Recall(BaseSkill):
         last_intent = self.alex_context.load("last_intent")
 
         if last_intent is None:
-            self.responce_translated("not.enough.data")
+            self.say("not.enough.data")
         else:
             skill = SkillCaller(self.language).call(last_intent)
             skill.execute(last_intent)

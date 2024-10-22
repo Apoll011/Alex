@@ -6,6 +6,8 @@ from core.skills import BaseSkill
 from core.utils import get_meaning_of_word
 
 class Get(BaseSkill):
+    meaning: dict
+    requested: str
     def init(self):
         self.register("dictionary@get")
 
@@ -26,8 +28,8 @@ class Get(BaseSkill):
         self.meaning = get_meaning_of_word(word)
         self.requested = word
 
-        if self.meaning["name"] == None:
-            self.responce_translated("not.found", {"word": self.requested})
+        if self.meaning["name"] is None:
+            self.say("not.found", word=self.requested)
             return
 
         if self.meaning["name"].lower() != self.requested.lower():
@@ -41,7 +43,7 @@ class Get(BaseSkill):
         else:
             others = self.meaning["others"]
             if len(others) == 0:
-                self.responce_translated("not.found", {"word": self.requested})
+                self.say("not.found", word=self.requested)
             elif len(others) == 1:
                 self.question(
                     "other.match", self.get_meaning_from_question, {"word": others[0]}, BoolResponce(), others[0]
@@ -56,11 +58,11 @@ class Get(BaseSkill):
         if responce:
             self.get_meaning(word)
         else:
-            self.responce_translated("sorry.not.have.word")
+            self.say("sorry.not.have.word")
 
     def get_meaning_of_one_word(self, responce: str | None):
         if responce is None:
-            self.responce_translated("sorry.not.have.word")
+            self.say("sorry.not.have.word")
         else:
             self.get_meaning(responce)
 

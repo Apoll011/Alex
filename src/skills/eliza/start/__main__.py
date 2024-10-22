@@ -2,6 +2,7 @@ from core.eliza import Eliza
 from core.skills import BaseSkill
 
 class Start(BaseSkill):
+    eliza: Eliza
     def init(self):
         self.register("eliza@start")
         self.can_go_again = False
@@ -30,7 +31,7 @@ class Start(BaseSkill):
             self.responce(self.eliza.final())
         else:
             self.responce(output)
-            if loop_func:  # I have to do this cuz Next listn processor check after Running it if the next processor remains the same fall back to default.
+            if loop_func:  # I have to do this cuz the Next listen processor check after Running it. if the next processor remains the same fall back to default.
                 self.on_next_input(self.loop)
             else:
                 self.on_next_input(self.main_loop)
@@ -40,7 +41,7 @@ class Start(BaseSkill):
 
     def get_memory(self):
         saved: list[str] | None = self.alex_context.load("eliza_memory")
-        if saved == None:
+        if saved is None:
             return []
         else:
             return saved
@@ -59,6 +60,6 @@ class Start(BaseSkill):
 
     def process(self, text):
         # Change "'" to something else
-        text = text.replace("'", "")
+        text = text.replace("'", "").strip()
         # Fix spacing
         return text

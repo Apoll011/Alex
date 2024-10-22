@@ -8,5 +8,6 @@ class HowAreU(BaseSkill):
      def execute(self, intent):
           super().execute(intent)
 
-          self.responce_translated("fine")
-          self.responce_translated("acknowledge")
+          self.say("fine")
+          if self.alex().debug_mode:
+              self.say("acknowledge")

@@ -9,7 +9,6 @@ from core.skills import BaseSkill
 class Reminder(BaseSkill):
      def init(self):
           self.register("set@reminder")
-          self.save_responce_for_context = False
 
      def execute(self, intent):
           super().execute(intent)
@@ -33,31 +32,32 @@ class Reminder(BaseSkill):
           reminder.schedule(self.alex())
 
           if reminder.person is None:
-               self.responce_translated("reminder.set", {
-                         "time": self.get_raw_slot_value("time"), 
-                         "action": reminder.get_action()
-                         })
+              self.say(
+                  "reminder.set",
+                  time=self.get_raw_slot_value("time"),
+                  action=reminder.get_action()
+              )
           else:
-               self.responce_translated("reminder.set.person", {
-                         "time": self.get_raw_slot_value("time"), 
-                         "action": reminder.get_action(), 
-                         "person": reminder.person.value
-                         })
+              self.say(
+                  "reminder.set.person",
+                  time=self.get_raw_slot_value("time"),
+                  action=reminder.get_action(),
+                  person=reminder.person.value
+              )
           
 
      def fire_reminder(self, reminder: ReminderObject, late = False):
          if not late:
              self.request_attention()
          if reminder.person is None:
-             self.responce_translated(
-                 f"reminder.fire{'.late' if late else ''}", {
-                    "action": reminder.get_action()
-                    })
+             self.say(
+                 f"reminder.fire{'.late' if late else ''}",
+                 action=reminder.get_action()
+             )
          else:
-             self.responce_translated(
-                 f"reminder.fire.person{'.late' if late else ''}", {
-                     "action": reminder.get_action(),
-                    "person": reminder.person.value
-                 }
+             self.say(
+                 f"reminder.fire.person{'.late' if late else ''}",
+                 action=reminder.get_action(),
+                 person=reminder.person.value
                  )
          os.remove(DataFile.getPath(reminder.id, "reminder"))

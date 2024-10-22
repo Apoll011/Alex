@@ -7,4 +7,4 @@ class Tanks(BaseSkill):
 
      def execute(self, intent):
           super().execute(intent)
-          self.responce_translated("tank")
+          self.say("thanks")

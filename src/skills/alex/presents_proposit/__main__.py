@@ -6,4 +6,4 @@ class PresentsProposit(BaseSkill):
 
     def execute(self, intent):
         super().execute(intent)
-        self.responce_translated("alex.proposit")
+        self.say("alex.proposit")

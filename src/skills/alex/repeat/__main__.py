@@ -12,6 +12,6 @@ class Repeat(BaseSkill):
         last_responce = self.alex_context.load("last_responce")
 
         if last_responce is None:
-            self.responce_translated("not.enough.data")
+            self.say("not.enough.data")
         else:
-            self.responce_translated("repeat.text", {"text": last_responce})
+            self.say("repeat.text", text=last_responce)

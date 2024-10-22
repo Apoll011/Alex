@@ -6,4 +6,4 @@ class Presents(BaseSkill):
 
     def execute(self, intent):
         super().execute(intent)
-        self.responce_translated("alex.how.he.is", {"user": self.alex_context.load("master").name})  # type: ignore
+        self.say("alex.how.he.is", user=self.alex_context.load("master").name)
