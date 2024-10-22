@@ -107,7 +107,7 @@ class AlexUpdater:
         self.up_say(text, fallback, **kwargs)
         self.alex.text_processor.setListenProcessor(callback, HardBoolResponce())
 
-    def up_say(self, key, **kwargs, fallback=None):
+    def up_say(self, key, fallback=None, **kwargs):
         self.alex.speak(self.alex.translate_responce(key, context=kwargs, voice="UPDATER", fallback=fallback))
 
     def update(self):
