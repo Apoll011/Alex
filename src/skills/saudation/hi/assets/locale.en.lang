@@ -1,3 +1,5 @@
 greet.hi:[Hi, {{user}};Hello {{user}}]
 greet.hi.based.on.time.of.day:Good {{time}}
 happy.birth:Well its seems like today is your Birthday. Happy Birth Day {{user}}.
+morning.online:Good morning, {user_name}! I hope you slept well. It's {current_time} on {day} of {month}. The weather today will be {brief_weather_description} with a high of {temperature}. Here's an inspiring quote for your day: {inspiring_quote}. Would you like to hear your news briefing, start your morning playlist, or begin your daily wellness routine?
+morning.offline:Good morning, {user_name}! I hope you slept well. It's {current_time} on {day} of {month}. Remember, every day is a new opportunity to be your best self. Would you like me to start your morning playlist or guide you through a quick meditation?
