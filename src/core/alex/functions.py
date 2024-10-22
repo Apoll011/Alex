@@ -176,7 +176,9 @@ def sendApi(alex: AI, route: str, value=None):
 
 @alexSkeleton.request_action("userConnect")
 def userConnect(alex: AI):
-    m = alex.translate_responce("system.welcome", {"user": alex.get_context("master").name})  # type: ignore
+    m = alex.translate_responce(
+        "system.welcome", {"user": alex.get_context("master").name}, fallback="Welcome {user}"
+        )  # type: ignore
     alex.speak(m)  # type: ignore
     alex.handle_request("checkUpdates")
 

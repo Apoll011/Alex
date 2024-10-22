@@ -27,8 +27,8 @@ class BaseInterface:
     def init(self):
         LOG.info(f"Started interface {self.__class__.__name__}")
         self.print_header()
-        self.request_sentence = self.alex.translate("system.request")
-        self.responce_sentence = self.alex.translate("system.responce")
+        self.request_sentence = self.alex.translate("system.request", fallback="Your request: ")
+        self.responce_sentence = self.alex.translate("system.responce", fallback="Your responce: ")
         self.alex.interface_on()
         self.alex.start()
 

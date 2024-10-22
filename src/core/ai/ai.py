@@ -101,13 +101,14 @@ class AI(
         else:
             raise ValueError(f"AI request '{request}' not found")
 
-    def translate(self, key: str, context: dict[str, Any] | None = None, return_none=False):
-        return self.translationSystem.get_translation(key, context, return_none)
+    def translate(self, key: str, context: dict[str, Any] | None = None, return_none=False, fallback=None):
+        return self.translationSystem.get_translation(key, context, return_none, fallback)
 
-    def translate_responce(self, key: str, context: dict[str, Any] | None = None, intent=None, voice=None):
+    def translate_responce(self, key: str, context: dict[str, Any] | None = None, intent=None, voice=None,
+                           fallback=None):
         if intent is None:
             intent = {}
-        return self.make_responce(self.translate(key, context), intent, voice)
+        return self.make_responce(self.translate(key, context, fallback=fallback), intent, voice)
 
     def get_context(self, name: str, type: str = "pickle"):
         """
