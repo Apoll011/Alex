@@ -3,7 +3,9 @@ import os
 import sys
 import time
 from pathlib import Path
+from threading import Thread
 
+from core.client import ApiMethod
 from core.codebase_managemet.app import is_compiled
 from core.config import ATTENTION_WAIT_TIME
 from core.context import ContextManager
@@ -215,7 +217,7 @@ class BaseSkill:
         # TODO: Add require confirmation logic
 
     def register_event(self, event: AlexEvent):
-        self.alex().notifier.event(event)
+        Thread(target=self.alex().notifier.event, args=[event]).start()
 
     @staticmethod
     def resource_path(relative_path):
@@ -227,3 +229,6 @@ class BaseSkill:
             base_path = os.path.abspath("." if is_compiled() else "./src/")
 
         return os.path.join(base_path, relative_path)
+
+    def api(self, route, method=ApiMethod.GET, **kwargs):
+        return self.alex().api.call_route(route, kwargs, method)
