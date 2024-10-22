@@ -17,12 +17,12 @@ class Responce:
 
     def is_accepted(self, text) -> bool:
         try:
-            self.get_result()
+            self.get_result(self.clear_text(text))
             return True
         except ValueError:
             return False
 
-    def get_result(self):
+    def get_result(self, text):
         try:
             if len(self.replace) > 0:
                 self.result = self.rtype(self.replace[self.parse(text)])
@@ -49,6 +49,12 @@ class Responce:
 
     def init(self):
         ...
+
+    def clear_text(self, text: str):
+        new_text = text.strip()
+
+        # TODO: REMOVE ACCENT
+        return new_text
 
 class AnyResponce(Responce):
     def is_accepted(self, text) -> bool:
