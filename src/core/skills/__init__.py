@@ -99,6 +99,9 @@ class BaseSkill:
     def responce_translated(self, key: str, context=None):
         self.responce(self.translate.get_translation(key, context))
 
+    def say(self, key, **kwargs):
+        self.responce_translated(key, kwargs)
+
     def responce(self, text: str):
         text = text.strip()
         self.save_last_responce(text)
