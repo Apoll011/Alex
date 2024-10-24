@@ -1,7 +1,7 @@
 import http.client as httplib
 from unittest import TestCase
 
-from core.internet import InternetUser
+from core.utils import internet_on
 
 class TestInternetUser(TestCase):
     def test_internet_on(self):
@@ -13,4 +13,4 @@ class TestInternetUser(TestCase):
         except Exception:
             connected = False
 
-        self.assertEqual(InternetUser.internet_on(), connected)
+        self.assertEqual(internet_on(), connected)
