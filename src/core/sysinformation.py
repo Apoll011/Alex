@@ -54,7 +54,7 @@ class SysInfo:
         try:
             battery = psutil.sensors_battery() or self.get_battery_default()
 
-        except Exception:
+        except (Exception, ValueError):
             battery = self.get_battery_default()
             
         disk = psutil.disk_usage(".")
@@ -93,7 +93,7 @@ class SysInfo:
     def register(self, register: Registries) -> None:
         """
         Register an action in the system
-        :param register: Its the action to register in the system. Type (Registeries)
+        :param register: Its the action to register in the system. Type (Registries)
         """
         name = " ".join(register.name.split("_"))
         name = name.title()
@@ -116,7 +116,7 @@ class SysInfo:
     def get_battery_default():
         """
         GEt the battery info default values
-        :return: The baterry info in a tuple representing ('percent', 'secsleft', 'power_plugged')
+        :return: The battery info in a tuple representing ('percent', 'secsleft', 'power_plugged')
         """
         sbattery = namedtuple('sbattery', ['percent', 'secsleft', 'power_plugged'])
         battery = sbattery(None, -2, True)

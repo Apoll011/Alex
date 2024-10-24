@@ -81,12 +81,12 @@ class AiBluePrintSkeleton:
     
     def scheduled(self, time: int, priority: EventPriority, recurring = True):
         """
-        Decorator to register a schedulled event
+        Decorator to register a scheduled event
 
         Args:
             time (int): Time took to execute it
             priority (int): The priority of the event lower value = Higher Priority
-            recurring (bool): If event is recuring or not
+            recurring (bool): If event is recurring or not
 
         Returns:
             A decorator function

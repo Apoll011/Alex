@@ -107,7 +107,7 @@ class ContextManager:
     @staticmethod
     def get_file_path(context_name, file_format):
         """Get the file path for a given context name and file format.
-__file_dir
+
         Args:
             context_name (str): The name of the context.
             file_format (str): The file format. Supported formats are "pickle" and "json".
@@ -135,5 +135,3 @@ __file_dir
             None
         """
         cls.__contexts.clear()
-        for file in os.listdir(cls.__file_dir):
-            os.remove(os.path.join(cls.__file_dir, file))

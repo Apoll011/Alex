@@ -7,6 +7,7 @@ from core.dna import DNA
 from .blueprint import AiBluePrintUser
 from ..context import ContextManager
 from ..notifier import Notify
+from ..process import Process
 from ..scheduler import Scheduler
 from ..screen import Screen
 
@@ -36,6 +37,8 @@ class AI(
     """
     The context manager
     """
+
+    text_processor: Process
 
     notifier: Notify = Notify()
     def __init__(self, sig: str) -> None:
@@ -110,29 +113,29 @@ class AI(
             intent = {}
         return self.make_responce(self.translate(key, context, fallback=fallback), intent, voice)
 
-    def get_context(self, name: str, type: str = "pickle"):
+    def get_context(self, name: str, saving_type: str = "pickle"):
         """
         Retrieves a context value
 
         Args:
             name (str): The name of the context value
-            type (str): The type of the context value (default: "pickle")
+            saving_type (str): The type of the context value (default: "pickle")
 
         Returns:
             The context value
         """
-        return self.context.load(name, type)
+        return self.context.load(name, saving_type)
 
-    def set_context(self, name: str, value, type: str = "pickle"):
+    def set_context(self, name: str, value, saving_type: str = "pickle"):
         """
         Sets a context value
 
         Args:
             name (str): The name of the context value
             value: The value to be set
-            type (str): The type of the context value (default: "pickle")
+            saving_type (str): The type of the context value (default: "pickle")
         """
-        self.context.save(value, name, type)
+        self.context.save(value, name, saving_type)
 
     def make_responce(self, message="", intent=None, voice=None) -> dict[str, Any]:
         ...

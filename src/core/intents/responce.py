@@ -50,7 +50,8 @@ class Responce:
     def init(self):
         ...
 
-    def clear_text(self, text: str):
+    @staticmethod
+    def clear_text(text: str):
         new_text = text.strip()
 
         # TODO: REMOVE ACCENT

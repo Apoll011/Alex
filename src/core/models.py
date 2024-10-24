@@ -31,7 +31,7 @@ class ReminderObject:
               return f"{self.time.get_hour()}:{self.time.get_minute()}"
 
      def seconds(self):
-          return self.time.diference_from_now_to_value().total_seconds()
+         return self.time.difference_from_now_to_value().total_seconds()
 
      def get_action(self):
           return self.action.value

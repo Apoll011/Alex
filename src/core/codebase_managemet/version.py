@@ -72,8 +72,8 @@ class VersionManager:
     def check_version_tuple(version_tuple: tuple):
         """
         Check if current version is equal or higher than the
-        version tutple provided to the function
-        :param version_tuple: version tutple ('Major.Minor.Build-Type(Development, Beta, Alpha, Testing, Production)')
+        version tuple provided to the function
+        :param version_tuple: version tuple ('Major.Minor.Build-Type(Development, Beta, Alpha, Testing, Production)')
         """
         return VersionManager.CORE_VERSION_TUPLE <= version_tuple
 

@@ -79,7 +79,7 @@ class SlotValueInstantTime(SlotValue):
         except ValueError:
             return datetime.strptime(self.value, "%Y-%m-%d %H:%M:%S -01:00")
 
-    def diference_from_now_to_value(self):
+    def difference_from_now_to_value(self):
         return self.to_datetime() - datetime.now()
 
     def get_year(self) -> int | None:

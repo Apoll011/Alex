@@ -56,6 +56,8 @@ def make_request(url: str, method: ApiMethod):
             data = requests.delete(url)
         case ApiMethod.OPTIONS:
             data = requests.options(url)
+        case _:
+            raise KeyError(f"Invalid Method {ApiMethod.name}")
 
     return data.json(), data.status_code
 

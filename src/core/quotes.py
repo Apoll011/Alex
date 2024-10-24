@@ -55,15 +55,3 @@ class PyQuotes:
         :return: List of category names
         """
         return list(self.quotes.keys())
-
-# Example usage
-if __name__ == "__main__":
-    pyq = PyQuotes()
-    
-    print("Random quote:", pyq.get_quote())
-    print("\nQuote from 'success' category:", pyq.get_quote('success'))
-    print("\nAvailable categories:", pyq.get_categories())
-    
-    print("\nOne quote from each category:")
-    for category in pyq.get_categories():
-        print(f"{category.capitalize()}: {pyq.get_quote(category)}")

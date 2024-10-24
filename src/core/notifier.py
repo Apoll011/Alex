@@ -1,8 +1,8 @@
-from enum import Enum
+import enum
 from typing import Any
 from uuid import uuid4
 
-class AlexEvent(Enum):
+class AlexEvent(enum.Enum):
     ALEX_LOOP = "loop"
     ALEX_GOOD_MORNING = "good_morning"
     ALEX_WAKE = "wake"

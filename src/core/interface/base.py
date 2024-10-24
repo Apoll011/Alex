@@ -64,7 +64,8 @@ class BaseInterface:
 
     def parse(self, data): ...
 
-    def execute(self, comand): ...
+    def execute(self, command):
+        ...
 
     def loop(self): ...
 
@@ -74,7 +75,7 @@ class BaseInterface:
         LOG.info("Closed Alex")
 
     def user_connect(self, data):
-        LOG.info("User Connected")
+        LOG.info("User Connected data", data)
         self.alex.handle_request("userConnect")
 
     def change_mode(self, data: dict):

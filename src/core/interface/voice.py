@@ -1,4 +1,5 @@
 import os
+import subprocess
 import threading
 
 from precise_runner import PreciseEngine, PreciseRunner
@@ -28,7 +29,7 @@ class Voice(BaseInterface):
         "pt": "PT"
     }
 
-    replacers = {
+    replace = {
         "Alex": "Alex",
         "Ema": "Karen"
     }
@@ -87,7 +88,7 @@ class Voice(BaseInterface):
 
         command += extension
 
-        voice = Voice.replacers[data["settings"]["voice"]]
+        voice = Voice.replace[data["settings"]["voice"]]
 
         if voice == "Alex":
             voice = Voice.select_voice()
@@ -97,10 +98,11 @@ class Voice(BaseInterface):
         os.system(command)
 
     def listen(self, timeout: int):
-        """ c = f"hear -p -t {timeout}"
+        if self.alex.debug_mode:
+            return input("Input: ")
+        c = f"hear -p -t {timeout}"
         result = subprocess.check_output(c, shell=True, text=True)
-        return result.strip().split("\n")[-1].strip().lstrip().rstrip() """
-        return input("Input: ")
+        return result.strip().split("\n")[-1].strip().lstrip().rstrip()
 
     def after_wake_word(self):
         if self.allowed_after_wake_word_listen:

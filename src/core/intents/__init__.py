@@ -1,4 +1,5 @@
-from typing import NamedTuple, Dict, Any
+from typing import Dict, NamedTuple
+
 from .slots import *
 
 class SlotRange(NamedTuple):
@@ -37,32 +38,34 @@ class IntentParserToObject:
         """Initializes the parser"""
         pass
 
-    def parse_slot(self, slot: Dict[str, Any]) -> Slot:
+    @staticmethod
+    def parse_slot(slot: Dict[str, Any]) -> Slot:
         """Parses a slot dictionary and returns a Slot instance"""
-        range = SlotRange(start=slot["range"]["start"], end=slot["range"]["end"])
+        intent_range = SlotRange(start=slot["range"]["start"], end=slot["range"]["end"])
         raw_value = slot["rawValue"]
         entity = slot["entity"].replace("snips/", "")
         slot_name = slot["slotName"]
         value = SlotValueFactory.create(**slot["value"])
-        return Slot(range=range, raw_value=raw_value, value=value, entity=entity, slot_name=slot_name)
+        return Slot(range=intent_range, raw_value=raw_value, value=value, entity=entity, slot_name=slot_name)
 
-    def parse_intent(self, intent: Dict[str, Any]) -> Intent:
+    @staticmethod
+    def parse_intent(intent: Dict[str, Any]) -> Intent:
         """Parses an intent dictionary and returns an Intent instance"""
         intent_name = intent["intentName"]
         confidence = intent["probability"]
         return Intent(intent_name=intent_name, confidence=confidence)
 
-    def parser(self, intentr: Dict[str, Any]) -> IntentResponse:
+    def parser(self, intent_obj: Dict[str, Any]) -> IntentResponse:
         """Parses the entire intent data dictionary and returns an IntentResponse instance"""
-        input = intentr["input"]
-        intent = self.parse_intent(intentr["intent"])
-        
-        slots = {}
-        
-        for slot in intentr["slots"]:
+        intent_input = intent_obj["input"]
+        intent = self.parse_intent(intent_obj["intent"])
+
+        intent_slots = {}
+
+        for slot in intent_obj["slots"]:
             s = self.parse_slot(slot)
-            slots[s.slot_name] = s 
-        return IntentResponse(input=input, intent=intent, slots=slots, json=intentr)
+            intent_slots[s.slot_name] = s
+        return IntentResponse(input=intent_input, intent=intent, slots=intent_slots, json=intent_obj)
 
     @staticmethod
     def draw_intent(intent_response: IntentResponse) -> None:

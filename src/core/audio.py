@@ -23,18 +23,20 @@ class Audio:
             return True
         return False
 
-    def play(self, audio_name):
-        audio_path = self.get_path(audio_name)
-        if self.check():
-            song = self.get_handler(audio_name)(audio_path)
+    @staticmethod
+    def play(audio_name):
+        audio_path = Audio.get_path(audio_name)
+        if Audio.check():
+            song = Audio.get_handler(audio_name)(audio_path)
             play(song)
         else:
             os.system(f"aplay {audio_path}")
 
-    def get_handler(self, audio_name) -> (Any, dict[str, Any]):
+    @staticmethod
+    def get_handler(audio_name) -> (Any, dict[str, Any]):
         extension = audio_name.split(".")
         try:
-            return self.audio_handle[extension]
+            return Audio.audio_handle[extension]
         except:
             raise AudioExtensionNotSupported(audio_name)
 

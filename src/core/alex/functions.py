@@ -11,6 +11,7 @@ from core.codebase_managemet.base_server import get_base_server_on_local_net, is
 from core.codebase_managemet.updater import AlexUpdater, AutoUpdater
 from core.config import *
 from core.config import EventPriority
+from core.context import ContextManager
 from core.error import *
 from core.interface.base import BaseInterface
 from core.log import LOG
@@ -202,6 +203,7 @@ def stop_scheduler(alex: AI):
 @alexSkeleton.deactivate_action("Delete context")
 def delete_ctx(alex: AI):
     LOG.info("Deleting the context")
+    ContextManager.clear()
     files = glob.glob(f'{USER_RESOURCE_PATH}/ctx/*.pickle')
     for f in files:
         os.remove(f)

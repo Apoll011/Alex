@@ -137,6 +137,4 @@ class User:
 
         }
 
-        r = alex.api.call_route("/user/", {"user": user_json}, ApiMethod.PATCH)
-
-# {"name": "Tiago Bernardo", "data": {"body": {"gender": "M", "age": 15, "height": 164, "weight": 51}, "psycho_map": {}, "citizenship": {"birth": "16/10/2007", "name": "Tiago Rodrigo Dos Reis Bernardo", "nationality": "Cape Vert"}}, "tags": [["Creator", "100"], ["Friend", "100"], ["Master", "100"]], "id": "f86f0279-c4ec-4f5e-99e9-2fa44059c629"}
+        alex.api.call_route("/user/", {"user": user_json}, ApiMethod.PATCH)

@@ -28,7 +28,9 @@ class Server(BaseInterface):
         self.socketio.on('connect_user')(self.user_connect)
         self.app.add_url_rule('/', view_func=self.index)
         print(f"Running on http://{self.config['host']}:{self.config['port']}/")
-        self.socketio.run(self.app, host=self.config["host"], port=self.config["port"])
+        self.socketio.run(
+            self.app, host=self.config["host"], port=self.config["port"], log_output=False, use_reloader=True
+            )
         super().start()
 
     @staticmethod

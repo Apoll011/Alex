@@ -1,5 +1,6 @@
 import json
 from enum import Enum
+
 from core.resources.data_files import DataFile
 
 class Size(Enum):
@@ -49,7 +50,7 @@ class Item:
     def json(self):
         j = {
              "name": self.name,
-             "atributes": {
+            "attributes": {
                   "color": self.color.value,
                   "size": self.size.value,
                   "quantity": self.quantity,
@@ -60,7 +61,7 @@ class Item:
     @staticmethod
     def from_json(itemJsonObj):
        name = itemJsonObj["name"]
-       attr = itemJsonObj["atributes"]
+       attr = itemJsonObj["attributes"]
        color = Color(tuple(attr["color"]))
        size = Size(attr["size"])
        quantity = attr["quantity"]
@@ -83,9 +84,9 @@ class Lists:
 
     def add_to_list(self, list_name: str, item: Item):
         self.ensure_exists(list_name)
-        for eitem in self.lists[list_name]:
-            if eitem.is_equal(item):
-                eitem.increment(item.quantity)
+        for existing_item in self.lists[list_name]:
+            if existing_item.is_equal(item):
+                existing_item.increment(item.quantity)
                 return
         self.lists[list_name].append(item)
     
@@ -166,10 +167,12 @@ class Lists:
 
         try:
             with open(DataFile.getPath("lists", "json"), "r") as file:
-                list = json.load(file)
-            for li in list:
-                for item in list[li]:
+                list_obj = json.load(file)
+            for li in list_obj:
+                for item in list_obj[li]:
                     l.add_to_list(li, Item.from_json(item))
+        except FileNotFoundError:
+            return l
         except KeyError:
             pass
 

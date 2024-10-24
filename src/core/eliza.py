@@ -1,5 +1,6 @@
-import re
 import random
+import re
+
 from core.log import LOG
 
 log = LOG
@@ -106,13 +107,15 @@ class Eliza:
             return results
         return None
 
-    def __next_reasmb(self, decomp):
+    @staticmethod
+    def __next_reasmb(decomp):
         index = decomp.next_reasmb_index
         result = decomp.reasmbs[index % len(decomp.reasmbs)]
         decomp.next_reasmb_index = index + 1
         return result
 
-    def __reassemble(self, reasmb, results):
+    @staticmethod
+    def __reassemble(reasmb, results):
         output = []
         for reword in reasmb:
             if not reword:
@@ -130,7 +133,8 @@ class Eliza:
                 output.append(reword)
         return output
 
-    def __sub(self, words, sub):
+    @staticmethod
+    def __sub(words, sub):
         output = []
         for word in words:
             word_lower = word.lower()

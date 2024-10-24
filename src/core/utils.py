@@ -69,7 +69,7 @@ def internet_on():
         connection.request("HEAD", "/")
         connection.close()  # connection closed
         return True
-    except Exception:
+    except (ConnectionError, Exception):
         return False
 
 def resource_path(relative_path):

@@ -28,14 +28,14 @@ class DataFile:
         return DataFile.getPath(name,extension)
     
     @staticmethod
-    def save(name, extension, value, type = "a"):
+    def save(name, extension, value, opening_type="a"):
         if DataFile.exist(name, extension):
-            o = open(DataFile.getPath(name,extension), type)
+            o = open(DataFile.getPath(name, extension), opening_type)
             o.write(value)
             o.close()
         else:
             DataFile.load(name, extension)
-            DataFile.save(name, extension, value, type)
+            DataFile.save(name, extension, value, opening_type)
     
     @staticmethod
     def get(name, extension):
@@ -72,10 +72,10 @@ class Dict(DataFile):
     @staticmethod
     def get(name):
         l = DataFile.get(name, Dict.extension).splitlines()
-        list = {}
+        dict_list = {}
         for li in l:
-            list[li.split("::")[0]] = li.split("::")[1]
-        return list
+            dict_list[li.split("::")[0]] = li.split("::")[1]
+        return dict_list
 
 class List(DataFile):
     extension = "list"
@@ -99,11 +99,11 @@ class List(DataFile):
             List.save(name, "\n"+value, "a")
 
     @staticmethod
-    def save(name, value, type = "a"):
+    def save(name, value, opening_type="a"):
         if isinstance(value, list):
-            DataFile.save(name, List.extension, "\n".join(value), type)
+            DataFile.save(name, List.extension, "\n".join(value), opening_type)
         else:
-            DataFile.save(name, List.extension, value, type)
+            DataFile.save(name, List.extension, value, opening_type)
     
     @staticmethod
     def exist(name):
