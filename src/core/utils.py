@@ -1,9 +1,12 @@
 import datetime
 import functools
 import http.client as httplib
+import os
+import sys
 import warnings
 
 from core.client import ApiResponse
+from core.codebase_managemet.app import is_compiled
 from core.interface import BaseInterface
 
 def get_time_of_day():
@@ -67,3 +70,35 @@ def internet_on():
         return True
     except Exception:
         return False
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS  # type: ignore
+    except (ModuleNotFoundError, Exception):
+        base_path = os.path.abspath("." if is_compiled() else "./src/")
+
+    return os.path.join(base_path, relative_path)
+
+def list_skills():
+    major_list = os.listdir(str(resource_path("skills/")))
+    try:
+        major_list.remove("__pycache__")
+    except ValueError:
+        pass
+
+    skills = []
+
+    for major in major_list:
+        minor_list = os.listdir(str(resource_path(f"skills/{major}")))
+        try:
+            minor_list.remove("__pycache__")
+        except ValueError:
+            pass
+
+        for individual in minor_list:
+            if os.path.isdir(resource_path(f"skills/{major}/{individual}")):
+                skills.append(resource_path(f"skills/{major}/{individual}"))
+
+    return skills

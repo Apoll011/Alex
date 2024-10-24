@@ -1,12 +1,10 @@
 import json
 import os
-import sys
 import time
 from pathlib import Path
 from threading import Thread
 
 from core.client import ApiMethod
-from core.codebase_managemet.app import is_compiled
 from core.config import ATTENTION_WAIT_TIME
 from core.context import ContextManager
 from core.error import SkillIntentError, SkillSlotNotFound
@@ -16,6 +14,7 @@ from core.interface.base import BaseInterface
 from core.log import LOG
 from core.notifier import AlexEvent
 from core.translate import TranslationSystem
+from core.utils import resource_path
 
 class BaseSkill:
     name: str
@@ -51,7 +50,7 @@ class BaseSkill:
     def register(self, name):
         self.name = name
         path, skname = self.pretty_name(name)
-        self.skill_dir = self.resource_path(f"skills/{path}")
+        self.skill_dir = resource_path(f"skills/{path}")
         self.get_local_settings()
         self.translate = TranslationSystem(self.language, "locale", f"{self.skill_dir}/assets/")
 
@@ -219,22 +218,33 @@ class BaseSkill:
     def register_event(self, event: AlexEvent):
         Thread(target=self.alex().notifier.event, args=[event]).start()
 
-    @staticmethod
-    def resource_path(relative_path):
-        """ Get absolute path to resource, works for dev and for PyInstaller """
-        try:
-            # PyInstaller creates a temp folder and stores path in _MEIPASS
-            base_path = sys._MEIPASS  # type: ignore
-        except (ModuleNotFoundError, Exception):
-            base_path = os.path.abspath("." if is_compiled() else "./src/")
-
-        return os.path.join(base_path, relative_path)
-
     def api(self, route, method=ApiMethod.GET, **kwargs):
         return self.alex().api.call_route(route, kwargs, method)
 
     def config(self, config_name):
         try:
-            return self.skill_settings["config"][config_name]
-        except KeyError:
+            config = self.skill_settings["config"][config_name]
+
+            match config["type"]:
+                case "number":
+                    if (
+                            ("min" in config.keys() and config["min"] <= config["value"])
+                            or ("min" not in config.keys())
+                    ) and (
+                            ("max" in config.keys() and config["max"] >= config["value"])
+                            or ("max" not in config.keys())
+                    ):
+                        return config["value"]
+                    else:
+                        return config["default"]
+                case "text":
+                    return config["value"]
+                case "bool":
+                    if not (config["value"] == 1 or config["value"] == 0):
+                        return bool(config["default"])
+                    else:
+                        return config["value"]
+                case _:
+                    raise ValueError("Unknown type for configuration:", config["type"])
+        except (KeyError, ValueError):
             return None
