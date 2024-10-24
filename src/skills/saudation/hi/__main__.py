@@ -4,6 +4,7 @@ from core.notifier import AlexEvent
 from core.quotes import PyQuotes
 from core.skills import BaseSkill
 from core.translate import TranslationSystem
+from core.user import User
 from core.utils import internet_on, is_morning
 
 class Hi(BaseSkill):
@@ -15,7 +16,7 @@ class Hi(BaseSkill):
         super().execute(intent)
         self.optional("timeOfDay")
 
-        self.master_name = self.alex_context.load("master").name
+        self.master: User = self.alex_context.load("master")
 
         if self.slot_exists("timeOfDay"):
             if is_morning():
@@ -24,11 +25,10 @@ class Hi(BaseSkill):
             else:
                 self.say("greet.hi.based.on.time.of.day", time=self.slots["timeOfDay"])
         else:
-            self.say("greet.hi", user=self.master_name)
+            self.say("greet.hi", user=self.master.name)
 
     def morning_routine(self):
-        if self.alex_context.load("master").is_birthday():
-            self.say("happy.birth", user=self.master_name)
+        self.birthday_related()
         self.say_morning_intro()
 
     def say_morning_intro(self):
@@ -37,7 +37,7 @@ class Hi(BaseSkill):
         if internet_on():
             self.say(
                 "morning.online",
-                user_name=self.master_name,
+                user_name=self.master.name,
                 current_time=self.api(
                     "/lang/format/nice_time", lang=self.language, speech=True
                 ).response,
@@ -50,10 +50,23 @@ class Hi(BaseSkill):
         else:
             self.say(
                 "morning.offline",
-                user_name=self.master_name,
+                user_name=self.master.name,
                 current_time=self.api(
                     "/lang/format/nice_time", lang=self.language, speech=True
                 ).response,
                 day=now.day,
                 month=month_translation
             )
+
+    def birthday_related(self):
+        if self.alex_context.load("master").is_birthday():
+            self.say("happy.birth", user=self.master.name)
+        elif self.is_birthday_coming():
+            self.say("birthday.in.less.than", days=self.master.distance_to_birthday().days)
+        elif self.master.distance_to_birthday().days == 2:
+            self.say("birthday.tomorrow", years=self.master.data.body.age + 1)
+
+    def is_birthday_coming(self):
+        return self.skill_settings[
+            "starting_warning_user_about_birthday"] >= self.master.distance_to_birthday().days > 2 and \
+            self.skill_settings["starting_warning_user_about_birthday"] > 2

@@ -92,6 +92,18 @@ class User:
         now = datetime.now()
         return user_birth.day == now.day and user_birth.month == now.month
 
+    def distance_to_birthday(self):
+        birthday = self.data.citizenship.birth
+        now = datetime.now()
+
+        if birthday.month <= now.month and birthday.day < now.day:
+            next_birthday = birthday.replace(year=now.year + 1)
+        else:
+            next_birthday = birthday.replace(year=now.year)
+        distance = next_birthday - now
+
+        return distance
+
     def is_male(self):
         return self.data.body.gender == UserGender.MALE
 

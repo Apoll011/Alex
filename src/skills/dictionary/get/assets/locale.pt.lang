@@ -1,6 +1,6 @@
 not.found:[Desculpe eu não pode encintrar {{word}} em meu dicionario.;Desculpe, {{word}} não está no meu dicionario.]
-not.equal:[Voçe quis dizer {{word}}?;Sera que {{word}} foi o que voçe quis dizer?;Eu encontrei um resultado para {{word}}, é isso que voçe quer?]
-other.match:Tem outra correspondencia para a palavra, {{word}} Voçe quer ouvi-la?
+not.equal:[Voçê quis dizer {{word}}?;Sera que {{word}} foi o que voçê quis dizer?;Eu encontrei um resultado para {{word}}, é isso que voçe quer?]
+other.match:Tem outra correspondencia para a palavra, {{word}} Voçê quer ouvi-la?
 other.matchs:Tem outra correspondencia para as palavras {{words}} Qual delas e a palavra requisitada?
-multiple.meaning:[Existem {{number_of_meaning}} differentes definições. Queres ouvir todas?;Voçe quer ouvir todas as {{number_of_meaning}} definições para essa palavra?]
+multiple.meaning:[Existem {{number_of_meaning}} differentes definições. Queres ouvir todas?;Voçê quer ouvir todas as {{number_of_meaning}} definições para essa palavra?]
 sorry.not.have.word:[Desculpe eu não tenho essa palavra no meu dicionario.;Eu pesso desculpa pela minha falta de informação.;Eu peço sinceras deculpas. Pois não encontrei a palavra no meu dicionario.]

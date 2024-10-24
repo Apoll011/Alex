@@ -1,5 +1,7 @@
 greet.hi:[Oi, {{user}};Olá {{user}}]
 greet.hi.based.on.time.of.day:Bom {{time}}
 happy.birth:Ao que parece hoje é o teu aniversario. Feliz Aniversario. {{user}}.
+birthday.in.less.than:Em {days} dias voçê vai fazer anos.
+birthday.tomorrow:Amanhã voçê vai fazer {years} anos.
 morning.online:Bom dia, {user_name}! Espero que tenha dormido bem. São {current_time} do dia {day} de {month}. O tempo hoje será {brief_weather_description} com máxima de {temperature}. Aqui está uma frase inspiradora para o seu dia: {inspiring_quote}. Gostaria de ouvir seu resumo de notícias, iniciar sua playlist matinal ou começar sua rotina diária de bem-estar?
 morning.offline:Bom dia, {user_name}! Espero que tenha dormido bem. São {current_time} do dia {day} de {month}. Lembre-se, cada dia é uma nova oportunidade para ser a sua melhor versão. Gostaria que eu iniciasse sua playlist matinal ou guiasse você em uma meditação rápida?

@@ -224,11 +224,17 @@ class BaseSkill:
         """ Get absolute path to resource, works for dev and for PyInstaller """
         try:
             # PyInstaller creates a temp folder and stores path in _MEIPASS
-            base_path = sys._MEIPASS
-        except Exception:
+            base_path = sys._MEIPASS  # type: ignore
+        except (ModuleNotFoundError, Exception):
             base_path = os.path.abspath("." if is_compiled() else "./src/")
 
         return os.path.join(base_path, relative_path)
 
     def api(self, route, method=ApiMethod.GET, **kwargs):
         return self.alex().api.call_route(route, kwargs, method)
+
+    def config(self, config_name):
+        try:
+            return self.skill_settings["config"][config_name]
+        except KeyError:
+            return None
