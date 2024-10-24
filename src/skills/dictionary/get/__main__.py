@@ -25,7 +25,7 @@ class Get(BaseSkill):
             return r.group(1)
 
     def get_meaning(self, word):
-        self.meaning = get_meaning_of_word(word)
+        self.meaning = get_meaning_of_word(word, self.config("closest"))
         self.requested = word
 
         if self.meaning["name"] is None:

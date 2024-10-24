@@ -67,6 +67,5 @@ class Hi(BaseSkill):
             self.say("birthday.tomorrow", years=self.master.data.body.age + 1)
 
     def is_birthday_coming(self):
-        return self.skill_settings[
-            "starting_warning_user_about_birthday"] >= self.master.distance_to_birthday().days > 2 and \
-            self.skill_settings["starting_warning_user_about_birthday"] > 2
+        return self.config("starting_warning_user_about_birthday") >= self.master.distance_to_birthday().days > 2 and \
+            self.config("starting_warning_user_about_birthday") > 2

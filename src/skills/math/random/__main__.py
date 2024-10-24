@@ -58,11 +58,12 @@ class Random(BaseSkill):
     def getnumber_range(self):
         if self.slot_exists("smaller_number") and self.slot_exists("bigger_number"):
             return (
-                int(self.slots["smaller_number"].get_value()),
+                int(self.slots["smaller_number"].get_value()),  # type: ignore
                 int(self.slots["bigger_number"].get_value()))  # type: ignore
-        return self.skill_settings['min'], self.skill_settings["max"]
+        return self.config('min'), self.config("max")
 
-    def round(self, result):
+    @staticmethod
+    def round(result):
         r = "{:.4f}".format(result)
         return float(r)
 
