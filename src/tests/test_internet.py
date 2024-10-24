@@ -5,7 +5,7 @@ from core.utils import internet_on
 
 class TestInternetUser(TestCase):
     def test_internet_on(self):
-        connection = httplib.HTTPConnection("google.com", timeout=3)
+        connection = httplib.HTTPConnection("google.com", timeout=1)
         try:
             connection.request("HEAD", "/")
             connection.close()  # connection closed
