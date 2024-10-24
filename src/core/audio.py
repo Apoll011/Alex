@@ -1,7 +1,9 @@
+import os
 from typing import Any
 
 from pydub import AudioSegment
 from pydub.playback import play
+from pydub.utils import which
 
 from core.config import LIB_RESOURCE_PATH
 
@@ -15,9 +17,19 @@ class Audio:
         "flv": AudioSegment.from_flv
     }
 
+    @staticmethod
+    def check():
+        if which("avconv") or which("ffmpeg"):
+            return True
+        return False
+
     def play(self, audio_name):
-        song = self.get_handler(audio_name)(self.get_path(audio_name))
-        play(song)
+        audio_path = self.get_path(audio_name)
+        if self.check():
+            song = self.get_handler(audio_name)(audio_path)
+            play(song)
+        else:
+            os.system(f"aplay {audio_path}")
 
     def get_handler(self, audio_name) -> (Any, dict[str, Any]):
         extension = audio_name.split(".")
@@ -32,8 +44,7 @@ class Audio:
         return path
 
     def play_dot(self, n="01"):
-        song = AudioSegment.from_wav(self.get_path(f"dot_{n}.wav"))
-        play(song)
+        self.play(f"dot_{n}.wav")
 
 class AudioExtensionNotSupported(Exception):
     def __init__(self, audio_name):
