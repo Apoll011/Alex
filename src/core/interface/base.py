@@ -75,7 +75,7 @@ class BaseInterface:
         LOG.info("Closed Alex")
 
     def user_connect(self, data):
-        LOG.info("User Connected data", data)
+        LOG.info("User Connected")
         self.alex.handle_request("userConnect")
 
     def change_mode(self, data: dict):

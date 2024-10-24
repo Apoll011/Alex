@@ -7,7 +7,6 @@ from core.dna import DNA
 from .blueprint import AiBluePrintUser
 from ..context import ContextManager
 from ..notifier import Notify
-from ..process import Process
 from ..scheduler import Scheduler
 from ..screen import Screen
 
@@ -37,8 +36,6 @@ class AI(
     """
     The context manager
     """
-
-    text_processor: Process
 
     notifier: Notify = Notify()
     def __init__(self, sig: str) -> None:
