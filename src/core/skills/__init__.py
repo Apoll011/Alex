@@ -205,7 +205,7 @@ class BaseSkill:
                 f"The file {name} was not found in this skill assets pack."
             )
 
-    def request_attention(self, require_confirmation=False):
+    def request_attention(self):
         """
         Will call Master name and if the flag confirmation is set to True listen for a confirmation key word.
         """
@@ -213,7 +213,6 @@ class BaseSkill:
         master_first_name = master_name.split()[0]
         self.responce(master_first_name)
         time.sleep(ATTENTION_WAIT_TIME)
-        # TODO: Add require confirmation logic
 
     def register_event(self, event: AlexEvent):
         Thread(target=self.alex().notifier.event, args=[event]).start()

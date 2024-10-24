@@ -1,6 +1,7 @@
 import datetime
 import functools
 import http.client as httplib
+import json
 import os
 import sys
 import warnings
@@ -102,3 +103,25 @@ def list_skills():
                 skills.append(resource_path(f"skills/{major}/{individual}"))
 
     return skills
+
+def get_skill_config():
+    skills = list_skills()
+    sk_conf = []
+    for skill in skills:
+
+        try:
+            with open(os.path.join(str(skill), ".config"), "r") as config:
+                conf = json.load(config)
+
+                if "config" in conf.keys():
+                    sk_conf.append(
+                        {
+                            "name": skill.split("/")[-2:],
+                            "config": conf
+                        }
+                    )
+
+
+        except KeyError:
+            pass
+    return sk_conf

@@ -3,6 +3,9 @@ from core.skills import BaseSkill
 
 #TODO: Add quantity, maybe size, color, etc
 class Add(BaseSkill):
+    entity: str
+    list: str
+    list_obj: Lists
     def init(self):
         self.register("list@add")
         self.can_go_again = False
@@ -35,8 +38,8 @@ class Add(BaseSkill):
         self.add_to_list()
 
     def add_to_list(self):
-        list = self.list.lower()
+        list_name = self.list.lower()
         entity = self.entity.lower()
-        self.list_obj.add_to_list(list, Item(entity))
-        self.responce_translated("added.item", {"entity": entity.title(), "list": list.title()})
+        self.list_obj.add_to_list(list_name, Item(entity))
+        self.responce_translated("added.item", {"entity": entity.title(), "list": list_name.title()})
         self.list_obj.save()
