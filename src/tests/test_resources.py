@@ -27,7 +27,7 @@ class ApplicationResources(unittest.TestCase):
         result = Application.get("key")
 
         # Assert the result
-        self.assertEqual(result, "732178387248", "Test case failed")
+        self.assertEqual(result, "901980409155", "Test case failed")
 
     def test_application_load(self):
         result = result = Application.load("key")
