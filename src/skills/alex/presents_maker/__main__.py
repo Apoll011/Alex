@@ -1,4 +1,5 @@
 from core.skills import BaseSkill
+from core.user import User
 
 class PresentsMaker(BaseSkill):
     def init(self):
@@ -6,9 +7,9 @@ class PresentsMaker(BaseSkill):
 
     def execute(self, intent):
         super().execute(intent)
-        self.say("who.made.alex", creator=self.get_creator()["name"])
+        self.say("who.made.alex", creator=self.get_creator().name)
 
-    def get_creator(self):
-        user_id = self.alex().api.call_route("users/search/tags", {"query": "Creator"}).response["users"][0]
-        user = self.alex().api.call_route("user/", {"id": user_id}).response
+    @staticmethod
+    def get_creator():
+        user = User.search_tags("Creator")[0]
         return user

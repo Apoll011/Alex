@@ -65,7 +65,7 @@ def set_api_con(self, alex: AI):
 
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):
-    u = User.search_name("Tiago")
+    u = User.search_name("Tiago")[0]
     alex.finish_and_set(self, "master", u)
 
 @alexSkeleton.init_action("Getting intents engine")
