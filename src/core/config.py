@@ -34,12 +34,8 @@ class SCHEDULE_TIME(int, Enum):
     FIVE_HOURS = ONE_HOUR * 5
     ONE_DAY = ONE_HOUR * 24
 
-MAXSERVER_ACCEPTED_TRYS = 10
-SERVER_RECONNECT_DELAY = SCHEDULE_TIME.FIVE_SECONDS
-
 ALEX_LOOP_DELAY = 1
 
-ATTENTION_WAIT_TIME = 2
 
 path = os.path.realpath("")
 """
@@ -54,20 +50,18 @@ LIB_RESOURCE_PATH = f"{RESOURCE_FOLDER}/lib/"
 
 BIGGEST_LOOP_ID_ALLOWED = 1024
 
-AUTO_UPDATE = True
-AUTO_UPDATE_SCHEDULED_TIME = "22:00"
-
-API_SEARCH_TIMEOUT = 0.01
+API_SEARCH_TIMEOUT = 0.025
 
 try:
-    with open(f"{SOURCE_DIR}/.config" if not is_compiled() else "", "r") as config:
+    with open(f"{home()}/.alex_config", "r") as config:
         config_file = json.load(config)
 except FileNotFoundError:
     config_file = {
-        "lang": "en",
+        "language": "en",
         "api": {
             "host": "127.0.0.1",
-            "port": 1178
+            "port": 1178,
+            "max_reconnections_attempts": 10
         },
         "interfaces": {
             "cmd": {},
@@ -80,16 +74,31 @@ except FileNotFoundError:
                 "host": "0.0.0.0",
                 "port": "6752"
             }
-        }
+        },
+        "auto_update": {
+            "allowed": True,
+            "hour": "22:00"
+        },
+        "time_wait_after_requesting_attention": 2
 
     }
+    with open(f"{home()}/.alex_config", "w") as config:
+        json.dump(config_file, config)
 
 API_URL = f"http://{config_file['api']['host']}:{config_file['api']['port']}/"
 
-DEFAULT_LANG = config_file["lang"]
+DEFAULT_LANG = config_file["language"]
 """
 This is the default lang set a .config, It can be overwritten by the cli flag -l
 """
 
 api = config_file["api"]
 interfaces_config = config_file["interfaces"]
+
+AUTO_UPDATE = config_file["auto_update"]["allowed"]
+AUTO_UPDATE_SCHEDULED_TIME = config_file["auto_update"]["hour"]
+
+MAXSERVER_ACCEPTED_TRYS = api["max_reconnections_attempts"]
+SERVER_RECONNECT_DELAY = SCHEDULE_TIME.FIVE_SECONDS
+
+ATTENTION_WAIT_TIME = config_file["time_wait_after_requesting_attention"]
