@@ -46,6 +46,13 @@ class PyQuotes:
         return random.choice(self.all_quotes)
 
     def get_clean_quote(self, category=None):
+        """
+        Get a random quote, optionally from a specific category. FOr speech
+
+        :param category: Optional category to choose from ('success', 'motivation', 'wisdom', 'life')
+        :return: A random quote as a string
+        """
+
         return self.get_quote(category).replace(" - ", " by ").replace(":", ",")
 
     def get_categories(self):

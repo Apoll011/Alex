@@ -23,6 +23,9 @@ def get_time_of_day():
         return 1
 
 def is_morning():
+    """
+    :return: True if its morning time.
+    """
     return get_time_of_day() == 1
 
 def deprecated(msg=""):
@@ -53,6 +56,12 @@ def deprecated(msg=""):
     return deprecated_decorator
 
 def get_meaning_of_word(word: str, closest: bool = True):
+    """
+    Get the meaning of a given word
+    :param word: the word to be checking the meaning
+    :param closest: If set to true will use a a matching algorithm to get the closest one.
+    :return: Dict containing the meaning and other words in case the closest is set to True or None if no word is found
+    """
     url = "dictionary/get/closest" if closest else "dictionary/get/"
     meaning: ApiResponse = BaseInterface.get().alex.handle_request("sendToApi", url, {"word": word.lower()})
 
@@ -83,6 +92,10 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 def list_skills():
+    """
+    This function checks all the paths in the skill dir path and return a list of all the skills path.
+    :return: List of all the skills paths
+    """
     major_list = os.listdir(str(resource_path("skills/")))
     try:
         major_list.remove("__pycache__")
@@ -100,11 +113,15 @@ def list_skills():
 
         for individual in minor_list:
             if os.path.isdir(resource_path(f"skills/{major}/{individual}")):
-                skills.append(resource_path(f"skills/{major}/{individual}"))
+                skills.append(str(resource_path(f"skills/{major}/{individual}")))
 
     return skills
 
 def get_skill_config():
+    """
+    Gets all the configuration files of all the skills and return them.
+    :return: A list with all the skill that have a configuration value and its configuration.
+    """
     skills = list_skills()
     sk_conf = []
     for skill in skills:

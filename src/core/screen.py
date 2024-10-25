@@ -2,6 +2,9 @@ import os
 import shutil
 
 class Screen:
+    """
+    A Class for managing the cmd terminal
+    """
     def __init__(self, name: str):
         """
         Initializes the AiRepresentationInScreen instance

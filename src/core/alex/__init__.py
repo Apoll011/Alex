@@ -56,7 +56,7 @@ class ALEX(AI):
 
     def return_to_default_text_processor(self):
         if self.text_processor.id is not None and self.difference_in_loop_id(self.text_processor.id) > 20:
-            self.text_processor.save_on_none()
+            self.text_processor.set_processor_on_none()
             self.text_processor.setDefaultListenProcessor()
 
     def execute_on_next_loop(self):
