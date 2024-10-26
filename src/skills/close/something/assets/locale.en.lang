@@ -1,2 +1,4 @@
 confirmation.ask:Do you want to close {name}?
 cancel.kill:Ok. Canceling.
+not.found:I haven't found any process with such a name {name}
+more.than.one:I found more than one process {name} would you like to kill them all?

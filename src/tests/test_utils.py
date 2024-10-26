@@ -38,4 +38,4 @@ class TestUtils(TestCase):
         self.assertEqual(internet_on(), connected)
 
     def test_resource_path(self):
-        self.assertEqual(resource_path("core/"), "/home/pegasus/development/Alex/src/tests/src/core/")
+        self.assertEqual(resource_path("core/"), "/home/pegasus/development/Alex/src/core/")

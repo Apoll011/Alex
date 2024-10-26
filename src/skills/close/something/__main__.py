@@ -13,10 +13,19 @@ class Something(BaseSkill):
         super().execute(intent)
         self.require("entityName")
 
+        try:
+            self.run()
+        except subprocess.CalledProcessError:
+            self.say("not.found", name=self.get("entityName"))
+
+    def run(self):
         c = f"pidof -d \";\" {self.get("entityName")}"
         pids = subprocess.check_output(c, shell=True, text=True)
         self.pids = pids.split(";")
-        self.question("confirmation.ask", self.confirmation, {"name": self.get("entityName")}, BoolResponce())
+        self.question(
+            "confirmation.ask" if len(self.pids) == 1 else "more.than.one", self.confirmation,
+            {"name": self.get("entityName")}, BoolResponce()
+        )
 
     def confirmation(self, responce: bool):
         if responce:
