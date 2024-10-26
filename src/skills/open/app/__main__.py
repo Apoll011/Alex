@@ -11,14 +11,17 @@ class App(BaseSkill):
         super().execute(intent)
         self.require("entityName")
 
+        name = self.get("entityName")
         try:
-            name = self.get("entityName")
-            if name in self.skill_settings["links"]:
-                c = f"nohup open {self.skill_settings["links"][name]} > /dev/null 2>&1 &"
-            else:
-                subprocess.check_output(f"which {name}", shell=True, text=True)
-                c = f"nohup {name} > /dev/null 2>&1 &"
-            os.system(c)
-            self.say("opening.app", name=name)
+            self.open(name)
         except subprocess.CalledProcessError:
-            self.say("not.found", name=self.get("entityName"))
+            self.say("not.found", name=name.title())
+
+    def open(self, name):
+        if name in self.skill_settings["links"]:
+            c = f"nohup open {self.skill_settings["links"][name]} > /dev/null 2>&1 &"
+        else:
+            subprocess.check_output(f"which {name}", shell=True, text=True)
+            c = f"nohup {name} > /dev/null 2>&1 &"
+        os.system(c)
+        self.say("opening.app", name=name.title())
