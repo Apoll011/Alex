@@ -1,3 +1,4 @@
+import os
 import subprocess
 
 from core.skills import BaseSkill
@@ -13,10 +14,11 @@ class App(BaseSkill):
         try:
             name = self.get("entityName")
             if name in self.skill_settings["links"]:
-                c = f"nohup open {self.skill_settings["links"][name]} 2>&1"
+                c = f"nohup open {self.skill_settings["links"][name]} > /dev/null 2>&1 &"
             else:
-                c = f"nohup {name} 2>&1"
-            subprocess.run(c, shell=True, text=True, stdin=None, stdout=0)
+                subprocess.check_output(f"which {name}", shell=True, text=True)
+                c = f"nohup {name} > /dev/null 2>&1 &"
+            os.system(c)
             self.say("opening.app", name=name)
         except subprocess.CalledProcessError:
             self.say("not.found", name=self.get("entityName"))
