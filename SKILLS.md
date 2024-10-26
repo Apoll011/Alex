@@ -37,7 +37,7 @@ The naming of a skill class name will depend on the minor part of its intent nam
 
 For a skill of the intent play@game its file structure would be:
 
-```commandline
+```text
 skills/
     - (...)
     - play/
@@ -132,10 +132,10 @@ data = self.alex_context.load("context_key")
 Working with translations:
 
 ```text
-# Structure in assets/locale.en.json:
+# Structure in assets/locale.en.lang:
 greeting:Hello {name}!
 confirm:Are you sure?
-muiltiple.random.responce:[Responce One; Responce Two;Etc]
+multiple.random.responce:[Responce One; Responce Two;Etc]
 ```
 
 ```python
@@ -200,7 +200,7 @@ Managing skill settings:
 // Structure in .config file:
 {
     "name_author": "Tiago",
-    "hidden_config": "sfteryyer-64wets-e5rdf5ryrtew" // This configs only the skill can have access
+    "hidden_config": "tw3re4yt53tw-64wets-e5rdf5ry5rt-ew", // This configs only the skill can have access
     "config": { // Values that user will be able to change using an app (UNDER CONTRUCTION)
         "timeout": {
             "type": "number",
@@ -304,7 +304,7 @@ def execute(self, intent):
 ## Best Practices
 
 1. **Error Handling**:
-- Most of the trown erros are handled by the Input Processor (Processor class) be its better for the skill if it caught some of the known error for a smoother user experience.
+- Most of the thrown errors are handled by the Input Processor (Processor class) be its better for the skill if it caught some of the known error for a smoother user experience.
 
 2. **Translation Organization**:
 - Keep translations in locale files
