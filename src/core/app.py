@@ -213,11 +213,14 @@ class App:
             self.alex.activate()
             self.interface.start_interface()
         except ServerClosed:
+            LOG.info("The Alex Server is closed")
             self.alex.get().screen.clear()
             print("The server is closed")
         except KeyboardInterrupt:
             self.alex.get().screen.clear()
             print("Interrupted the application.")
+        except Exception as e:
+            LOG.error(f"A critical error occurred {e}.")
         finally:
             self.alex.deactivate()
 

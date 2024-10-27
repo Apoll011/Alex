@@ -150,8 +150,12 @@ class Process:
                 "error.missing.main.skill.class", {"skill": intent.intent.intent_name}, intent.json
             )
         except SkillIntentError:
+            LOG.error(
+                f"How the heck we get in here as where the skill caller called the wrong skill ({intent.intent.intent_name}). Probably a typo in register."
+                )
             return self.translate_responce("error.wrong.intent", {}, intent.json)
         except SkillSlotNotFound as e:
+            LOG.error(f"Skill {intent.intent.intent_name} missing-")
             return self.translate_responce("error.slot.missing", {"slot": e.slot_name}, intent.json)
         except Exception as e:
             LOG.error(e)

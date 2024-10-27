@@ -6,6 +6,7 @@ from pydub.playback import play
 from pydub.utils import which
 
 from core.config import LIB_RESOURCE_PATH
+from core.log import LOG
 
 # TODO: Change this. Instead of using 3d party modules use the API of the Interfaces in the action "play_audio"
 class Audio:
@@ -37,7 +38,8 @@ class Audio:
         extension = audio_name.split(".")
         try:
             return Audio.audio_handle[extension]
-        except:
+        except KeyError:
+            LOG.error(f"The audio extension {extension} is not supported.")
             raise AudioExtensionNotSupported(audio_name)
 
     @staticmethod
