@@ -7,6 +7,7 @@ from core.alex import ALEX
 from core.codebase_managemet.app import home, is_compiled
 from core.codebase_managemet.build import Build
 from core.codebase_managemet.make import PrepareWorkSpace
+from core.codebase_managemet.updater import Updater
 from core.codebase_managemet.version import VersionManager
 from core.config import config_file
 from core.error import ServerClosed
@@ -72,6 +73,12 @@ class ParseArguments:
             default="cmd",
             help="Interface mode",
             choices=["cmd", "web", "voice", "api"],
+        )
+        self.parser.add_argument(
+            "-u",
+            "--update",
+            help="Update Alex to its newest version.",
+            action="store_true"
         )
 
         self.parser.add_argument(
@@ -178,13 +185,24 @@ class App:
         return self
 
     def start(self):
-        if self.args.start and not self.args.build:
+        if self.args.start and not self.args.build and not self.args.update:
             try:
                 self.main()
             except KeyboardInterrupt:
                 sys.exit(0)
         elif not is_compiled() and self.args.build:
             Build()
+        elif self.args.update:
+            updater = Updater()
+
+            (alex_up, alex_up_version), libs = updater.scan()
+
+            if alex_up_version > VersionManager.CORE_VERSION_TUPLE:
+                print(f"New version ({alex_up_version}) was found updating...")
+                updater.update_lib(libs)
+                updater.update_alex()
+            else:
+                print("No new version was found.")
 
     def main(self):
         self.alex = AlexFactory(self.args)
