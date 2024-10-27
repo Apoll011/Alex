@@ -71,7 +71,7 @@ def get_master_user(self, alex: AI):
 
 @alexSkeleton.init_action("Getting intents engine")
 def train_intents(self, alex: AI):
-    alex.api.call_route("intent_recognition/engine")
+    alex.api.call_route("intent_recognition/engine", {"lang": alex.language})
     alex.finish(self)
 
 @alexSkeleton.init_action("Getting dictionary engine")

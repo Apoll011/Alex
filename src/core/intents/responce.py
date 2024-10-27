@@ -97,8 +97,12 @@ class BoolResponce(Responce):
     def init(self):
         yes = self.translate.get_translation("yes.text").lower()
         no = self.translate.get_translation("no.text").lower()
+        allways = self.translate.get_translation("allways.text").lower()
+        never = self.translate.get_translation("never.text").lower()
         self.replace[yes] = True
         self.replace[no] = False
+        self.replace[allways] = True
+        self.replace[never] = False
 
 class HardBoolResponce(Responce):
     rtype = bool
