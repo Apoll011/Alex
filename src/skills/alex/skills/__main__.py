@@ -1,11 +1,12 @@
 import os
 
 from core.skills import BaseSkill
+from core.utils import resource_path
 
 class Skills(BaseSkill):
     def init(self):
         self.register("alex@skills")
-        self.dir_path = self.resource_path("skills/")
+        self.dir_path = resource_path("skills/")
 
     def execute(self, intent):
         super().execute(intent)
