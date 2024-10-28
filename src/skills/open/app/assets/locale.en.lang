@@ -1,2 +1,2 @@
-opening.app:Opening the {name} app.
+opening.thing:Opening the {name} {type}.
 not.found:I haven't found the app {name}

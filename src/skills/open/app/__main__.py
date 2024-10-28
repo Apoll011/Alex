@@ -18,12 +18,21 @@ class App(BaseSkill):
             self.say("not.found", name=name.title())
 
     def open(self, name):
-        if name.lower() in self.skill_settings["links"]:
-            c = f"nohup open {self.skill_settings["links"][name]} > /dev/null 2>&1 &"
-        elif name.lower() in self.skill_settings["folders"]:
-            c = f"nohup open {self.skill_settings["folders"][name]} > /dev/null 2>&1 &"
-        else:
-            subprocess.check_output(f"which {name}", shell=True, text=True)
-            c = f"nohup {name} > /dev/null 2>&1 &"
-        os.system(c)
-        self.say("opening.app", name=name.title())
+        command, open_type = self.get_command(name.lower())
+        os.system(command)
+        self.say("opening.thing", name=name.title(), type=open_type)
+
+    def get_command(self, name):
+        if name == "folder":
+            name = self.intent.input.lower().split()[-2]
+
+        for link in self.skill_settings["links"].keys():
+            if name in link.split(","):
+                return f"nohup open {self.skill_settings["links"][link]} > /dev/null 2>&1 &", "site"
+
+        for folder in self.skill_settings["folders"].keys():
+            if name in folder.split(","):
+                return f"nohup open {self.skill_settings["folders"][folder]} > /dev/null 2>&1 &", "folder"
+
+        subprocess.check_output(f"which {name}", shell=True, text=True)
+        return f"nohup {name} > /dev/null 2>&1 &", "app"
