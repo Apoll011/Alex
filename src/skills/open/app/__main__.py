@@ -1,6 +1,7 @@
 import os
 import subprocess
 
+from core.codebase_managemet.app import home
 from core.skills import BaseSkill
 
 class App(BaseSkill):
@@ -26,13 +27,36 @@ class App(BaseSkill):
         if name == "folder":
             name = self.intent.input.lower().split()[-2]
 
-        for link in self.skill_settings["links"].keys():
-            if name in link.split(","):
-                return f"nohup open {self.skill_settings["links"][link]} > /dev/null 2>&1 &", "site"
+        links = self.get_links()
+        folders = self.get_folders()
 
-        for folder in self.skill_settings["folders"].keys():
+        for link in links.keys():
+            if name in link.split(","):
+                return f"nohup open {links[link]} > /dev/null 2>&1 &", "site"
+
+        for folder in folders.keys():
             if name in folder.split(","):
-                return f"nohup open {self.skill_settings["folders"][folder]} > /dev/null 2>&1 &", "folder"
+                return f"nohup open {folders[folder]} > /dev/null 2>&1 &", "folder"
+
+        for app_name in self.skill_settings["apps"].keys():
+            if name in app_name.split(","):
+                name = self.skill_settings["apps"][app_name]
+                break
 
         subprocess.check_output(f"which {name}", shell=True, text=True)
         return f"nohup {name} > /dev/null 2>&1 &", "app"
+
+    def get_links(self):
+        links = self.skill_settings["links"]
+        # TODO: Get links from bookmarks
+        return links
+
+    def get_folders(self):
+        folders = self.skill_settings["folders"]
+        for path in os.listdir(home()):
+            p = f"{home()}{path}"
+            if os.path.isdir(p) and not p.startswith("."):
+                if path not in folders:
+                    folders[path.lower()] = p
+
+        return folders
