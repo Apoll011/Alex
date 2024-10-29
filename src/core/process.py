@@ -13,7 +13,7 @@ class Process:
     """
     intentParser = IntentParserToObject()
     """
-    The intent parser recieves a intent json a return an intent obj
+    The intent parser receives a intent json a return an intent obj
     """
 
     next_listen_processor: Any = None
@@ -104,7 +104,7 @@ class Process:
 
         server_time = time.time() - started
 
-        result = self.execute_intent(responce)
+        result = self.execute_intent(responce, text)
 
         took = time.time() - started
 
@@ -113,9 +113,10 @@ class Process:
 
         return result
 
-    def execute_intent(self, intent):
+    def execute_intent(self, intent, text):
         """
-        WIll recieve an intent and execute its skill.
+        WIll receive an intent and execute its skill.
+        :param text: The input text
         :param intent: The intent json
         :return: THe responce
         """
@@ -133,7 +134,7 @@ class Process:
 
     def call_skill(self, intent: IntentResponse):
         """
-        Recieves an intent obj and executes its respective skill
+        Receives an intent obj and executes its respective skill
         :param intent: THe input intent obj
         :return: THe skill return
         """
