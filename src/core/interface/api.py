@@ -60,13 +60,6 @@ class API(BaseInterface):
 
             self.user_connect({"client": str(client_socket.getpeername())})
 
-            # Send initial welcome message
-            welcome_msg = {
-                "type": "system",
-                "message": "Connected to server successfully",
-            }
-            client_socket.send(json.dumps(welcome_msg).encode())
-
             while not self.closed:
                 try:
                     data: None | bool | bytes = self._receive_with_timeout(client_socket)

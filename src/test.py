@@ -34,12 +34,12 @@ class AlexAPIClient(ABC):
     def _receive_messages(self):
         while not self.closed and self.connected:
             try:
-                data: bool | None | bytes = self._receive_with_timeout(self.client_socket)
-                if data is False:  # Connection error
-                    continue
+                data = self.client_socket.recv(4096 * 2)
                 if data:  # We received something
                     message = json.loads(data.decode())
                     self.output(message)
+            except (ConnectionError, Exception):
+                continue
             except json.JSONDecodeError:
                 self.on_error_receiving_msg("Invalid JSON received")
             except Exception as e:
@@ -68,15 +68,6 @@ class AlexAPIClient(ABC):
     @abstractmethod
     def run(self):
         pass
-
-    @staticmethod
-    def _receive_with_timeout(socket, timeout=1.0):
-        """Helper function to receive data with timeout"""
-        try:
-            data = socket.recv(4096)
-            return data
-        except (ConnectionError, Exception):
-            return False
 
     @abstractmethod
     def on_disconnect(self):
@@ -110,10 +101,7 @@ class CmdClient(AlexAPIClient):
     def output(self, data):
         message_type = data.get("type")
         if message_type == "message" and data['content'] != "":
-            print(f"\n{data['voice']}: {data['content']}")
-            print("Your input: ", end="", flush=True)
-        elif message_type == "system":
-            print(f"\nSystem: {data['message']}")
+            print(f"{data['voice']}: {data['content']}")
             print("Your input: ", end="", flush=True)
 
     def on_connection(self, successful):
