@@ -83,6 +83,19 @@ class ParseArguments:
         )
 
         self.parser.add_argument(
+            "--api-host",
+            help="Where the api should be hosted (Only on API Interface)",
+            default=config_file["api"]["host"],
+            metavar="host",
+        )
+        self.parser.add_argument(
+            "--api-port",
+            help="Where the api should be hosted (Only on API Interface)",
+            default=5927,
+            metavar="port"
+        )
+
+        self.parser.add_argument(
             "-v",
             "--version",
             action="version",
@@ -96,15 +109,15 @@ class ParseArguments:
         return arg
 
 class InterfaceFactory:
-    def __init__(self, interface_type: str, alex: ALEX) -> None:
+    def __init__(self, args: argparse.Namespace, alex: ALEX) -> None:
+        interface_type = args.interface
         match interface_type:
             case "web":
                 Server(alex)
             case "voice":
                 Voice(alex)
             case "api":
-                API(alex)
-                # raise NotImplementedError("The api interface is not implemented.")
+                API(alex, args.api_host, args.api_port)
             case "cmd":
                 CommandLine(alex)
             case _:
@@ -209,7 +222,7 @@ class App:
     def main(self):
         self.alex = AlexFactory(self.args)
 
-        self.interface = InterfaceFactory(self.args.interface, self.alex.get())
+        self.interface = InterfaceFactory(self.args, self.alex.get())
 
         try:
             self.alex.activate()

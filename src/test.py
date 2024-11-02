@@ -142,7 +142,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Network Client for Alex")
     parser.add_argument("--host", default="localhost", help="Server host address")
-    parser.add_argument("--port", type=int, default=5000, help="Server port")
+    parser.add_argument("--port", type=int, default=5927, help="Server port")
 
     args = parser.parse_args()
 
