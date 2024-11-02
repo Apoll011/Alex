@@ -26,6 +26,7 @@ class Do(BaseSkill):
                 self.comand(f"Set shuffle enabled to {self.slots['shuffleEnabled'].value.replace('\\', '')}")
           
           self.responce_translated("Ok") # type: ignore
-     
-     def comand(self, text):
+
+     @staticmethod
+     def comand(text):
          os.system(f"zsh \"{SOURCE_DIR}/skills/music/np.sh\" do \"{text}\"")

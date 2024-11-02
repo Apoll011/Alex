@@ -72,7 +72,7 @@ class Note(Cached):
     def __sub__(self, other: int) -> Note:
         ...
 
-    def __sub__(self, other: Note | AbstractInterval | int) -> AbstractInterval | Note:
+    def __sub__(self, other: Note | AbstractInterval | int) -> int:
         if isinstance(other, Note):
             if other.i <= self.i:
                 return AbstractInterval(self.i - other.i)

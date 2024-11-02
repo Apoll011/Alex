@@ -24,4 +24,4 @@ class TestReminderObject(TestCase):
         self.assertLess(self.reminder.seconds(), 0, "The seconds is greater than zero")
 
     def test_get_action(self):
-        self.assertEqual(self.reminder.get_action(), "Feed", "Thes strings dont match")
+        self.assertEqual(self.reminder.get_action(), "Feed", "This strings dont match")

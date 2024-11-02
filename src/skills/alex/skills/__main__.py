@@ -28,17 +28,17 @@ class Skills(BaseSkill):
     def respond_based_on_minors(self):
         minors = self.get_minor(self.slots["major_skill"].value)
         if len(minors) == 0:
-            self.say("yes.avaliable", major=self.slots["major_skill"], minor=minors[0])
+            self.say("yes.available", major=self.slots["major_skill"], minor=minors[0])
         else:
             self.say(
-                "yes.avaliables", major=self.slots["major_skill"], minors=self.format(minors)
+                "yes.availables", major=self.slots["major_skill"], minors=self.format(minors)
             )
 
     def respond_based_on_minor(self):
         minors = self.get_minor(self.slots["major_skill"].value)
         if self.assert_in("minor_skill", minors):
             self.say(
-                "yes.avaliable.one", major=self.slots["major_skill"], minor=self.slots["minor_skill"]
+                "yes.available.one", major=self.slots["major_skill"], minor=self.slots["minor_skill"]
             )
         else:
             self.say("not.found")

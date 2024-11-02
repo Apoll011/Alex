@@ -111,4 +111,4 @@ class Scale(Cached):
         return f'Scale({self.root!r}, {self.intervalset!r})'
 
     def __getnewargs__(self) -> tuple[Note, IntervalSet]:
-        return (self.root, self.intervalset)
+        return self.root, self.intervalset

@@ -37,8 +37,9 @@ class Play(BaseSkill):
             pattern = self.slots["genre"].value
             flag = "-g"
 
-        self.comand(flag, pattern)
+        self.command(flag, pattern)
         self.responce_translated("Ok")
 
-    def comand(self, flag, pattern):
+    @staticmethod
+    def command(flag, pattern):
         os.system(f"zsh \"{SOURCE_DIR}/skills/music/np.sh\" play {flag} \"{pattern}\"")

@@ -39,7 +39,8 @@ class Geometry(BaseSkill):
           
           return self.responce_translated("result", {"result": r})
 
-     def round(self, result):
+     @staticmethod
+     def round(result):
           r = "{:.4f}".format(result)
           return SlotValueNumber("SlotValueNumber", float(r))
      

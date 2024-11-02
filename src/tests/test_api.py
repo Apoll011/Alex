@@ -16,7 +16,7 @@ class TestApi(unittest.TestCase):
             data = self.api.call_route("users/search/name", {"name": "Tiago"})
             tiago_user = self.api.call_route("user/", {'id': "f86f0279-c4ec-4f5e-99e9-2fa44059c629"})
             self.assertEqual(
-                data.response["users"][0], tiago_user.response["id"], "Something went  wrong with inexisting errors."
+                data.response["users"][0], tiago_user.response["id"], "Something went  wrong with non-existing errors."
             )
             # Assert the result
         else:

@@ -40,7 +40,7 @@ class UserCitizenship:
     """
     nationality: str
     """
-    The user nacionality
+    The user nationality
     """
 
 @dataclass
@@ -107,7 +107,7 @@ class User:
     @staticmethod
     def convert_json_to_user(json: dict) -> 'User':
         """
-        Revies an json containing user data and creates an user object. It will also check the birthday and save the new data to the server.
+        Reviews an json containing user data and creates an user object. It will also check the birthday and save the new data to the server.
         :param json: THE user JSON
         :return: An User obj
         """

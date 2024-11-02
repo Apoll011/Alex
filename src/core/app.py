@@ -221,8 +221,6 @@ class App:
 
     def main(self):
         try:
-            print(self.args)
-            input()
             self.init()
         except ServerClosed:
             LOG.info("The Alex Server is closed")

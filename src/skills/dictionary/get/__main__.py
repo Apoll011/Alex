@@ -50,7 +50,7 @@ class Get(BaseSkill):
                 )
             else:
                 self.question(
-                    "other.matchs", self.get_meaning_of_one_word, {"words": ", ".join(others)},
+                    "other.matches", self.get_meaning_of_one_word, {"words": ", ".join(others)},
                     SomethingFromListOrNoneResponce(others)
                 )
 

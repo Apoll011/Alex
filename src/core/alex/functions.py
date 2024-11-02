@@ -138,7 +138,7 @@ def check_api(alex: AI):
             if server_trys == 0:
                 LOG.warning("The server is Offline")
                 say("server.offline", alex)
-                say("server.reconect", alex)
+                say("server.reconnect", alex)
             if server_trys > MAXSERVER_ACCEPTED_TRYS:
                 LOG.error("Server. Closed. Closing system")
                 alex.set_context(
@@ -146,8 +146,8 @@ def check_api(alex: AI):
                 )  # This has
                 # to happen since while alex is speaking, the schedule thread
                 # seems to continue executing this function causing it to loop forever.
-                say(f"server.reconection.exceded", alex, {"limit": MAXSERVER_ACCEPTED_TRYS})
-                say("server.closed.exceded", alex)
+                say(f"server.reconnection.exceeded", alex, {"limit": MAXSERVER_ACCEPTED_TRYS})
+                say("server.closed.exceeded", alex)
                 alex.on_next_loop(alex.deactivate)
             else:
                 time.sleep(SERVER_RECONNECT_DELAY.value)

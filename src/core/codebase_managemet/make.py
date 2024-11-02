@@ -30,7 +30,7 @@ class PrepareWorkSpace:
     ]
 
     base_dna = {
-        "happines": 3.9253765, "aggressiveness": 6.0746235, "voice_speed": 6.514976, "voices_tone": 9.9943083,
+        "happiness": 3.9253765, "aggressiveness": 6.0746235, "voice_speed": 6.514976, "voices_tone": 9.9943083,
         "attention_to_detail": 10.3184173, "adaptability": 2.9211978, "initiative": 2.4117995,
         "raciocine_speed": 9.2752001, "accuracy": 9.5792246, "confident": 2.2259608, "nervous": 0.353407,
         "impatient": 0.3370264, "sensitive": 3.7653402, "kind": 8.098968, "insecure": 0.3353575, "calm": 0.3354233,

@@ -46,6 +46,7 @@ class AI(
             sig (str): The signature of the AI
         """
 
+        self.text_processor = None
         self.scheduler: Scheduler | None = None
         self.dna = DNA()
         self.screen = Screen(sig)
@@ -141,3 +142,6 @@ class AI(
     def wake(self, data): ...
     def on_next_loop(self, callback): ...
     def speak(self, data, voice_command = None): ...
+
+    def get_loop_id(self):
+        ...

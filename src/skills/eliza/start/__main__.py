@@ -58,7 +58,8 @@ class Start(BaseSkill):
             }
         )
 
-    def process(self, text):
+    @staticmethod
+    def process(text):
         # Change "'" to something else
         text = text.replace("'", "").strip()
         # Fix spacing

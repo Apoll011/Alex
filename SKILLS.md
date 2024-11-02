@@ -86,12 +86,13 @@ def execute(self, intent):
     # Slot validation
     if self.assert_equal("slot_name", "expected_value"):
         # Do something
-        
+        pass
     if self.assert_in("slot_name", ["option1", "option2"]):
         # Do something
-        
+        pass
     if self.assert_in_dict("slot_name", my_dictionary):
         # Do something
+        pass
 ```
 
 ## Response System

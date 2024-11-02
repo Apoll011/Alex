@@ -36,7 +36,7 @@ final:		Eliza says this when it quits.
 quit:		If the input is this, then Eliza quits.  Any number permitted.
 pre:		Part of the pre-substitution list.  If the first word appears in 
 		    the sentence, it is replaced by the rest of the words.
-post:		Part of the post-subsititution list.  If the first word appears 
+post:		Part of the post-substitution list.  If the first word appears 
 		    in the sentence, it is replaced by the rest of the words.
 key:		A keyword.  Keywords with greater weight are selected in 
 		    preference to ones with lesser weight.

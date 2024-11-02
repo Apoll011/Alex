@@ -15,6 +15,7 @@ import logging
 from core.resources.data_files import DataFile
 
 def _make_log_method(fn):
+    # noinspection PyDecorator
     @classmethod
     def method(cls, *args, **kwargs):
         cls._log(fn, *args, **kwargs)

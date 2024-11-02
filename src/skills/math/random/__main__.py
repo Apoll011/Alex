@@ -19,7 +19,7 @@ class Random(BaseSkill):
 
         required_signal = self.convert_signal()
         required_type = self.convert_type()
-        smaller_number, bigger_number = self.getnumber_range()
+        smaller_number, bigger_number = self.get_number_range()
 
         if required_type == "even":
             result = randint(smaller_number // 2 * 2, bigger_number // 2 * 2)
@@ -55,7 +55,7 @@ class Random(BaseSkill):
             return self.slots["type"].value
         return None
 
-    def getnumber_range(self):
+    def get_number_range(self):
         if self.slot_exists("smaller_number") and self.slot_exists("bigger_number"):
             return (
                 int(self.slots["smaller_number"].get_value()),  # type: ignore

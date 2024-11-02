@@ -33,7 +33,7 @@ class Process:
     If alex don't run this method 
     """
 
-    id: int = None
+    id: int | None = None
     """Current Loop ID"""
 
     def __init__(self, alex: AI):

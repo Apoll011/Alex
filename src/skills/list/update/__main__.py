@@ -58,32 +58,33 @@ class Update(BaseSkill):
         self.update_element()
 
     def update_element(self):
-        list = self.list.lower()
+        list_element = self.list.lower()
         entity = self.entity.lower()
         new = self.new.lower()
-        if List.exist(list):
+        if List.exist(list_element):
             try:
-                self.try_to_update(list, entity, new)
+                self.try_to_update(list_element, entity, new)
 
             except ValueError:
                 self.question(
                     "did.not.found.entity", self.add_new, {
-                        "list": list,
+                        "list": list_element,
                         "entity": entity,
                         "new": new,
-                    }, BoolResponce(), list, new)
+                    }, BoolResponce(), list_element, new
+                )
         else:
-            self.responce_translated("did.not.found.list", {"list": list})
+            self.responce_translated("did.not.found.list", {"list": list_element})
 
-    def try_to_update(self, list, entity, new):
-        list_content = List.get(list)
+    def try_to_update(self, list_element, entity, new):
+        list_content = List.get(list_element)
         i = list_content.index(entity)
         list_content[i] = new
-        List.save(list, list_content, "w")
+        List.save(list_element, list_content, "w")
         self.responce_translated(
             "changed.item", {
                 "entity": entity.title(),
-                "list": list.title(),
+                "list": list_element.title(),
                 "new": new.title()
             }
         )
