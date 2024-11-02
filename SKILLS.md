@@ -31,7 +31,9 @@ class MySkill(BaseSkill):
         # Skill logic here
 ```
 ### Naming
-The naming of a skill class name will depend on the minor part of its intent name major@minor its allways capital Minor and replace minor.subminor with MinorSubMinor other separators like minor_subminor will be Minor_subminor
+The naming of a skill class name will depend on the minor part of its intent name major@minor its allways capital Minor and replace minor.subminor with MinorSubMinor other separators like minor_subminor will be Minor_subminor.
+
+The same logic is applied to the folder naming. remebering minor and major are different folder and the name its in lower case, All teh rules above are applied here too. 
 
 ### File Structure
 
