@@ -12,6 +12,7 @@ from core.codebase_managemet.version import VersionManager
 from core.config import config_file
 from core.error import ServerClosed
 from core.interface import *
+from core.interface.api import API
 from core.log import LOG
 
 class InstallSkill(argparse.Action):
@@ -102,7 +103,8 @@ class InterfaceFactory:
             case "voice":
                 Voice(alex)
             case "api":
-                raise NotImplementedError("The api interface is not implemented.")
+                API(alex)
+                # raise NotImplementedError("The api interface is not implemented.")
             case "cmd":
                 CommandLine(alex)
             case _:

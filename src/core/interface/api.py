@@ -1,101 +1,120 @@
-import datetime
+# server.py
+import json
+import socket
+import threading
+from typing import Dict
 
 from core.interface.base import BaseInterface
-from core.security.code import AlexKey
 
 class API(BaseInterface):
-    name = "api"
+    name = "server"
+
+    def __init__(self, alex, host="localhost", port=5000):
+        super().__init__(alex)
+        self.host = host
+        self.port = port
+        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.clients: Dict[socket.socket, str] = {}
+        self.clients_lock = threading.Lock()
+
     def start(self):
-        # self.register_fun("alex/wake", self.wakeword)
-        # self.register_fun("alex/change/mode", self.change_mode)
-        # self.register_fun("alex/user/conect", self.user_connect)
-        # self.register_fun("alex/api/call", self.api_call)
-        # self.register_fun("alex/info", self.info)
-        # self.register_fun("alex/info/user", self.user)
-        # self.server.set_route("alex/input", self.input)
+        self.server_socket.bind((self.host, self.port))
+        self.server_socket.listen(5)
+        print(f"Server listening on {self.host}:{self.port}")
+
+        # Start client acceptance thread
+        accept_thread = threading.Thread(target=self._accept_clients)
+        accept_thread.daemon = True
+        accept_thread.start()
+
         super().start()
-    
 
-    def register_fun(self, route, callback) -> None:
-        # self.server.set_route(route, lambda data: self.run_return(callback, {} if data == None or data == "" else json.loads(data)))
-        pass
-
-    @staticmethod
-    def run_return(fun, data):
-        f = fun(data)
-        if f is None:
-            return {"responce": True}
-        else:
-            return f
-
-    def api_call(self, data):
-        return self.alex.api.call_route(data["route"], data["value"]).response
+    def _accept_clients(self):
+        while not self.closed:
+            try:
+                client_socket, address = self.server_socket.accept()
+                client_thread = threading.Thread(
+                    target=self._handle_client, args=(client_socket,)
+                )
+                client_thread.daemon = True
+                client_thread.start()
+            except Exception as e:
+                if not self.closed:
+                    print(f"Error accepting client: {e}")
 
     @staticmethod
-    def info(data):
-        return {
-                "type": "info",
-                "device_id": AlexKey.get(),
-                "update_date": datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),
-            }
+    def _receive_with_timeout(socket: socket.socket, timeout=1.0):
+        """Helper function to receive data with timeout"""
+        try:
+            data = socket.recv(4096)
+            return data
+        except ConnectionError:
+            return False
 
-    def user(self, data):
-        return self.alex.get_context("master")
-"""
-S
-    /alex/info/system/, {}, {
-            "data": {
-                "process_exec_t": "1042",
-                "comands_gt": "62",
-                "net_com": "6236",
-                "data_fls": "5235",
-                "errors_t":"2",
-                "chart": {
-                    "cpu_usage": [19, 48, 70, 60, 63, 56, 33, 17, 59, 21, 36, 12, 39, 59, 62, 23, 12, 8, 9, 4, 6, 10, 2, 5, 19],
-                    "internet_usage": [3, 16, 39, 50, 35, 48, 24, 0, 29, 1, 5, 0, 24, 34, 0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 3]
-                },
-                "plot": {
-                        "datasets": [
-                        {
-                            "label": "Wake Up",
-                            "data": [{
-                                "x": 10,
-                                "y": 0
-                            },
-                            {
-                                "x": 2,
-                                "y": 3
-                            }],
-                            "backgroundColor": "rgb(255, 9, 13)",
-                            "borderColor": "rgba(255,19,12,1)",
-                            "borderWidth": 1
-                        },
-                        {
-                            "label": "Api Calls",
-                            "data": [{
-                                "x": 11,
-                                "y": 53
-                            },
-                            {
-                                "x": 12,
-                                "y": 30
-                            },
-                            {
-                                "x": 10,
-                                "y": 5
-                            }
-                            ],
-                            "backgroundColor": "rgb(54, 162, 235)",
-                            "borderColor": "rgba(54, 192, 235, 1)",
-                            "borderWidth": 1
-                        }
-                        ]
-                }
+    def _handle_client(self, client_socket: socket.socket):
+        try:
+            # Register client
+            with self.clients_lock:
+                self.clients[client_socket] = str(client_socket.getpeername())
+
+            self.user_connect({"client": str(client_socket.getpeername())})
+
+            # Send initial welcome message
+            welcome_msg = {
+                "type": "system",
+                "message": "Connected to server successfully",
             }
+            client_socket.send(json.dumps(welcome_msg).encode())
+
+            while not self.closed:
+                try:
+                    data: None | bool | bytes = self._receive_with_timeout(client_socket)
+                    if data is False:  # Connection error
+                        continue
+                    if data:  # We received something
+                        message = json.loads(data.decode())
+                        self.input(message)
+                except json.JSONDecodeError:
+                    print("Invalid JSON received")
+                except Exception as e:
+                    print(f"Error handling client message: {e}")
+                    break
+
+        finally:
+            with self.clients_lock:
+                if client_socket in self.clients:
+                    del self.clients[client_socket]
+            client_socket.close()
+
+    def speak(self, data):
+        # Convert internal message format to client format
+        client_message = {
+            "type": "message",
+            "voice": data["settings"]["voice"],
+            "content": data["value"],
         }
-    /alex/info/hardware/, {}, {"cpu": str,"disk_usage": str,"ram": str,"batery": str,"internet": str,"status": ["ok", "warning", "error", "suspended", "hiberning"]}
-    /alex/notifications, {}, [{"title": str,"date": str,"description": str,"icon": ["info-alt", "user", "settings"],"bg": ["success", "info", "error", "warning"],"costume_class": ["infinite-spin", None]},...]
-    /alex/notifications/important, {}, [{"title": str,"options": {"body": str,"icon": "",}},...]
-    /alex/skills, {}, [{"name": str,"id": str,"cpu": int, "internetDialy": int, "status": ["running", "warning", "error"]}]
 
-"""
+        # Broadcast message to all clients
+        message = json.dumps(client_message).encode()
+        with self.clients_lock:
+            disconnected_clients = []
+            for client_socket in self.clients:
+                try:
+                    client_socket.send(message)
+                except:
+                    disconnected_clients.append(client_socket)
+
+            # Clean up disconnected clients
+            for client_socket in disconnected_clients:
+                del self.clients[client_socket]
+                client_socket.close()
+
+    def close(self):
+        self.closed = True
+        with self.clients_lock:
+            for client_socket in self.clients:
+                client_socket.close()
+            self.clients.clear()
+        self.server_socket.close()
+        super().close()
