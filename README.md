@@ -17,7 +17,8 @@ ALEX is an extensible AI assistant framework built in Python, featuring a modula
 - **Process Management**: Advanced process handling with scheduling capabilities
 - **Context Management**: Built-in context system for maintaining conversation state
 - **Event System**: Notification and event handling system
-- ** Psychological Support**: Based on ELIZA's therapeutic approach, enhanced for modern interaction## Installation
+- **Psychological Support**: Based on ELIZA's therapeutic approach, enhanced for modern interaction
+## Installation
 1. Install the AlexBaseServer:
 ```bash
 git clone https://github.com/Apoll011/AlexBaseServer
@@ -33,7 +34,7 @@ pip install -r requirements.txt
 ### Prerequisites
 
 - Python 3.12+
-- [AlexBaseServer](https://github.com/Apoll011/AlexBaseServer)
+- [AlexBaseApi](https://github.com/Apoll011/AlexBaseAPI) Up and running.
 - pip package manager
 ## Getting Started
 Run ALEX with different configurations:
@@ -57,7 +58,7 @@ python -m alex -s -d
 
 ## Creating Custom Skills
 
-ALEX uses a skill-based system for extending functionality. Go to [SKILLS.md](SKILLS) for more information on how to create a skill.
+ALEX uses a skill-based system for extending functionality. Go to [SKILLS](SKILLS.md) for more information on how to create a skill.
 ## Architecture
 ALEX is built with several key components:
 - **Process System**: Handles input processing and skill execution
@@ -72,7 +73,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## Acknowledgements
 - Based on the ELIZA psychological chatbot implementation in Python
-- Uses AlexBaseServer for core functionality
+- Uses AlexBaseAPI for core functionality
 
 ## Contributing
 
