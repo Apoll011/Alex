@@ -23,7 +23,7 @@ class ApplicationResources(unittest.TestCase):
             )
 
         with self.assertRaises(KeyError):
-            self.list.representation_of_all_elements("shopping")
+            self.list.representation_of_all_elements("dont-exist-list")
 
     def test_2_get(self):
         self.assertEqual(self.list.get("shopping"), "7 Tomato and 4 Green Tomato", "The text dont match")

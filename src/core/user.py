@@ -233,3 +233,9 @@ class User:
         }
 
         alex.api.call_route("/user/", {"user": user_json}, ApiMethod.PATCH)
+
+    def first_name(self):
+        return self.name.split()[0]
+
+    def last_name(self):
+        return self.name.split()[-1]

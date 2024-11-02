@@ -25,7 +25,7 @@ class Hi(BaseSkill):
             else:
                 self.say("greet.hi.based.on.time.of.day", time=self.slots["timeOfDay"])
         else:
-            self.say("greet.hi", user=self.master.name)
+            self.say("greet.hi", user=self.master.first_name())
 
     def morning_routine(self):
         self.birthday_related()
@@ -37,7 +37,7 @@ class Hi(BaseSkill):
         if internet_on():
             self.say(
                 "morning.online",
-                user_name=self.master.name,
+                user_name=self.master.first_name(),
                 current_time=self.api(
                     "/lang/format/nice_time", lang=self.language, speech=True
                 ).response,
@@ -50,7 +50,7 @@ class Hi(BaseSkill):
         else:
             self.say(
                 "morning.offline",
-                user_name=self.master.name,
+                user_name=self.master.first_name(),
                 current_time=self.api(
                     "/lang/format/nice_time", lang=self.language, speech=True
                 ).response,
@@ -67,5 +67,9 @@ class Hi(BaseSkill):
             self.say("birthday.tomorrow", years=self.master.data.body.age + 1)
 
     def is_birthday_coming(self):
+        """
+        Returns True if user makes birthday in the range defined in config between 2 and 31 days depending on the selected b y the user
+        :return: Boolean
+        """
         return self.config("birthday_warning") >= self.master.distance_to_birthday().days > 2 and \
             self.config("birthday_warning") > 2
