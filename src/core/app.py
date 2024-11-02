@@ -117,7 +117,7 @@ class InterfaceFactory:
             case "voice":
                 Voice(alex)
             case "api":
-                API(alex, args.api_host, args.api_port)
+                API(alex, args.api_host, int(args.api_port))
             case "cmd":
                 CommandLine(alex)
             case _:
@@ -220,13 +220,10 @@ class App:
                 print("No new version was found.")
 
     def main(self):
-        self.alex = AlexFactory(self.args)
-
-        self.interface = InterfaceFactory(self.args, self.alex.get())
-
         try:
-            self.alex.activate()
-            self.interface.start_interface()
+            print(self.args)
+            input()
+            self.init()
         except ServerClosed:
             LOG.info("The Alex Server is closed")
             self.alex.get().screen.clear()
@@ -238,6 +235,14 @@ class App:
             LOG.error(f"A critical error occurred {e}.")
         finally:
             self.alex.deactivate()
+
+    def init(self):
+        self.alex = AlexFactory(self.args)
+
+        self.interface = InterfaceFactory(self.args, self.alex.get())
+
+        self.alex.activate()
+        self.interface.start_interface()
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         PID.clean()
