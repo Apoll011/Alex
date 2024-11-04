@@ -9,7 +9,7 @@ class Repeat(BaseSkill):
     def execute(self, intent):
         super().execute(intent)
 
-        last_responce = self.alex_context.load("last_responce")
+        last_responce = self.context_load("last_responce")
 
         if last_responce is None:
             self.say("not.enough.data")

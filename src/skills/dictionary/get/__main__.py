@@ -14,7 +14,7 @@ class Get(BaseSkill):
     def execute(self, intent):
         super().execute(intent)
         self.require("word")
-        self.get_meaning(self.slots["word"].value)
+        self.get_meaning(self.get("word"))
 
     @staticmethod
     def clean(text: str):

@@ -41,30 +41,30 @@ class Clear(BaseSkill):
             self.list_obj.get(self.list)
             i: bool = self.list_obj.get(self.list, self.entity)  # type: ignore
             if not i:
-                self.responce_translated("did.not.found.entity", {"list": self.list, "entity": self.entity})
+                self.say("did.not.found.entity", list=self.list, entity=self.entity)
             return i
         except NoElements:
-            self.responce_translated("did.not.found.list", {"list": self.list})
+            self.say("did.not.found.list", list=self.list)
             return False
 
     def confirm_list(self, responce):
         if responce:
             self.delete_list()
         else:
-            self.responce_translated("dont.delete")
+            self.say("dont.delete")
 
     def confirm_entity(self, responce):
         if responce:
             self.delete_entity()
         else:
-            self.responce_translated("dont.delete")
+            self.say("dont.delete")
 
     def delete_list(self):
         self.list_obj.clear(self.list)
-        self.responce_translated("delete.list", {"list": self.list})
+        self.say("delete.list", list=self.list)
         self.list_obj.save()
 
     def delete_entity(self):
         self.list_obj.clear(self.list, self.entity)
-        self.responce_translated("delete.entity", {"list": self.list, "entity": self.entity})
+        self.say("delete.entity", list=self.list, entity=self.entity)
         self.list_obj.save()

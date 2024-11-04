@@ -36,10 +36,10 @@ class ReminderObject:
      def get_action(self):
           return self.action.value
 
-     def schedule(self, alex):
+     def schedule(self, scheduler):
           seconds = self.seconds()
           if seconds > 0:
-               alex.scheduler.schedule(seconds, EventPriority.SKILLS, self.callback, self)
+              scheduler.schedule(seconds, EventPriority.SKILLS, self.callback, self)
           else:
                if seconds > (-60) * 60 * 2:
                     self.callback(self, True)

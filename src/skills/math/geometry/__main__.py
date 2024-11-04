@@ -13,9 +13,9 @@ class Geometry(BaseSkill):
           self.optional("number", SlotValueNumber)
 
           if self.slot_exists("number"):
-               self.number: SlotValueNumber = self.slots["number"] # type: ignore
+              self.number: SlotValueNumber = self.get_obj("number")
           else:
-               self.number: SlotValueNumber = self.alex_context.load("last_result") # type: ignore
+              self.number: SlotValueNumber = self.context_load("last_result")
           r = None 
 
           if self.assert_equal("func", "sen"):
@@ -34,10 +34,10 @@ class Geometry(BaseSkill):
                r = tanh(self.number.get_value())
           
           r = self.round(r)
-          
-          self.alex_context.save(r, "last_result")
-          
-          return self.responce_translated("result", {"result": r})
+
+          self.context_save("last_result", r)
+
+          return self.say("result", result=r)
 
      @staticmethod
      def round(result):

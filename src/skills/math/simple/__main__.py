@@ -12,23 +12,21 @@ class Simple(BaseSkill):
         self.optional("second_number", SlotValueNumber)
         self.optional("number", SlotValueNumber)
 
-        self.mathOp = self.slots["mathoperation"]
-
         operation_function = self.convert()
 
         r = None
 
         if self.is_single_number():
             number: SlotValueNumber = self.get_single_number()  # type: ignore
-            last_result = self.alex_context.load("last_result")
+            last_result = self.context_load("last_result")
             r = operation_function(last_result, number.value)
 
         elif self.slot_exists("first_number", "second_number"):
-            fNumber: SlotValueNumber = self.slots["first_number"]  # type: ignore
-            sNumber: SlotValueNumber = self.slots["second_number"]  # type: ignore
+            fNumber: SlotValueNumber = self.get_obj("first_number")
+            sNumber: SlotValueNumber = self.get_obj("second_number")
             r = operation_function(fNumber, sNumber)
-            self.alex_context.save(r, "last_result")
-        return self.responce_translated("result", {"result": r})
+            self.context_save("last_result", r)
+        return self.say("result", result=r)
 
     def convert(self):
         if self.assert_equal("mathoperation", "plus"):
@@ -45,11 +43,11 @@ class Simple(BaseSkill):
     def get_single_number(self):
         if self.is_single_number():
             if self.slot_exists("number"):
-                return self.slots["number"]
+                return self.get_obj("number")
             elif self.slot_exists("first_number") and not self.slot_exists("second_number"):
-                return self.slots["first_number"]
+                return self.get_obj("first_number")
             else:
-                return self.slots["second_number"]
+                return self.get("second_number")
 
     def is_single_number(self):
         return self.slot_exists("number") or (

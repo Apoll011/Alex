@@ -9,10 +9,10 @@ class Recall(BaseSkill):
     def execute(self, intent):
         super().execute(intent)
 
-        last_intent = self.alex_context.load("last_intent")
+        last_intent = self.context_load("last_intent")
 
         if last_intent is None:
             self.say("not.enough.data")
         else:
-            skill = SkillCaller(self.language).call(last_intent)
+            skill = SkillCaller(self.get_language()).call(last_intent)
             skill.execute(last_intent)

@@ -105,7 +105,7 @@ class BaseSkill:
         return BaseInterface.get().alex
 
     def responce_translated(self, key: str, context=None):
-        self.responce(self.translate.get_translation(key, context))
+        self.responce(self.get_translation(key, context))
 
     def responce(self, text: str):
         text = self.process_text(text)
@@ -209,6 +209,9 @@ class BaseSkill:
         if self.slots[slot_name].value in dictionary.keys():
             return True
         return False
+
+    def len_slots(self):
+        return len(self.slots)
 
     def get_asset(self, name):
         path = f"{self.skill_dir}/assets/{name}"
@@ -332,3 +335,9 @@ class BaseSkill:
                 "path": path,
             }
         )
+
+    def debug(self):
+        return self.alex().debug_mode
+
+    def scheduler(self):
+        return self.alex().scheduler

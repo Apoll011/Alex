@@ -16,12 +16,12 @@ class Reminder(BaseSkill):
           self.require("action")
           self.optional("person")
 
-          reminder = ReminderObject(self.slots["time"], self.slots["action"]) # type: ignore
+          reminder = ReminderObject(self.get_obj("time"), self.get_obj("action"))
           if self.slot_exists("person"):
                reminder = ReminderObject(
-                         self.slots["time"], # type: ignore
-                         self.slots["action"], 
-                         self.slots["person"]
+                   self.get_obj("time"),
+                   self.get_obj("action"),
+                   self.get_obj("person")
                     ) 
 
           reminder.save_callback(self.fire_reminder)
@@ -29,18 +29,18 @@ class Reminder(BaseSkill):
           with open(DataFile.getPath(reminder.id, "reminder"), "wb") as f:
                pickle.dump(reminder, f)
 
-          reminder.schedule(self.alex())
+          reminder.schedule(self.scheduler())
 
           if reminder.person is None:
               self.say(
                   "reminder.set",
-                  time=self.get_raw("time"),
+                  time=self.get("time", True),
                   action=reminder.get_action()
               )
           else:
               self.say(
                   "reminder.set.person",
-                  time=self.get_raw("time"),
+                  time=self.get("time", True),
                   action=reminder.get_action(),
                   person=reminder.person.value
               )

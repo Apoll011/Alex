@@ -38,21 +38,21 @@ class App(BaseSkill):
             if name in folder.split(","):
                 return f"nohup open {folders[folder]} > /dev/null 2>&1 &", "folder"
 
-        for app_name in self.skill_settings["apps"].keys():
+        for app_name in self.setting("apps").keys():
             if name in app_name.split(","):
-                name = self.skill_settings["apps"][app_name]
+                name = self.setting("apps")[app_name]
                 break
 
         subprocess.check_output(f"which {name}", shell=True, text=True)
         return f"nohup {name} > /dev/null 2>&1 &", "app"
 
     def get_links(self):
-        links = self.skill_settings["links"]
+        links = self.setting("links")
         # TODO: Get links from bookmarks
         return links
 
     def get_folders(self):
-        folders = self.skill_settings["folders"]
+        folders = self.setting("folders")
         for path in os.listdir(home()):
             p = f"{home()}{path}"
             if os.path.isdir(p) and not p.startswith("."):

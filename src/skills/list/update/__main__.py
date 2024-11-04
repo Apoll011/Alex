@@ -16,7 +16,7 @@ class Update(BaseSkill):
         if not self.slot_exists("list") and not self.slot_exists("entity") and not self.slot_exists(
                 "new_entity"
         ):
-            self.responce_translated("dont.have.data")
+            self.say("dont.have.data")
         elif not self.slot_exists("list"):
             self.question("get.list", self.get_list)
         elif not self.slot_exists("entity"):
@@ -74,26 +74,25 @@ class Update(BaseSkill):
                     }, BoolResponce(), list_element, new
                 )
         else:
-            self.responce_translated("did.not.found.list", {"list": list_element})
+            self.say("did.not.found.list", list=list_element)
 
     def try_to_update(self, list_element, entity, new):
         list_content = List.get(list_element)
         i = list_content.index(entity)
         list_content[i] = new
         List.save(list_element, list_content, "w")
-        self.responce_translated(
-            "changed.item", {
-                "entity": entity.title(),
-                "list": list_element.title(),
-                "new": new.title()
-            }
+        self.say(
+            "changed.item",
+            entity=entity.title(),
+            list=list_element.title(),
+            new=new.title()
         )
 
-    def add_new(self, responce: bool, list: str, new: str):
-        list = list.lower()
+    def add_new(self, responce: bool, list_element: str, new: str):
+        list_element = list_element.lower()
         entity = new.lower()
         if responce:
-            List.append(list, entity)
-            self.responce_translated("added.item", {"entity": entity.title(), "list": list.title()})
+            List.append(list_element, entity)
+            self.say("added.item", entity=entity.title(), list=list_element.title())
         else:
-            self.responce_translated("cancel.adding", {"entity": entity.title(), "list": list.title()})
+            self.say("cancel.adding", entity=entity.title(), list=list_element.title())

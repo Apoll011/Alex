@@ -10,7 +10,7 @@ class WhatsPlaying(BaseSkill):
     def execute(self, intent):
         super().execute(intent)
         name, artist, album = self.beautify(self.command())
-        return self.responce_translated("playing.now", {"artist": artist, "track": name})  # type: ignore
+        return self.say("playing.now", artist=artist, track=name)
 
     @staticmethod
     def command():

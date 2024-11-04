@@ -17,15 +17,15 @@ class Do(BaseSkill):
 
 
           if self.slot_exists("musicDo"):
-                self.comand(self.slots["musicDo"].value)
+              self.comand(self.get("musicDo"))
           if self.slot_exists("musicTrackAction"):
-                self.comand(self.slots["musicTrackAction"].value + " track")
+              self.comand(self.get("musicTrackAction") + " track")
           if self.slot_exists("musicReapeatOptions"):
-                self.comand(f"Set song repeat to {self.slots['musicReapeatOptions'].value}")
+              self.comand(f"Set song repeat to {self.get('musicReapeatOptions')}")
           if self.slot_exists("shuffleEnabled"):
-                self.comand(f"Set shuffle enabled to {self.slots['shuffleEnabled'].value.replace('\\', '')}")
-          
-          self.responce_translated("Ok") # type: ignore
+              self.comand(f"Set shuffle enabled to {self.get('shuffleEnabled').replace('\\', '')}")
+
+          self.say("Ok")
 
      @staticmethod
      def comand(text):

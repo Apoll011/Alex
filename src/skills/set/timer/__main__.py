@@ -13,7 +13,7 @@ class Timer(BaseSkill):
         self.require("duration", SlotValueDuration)
         self.optional("entity")
 
-        self.duration = self.slots["duration"]  # type: ignore
+        self.duration = self.get_obj("duration")
 
         self.define()
 
@@ -22,14 +22,14 @@ class Timer(BaseSkill):
     def define(self):
         total_seconds = self.duration.get_total_seconds()
         if self.slot_exists("entity"):
-            self.alex().scheduler.schedule(total_seconds, EventPriority.SKILLS, self.fire_timer_with_entity)
+            self.scheduler().schedule(total_seconds, EventPriority.SKILLS, self.fire_timer_with_entity)
         else:
-            self.alex().scheduler.schedule(total_seconds, EventPriority.SKILLS, self.fire_timer)
+            self.scheduler().schedule(total_seconds, EventPriority.SKILLS, self.fire_timer)
 
     def fire_timer(self):
         self.request_attention()
-        self.responce_translated("timer.fire")
+        self.say("timer.fire")
 
     def fire_timer_with_entity(self):
         self.request_attention()
-        self.say("timer.fire.entity", entity=self.slots["entity"])
+        self.say("timer.fire.entity", entity=self.get("entity"))

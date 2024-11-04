@@ -17,7 +17,7 @@ class Add(BaseSkill):
         self.optional("entity")
 
         if not self.slot_exists("list") and not self.slot_exists("entity"):
-            self.responce_translated("dont.have.data")
+            self.say("dont.have.data")
         elif not self.slot_exists("list"):
             self.question("get.list", self.get_list, {"entity": self.get("entity")})
         elif not self.slot_exists("entity"):
@@ -41,5 +41,5 @@ class Add(BaseSkill):
         list_name = self.list.lower()
         entity = self.entity.lower()
         self.list_obj.add_to_list(list_name, Item(entity))
-        self.responce_translated("added.item", {"entity": entity.title(), "list": list_name.title()})
+        self.say("added.item", entity=entity.title(), list=list_name.title())
         self.list_obj.save()

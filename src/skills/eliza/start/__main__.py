@@ -21,7 +21,7 @@ class Start(BaseSkill):
     def init_eliza(self):
         self.eliza = Eliza()
         self.eliza.memory = self.get_memory()
-        script_path = self.get_asset(self.skill_settings["eliza_script"]["en"])
+        script_path = self.get_asset(self.setting("eliza_script")["en"])
 
         self.eliza.script(script_path)
 
@@ -41,7 +41,7 @@ class Start(BaseSkill):
         self.main_loop(responce, False)
 
     def get_memory(self):
-        saved: list[str] | None = self.alex_context.load("eliza_memory")
+        saved: list[str] | None = self.context_load("eliza_memory")
         if saved is None:
             return []
         else:
@@ -49,4 +49,4 @@ class Start(BaseSkill):
 
     def save_memory(self):
         if len(self.eliza.memory) > 0:
-            self.alex_context.save(self.eliza.memory, "eliza_memory")
+            self.context_save("eliza_memory", self.eliza.memory)

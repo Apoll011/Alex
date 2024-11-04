@@ -18,16 +18,16 @@ class Get(BaseSkill):
             else:
                 self.get_full_list()
         else:
-            self.responce_translated("list.does.not.exist", {"list": self.get("list")})
+            self.say("list.does.not.exist", list=self.get("list"))
 
     def check_element(self):
         if self.list_obj.get(self.get("list"), self.get("entity")):
-            self.responce_translated(
-                "entity.exists", {"list": self.get("list"), "entity": self.get("entity")}
+            self.say(
+                "entity.exists", list=self.get("list"), entity=self.get("entity")
             )
         else:
-            self.responce_translated(
-                "entity.dont.exists", {"list": self.get("list"), "entity": self.get("entity")}
+            self.say(
+                "entity.dont.exists", list=self.get("list"), entity=self.get("entity")
             )
 
     def get_full_list(self):

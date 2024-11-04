@@ -6,4 +6,4 @@ class Presents(BaseSkill):
 
     def execute(self, intent):
         super().execute(intent)
-        self.say("alex.how.he.is", user=self.alex_context.load("master").name)
+        self.say("alex.how.he.is", user=self.context_load("master").name)

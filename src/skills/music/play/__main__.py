@@ -15,30 +15,30 @@ class Play(BaseSkill):
         self.optional("album")
         self.optional("genre")
 
-        if len(self.slots) == 0:
+        if self.len_slots() == 0:
             os.system(f"zsh \"{SOURCE_DIR}/skills/music/np.sh\" do playpause")
             return
 
         flag = "-l"
         pattern = ""
         if self.slot_exists("artist"):
-            pattern = self.slots["artist"].value
+            pattern = self.get("artist")
             flag = "-a"
 
         if self.slot_exists("track"):
-            pattern = self.slots["track"].value
+            pattern = self.get("track")
             flag = "-s"
 
         if self.slot_exists("album"):
-            pattern = self.slots["album"].value
+            pattern = self.get("album")
             flag = "-p"
 
         if self.slot_exists("genre"):
-            pattern = self.slots["genre"].value
+            pattern = self.get("genre")
             flag = "-g"
 
         self.command(flag, pattern)
-        self.responce_translated("Ok")
+        self.say("Ok")
 
     @staticmethod
     def command(flag, pattern):

@@ -16,14 +16,14 @@ class Hi(BaseSkill):
         super().execute(intent)
         self.optional("timeOfDay")
 
-        self.master: User = self.alex_context.load("master")
+        self.master: User = self.context_load("master")
 
         if self.slot_exists("timeOfDay"):
             if is_morning():
                 self.register_event(AlexEvent.ALEX_GOOD_MORNING)
                 self.morning_routine()
             else:
-                self.say("greet.hi.based.on.time.of.day", time=self.slots["timeOfDay"])
+                self.say("greet.hi.based.on.time.of.day", time=self.get("timeOfDay"))
         else:
             self.say("greet.hi", user=self.master.first_name())
 
@@ -33,13 +33,13 @@ class Hi(BaseSkill):
 
     def say_morning_intro(self):
         now = datetime.now()
-        month_translation = TranslationSystem(self.alex().language, "months").get_translation(str(now.month))
+        month_translation = TranslationSystem(self.get_language(), "months").get_translation(str(now.month))
         if internet_on():
             self.say(
                 "morning.online",
                 user_name=self.master.first_name(),
                 current_time=self.api(
-                    "/lang/format/nice_time", lang=self.language, speech=True
+                    "/lang/format/nice_time", lang=self.get_language(), speech=True
                 ).response,
                 day=now.day,
                 month=month_translation,
@@ -52,14 +52,14 @@ class Hi(BaseSkill):
                 "morning.offline",
                 user_name=self.master.first_name(),
                 current_time=self.api(
-                    "/lang/format/nice_time", lang=self.language, speech=True
+                    "/lang/format/nice_time", lang=self.get_language(), speech=True
                 ).response,
                 day=now.day,
                 month=month_translation
             )
 
     def birthday_related(self):
-        if self.alex_context.load("master").is_birthday():
+        if self.master.is_birthday():
             self.say("happy.birth", user=self.master.name)
         elif self.is_birthday_coming():
             self.say("birthday.in.less.than", days=self.master.distance_to_birthday().days)
