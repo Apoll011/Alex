@@ -6,6 +6,7 @@ class Start(BaseSkill):
     def init(self):
         self.register("eliza@start")
         self.can_go_again = False
+        self.voice = "Ema"
 
     def execute(self, intent):
         super().execute(intent)
@@ -49,18 +50,3 @@ class Start(BaseSkill):
     def save_memory(self):
         if len(self.eliza.memory) > 0:
             self.alex_context.save(self.eliza.memory, "eliza_memory")
-
-    def responce(self, text: str):
-        self.speak(
-            {
-                "message": self.process(text),
-                "voice": "Ema"
-            }
-        )
-
-    @staticmethod
-    def process(text):
-        # Change "'" to something else
-        text = text.replace("'", "").strip()
-        # Fix spacing
-        return text

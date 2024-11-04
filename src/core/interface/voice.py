@@ -44,7 +44,6 @@ class Voice(BaseInterface):
 
     def __init__(self, alex: AI):
         super().__init__(alex)
-
         engine = PreciseEngine('precise', os.path.abspath(f'{LIB_RESOURCE_PATH}/model/model.pb'))
         runner = PreciseRunner(engine, on_activation=self.wakeword, sensitivity=0.5)
         runner.start()

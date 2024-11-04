@@ -6,6 +6,7 @@ class AlexEvent(enum.Enum):
     ALEX_LOOP = "loop"
     ALEX_GOOD_MORNING = "good_morning"
     ALEX_WAKE = "wake"
+    ALEX_INTERNET_CALL = "internet"
 
     def __iter__(self):
         yield self

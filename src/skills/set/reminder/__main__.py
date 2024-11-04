@@ -34,13 +34,13 @@ class Reminder(BaseSkill):
           if reminder.person is None:
               self.say(
                   "reminder.set",
-                  time=self.get_raw_slot_value("time"),
+                  time=self.get_raw("time"),
                   action=reminder.get_action()
               )
           else:
               self.say(
                   "reminder.set.person",
-                  time=self.get_raw_slot_value("time"),
+                  time=self.get_raw("time"),
                   action=reminder.get_action(),
                   person=reminder.person.value
               )

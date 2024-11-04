@@ -99,9 +99,7 @@ class ALEX(AI):
     def wake(self, data):
         data = {
             "type": "play_audio",
-            "value": f"acknowledge.mp3",
-            "settings": {
-            }
+            "path": f"acknowledge.mp3"
         }
         BaseInterface.get().process(data)
         self.information.register(Registries.WAKE_UP)

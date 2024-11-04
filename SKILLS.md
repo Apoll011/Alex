@@ -1,4 +1,5 @@
 # ALEX Skill Creation Guide
+>This guide covers the core features of the ALEX skill system. For specific use cases or advanced implementations, refer to the existing skills in the codebase as examples.
 
 ## Table of Contents
 - [Basic Structure](#basic-structure)
@@ -24,7 +25,7 @@ from core.skills import BaseSkill
 
 class MySkill(BaseSkill):
     def init(self):
-        self.register("namespace@skill.name")
+        self.register("namespace@my.skill")
         
     def execute(self, intent):
         super().execute(intent)
@@ -63,6 +64,7 @@ def init(self):
     # Control repeat behavior
     self.can_go_again = False  # Prevent skill from being triggered multiple times when user ask for repeat an action like generate another number
     self.can_repeat_responce = False  # Prevent last response from being saved and being said when user ask to alex reapeat the last sentence in case he does not hear properly
+    self.voice = "Jarvis" # The name you want alex to respond with
 ```
 
 ## Slot Management
@@ -83,7 +85,7 @@ def execute(self, intent):
     # Accessing slot values
     if self.slot_exists("slot_name"):
         value = self.get("slot_name")  # Get processed value
-        raw = self.get_raw_slot_value("slot_name")  # Get raw input without processing like 'one' instead of 1
+        raw = self.get("slot_name", raw = True)  # Get raw input without processing like 'one' instead of 1
     
     # Slot validation
     if self.assert_equal("slot_name", "expected_value"):
@@ -110,12 +112,6 @@ self.responce_translated("greeting.key", {"name": "User"})
 
 # Shorthand for translated response
 self.say("greeting.key", name="User")
-
-# Advanced response with intent data
-self.speak({
-    "message": "Custom message",
-    "custom_data": "value" # Like name witch will send a messege under another name  not Alex
-})
 ```
 
 ## Context Management
@@ -124,10 +120,10 @@ Managing conversation context:
 
 ```python
 # Save data to context
-self.alex_context.save(data, "context_key")
+self.context_save("context_key", data)
 
 # Load data from context
-data = self.alex_context.load("context_key")
+data = self.context_load("context_key")
 ```
 
 ## Translation System
@@ -150,7 +146,7 @@ def execute(self, intent):
     self.say("greeting", name="User")
     
     # Direct translation access
-    greeting = self.translate.get_translation("greeting", {"name": "User"})
+    greeting = self.get_translation("greeting", {"name": "User"})
 ```
 
 ## Event System
@@ -166,10 +162,7 @@ def execute(self, intent):
     super().execute(intent)
     
     # Create and register event
-    event = AlexEvent("custom_event", {
-        "data": "value",
-        "timestamp": "2024-01-01"
-    })
+    event = AlexEvent.ALEX_INTERNET_CALL
     self.register_event(event)
 ```
 
@@ -214,13 +207,13 @@ Managing skill settings:
         },
         "enabled": {
             "type": "bool",
-            "value": 1,
-            "default": 0
+            "value": true,
+            "default": false
         },
         "message": {
             "type": "text",
             "value": "Hello",
-            "default": "Hi"
+            "default": "Hi" // If value is null
         }
     }
 }
@@ -234,11 +227,12 @@ def execute(self, intent):
     timeout = self.config("timeout")
     enabled = self.config("enabled")
     message = self.config("message")
-    api_key = self.skill_settings["hidden_config"]
     
-    # Save updated settings
-    self.skill_settings["config"]["timeout"]["value"] = 45
-    self.save_settings()
+    #Access setting values (SEtting values are avaliable only for the skill, unlike the config with the user will be able to change using an interface.)
+    api_key = self.setting("hidden_config")
+    
+    #Save a new value on a normal setting
+    self.save_setting("hidden_config", "ytuewfd-grsdv34gr-g4wrsd34gwey4twe")
 ```
 
 ## Asset Management
@@ -255,6 +249,8 @@ def execute(self, intent):
     try:
         audio_path = self.get_asset("sound.mp3")
         image_path = self.get_asset("icon.png")
+        
+        self.play_audio(audio_path) #Play that sound
     except FileNotFoundError:
         self.say("asset.not.found")
 ```
@@ -267,13 +263,16 @@ Managing user interaction flow:
 def execute(self, intent):
     super().execute(intent)
     
+    # Get attention before important action
+    self.request_attention()  # Will call user's name and wait a few seconds before continuing
+    
     # Ask question and handle response
     self.question(
         "question.key",  # Translation key for question
         self.handle_response,  # Callback function
         {"variable": "value"},  # Translation variables
-        ListResponce(["cake", "pizza", "etc"]),  # Expected response type can be anyresponce boolresponce etc there are a lot of responce types.
-        "additional_arg"  # Extra arguments for callback
+        ListResponce(["cake", "pizza", "hamburger"]),  # Expected response type can be anyresponce (Litterally anything. default) boolresponce(Yes: True or No: False) etc there are a lot of responce types.
+        "additional_arg"  # Extra arguments the callback function
     )
 
 def handle_response(self, responce, additional_arg):
@@ -291,17 +290,11 @@ Additional useful features:
 def execute(self, intent):
     super().execute(intent)
     
-    # Get attention before important action
-    self.request_attention()  # Will call user's name and wait
-    
-    # Access alex instance
-    alex = self.alex()
-    
     # Access skill directory
-    skill_path = self.skill_dir
+    skill_path = self.dir()
     
     # Access current language
-    current_lang = self.language
+    current_lang = self.get_language()
 ```
 
 ## Best Practices
@@ -344,11 +337,10 @@ class MySkill(BaseSkill):
 
 ---
 
-**Note**: When developing skills, always:
-- Test with different language settings
-- Handle missing slots gracefully
-- Provide clear user feedback
-- Clean up resources properly
-- Document usage and requirements
+> **Note**: When developing skills, always:
+> - Test with different language settings
+> - Handle missing slots gracefully
+> - Provide clear user feedback
+> - Clean up resources properly
+> - Document usage and requirements
 
-This guide covers the core features of the ALEX skill system. For specific use cases or advanced implementations, refer to the existing skills in the codebase as examples.

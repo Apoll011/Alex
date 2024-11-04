@@ -44,6 +44,11 @@ class Audio:
 
     @staticmethod
     def get_path(audio_name):
+        if os.path.isfile(
+                audio_name
+        ):  # FIXME: Used for skill sound playing. But imagine the user puts another file with the name "dot_01.mp3" in the same path as alex...
+            return audio_name
+
         path = f"{LIB_RESOURCE_PATH}/audio/{audio_name}"
         return path
 

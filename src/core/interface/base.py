@@ -116,6 +116,6 @@ class BaseInterface:
                 self.speak(data)
 
             case "play_audio":
-                Audio.play(data['value'])
+                Audio.play(data['path'])
             case _:
                 raise KeyError(f"The type {data_type} is not valid")

@@ -11,6 +11,12 @@ class SkillIntentError(Exception):
             f"This is the wrong skill({skill_name}) for this intent({name})"
         )
 
+class SkillNotRegistered(Exception):
+    def __init__(self, name: str) -> None:
+        super().__init__(
+            f"This skill {name} was not registered. Register it in the initialization function by using self.register(\"{name}\")."
+        )
+
 class SkillSlotNotFound(Exception):
     slot_name: str
 
