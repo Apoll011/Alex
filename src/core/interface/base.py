@@ -35,7 +35,7 @@ class BaseInterface:
 
 
     def print_header(self):
-        print("Starting on", self.name.title(),"interface:\33[32m", self.name,"\33[0m")
+        print("Starting on interface:\33[32m", self.name.title(), "\33[0m")
 
     def start(self):
         loop = threading.Thread(name = "MainLoop", target=self.start_loop)

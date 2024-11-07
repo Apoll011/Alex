@@ -32,9 +32,9 @@ class MySkill(BaseSkill):
         # Skill logic here
 ```
 ### Naming
-The naming of a skill class name will depend on the minor part of its intent name major@minor its allways capital Minor and replace minor.subminor with MinorSubMinor other separators like minor_subminor will be Minor_subminor.
+The naming of a skill class name will depend on the minor part of its intent name namespace@minor its allways capital Minor and replace minor.subminor with MinorSubMinor other separators like minor_subminor will be Minor_subminor.
 
-The same logic is applied to the folder naming. remebering minor and major are different folder and the name its in lower case, All teh rules above are applied here too. 
+The same logic is applied to the folder naming. remembering minor and major are different folder and the name its in lower case, All the rules above are applied here too. 
 
 ### File Structure
 
@@ -228,7 +228,7 @@ def execute(self, intent):
     enabled = self.config("enabled")
     message = self.config("message")
     
-    #Access setting values (SEtting values are avaliable only for the skill, unlike the config with the user will be able to change using an interface.)
+    #Access setting values (Setting values are avaliable only for the skill, unlike the config with the user will be able to change using an interface.)
     api_key = self.setting("hidden_config")
     
     #Save a new value on a normal setting
@@ -290,7 +290,7 @@ Additional useful features:
 def execute(self, intent):
     super().execute(intent)
     
-    # Access skill directory
+    # Access skill directory path
     skill_path = self.dir()
     
     # Access current language
@@ -300,8 +300,7 @@ def execute(self, intent):
 ## Best Practices
 
 1. **Error Handling**:
-- Most of the thrown errors are handled by the Input Processor (Processor class) be its better for the skill if it caught some of the known error for a smoother user experience.
-
+- Most of the thrown errors are handled by the Input Processor (Processor class) be its better for the skill if it caught some of the known error for a smoother user experience
 2. **Translation Organization**:
 - Keep translations in locale files
 - Include all supported languages
@@ -317,6 +316,8 @@ def execute(self, intent):
 - Document configuration options
 
 5. **Documentation**:
+
+
 ```python
 class MySkill(BaseSkill):
     """

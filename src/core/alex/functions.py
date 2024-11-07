@@ -52,7 +52,6 @@ def set_api_con(self, alex: AI):
         return
     except ConnectionRefusedError:
         LOG.error("Base Api Closed.")
-        alex.screen.clear()
         alex.set_context("allowed_to_check_api", False)
         say("server.closed", alex)
         alex.deactivate()

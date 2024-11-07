@@ -6,7 +6,7 @@ from core.intents.responce import *
 from core.interface.base import BaseInterface
 from core.sysinformation import Registries
 from core.utils import get_time_of_day
-from .functions import alexSkeleton
+from .functions import alexSkeleton, debug_mode
 from ..codebase_managemet.app import is_compiled
 from ..config import BIGGEST_LOOP_ID_ALLOWED
 from ..process import Process
@@ -45,10 +45,16 @@ class ALEX(AI):
         self.translationSystem = TranslationSystem(self.language)
 
     def start(self):
-        self.screen.clear()
+        modes = []
         if not is_compiled():
-            print("[Development Mode]")
+            modes.append("Development Mode")
+        if self.debug_mode:
+            modes.append("Debug Mode")
 
+        if len(modes) > 0:
+            print("Modes:")
+            for mode in modes:
+                print(f"  [\33[32m{mode}\33[0m]")
     def loop(self):
         self.execute_on_next_loop()
         self.increment_loop()

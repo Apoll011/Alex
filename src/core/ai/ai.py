@@ -71,6 +71,7 @@ class AI(
         if not self.debug_mode:
             time.sleep(0.1)
         self.screen.footer()
+        self.screen.clear()
 
     def start(self):
         """
