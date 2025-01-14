@@ -5,6 +5,7 @@ from typing import Any
 from core.client import ApiClient
 from core.dna import DNA
 from .blueprint import AiBluePrintUser
+from ..config import config_file
 from ..context import ContextManager
 from ..notifier import Notify
 from ..scheduler import Scheduler
@@ -31,6 +32,8 @@ class AI(
     base_server_ip: str = "127.0.0.1"
 
     language: str
+
+    controller_ip = config_file["device"]
 
     context = ContextManager()
     """

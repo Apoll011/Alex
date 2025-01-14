@@ -1,4 +1,5 @@
 from core.config import EventPriority
+from core.hardware.esp32.structures import Button
 from core.notifier import AlexEvent
 
 class AiBluePrintSkeleton:
@@ -22,6 +23,8 @@ class AiBluePrintSkeleton:
     scheduled_funcs = []
 
     notifications_events = []
+
+    button_pressed_func = {}
 
     def __init__(self) -> None:
         self.init_actions = {}
@@ -78,7 +81,18 @@ class AiBluePrintSkeleton:
                 return fun(*args, **kwargs)
             return wrapper
         return decorator
-    
+
+    def button_pressed(self, button: Button):
+        def decorator(fun):
+            self.button_pressed_func[button] = fun
+
+            def wrapper(*args, **kwargs):
+                return fun(*args, **kwargs)
+
+            return wrapper
+
+        return decorator
+
     def scheduled(self, time: int, priority: EventPriority, recurring = True):
         """
         Decorator to register a scheduled event
@@ -154,6 +168,8 @@ class AiBluePrintUser:
 
     notifications_events = []
 
+    button_pressed_func: dict[Button, object] = {}
+
     def finish_and_set(self, name: str, ctx_name: str, ctx_value):
         """
         Finishes an action and sets a context value
@@ -190,12 +206,14 @@ class AiBluePrintUser:
         self.request_actions = blueprint.request_actions | self.request_actions
         self.scheduled_funcs = blueprint.scheduled_funcs + self.scheduled_funcs
         self.notifications_events = blueprint.notifications_events + self.notifications_events
+        self.button_pressed_func = blueprint.button_pressed_func | self.button_pressed_func
 
     def run_init_actions(self):
         """
         Runs the registered init actions
         """
         self.init_actions_done = []
+        print(self.init_actions)
         for action in self.init_actions:
             print("\33[32mRunning", action, "\33[97m")
             self.init_actions[action](action, self)

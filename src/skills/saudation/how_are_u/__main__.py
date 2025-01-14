@@ -9,5 +9,3 @@ class HowAreU(BaseSkill):
           super().execute(intent)
 
           self.say("fine")
-          if self.debug():
-              self.say("acknowledge")

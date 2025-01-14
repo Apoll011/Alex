@@ -6,17 +6,17 @@ from threading import Thread
 
 from core.client import ApiMethod
 from core.config import ATTENTION_WAIT_TIME
+from core.context import ContextManager
 from core.error import SkillIntentError, SkillNotRegistered, SkillSlotNotFound
-from core.intents import *
-from core.intents.responce import *
+from core.intents import IntentResponse, SlotValue
+from core.intents.responce import AnyResponce, Responce
 from core.interface.base import BaseInterface
-from core.log import LOG
 from core.notifier import AlexEvent
 from core.translate import TranslationSystem
 from core.utils import resource_path
 
 class BaseSkill:
-    # Private Variables
+    # Private Variables/Methods
     name: str
 
     intent: IntentResponse
@@ -32,6 +32,8 @@ class BaseSkill:
     language: str
 
     is_registered = False
+
+    context = ContextManager()
 
     # Public for editing variables
     can_repeat_responce = True
@@ -66,20 +68,15 @@ class BaseSkill:
 
     def get_local_settings(self):
         """Build a dictionary using the JSON string stored in settings.json."""
-        skill_settings = {}
         settings_path = Path(self.skill_dir).joinpath(".config")
-        LOG.info(settings_path)
         if settings_path.exists():
             with open(str(settings_path)) as settings_file:
                 settings_file_content = settings_file.read()
             if settings_file_content:
                 try:
-                    skill_settings = json.loads(settings_file_content)
+                    self.skill_settings = json.loads(settings_file_content)
                 except json.JSONDecodeError as error:
-                    log_msg = f"Failed to load {self.name} settings from .config. LINE: {error.lineno}"
-                    LOG.exception(log_msg)
-
-        self.skill_settings = skill_settings
+                    pass
 
     def save_settings(self):
         """Save skill settings to file."""
@@ -89,16 +86,7 @@ class BaseSkill:
             settings_path.touch(mode=0o644)
 
         with open(str(settings_path), "w") as settings_file:
-            try:
-                json.dump(self.skill_settings, settings_file)
-            except Exception:
-                LOG.exception(
-                    "error saving skill settings to " "{}".format(settings_path)
-                )
-            else:
-                LOG.info(
-                    "Skill settings successfully saved to " "{}".format(settings_path)
-                )
+            json.dump(self.skill_settings, settings_file)
 
     @staticmethod
     def alex():
@@ -195,7 +183,7 @@ class BaseSkill:
                 return False
         return True
 
-    def assert_equal(self, slot_name: str, value: Any):
+    def assert_equal(self, slot_name: str, value: str):
         if self.slots[slot_name].value == value:
             return True
         return False
@@ -266,10 +254,10 @@ class BaseSkill:
             return None
 
     def context_save(self, name: str, obj):
-        self.alex().context.save(obj, name)
+        self.context.save(obj, name)
 
     def context_load(self, name: str):
-        return self.alex().context.load(name)
+        return self.context.load(name)
 
     def setting(self, name):
         return self.skill_settings[name]
@@ -335,9 +323,6 @@ class BaseSkill:
                 "path": path,
             }
         )
-
-    def debug(self):
-        return self.alex().debug_mode
 
     def scheduler(self):
         return self.alex().scheduler

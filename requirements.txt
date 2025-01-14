@@ -30,3 +30,6 @@ wsproto==1.2.0
 
 black~=24.8.0
 pyjokes~=0.8.3
+websocket-client~=1.8.0
+comtypes~=1.4.9
+pycaw~=20240210

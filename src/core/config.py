@@ -63,6 +63,9 @@ except FileNotFoundError:
             "port": 1178,
             "max_reconnections_attempts": 10
         },
+        "device": {
+            "host": "192.168.1.113"
+        },
         "interfaces": {
             "cmd": {},
             "voice": {},

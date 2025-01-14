@@ -6,6 +6,7 @@ import psutil
 
 from core.ai.ai import AI
 from core.ai.blueprint import AiBluePrintSkeleton
+from core.audio import decrease_volume, increase_volume
 from core.client import ApiClient
 from core.codebase_managemet.base_server import get_base_server_on_local_net, is_base_server
 from core.codebase_managemet.updater import AlexUpdater, AutoUpdater
@@ -13,6 +14,13 @@ from core.config import *
 from core.config import EventPriority
 from core.context import ContextManager
 from core.error import *
+from core.hardware.esp32.animation_config import ChaseConfig, GradientConfig, ProgressConfig, PulseConfig, \
+    SparkleConfig, \
+    StatusConfig, WaveConfig
+from core.hardware.esp32.animation_controller import AnimationController
+from core.hardware.esp32.button_handler import ButtonHandler
+from core.hardware.esp32.locate import get_device_on_local_net, is_device
+from core.hardware.esp32.structures import AnimationType, Button, Pattern, PredefinedColor
 from core.interface.base import BaseInterface
 from core.log import LOG
 from core.models import ReminderObject
@@ -55,6 +63,36 @@ def set_api_con(self, alex: AI):
         alex.set_context("allowed_to_check_api", False)
         say("server.closed", alex)
         alex.deactivate()
+
+@alexSkeleton.init_action("Create Device connection")
+def set_device_con(self, alex: AI):
+    if alex.controller_ip == config_file["device"]["host"] and not is_device(config_file["device"]["host"]):
+        print(
+            f"The device is not set on the default ip {config_file["device"]["host"]} searching for the device... \nThis process should take around {255 * API_SEARCH_TIMEOUT:0.2f} seconds"
+        )
+        alex.controller_ip = get_device_on_local_net() or alex.controller_ip
+
+    try:
+        LOG.info("Connecting to Device")
+        alex.animation_controller = AnimationController(alex.controller_ip["host"])
+        alex.button_controller = ButtonHandler(alex.controller_ip["host"])
+        alex.finish(self)
+        return
+    except ConnectionRefusedError:
+        LOG.error("Device not found.")
+        alex.deactivate()
+
+@alexSkeleton.init_action("Connect to Device")
+def device_con(self, alex: AI):
+    alex.animation_controller.connect()
+    alex.button_controller.connect()
+    alex.finish(self)
+
+@alexSkeleton.init_action("Register Button Presses")
+def r_buttons(self, alex: AI):
+    for (button, func) in alex.button_pressed_func.items():
+        alex.button_controller.register_callback(button, func)
+    alex.finish(self)
 
 @alexSkeleton.init_action("Set Text Processor")
 def set_api_con(self, alex: AI):
@@ -218,6 +256,11 @@ def close_interface(alex: AI):
     LOG.info("Closing the Alex Interface")
     BaseInterface.get().close()
 
+@alexSkeleton.deactivate_action("Disconnect to Device")
+def device_descon(alex: AI):
+    alex.animation_controller.disconnect()
+    alex.button_controller.close()
+
 @alexSkeleton.scheduled(5, EventPriority.SKILLS, False)
 def get_reminders(alex: AI):
     LOG.info("Loading Reminders")
@@ -227,3 +270,116 @@ def get_reminders(alex: AI):
             reminder: ReminderObject = pickle.load(file)
             reminder.schedule(alex)
             LOG.info(f"Reminder of ID: {reminder.id} scheduled")
+
+@alexSkeleton.button_pressed(Button.BUTTON_VOL_PLUS)
+def inc_volume(alex: AI, state):
+    current_volume = increase_volume()
+    alex.animation_controller.play_animation(
+        AnimationType.PROGRESS_INDICATOR, 2500, ProgressConfig(
+            progress=current_volume,
+            active_color=PredefinedColor.WHITE if current_volume != 100 else PredefinedColor.GOLD
+        )
+    )
+
+@alexSkeleton.button_pressed(Button.BUTTON_VOL_MINUS)
+def dec_volume(alex: AI, state):
+    current_volume = decrease_volume()
+    alex.animation_controller.play_animation(
+        AnimationType.PROGRESS_INDICATOR, 2500, ProgressConfig(
+            progress=current_volume,
+            active_color=PredefinedColor.WHITE,
+        )
+    )
+
+state = {
+    "mode": 0,
+    "recording": False,
+    "muted": False
+}
+
+@alexSkeleton.button_pressed(Button.BUTTON_PLAY)
+def play_button_pressed(alex: AI, b_state):
+    """Play a predefined animation for the Play button."""
+    alex.animation_controller.play_animation(
+        AnimationType.CONFIGURABLE_GRADIENT,
+        5000,
+        GradientConfig(
+            speed=5,
+            spread=15,
+            start_hue=60,
+            reverse=False
+        )
+    )
+
+@alexSkeleton.button_pressed(Button.BUTTON_SET)
+def set_button_pressed(alex: AI, b_state):
+    """Play an animation based on the current mode and toggle the mode."""
+    # Cycle through modes (0, 1, 2, ...)
+    state["mode"] = (state["mode"] + 1) % 4
+    time = 5000
+    if state["mode"] == 0:
+        config = PulseConfig(speed=3, min_bright=30, max_bright=255, color=PredefinedColor.BLUE)
+        animation_type = AnimationType.CONFIGURABLE_PULSE
+    elif state["mode"] == 1:
+        config = SparkleConfig(fade=10, chance=50, color=PredefinedColor.GREEN)
+        animation_type = AnimationType.CONFIGURABLE_SPARKLE
+    elif state["mode"] == 2:
+        config = None
+        time = -1
+        animation_type = AnimationType.VOICE_RESPONSE
+    else:
+        config = WaveConfig(speed=4, waves=3, color=PredefinedColor.RED)
+        animation_type = AnimationType.CONFIGURABLE_WAVE
+
+    alex.animation_controller.play_animation(animation_type, time, config)
+
+@alexSkeleton.button_pressed(Button.BUTTON_MODE)
+def mode_button_pressed(alex: AI, b_state):
+    """Toggle mute state and play corresponding animation."""
+    state["muted"] = not state["muted"]  # Toggle mute state
+
+    if state["muted"]:
+        alex.animation_controller.play_animation(
+            AnimationType.STATUS_INDICATOR,
+            2000,
+            StatusConfig(
+                color=PredefinedColor.RED,
+                pattern=Pattern.SOLID,
+                blink=True,
+                bspeed=2
+            )
+        )
+    else:
+        # Unmuted state animation
+        alex.animation_controller.play_animation(
+            AnimationType.STATUS_INDICATOR,
+            2000,
+            StatusConfig(
+                color=PredefinedColor.BLUE,
+                pattern=Pattern.SOLID,
+                blink=True,
+                bspeed=2
+            )
+        )
+
+@alexSkeleton.button_pressed(Button.BUTTON_REC)
+def rec_button_pressed(alex: AI, b_state):
+    """Toggle recording state and play a corresponding animation."""
+    state["recording"] = not state["recording"]
+    if not state["recording"]:
+        config = ChaseConfig(
+            fade=0,
+            tail=2,
+            color=PredefinedColor.RED,
+        )
+        animation_type = AnimationType.CONFIGURABLE_CHASE
+    else:
+        config = StatusConfig(
+            color=PredefinedColor.GREEN,
+            pattern=Pattern.SOLID,
+            blink=True,
+            bspeed=3
+        )
+        animation_type = AnimationType.STATUS_INDICATOR
+
+    alex.animation_controller.play_animation(animation_type, 3000, config)

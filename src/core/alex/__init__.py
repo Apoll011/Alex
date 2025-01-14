@@ -9,6 +9,8 @@ from core.utils import get_time_of_day
 from .functions import alexSkeleton, debug_mode
 from ..codebase_managemet.app import is_compiled
 from ..config import BIGGEST_LOOP_ID_ALLOWED
+from ..hardware.esp32.animation_controller import AnimationController
+from ..hardware.esp32.button_handler import ButtonHandler
 from ..process import Process
 from ..scheduler import Scheduler
 from ..sysinformation import SysInfo
@@ -22,6 +24,9 @@ class ALEX(AI):
     next_on_loop_args = None
     loop_id = 0
 
+    animation_controller: AnimationController
+    button_controller: ButtonHandler
+
     def __init__(self) -> None:
 
         super().__init__("ALEX")
@@ -34,7 +39,6 @@ class ALEX(AI):
         self.scheduler.start_scheduler()
 
         self.information = SysInfo()
-
 
     def interface_on(self):
         self.register_scheduled_funcs()
