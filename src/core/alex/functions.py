@@ -17,9 +17,7 @@ from core.error import *
 from core.hardware.esp32.animation_config import ChaseConfig, GradientConfig, ProgressConfig, PulseConfig, \
     SparkleConfig, \
     StatusConfig, WaveConfig
-from core.hardware.esp32.animation_controller import AnimationController
-from core.hardware.esp32.button_handler import ButtonHandler
-from core.hardware.esp32.locate import get_device_on_local_net, is_device
+from core.hardware.esp32.controller import ESP32BluetoothClient
 from core.hardware.esp32.structures import AnimationType, Button, Pattern, PredefinedColor
 from core.interface.base import BaseInterface
 from core.log import LOG
@@ -64,34 +62,17 @@ def set_api_con(self, alex: AI):
         say("server.closed", alex)
         alex.deactivate()
 
-@alexSkeleton.init_action("Create Device connection")
-def set_device_con(self, alex: AI):
-    if alex.controller_ip == config_file["device"]["host"] and not is_device(config_file["device"]["host"]):
-        print(
-            f"The device is not set on the default ip {config_file["device"]["host"]} searching for the device... \nThis process should take around {255 * API_SEARCH_TIMEOUT:0.2f} seconds"
-        )
-        alex.controller_ip = get_device_on_local_net() or alex.controller_ip
-
-    try:
-        LOG.info("Connecting to Device")
-        alex.animation_controller = AnimationController(alex.controller_ip["host"])
-        alex.button_controller = ButtonHandler(alex.controller_ip["host"])
-        alex.finish(self)
-        return
-    except ConnectionRefusedError:
-        LOG.error("Device not found.")
-        alex.deactivate()
-
 @alexSkeleton.init_action("Connect to Device")
 def device_con(self, alex: AI):
-    alex.animation_controller.connect()
-    alex.button_controller.connect()
+    alex.box_controller = ESP32BluetoothClient()
+    if not alex.box_controller.scan_and_connect():
+        print("\33[31mCould not connect to device!")
     alex.finish(self)
 
 @alexSkeleton.init_action("Register Button Presses")
 def r_buttons(self, alex: AI):
     for (button, func) in alex.button_pressed_func.items():
-        alex.button_controller.register_callback(button, func)
+        alex.box_controller.button_handler.register_callback(button, func)
     alex.finish(self)
 
 @alexSkeleton.init_action("Set Text Processor")
@@ -258,8 +239,7 @@ def close_interface(alex: AI):
 
 @alexSkeleton.deactivate_action("Disconnect to Device")
 def device_descon(alex: AI):
-    alex.animation_controller.disconnect()
-    alex.button_controller.close()
+    alex.box_controller.close()
 
 @alexSkeleton.scheduled(5, EventPriority.SKILLS, False)
 def get_reminders(alex: AI):
@@ -273,21 +253,23 @@ def get_reminders(alex: AI):
 
 @alexSkeleton.button_pressed(Button.BUTTON_VOL_PLUS)
 def inc_volume(alex: AI, state):
-    current_volume = increase_volume()
-    alex.animation_controller.play_animation(
+    current_volume = increase_volume(maxv=200)
+    alex.box_controller.animation_controller.play_animation(
         AnimationType.PROGRESS_INDICATOR, 2500, ProgressConfig(
-            progress=current_volume,
-            active_color=PredefinedColor.WHITE if current_volume != 100 else PredefinedColor.GOLD
+            progress=current_volume if current_volume <= 100 else current_volume - 100,
+            active_color=PredefinedColor.WHITE if current_volume <= 100 else PredefinedColor.RED,
+            inactive_color=PredefinedColor.BLACK if current_volume <= 100 else PredefinedColor.GOLD,
         )
     )
 
 @alexSkeleton.button_pressed(Button.BUTTON_VOL_MINUS)
 def dec_volume(alex: AI, state):
     current_volume = decrease_volume()
-    alex.animation_controller.play_animation(
+    alex.box_controller.animation_controller.play_animation(
         AnimationType.PROGRESS_INDICATOR, 2500, ProgressConfig(
-            progress=current_volume,
-            active_color=PredefinedColor.WHITE,
+            progress=current_volume if current_volume <= 100 else current_volume - 100,
+            active_color=PredefinedColor.WHITE if current_volume <= 100 else PredefinedColor.RED,
+            inactive_color=PredefinedColor.BLACK if current_volume <= 100 else PredefinedColor.GOLD,
         )
     )
 
@@ -297,19 +279,57 @@ state = {
     "muted": False
 }
 
+import subprocess
+
+def get_media_status():
+    """
+    Gets the status of the current media (Playing, Paused, or Stopped).
+    Returns:
+        str: The status of the media player.
+    """
+    try:
+        status = subprocess.check_output(["playerctl", "status"], text=True).strip()
+        return status
+    except subprocess.CalledProcessError:
+        return "No player is running or no media available."
+
+def get_media_info():
+    """
+    Gets the current media's artist and title in a formatted string.
+    Returns:
+        str: Formatted string with artist and title, or an error message.
+    """
+    try:
+        metadata = subprocess.check_output(
+            ["playerctl", "metadata", "--format", "{{artist}} - {{title}}"],
+            text=True
+        ).strip()
+        return metadata
+    except subprocess.CalledProcessError:
+        return "No media playing or metadata unavailable."
+
 @alexSkeleton.button_pressed(Button.BUTTON_PLAY)
 def play_button_pressed(alex: AI, b_state):
-    """Play a predefined animation for the Play button."""
-    alex.animation_controller.play_animation(
-        AnimationType.CONFIGURABLE_GRADIENT,
-        5000,
-        GradientConfig(
-            speed=5,
-            spread=15,
-            start_hue=60,
-            reverse=False
+    """
+        Toggles play/pause on the current media player.
+        Returns:
+            str: A message indicating the action performed.
+        """
+    try:
+        subprocess.run(["playerctl", "play-pause"], check=True)
+        alex.box_controller.animation_controller.play_animation(
+            AnimationType.CONFIGURABLE_GRADIENT,
+            5000,
+            GradientConfig(
+                speed=5,
+                spread=15,
+                start_hue=60,
+                reverse=False
+            )
         )
-    )
+        return "Toggled play/pause."
+    except subprocess.CalledProcessError:
+        return "Failed to toggle play/pause. No media player available."
 
 @alexSkeleton.button_pressed(Button.BUTTON_SET)
 def set_button_pressed(alex: AI, b_state):
@@ -331,7 +351,7 @@ def set_button_pressed(alex: AI, b_state):
         config = WaveConfig(speed=4, waves=3, color=PredefinedColor.RED)
         animation_type = AnimationType.CONFIGURABLE_WAVE
 
-    alex.animation_controller.play_animation(animation_type, time, config)
+    alex.box_controller.animation_controller.play_animation(animation_type, time, config)
 
 @alexSkeleton.button_pressed(Button.BUTTON_MODE)
 def mode_button_pressed(alex: AI, b_state):
@@ -339,7 +359,7 @@ def mode_button_pressed(alex: AI, b_state):
     state["muted"] = not state["muted"]  # Toggle mute state
 
     if state["muted"]:
-        alex.animation_controller.play_animation(
+        alex.box_controller.animation_controller.play_animation(
             AnimationType.STATUS_INDICATOR,
             2000,
             StatusConfig(
@@ -351,7 +371,7 @@ def mode_button_pressed(alex: AI, b_state):
         )
     else:
         # Unmuted state animation
-        alex.animation_controller.play_animation(
+        alex.box_controller.animation_controller.play_animation(
             AnimationType.STATUS_INDICATOR,
             2000,
             StatusConfig(
@@ -382,4 +402,4 @@ def rec_button_pressed(alex: AI, b_state):
         )
         animation_type = AnimationType.STATUS_INDICATOR
 
-    alex.animation_controller.play_animation(animation_type, 3000, config)
+    alex.box_controller.animation_controller.play_animation(animation_type, 3000, config)

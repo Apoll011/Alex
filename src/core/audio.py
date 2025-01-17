@@ -21,10 +21,10 @@ def get_current_volume():
     volume_percent = int(volume_line.split()[4].replace('%', ''))
     return volume_percent
 
-def increase_volume():
-    """Increases the system volume by 10%."""
+def increase_volume(maxv=100):
+    """Increases the system volume by 10%, clamped to a maximum value."""
     current_volume = get_current_volume()
-    new_volume = min(100, current_volume + 10)  # Clamp to 100%
+    new_volume = min(maxv, current_volume + 10)  # Clamp to maxv
     subprocess.run(["pactl", "set-sink-volume", "@DEFAULT_SINK@", f"{new_volume}%"])
     return new_volume
 

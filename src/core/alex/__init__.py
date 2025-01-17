@@ -9,8 +9,7 @@ from core.utils import get_time_of_day
 from .functions import alexSkeleton, debug_mode
 from ..codebase_managemet.app import is_compiled
 from ..config import BIGGEST_LOOP_ID_ALLOWED
-from ..hardware.esp32.animation_controller import AnimationController
-from ..hardware.esp32.button_handler import ButtonHandler
+from ..hardware.esp32.controller import ESP32BluetoothClient
 from ..process import Process
 from ..scheduler import Scheduler
 from ..sysinformation import SysInfo
@@ -24,8 +23,7 @@ class ALEX(AI):
     next_on_loop_args = None
     loop_id = 0
 
-    animation_controller: AnimationController
-    button_controller: ButtonHandler
+    box_controller: ESP32BluetoothClient
 
     def __init__(self) -> None:
 
