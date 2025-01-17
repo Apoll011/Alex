@@ -317,7 +317,8 @@ def play_button_pressed(alex: AI, b_state):
         """
     try:
         subprocess.run(["playerctl", "play-pause"], check=True)
-        if get_media_status() == "Playing":
+        status = get_media_status()
+        if status == "Playing":
             alex.box_controller.animation_controller.play_animation(
                 AnimationType.CONFIGURABLE_GRADIENT,
                 2000,
@@ -328,13 +329,23 @@ def play_button_pressed(alex: AI, b_state):
                     reverse=False
                 )
             )
-        else:
+        elif status == "Paused":
             alex.box_controller.animation_controller.play_animation(
                 AnimationType.CONFIGURABLE_CHASE,
                 2500,
                 ChaseConfig(
                     fade=0,
                     tail=2,
+                    color=PredefinedColor.GOLD,
+                )
+            )
+        elif status == "No players found":
+            alex.box_controller.animation_controller.play_animation(
+                AnimationType.STATUS_INDICATOR,
+                2500,
+                StatusConfig(
+                    blink=True,
+                    pattern=Pattern.GRADIENT,
                     color=PredefinedColor.RED,
                 )
             )
