@@ -213,7 +213,6 @@ class AiBluePrintUser:
         Runs the registered init actions
         """
         self.init_actions_done = []
-        print(self.init_actions)
         for action in self.init_actions:
             print("\33[32mRunning", action, "\33[97m")
             self.init_actions[action](action, self)

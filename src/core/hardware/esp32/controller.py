@@ -47,7 +47,7 @@ class ESP32BluetoothClient:
             # Start receiver thread
             threading.Thread(target=self._receive_messages, daemon=True).start()
             self.send_message("CONNECT")
-            Application.save("box_mac", target_address)
+            Application.save("box_mac", target_address, "w")
             return True
         else:
             return False

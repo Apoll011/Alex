@@ -317,16 +317,27 @@ def play_button_pressed(alex: AI, b_state):
         """
     try:
         subprocess.run(["playerctl", "play-pause"], check=True)
-        alex.box_controller.animation_controller.play_animation(
-            AnimationType.CONFIGURABLE_GRADIENT,
-            5000,
-            GradientConfig(
-                speed=5,
-                spread=15,
-                start_hue=60,
-                reverse=False
+        if get_media_status() == "Playing":
+            alex.box_controller.animation_controller.play_animation(
+                AnimationType.CONFIGURABLE_GRADIENT,
+                2000,
+                GradientConfig(
+                    speed=5,
+                    spread=15,
+                    start_hue=60,
+                    reverse=False
+                )
             )
-        )
+        else:
+            alex.box_controller.animation_controller.play_animation(
+                AnimationType.CONFIGURABLE_CHASE,
+                2500,
+                ChaseConfig(
+                    fade=0,
+                    tail=2,
+                    color=PredefinedColor.RED,
+                )
+            )
         return "Toggled play/pause."
     except subprocess.CalledProcessError:
         return "Failed to toggle play/pause. No media player available."
