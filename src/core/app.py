@@ -53,11 +53,16 @@ class ParseArguments:
             help="Set the Base Server IP",
             metavar="ip",
         )
+        self.parser.add_argument(
+            "--ignore-box",
+            default=False,
+            help="Skip connecting to the Alex Box Device",
+            action="store_true"
+        )
         if not is_compiled():
             self.parser.add_argument(
                 "--build",
                 help="Build Alex and stores him in server. (Only on developer mode)",
-                action="store_true"
             )
         self.parser.add_argument(
             "-s", "--start", action="store_true", help="Start Alex"
@@ -146,6 +151,8 @@ class AlexFactory:
         self.alex = ALEX()
 
         self.alex.base_server_ip = self.args.base_server
+
+        self.alex.ignore_box = args.ignore_box
 
         self.set_language()
 
