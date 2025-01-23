@@ -1,24 +1,20 @@
 from core.intents.slots import SlotValueNumber
 from core.skills import BaseSkill
 
-class Simple(BaseSkill):
+class SimplePrevious(BaseSkill):
     def init(self):
-        self.register("math@simple")
+        self.register("math@simple.previous")
 
     def execute(self, intent):
         super().execute(intent)
         self.require("mathoperation")
-        self.require("first_number", SlotValueNumber)
-        self.require("second_number", SlotValueNumber)
+        self.require("number", SlotValueNumber)
 
         operation_function = self.convert()
 
-        r = None
-
-        fNumber: SlotValueNumber = self.get_obj("first_number")
-        sNumber: SlotValueNumber = self.get_obj("second_number")
-        r = operation_function(fNumber, sNumber)
-        self.context_save("last_result", r)
+        number: SlotValueNumber = self.get_obj("number")
+        last_result = self.context_load("last_result")
+        r = operation_function(last_result, number.value)
 
         return self.say("result", result=r)
 

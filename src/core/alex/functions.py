@@ -65,8 +65,11 @@ def set_api_con(self, alex: AI):
 @alexSkeleton.init_action("Connect to Device")
 def device_con(self, alex: AI):
     alex.box_controller = ESP32BluetoothClient()
-    if not alex.box_controller.scan_and_connect():
-        print("\33[31mCould not connect to device!")
+    if not alex.ignore_box:
+        if not alex.box_controller.scan_and_connect():
+            print("\33[31mCould not connect to device!")
+    else:
+        print("\33[33mSkipping connection to device!")
     alex.finish(self)
 
 @alexSkeleton.init_action("Register Button Presses")
@@ -339,7 +342,7 @@ def play_button_pressed(alex: AI, b_state):
                     color=PredefinedColor.GOLD,
                 )
             )
-        elif status == "No players found":
+        elif status == "No player is running or no media available.":
             alex.box_controller.animation_controller.play_animation(
                 AnimationType.STATUS_INDICATOR,
                 2500,

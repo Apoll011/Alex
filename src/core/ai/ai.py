@@ -41,6 +41,8 @@ class AI(
     """
 
     notifier: Notify = Notify()
+
+    ignore_box = False
     def __init__(self, sig: str) -> None:
         """
         Initializes the AI instance

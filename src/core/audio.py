@@ -62,7 +62,7 @@ class Audio:
 
     @staticmethod
     def get_handler(audio_name) -> (Any, dict[str, Any]):
-        extension = audio_name.split(".")
+        extension = audio_name.split(".")[-1]
         try:
             return Audio.audio_handle[extension]
         except KeyError:

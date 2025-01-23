@@ -4,6 +4,7 @@ import time
 from core.ai.ai import AI
 from core.audio import Audio
 from core.config import *
+from core.hardware.esp32.structures import AnimationType
 from core.log import LOG
 
 class BaseInterface:
@@ -51,10 +52,18 @@ class BaseInterface:
     def speak(self, data): ...
 
     def input(self, data):
+        self.alex.box_controller.animation_controller.play_animation(
+            AnimationType.PROCESSING,
+            -1
+        )
         message = data['message']
         if message != "":
             message_processed = self.process_input(message)
             self.alex.process(message_processed)
+        self.alex.box_controller.animation_controller.play_animation(
+            AnimationType.SHUTDOWN,
+            2500
+        )
 
     def wakeword(self, data = 1):
         self.alex.wake({"prob":data})
