@@ -63,6 +63,7 @@ class ParseArguments:
             self.parser.add_argument(
                 "--build",
                 help="Build Alex and stores him in server. (Only on developer mode)",
+                action="store_true"
             )
         self.parser.add_argument(
             "-s", "--start", action="store_true", help="Start Alex"
