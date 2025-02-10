@@ -242,7 +242,8 @@ def close_interface(alex: AI):
 
 @alexSkeleton.deactivate_action("Disconnect to Device")
 def device_descon(alex: AI):
-    alex.box_controller.close()
+    if alex.box_controller:
+        alex.box_controller.close()
 
 @alexSkeleton.scheduled(5, EventPriority.SKILLS, False)
 def get_reminders(alex: AI):

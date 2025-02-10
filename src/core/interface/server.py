@@ -29,7 +29,7 @@ class Server(BaseInterface):
         self.app.add_url_rule('/', view_func=self.index)
         print(f"Running on http://{self.config['host']}:{self.config['port']}/")
         self.socketio.run(
-            self.app, host=self.config["host"], port=int(self.config["port"]), log_output=False, use_reloader=True
+            self.app, host=self.config["host"], port=int(self.config["port"]), log_output=False,
             )
         super().start()
 
