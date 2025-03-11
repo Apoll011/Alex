@@ -144,11 +144,14 @@ class AlexUpdater:
             self.block_update()
 
     def handle_library_updates(self):
-        new_libs = [
-            (lib, VersionManager.versionify(self.libs[lib]["new"]))
-            for lib in self.libs
-            if self.libs[lib]["outdated"]
-        ]
+        try:
+            new_libs = [
+                (lib, VersionManager.versionify(self.libs[lib]["new"]))
+                for lib in self.libs
+                if self.libs[lib]["outdated"]
+            ]
+        except Exception as e:
+            print(e)
 
         if new_libs:
             self.up_say("update.new.libraries", "There are new versions for the Alex libraries.")

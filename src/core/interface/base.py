@@ -54,16 +54,12 @@ class BaseInterface:
     def input(self, data):
         self.alex.box_controller.animation_controller.play_animation(
             AnimationType.PROCESSING,
-            -1
+            150000
         )
         message = data['message']
         if message != "":
             message_processed = self.process_input(message)
             self.alex.process(message_processed)
-        self.alex.box_controller.animation_controller.play_animation(
-            AnimationType.SHUTDOWN,
-            2500
-        )
 
     def wakeword(self, data = 1):
         self.alex.wake({"prob":data})
@@ -128,3 +124,13 @@ class BaseInterface:
                 Audio.play(data['path'])
             case _:
                 raise KeyError(f"The type {data_type} is not valid")
+
+        t = 2.5  # Waiting time
+
+        if data["settings"]["voice_mode"] or self.name == "web":
+            t = len(data["value"].split(" ")) * 0.8
+
+        self.alex.scheduler.schedule(
+            t, EventPriority.UI_UX, self.alex.box_controller.animation_controller.play_animation,
+            AnimationType.SHUTDOWN, 2500
+        )

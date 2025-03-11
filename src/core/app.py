@@ -205,6 +205,8 @@ class App:
 
         LOG.init()
 
+        LOG.info("System started!")
+
         return self
 
     def start(self):
@@ -252,3 +254,4 @@ class App:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         PID.clean()
+        LOG.info("System closed!")
