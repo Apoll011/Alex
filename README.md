@@ -1,6 +1,6 @@
 # ALEX - Advanced Learning and Execution Interface
 
-ALEX is an extensible AI assistant framework built in Python, featuring a modular skill system, voice capabilities, and multi-language support. It's designed to be easily extensible through a robust skill system while maintaining core assistant functionalities.
+ALEX is an extensible Commad-Action assistant framework built in Python, featuring a modular skill system, voice capabilities, and multi-language support. It's designed to be easily extensible through a robust skill system while maintaining core assistant functionalities.
 
 ---
 
