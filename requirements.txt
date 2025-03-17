@@ -44,9 +44,6 @@ mlflow-skinny==2.19.0
 mypy-extensions==1.0.0
 netifaces==0.10.6
 numpy==2.1.1
-opentelemetry-api==1.29.0
-opentelemetry-sdk==1.29.0
-opentelemetry-semantic-conventions==0.50b0
 packaging==24.1
 pandas==2.2.3
 pathspec==0.12.1
@@ -84,7 +81,6 @@ simple-websocket==1.1.0
 six==1.16.0
 smmap==5.0.1
 SpeechRecognition==3.14.1
-sqlparse==0.5.3
 srt==3.5.3
 threadpoolctl==3.5.0
 tokenizers==0.21.0
