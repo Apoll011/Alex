@@ -1,8 +1,7 @@
 import glob
 import pickle
 import time
-
-from core.user import User
+from datetime import datetime, timedelta
 
 from core.ai.ai import AI
 from core.ai.blueprint import AiBluePrintSkeleton
@@ -41,6 +40,7 @@ def dna(self, alex: AI):
 @alexSkeleton.init_action("Creating Context Variables")
 def make_ctx(self, alex: AI):
     alex.set_context("allowed_to_check_api", True)
+    alex.set_context("firstActivationCalled", False)
     alex.finish(self)
 
 @alexSkeleton.init_action("Set Api connection")
@@ -92,7 +92,7 @@ def get_persons(self, alex: AI):
 
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):
-    u = alex.persons.search_name("Tiago")[0]
+    u = alex.persons.get_from_name("Tiago")
     alex.finish_and_set(self, "master", u)
 
 @alexSkeleton.init_action("Getting intents engine")
@@ -212,9 +212,20 @@ def changeMode(alex: AI, mode):
     else:
         alex.voice_mode = True # type: ignore
 
+def seconds_to_next(hour):
+    now = datetime.now()
+    next_occurrence = now.replace(hour=hour, minute=0, second=0)
+
+    if now > next_occurrence:
+        next_occurrence += timedelta(days=1)
+
+    return (next_occurrence - now).seconds
+
 @alexSkeleton.on(AlexEvent.ALEX_GOOD_MORNING)
-def run_morning_actions(event, alex):
-    pass  # TODO: Add ability to create morning routines
+def run_morning_actions(event, alex: AI):
+    alex.set_context("firstActivationCalled", True)
+    alex.scheduler.schedule(seconds_to_next(4), EventPriority.SYSTEM, alex.set_context, "firstActivationCalled", False)
+    # TODO: Add ability to create morning routines
 
 @alexSkeleton.deactivate_action("Closing Scheduler")
 def stop_scheduler(alex: AI):
@@ -241,7 +252,7 @@ def close_interface(alex: AI):
     BaseInterface.get().close()
 
 @alexSkeleton.deactivate_action("Disconnect to Device")
-def device_descon(alex: AI):
+def device_desconect(alex: AI):
     if alex.box_controller:
         alex.box_controller.close()
 

@@ -1,11 +1,10 @@
 from datetime import datetime
 
-from core.user import User
-
 from core.notifier import AlexEvent
 from core.quotes import PyQuotes
 from core.skills import BaseSkill
 from core.translate import TranslationSystem
+from core.users.person import Person
 from core.utils import internet_on, is_morning
 
 class Hi(BaseSkill):
@@ -17,10 +16,10 @@ class Hi(BaseSkill):
         super().execute(intent)
         self.optional("timeOfDay")
 
-        self.master: User = self.context_load("master")
+        self.master: Person = self.context_load("master")
 
         if self.slot_exists("timeOfDay"):
-            if is_morning():
+            if (is_morning() and self.context_load("firstActivationCalled", True)) or self.alex().debug_mode:
                 self.register_event(AlexEvent.ALEX_GOOD_MORNING)
                 self.morning_routine()
             else:
@@ -56,7 +55,8 @@ class Hi(BaseSkill):
                     "/lang/format/nice_time", lang=self.get_language(), speech=True
                 ).response,
                 day=now.day,
-                month=month_translation
+                month=month_translation,
+                inspiring_quote=PyQuotes().get_clean_quote()
             )
 
     def birthday_related(self):
