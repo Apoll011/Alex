@@ -256,8 +256,9 @@ class BaseSkill:
     def context_save(self, name: str, obj):
         self.context.save(obj, name)
 
-    def context_load(self, name: str):
-        return self.context.load(name)
+    def context_load(self, name: str, fallback=None):
+        value = self.context.load(name)
+        return value if value is not None else fallback
 
     def setting(self, name):
         return self.skill_settings[name]
