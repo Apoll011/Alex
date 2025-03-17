@@ -214,7 +214,6 @@ class Person:
     """
 
     creation_date: datetime
-    last_updated: datetime
     login_history: List[datetime]
 
     def __init__(self):

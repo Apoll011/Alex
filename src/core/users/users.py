@@ -107,6 +107,11 @@ class PersonsDB:
             if query in user.name:
                 yield user
 
+    def get_from_name(self, name: str) -> Person:
+        for user in self.users:
+            if name.lower() in user.name.lower():
+                return user
+
     def search_by_tags(self, query, condition=">:0", exclude=None) -> Generator[Person, Any, None]:
         if exclude is None:
             exclude = []
