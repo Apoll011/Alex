@@ -17,6 +17,7 @@ class PrepareWorkSpace:
         "application",
         "ctx",
         "data",
+        "users"
     ]
 
     data_folders = [
