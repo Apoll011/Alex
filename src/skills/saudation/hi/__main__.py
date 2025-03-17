@@ -1,10 +1,11 @@
 from datetime import datetime
 
+from core.user import User
+
 from core.notifier import AlexEvent
 from core.quotes import PyQuotes
 from core.skills import BaseSkill
 from core.translate import TranslationSystem
-from core.user import User
 from core.utils import internet_on, is_morning
 
 class Hi(BaseSkill):
@@ -68,7 +69,7 @@ class Hi(BaseSkill):
 
     def is_birthday_coming(self):
         """
-        Returns True if user makes birthday in the range defined in config between 2 and 31 days depending on the selected b y the user
+        Returns True if user makes birthday in the range defined in config between 2 and 31 days depending on the selected by the user
         :return: Boolean
         """
         return self.config("birthday_warning") >= self.master.distance_to_birthday().days > 2 and \

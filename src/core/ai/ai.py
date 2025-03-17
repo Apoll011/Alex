@@ -10,6 +10,7 @@ from ..context import ContextManager
 from ..notifier import Notify
 from ..scheduler import Scheduler
 from ..screen import Screen
+from ..users.users import PersonsDB
 
 class AI(
     AiBluePrintUser
@@ -43,6 +44,8 @@ class AI(
     notifier: Notify = Notify()
 
     ignore_box = False
+
+    persons: PersonsDB
     def __init__(self, sig: str) -> None:
         """
         Initializes the AI instance

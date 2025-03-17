@@ -51,7 +51,7 @@ class PersonsDB:
         self.users = []
         for user in os.listdir(self.path):
             us = json.load(open(self.path + user, "r"))
-            self.users.append(Person.convert_json_to_user(us))
+            self.users.append(Person.load(us))
             self.ids.append(us["id"])
 
     def get(self, user_ids: str | list):

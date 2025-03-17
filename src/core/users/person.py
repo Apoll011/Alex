@@ -527,11 +527,12 @@ class Person:
 
         return person
 
-    def load(self, user_json: dict) -> 'Person':
+    @staticmethod
+    def load(user_json: dict) -> 'Person':
         try:
-            return self.convert_json_to_user(user_json)
+            return Person.convert_json_to_user(user_json)
         except KeyError:
-            return self.load_partial(user_json)
+            return Person.load_partial(user_json)
 
     @staticmethod
     def to_json(person: 'Person'):

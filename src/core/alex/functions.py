@@ -2,7 +2,7 @@ import glob
 import pickle
 import time
 
-import psutil
+from core.user import User
 
 from core.ai.ai import AI
 from core.ai.blueprint import AiBluePrintSkeleton
@@ -26,7 +26,7 @@ from core.notifier import AlexEvent
 from core.process import Process
 from core.resources.application import Application
 from core.resources.data_files import DataFile
-from core.user import User
+from core.users.users import PersonsDB
 
 alexSkeleton = AiBluePrintSkeleton()
 
@@ -85,9 +85,14 @@ def set_api_con(self, alex: AI):
     )
     alex.finish(self)
 
+@alexSkeleton.init_action("Getting all Persons")
+def get_persons(self, alex: AI):
+    alex.persons = PersonsDB()
+    alex.finish(self)
+
 @alexSkeleton.init_action("Get Master User")
 def get_master_user(self, alex: AI):
-    u = User.search_name("Tiago")[0]
+    u = alex.persons.search_name("Tiago")[0]
     alex.finish_and_set(self, "master", u)
 
 @alexSkeleton.init_action("Getting intents engine")
@@ -179,11 +184,6 @@ def check_api(alex: AI):
 def check_for_updates(alex: AI):
     updater = AlexUpdater(alex)
     updater.run_update_process()
-
-@alexSkeleton.request_action("systemStatus")
-@alexSkeleton.scheduled(SCHEDULE_TIME.ONE_HOUR, EventPriority.SYSTEM)
-def save_sys_status(alex: AI):
-    alex.system_data["cpu"].append(cpu = psutil.cpu_percent()) # type: ignore
 
 def say(key, alex: AI, context=None, voice=None):
     if context is None:
