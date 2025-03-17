@@ -6,7 +6,7 @@ from enum import Enum
 from typing import Any, Generator
 
 from core.config import USER_RESOURCE_PATH
-from core.users.user import User
+from core.users.person import Person
 
 class Symbols(Enum):
     GREATER = ">"
@@ -38,8 +38,8 @@ class Condition:
             case _:
                 return False  # If for some God´s sake reason It did not match for any return false. PS: How did we got here???
 
-class UsersDB:
-    users: list[User] = []
+class PersonsDB:
+    users: list[Person] = []
     ids = []
 
     path = f"{USER_RESOURCE_PATH}/users/"
@@ -51,7 +51,7 @@ class UsersDB:
         self.users = []
         for user in os.listdir(self.path):
             us = json.load(open(self.path + user, "r"))
-            self.users.append(User.convert_json_to_user(us))
+            self.users.append(Person.convert_json_to_user(us))
             self.ids.append(us["id"])
 
     def get(self, user_ids: str | list):
@@ -107,7 +107,7 @@ class UsersDB:
             if query in user.name:
                 yield user
 
-    def search_by_tags(self, query, condition=">:0", exclude=None) -> Generator[User, Any, None]:
+    def search_by_tags(self, query, condition=">:0", exclude=None) -> Generator[Person, Any, None]:
         if exclude is None:
             exclude = []
 
@@ -124,7 +124,7 @@ class UsersDB:
                     yield user
 
     @staticmethod
-    def __filter_tags_check_user(user: User, condition: Condition, query):
+    def __filter_tags_check_user(user: Person, condition: Condition, query):
         for tag in user.tags:
             query_list: list[str] = query if type(query) == list else [query]  # type: ignore
             for individual_query in query_list:
