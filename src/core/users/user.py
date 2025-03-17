@@ -2,9 +2,6 @@ from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
 
-from core.client import ApiMethod
-from core.interface import BaseInterface
-
 class UserGender(str, Enum):
     MALE = "M"
     FEMALE = "F"
@@ -131,8 +128,6 @@ class User:
         user.tags = json["tags"]
         user.id = json["id"]
 
-        User.save(user)
-
         return user
 
     @staticmethod
@@ -201,14 +196,12 @@ class User:
         return self.data.body.age < 18
 
     @staticmethod
-    def save(cls: 'User', alex=None):
+    def to_json(cls: 'User', alex=None):
         """
         Saves a given user obj to the server
         :param cls: The user obj
         :param alex: The Alex Main Class Object its not required if the interface is already set
         """
-        if alex is None:
-            alex = BaseInterface.get().alex
 
         user_json = {
             "id": cls.id,
@@ -232,7 +225,7 @@ class User:
 
         }
 
-        alex.api.call_route("/user/", {"user": user_json}, ApiMethod.PATCH)
+        return user_json
 
     def first_name(self):
         return self.name.split()[0]
