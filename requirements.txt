@@ -94,7 +94,7 @@ unrpa==2.3.0
 urllib3==2.2.2
 websocket-client==1.8.0
 websockets==14.1
-Werkzeug==3.0.3
+Werkzeug==3.0.6
 wrapt==1.17.0
 wsproto==1.2.0
 zipp==3.21.0
