@@ -79,7 +79,7 @@ requests==2.32.3
 rsa==4.9
 safetensors==0.4.5
 scipy==1.14.1
-setuptools==3.3
+setuptools==70.0.0
 simple-websocket==1.1.0
 six==1.16.0
 smmap==5.0.1
